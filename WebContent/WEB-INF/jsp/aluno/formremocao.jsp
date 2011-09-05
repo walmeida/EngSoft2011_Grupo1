@@ -23,9 +23,9 @@ font-size:18px;
 </head>
 <body>
 	<h1>CRUD</h1>
-	<p>Remover produto</p>
-	<form action='remover'>
-		ID: <input type="text" name="aremover.id"/><br/>
+	<p>Remover aluno</p>
+	<form action='remocao'>
+		ID: <input type="text" name="id"/><br/>
 		<input type="submit" value="Excluir"/>
 	</form>
 </body>

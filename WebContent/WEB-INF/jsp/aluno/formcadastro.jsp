@@ -7,32 +7,28 @@
 <style type="text/css">
 body
 {
-background-color:#ffcfeb;
+background-color:#dfdfdf;
 }
 h1
 {
-background-color:#fea8ce;
-font-family: "Times New Roman";
 color:black;
+text-align:center;
 }
 p
 {
-font-family:"Times New Roman";
+font-family:"Verdana";
 font-size:18px;
-}
-div
-{
-background-color:#fec2e5;
 }
 </style> 
 </head>
 <body>
 	<h1>CRUD</h1>
-	<p>Cadastrar novo produto</p>
-	<form action='salvarproduto'>
+	<p>Cadastrar novo aluno</p>
+	<form action='cadastro'>
 		Nome: <input type="text" name="novo.nome"/><br/>
-		Descricao : <input type="text" name="novo.descricao"/><br/>
-		Preco : <input type="text" name="novo.preco"/><br/>
+		Login : <input type="text" name="novo.login"/><br/>
+		Senha : <input type="text" name="novo.senha"/><br/>
+		E-mail : <input type="text" name="novo.email"/><br/>
 	<input type="submit" value="OK"/>
 	</form>
 </body>

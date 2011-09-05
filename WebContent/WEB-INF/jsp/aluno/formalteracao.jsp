@@ -24,11 +24,11 @@ font-size:18px;
 <body>
 	<h1>CRUD</h1>
 	<p>Alterar produto</p>
-	<form action='alterar'>
-		Id do produto a alterar: <input type="text" name="aalterar.id" /> <br />
-		Novo Nome: <input type="text" name="aalterar.nome"/><br/>
-		Nova Descricao : <input type="text" name="aalterar.descricao"/><br/>
-		Novo Preço : <input type="text" name="aalterar.preco"/><br/>
+	<form action='alteracao'>
+		Id do produto a alterar: <input type="text" name="id" /> <br />
+		Novo Nome: <input type="text" name="nome"/><br/>
+		Nova E-mail : <input type="text" name="email"/><br/>
+		Novo Senha : <input type="text" name="senha"/><br/>
 	<input type="submit" value="OK"/>
 	</form>
 </body>
