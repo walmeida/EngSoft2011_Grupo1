@@ -5,19 +5,16 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import br.com.caelum.vraptor.ioc.ApplicationScoped;
 import br.com.caelum.vraptor.ioc.Component;
 import br.usp.ime.academicdevoir.entidade.Aluno;
-import br.usp.ime.academicdevoir.sessao.CriadorDeSessao;
 
 @Component
-@ApplicationScoped
 public class AlunoDao {
 
 	private final Session session;
 
-	public AlunoDao() {
-		this.session = CriadorDeSessao.getSession();
+	public AlunoDao(Session session) {
+		this.session = session;
 	}
 
 	public void salvaAluno(Aluno aluno) {

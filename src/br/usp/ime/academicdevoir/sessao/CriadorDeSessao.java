@@ -1,18 +1,35 @@
 package br.usp.ime.academicdevoir.sessao;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
-public class CriadorDeSessao {
+import br.com.caelum.vraptor.ioc.Component;
+import br.com.caelum.vraptor.ioc.ComponentFactory;
 
-	public static Session getSession() {
-		Configuration configuration = new Configuration();
-		 configuration.configure();
-	
-	     SessionFactory factory = configuration.buildSessionFactory();
-	     Session session = factory.openSession();
-		return session;
+@Component
+public class CriadorDeSessao implements ComponentFactory<Session> {
+
+	private final SessionFactory factory;
+	private Session session;
+
+	public CriadorDeSessao(SessionFactory factory) {
+		this.factory = factory;
 	}
 
+	@PostConstruct
+	public void open() {
+		this.session = factory.openSession();
+	}
+
+	public Session getInstance() {
+		return this.session;
+	}
+
+	@PreDestroy
+	public void close() {
+		this.session.close();
+	}
 }

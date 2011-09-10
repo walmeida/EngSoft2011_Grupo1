@@ -2,7 +2,7 @@ package br.usp.ime.academicdevoir.infra;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.SessionScoped;
-import br.usp.ime.academicdevoir.entidades.Usuario;
+import br.usp.ime.academicdevoir.entidade.Usuario;
 
 @Component
 @SessionScoped

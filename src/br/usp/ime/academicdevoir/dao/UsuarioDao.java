@@ -3,7 +3,7 @@ package br.usp.ime.academicdevoir.dao;
 import org.hibernate.Session;
 
 import br.com.caelum.vraptor.ioc.Component;
-import br.usp.ime.academicdevoir.entidades.Usuario;
+import br.usp.ime.academicdevoir.entidade.Usuario;
 
 @Component
 public class UsuarioDao {

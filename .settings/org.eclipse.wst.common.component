@@ -3,7 +3,7 @@
 <wb-module deploy-name="vraptor-blank-project">
 <wb-resource deploy-path="/" source-path="/WebContent"/>
 <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-<property name="context-root" value="vraptor-blank-project"/>
 <property name="java-output-path"/>
+        <property name="context-root" value="academic-devoir"/>
 </wb-module>
 </project-modules>
