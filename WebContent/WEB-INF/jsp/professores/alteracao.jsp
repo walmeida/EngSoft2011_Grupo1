@@ -23,12 +23,12 @@ font-size:18px;
 </head>
 <body>
 	<h1>CRUD</h1>
-	<p>Cadastrar novo aluno</p>
-	<form action='cadastro'>
-		Nome: <input type="text" name="novo.nome"/><br/>
-		Login : <input type="text" name="novo.login"/><br/>
-		Senha : <input type="text" name="novo.senha"/><br/>
-		E-mail : <input type="text" name="novo.email"/><br/>
+	<p>Alterar professor</p>
+	<form action='altera'>	
+		Id do professor a alterar: <input type="text" name="id" /> <br />
+		Novo Nome: <input type="text" name="novoNome"/><br/>
+		Nova E-mail : <input type="text" name="novoEmail"/><br/>
+		Novo Senha : <input type="text" name="novaSenha"/><br/>
 	<input type="submit" value="OK"/>
 	</form>
 </body>

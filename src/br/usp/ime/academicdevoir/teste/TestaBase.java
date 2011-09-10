@@ -1,4 +1,4 @@
-package br.usp.ime.academicdevoir.testes;
+package br.usp.ime.academicdevoir.teste;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

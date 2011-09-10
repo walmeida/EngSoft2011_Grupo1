@@ -23,14 +23,14 @@ background-color:#fec2e5;
 </head>
 <body>
 	<h1>CRUD</h1>
-	<form action='formulario' method="get">
-	<input type="submit" value="Adicionar produto"/>
+	<form action='cadastro' method="get">
+	<input type="submit" value="Adicionar aluno"/>
 	</form>
-	<form action='listarproduto' method="get">
-	<input type="submit" value="Listar produto"/>
+	<form action='lista' method="get">
+	<input type="submit" value="Listar aluno"/>
 	</form>
 	<form action='remocao' method="get">
-	<input type="submit" value="Remover produto"/>
+	<input type="submit" value="Remover aluno"/>
 	</form>
 </body>
 </html>

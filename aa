@@ -1,0 +1,55 @@
+[1mdiff --git a/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/entidades/Aluno.class b/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/entidades/Aluno.class[m
+[1mindex 03cee43..c13d82a 100644[m
+Binary files a/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/entidades/Aluno.class and b/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/entidades/Aluno.class differ
+[1mdiff --git a/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/entidades/CriadorDeSession.class b/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/entidades/CriadorDeSession.class[m
+[1mindex deecb49..01a3cdb 100644[m
+Binary files a/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/entidades/CriadorDeSession.class and b/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/entidades/CriadorDeSession.class differ
+[1mdiff --git a/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/entidades/Professor.class b/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/entidades/Professor.class[m
+[1mindex 71e38a3..fd5a3c8 100644[m
+Binary files a/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/entidades/Professor.class and b/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/entidades/Professor.class differ
+[1mdiff --git a/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/entidades/Turma.class b/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/entidades/Turma.class[m
+[1mindex d461910..0ca7287 100644[m
+Binary files a/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/entidades/Turma.class and b/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/entidades/Turma.class differ
+[1mdiff --git a/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/entidades/Usuario.class b/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/entidades/Usuario.class[m
+[1mindex 289fb10..a2513fb 100644[m
+Binary files a/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/entidades/Usuario.class and b/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/entidades/Usuario.class differ
+[1mdiff --git a/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/testes/AlunoTest.class b/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/testes/AlunoTest.class[m
+[1mindex e4c9a5d..f376ff8 100644[m
+Binary files a/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/testes/AlunoTest.class and b/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/testes/AlunoTest.class differ
+[1mdiff --git a/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/testes/TestaBase.class b/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/testes/TestaBase.class[m
+[1mindex db88772..43ca142 100644[m
+Binary files a/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/testes/TestaBase.class and b/WebContent/WEB-INF/classes/br/usp/ime/academicdevoir/testes/TestaBase.class differ
+[1mdiff --git a/WebContent/WEB-INF/classes/hibernate.cfg.xml b/WebContent/WEB-INF/classes/hibernate.cfg.xml[m
+[1mdiff --git a/WebContent/WEB-INF/classes/log4j.xml b/WebContent/WEB-INF/classes/log4j.xml[m
+[1mdiff --git a/WebContent/WEB-INF/jsp/aluno/alteracao.jsp b/WebContent/WEB-INF/jsp/aluno/alteracao.jsp[m
+[1mdeleted file mode 100644[m
+[1mindex e69de29..0000000[m
+[1mdiff --git a/WebContent/WEB-INF/jsp/aluno/formalteracao.jsp b/WebContent/WEB-INF/jsp/aluno/formalteracao.jsp[m
+[1mdeleted file mode 100644[m
+[1mindex 324dfd6..0000000[m
+[1m--- a/WebContent/WEB-INF/jsp/aluno/formalteracao.jsp[m
+[1m+++ /dev/null[m
+[36m@@ -1,35 +0,0 @@[m
+[31m-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">[m
+[31m-<html>[m
+[31m-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>[m
+[31m-<head>[m
+[31m-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">[m
+[31m-<title>CRUD</title>[m
+[31m-<style type="text/css">[m
+[31m-body[m
+[31m-{[m
+[31m-background-color:#dfdfdf;[m
+[31m-}[m
+[31m-h1[m
+[31m-{[m
+[31m-color:black;[m
+[31m-text-align:center;[m
+[31m-}[m
+[31m-p[m
+[31m-{[m
+[31m-font-family:"Verdana";[m
+[31m-font-size:18px;[m
+[31m-}[m
+[31m-</style> [m
+[31m-

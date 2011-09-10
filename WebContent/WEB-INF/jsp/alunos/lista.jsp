@@ -7,54 +7,51 @@
 <style type="text/css">
 body
 {
-background-color:#ffcfeb;
+background-color:#dfdfdf;
 }
 h1
 {
-background-color:#fea8ce;
-font-family: "Times New Roman";
 color:black;
+text-align:center;
 }
 p
 {
-font-family:"Times New Roman";
+font-family:"Verdana";
 font-size:18px;
-}
-div
-{
-background-color:#fec2e5;
 }
 </style> 
 </head>
 <body>
 	<h1>CRUD</h1>
-	<p>Lista de Produtos</p>
+	<p>Lista de Alunos</p>
 	<table>
     <thead>
         <tr>
-        <th>Id</th>
+        <th>id</th>
         <th>Nome</th>
-        <th>Descricao</th>
-        <th>Preco</th>
+        <th>E-mail</th>
+        <th>Login</th>
+        <th>Senha</th>
         </tr>
     </thead>
     <tbody>
-        <c:forEach items="${produtodao.lista}" var="produto">
+        <c:forEach items="${alunodao.lista}" var="aluno">
             <tr>
-                <td>${produto.id}</td>
-                <td>${produto.nome}</td>
-                <td>${produto.descricao}</td>
-                <td>${produto.preco}</td>
+                <td>${aluno.id}</td>
+                <td>${aluno.nome}</td>
+                <td>${aluno.email}</td>
+                <td>${aluno.login}</td>
+                <td>${aluno.senha}</td>
             </tr>
         </c:forEach>
-        <form action='formulario'>
-        	<input type="submit" value="Adicionar"/>
+        <form action='cadastro'>
+        	<input type="submit" value="Inserir"/>
         </form>
         <form action='alteracao'>
         	<input type="submit" value="Alterar"/>
         </form>
         <form action='remocao'>
-        	<input type="submit" value="Remover"/>
+        	<input type="submit" value="Excluir"/>
         </form>
         <form action='home'>
         	<input type="submit" value="Voltar"/>

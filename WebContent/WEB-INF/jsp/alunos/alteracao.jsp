@@ -23,12 +23,12 @@ font-size:18px;
 </head>
 <body>
 	<h1>CRUD</h1>
-	<p>Alterar produto</p>
-	<form action='alteracao'>
-		Id do produto a alterar: <input type="text" name="id" /> <br />
-		Novo Nome: <input type="text" name="nome"/><br/>
-		Nova E-mail : <input type="text" name="email"/><br/>
-		Novo Senha : <input type="text" name="senha"/><br/>
+	<p>Alterar aluno</p>
+	<form action='altera'>	
+		Id do aluno a alterar: <input type="text" name="id" /> <br />
+		Novo Nome: <input type="text" name="novoNome"/><br/>
+		Nova E-mail : <input type="text" name="novoEmail"/><br/>
+		Novo Senha : <input type="text" name="novaSenha"/><br/>
 	<input type="submit" value="OK"/>
 	</form>
 </body>

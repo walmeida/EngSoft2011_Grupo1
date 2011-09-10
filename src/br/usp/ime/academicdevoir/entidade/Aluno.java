@@ -1,4 +1,4 @@
-package br.usp.ime.academicdevoir.entidades;
+package br.usp.ime.academicdevoir.entidade;
 
 import java.util.ArrayList;
 import java.util.Collection;

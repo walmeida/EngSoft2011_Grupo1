@@ -1,4 +1,4 @@
-package br.usp.ime.academicdevoir.testes;
+package br.usp.ime.academicdevoir.teste;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -6,9 +6,9 @@ import static org.junit.Assert.assertNull;
 import org.hibernate.Transaction;
 import org.junit.Test;
 
-import br.usp.ime.academicdevoir.entidades.Aluno;
-import br.usp.ime.academicdevoir.entidades.Professor;
-import br.usp.ime.academicdevoir.entidades.Turma;
+import br.usp.ime.academicdevoir.entidade.Aluno;
+import br.usp.ime.academicdevoir.entidade.Professor;
+import br.usp.ime.academicdevoir.entidade.Turma;
 
 public class AlunoTest extends TestaBase {
 	

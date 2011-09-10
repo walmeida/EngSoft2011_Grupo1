@@ -23,10 +23,13 @@ font-size:18px;
 </head>
 <body>
 	<h1>CRUD</h1>
-	<p>Remover aluno</p>
-	<form action='remocao'>
-		ID: <input type="text" name="id"/><br/>
-		<input type="submit" value="Excluir"/>
+	<p>Cadastrar novo aluno</p>
+	<form action='cadastra'>
+		Nome: <input type="text" name="novo.nome"/><br/>
+		Login : <input type="text" name="novo.login"/><br/>
+		Senha : <input type="text" name="novo.senha"/><br/>
+		E-mail : <input type="text" name="novo.email"/><br/>
+	<input type="submit" value="OK"/>
 	</form>
 </body>
 </html>

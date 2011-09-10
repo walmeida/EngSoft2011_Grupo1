@@ -12,10 +12,10 @@
 		<property name="hibernate.hbm2ddl.auto">create</property>
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
-		<mapping class="br.usp.ime.academicdevoir.entidades.Aluno" />
-		<mapping class="br.usp.ime.academicdevoir.entidades.Professor" />
-		<mapping class="br.usp.ime.academicdevoir.entidades.Usuario" />
-		<mapping class="br.usp.ime.academicdevoir.entidades.Turma" />
+		<mapping class="br.usp.ime.academicdevoir.entidade.Aluno" />
+		<mapping class="br.usp.ime.academicdevoir.entidade.Professor" />
+		<mapping class="br.usp.ime.academicdevoir.entidade.Usuario" />
+		<mapping class="br.usp.ime.academicdevoir.entidade.Turma" />
 
 	</session-factory>
 </hibernate-configuration>

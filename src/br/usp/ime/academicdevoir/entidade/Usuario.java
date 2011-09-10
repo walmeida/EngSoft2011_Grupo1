@@ -1,4 +1,4 @@
-package br.usp.ime.academicdevoir.entidades;
+package br.usp.ime.academicdevoir.entidade;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
