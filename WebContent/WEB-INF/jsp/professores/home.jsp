@@ -24,13 +24,13 @@ background-color:#fec2e5;
 <body>
 	<h1>CRUD</h1>
 	<form action='cadastro' method="get">
-	<input type="submit" value="Adicionar aluno"/>
+	<input type="submit" value="Adicionar professor"/>
 	</form>
 	<form action='lista' method="get">
-	<input type="submit" value="Listar aluno"/>
+	<input type="submit" value="Listar professor"/>
 	</form>
 	<form action='remocao' method="get">
-	<input type="submit" value="Remover aluno"/>
+	<input type="submit" value="Remover professor"/>
 	</form>
 </body>
 </html>

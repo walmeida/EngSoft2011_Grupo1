@@ -23,35 +23,37 @@ font-size:18px;
 </head>
 <body>
 	<h1>CRUD</h1>
-	<p>Lista de Produtos</p>
+	<p>Lista de Alunos</p>
 	<table>
     <thead>
         <tr>
         <th>id</th>
         <th>Nome</th>
-        <th>Descrição</th>
-        <th>preço</th>
+        <th>E-mail</th>
+        <th>Login</th>
+        <th>Senha</th>
         </tr>
     </thead>
     <tbody>
-        <c:forEach items="${produtodao.lista}" var="produto">
+        <c:forEach items="${alunodao.lista}" var="aluno">
             <tr>
-                <td>${produto.id}</td>
-                <td>${produto.nome}</td>
-                <td>${produto.descricao}</td>
-                <td>${produto.preco}</td>
+                <td>${aluno.id}</td>
+                <td>${aluno.nome}</td>
+                <td>${aluno.email}</td>
+                <td>${aluno.login}</td>
+                <td>${aluno.senha}</td>
             </tr>
         </c:forEach>
-        <form action='form'>
+        <form action='cadastro'>
         	<input type="submit" value="Inserir"/>
         </form>
-        <form action='formalter'>
+        <form action='alteracao'>
         	<input type="submit" value="Alterar"/>
         </form>
-        <form action='formremover'>
+        <form action='remocao'>
         	<input type="submit" value="Excluir"/>
         </form>
-        <form action='index'>
+        <form action='home'>
         	<input type="submit" value="Voltar"/>
         </form>
     </tbody>

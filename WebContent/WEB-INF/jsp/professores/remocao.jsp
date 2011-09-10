@@ -15,6 +15,11 @@ background-color:#fea8ce;
 font-family: "Times New Roman";
 color:black;
 }
+p
+{
+font-family:"Times New Roman";
+font-size:18px;
+}
 div
 {
 background-color:#fec2e5;
@@ -23,14 +28,10 @@ background-color:#fec2e5;
 </head>
 <body>
 	<h1>CRUD</h1>
-	<form action='cadastro' method="get">
-	<input type="submit" value="Adicionar aluno"/>
-	</form>
-	<form action='lista' method="get">
-	<input type="submit" value="Listar aluno"/>
-	</form>
-	<form action='remocao' method="get">
-	<input type="submit" value="Remover aluno"/>
+	<p>Remover Professor</p>
+	<form action='remove'>
+		ID: <input type="text" name="id"/><br/>
+		<input type="submit" value="Remover"/>
 	</form>
 </body>
 </html>

@@ -28,9 +28,9 @@ background-color:#fec2e5;
 </head>
 <body>
 	<h1>CRUD</h1>
-	<p>Remover produto</p>
-	<form action='removerproduto'>
-		ID: <input type="text" name="codigo"/><br/>
+	<p>Remover aluno</p>
+	<form action='remove'>
+		ID: <input type="text" name="id"/><br/>
 		<input type="submit" value="Remover"/>
 	</form>
 </body>

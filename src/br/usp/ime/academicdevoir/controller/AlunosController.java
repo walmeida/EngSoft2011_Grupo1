@@ -33,9 +33,11 @@ public class AlunosController {
 	public void alteracao() {
 	}
 
-	public void altera(Long id, String nome, String descricao, Double preco) {
+	public void altera(Long id, String novoNome, String novoEmail, String novaSenha) {
 		Aluno a = alunodao.carregaPelaId(id);
-		a.setNome(nome);
+		a.setNome(novoNome);
+		a.setEmail(novoEmail);
+		a.setSenha(novaSenha);
 		alunodao.alteraAluno(a);
 		result.redirectTo(AlunosController.class).lista();
 	}

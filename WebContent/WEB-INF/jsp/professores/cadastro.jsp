@@ -23,7 +23,7 @@ font-size:18px;
 </head>
 <body>
 	<h1>CRUD</h1>
-	<p>Cadastrar novo aluno</p>
+	<p>Cadastrar novo professor</p>
 	<form action='cadastra'>
 		Nome: <input type="text" name="novo.nome"/><br/>
 		Login : <input type="text" name="novo.login"/><br/>
