@@ -8,7 +8,7 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
-public abstract class Usuario {
+public class Usuario {
 	
 	@Id @GeneratedValue
 	private Long id;

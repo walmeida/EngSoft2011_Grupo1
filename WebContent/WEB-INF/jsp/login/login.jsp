@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,24 +14,32 @@
     		 <li style="color:red"> ${error.category} - ${error.message}</li>
 		</c:forEach> -->
 		
-		<form id="form_login" action="/login" method="post">
-			
-			<fieldset> 
-		    	<legend>Login</legend>
-				<div> 
-		      		<label for="instancia.nome">Clube:</label> 
-		      		<input type="text" name="instancia.nome" value="${clube.nome}" />
-		      	</div>
-		      	<div>	 
-		      		<label for="instancia.estado">Estado:</label> 
-		      		<input type="text" name="instancia.estado" value="${clube.estado}" />
-		      	</div>
-		    </fieldset>
-		    <div> 
-	      		<input type="submit" value="Entrar">
-	    	</div> 
-		    
-	   	</form> 
+		<c:choose>
+			<c:when test="${empty usuarioSession.usuario.nome}">
+				<form id="form_login" action="login" method="post">
+	                
+	                <fieldset> 
+	                    <legend>Login</legend>
+	                    <div> 
+	                        <label for="usuario.login">Login:</label> 
+	                        <input type="text" name="usuario.login" value="${usuario.login}" />
+	                    </div>
+	                    <div>    
+	                        <label for="usuario.senha">Senha:</label> 
+	                        <input type="password" name="usuario.senha" value="${usuario.senha}" />
+	                    </div>
+	                </fieldset>
+	                <div> 
+	                    <input type="submit" value="Entrar">
+	                </div> 
+	                
+	            </form> 
+			</c:when>
+			<c:otherwise>
+			    Olá, ${usuarioSession.usuario.nome}
+			</c:otherwise>
+	     </c:choose>
+        
 	</div>
 
 </body>

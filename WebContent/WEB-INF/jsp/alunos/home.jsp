@@ -21,6 +21,8 @@ background-color:#fec2e5;
 }
 </style> 
 </head>
+
+
 <body>
 	<h1>CRUD</h1>
 	<form action='cadastro' method="get">
