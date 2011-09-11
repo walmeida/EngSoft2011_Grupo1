@@ -18,26 +18,47 @@ public class QuestaoDeTextoDao {
 		this.session = session;
 	}
 
+	/**
+	 * Retorna uma lista com todas as questões de texto cadastradas no banco de dados.
+	 * @return List<QuestaoDeTexto>
+	 */
 	public List<QuestaoDeTexto> listaTudo() {
 		return this.session.createCriteria(QuestaoDeTexto.class).list();
 	}
 
+	/**
+	 * Cadastra a questão fornecida no banco de dados.
+	 * @param questao
+	 */
 	public void salva(QuestaoDeTexto questao) {
 		Transaction tx = session.beginTransaction();
 		session.save(questao);
 		tx.commit();
 	}
 
+	/**
+	 * Retorna uma questão de texto com o id fornecido.
+	 * @param id
+	 * @return QuestaoDeTexto
+	 */
 	public QuestaoDeTexto carrega(Long id) {
 		return (QuestaoDeTexto) this.session.load(QuestaoDeTexto.class, id);
 	}
 
+	/**
+	 * Atualiza a questão fornecida no banco de dados. 
+	 * @param questao
+	 */
 	public void atualiza(QuestaoDeTexto questao) {
 		Transaction tx = session.beginTransaction();
 		this.session.update(questao);
 		tx.commit();
 	}
 
+	/**
+	 * Remove a questão fornecida do banco de dados.
+	 * @param questao
+	 */
 	public void remove(QuestaoDeTexto questao) {
 		Transaction tx = session.beginTransaction();
 		this.session.delete(questao);

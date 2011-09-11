@@ -15,6 +15,7 @@ import br.com.caelum.vraptor.Validator;
 
 @Resource
 public class QuestoesDeMultiplaEscolhaController {
+	
 	private QuestaoDeMultiplaEscolhaDao dao;
 	private final Result result;
 	private Validator validator;
@@ -28,6 +29,10 @@ public class QuestoesDeMultiplaEscolhaController {
 
 	@Post
 	@Path("/questoes/mult")
+	/**
+	 * Verifica se a questão de múltipla escolha fornecida é válida e adiciona no banco de dados.
+	 * @param questao
+	 */
 	public void adiciona(final QuestaoDeMultiplaEscolha questao) {
 		validator.validate(questao);
 		validator.onErrorUsePageOf(this).form();
@@ -39,8 +44,9 @@ public class QuestoesDeMultiplaEscolhaController {
 	@Get
 	@Path("/questoes/mult/{id}")
 	/** 
-	 * @param teste
-	 * 
+	 * Retorna uma questão de múltipla escolha com o id fornecido.
+	 * @param id
+	 * @return QuestaoDeMultiplaEscolha	 * 
 	 * */
 	public QuestaoDeMultiplaEscolha altera(Long id) {
 		return dao.carrega(id);
@@ -48,6 +54,10 @@ public class QuestoesDeMultiplaEscolhaController {
 
 	@Put
 	@Path("/questoes/mult/{questao.id}")
+	/**
+	 * Verifica se a questão de múltipla escolha fornecida é válida e atualiza no banco de dados.
+	 * @param questao
+	 */
 	public void atualiza(QuestaoDeMultiplaEscolha questao) {
 		validator.validate(questao);
 		validator.onErrorUsePageOf(QuestoesDeMultiplaEscolhaController.class)
@@ -59,6 +69,10 @@ public class QuestoesDeMultiplaEscolhaController {
 
 	@Delete
 	@Path("/questoes/mult/{id}")
+	/**
+	 * Remove uma questão de múltipla escolha do banco de dados com o id fornecido.
+	 * @param id
+	 */
 	public void remove(Long id) {
 		QuestaoDeMultiplaEscolha questao = dao.carrega(id);
 		dao.remove(questao);
@@ -67,11 +81,18 @@ public class QuestoesDeMultiplaEscolhaController {
 
 	@Get
 	@Path("/questoes/mult/cadastro")
+	/**
+	 * Redireciona para a página com formulário para cadastro de uma nova questão de múltipla escolha.
+	 */
 	public void form() {
 	}
 
 	@Get
 	@Path("/questoes/mult")
+	/**
+	 * Retorna uma lista com todas as questões de múltipla escolha cadastradas no banco de dados.
+	 * @return List<QuestaoDeMultiplaEscolha>
+	 */
 	public List<QuestaoDeMultiplaEscolha> lista() {
 		return dao.listaTudo();
 	}
