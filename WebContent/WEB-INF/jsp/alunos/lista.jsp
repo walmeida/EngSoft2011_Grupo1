@@ -27,15 +27,23 @@ text-align: center;
 font-size: 20px;
 font-family:"Times New Roman";
 }
-form {
-margin: 1em auto;
-text-align: center;
-}
 
 </style> 
 
 <body>
-    <p>Lista de Alunos</p><br/>
+        <form action='cadastro'>
+        	<input type="submit" value="Inserir"/>
+        </form>
+        <form action='alteracao'>
+        	<input type="submit" value="Alterar"/>
+        </form>
+        <form action='remocao'>
+        	<input type="submit" value="Excluir"/>
+        </form>
+        <form action='home'>
+        	<input type="submit" value="Voltar"/>
+		</form>
+    <p>Lista de Alunos</p>
 	<table>
     <thead>
         <tr>
@@ -56,18 +64,6 @@ text-align: center;
                 <td>${aluno.senha}</td>
             </tr>
         </c:forEach>
-        <form action='cadastro'>
-        	<input type="submit" value="Inserir"/>
-        </form>
-        <form action='alteracao'>
-        	<input type="submit" value="Alterar"/>
-        </form>
-        <form action='remocao'>
-        	<input type="submit" value="Excluir"/>
-        </form>
-        <form action='home'>
-        	<input type="submit" value="Voltar"/>
-        </form>
     </tbody>
 </table>
 	
