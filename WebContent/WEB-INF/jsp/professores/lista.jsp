@@ -3,27 +3,38 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>CRUD</title>
+<h1>Academic Devoir</h1>
+<h2>Grupo 1 - Engenharia de Software</h2>
+</head>
 <style type="text/css">
 body
 {
-background-color:#dfdfdf;
+background-color:#f0ecc6;
 }
-h1
+h1 
 {
-color:black;
-text-align:center;
+color: black;
+text-align: center;
+font-size: 40px;
+font-family:"Times New Roman";
+font-style: italic;
+font-variant: small-caps;
 }
-p
+h2
 {
-font-family:"Verdana";
-font-size:18px;
+color: black;
+text-align: center;
+font-size: 20px;
+font-family:"Times New Roman";
+}
+form {
+margin: 1em auto;
+text-align: center;
 }
 </style> 
-</head>
+
 <body>
-	<h1>CRUD</h1>
-	<p>Lista de Alunos</p>
+	<p>Lista de Professores</p><br/>
 	<table>
     <thead>
         <tr>
