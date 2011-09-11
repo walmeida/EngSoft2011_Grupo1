@@ -1,5 +1,6 @@
 package br.usp.ime.academicdevoir.entidade;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,13 +8,14 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Questao {
-	
+
 	@Id
 	@GeneratedValue
+	@Column(name = "questao_id")
 	private Long id;
-		
+
 	private String enunciado;
 
 	public Long getId() {
@@ -23,7 +25,7 @@ public abstract class Questao {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	
 	public String getEnunciado() {
 		return enunciado;
 	}

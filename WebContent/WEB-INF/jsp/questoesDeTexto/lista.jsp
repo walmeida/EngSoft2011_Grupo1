@@ -21,6 +21,7 @@ import="java.sql.*" errorPage="" %>
 					<th>Enunciado</th>
 					<th>Resposta</th>
 					<th>Alterar</th>
+					<th>Remover</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -30,6 +31,13 @@ import="java.sql.*" errorPage="" %>
 						<td>${questao.enunciado }</td>
 						<td>${questao.resposta }</td>
 						<td><a href="<c:url value="/questoes/texto/${questao.id }"/>">Alterar</a></td>
+						<td>
+							<form action="<c:url value="/questoes/${questao.id }"/>" method="post">
+								<fieldset>
+									<button name="_method" value="delete">Remover</button>
+								</fieldset>
+							</form>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>

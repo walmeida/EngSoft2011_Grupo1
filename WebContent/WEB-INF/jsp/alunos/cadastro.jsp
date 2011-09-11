@@ -1,35 +1,60 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>CRUD</title>
+<h1>Academic Devoir</h1>
+<h2>Grupo 1 - Engenharia de Software</h2>
+</head>
 <style type="text/css">
 body
 {
-background-color:#dfdfdf;
+background-color:#f0ecc6;
 }
-h1
+h1 
 {
-color:black;
-text-align:center;
+color: black;
+text-align: center;
+font-size: 40px;
+font-family:"Times New Roman";
+font-style: italic;
+font-variant: small-caps;
 }
-p
+h2
 {
-font-family:"Verdana";
-font-size:18px;
+color: black;
+text-align: center;
+font-size: 20px;
+font-family:"Times New Roman";
 }
+
+legend 
+{
+color: #8c550e;
+}
+form {
+margin: 3em auto;
+width: 35%;
+}
+
 </style> 
-</head>
 <body>
+<<<<<<< HEAD
 	<h1>Cadastro de Aluno</h1>
 	<p>Cadastrar novo aluno</p>
+=======
+>>>>>>> a18614b2d1405eeda48fb59a1e321efcbd9e8e7b
 	<form action='cadastra'>
-		Nome: <input type="text" name="novo.nome"/><br/>
-		Login : <input type="text" name="novo.login"/><br/>
-		Senha : <input type="text" name="novo.senha"/><br/>
-		E-mail : <input type="text" name="novo.email"/><br/>
-	<input type="submit" value="OK"/>
+	<fieldset>
+	<legend>N&atildeo &eacute um aluno cadastrado? </legend><br/>
+		Preencha o formul&aacuterio abaixo e clique no bot&atildeo "Enviar".<br/><br/>
+		Nome: <br/><input type="text" size="30" name="novo.nome"/><br/>
+		Login : <br/><input type="text" size="30" name="novo.login"/><br/>
+		Senha : <br/><input type="password" size="32" name="novo.senha"/><br/>
+		E-mail : <br/><input type="text" size="30" name="novo.email"/><br/><br/>
+	<input type="submit" value="Enviar"/>
+	</fieldset>
 	</form>
 </body>
 </html>

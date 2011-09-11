@@ -21,8 +21,7 @@ import="java.sql.*" errorPage="" %>
 				<legend>Cadastrar questão de submissão de arquivo</legend>
 				
 				<label for="enunciado">Enunciado:</label><br/>
-					<textarea id="enunciado" rows= "5" cols="80" name="questao.enunciado"></textarea>
-				
+					<textarea id="enunciado" rows= "5" cols="80" name="questao.enunciado"></textarea>				
 				<br/>
 				<button type="submit">Enviar</button>
 			</fieldset>
