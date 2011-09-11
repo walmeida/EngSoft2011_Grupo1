@@ -65,7 +65,7 @@ font-family:"Times New Roman";
 			</tbody>
 		</table>
 		</div><br/>	
-	<form action="/academic-devoir/questoes/mult/cadastro">
+	<form action="/academic-devoir/questoes/texto/cadastro">
 	<input type="submit" value="Cadastrar nova questão"></input>
 	</form>	
 </body>
