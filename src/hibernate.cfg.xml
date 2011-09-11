@@ -20,6 +20,7 @@
 		<mapping class="br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha" />
 		<mapping class="br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo" />
 		<mapping class="br.usp.ime.academicdevoir.entidade.QuestaoDeTexto" />
+		<mapping class="br.usp.ime.academicdevoir.entidade.Disciplina" />
 
 	</session-factory>
 </hibernate-configuration>

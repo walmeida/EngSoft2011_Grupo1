@@ -22,14 +22,12 @@ font-size:18px;
 </style> 
 </head>
 <body>
-	<h1>Cadastro de Aluno</h1>
-	<p>Cadastrar novo aluno</p>
-	<form action='cadastra'>
-		Nome: <input type="text" name="novo.nome"/><br/>
-		Login : <input type="text" name="novo.login"/><br/>
-		Senha : <input type="text" name="novo.senha"/><br/>
-		E-mail : <input type="text" name="novo.email"/><br/>
-	<input type="submit" value="OK"/>
+	<h1>Inscrever-se em Turma</h1>
+	<p>Coloque o Id da turma na qual quer se matricular</p>
+	<form action='inscreve'>
+		Id do Aluno: <input type="text" name="idAluno"/><br/>
+		Id da Turma: <input type="text" name="idTurma"/><br/>
+		<input type="submit" value="OK"/>
 	</form>
 </body>
 </html>

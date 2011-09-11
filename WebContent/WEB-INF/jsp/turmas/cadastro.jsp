@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>CRUD</title>
+<title>Academic Devoir</title>
 <style type="text/css">
 body
 {
@@ -22,13 +22,12 @@ font-size:18px;
 </style> 
 </head>
 <body>
-	<h1>Cadastro de Aluno</h1>
-	<p>Cadastrar novo aluno</p>
+	<h1>Academic Devoir</h1>
+	<p>Cadastrar nova turma</p>
 	<form action='cadastra'>
-		Nome: <input type="text" name="novo.nome"/><br/>
-		Login : <input type="text" name="novo.login"/><br/>
-		Senha : <input type="text" name="novo.senha"/><br/>
-		E-mail : <input type="text" name="novo.email"/><br/>
+		Nome: <input type="text" name="nova.nome"/><br/>
+		Id do Professor: <input type="text" name="idProfessor"/><br/>
+		Id da Disciplina: <input type="text" name="idDisciplina"/><br/>
 	<input type="submit" value="OK"/>
 	</form>
 </body>

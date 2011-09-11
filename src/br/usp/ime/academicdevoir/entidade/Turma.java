@@ -20,10 +20,21 @@ public class Turma {
 	private String nome;
 	@ManyToOne
 	private Professor professor;
-	@ManyToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinTable(name="Turma_Aluno", joinColumns=@JoinColumn(name="turma_id"),inverseJoinColumns=@JoinColumn(name="aluno_id"))
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "Turma_Aluno", joinColumns = @JoinColumn(name = "turma_id"), inverseJoinColumns = @JoinColumn(name = "aluno_id"))
 	private Collection<Aluno> alunos = new ArrayList<Aluno>();
+	@ManyToOne
+	private Disciplina disciplina;
 	
+
+	public Disciplina getDisciplina() {
+		return disciplina;
+	}
+
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;
+	}
+
 	public Collection<Aluno> getAlunos() {
 		return alunos;
 	}

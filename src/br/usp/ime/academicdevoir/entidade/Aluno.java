@@ -12,7 +12,6 @@ public class Aluno extends Usuario {
 	@ManyToMany(mappedBy = "alunos", cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	private Collection<Turma> turmas = new ArrayList<Turma>();
 
-
 	public Collection<Turma> getTurmas() {
 		return turmas;	
 	}
