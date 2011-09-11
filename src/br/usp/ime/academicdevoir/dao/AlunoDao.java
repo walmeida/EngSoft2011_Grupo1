@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.usp.ime.academicdevoir.entidade.Aluno;
+import br.usp.ime.academicdevoir.entidade.Turma;
 
 @Component
 public class AlunoDao {
@@ -47,5 +48,12 @@ public class AlunoDao {
 		return listaDeAlunos;
 	}
 	
-
+	public void inscreve(Aluno aluno, Long idTurma) {
+		Turma t = (Turma) session.load(Turma.class, idTurma);
+		aluno.getTurmas().add(t);
+		session.update(aluno);
+	}
+	
+	
+	
 }

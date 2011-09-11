@@ -16,11 +16,11 @@ import="java.sql.*" errorPage="" %>
 	
 	<div>
 		<br/>
-		<form id="musicForm" action="<c:url value="/questoes/submissao/${questao.id }"/>" method="post" accept-charset="us-ascii">
+		<form id="musicForm" action="<c:url value="/questoes/submissao/${questaoDeSubmissaoDeArquivo.id }"/>" method="post" accept-charset="us-ascii">
 			<fieldset>
 				<legend>Alterar questão de submissão de arquivo</legend>
 				
-				<label for="enunciado">Enunciado:</label>
+				<label for="enunciado">Enunciado:</label><br/>
 					<textarea id="enunciado" rows= "5" cols="80" name="questao.enunciado">${questaoDeSubmissaoDeArquivo.enunciado }</textarea>
 				
 				<br/>

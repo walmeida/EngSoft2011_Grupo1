@@ -23,22 +23,19 @@ public class QuestaoDao {
 		return this.session.createCriteria(Questao.class).list();
 	}
 
-	public void salva(Questao questao) {
-		Transaction tx = session.beginTransaction();
-		session.save(questao);
-		tx.commit();
-	}
-
+	/**
+	 * Retorna uma questão com o id fornecido.
+	 * @param id
+	 * @return Questao
+	 */
 	public Questao carrega(Long id) {
 		return (Questao) this.session.load(Questao.class, id);
 	}
 
-	public void atualiza(Questao questao) {
-		Transaction tx = session.beginTransaction();
-		this.session.update(questao);
-		tx.commit();
-	}
-
+	/**
+	 * Remove a questão fornecida do banco de dados.
+	 * @param questao
+	 */
 	public void remove(Questao questao) {
 		Transaction tx = session.beginTransaction();
 		this.session.delete(questao);

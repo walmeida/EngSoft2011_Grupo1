@@ -5,12 +5,36 @@
 import="java.sql.*" errorPage="" %>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title>Lista de Questões de Múltipla escolha</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<h1>Academic Devoir</h1>
+<h2>Grupo 1 - Engenharia de Software</h2>
 </head>
+<style type="text/css">
+body
+{
+background-color:#f0ecc6;
+}
+h1 
+{
+color: black;
+text-align: center;
+font-size: 40px;
+font-family:"Times New Roman";
+font-style: italic;
+font-variant: small-caps;
+}
+h2
+{
+color: black;
+text-align: center;
+font-size: 20px;
+font-family:"Times New Roman";
+}
+</style>
+
 <body>
 	<div id="menu">
-		<%@ include file="../questoes/menu.jsp" %>
+		<%@ include file="../questoes/menu.jsp" %><br/>
 	</div>
 		
 	<div>
@@ -22,6 +46,7 @@ import="java.sql.*" errorPage="" %>
 					<th>Alternativas</th>
 					<th>Correta</th>
 					<th>Alterar</th>
+					<td>Remover</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -32,15 +57,19 @@ import="java.sql.*" errorPage="" %>
 						<td>${questao.alternativas }</td>
 						<td>${questao.resposta }</td>
 						<td><a href="<c:url value="/questoes/mult/${questao.id }"/>">Alterar</a></td>
+						<td>
+							<form action="<c:url value="/questoes/${questao.id }"/>" method="post">
+								<button name="_method" value="delete">Remover</button>
+							</form>
+						</td>
 					</tr>
 				
 				</c:forEach>
 			</tbody>
 		</table>
-	</div>
-	
-	<div>
-		<a href="<c:url value="/questoes/mult/cadastro"/>">Cadastrar Nova Questão</a>
-	</div>
+	</div><br/>	
+	<form action="/academic-devoir/questoes/mult/cadastro">
+	<input type="submit" value="Cadastrar nova questão"></input>
+	</form>	
 </body>
 </html>

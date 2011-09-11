@@ -8,25 +8,25 @@ import br.usp.ime.academicdevoir.entidade.Professor;
 @Resource
 public class ProfessoresController {
 	private final Result result;
-	private ProfessorDao professordao;
+	private ProfessorDao professorDao;
 
-	public ProfessoresController(Result result, ProfessorDao professordao) {
+	public ProfessoresController(Result result, ProfessorDao professorDao) {
 		this.result = result;
-		this.professordao = professordao;
+		this.professorDao = professorDao;
 	}
 
 	public void home() {
 	}
 
 	public void lista() {
-		result.include("professordao", professordao);
+		result.include("professorDao", professorDao);
 	}
 
 	public void cadastro() {
 	}
 
 	public void cadastra(final Professor novo) {
-		professordao.salvaProfessor(novo);
+		professorDao.salvaProfessor(novo);
 		result.redirectTo(ProfessoresController.class).lista();
 	}
 
@@ -34,11 +34,11 @@ public class ProfessoresController {
 	}
 
 	public void altera(Long id, String novoNome, String novoEmail, String novaSenha) {
-		Professor p = professordao.carregaPelaId(id);
+		Professor p = professorDao.carregaPelaId(id);
 		p.setNome(novoNome);
 		p.setEmail(novoEmail);
 		p.setSenha(novaSenha);
-		professordao.alteraProfessor(p);
+		professorDao.alteraProfessor(p);
 		result.redirectTo(ProfessoresController.class).lista();
 	}
 	
@@ -46,8 +46,8 @@ public class ProfessoresController {
 	}
 
 	public void remove(final Long id) {
-		Professor professor = professordao.carregaPelaId(id);
-		professordao.removeProfessor(professor);
+		Professor professor = professorDao.carregaPelaId(id);
+		professorDao.removeProfessor(professor);
 		result.redirectTo(ProfessoresController.class).lista();
 	}
 }

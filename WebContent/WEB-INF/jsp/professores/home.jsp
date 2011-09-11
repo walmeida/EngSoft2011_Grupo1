@@ -3,26 +3,38 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>CRUD</title>
+<h1>Academic Devoir</h1>
+<h2>Grupo 1 - Engenharia de Software</h2>
+</head>
 <style type="text/css">
 body
 {
-background-color:#ffcfeb;
+background-color:#f0ecc6;
 }
-h1
+h1 
 {
-background-color:#fea8ce;
-font-family: "Times New Roman";
-color:black;
+color: black;
+text-align: center;
+font-size: 40px;
+font-family:"Times New Roman";
+font-style: italic;
+font-variant: small-caps;
 }
-div
+h2
 {
-background-color:#fec2e5;
+color: black;
+text-align: center;
+font-size: 20px;
+font-family:"Times New Roman";
+}
+form {
+margin: 1em auto;
+text-align: center;
 }
 </style> 
-</head>
+
 <body>
-	<h1>CRUD</h1>
+	<br/><br/>
 	<form action='cadastro' method="get">
 	<input type="submit" value="Adicionar professor"/>
 	</form>
