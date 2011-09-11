@@ -16,7 +16,7 @@ import="java.sql.*" errorPage="" %>
 	<div>
 		<br/>	
 		
-		<form action="<c:url value="/questoes/mult/${questao.id }"/>" method="post" accept-charset="us-ascii">
+		<form action="<c:url value="/questoes/mult/${questaoDeMultiplaEscolha.id }"/>" method="post" accept-charset="us-ascii">
 			<fieldset>
 				<legend>Cadastrar questão de múltipla escolha</legend>
 				
@@ -24,10 +24,10 @@ import="java.sql.*" errorPage="" %>
 					<textarea id="enunciado" rows= "5" cols="80" name="questao.enunciado">${questaoDeMultiplaEscolha.enunciado }</textarea>
 				<br/>
 				<label for="alternativas">Alternativas:</label><br/>
-					<textarea id="alternativas" rows= "5" cols="80" name="questao.enunciado">${questaoDeMultiplaEscolha.alternativas }</textarea>
+					<textarea id="alternativas" rows= "5" cols="80" name="questao.alternativas">${questaoDeMultiplaEscolha.alternativas }</textarea>
 				<br/>
 				<label for="resposta">Alternativa Correta(número):</label>
-					<input id="resposta" type="text" size="1" maxlength="1" name="resposta" value="${questaoDeMultiplaEscolha.resposta }" />
+					<input id="resposta" type="text" size="1" maxlength="1" name="questao.resposta" value="${questaoDeMultiplaEscolha.resposta }" />
 					<br/>
 				<button type="submit" name="_method" value="put">Alterar</button>
 			</fieldset>
