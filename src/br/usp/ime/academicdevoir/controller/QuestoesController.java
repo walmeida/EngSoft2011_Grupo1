@@ -23,6 +23,10 @@ public class QuestoesController {
 	
 	@Delete
 	@Path("/questoes/{id}")
+	/**
+	 * Remove uma questão do banco de dados com o id fornecido.
+	 * @param id
+	 */
 	public void remove(Long id) {
 		Questao questao = dao.carrega(id);
 		dao.remove(questao);
@@ -31,6 +35,10 @@ public class QuestoesController {
 
 	@Get
 	@Path("/questoes")
+	/**
+	 * Retorna uma lista com todas as questões cadastradas no banco de dados.
+	 * @return List<Questao>
+	 */
 	public List<Questao> lista() {
 		return dao.listaTudo();
 	}

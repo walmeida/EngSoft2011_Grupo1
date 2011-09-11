@@ -15,6 +15,7 @@ import br.com.caelum.vraptor.Validator;
 
 @Resource
 public class QuestoesDeSubmissaoDeArquivoController {
+	
 	private QuestaoDeSubmissaoDeArquivoDao dao;
 	private final Result result;
 	private Validator validator;
@@ -29,6 +30,10 @@ public class QuestoesDeSubmissaoDeArquivoController {
 
 	@Post
 	@Path("/questoes/submissao")
+	/**
+	 * Verifica se a questão de submissão de arquivo fornecida é válida e adiciona no banco de dados.
+	 * @param questao
+	 */
 	public void adiciona(final QuestaoDeSubmissaoDeArquivo questao) {
 		validator.validate(questao);
 		validator.onErrorUsePageOf(this).form();
@@ -39,12 +44,21 @@ public class QuestoesDeSubmissaoDeArquivoController {
 
 	@Get
 	@Path("/questoes/submissao/{id}")
+	/** 
+	 * Retorna uma questão de submissão de arquivo com o id fornecido.
+	 * @param id
+	 * @return QuestaoDeSubmissaoDeArquivo 
+	 * */
 	public QuestaoDeSubmissaoDeArquivo altera(Long id) {
 		return dao.carrega(id);
 	}
 
 	@Put
 	@Path("/questoes/submissao/{questao.id}")
+	/**
+	 * Verifica se a questão de submissão de arquivo fornecida é válida e atualiza no banco de dados.
+	 * @param id
+	 */
 	public void atualiza(QuestaoDeSubmissaoDeArquivo questao) {
 		validator.validate(questao);
 		validator
@@ -57,6 +71,10 @@ public class QuestoesDeSubmissaoDeArquivoController {
 
 	@Delete
 	@Path("/questoes/submissao/{id}")
+	/**
+	 * Remove uma questão de submissão de arquivo do banco de dados com o id fornecido.
+	 * @param id
+	 */
 	public void remove(Long id) {
 		QuestaoDeSubmissaoDeArquivo questao = dao.carrega(id);
 		dao.remove(questao);
@@ -65,11 +83,18 @@ public class QuestoesDeSubmissaoDeArquivoController {
 
 	@Get
 	@Path("/questoes/submissao/cadastro")
+	/**
+	 * Redireciona para a página com formulário para cadastro de uma nova questão de submissão de arquivo.
+	 */
 	public void form() {
 	}
 
 	@Get
 	@Path("/questoes/submissao")
+	/**
+	 * Retorna uma lista com todas as questões de submissão de arquivo cadastradas no banco de dados.
+	 * @return List<QuestaoDeMultiplaEscolha>
+	 */
 	public List<QuestaoDeSubmissaoDeArquivo> lista() {
 		return dao.listaTudo();
 	}
