@@ -36,7 +36,7 @@ text-align: center;
 <body>
 	<form action='remove'>
 	    <br/><br/>Para remover um professor, digite abaixo a ID correspondente e confirme. <br/><br/>
-		ID: <input type="text" size="30" name="id"/><br/><br/>
+		ID: <br/><input type="text" size="30" name="id"/><br/><br/>
 		<input type="submit" value="Remover"/>
 	</form>
 </body>

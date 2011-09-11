@@ -28,7 +28,12 @@ text-align: center;
 font-size: 20px;
 font-family:"Times New Roman";
 }
-
+h4
+{
+color: black;
+text-align: center;
+font-family:"Times New Roman";
+}
 legend 
 {
 color: #8c550e;
@@ -40,11 +45,7 @@ width: 35%;
 
 </style> 
 <body>
-<<<<<<< HEAD
-	<h1>Cadastro de Aluno</h1>
-	<p>Cadastrar novo aluno</p>
-=======
->>>>>>> a18614b2d1405eeda48fb59a1e321efcbd9e8e7b
+	<h4>Cadastro de Aluno</h4>
 	<form action='cadastra'>
 	<fieldset>
 	<legend>N&atildeo &eacute um aluno cadastrado? </legend><br/>

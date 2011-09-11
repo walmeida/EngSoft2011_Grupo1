@@ -3,31 +3,50 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>CRUD</title>
+<h1>Academic Devoir</h1>
+<h2>Grupo 1 - Engenharia de Software</h2>
+</head>
 <style type="text/css">
 body
 {
-background-color:#dfdfdf;
+background-color:#f0ecc6;
 }
-h1
+h1 
 {
-color:black;
-text-align:center;
+color: black;
+text-align: center;
+font-size: 40px;
+font-family:"Times New Roman";
+font-style: italic;
+font-variant: small-caps;
 }
-p
+h2
 {
-font-family:"Verdana";
-font-size:18px;
+color: black;
+text-align: center;
+font-size: 20px;
+font-family:"Times New Roman";
 }
+form {
+margin: 3em auto;
+width: 16%;
+}
+h4
+{
+color: black;
+text-align: center;
+font-family:"Times New Roman";
+}
+
 </style> 
-</head>
 <body>
-	<h1>Academic Devoir</h1>
-	<p>Alterar disciplina</p>
-	<form action='altera'>	
-		Id da disciplina a alterar: <input type="text" name="id" /> <br />
-		Novo Nome: <input type="text" name="novoNome"/><br/>
-	<input type="submit" value="OK"/>
+	<h4>Alterar disciplina</h4>
+	<form action='altera'>
+	<fieldset><br/>
+		Id da disciplina a alterar: <br/><input type="text" size="30" name="id" /> <br />
+		Novo Nome: <br/><input type="text" size="30" name="novoNome"/><br/><br/>
+	<input type="submit" value="Alterar"/>
+	</fieldset>
 	</form>
 </body>
 </html>
