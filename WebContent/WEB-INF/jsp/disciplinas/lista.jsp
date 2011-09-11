@@ -32,7 +32,7 @@ font-size:18px;
         </tr>
     </thead>
     <tbody>
-        <c:forEach items="${disciplinadao.lista}" var="disciplina">
+        <c:forEach items="${disciplinaDao.lista}" var="disciplina">
             <tr>
                 <td>${disciplina.id}</td>
                 <td>${disciplina.nome}</td>

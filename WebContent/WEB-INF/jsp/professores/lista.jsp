@@ -46,7 +46,7 @@ text-align: center;
         </tr>
     </thead>
     <tbody>
-        <c:forEach items="${professordao.lista}" var="professor">
+        <c:forEach items="${professorDao.lista}" var="professor">
             <tr>
                 <td>${professor.id}</td>
                 <td>${professor.nome}</td>
