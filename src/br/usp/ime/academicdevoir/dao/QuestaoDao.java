@@ -23,20 +23,8 @@ public class QuestaoDao {
 		return this.session.createCriteria(Questao.class).list();
 	}
 
-	public void salva(Questao questao) {
-		Transaction tx = session.beginTransaction();
-		session.save(questao);
-		tx.commit();
-	}
-
 	public Questao carrega(Long id) {
 		return (Questao) this.session.load(Questao.class, id);
-	}
-
-	public void atualiza(Questao questao) {
-		Transaction tx = session.beginTransaction();
-		this.session.update(questao);
-		tx.commit();
 	}
 
 	public void remove(Questao questao) {

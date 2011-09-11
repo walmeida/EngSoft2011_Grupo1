@@ -38,6 +38,10 @@ public class QuestoesDeMultiplaEscolhaController {
 
 	@Get
 	@Path("/questoes/mult/{id}")
+	/** 
+	 * @param teste
+	 * 
+	 * */
 	public QuestaoDeMultiplaEscolha altera(Long id) {
 		return dao.carrega(id);
 	}
