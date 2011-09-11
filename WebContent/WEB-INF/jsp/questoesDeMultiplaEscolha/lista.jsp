@@ -67,10 +67,9 @@ font-family:"Times New Roman";
 				</c:forEach>
 			</tbody>
 		</table>
-	</div>
-	
-	<div><br/>
-		<a href="<c:url value="/questoes/mult/cadastro"/>">Cadastrar Nova Questão</a>
-	</div>
+	</div><br/>	
+	<form action="/academic-devoir/questoes/mult/cadastro">
+	<input type="submit" value="Cadastrar nova questão"></input>
+	</form>	
 </body>
 </html>
