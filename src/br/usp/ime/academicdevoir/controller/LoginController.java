@@ -27,6 +27,11 @@ public class LoginController {
         this.usuarioSession = alunodao;
     }
 
+    @Path("/")
+    public void index() {
+        result.redirectTo(LoginController.class).login();
+    }
+    
     @Get
     @Path("/login")
     public void login() {
