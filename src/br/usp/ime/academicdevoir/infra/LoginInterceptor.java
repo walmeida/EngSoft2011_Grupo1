@@ -8,6 +8,7 @@ import br.com.caelum.vraptor.core.InterceptorStack;
 import br.com.caelum.vraptor.interceptor.Interceptor;
 import br.com.caelum.vraptor.ioc.RequestScoped;
 import br.com.caelum.vraptor.resource.ResourceMethod;
+import br.usp.ime.academicdevoir.controller.AlunosController;
 import br.usp.ime.academicdevoir.controller.LoginController;
 
 @Intercepts
@@ -23,7 +24,7 @@ public class LoginInterceptor implements Interceptor {
     }
 
     public boolean accepts(ResourceMethod method) {
-        return !Arrays.asList(LoginController.class).contains(method.getMethod().getDeclaringClass());
+        return !Arrays.asList(LoginController.class,AlunosController.class).contains(method.getMethod().getDeclaringClass());
     }
  
     public void intercept(InterceptorStack stack, ResourceMethod method, Object resourceInstance) {

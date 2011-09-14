@@ -52,7 +52,7 @@ width: 25%;
 				<form id="form_login" action="login" method="post">
 	                
 	                <fieldset> 
-	                    <legend>Fa&ccedila o login:</legend><br/>
+	                    <legend>Fa&ccedil;a o login:</legend><br/>
 	                    <div> 
 	                        <label for="usuario.login">Login:<br/></label> 
 	                        <input type="text" size="30" name="usuario.login" value="${usuario.login}" />
@@ -61,9 +61,13 @@ width: 25%;
 	                        <label for="usuario.senha">Senha:<br/></label> 
 	                        <input type="password" size="30" name="usuario.senha" value="${usuario.senha}" />
 	                    </div>
-		                <div><br/>
-		                    <input type="submit" value="Entrar">
-		                </div> 
+		                <div>
+		                    <p><input type="submit" value="Entrar"></p>
+		                </div>
+		                <div>    
+	                        <p><a href="alunos/cadastro">Criar Conta</a></p>
+	                        <p><a href="#">Esqueci minha senha xD</a></p>
+	                    </div> 
 	                </fieldset>
 	                
 	            </form> 
