@@ -46,7 +46,7 @@ font-family:"Times New Roman";
 					<th>Alternativas</th>
 					<th>Correta</th>
 					<th>Alterar</th>
-					<td>Remover</td>
+					<th>Remover</th>
 				</tr>
 			</thead>
 			<tbody>

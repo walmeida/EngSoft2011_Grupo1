@@ -12,7 +12,7 @@ import br.com.caelum.vraptor.ioc.Component;
 
 @Component
 public class QuestaoDeMultiplaEscolhaDao {
-	
+
 	private final Session session;
 
 	public QuestaoDeMultiplaEscolhaDao(Session session) {
@@ -20,15 +20,19 @@ public class QuestaoDeMultiplaEscolhaDao {
 	}
 
 	/**
-	 * Retorna uma lista com todas as questões de múltipla escolha cadastradas no banco de dados.
+	 * Retorna uma lista com todas as questões de múltipla escolha cadastradas
+	 * no banco de dados.
+	 * 
 	 * @return List<QuestaoDeMultiplaEscolha>
 	 */
 	public List<QuestaoDeMultiplaEscolha> listaTudo() {
-		return this.session.createCriteria(QuestaoDeMultiplaEscolha.class).list();
+		return this.session.createCriteria(QuestaoDeMultiplaEscolha.class)
+				.list();
 	}
 
 	/**
 	 * Cadastra a questão fornecida no banco de dados.
+	 * 
 	 * @param questao
 	 */
 	public void salva(QuestaoDeMultiplaEscolha questao) {
@@ -39,15 +43,18 @@ public class QuestaoDeMultiplaEscolhaDao {
 
 	/**
 	 * Retorna uma questão de múltipla escolha com o id fornecido.
+	 * 
 	 * @param id
 	 * @return QuestaoDeMultiplaEscolha
 	 */
 	public QuestaoDeMultiplaEscolha carrega(Long id) {
-		return (QuestaoDeMultiplaEscolha) this.session.load(QuestaoDeMultiplaEscolha.class, id);
+		return (QuestaoDeMultiplaEscolha) this.session.load(
+				QuestaoDeMultiplaEscolha.class, id);
 	}
 
 	/**
-	 * Atualiza a questão fornecida no banco de dados. 
+	 * Atualiza a questão fornecida no banco de dados.
+	 * 
 	 * @param questao
 	 */
 	public void atualiza(QuestaoDeMultiplaEscolha questao) {
@@ -58,6 +65,7 @@ public class QuestaoDeMultiplaEscolhaDao {
 
 	/**
 	 * Remove a questão fornecida do banco de dados.
+	 * 
 	 * @param questao
 	 */
 	public void remove(QuestaoDeMultiplaEscolha questao) {
@@ -65,11 +73,17 @@ public class QuestaoDeMultiplaEscolhaDao {
 		this.session.delete(questao);
 		tx.commit();
 	}
-
-	public List<QuestaoDeMultiplaEscolha> busca(String title) {
-		return session.createCriteria(QuestaoDeMultiplaEscolha.class)
-				.add(Restrictions.ilike("title", title, MatchMode.ANYWHERE))
-				.list();
+	
+	/**
+	 * Retorna uma QuestaoDeMultiplaEscolha com o id fornecido, se existir. Caso contrário, retorna null. 
+	 * @param id
+	 * @return QuestaoDeMultiplaEscolha
+	 */
+	public QuestaoDeMultiplaEscolha buscaPorId(Long id) {
+		return (QuestaoDeMultiplaEscolha) session
+				.createCriteria(QuestaoDeMultiplaEscolha.class)
+				.add(Restrictions.idEq(id))
+				.uniqueResult();
 	}
 
 	public void recarrega(QuestaoDeMultiplaEscolha questao) {

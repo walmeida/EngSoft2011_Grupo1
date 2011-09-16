@@ -64,11 +64,17 @@ public class QuestaoDeTextoDao {
 		this.session.delete(questao);
 		tx.commit();
 	}
-
-	public List<QuestaoDeTexto> busca(String title) {
-		return session.createCriteria(QuestaoDeTexto.class)
-				.add(Restrictions.ilike("title", title, MatchMode.ANYWHERE))
-				.list();
+	
+	/**
+	 * Retorna uma QuestaoDeTexto com o id fornecido, se existir. Caso contrário, retorna null. 
+	 * @param id
+	 * @return QuestaoDeTexto
+	 */
+	public QuestaoDeTexto buscaPorId(Long id) {
+		return (QuestaoDeTexto) session
+				.createCriteria(QuestaoDeTexto.class)
+				.add(Restrictions.idEq(id))
+				.uniqueResult();
 	}
 
 	public void recarrega(QuestaoDeTexto questao) {

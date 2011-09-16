@@ -43,6 +43,7 @@ font-family:"Times New Roman";
 				<tr>
 					<th>Questão</th>
 					<th>Enunciado</th>
+					<th>Alterar</th>
 					<th>Remover</th>
 				</tr>
 			</thead>
@@ -51,6 +52,7 @@ font-family:"Times New Roman";
 					<tr>
 						<td>${questao.id }</td>
 						<td>${questao.enunciado }</td>
+						<td><a href="<c:url value="/questoes/${questao.id }"/>">Alterar</a></td>
 						<td>
 							<form action="<c:url value="/questoes/${questao.id }"/>" method="post">
 								<button name="_method" value="delete">Remover</button>

@@ -7,8 +7,41 @@ import="java.sql.*" errorPage="" %>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>Alterar questão</title>
-	
+	<h1>Academic Devoir</h1>
+	<h2>Grupo 1 - Engenharia de Software</h2>
 </head>
+
+<style type="text/css">
+body
+{
+background-color:#f0ecc6;
+}
+h1 
+{
+color: black;
+text-align: center;
+font-size: 40px;
+font-family:"Times New Roman";
+font-style: italic;
+font-variant: small-caps;
+}
+h2
+{
+color: black;
+text-align: center;
+font-size: 20px;
+font-family:"Times New Roman";
+}
+
+legend 
+{
+color: #8c550e;
+}
+form {
+margin: 3em auto;
+width: 62%;
+}
+</style>
 <body>
 	<div>
 		<%@ include file="../questoes/menu.jsp" %>

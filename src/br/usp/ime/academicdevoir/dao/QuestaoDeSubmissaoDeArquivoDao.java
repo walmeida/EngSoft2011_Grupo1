@@ -67,11 +67,17 @@ public class QuestaoDeSubmissaoDeArquivoDao {
 		this.session.delete(questao);
 		tx.commit();
 	}
-
-	public List<QuestaoDeSubmissaoDeArquivo> busca(String title) {
-		return session.createCriteria(QuestaoDeSubmissaoDeArquivo.class)
-				.add(Restrictions.ilike("title", title, MatchMode.ANYWHERE))
-				.list();
+	
+	/**
+	 * Retorna uma QuestaoDeSubmissaoDeArquivo com o id fornecido, se existir. Caso contrário, retorna null. 
+	 * @param id
+	 * @return QuestaoDeSubmissaoDeArquivo
+	 */
+	public QuestaoDeSubmissaoDeArquivo buscaPorId(Long id) {
+		return (QuestaoDeSubmissaoDeArquivo) session
+				.createCriteria(QuestaoDeSubmissaoDeArquivo.class)
+				.add(Restrictions.idEq(id))
+				.uniqueResult();
 	}
 
 	public void recarrega(QuestaoDeSubmissaoDeArquivo questao) {

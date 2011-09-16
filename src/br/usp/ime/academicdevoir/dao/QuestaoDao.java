@@ -28,8 +28,8 @@ public class QuestaoDao {
 	 * @param id
 	 * @return Questao
 	 */
-	public Questao carrega(Long id) {
-		return (Questao) this.session.load(Questao.class, id);
+	public Object carrega(Long id) {
+		return this.session.load(Questao.class, id);
 	}
 
 	/**
@@ -42,10 +42,15 @@ public class QuestaoDao {
 		tx.commit();
 	}
 
-	public List<Questao> busca(String title) {
-		return session.createCriteria(Questao.class)
-				.add(Restrictions.ilike("title", title, MatchMode.ANYWHERE))
-				.list();
+	/**
+	 * Retorna uma Questao com o id fornecido, se existir. Caso contrário, retorna null. 
+	 * @param id
+	 * @return Questao
+	 */
+	public Questao busca(Long id) {
+		return (Questao) session.createCriteria(Questao.class)
+				.add(Restrictions.idEq(id))
+				.uniqueResult();
 	}
 
 	public void recarrega(Questao questao) {
