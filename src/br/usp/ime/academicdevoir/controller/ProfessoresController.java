@@ -50,4 +50,13 @@ public class ProfessoresController {
 		professorDao.removeProfessor(professor);
 		result.redirectTo(ProfessoresController.class).lista();
 	}
+	
+	public void mudarTipo(Long id) {
+		professorDao.alteraTipo(id);
+		result.redirectTo(ProfessoresController.class).lista();
+	}
+	
+	public void mudanca () {
+	}
+	
 }
