@@ -45,7 +45,7 @@ public class TurmaDao {
 		return (Turma) session.load(Turma.class, id);
 	}
 	
-	
+    @SuppressWarnings("unchecked")
 	public List<Turma> getLista() {
 		String nome = "SELECT p FROM Turma p";
 		Query query = session.createQuery(nome);

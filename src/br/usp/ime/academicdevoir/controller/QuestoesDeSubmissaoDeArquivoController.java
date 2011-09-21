@@ -36,7 +36,7 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 */
 	public void adiciona(final QuestaoDeSubmissaoDeArquivo questao) {
 		validator.validate(questao);
-		validator.onErrorUsePageOf(this).form();
+		validator.onErrorUsePageOf(this).cadastro();
 
 		dao.salva(questao);
 		result.redirectTo(this).lista();
@@ -49,7 +49,7 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 * @param id
 	 * @return QuestaoDeSubmissaoDeArquivo 
 	 * */
-	public QuestaoDeSubmissaoDeArquivo altera(Long id) {
+	public QuestaoDeSubmissaoDeArquivo alteracao(Long id) {
 		return dao.carrega(id);
 	}
 
@@ -59,11 +59,11 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 * Verifica se a questão de submissão de arquivo fornecida é válida e atualiza no banco de dados.
 	 * @param id
 	 */
-	public void atualiza(QuestaoDeSubmissaoDeArquivo questao) {
+	public void altera(QuestaoDeSubmissaoDeArquivo questao) {
 		validator.validate(questao);
 		validator
 				.onErrorUsePageOf(QuestoesDeSubmissaoDeArquivoController.class)
-				.altera(questao.getId());
+				.alteracao(questao.getId());
 
 		dao.atualiza(questao);
 		result.redirectTo(this).lista();
@@ -86,7 +86,7 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	/**
 	 * Redireciona para a página com formulário para cadastro de uma nova questão de submissão de arquivo.
 	 */
-	public void form() {
+	public void cadastro() {
 	}
 
 	@Get

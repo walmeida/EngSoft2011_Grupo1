@@ -54,7 +54,7 @@ public class QuestoesDeSubmissaoDeArquivoControllerTeste {
     @Test
     public void testeAtualiza() {
         QuestaoDeSubmissaoDeArquivo questao = new QuestaoDeSubmissaoDeArquivo();
-        questoesC.atualiza(questao);
+        questoesC.altera(questao);
         
         verify(validator).validate(questao);
         verify(validator).onErrorUsePageOf(QuestoesDeSubmissaoDeArquivoController.class);

@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 import br.usp.ime.academicdevoir.entidade.QuestaoDeTexto;
@@ -18,6 +17,7 @@ public class QuestaoDeTextoDao {
 		this.session = session;
 	}
 
+    @SuppressWarnings("unchecked")
 	/**
 	 * Retorna uma lista com todas as questões de texto cadastradas no banco de dados.
 	 * @return List<QuestaoDeTexto>

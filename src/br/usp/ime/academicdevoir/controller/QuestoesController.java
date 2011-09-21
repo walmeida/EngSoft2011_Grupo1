@@ -59,13 +59,13 @@ public class QuestoesController {
 	public void altera(Long id) {
 		switch (this.tipoDeQuestao(id)){		
 		case 1:
-			result.redirectTo(QuestoesDeMultiplaEscolhaController.class).altera(id);
+			result.redirectTo(QuestoesDeMultiplaEscolhaController.class).alteracao(id);
 			break;
 		case 2:
-			result.redirectTo(QuestoesDeSubmissaoDeArquivoController.class).altera(id);
+			result.redirectTo(QuestoesDeSubmissaoDeArquivoController.class).alteracao(id);
 			break;
 		case 3:
-			result.redirectTo(QuestoesDeTextoController.class).altera(id);
+			result.redirectTo(QuestoesDeTextoController.class).alteracao(id);
 			break;
 		default:
 			result.redirectTo(this).lista();

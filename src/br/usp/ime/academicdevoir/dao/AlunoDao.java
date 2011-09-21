@@ -40,7 +40,7 @@ public class AlunoDao {
 		return (Aluno) session.load(Aluno.class, id);
 	}
 	
-	
+    @SuppressWarnings("unchecked")
 	public List<Aluno> getLista() {
 		String nome = "SELECT p FROM Aluno p";
 		Query query = session.createQuery(nome);

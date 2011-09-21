@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 import br.usp.ime.academicdevoir.entidade.Questao;
@@ -19,6 +18,7 @@ public class QuestaoDao {
 		this.session = session;
 	}
 
+    @SuppressWarnings("unchecked")
 	public List<Questao> listaTudo() {
 		return this.session.createCriteria(Questao.class).list();
 	}

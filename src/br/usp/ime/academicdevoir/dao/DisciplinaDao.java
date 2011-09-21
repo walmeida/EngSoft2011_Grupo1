@@ -6,9 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import br.com.caelum.vraptor.ioc.Component;
-import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.Disciplina;
-import br.usp.ime.academicdevoir.entidade.Turma;
 
 @Component
 public class DisciplinaDao {
@@ -41,7 +39,7 @@ public class DisciplinaDao {
 		return (Disciplina) session.load(Disciplina.class, id);
 	}
 	
-	
+    @SuppressWarnings("unchecked")
 	public List<Disciplina> getLista() {
 		String nome = "SELECT p FROM Disciplina p";
 		Query query = session.createQuery(nome);
