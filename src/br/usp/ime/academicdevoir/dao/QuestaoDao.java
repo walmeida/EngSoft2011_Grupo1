@@ -19,12 +19,18 @@ public class QuestaoDao {
 		this.session = session;
 	}
 
+	/**
+	 * Retorna uma lista com todas as questões cadastradas no banco de dados.
+	 * 
+	 * @return List<QuestaoDeMultiplaEscolha>
+	 */
 	public List<Questao> listaTudo() {
 		return this.session.createCriteria(Questao.class).list();
 	}
 
 	/**
 	 * Retorna uma questão com o id fornecido.
+	 * 
 	 * @param id
 	 * @return Questao
 	 */
@@ -34,6 +40,7 @@ public class QuestaoDao {
 
 	/**
 	 * Remove a questão fornecida do banco de dados.
+	 * 
 	 * @param questao
 	 */
 	public void remove(Questao questao) {
@@ -43,18 +50,18 @@ public class QuestaoDao {
 	}
 
 	/**
-	 * Retorna uma Questao com o id fornecido, se existir. Caso contrário, retorna null. 
+	 * Retorna uma Questao com o id fornecido, se existir. Caso contrário,
+	 * retorna null.
+	 * 
 	 * @param id
 	 * @return Questao
 	 */
 	public Questao busca(Long id) {
 		return (Questao) session.createCriteria(Questao.class)
-				.add(Restrictions.idEq(id))
-				.uniqueResult();
+				.add(Restrictions.idEq(id)).uniqueResult();
 	}
 
 	public void recarrega(Questao questao) {
 		session.refresh(questao);
 	}
-
 }

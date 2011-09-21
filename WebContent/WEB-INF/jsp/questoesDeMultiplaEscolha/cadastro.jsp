@@ -19,7 +19,6 @@ import="java.sql.*" errorPage="" %>
 	  });
 	});
 </script>
-</head>
 <style type="text/css">
 body
 {
@@ -45,7 +44,11 @@ form {
 margin: 3em auto;
 width: 62%;
 }
+p{
+display: inline;
+}]
 </style>
+</head>
 
 <body>
 	<div>
@@ -62,6 +65,8 @@ width: 62%;
 					<textarea id="enunciado" rows= "5" cols="80" name="questao.enunciado">${questao.enunciado }</textarea>
 				<br/>
 				<c:set var="contador" value="2"/>
+				<br/>
+				<p>Número de Alternativas: </p>
 				<select name="numeroDeAlternativas">
 					<c:forEach begin="2" end="10" step="1">
 						<c:if test="${contador eq numeroDeAlternativas }">

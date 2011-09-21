@@ -35,12 +35,14 @@ font-family:"Times New Roman";
 	<div id="menu">
 		<%@ include file="../questoes/menu.jsp" %><br/>
 	</div>
-		
+	
+	<h3>Questões de Submissão de Arquivo</h3>
+	
 	<div>
 		<table>
 			<thead>
 				<tr>
-					<th>Questão</th>
+					<th>ID</th>
 					<th>Enunciado</th>
 					<th>Alterar</th>
 					<th>Remover</th>
@@ -64,7 +66,7 @@ font-family:"Times New Roman";
 			</tbody>
 		</table>
 		</div><br/>	
-	<form action="/academic-devoir/questoes/submissao/cadastro">
+	<form action="<c:url value="/questoes/submissao/cadastro"/>">
 	<input type="submit" value="Cadastrar nova questão"></input>
 	</form>	
 </body>

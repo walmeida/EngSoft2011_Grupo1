@@ -4,8 +4,8 @@
     "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
-		<property name="hibernate.connection.username">tomcat</property>
-		<property name="hibernate.connection.password">jerrymous3</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">root</property>
 		<property name="hibernate.connection.url">jdbc:mysql://localhost/engsoft</property>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
@@ -15,12 +15,13 @@
 		<mapping class="br.usp.ime.academicdevoir.entidade.Aluno" />
 		<mapping class="br.usp.ime.academicdevoir.entidade.Professor" />
 		<mapping class="br.usp.ime.academicdevoir.entidade.Usuario" />
-		<mapping class="br.usp.ime.academicdevoir.entidade.Turma" />
+		<mapping class="br.usp.ime.academicdevoir.entidade.Turma" />		
+		<mapping class="br.usp.ime.academicdevoir.entidade.Disciplina" />
 		<mapping class="br.usp.ime.academicdevoir.entidade.Questao" />
 		<mapping class="br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha" />
 		<mapping class="br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo" />
 		<mapping class="br.usp.ime.academicdevoir.entidade.QuestaoDeTexto" />
-		<mapping class="br.usp.ime.academicdevoir.entidade.Disciplina" />
-
+		<mapping class="br.usp.ime.academicdevoir.entidade.QuestaoDaLista" />
+		<mapping class="br.usp.ime.academicdevoir.entidade.ListaDeExercicios" />
 	</session-factory>
 </hibernate-configuration>

@@ -2,15 +2,17 @@ package br.usp.ime.academicdevoir.dao;
 
 import java.util.List;
 
+import javax.persistence.PrimaryKeyJoinColumn;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 import br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;
 import br.com.caelum.vraptor.ioc.Component;
 
 @Component
+@PrimaryKeyJoinColumn(name="id")
 public class QuestaoDeSubmissaoDeArquivoDao {
 	
 	private final Session session;

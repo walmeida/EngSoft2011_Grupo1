@@ -1,21 +1,26 @@
 package br.usp.ime.academicdevoir.entidade;
 
+import java.util.List;
+
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.FetchType;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "questao_id")
 public class QuestaoDeMultiplaEscolha extends Questao {
 	
-	private String alternativas;
+	@ElementCollection(fetch=FetchType.LAZY)
+	@CollectionTable(name = "alternativasDasQuestoes")
+	private List<String> alternativas;
 
 	private Integer resposta;
 	
-	public String getAlternativas() {
+	public List<String> getAlternativas() {
 		return alternativas;
 	}
 
-	public void setAlternativas(String alternativas) {
+	public void setAlternativas(List<String> alternativas) {
 		this.alternativas = alternativas;
 	}
 

@@ -2,6 +2,8 @@ package br.usp.ime.academicdevoir.teste;
 
 import static org.mockito.Mockito.*;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -41,7 +43,7 @@ public class QuestoesDeMultiplaEscolhaControllerTeste {
     @Test
     public void testeAdiciona() {
         QuestaoDeMultiplaEscolha questao = new QuestaoDeMultiplaEscolha();
-        questoesC.adiciona(questao);
+        questoesC.cadastra(questao, new ArrayList<String>());
 
         verify(validator).validate(questao);
         verify(validator).onErrorUsePageOf(questoesC);
@@ -52,7 +54,7 @@ public class QuestoesDeMultiplaEscolhaControllerTeste {
     @Test
     public void testeAtualiza() {
         QuestaoDeMultiplaEscolha questao = new QuestaoDeMultiplaEscolha();
-        questoesC.atualiza(questao);
+        questoesC.altera(questao, new ArrayList<String>());
         
         verify(validator).validate(questao);
         verify(validator).onErrorUsePageOf(QuestoesDeMultiplaEscolhaController.class);

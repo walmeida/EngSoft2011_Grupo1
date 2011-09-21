@@ -33,9 +33,9 @@ public class QuestoesDeTextoController {
 	 * Verifica se a questão de texto fornecida é válida e adiciona no banco de dados.
 	 * @param questao
 	 */
-	public void adiciona(final QuestaoDeTexto questao) {
+	public void cadastra(final QuestaoDeTexto questao) {
 		validator.validate(questao);
-		validator.onErrorUsePageOf(QuestoesDeTextoController.class).form();
+		validator.onErrorUsePageOf(QuestoesDeTextoController.class).cadastro();
 
 		dao.salva(questao);
 		result.redirectTo(this).lista();
@@ -48,7 +48,7 @@ public class QuestoesDeTextoController {
 	 * @param id
 	 * @return QuestaoDeMultiplaEscolha	 * 
 	 * */
-	public QuestaoDeTexto altera(Long id) {
+	public QuestaoDeTexto alteracao(Long id) {
 		return dao.carrega(id);
 	}
 
@@ -58,9 +58,9 @@ public class QuestoesDeTextoController {
 	 * Verifica se a questão de texto fornecida é válida e atualiza no banco de dados.
 	 * @param id
 	 */
-	public void atualiza(QuestaoDeTexto questao) {
+	public void altera(QuestaoDeTexto questao) {
 		validator.validate(questao);
-		validator.onErrorUsePageOf(QuestoesDeTextoController.class).altera(
+		validator.onErrorUsePageOf(QuestoesDeTextoController.class).alteracao(
 				questao.getId());
 
 		dao.atualiza(questao);
@@ -84,7 +84,7 @@ public class QuestoesDeTextoController {
 	/**
 	 * Redireciona para a página com formulário para cadastro de uma nova questão de texto.
 	 */
-	public void form() {
+	public void cadastro() {
 	}
 
 	@Get

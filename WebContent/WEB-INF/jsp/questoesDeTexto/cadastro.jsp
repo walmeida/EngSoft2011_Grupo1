@@ -30,44 +30,36 @@ text-align: center;
 font-size: 20px;
 font-family:"Times New Roman";
 }
-
+legend 
+{
+color: #8c550e;
+}
+form {
+margin: 3em auto;
+width: 62%;
+}
 </style>
+
 <body>
-	<div id="menu">
-		<%@ include file="menu.jsp" %><br/>
+	<div>
+		<%@ include file="../questoes/menu.jsp" %>
 	</div>
 	
-	<h3>Todas as Questões</h3>
-		
 	<div>
-		<table>
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Enunciado</th>
-					<th>Alterar</th>
-					<th>Remover</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${questaoList }" var="questao">
-					<tr>
-						<td>${questao.id }</td>
-						<td>${questao.enunciado }</td>
-						<td><a href="<c:url value="/questoes/${questao.id }"/>">Alterar</a></td>
-						<td>
-							<form action="<c:url value="/questoes/${questao.id }"/>" method="post">
-								<button name="_method" value="delete">Remover</button>
-							</form>
-						</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+		<br/>
+		<form action="<c:url value="/questoes/texto"/>" method="post" accept-charset="us-ascii">
+			<fieldset>
+				<legend>Cadastrar questão de texto</legend>
+				<br/>
+				<label for="enunciado">Enunciado:</label><br/>
+					<textarea id="enunciado" rows= "5" cols="80" name="questao.enunciado"></textarea>
+				<br/>
+				<label for="resposta">Resposta:</label><br/>
+					<textarea id="resposta" rows= "5" cols="80" name="questao.resposta"></textarea>
+				<br/><br/>
+				<button type="submit">Enviar</button>
+			</fieldset>					
+		</form>
 	</div>
-	<br/>
-	<form action="/academic-devoir/questoes/mult/cadastro">
-		<input type="submit" value="Cadastrar nova questão"></input>
-	</form>	
 </body>
 </html>
