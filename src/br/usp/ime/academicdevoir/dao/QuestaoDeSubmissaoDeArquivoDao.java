@@ -21,6 +21,7 @@ public class QuestaoDeSubmissaoDeArquivoDao {
 		this.session = session;
 	}
 
+    @SuppressWarnings("unchecked")
 	/**
 	 * Retorna uma lista com todas as questões de submissão de arquivo cadastradas no banco de dados.
 	 * @return List<QuestaoDeSubmissaoDeArquivo>
@@ -71,7 +72,8 @@ public class QuestaoDeSubmissaoDeArquivoDao {
 	}
 	
 	/**
-	 * Retorna uma QuestaoDeSubmissaoDeArquivo com o id fornecido, se existir. Caso contrário, retorna null. 
+	 * Retorna uma QuestaoDeSubmissaoDeArquivo com o id fornecido, se existir. 
+	 * Caso contrário, retorna null. 
 	 * @param id
 	 * @return QuestaoDeSubmissaoDeArquivo
 	 */

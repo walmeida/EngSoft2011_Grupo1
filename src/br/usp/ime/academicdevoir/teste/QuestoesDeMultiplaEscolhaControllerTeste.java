@@ -54,6 +54,7 @@ public class QuestoesDeMultiplaEscolhaControllerTeste {
     @Test
     public void testeAtualiza() {
         QuestaoDeMultiplaEscolha questao = new QuestaoDeMultiplaEscolha();
+        
         questoesC.altera(questao, new ArrayList<String>());
         
         verify(validator).validate(questao);

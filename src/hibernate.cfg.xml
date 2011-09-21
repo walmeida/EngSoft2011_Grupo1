@@ -19,7 +19,8 @@
 		<mapping class="br.usp.ime.academicdevoir.entidade.Disciplina" />
 		<mapping class="br.usp.ime.academicdevoir.entidade.Questao" />
 		<mapping class="br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha" />
-		<mapping class="br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo" />
+		<mapping
+			class="br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo" />
 		<mapping class="br.usp.ime.academicdevoir.entidade.QuestaoDeTexto" />
 		<mapping class="br.usp.ime.academicdevoir.entidade.QuestaoDaLista" />
 		<mapping class="br.usp.ime.academicdevoir.entidade.ListaDeExercicios" />

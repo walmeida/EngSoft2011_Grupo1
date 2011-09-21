@@ -1,9 +1,14 @@
 package br.usp.ime.academicdevoir.dao;
+
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import java.sql.Connection;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.usp.ime.academicdevoir.entidade.Professor;
@@ -34,18 +39,30 @@ public class ProfessorDao {
 		session.delete(professor);
 		tx.commit();
 	}
-	
+
 	public Professor carregaPelaId(Long id) {
 		return (Professor) session.load(Professor.class, id);
 	}
-	
-	
+
+    @SuppressWarnings("unchecked")
 	public List<Professor> getLista() {
 		String nome = "SELECT p FROM Professor p";
 		Query query = session.createQuery(nome);
 		List<Professor> listaDeProfessores = query.list();
 		return listaDeProfessores;
 	}
-	
 
+	public void alteraTipo(Long id) {
+		try {
+			Connection conexao = DriverManager.getConnection(
+					"jdbc:mysql://localhost:3306/engsoft", "root", "root123");
+			String s = "UPDATE Usuario SET DTYPE='Professor' WHERE id=5";
+			PreparedStatement comando = conexao.prepareStatement(s);
+			comando.execute();
+			conexao.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
 }

@@ -99,7 +99,8 @@ public class QuestoesDeMultiplaEscolhaController {
 	@Get
 	@Path("/questoes/mult/cadastro")
 	/**
-	 * Redireciona para a página com formulário para cadastro de uma nova questão de múltipla escolha.
+	 * Redireciona para a página com formulário para cadastro de uma nova 
+	 * questão de múltipla escolha.
 	 */
 	public void cadastro(Integer numeroDeAlternativas,
 			QuestaoDeMultiplaEscolha questao, List<String> alternativasEnviadas) {
@@ -113,7 +114,8 @@ public class QuestoesDeMultiplaEscolhaController {
 	@Get
 	@Path("/questoes/mult")
 	/**
-	 * Retorna uma lista com todas as questões de múltipla escolha cadastradas no banco de dados.
+	 * Retorna uma lista com todas as questões de múltipla escolha cadastradas 
+	 * no banco de dados.
 	 * @return List<QuestaoDeMultiplaEscolha>
 	 */
 	public List<QuestaoDeMultiplaEscolha> lista() {

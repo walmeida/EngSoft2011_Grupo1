@@ -64,7 +64,8 @@ public class QuestoesController {
 		switch (this.tipoDeQuestao(id)) {
 		case 1:
 			result.redirectTo(QuestoesDeMultiplaEscolhaController.class)
-					.alteracao(id,
+					.alteracao(
+							id,
 							questaoDeMultiplaEscolhaDao.carrega(id)
 									.getAlternativas(),
 							questaoDeMultiplaEscolhaDao.carrega(id)

@@ -20,6 +20,7 @@ public class QuestaoDeTextoDao {
 		this.session = session;
 	}
 
+    @SuppressWarnings("unchecked")
 	/**
 	 * Retorna uma lista com todas as questões de texto cadastradas no banco de dados.
 	 * @return List<QuestaoDeTexto>

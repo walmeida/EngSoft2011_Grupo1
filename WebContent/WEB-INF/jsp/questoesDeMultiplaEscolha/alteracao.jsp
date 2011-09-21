@@ -61,7 +61,7 @@ width: 62%;
 		
 		<form action="<c:url value="/questoes/mult/${questao.id }"/>" method="post" accept-charset="us-ascii">
 			<fieldset>
-				<legend>Cadastrar questão de múltipla escolha</legend>
+				<legend>Alterar questão de múltipla escolha</legend>
 				<br/>
 				<label for="enunciado">Enunciado:</label><br/>
 					<textarea id="enunciado" rows= "5" cols="80" name="questao.enunciado">${questao.enunciado }</textarea>
