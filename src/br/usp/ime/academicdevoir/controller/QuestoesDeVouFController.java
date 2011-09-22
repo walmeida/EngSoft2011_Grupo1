@@ -1,7 +1,7 @@
 package br.usp.ime.academicdevoir.controller;
 
-import br.usp.ime.academicdevoir.dao.QuestaoDeTextoDao;
-import br.usp.ime.academicdevoir.entidade.QuestaoDeTexto;
+import br.usp.ime.academicdevoir.dao.QuestaoDeVouFDao;
+import br.usp.ime.academicdevoir.entidade.QuestaoDeVouF;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -12,13 +12,13 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 
 @Resource
-public class QuestoesDeTextoController {
-	
-	private QuestaoDeTextoDao dao;
+public class QuestoesDeVouFController {
+
+	private QuestaoDeVouFDao dao;
 	private final Result result;
 	private Validator validator;
 
-	public QuestoesDeTextoController(QuestaoDeTextoDao dao, Result result,
+	public QuestoesDeVouFController(QuestaoDeVouFDao dao, Result result,
 			Validator validator) {
 		this.dao = dao;
 		this.result = result;
@@ -26,23 +26,23 @@ public class QuestoesDeTextoController {
 	}
 
 	@Post
-	@Path("/questoes/texto")
+	@Path("/questoes/vouf")
 	/**
-	 * Verifica se a questão de texto fornecida é válida e adiciona no banco de dados.
+	 * Verifica se a questão de V ou F fornecida é válida e adiciona no banco de dados.
 	 * @param questao
 	 */
-	public void cadastra(final QuestaoDeTexto questao) {
+	public void cadastra(final QuestaoDeVouF questao) {
 		validator.validate(questao);
-		validator.onErrorUsePageOf(QuestoesDeTextoController.class).cadastro();
+		validator.onErrorUsePageOf(QuestoesDeVouFController.class).cadastro();
 
 		dao.salva(questao);
 		result.redirectTo(this).lista();
 	}
 
 	@Get
-	@Path("/questoes/texto/{id}")
+	@Path("/questoes/vouf/{id}")
 	/** 
-	 * Retorna uma questão de texto com o id fornecido.
+	 * Retorna uma questão de V ou F com o id fornecido.
 	 * @param id
 	 * @return QuestaoDeMultiplaEscolha	 * 
 	 * */
@@ -51,14 +51,14 @@ public class QuestoesDeTextoController {
 	}
 
 	@Put
-	@Path("/questoes/texto/{questao.id}")
+	@Path("/questoes/vouf/{questao.id}")
 	/**
-	 * Verifica se a questão de texto fornecida é válida e atualiza no banco de dados.
+	 * Verifica se a questão de V ou F fornecida é válida e atualiza no banco de dados.
 	 * @param id
 	 */
-	public void altera(QuestaoDeTexto questao) {
+	public void altera(QuestaoDeVouF questao) {
 		validator.validate(questao);
-		validator.onErrorUsePageOf(QuestoesDeTextoController.class).alteracao(
+		validator.onErrorUsePageOf(QuestoesDeVouFController.class).alteracao(
 				questao.getId());
 
 		dao.atualiza(questao);
@@ -66,29 +66,29 @@ public class QuestoesDeTextoController {
 	}
 
 	@Delete
-	@Path("/questoes/texto/{id}")
+	@Path("/questoes/vouf/{id}")
 	/**
-	 * Remove uma questão de texto do banco de dados com o id fornecido.
+	 * Remove uma questão de V ou F do banco de dados com o id fornecido.
 	 * @param id
 	 */
 	public void remove(Long id) {
-		QuestaoDeTexto questao = dao.carrega(id);
+		QuestaoDeVouF questao = dao.carrega(id);
 		dao.remove(questao);
 		result.redirectTo(this).lista();
 	}
 
 	@Get
-	@Path("/questoes/texto/cadastro")
+	@Path("/questoes/vouf/cadastro")
 	/**
-	 * Redireciona para a página com formulário para cadastro de uma nova questão de texto.
+	 * Redireciona para a página com formulário para cadastro de uma nova questão de V ou F.
 	 */
 	public void cadastro() {
 	}
 
 	@Get
-	@Path("/questoes/texto")
+	@Path("/questoes/vouf")
 	/**
-	 * Retorna uma lista com todas as questões de texto cadastradas no banco de dados.
+	 * Retorna uma lista com todas as questões de V ou F cadastradas no banco de dados.
 	 * @return List<QuestaoDeMultiplaEscolha>
 	 */
 	public void lista() {

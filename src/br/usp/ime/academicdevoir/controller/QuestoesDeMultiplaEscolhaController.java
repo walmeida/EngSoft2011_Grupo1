@@ -118,7 +118,7 @@ public class QuestoesDeMultiplaEscolhaController {
 	 * no banco de dados.
 	 * @return List<QuestaoDeMultiplaEscolha>
 	 */
-	public List<QuestaoDeMultiplaEscolha> lista() {
-		return dao.listaTudo();
+	public void lista() {
+		result.include("lista", dao.listaTudo());
 	}
 }

@@ -35,6 +35,9 @@ form {
 margin: 3em auto;
 width: 62%;
 }
+p{
+display: inline;
+}
 .fieldsetSemFormatacao{
 	border:none;
 	padding: 0px;
@@ -51,15 +54,16 @@ width: 62%;
 	
 	<div>
 		<br/>
-		<form action="<c:url value="/questoes/texto"/>" method="post" accept-charset="us-ascii">
+		<form action="<c:url value="/questoes/vouf"/>" method="post" accept-charset="us-ascii">
 			<fieldset>
-				<legend>Cadastrar questão de texto</legend>
+				<legend>Cadastrar questão de V ou F</legend>
 				<br/>
 				<label for="enunciado">Enunciado:</label><br/>
 					<textarea id="enunciado" rows= "5" cols="80" name="questao.enunciado"></textarea>
-				<br/>
-				<label for="resposta">Resposta:</label><br/>
-					<textarea id="resposta" rows= "5" cols="80" name="questao.resposta"></textarea>
+				<br/><br/>
+				<label for="resposta">Resposta:</label>
+					<input id="verdadeiro" type="radio" checked="checked" name="questao.resposta" value="true"/><p>Verdadeiro</p>
+					<input id="falso" type="radio" name="questao.resposta" value="false"/><p>Falso</p>					
 				<br/><br/>
 				<button type="submit">Enviar</button>
 			</fieldset>					

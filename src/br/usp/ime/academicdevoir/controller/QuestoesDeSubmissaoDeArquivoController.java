@@ -1,7 +1,5 @@
 package br.usp.ime.academicdevoir.controller;
 
-import java.util.List;
-
 import br.usp.ime.academicdevoir.dao.QuestaoDeSubmissaoDeArquivoDao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;
 import br.com.caelum.vraptor.Delete;
@@ -49,8 +47,8 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 * @param id
 	 * @return QuestaoDeSubmissaoDeArquivo 
 	 * */
-	public QuestaoDeSubmissaoDeArquivo alteracao(Long id) {
-		return dao.carrega(id);
+	public void alteracao(Long id) {
+		result.include ("questao", dao.carrega(id));
 	}
 
 	@Put
@@ -95,7 +93,7 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 * Retorna uma lista com todas as questões de submissão de arquivo cadastradas no banco de dados.
 	 * @return List<QuestaoDeMultiplaEscolha>
 	 */
-	public List<QuestaoDeSubmissaoDeArquivo> lista() {
-		return dao.listaTudo();
+	public void lista() {
+		result.include("lista", dao.listaTudo());
 	}
 }

@@ -2,8 +2,6 @@ package br.usp.ime.academicdevoir.dao;
 
 import java.util.List;
 
-import javax.persistence.PrimaryKeyJoinColumn;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -12,7 +10,6 @@ import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
 import br.com.caelum.vraptor.ioc.Component;
 
 @Component
-@PrimaryKeyJoinColumn(name="id")
 public class QuestaoDeMultiplaEscolhaDao {
 
 	private final Session session;

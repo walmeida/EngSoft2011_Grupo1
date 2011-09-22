@@ -6,9 +6,6 @@ import="java.sql.*" errorPage="" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<h1>Academic Devoir</h1>
-<h2>Grupo 1 - Engenharia de Software</h2>
-
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-1.6.2.min.js"/>"></script>
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function(){
@@ -46,11 +43,17 @@ width: 62%;
 }
 p{
 display: inline;
-}]
+}
+.fieldsetSemFormatacao{
+	border:none;
+	padding: 0px;
+}
 </style>
 </head>
 
 <body>
+	<h1>Academic Devoir</h1>
+	<h2>Grupo 1 - Engenharia de Software</h2>
 	<div>
 		<%@ include file="../questoes/menu.jsp" %>
 	</div>
@@ -83,16 +86,16 @@ display: inline;
 				<label for="alternativa[0]"></label><br/>
 					<input id="resposta0" type="radio" checked="checked" name="questao.resposta" value="1"></input>
 					<input id="alternativa0" type="text" size="100" name="alternativasEnviadas[0]" value="${alternativas[0] }"></input>					
-				<c:set var="contador" value="1"/>
-				<br/>
-				<c:set var="valorResposta" value="2"/>
+					<c:set var="contador" value="1"/>					
+					<c:set var="valorResposta" value="2"/>
+					<br/>
 				<c:forEach begin="1" end="${numeroDeAlternativas-1 }" step="1">
 					<label for="alternativa[${contador }]"></label><br/>
 						<input id="resposta${contador }" type="radio" name="questao.resposta" value="${valorResposta }"></input>
-						<input id="alternativa${contador }" type="text" size="100" name="alternativasEnviadas[${contador }]" value="${alternativas[contador] }"></input>
-					<br/>					
-					<c:set var="valorResposta" value="${valorResposta*2 }"/>
-					<c:set var="contador" value="${contador+1 }"/>
+						<input id="alternativa${contador }" type="text" size="100" name="alternativasEnviadas[${contador }]" value="${alternativas[contador] }"></input>											
+						<c:set var="valorResposta" value="${valorResposta*2 }"/>
+						<c:set var="contador" value="${contador+1 }"/>
+						<br/>
 				</c:forEach>
 				<button type="submit">Enviar</button>
 			</fieldset>

@@ -1,7 +1,5 @@
 package br.usp.ime.academicdevoir.controller;
 
-import java.util.List;
-
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDeMultiplaEscolhaDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDeSubmissaoDeArquivoDao;
@@ -50,6 +48,9 @@ public class QuestoesController {
 		questao = questaoDeTextoDao.buscaPorId(id);
 		if (questao != null)
 			return 3;
+		questao = questaoDeMultiplaEscolhaDao.buscaPorId(id);
+		if (questao != null)
+			return 4;
 		return 0;
 	}
 
@@ -78,6 +79,9 @@ public class QuestoesController {
 		case 3:
 			result.redirectTo(QuestoesDeTextoController.class).alteracao(id);
 			break;
+		case 4:
+			result.redirectTo(QuestoesDeVouFController.class).alteracao(id);
+			break;
 		default:
 			result.redirectTo(this).lista();
 			break;
@@ -102,8 +106,7 @@ public class QuestoesController {
 	 * Retorna uma lista com todas as questões cadastradas no banco de dados.
 	 * @return List<Questao>
 	 */
-	public List<Questao> lista() {
-		return dao.listaTudo();
+	public void lista() {
+		result.include("lista", dao.listaTudo());
 	}
-
 }

@@ -6,9 +6,6 @@ import="java.sql.*" errorPage="" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<h1>Academic Devoir</h1>
-<h2>Grupo 1 - Engenharia de Software</h2>
-</head>
 <style type="text/css">
 body
 {
@@ -38,9 +35,16 @@ form {
 margin: 3em auto;
 width: 61%;
 }
+.fieldsetSemFormatacao{
+	border:none;
+	padding: 0px;
+}
 </style>
+</head>
 
 <body>
+	<h1>Academic Devoir</h1>
+	<h2>Grupo 1 - Engenharia de Software</h2>
 	<div>
 		<%@ include file="../questoes/menu.jsp" %>
 	</div>

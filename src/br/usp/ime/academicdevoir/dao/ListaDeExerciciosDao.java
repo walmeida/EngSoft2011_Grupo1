@@ -17,6 +17,7 @@ public class ListaDeExerciciosDao {
 		this.session = session;
 	}
 
+	@SuppressWarnings("unchecked")
 	/**
 	 * Retorna uma lista com todas as listas de exercícios cadastradas no banco
 	 * de dados.

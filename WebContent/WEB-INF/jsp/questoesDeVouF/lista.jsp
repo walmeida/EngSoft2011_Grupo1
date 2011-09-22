@@ -6,6 +6,8 @@ import="java.sql.*" errorPage="" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
 <style type="text/css">
 body
 {
@@ -41,7 +43,7 @@ font-family:"Times New Roman";
 		<%@ include file="../questoes/menu.jsp" %><br/>
 	</div>
 	
-	<h3>Questões de Texto</h3>
+	<h3>Questões de V ou F</h3>
 		
 	<div>
 		<table>
@@ -60,9 +62,9 @@ font-family:"Times New Roman";
 						<td>${questao.id }</td>
 						<td>${questao.enunciado }</td>
 						<td>${questao.resposta }</td>
-						<td><a href="<c:url value="/questoes/texto/${questao.id }"/>">Alterar</a></td>
+						<td><a href="<c:url value="/questoes/vouf/${questao.id }"/>">Alterar</a></td>
 						<td>
-							<form action="<c:url value="/questoes/${questao.id }"/>" method="post">
+							<form action="<c:url value="/questoes/vouf/${questao.id }"/>" method="post">
 								<fieldset class="fieldsetSemFormatacao">
 									<button name="_method" value="delete">Remover</button>
 								</fieldset>
@@ -72,8 +74,8 @@ font-family:"Times New Roman";
 				</c:forEach>
 			</tbody>
 		</table>
-		</div>
-	<form action="<c:url value="/questoes/texto/cadastro"/>">
+		</div>	
+	<form action="<c:url value="/questoes/vouf/cadastro"/>">
 		<fieldset class="fieldsetSemFormatacao">
 			<input type="submit" value="Cadastrar nova questão"></input>
 		</fieldset>
