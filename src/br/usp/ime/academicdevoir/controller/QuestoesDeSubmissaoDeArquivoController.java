@@ -1,7 +1,5 @@
 package br.usp.ime.academicdevoir.controller;
 
-import java.util.List;
-
 import br.usp.ime.academicdevoir.dao.QuestaoDeSubmissaoDeArquivoDao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;
 import br.com.caelum.vraptor.Delete;
@@ -34,9 +32,9 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 * Verifica se a questão de submissão de arquivo fornecida é válida e adiciona no banco de dados.
 	 * @param questao
 	 */
-	public void adiciona(final QuestaoDeSubmissaoDeArquivo questao) {
+	public void cadastra(final QuestaoDeSubmissaoDeArquivo questao) {
 		validator.validate(questao);
-		validator.onErrorUsePageOf(this).form();
+		validator.onErrorUsePageOf(this).cadastro();
 
 		dao.salva(questao);
 		result.redirectTo(this).lista();
@@ -49,8 +47,8 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 * @param id
 	 * @return QuestaoDeSubmissaoDeArquivo 
 	 * */
-	public QuestaoDeSubmissaoDeArquivo altera(Long id) {
-		return dao.carrega(id);
+	public void alteracao(Long id) {
+		result.include ("questao", dao.carrega(id));
 	}
 
 	@Put
@@ -59,11 +57,11 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 * Verifica se a questão de submissão de arquivo fornecida é válida e atualiza no banco de dados.
 	 * @param id
 	 */
-	public void atualiza(QuestaoDeSubmissaoDeArquivo questao) {
+	public void altera(QuestaoDeSubmissaoDeArquivo questao) {
 		validator.validate(questao);
 		validator
 				.onErrorUsePageOf(QuestoesDeSubmissaoDeArquivoController.class)
-				.altera(questao.getId());
+				.alteracao(questao.getId());
 
 		dao.atualiza(questao);
 		result.redirectTo(this).lista();
@@ -86,7 +84,7 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	/**
 	 * Redireciona para a página com formulário para cadastro de uma nova questão de submissão de arquivo.
 	 */
-	public void form() {
+	public void cadastro() {
 	}
 
 	@Get
@@ -95,7 +93,7 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 * Retorna uma lista com todas as questões de submissão de arquivo cadastradas no banco de dados.
 	 * @return List<QuestaoDeMultiplaEscolha>
 	 */
-	public List<QuestaoDeSubmissaoDeArquivo> lista() {
-		return dao.listaTudo();
+	public void lista() {
+		result.include("lista", dao.listaTudo());
 	}
 }

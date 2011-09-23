@@ -2,15 +2,17 @@ package br.usp.ime.academicdevoir.dao;
 
 import java.util.List;
 
+import javax.persistence.PrimaryKeyJoinColumn;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 import br.usp.ime.academicdevoir.entidade.QuestaoDeTexto;
 import br.com.caelum.vraptor.ioc.Component;
 
 @Component
+@PrimaryKeyJoinColumn(name="id")
 public class QuestaoDeTextoDao {
 	private final Session session;
 
@@ -18,6 +20,7 @@ public class QuestaoDeTextoDao {
 		this.session = session;
 	}
 
+    @SuppressWarnings("unchecked")
 	/**
 	 * Retorna uma lista com todas as questões de texto cadastradas no banco de dados.
 	 * @return List<QuestaoDeTexto>

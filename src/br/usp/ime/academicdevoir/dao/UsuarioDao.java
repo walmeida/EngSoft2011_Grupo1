@@ -17,6 +17,7 @@ public class UsuarioDao {
 		this.session = session;
 	}
  
+    @SuppressWarnings("unchecked")
     public Usuario fazLogin(String login, String senha){
     	  
         List<Usuario> user = session.createCriteria(Usuario.class)

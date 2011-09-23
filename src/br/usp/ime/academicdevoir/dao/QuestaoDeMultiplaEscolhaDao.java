@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
@@ -19,6 +18,7 @@ public class QuestaoDeMultiplaEscolhaDao {
 		this.session = session;
 	}
 
+    @SuppressWarnings("unchecked")
 	/**
 	 * Retorna uma lista com todas as questões de múltipla escolha cadastradas
 	 * no banco de dados.

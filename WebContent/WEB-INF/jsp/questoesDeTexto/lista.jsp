@@ -6,9 +6,6 @@ import="java.sql.*" errorPage="" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<h1>Academic Devoir</h1>
-<h2>Grupo 1 - Engenharia de Software</h2>
-</head>
 <style type="text/css">
 body
 {
@@ -30,18 +27,27 @@ text-align: center;
 font-size: 20px;
 font-family:"Times New Roman";
 }
+.fieldsetSemFormatacao{
+	border:none;
+	padding: 0px;
+}
 </style>
+</head>
 
 <body>
+	<h1>Academic Devoir</h1>
+	<h2>Grupo 1 - Engenharia de Software</h2>
 	<div id="menu">
 		<%@ include file="../questoes/menu.jsp" %><br/>
 	</div>
+	
+	<h3>Questões de Texto</h3>
 		
 	<div>
 		<table>
 			<thead>
 				<tr>
-					<th>Questão</th>
+					<th>ID</th>
 					<th>Enunciado</th>
 					<th>Resposta</th>
 					<th>Alterar</th>
@@ -49,7 +55,7 @@ font-family:"Times New Roman";
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${questaoDeTextoList }" var="questao">
+				<c:forEach items="${lista }" var="questao">
 					<tr>
 						<td>${questao.id }</td>
 						<td>${questao.enunciado }</td>
@@ -57,16 +63,20 @@ font-family:"Times New Roman";
 						<td><a href="<c:url value="/questoes/texto/${questao.id }"/>">Alterar</a></td>
 						<td>
 							<form action="<c:url value="/questoes/${questao.id }"/>" method="post">
+								<fieldset class="fieldsetSemFormatacao">
 									<button name="_method" value="delete">Remover</button>
+								</fieldset>
 							</form>
 						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		</div><br/>	
-	<form action="/academic-devoir/questoes/texto/cadastro">
-	<input type="submit" value="Cadastrar nova questão"></input>
+		</div>
+	<form action="<c:url value="/questoes/texto/cadastro"/>">
+		<fieldset class="fieldsetSemFormatacao">
+			<input type="submit" value="Cadastrar nova questão"></input>
+		</fieldset>
 	</form>	
 </body>
 </html>

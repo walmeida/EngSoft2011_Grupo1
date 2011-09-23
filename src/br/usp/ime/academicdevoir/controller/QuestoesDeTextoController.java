@@ -1,7 +1,5 @@
 package br.usp.ime.academicdevoir.controller;
 
-import java.util.List;
-
 import br.usp.ime.academicdevoir.dao.QuestaoDeTextoDao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeTexto;
 import br.com.caelum.vraptor.Delete;
@@ -33,9 +31,9 @@ public class QuestoesDeTextoController {
 	 * Verifica se a questão de texto fornecida é válida e adiciona no banco de dados.
 	 * @param questao
 	 */
-	public void adiciona(final QuestaoDeTexto questao) {
+	public void cadastra(final QuestaoDeTexto questao) {
 		validator.validate(questao);
-		validator.onErrorUsePageOf(QuestoesDeTextoController.class).form();
+		validator.onErrorUsePageOf(QuestoesDeTextoController.class).cadastro();
 
 		dao.salva(questao);
 		result.redirectTo(this).lista();
@@ -48,8 +46,8 @@ public class QuestoesDeTextoController {
 	 * @param id
 	 * @return QuestaoDeMultiplaEscolha	 * 
 	 * */
-	public QuestaoDeTexto altera(Long id) {
-		return dao.carrega(id);
+	public void alteracao(Long id) {
+		result.include("questao", dao.carrega(id));
 	}
 
 	@Put
@@ -58,9 +56,9 @@ public class QuestoesDeTextoController {
 	 * Verifica se a questão de texto fornecida é válida e atualiza no banco de dados.
 	 * @param id
 	 */
-	public void atualiza(QuestaoDeTexto questao) {
+	public void altera(QuestaoDeTexto questao) {
 		validator.validate(questao);
-		validator.onErrorUsePageOf(QuestoesDeTextoController.class).altera(
+		validator.onErrorUsePageOf(QuestoesDeTextoController.class).alteracao(
 				questao.getId());
 
 		dao.atualiza(questao);
@@ -84,7 +82,7 @@ public class QuestoesDeTextoController {
 	/**
 	 * Redireciona para a página com formulário para cadastro de uma nova questão de texto.
 	 */
-	public void form() {
+	public void cadastro() {
 	}
 
 	@Get
@@ -93,7 +91,7 @@ public class QuestoesDeTextoController {
 	 * Retorna uma lista com todas as questões de texto cadastradas no banco de dados.
 	 * @return List<QuestaoDeMultiplaEscolha>
 	 */
-	public List<QuestaoDeTexto> lista() {
-		return dao.listaTudo();
+	public void lista() {
+		result.include("lista", dao.listaTudo());
 	}
 }

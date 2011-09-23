@@ -43,7 +43,7 @@ public class QuestoesDeTextoControllerTeste {
     @Test
     public void testeAdiciona() {
         QuestaoDeTexto questao = new QuestaoDeTexto();
-        questoesC.adiciona(questao);
+        questoesC.cadastra(questao);
 
         verify(validator).validate(questao);
         verify(validator).onErrorUsePageOf(QuestoesDeTextoController.class);
@@ -54,7 +54,7 @@ public class QuestoesDeTextoControllerTeste {
     @Test
     public void testeAtualiza() {
         QuestaoDeTexto questao = new QuestaoDeTexto();
-        questoesC.atualiza(questao);
+        questoesC.altera(questao);
         
         verify(validator).validate(questao);
         verify(validator).onErrorUsePageOf(QuestoesDeTextoController.class);

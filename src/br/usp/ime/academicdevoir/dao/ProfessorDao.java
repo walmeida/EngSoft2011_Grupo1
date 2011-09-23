@@ -44,6 +44,7 @@ public class ProfessorDao {
 		return (Professor) session.load(Professor.class, id);
 	}
 
+    @SuppressWarnings("unchecked")
 	public List<Professor> getLista() {
 		String nome = "SELECT p FROM Professor p";
 		Query query = session.createQuery(nome);

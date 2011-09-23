@@ -10,8 +10,9 @@ import="java.sql.*" errorPage="" %>
 </head>
 
 <body>
-	<div>	
-		<a href="<c:url value="/questoes"/>">Lista Tudo</a>
+	<div>
+		<a href="<c:url value="/questoes"/>">Ver Todas</a>
+		<a href="<c:url value="/questoes/vouf"/>">V ou F</a>
 		<a href="<c:url value="/questoes/mult"/>">Múltipla Escolha</a>
 		<a href="<c:url value="/questoes/texto"/>">Texto</a>
 		<a href="<c:url value="/questoes/submissao"/>">Submissão</a>

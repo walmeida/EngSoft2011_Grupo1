@@ -6,9 +6,6 @@ import="java.sql.*" errorPage="" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<h1>Academic Devoir</h1>
-<h2>Grupo 1 - Engenharia de Software</h2>
-</head>
 <style type="text/css">
 body
 {
@@ -38,29 +35,35 @@ form {
 margin: 3em auto;
 width: 62%;
 }
+.fieldsetSemFormatacao{
+	border:none;
+	padding: 0px;
+}
 </style>
+</head>
 
 <body>
+	<h1>Academic Devoir</h1>
+	<h2>Grupo 1 - Engenharia de Software</h2>
 	<div>
 		<%@ include file="../questoes/menu.jsp" %>
 	</div>
 	
 	<div>
 		<br/>
-		<form action="<c:url value="/questoes/texto/${questaoDeTexto.id }" />" method="post" accept-charset="us-ascii">
+		<form action="<c:url value="/questoes/texto"/>" method="post" accept-charset="us-ascii">
 			<fieldset>
-				<legend>Alterar questão de texto</legend>
+				<legend>Cadastrar questão de texto</legend>
 				<br/>
 				<label for="enunciado">Enunciado:</label><br/>
-					<textarea id="enunciado" rows= "5" cols="80" name="questao.enunciado">${questaoDeTexto.enunciado }</textarea>
+					<textarea id="enunciado" rows= "5" cols="80" name="questao.enunciado"></textarea>
 				<br/>
 				<label for="resposta">Resposta:</label><br/>
-					<textarea id="resposta" rows= "5" cols="80" name="questao.resposta">${questaoDeTexto.resposta }</textarea>
+					<textarea id="resposta" rows= "5" cols="80" name="questao.resposta"></textarea>
 				<br/><br/>
-				<button type="submit" name="_method" value="put">Alterar</button>
+				<button type="submit">Enviar</button>
 			</fieldset>					
 		</form>
-		<br/>
 	</div>
 </body>
 </html>

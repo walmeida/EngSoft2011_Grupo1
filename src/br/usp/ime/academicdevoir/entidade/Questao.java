@@ -1,6 +1,5 @@
 package br.usp.ime.academicdevoir.entidade;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,7 +12,6 @@ public abstract class Questao {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "questao_id")
 	private Long id;
 
 	private String enunciado;

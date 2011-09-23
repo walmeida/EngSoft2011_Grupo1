@@ -6,9 +6,8 @@ import="java.sql.*" errorPage="" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<h1>Academic Devoir</h1>
-<h2>Grupo 1 - Engenharia de Software</h2>
-</head>
+<title>Alterar questão</title>
+
 <style type="text/css">
 body
 {
@@ -30,33 +29,39 @@ text-align: center;
 font-size: 20px;
 font-family:"Times New Roman";
 }
+
+legend 
+{
+color: #8c550e;
+}
 form {
 margin: 3em auto;
 width: 62%;
 }
+.fieldsetSemFormatacao{
+	border:none;
+	padding: 0px;
+}
 </style>
+</head>
 
 <body>
+	<h1>Academic Devoir</h1>
+	<h2>Grupo 1 - Engenharia de Software</h2>
 	<div>
 		<%@ include file="../questoes/menu.jsp" %>
 	</div>
 	
 	<div>
 		<br/>
-		<form action="<c:url value="/questoes/mult"/>" method="post" accept-charset="us-ascii">
+		<form id="musicForm" action="<c:url value="/questoes/submissao/${questao.id }"/>" method="post" accept-charset="us-ascii">
 			<fieldset>
-				<legend>Cadastrar questão de múltipla escolha</legend>
-				<br/>
+				<legend>Alterar questão de submissão de arquivo</legend>
+				
 				<label for="enunciado">Enunciado:</label><br/>
-					<textarea id="enunciado" rows= "5" cols="80" name="questao.enunciado"></textarea>
+					<textarea id="enunciado" rows= "5" cols="80" name="questao.enunciado">${questao.enunciado }</textarea>
 				<br/>
-				<label for="alternativas">Alternativas:</label><br/>
-					<textarea id="alternativas" rows= "5" cols="80" name="questao.alternativas"></textarea>
-				<br/>
-				<label for="resposta">Alternativa Correta (número):</label>
-					<input id="resposta" type="text" size="1" maxlength="1" name="questao.resposta" />
-					<br/><br/>
-				<button type="submit">Enviar</button>
+				<button type="submit" name="_method" value="put">Alterar</button>
 			</fieldset>
 		</form>
 		<br/>

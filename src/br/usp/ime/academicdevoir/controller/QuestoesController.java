@@ -1,7 +1,5 @@
 package br.usp.ime.academicdevoir.controller;
 
-import java.util.List;
-
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDeMultiplaEscolhaDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDeSubmissaoDeArquivoDao;
@@ -21,7 +19,7 @@ public class QuestoesController {
 	private final QuestaoDeSubmissaoDeArquivoDao questaoDeSubmissaoDeArquivoDao;
 	private final QuestaoDeTextoDao questaoDeTextoDao;
 	private final Result result;
-	
+
 	public QuestoesController(QuestaoDao dao,
 			QuestaoDeMultiplaEscolhaDao questaoDeMultiplaEscolhaDao,
 			QuestaoDeSubmissaoDeArquivoDao questaoDeSubmissaoDeArquivoDao,
@@ -32,23 +30,30 @@ public class QuestoesController {
 		this.questaoDeTextoDao = questaoDeTextoDao;
 		this.result = result;
 	}
-	
+
 	/**
 	 * Recebe um id de questão e retorna um inteiro que representa o seu tipo.
+	 * 
 	 * @param id
 	 * @return int
 	 */
-	public int tipoDeQuestao (Long id){
+	public int tipoDeQuestao(Long id) {
 		Object questao;
 		questao = questaoDeMultiplaEscolhaDao.buscaPorId(id);
-		if (questao != null) return 1;
-		questao = questaoDeSubmissaoDeArquivoDao.buscaPorId(id); 
-		if (questao != null) return 2;
+		if (questao != null)
+			return 1;
+		questao = questaoDeSubmissaoDeArquivoDao.buscaPorId(id);
+		if (questao != null)
+			return 2;
 		questao = questaoDeTextoDao.buscaPorId(id);
-		if (questao != null) return 3;
+		if (questao != null)
+			return 3;
+		questao = questaoDeMultiplaEscolhaDao.buscaPorId(id);
+		if (questao != null)
+			return 4;
 		return 0;
 	}
-	
+
 	@Get
 	@Path("/questoes/{id}")
 	/** 
@@ -57,22 +62,32 @@ public class QuestoesController {
 	 * @return QuestaoDeMultiplaEscolha	 * 
 	 * */
 	public void altera(Long id) {
-		switch (this.tipoDeQuestao(id)){		
+		switch (this.tipoDeQuestao(id)) {
 		case 1:
-			result.redirectTo(QuestoesDeMultiplaEscolhaController.class).altera(id);
+			result.redirectTo(QuestoesDeMultiplaEscolhaController.class)
+					.alteracao(
+							id,
+							questaoDeMultiplaEscolhaDao.carrega(id)
+									.getAlternativas(),
+							questaoDeMultiplaEscolhaDao.carrega(id)
+									.getAlternativas().size());
 			break;
 		case 2:
-			result.redirectTo(QuestoesDeSubmissaoDeArquivoController.class).altera(id);
+			result.redirectTo(QuestoesDeSubmissaoDeArquivoController.class)
+					.alteracao(id);
 			break;
 		case 3:
-			result.redirectTo(QuestoesDeTextoController.class).altera(id);
+			result.redirectTo(QuestoesDeTextoController.class).alteracao(id);
+			break;
+		case 4:
+			result.redirectTo(QuestoesDeVouFController.class).alteracao(id);
 			break;
 		default:
 			result.redirectTo(this).lista();
 			break;
 		}
 	}
-	
+
 	@Delete
 	@Path("/questoes/{id}")
 	/**
@@ -83,7 +98,7 @@ public class QuestoesController {
 		Object questao = dao.carrega(id);
 		dao.remove((Questao) questao);
 		result.redirectTo(this).lista();
-	}	
+	}
 
 	@Get
 	@Path("/questoes")
@@ -91,8 +106,7 @@ public class QuestoesController {
 	 * Retorna uma lista com todas as questões cadastradas no banco de dados.
 	 * @return List<Questao>
 	 */
-	public List<Questao> lista() {
-		return dao.listaTudo();
+	public void lista() {
+		result.include("lista", dao.listaTudo());
 	}
-
 }
