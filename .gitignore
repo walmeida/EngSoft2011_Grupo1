@@ -1,0 +1,3 @@
+# Ignorando os arquivos de conexao do hibernate
+WebContent/WEB-INF/classes/hibernate.cfg.xml
+src/hibernate.cfg.xml
