@@ -23,6 +23,7 @@ public class LoginInterceptor implements Interceptor {
         this.usuarioSession = usuarioSession;
     }
 
+    @SuppressWarnings("unchecked")
     public boolean accepts(ResourceMethod method) {
         return !Arrays.asList(LoginController.class,AlunosController.class).contains(method.getMethod().getDeclaringClass());
     }

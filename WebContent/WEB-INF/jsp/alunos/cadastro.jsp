@@ -1,12 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<h1>Academic Devoir</h1>
-<h2>Grupo 1 - Engenharia de Software</h2>
-</head>
+<html>
+<head><title>Academic Devoir</title></head>
 <style type="text/css">
 body
 {
@@ -45,11 +41,13 @@ width: 35%;
 
 </style> 
 <body>
+	<h1>Academic Devoir</h1>
+	<h2>Grupo 1 - Engenharia de Software</h2>
 	<h4>Cadastro de Aluno</h4>
 	<form action='cadastra'>
 	<fieldset>
-	<legend>N&atildeo &eacute um aluno cadastrado? </legend><br/>
-		Preencha o formul&aacuterio abaixo e clique no bot&atildeo "Enviar".<br/><br/>
+	<legend>N&atilde; &eacute; um aluno cadastrado? </legend><br/>
+		Preencha o formul&aacute;rio abaixo e clique no bot&atilde;o "Enviar".<br/><br/>
 		Nome: <br/><input type="text" size="30" name="novo.nome"/><br/>
 		Login : <br/><input type="text" size="30" name="novo.login"/><br/>
 		Senha : <br/><input type="password" size="32" name="novo.senha"/><br/>

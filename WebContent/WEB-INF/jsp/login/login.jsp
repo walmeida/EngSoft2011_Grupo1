@@ -1,12 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
-<head>
-<h1>Academic Devoir</h1>
-<h2>Grupo 1 - Engenharia de Software</h2>
-</head>
+<head><title>Academic Devoir</title></head>
 <style type="text/css">
 body
 {
@@ -41,6 +37,8 @@ width: 25%;
 </style> 
 
 <body>
+	<h1>Academic Devoir</h1>
+	<h2>Grupo 1 - Engenharia de Software</h2>
 	<div id="container">
 		
 		<!-- <c:forEach var="error" items="${errors}">
@@ -49,7 +47,7 @@ width: 25%;
 		
 		<c:choose>
 			<c:when test="${empty usuarioSession.usuario.nome}">
-				<form id="form_login" action="login" method="post">
+				<form id="form_login" action="autenticar" method="post">
 	                
 	                <fieldset> 
 	                    <legend>Fa&ccedil;a o login:</legend><br/>
@@ -74,6 +72,9 @@ width: 25%;
 			</c:when>
 			<c:otherwise>
 			    Olá, ${usuarioSession.usuario.nome}
+			    <div>    
+                    <p><a href="logout">Logout</a></p>
+                </div> 
 			</c:otherwise>
 	     </c:choose>
         

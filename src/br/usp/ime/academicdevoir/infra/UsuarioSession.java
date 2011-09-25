@@ -7,7 +7,7 @@ import br.usp.ime.academicdevoir.entidade.Usuario;
 @Component
 @SessionScoped
 public class UsuarioSession {
-	
+
 	private Usuario usuario;
 
 	public Usuario getUsuario() {
@@ -16,6 +16,14 @@ public class UsuarioSession {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public boolean isLogged() {
+		return usuario != null;
+	}
+
+	public void logout() {
+		usuario = null;
 	}
 
 }
