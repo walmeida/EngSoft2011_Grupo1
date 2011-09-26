@@ -1,9 +1,12 @@
 package br.usp.ime.academicdevoir.dao;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.usp.ime.academicdevoir.entidade.Disciplina;
@@ -47,11 +50,17 @@ public class TurmaDao {
 	
     @SuppressWarnings("unchecked")
 	public List<Turma> getLista() {
-		String nome = "SELECT p FROM Turma p";
+		/*String nome = "SELECT id, nome FROM Turma p";
 		Query query = session.createQuery(nome);
-		List<Turma> listaDeTurmas = query.list();
+		List<Turma> listaDeTurmas = query.list(); */
+        List<Turma> listaDeTurmas = session.createCriteria(Turma.class).list();
 		return listaDeTurmas;
 	}
-	
 
+    @SuppressWarnings("unchecked")
+    public List<Turma> buscaTurmasDoProfessor(Professor professor) {
+        return session.createCriteria(Turma.class)
+        .add(Restrictions.like("professor", professor))
+        .list();
+    }
 }

@@ -44,7 +44,7 @@ font-family:"Times New Roman";
         </tr>
     </thead>
     <tbody>
-        <c:forEach items="${turmaDao.lista}" var="turma">
+        <c:forEach items="${listaDeTurmas}" var="turma">
             <tr>
                 <td>${turma.id}</td>
                 <td>${turma.nome}</td>

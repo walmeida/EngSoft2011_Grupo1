@@ -10,15 +10,27 @@ import javax.persistence.ManyToMany;
 
 @Entity
 @DiscriminatorValue("aluno")
+/**
+ * Entidade que representa um aluno cadastrado no sistema.
+ * @author Vinicius Rezende
+ */
 public class Aluno extends Usuario {
-	@ManyToMany(mappedBy = "alunos", cascade={CascadeType.PERSIST, CascadeType.MERGE})
-	private Collection<Turma> turmas = new ArrayList<Turma>();
+    @ManyToMany(mappedBy = "alunos", cascade = { CascadeType.PERSIST,
+            CascadeType.MERGE })
+    private Collection<Turma> turmas = new ArrayList<Turma>();
 
-	public Collection<Turma> getTurmas() {
-		return turmas;	
-	}
+    /**
+     * @return lista das turmas em que o aluno está matriculado
+     */
+    public Collection<Turma> getTurmas() {
+        return turmas;
+    }
 
-	public void setTurmas(Collection<Turma> turmas) {
-		this.turmas = turmas;
-	}
+    /**
+     * @param turmas
+     *            lista das turmas em que o aluno está matriculado.
+     */
+    public void setTurmas(Collection<Turma> turmas) {
+        this.turmas = turmas;
+    }
 }

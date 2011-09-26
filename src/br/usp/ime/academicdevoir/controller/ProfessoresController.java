@@ -15,6 +15,10 @@ public class ProfessoresController {
 		this.professorDao = professorDao;
 	}
 
+	public void menu() {
+	    
+	}
+	
 	public void home() {
 	}
 

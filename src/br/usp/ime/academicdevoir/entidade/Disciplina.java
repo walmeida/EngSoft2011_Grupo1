@@ -9,36 +9,58 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
+/**
+ * Entidade que representa uma disciplina cadastrada no sistema.
+ * @author Vinicius Rezende
+ */
 public class Disciplina {
-	@Id
-	@GeneratedValue
-	private Long id;
-	private String nome;
-	@OneToMany(mappedBy = "disciplina")
-	private Collection<Turma> turmas = new ArrayList<Turma>();
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String nome;
+    @OneToMany(mappedBy = "disciplina")
+    private Collection<Turma> turmas = new ArrayList<Turma>();
 
-	public Long getId() {
-		return id;
-	}
+    /**
+     * @return id da disciplina
+     */
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    /**
+     * @param id id da disciplina
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    /**
+     * @return nome da disciplina
+     */
+    public String getNome() {
+        return nome;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    /**
+     * @param nome nome da disciplina
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public Collection<Turma> getTurmas() {
-		return turmas;
-	}
+    /**
+     * @return lista de turmas da disciplina
+     */
+    public Collection<Turma> getTurmas() {
+        return turmas;
+    }
 
-	public void setTurmas(Collection<Turma> turmas) {
-		this.turmas = turmas;
-	}
+    /**
+     * @param turmas lista de turmas da disciplina
+     */
+    public void setTurmas(Collection<Turma> turmas) {
+        this.turmas = turmas;
+    }
 
 }

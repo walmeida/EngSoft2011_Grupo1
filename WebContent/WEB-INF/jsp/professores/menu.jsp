@@ -40,18 +40,15 @@ text-align: center;
 <body>
     <h1>Academic Devoir</h1>
     <h2>Grupo 1 - Engenharia de Software</h2>
-    <br/><br/>
-    <form action='../disciplinas/cadastro' method="get">
-        <input type="submit" value="Cadastrar disciplina"/>
-    </form>
-    <form action='../turmas/cadastro' method="get">
-        <input type="submit" value="Cadastrar Turma"/>
-    </form>
-    <form action='../questoes' method="get">
-        <input type="submit" value="Cadastrar questão"/>
-    </form>
-    <form action='../turmas/menuProfessor' method="get">
-        <input type="submit" value="Meus cursos"/>
-    </form>
+	<br/><br/>
+    <form action='cadastro' method="get">
+	   <input type="submit" value="Adicionar professor"/>
+	</form>
+	<form action='lista' method="get">
+	   <input type="submit" value="Listar professor"/>
+	</form>
+    <form action='remocao' method="get">
+	   <input type="submit" value="Remover professor"/>
+	</form>
 </body>
 </html>
