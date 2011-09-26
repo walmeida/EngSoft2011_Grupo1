@@ -56,7 +56,7 @@ public class ProfessorDao {
 		try {
 			Connection conexao = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/engsoft", "root", "root123");
-			String s = "UPDATE Usuario SET DTYPE='Professor' WHERE id=5";
+			String s = "UPDATE Usuario SET DTYPE='professor' WHERE id=7";
 			PreparedStatement comando = conexao.prepareStatement(s);
 			comando.execute();
 			conexao.close();
