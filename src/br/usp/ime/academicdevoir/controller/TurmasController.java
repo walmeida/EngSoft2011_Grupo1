@@ -32,20 +32,16 @@ public class TurmasController {
 
     }
 
-    public void menuProfessor() {
-        result.redirectTo(TurmasController.class).lista(turmaDao
-                .buscaTurmasDoProfessor((Professor) usuarioSession.getUsuario()));
+    public void listaTurmasDoProfessor() {
+        result.include("listaDeTurmas",
+                turmaDao.buscaTurmasDoProfessor((Professor) usuarioSession
+                        .getUsuario()));
+        result.redirectTo(TurmasController.class).lista();
     }
     
     public void lista() {
         result.include("listaDeTurmas", turmaDao.getLista());
     }
-    
-    @Path ("/professor/turmas")
-    public void lista(List<Turma> listaDeTurmas) {
-        result.include("listaDeTurmas", listaDeTurmas);
-    }
-
 
     public void cadastro() {
     }

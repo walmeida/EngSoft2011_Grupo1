@@ -50,7 +50,7 @@ text-align: center;
     <form action='../questoes' method="get">
         <input type="submit" value="Cadastrar questão"/>
     </form>
-    <form action='../turmas/menuProfessor' method="get">
+    <form action='../turmas/listaTurmasDoProfessor' method="get">
         <input type="submit" value="Meus cursos"/>
     </form>
 </body>
