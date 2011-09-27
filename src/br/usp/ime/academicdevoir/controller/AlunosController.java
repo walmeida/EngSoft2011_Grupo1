@@ -53,11 +53,11 @@ public class AlunosController {
 	}
 
 	public void matricula() {
+		result.include("alunoDao", alunoDao);
 	}
 
-	public void inscreve(Long idAluno, Long idTurma) {
-		Aluno a = alunoDao.carregaPelaId(idAluno);
-		alunoDao.inscreve(a, idTurma);
+	public void inscreve(Long idTurma) {
+		alunoDao.inscreve(idTurma);
 		result.redirectTo(AlunosController.class).lista();
 	}
 }

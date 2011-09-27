@@ -25,9 +25,10 @@ font-size:18px;
 	<h1>Inscrever-se em Turma</h1>
 	<p>Coloque o Id da turma na qual quer se matricular</p>
 	<form action='inscreve'>
-		Id do Aluno: <input type="text" name="idAluno"/><br/>
+	 Olá, ${usuarioSession.usuario.nome}, coloque a id da turma na qual vc quer se matricular<br/>
+		<!-- Id do Aluno: <input type="text" name="idAluno"/><br/> -->
 		Id da Turma: <input type="text" name="idTurma"/><br/>
 		<input type="submit" value="OK"/>
 	</form>
-</body>
+	</body>
 </html>

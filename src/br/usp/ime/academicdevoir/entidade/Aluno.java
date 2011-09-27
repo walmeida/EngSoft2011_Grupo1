@@ -6,6 +6,7 @@ import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 
 @Entity
@@ -15,22 +16,22 @@ import javax.persistence.ManyToMany;
  * @author Vinicius Rezende
  */
 public class Aluno extends Usuario {
-    @ManyToMany(mappedBy = "alunos", cascade = { CascadeType.PERSIST,
-            CascadeType.MERGE })
-    private Collection<Turma> turmas = new ArrayList<Turma>();
+	@ManyToMany(mappedBy = "alunos", cascade = { CascadeType.PERSIST,
+			CascadeType.MERGE }, fetch=FetchType.EAGER)
+	private Collection<Turma> turmas = new ArrayList<Turma>();
 
-    /**
-     * @return lista das turmas em que o aluno está matriculado
-     */
-    public Collection<Turma> getTurmas() {
-        return turmas;
-    }
+	/**
+	 * @return lista das turmas em que o aluno está matriculado
+	 */
+	public Collection<Turma> getTurmas() {
+		return turmas;
+	}
 
-    /**
-     * @param turmas
-     *            lista das turmas em que o aluno está matriculado.
-     */
-    public void setTurmas(Collection<Turma> turmas) {
-        this.turmas = turmas;
-    }
+	/**
+	 * @param turmas
+	 *            lista das turmas em que o aluno está matriculado.
+	 */
+	public void setTurmas(Collection<Turma> turmas) {
+		this.turmas = turmas;
+	}
 }

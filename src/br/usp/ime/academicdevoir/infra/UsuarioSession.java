@@ -25,5 +25,4 @@ public class UsuarioSession {
 	public void logout() {
 		usuario = null;
 	}
-
 }
