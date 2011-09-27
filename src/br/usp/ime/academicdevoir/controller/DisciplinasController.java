@@ -35,7 +35,7 @@ public class DisciplinasController {
 
 	public void altera(Long id, String novoNome) {
 		Disciplina d = disciplinaDao.carregaPelaId(id);
-		d.setNome(novoNome);
+		if (!novoNome.equals("")) d.setNome(novoNome);
 		disciplinaDao.alteraDisciplina(d);
 		result.redirectTo(DisciplinasController.class).lista();
 	}

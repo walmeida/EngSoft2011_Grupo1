@@ -36,9 +36,9 @@ public class AlunosController {
 	public void altera(Long id, String novoNome, String novoEmail,
 			String novaSenha) {
 		Aluno a = alunoDao.carregaPelaId(id);
-		a.setNome(novoNome);
-		a.setEmail(novoEmail);
-		a.setSenha(novaSenha);
+		if (!novoNome.equals("")) a.setNome(novoNome);
+		if (!novoEmail.equals("")) a.setEmail(novoEmail);
+		if (!novaSenha.equals("")) a.setSenha(novaSenha);
 		alunoDao.alteraAluno(a);
 		result.redirectTo(AlunosController.class).lista();
 	}

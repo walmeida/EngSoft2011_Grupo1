@@ -39,9 +39,9 @@ public class ProfessoresController {
 
 	public void altera(Long id, String novoNome, String novoEmail, String novaSenha) {
 		Professor p = professorDao.carregaPelaId(id);
-		p.setNome(novoNome);
-		p.setEmail(novoEmail);
-		p.setSenha(novaSenha);
+		if (!novoNome.equals("")) p.setNome(novoNome);
+		if (!novoEmail.equals("")) p.setEmail(novoEmail);
+		if (!novaSenha.equals("")) p.setSenha(novaSenha);
 		professorDao.alteraProfessor(p);
 		result.redirectTo(ProfessoresController.class).lista();
 	}

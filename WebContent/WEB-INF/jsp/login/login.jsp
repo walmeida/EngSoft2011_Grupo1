@@ -4,36 +4,7 @@
 <html>
 <head><title>Academic Devoir</title></head>
 <style type="text/css">
-body
-{
-background-color:#f0ecc6;
-}
-h1 
-{
-color: black;
-text-align: center;
-font-size: 40px;
-font-family:"Times New Roman";
-font-style: italic;
-font-variant: small-caps;
-}
-h2
-{
-color: black;
-text-align: center;
-font-size: 20px;
-font-family:"Times New Roman";
-}
-
-legend 
-{
-color: #8c550e;
-}
-form {
-margin: 3em auto;
-width: 25%;
-}
-
+<%@ include file="../css/formatacao.css" %>
 </style> 
 
 <body>
