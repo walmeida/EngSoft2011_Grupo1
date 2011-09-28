@@ -6,6 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
+import br.usp.ime.academicdevoir.infra.Privilegio;
+
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class Usuario {
@@ -16,6 +18,7 @@ public class Usuario {
 	private String login;
 	private String senha;
 	private String email;
+	private Privilegio privilegio;
 
 	public Long getId() {
 		return id;
@@ -46,6 +49,12 @@ public class Usuario {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public Privilegio getPrivilegio() {
+		return privilegio;
+	}
+	public void setPrivilegio(Privilegio privilegio) {
+		this.privilegio = privilegio;
 	}
 
 }
