@@ -55,7 +55,7 @@ font-family:"Times New Roman";
         </tr>
     </thead>
     <tbody>
-        <c:forEach items="${alunoDao.lista}" var="aluno">
+        <c:forEach items="${listaDeAlunos}" var="aluno">
             <tr>
                 <td>${aluno.id}</td>
                 <td>${aluno.nome}</td>

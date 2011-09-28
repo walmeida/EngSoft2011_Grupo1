@@ -12,17 +12,19 @@ import br.com.caelum.vraptor.Result;
 import br.usp.ime.academicdevoir.controller.ProfessoresController;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
 import br.usp.ime.academicdevoir.entidade.Professor;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 public class ProfessoresControllerTeste {
     private ProfessoresController profC;
     private Result result;
     private ProfessorDao professordao;
+    private UsuarioSession usuarioSession;
 
     @Before
     public void SetUp() {
         result = mock(Result.class);
         professordao = mock(ProfessorDao.class);
-        profC = new ProfessoresController(result, professordao);
+        profC = new ProfessoresController(result, professordao, usuarioSession);
         when(result.redirectTo(ProfessoresController.class)).thenReturn(profC);
     }
 

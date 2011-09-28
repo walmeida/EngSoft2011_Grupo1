@@ -4,15 +4,18 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
 import br.usp.ime.academicdevoir.entidade.Professor;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 @Resource
 public class ProfessoresController {
 	private final Result result;
 	private ProfessorDao professorDao;
-
-	public ProfessoresController(Result result, ProfessorDao professorDao) {
+	private UsuarioSession usuarioSession;
+	
+	public ProfessoresController(Result result, ProfessorDao professorDao, UsuarioSession usarioSession) {
 		this.result = result;
 		this.professorDao = professorDao;
+		this.usuarioSession = usarioSession;
 	}
 
 	public void menu() {
@@ -20,6 +23,7 @@ public class ProfessoresController {
 	}
 	
 	public void home() {
+	    result.include("professor", usuarioSession.getUsuario());
 	}
 
 	public void lista() {

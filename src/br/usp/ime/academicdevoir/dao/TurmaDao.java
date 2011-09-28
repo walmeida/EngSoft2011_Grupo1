@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import br.com.caelum.vraptor.ioc.Component;
@@ -60,7 +61,7 @@ public class TurmaDao {
     @SuppressWarnings("unchecked")
     public List<Turma> buscaTurmasDoProfessor(Professor professor) {
         return session.createCriteria(Turma.class)
-        .add(Restrictions.like("professor", professor))
+        .add(Restrictions.like("professor", professor)).addOrder(Order.asc("disciplina"))
         .list();
     }
 }

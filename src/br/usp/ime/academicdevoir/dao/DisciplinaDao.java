@@ -7,12 +7,13 @@ import org.hibernate.Transaction;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.usp.ime.academicdevoir.entidade.Disciplina;
+import br.usp.ime.academicdevoir.entidade.Turma;
 
 @Component
 public class DisciplinaDao {
 
 	private final Session session;
-
+	
 	public DisciplinaDao(Session session) {
 		this.session = session;
 	}

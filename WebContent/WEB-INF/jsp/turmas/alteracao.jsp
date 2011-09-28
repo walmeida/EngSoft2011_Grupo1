@@ -1,8 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<h1>Academic Devoir</h1>
-<h2>Grupo 1 - Engenharia de Software</h2>
+<title>Academic Devoir</title>>
 </head>
 <style type="text/css">
 body
@@ -38,6 +37,8 @@ font-family:"Times New Roman";
 
 </style> 
 <body>
+    <h1>Academic Devoir</h1>
+    <h2>Grupo 1 - Engenharia de Software</h2>
 	<h4>Alterar disciplina</h4>
 	<form action='altera'>	
 	<fieldset><br/>	

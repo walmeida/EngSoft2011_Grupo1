@@ -43,9 +43,9 @@ width: 14%;
 	<h4>Cadastrar nova turma</h4>
 	<form action='cadastra'>
 	<fieldset><br/>
+		<input type="hidden" name="idProfessor", value="${idProfessor }"/>
 		Nome: <br/><input type="text" size="30" name="nova.nome"/><br/>
-		Id do Professor: <br/><input type="text" size="30" name="idProfessor"/><br/>
-		Id da Disciplina: <br/><input type="text" size="30" name="idDisciplina"/><br/><br/>
+		Disciplina: <br/><input type="text" size="30" name="idDisciplina"/><br/><br/>
 	<input type="submit" value="Enviar"/>
 	</fieldset>
 	</form>
