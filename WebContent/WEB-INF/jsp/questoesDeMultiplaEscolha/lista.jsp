@@ -61,7 +61,12 @@ font-family:"Times New Roman";
 						<td>${questao.id }</td>
 						<td>${questao.enunciado }</td>
 						<td>
-							<c:forEach items="${questao.alternativas }" var="alternativa">${alternativa }<br/></c:forEach></td>
+							<ol>
+								<c:forEach items="${questao.alternativas }" begin="0" var="alternativa">
+									<li>${alternativa }</li><br/>
+								</c:forEach>
+							</ol>
+						</td>
 						<td>${questao.resposta }</td>
 						<td><a href="<c:url value="/questoes/mult/${questao.id }"/>">Alterar</a></td>
 						<td>

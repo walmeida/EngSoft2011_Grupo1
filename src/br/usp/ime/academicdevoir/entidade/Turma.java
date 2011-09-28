@@ -2,9 +2,11 @@ package br.usp.ime.academicdevoir.entidade;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
@@ -25,7 +27,10 @@ public class Turma {
 	private Collection<Aluno> alunos = new ArrayList<Aluno>();
 	@ManyToOne
 	private Disciplina disciplina;
-	
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "turma_listas", joinColumns = @JoinColumn(name = "id_turma"), inverseJoinColumns = @JoinColumn(name = "id_lista"))
+	private List<ListaDeExercicios> listasDeExercicios;
 
 	public Disciplina getDisciplina() {
 		return disciplina;
@@ -65,6 +70,14 @@ public class Turma {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public List<ListaDeExercicios> getListas() {
+		return listasDeExercicios;
+	}
+
+	public void setListas(List<ListaDeExercicios> listas) {
+		this.listasDeExercicios = listas;
 	}
 
 }

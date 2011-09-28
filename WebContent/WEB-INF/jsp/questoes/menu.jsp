@@ -16,6 +16,7 @@ import="java.sql.*" errorPage="" %>
 		<a href="<c:url value="/questoes/mult"/>">Múltipla Escolha</a>
 		<a href="<c:url value="/questoes/texto"/>">Texto</a>
 		<a href="<c:url value="/questoes/submissao"/>">Submissão</a>
+		<a href="<c:url value="/listasDeExercicios"/>">Listas</a>
 		<br/>
 	</div>
 </body>

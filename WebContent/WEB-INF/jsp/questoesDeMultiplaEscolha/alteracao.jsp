@@ -70,45 +70,51 @@ width: 62%;
 				<label for="enunciado">Enunciado:</label><br/>
 					<textarea id="enunciado" rows= "5" cols="80" name="questao.enunciado">${questao.enunciado }</textarea>
 				<br/>
-				<c:set var="contador" value="2"/>
+				<c:set var="iteracao" value="2"/>
 				<select name="numeroDeAlternativas">
 					<c:forEach begin="2" end="10" step="1">
-						<c:if test="${contador eq numeroDeAlternativas }">
-							<option class="seletorDeAlternativas" selected="selected" value="${contador }">${contador }</option>
-						</c:if>
-						<c:if test="${contador ne numeroDeAlternativas }">
-							<option class="seletorDeAlternativas" value="${contador }">${contador }</option>
-						</c:if>
+						<c:choose>
+							<c:when test="${iteracao eq numeroDeAlternativas }">
+								<option class="seletorDeAlternativas" selected="selected" value="${iteracao }">${iteracao }</option>
+							</c:when>
+							<c:otherwise>
+								<option class="seletorDeAlternativas" value="${iteracao }">${iteracao }</option>
+							</c:otherwise>
+						</c:choose>
 						
-						<c:set var="contador" value="${contador+1 }"/>
+						<c:set var="iteracao" value="${iteracao+1 }"/>
 					</c:forEach>
 				</select>
 				<br/>
 				<label for="alternativa[0]"></label><br/>
-					<c:if test="${questao.resposta eq 1 }">
-						<input id="resposta0" type="radio" checked="checked" name="questao.resposta" value="1"></input>
-					</c:if>
-					<c:if test="${questao.resposta ne 1 }">
-						<input id="resposta0" type="radio" name="questao.resposta" value="1"></input>
-					</c:if>
-					<input id="alternativa0" type="text" size="100" name="alternativasEnviadas[0]" value="${alternativas[0] }"></input>
-					<c:set var="contador" value="1"/>
-					<c:set var="valorResposta" value="2"/>	
-					<br/>			
-				<c:forEach begin="1" end="${numeroDeAlternativas-1 }" step="1">
-					<label for="alternativa[${contador }]"></label><br/>
-						<c:if test="${questao.resposta eq valorResposta }">
-							<input id="resposta${contador }" type="radio" checked="checked" name="questao.resposta" value="${valorResposta }"></input>
-						</c:if>
-						<c:if test="${questao.resposta ne valorResposta }">
-							<input id="resposta${contador }" type="radio" name="questao.resposta" value="${valorResposta }"></input>
-						</c:if>
-						<input id="alternativa${contador }" type="text" size="100" name="alternativasEnviadas[${contador }]" value="${alternativas[contador] }"></input>
-						<br/>					
-						<c:set var="valorResposta" value="${valorResposta*2 }"/>
-						<c:set var="contador" value="${contador+1 }"/>
+					<c:choose>
+						<c:when test="${questao.resposta eq 1 }">
+							<input id="resposta0" type="radio" checked="checked" name="questao.resposta" value="1"></input>
+						</c:when>
+						<c:otherwise>
+							<input id="resposta0" type="radio" name="questao.resposta" value="1"></input>
+						</c:otherwise>
+					</c:choose>
+						<input id="alternativa0" type="text" size="100" name="alternativasEnviadas[]" value="${alternativas[0] }"></input>
+
+				<c:set var="valorResposta" value="2"/>
+				<br/>
+				<c:forEach begin="1" end="${numeroDeAlternativas-1 }" step="1" varStatus="iteracao">
+					<label for="alternativa[${iteracao.index }]"></label><br/>
+						<c:choose>
+							<c:when test="${questao.resposta eq valorResposta }">
+								<input id="resposta${iteracao.index }" type="radio" checked="checked" name="questao.resposta" value="${valorResposta }"></input>
+							</c:when>
+							<c:otherwise>
+								<input id="resposta${iteracao.index }" type="radio" name="questao.resposta" value="${valorResposta }"></input>
+							</c:otherwise>
+						</c:choose>
+						<input id="alternativa${iteracao.index }" type="text" size="100" name="alternativasEnviadas[]" value="${alternativas[iteracao.index] }"></input>
+					<br/>
+					<c:set var="valorResposta" value="${valorResposta*2 }"/>
 				</c:forEach>
-				<button type="submit" name="_method" value="put">Enviar</button>
+				<br/>
+				<button type="submit" name="_method" value="put">Salvar Alterações</button>
 			</fieldset>
 		</form>
 		<br/>
