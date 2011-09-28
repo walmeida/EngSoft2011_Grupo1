@@ -12,9 +12,9 @@
 	<h2>Grupo 1 - Engenharia de Software</h2>
 	<div id="container">
 		
-		<!-- <c:forEach var="error" items="${errors}">
+		<c:forEach var="error" items="${errors}">
     		 <li style="color:red"> ${error.category} - ${error.message}</li>
-		</c:forEach> -->
+		</c:forEach>
 		
 		<c:choose>
 			<c:when test="${empty usuarioSession.usuario.nome}">

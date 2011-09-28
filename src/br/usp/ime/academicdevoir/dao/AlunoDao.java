@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import br.com.caelum.vraptor.ioc.Component;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.Turma;
+import br.usp.ime.academicdevoir.infra.Criptografia;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 @Component
@@ -23,9 +24,12 @@ public class AlunoDao {
 	}
 
 	public void salvaAluno(Aluno aluno) {
-		Transaction tx = session.beginTransaction();
-		session.save(aluno);
-		tx.commit();
+			// Criptografando a senha
+			aluno.setSenha(new Criptografia().geraMd5(aluno.getSenha()));
+	
+			Transaction tx = session.beginTransaction();
+			session.save(aluno);
+			tx.commit();
 	}
 
 	public void alteraAluno(Aluno aluno) {

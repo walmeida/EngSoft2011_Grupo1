@@ -7,6 +7,7 @@ import org.hibernate.criterion.Restrictions;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.usp.ime.academicdevoir.entidade.Usuario;
+import br.usp.ime.academicdevoir.infra.Criptografia;
 
 @Component
 public class UsuarioDao {
@@ -26,7 +27,10 @@ public class UsuarioDao {
         
         if (user == null) return null;
         
-        if(user.get(0).getSenha().equals(senha)) return user.get(0);
+        // Gerando a senha criptografada para comparar
+        String senhaCripto = new Criptografia().geraMd5(senha);
+        
+        if(user.get(0).getSenha().equals(senhaCripto)) return user.get(0);
         
         return null;
         
