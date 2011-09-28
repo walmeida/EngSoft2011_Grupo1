@@ -52,7 +52,7 @@ display: inline;
 	<div>
 		<%@ include file="../questoes/menu.jsp" %>
 	</div>
-	
+
 	<div>
 		<br/>
 		<form action="<c:url value="/questoes/vouf/${questao.id }" />" method="post" accept-charset="us-ascii">
@@ -72,7 +72,7 @@ display: inline;
 						<input id="falso" type="radio" checked="checked" name="questao.resposta" value="false"/><p>Falso</p>
 					</c:if>
 				<br/><br/>
-				<button type="submit" name="_method" value="put">Enviar</button>
+				<button type="submit" name="_method" value="put">Salvar Alterações</button>
 			</fieldset>					
 		</form>
 		<br/>

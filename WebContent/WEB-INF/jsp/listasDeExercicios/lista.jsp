@@ -40,42 +40,19 @@ font-family:"Times New Roman";
 	<div id="menu">
 		<%@ include file="../questoes/menu.jsp" %><br/>
 	</div>
-	
-	<h3>Questões de Texto</h3>
 		
+	<h3>Listas de Exercícios</h3>
+	
 	<div>
-		<table>
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Enunciado</th>
-					<th>Resposta</th>
-					<th>Alterar</th>
-					<th>Remover</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${lista }" var="questao">
-					<tr>
-						<td>${questao.id }</td>
-						<td>${questao.enunciado }</td>
-						<td>${questao.resposta }</td>
-						<td><a href="<c:url value="/questoes/texto/${questao.id }"/>">Alterar</a></td>
-						<td>
-							<form action="<c:url value="/questoes/texto/${questao.id }"/>" method="post">
-								<fieldset class="fieldsetSemFormatacao">
-									<button name="_method" value="delete">Remover</button>
-								</fieldset>
-							</form>
-						</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		</div>
-	<form action="<c:url value="/questoes/texto/cadastro"/>">
+		<ul>
+			<c:forEach items="${listaDeListas }" var="lista">
+				<li><a href="<c:url value="/listasDeExercicios/${lista.id }"/>">${lista.nome }</a></li>
+			</c:forEach>
+		</ul>
+	</div>	
+	<form action="<c:url value="/listasDeExercicios/cadastro"/>">
 		<fieldset class="fieldsetSemFormatacao">
-			<input type="submit" value="Cadastrar nova questão"></input>
+			<input type="submit" value="Cadastrar nova lista"></input>
 		</fieldset>
 	</form>	
 </body>

@@ -1,11 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<h1>Academic Devoir</h1>
-<h2>Grupo 1 - Engenharia de Software</h2>
-</head>
+<html>
+<head><title>Academic Devoir</title></head>
 <style type="text/css">
 body
 {
@@ -35,34 +32,24 @@ font-family:"Times New Roman";
 }
 </style>
 <body>
+    <h1>Academic Devoir</h1>
+    <h2>Grupo 1 - Engenharia de Software</h2>
 	<h4>Lista de Turmas</h4>
 	<table>
-    <thead>
-        <tr>
-        <th>id</th>
-        <th>Nome</th>
-        </tr>
-    </thead>
-    <tbody>
         <c:forEach items="${listaDeTurmas}" var="turma">
             <tr>
-                <td>${turma.id}</td>
-                <td>${turma.nome}</td>
+                <td>
+                    <a href="<c:url value="/turmas/home/${turma.id }"/>">
+                        ${turma.disciplina.nome} - ${turma.nome} </a>
+                </td>
             </tr>
         </c:forEach>
         <form action='cadastro'>
         	<input type="submit" value="Inserir"/>
-        </form>
-        <form action='alteracao'>
-        	<input type="submit" value="Alterar"/>
-        </form>
-        <form action='remocao'>
-        	<input type="submit" value="Excluir"/>
-        </form>
+       	</form>
         <form action='home'>
         	<input type="submit" value="Voltar"/>
         </form>
-    </tbody>
 </table>
 	
 </body>

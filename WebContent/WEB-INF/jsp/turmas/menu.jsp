@@ -51,7 +51,7 @@ text-align: center;
 
 	<div>
 		<br/><br/>
-		<form action="/academic-devoir/turmas/lista">
+		<form action="/academic-devoir/turmas/listaTodas">
 		<input type="submit" value="Listar turmas"></input><br/>
 		</form>
 		<form action="/academic-devoir/turmas/cadastro">

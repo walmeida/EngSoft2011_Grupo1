@@ -62,7 +62,7 @@ width: 62%;
 				<label for="resposta">Resposta:</label><br/>
 					<textarea id="resposta" rows= "5" cols="80" name="questao.resposta">${questao.resposta }</textarea>
 				<br/><br/>
-				<button type="submit" name="_method" value="put">Alterar</button>
+				<button type="submit" name="_method" value="put">Salvar Alterações</button>
 			</fieldset>					
 		</form>
 		<br/>
