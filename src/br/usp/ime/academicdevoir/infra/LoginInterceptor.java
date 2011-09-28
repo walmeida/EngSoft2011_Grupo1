@@ -25,7 +25,7 @@ public class LoginInterceptor implements Interceptor {
 
     @SuppressWarnings("unchecked")
     public boolean accepts(ResourceMethod method) {
-        return !Arrays.asList(LoginController.class,AlunosController.class).contains(method.getMethod().getDeclaringClass());
+        return !Arrays.asList(LoginController.class).contains(method.getMethod().getDeclaringClass());
     }
  
     public void intercept(InterceptorStack stack, ResourceMethod method, Object resourceInstance) {

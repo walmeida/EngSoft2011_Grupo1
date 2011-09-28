@@ -5,33 +5,12 @@
 import="java.sql.*" errorPage="" %>
 <html>
 <head>
+<%@ include file="../css/formatacao.css" %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <h1>Academic Devoir</h1>
 <h2>Grupo 1 - Engenharia de Software</h2>
 </head>
-<style type="text/css">
-body
-{
-background-color:#f0ecc6;
-}
-h1 
-{
-color: black;
-text-align: center;
-font-size: 40px;
-font-family:"Times New Roman";
-font-style: italic;
-font-variant: small-caps;
-}
-h2
-{
-color: black;
-text-align: center;
-font-size: 20px;
-font-family:"Times New Roman";
-}
 
-</style>
 <body>
 	<div id="menu">
 		<%@ include file="../questoes/menu.jsp" %><br/>

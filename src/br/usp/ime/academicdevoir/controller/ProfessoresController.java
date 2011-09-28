@@ -4,6 +4,8 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
 import br.usp.ime.academicdevoir.entidade.Professor;
+import br.usp.ime.academicdevoir.infra.Permission;
+import br.usp.ime.academicdevoir.infra.Privilegio;
 
 @Resource
 public class ProfessoresController {
@@ -39,9 +41,9 @@ public class ProfessoresController {
 
 	public void altera(Long id, String novoNome, String novoEmail, String novaSenha) {
 		Professor p = professorDao.carregaPelaId(id);
-		p.setNome(novoNome);
-		p.setEmail(novoEmail);
-		p.setSenha(novaSenha);
+		if (!novoNome.equals("")) p.setNome(novoNome);
+		if (!novoEmail.equals("")) p.setEmail(novoEmail);
+		if (!novaSenha.equals("")) p.setSenha(novaSenha);
 		professorDao.alteraProfessor(p);
 		result.redirectTo(ProfessoresController.class).lista();
 	}
@@ -49,6 +51,7 @@ public class ProfessoresController {
 	public void remocao() {
 	}
 
+	@Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
 	public void remove(final Long id) {
 		Professor professor = professorDao.carregaPelaId(id);
 		professorDao.removeProfessor(professor);

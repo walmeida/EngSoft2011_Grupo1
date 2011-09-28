@@ -46,7 +46,7 @@ width: 30%;
 		Id do aluno a alterar: <br/><input type="text" size="30" name="id" /> <br/>
 		Novo Nome: <br/><input type="text" size="30" name="novoNome"/><br/>
 		Novo E-mail : <br/><input type="text" size="30" name="novoEmail"/><br/>
-		Novo Senha : <br/><input type="password" size="32" name="novaSenha"/><br/><br/>
+		Nova Senha : <br/><input type="password" size="32" name="novaSenha"/><br/><br/>
 	<input type="submit" value="Enviar"/>
 	</fieldset>
 	</form>

@@ -56,7 +56,7 @@ public class TurmasController {
 
     public void altera(Long id, String novoNome) {
         Turma t = turmaDao.carregaPelaId(id);
-        t.setNome(novoNome);
+		if (!novoNome.equals("")) t.setNome(novoNome);
         turmaDao.alteraTurma(t);
         result.redirectTo(TurmasController.class).lista();
     }
