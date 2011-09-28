@@ -4,7 +4,9 @@ import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDeMultiplaEscolhaDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDeSubmissaoDeArquivoDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDeTextoDao;
+import br.usp.ime.academicdevoir.dao.QuestaoDeVouFDao;
 import br.usp.ime.academicdevoir.entidade.Questao;
+import br.usp.ime.academicdevoir.util.TipoDeQuestao;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -18,40 +20,43 @@ public class QuestoesController {
 	private final QuestaoDeMultiplaEscolhaDao questaoDeMultiplaEscolhaDao;
 	private final QuestaoDeSubmissaoDeArquivoDao questaoDeSubmissaoDeArquivoDao;
 	private final QuestaoDeTextoDao questaoDeTextoDao;
+	private final QuestaoDeVouFDao questaoDeVouFDao;
 	private final Result result;
 
 	public QuestoesController(QuestaoDao dao,
 			QuestaoDeMultiplaEscolhaDao questaoDeMultiplaEscolhaDao,
 			QuestaoDeSubmissaoDeArquivoDao questaoDeSubmissaoDeArquivoDao,
-			QuestaoDeTextoDao questaoDeTextoDao, Result result) {
+			QuestaoDeTextoDao questaoDeTextoDao,
+			QuestaoDeVouFDao questaoDeVouFDao, Result result) {
 		this.dao = dao;
 		this.questaoDeMultiplaEscolhaDao = questaoDeMultiplaEscolhaDao;
 		this.questaoDeSubmissaoDeArquivoDao = questaoDeSubmissaoDeArquivoDao;
 		this.questaoDeTextoDao = questaoDeTextoDao;
+		this.questaoDeVouFDao = questaoDeVouFDao;
 		this.result = result;
 	}
 
 	/**
-	 * Recebe um id de questão e retorna um inteiro que representa o seu tipo.
+	 * Recebe um id de questão e retorna o seu tipo.
 	 * 
 	 * @param id
 	 * @return int
 	 */
-	public int tipoDeQuestao(Long id) {
+	public TipoDeQuestao getTipoDeQuestao(Long id) {
 		Object questao;
 		questao = questaoDeMultiplaEscolhaDao.buscaPorId(id);
 		if (questao != null)
-			return 1;
+			return TipoDeQuestao.MULTIPLAESCOLHA;
 		questao = questaoDeSubmissaoDeArquivoDao.buscaPorId(id);
 		if (questao != null)
-			return 2;
+			return TipoDeQuestao.SUBMISSAODEARQUIVO;
 		questao = questaoDeTextoDao.buscaPorId(id);
 		if (questao != null)
-			return 3;
-		questao = questaoDeMultiplaEscolhaDao.buscaPorId(id);
+			return TipoDeQuestao.TEXTO;
+		questao = questaoDeVouFDao.buscaPorId(id);
 		if (questao != null)
-			return 4;
-		return 0;
+			return TipoDeQuestao.VOUF;
+		return TipoDeQuestao.INVALIDA;
 	}
 
 	@Get
@@ -59,11 +64,11 @@ public class QuestoesController {
 	/** 
 	 * Retorna uma questão de múltipla escolha com o id fornecido.
 	 * @param id
-	 * @return QuestaoDeMultiplaEscolha	 * 
+	 * @return QuestaoDeMultiplaEscolha
 	 * */
 	public void altera(Long id) {
-		switch (this.tipoDeQuestao(id)) {
-		case 1:
+		switch (this.getTipoDeQuestao(id)) {
+		case MULTIPLAESCOLHA:
 			result.redirectTo(QuestoesDeMultiplaEscolhaController.class)
 					.alteracao(
 							id,
@@ -72,14 +77,14 @@ public class QuestoesController {
 							questaoDeMultiplaEscolhaDao.carrega(id)
 									.getAlternativas().size());
 			break;
-		case 2:
+		case SUBMISSAODEARQUIVO:
 			result.redirectTo(QuestoesDeSubmissaoDeArquivoController.class)
 					.alteracao(id);
 			break;
-		case 3:
+		case TEXTO:
 			result.redirectTo(QuestoesDeTextoController.class).alteracao(id);
 			break;
-		case 4:
+		case VOUF:
 			result.redirectTo(QuestoesDeVouFController.class).alteracao(id);
 			break;
 		default:

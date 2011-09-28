@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 
 @Entity
-@DiscriminatorValue("aluno")
 /**
  * Entidade que representa um aluno cadastrado no sistema.
  * @author Vinicius Rezende

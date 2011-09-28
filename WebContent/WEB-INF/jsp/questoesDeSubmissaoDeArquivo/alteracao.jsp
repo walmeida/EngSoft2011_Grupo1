@@ -61,7 +61,7 @@ width: 62%;
 				<label for="enunciado">Enunciado:</label><br/>
 					<textarea id="enunciado" rows= "5" cols="80" name="questao.enunciado">${questao.enunciado }</textarea>
 				<br/>
-				<button type="submit" name="_method" value="put">Alterar</button>
+				<button type="submit" name="_method" value="put">Salvar Alterações</button>
 			</fieldset>
 		</form>
 		<br/>

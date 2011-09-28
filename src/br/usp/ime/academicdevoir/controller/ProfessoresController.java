@@ -5,6 +5,8 @@ import br.com.caelum.vraptor.Result;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
 import br.usp.ime.academicdevoir.entidade.Professor;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
+import br.usp.ime.academicdevoir.infra.Permission;
+import br.usp.ime.academicdevoir.infra.Privilegio;
 
 @Resource
 public class ProfessoresController {
@@ -53,6 +55,7 @@ public class ProfessoresController {
 	public void remocao() {
 	}
 
+	@Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
 	public void remove(final Long id) {
 		Professor professor = professorDao.carregaPelaId(id);
 		professorDao.removeProfessor(professor);

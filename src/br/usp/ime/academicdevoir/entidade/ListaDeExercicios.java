@@ -1,25 +1,19 @@
 package br.usp.ime.academicdevoir.entidade;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 @Entity
 /**
@@ -28,104 +22,100 @@ import org.hibernate.annotations.FetchMode;
  */
 public class ListaDeExercicios {
 
-    @Id
-    @GeneratedValue
-    private Long id;
+	@Id
+	@GeneratedValue
+	private Long id;
 
-    private String nome;
+	private String nome;
 
-    private String enunciado;
+	private String enunciado;
 
-    private Integer peso;
+	private Integer peso;
 
-    private Boolean visivel;
+	private Boolean visivel;
 
-    @Temporal(TemporalType.DATE)
-    private Date prazoDeEntrega;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date prazoDeEntrega;
 
-    /*
-     * @ManyToOne(fetch = FetchType.LAZY)
-     * 
-     * @JoinColumn(name = "turma_id")
-     * 
-     * @Fetch(FetchMode.JOIN)
-     * 
-     * @Cascade(CascadeType.SAVE_UPDATE) private Turma turma;
-     */
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "turma_listas", joinColumns = { @JoinColumn(name = "id_lista") }, inverseJoinColumns = { @JoinColumn(name = "id_turma") })
+	private List<Turma> turmas;
 
-    @OneToMany
-    @JoinTable(name = "QuestoesDaLista", joinColumns = @JoinColumn(name = "lista_id"), inverseJoinColumns = @JoinColumn(name = "questaoDaLista_id"))
-    @Cascade(CascadeType.ALL)
-    private List<QuestaoDaLista> questoes = new ArrayList<QuestaoDaLista>();
+	@ElementCollection
+	@CollectionTable(name = "questoesDaLista")
+	private List<QuestaoDaLista> questoes;
 
-    /**
-     * @return id da lista de exercícios
-     */
-    public Long getId() {
-        return id;
-    }
+	/**
+	 * @return id da lista de exercícios
+	 */
+	public Long getId() {
+		return id;
+	}
 
-    /**
-     * @param id id da lista de exercícios
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
+	/**
+	 * @param id
+	 *            id da lista de exercícios
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    /**
-     * @return nome da lista de exercícios
-     */
-    public String getNome() {
-        return nome;
-    }
+	/**
+	 * @return nome da lista de exercícios
+	 */
+	public String getNome() {
+		return nome;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public String getEnunciado() {
-        return enunciado;
-    }
+	public String getEnunciado() {
+		return enunciado;
+	}
 
-    public void setEnunciado(String enunciado) {
-        this.enunciado = enunciado;
-    }
+	public void setEnunciado(String enunciado) {
+		this.enunciado = enunciado;
+	}
 
-    public Integer getPeso() {
-        return peso;
-    }
+	public Integer getPeso() {
+		return peso;
+	}
 
-    public void setPeso(Integer peso) {
-        this.peso = peso;
-    }
+	public void setPeso(Integer peso) {
+		this.peso = peso;
+	}
 
-    public Boolean getVisivel() {
-        return visivel;
-    }
+	public Boolean getVisivel() {
+		return visivel;
+	}
 
-    public void setVisivel(Boolean visivel) {
-        this.visivel = visivel;
-    }
+	public void setVisivel(Boolean visivel) {
+		this.visivel = visivel;
+	}
 
-    /*
-     * public Turma getTurma() { return turma; }
-     * 
-     * public void setTurma(Turma turma) { this.turma = turma; }
-     */
+	public List<Turma> getTurmas() {
+		return turmas;
+	}
 
-    public Date getPrazoDeEntrega() {
-        return prazoDeEntrega;
-    }
+	public void setTurmas(List<Turma> turmas) {
+		this.turmas = turmas;
+	}
 
-    public void setPrazoDeEntrega(Date prazoDeEntrega) {
-        this.prazoDeEntrega = prazoDeEntrega;
-    }
+	public Date getPrazoDeEntrega() {
+		return prazoDeEntrega;
+	}
 
-    public List<QuestaoDaLista> getQuestoes() {
-        return questoes;
-    }
+	public void setPrazoDeEntrega(Date prazoDeEntrega) {
+		this.prazoDeEntrega = prazoDeEntrega;
+	}
 
-    public void setQuestoes(List<QuestaoDaLista> questoes) {
-        this.questoes = questoes;
-    }
+	public List<QuestaoDaLista> getQuestoes() {
+		return questoes;
+	}
+
+	public void setQuestoes(List<QuestaoDaLista> questoes) {
+		this.questoes = questoes;
+	}
 }
