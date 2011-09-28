@@ -8,6 +8,7 @@ import br.usp.ime.academicdevoir.infra.UsuarioSession;
 import br.usp.ime.academicdevoir.infra.Permission;
 import br.usp.ime.academicdevoir.infra.Privilegio;
 
+@Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
 @Resource
 public class ProfessoresController {
 	private final Result result;
@@ -55,7 +56,6 @@ public class ProfessoresController {
 	public void remocao() {
 	}
 
-	@Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
 	public void remove(final Long id) {
 		Professor professor = professorDao.carregaPelaId(id);
 		professorDao.removeProfessor(professor);

@@ -1,13 +1,11 @@
 package br.usp.ime.academicdevoir.controller;
 
-import java.util.List;
-
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.usp.ime.academicdevoir.dao.AlunoDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
-import br.usp.ime.academicdevoir.entidade.Professor;
 import br.usp.ime.academicdevoir.entidade.Turma;
+import br.usp.ime.academicdevoir.infra.Public;
 
 @Resource
 /**
@@ -52,6 +50,7 @@ public class AlunosController {
 	/**
      * Método associado ao .jsp que lista os alunos cadastrados.
      */
+	@Public
 	public void cadastro() {
 	}
 

@@ -8,8 +8,10 @@ import br.com.caelum.vraptor.Result;
 import br.usp.ime.academicdevoir.dao.UsuarioDao;
 import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Privilegio;
+import br.usp.ime.academicdevoir.infra.Public;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
+@Public
 @Resource
 public class LoginController {
 	private final Result result;
@@ -27,14 +29,13 @@ public class LoginController {
 	public void index() {
 		result.redirectTo(LoginController.class).login();
 	}
-
+		
 	@Get
 	@Path("/login")
 	public void login() {
 	}
 
-	@Post
-	@Path("/autenticar")
+	@Post("/autenticar")
 	public void login(Usuario usuario) {
 		Usuario user = usuarioDao.fazLogin(usuario.getLogin(),
 				usuario.getSenha());
@@ -59,6 +60,11 @@ public class LoginController {
 	public void logout() {
 		usuarioSession.logout();
 		result.redirectTo(this).login();
+	}
+	
+	
+	public void acessoNegado(){
+		
 	}
 
 }
