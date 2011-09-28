@@ -57,6 +57,7 @@ public class AlunosController {
 	/**
 	 * @param novo aluno a ser cadastrado no sitema
 	 */
+	@Public
 	public void cadastra(final Aluno novo) {
 		alunoDao.salvaAluno(novo);
 		result.redirectTo(AlunosController.class).lista();

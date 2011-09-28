@@ -37,6 +37,7 @@ public class LoginInterceptor implements Interceptor {
 	public boolean accepts(ResourceMethod method) {
 		return !(method.getMethod().isAnnotationPresent(Public.class) || method
 				.getResource().getType().isAnnotationPresent(Public.class));
+		//return false;
 	}
 
 	public void intercept(InterceptorStack stack, ResourceMethod method,
