@@ -13,7 +13,7 @@ import br.com.caelum.vraptor.Validator;
 
 @Resource
 public class QuestoesDeSubmissaoDeArquivoController {
-	
+
 	private QuestaoDeSubmissaoDeArquivoDao dao;
 	private final Result result;
 	private Validator validator;
@@ -34,7 +34,7 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 */
 	public void cadastra(final QuestaoDeSubmissaoDeArquivo questao) {
 		validator.validate(questao);
-		validator.onErrorUsePageOf(this).cadastro();
+		validator.onErrorUsePageOf(QuestoesController.class).cadastro();
 
 		dao.salva(questao);
 		result.redirectTo(this).lista();
@@ -48,7 +48,7 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 * @return QuestaoDeSubmissaoDeArquivo 
 	 * */
 	public void alteracao(Long id) {
-		result.include ("questao", dao.carrega(id));
+		result.include("questao", dao.carrega(id));
 	}
 
 	@Put
@@ -77,14 +77,6 @@ public class QuestoesDeSubmissaoDeArquivoController {
 		QuestaoDeSubmissaoDeArquivo questao = dao.carrega(id);
 		dao.remove(questao);
 		result.redirectTo(this).lista();
-	}
-
-	@Get
-	@Path("/questoes/submissao/cadastro")
-	/**
-	 * Redireciona para a página com formulário para cadastro de uma nova questão de submissão de arquivo.
-	 */
-	public void cadastro() {
 	}
 
 	@Get

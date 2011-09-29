@@ -70,7 +70,7 @@ font-family:"Times New Roman";
 			</tbody>
 		</table>
 	</div>
-	<form id="cadastrarQuestao" action="/academic-devoir/questoes/mult/cadastro">
+	<form id="cadastrarQuestao" action="/academic-devoir/questoes/cadastro">
 		<fieldset class="fieldsetSemFormatacao">
 			<input type="submit" value="Cadastrar nova questão"></input>
 		</fieldset>

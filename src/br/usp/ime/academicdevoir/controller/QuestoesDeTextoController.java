@@ -13,7 +13,7 @@ import br.com.caelum.vraptor.Validator;
 
 @Resource
 public class QuestoesDeTextoController {
-	
+
 	private QuestaoDeTextoDao dao;
 	private final Result result;
 	private Validator validator;
@@ -33,7 +33,7 @@ public class QuestoesDeTextoController {
 	 */
 	public void cadastra(final QuestaoDeTexto questao) {
 		validator.validate(questao);
-		validator.onErrorUsePageOf(QuestoesDeTextoController.class).cadastro();
+		validator.onErrorUsePageOf(QuestoesController.class).cadastro();
 
 		dao.salva(questao);
 		result.redirectTo(this).lista();
@@ -75,14 +75,6 @@ public class QuestoesDeTextoController {
 		QuestaoDeTexto questao = dao.carrega(id);
 		dao.remove(questao);
 		result.redirectTo(this).lista();
-	}
-
-	@Get
-	@Path("/questoes/texto/cadastro")
-	/**
-	 * Redireciona para a página com formulário para cadastro de uma nova questão de texto.
-	 */
-	public void cadastro() {
 	}
 
 	@Get

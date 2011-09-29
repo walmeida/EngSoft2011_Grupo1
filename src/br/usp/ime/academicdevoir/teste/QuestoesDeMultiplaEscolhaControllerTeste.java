@@ -43,7 +43,7 @@ public class QuestoesDeMultiplaEscolhaControllerTeste {
     @Test
     public void testeAdiciona() {
         QuestaoDeMultiplaEscolha questao = new QuestaoDeMultiplaEscolha();
-        questoesC.cadastra(questao, new ArrayList<String>());
+        questoesC.cadastra(questao);
 
         verify(validator).validate(questao);
         verify(validator).onErrorUsePageOf(questoesC);
@@ -55,7 +55,7 @@ public class QuestoesDeMultiplaEscolhaControllerTeste {
     public void testeAtualiza() {
         QuestaoDeMultiplaEscolha questao = new QuestaoDeMultiplaEscolha();
         
-        questoesC.altera(questao, new ArrayList<String>());
+        questoesC.altera(questao);
         
         verify(validator).validate(questao);
         verify(validator).onErrorUsePageOf(QuestoesDeMultiplaEscolhaController.class);

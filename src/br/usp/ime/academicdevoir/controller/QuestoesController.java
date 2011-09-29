@@ -66,16 +66,11 @@ public class QuestoesController {
 	 * @param id
 	 * @return QuestaoDeMultiplaEscolha
 	 * */
-	public void altera(Long id) {
+	public void alteracao(Long id) {
 		switch (this.getTipoDeQuestao(id)) {
 		case MULTIPLAESCOLHA:
 			result.redirectTo(QuestoesDeMultiplaEscolhaController.class)
-					.alteracao(
-							id,
-							questaoDeMultiplaEscolhaDao.carrega(id)
-									.getAlternativas(),
-							questaoDeMultiplaEscolhaDao.carrega(id)
-									.getAlternativas().size());
+					.alteracao(id);
 			break;
 		case SUBMISSAODEARQUIVO:
 			result.redirectTo(QuestoesDeSubmissaoDeArquivoController.class)
@@ -105,6 +100,14 @@ public class QuestoesController {
 		result.redirectTo(this).lista();
 	}
 
+	@Get
+	@Path("/questoes/cadastro")
+	/**
+	 * Redireciona para a página com formulário para cadastro de uma nova questão.
+	 */
+	public void cadastro() {
+	}
+	
 	@Get
 	@Path("/questoes")
 	/**

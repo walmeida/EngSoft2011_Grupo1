@@ -60,6 +60,7 @@ public class ListasDeExerciciosController {
 
 		Turma turma;
 		List<Turma> turmas = new ArrayList<Turma>();
+		if(idDasTurmas == null) idDasTurmas = new ArrayList<Long>();
 		for (Long id : idDasTurmas) {
 			turma = turmaDao.carregaPelaId(id);
 			turmas.add(turma);

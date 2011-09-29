@@ -75,7 +75,7 @@ font-family:"Times New Roman";
 			</tbody>
 		</table>
 		</div>	
-	<form action="<c:url value="/questoes/vouf/cadastro"/>">
+	<form action="<c:url value="/questoes/cadastro"/>">
 		<fieldset class="fieldsetSemFormatacao">
 			<input type="submit" value="Cadastrar nova questão"></input>
 		</fieldset>

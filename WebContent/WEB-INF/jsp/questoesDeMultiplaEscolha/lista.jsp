@@ -62,12 +62,25 @@ font-family:"Times New Roman";
 						<td>${questao.enunciado }</td>
 						<td>
 							<ol>
-								<c:forEach items="${questao.alternativas }" begin="0" var="alternativa">
+								<c:set var="respostaCorreta" value="${questao.resposta }"/>
+								<c:set var="achou" value="false"/>
+								<c:forEach items="${questao.alternativas }" begin="0" var="alternativa" varStatus="iteracao">
+									<c:if test="${not achou }">
+										<c:choose>
+											<c:when test="${respostaCorreta % 2 eq 1}">
+												<c:set var="achou" value="true"/>
+												<c:set var="respostaCorreta" value="${iteracao.index+1 }"/>
+											</c:when>
+											<c:otherwise>
+												<c:set var="respostaCorreta" value="${respostaCorreta/2 }"/>
+											</c:otherwise>
+										</c:choose>
+									</c:if>
 									<li>${alternativa }</li><br/>
 								</c:forEach>
 							</ol>
-						</td>
-						<td>${questao.resposta }</td>
+						</td>					
+						<td>${respostaCorreta }</td>
 						<td><a href="<c:url value="/questoes/mult/${questao.id }"/>">Alterar</a></td>
 						<td>
 							<form action="<c:url value="/questoes/mult/${questao.id }"/>" method="post">
@@ -82,7 +95,7 @@ font-family:"Times New Roman";
 			</tbody>
 		</table>
 	</div>	
-	<form action="<c:url value="/questoes/mult/cadastro"/>">
+	<form action="<c:url value="/questoes/cadastro"/>">
 		<fieldset class="fieldsetSemFormatacao">
 			<input type="submit" value="Cadastrar nova questão"></input>
 		</fieldset>

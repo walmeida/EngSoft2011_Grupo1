@@ -1,9 +1,8 @@
 package br.usp.ime.academicdevoir.controller;
 
-import java.util.List;
-
 import br.usp.ime.academicdevoir.dao.QuestaoDeMultiplaEscolhaDao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
+import br.usp.ime.academicdevoir.util.TipoDeQuestao;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -34,13 +33,10 @@ public class QuestoesDeMultiplaEscolhaController {
 	 * no banco de dados.
 	 * @param questao
 	 */
-	public void cadastra(final QuestaoDeMultiplaEscolha questao,
-			final List<String> alternativasEnviadas) {
+	public void cadastra(final QuestaoDeMultiplaEscolha questao) {
 		validator.validate(questao);
-		validator.onErrorUsePageOf(this).cadastro(alternativasEnviadas.size(),
-				questao, alternativasEnviadas);
+		validator.onErrorUsePageOf(QuestoesController.class).cadastro();
 
-		questao.setAlternativas(alternativasEnviadas);
 		dao.salva(questao);
 		result.redirectTo(this).lista();
 	}
@@ -52,17 +48,10 @@ public class QuestoesDeMultiplaEscolhaController {
 	 * @param id
 	 * @return QuestaoDeMultiplaEscolha	 * 
 	 * */
-	public void alteracao(Long id, List<String> alternativasEnviadas,
-			Integer numeroDeAlternativas) {
+	public void alteracao(Long id) {
 		QuestaoDeMultiplaEscolha questao = dao.carrega(id);
-		if (numeroDeAlternativas == null)
-			numeroDeAlternativas = new Integer(questao.getAlternativas().size());
-		if (alternativasEnviadas == null)
-			alternativasEnviadas = questao.getAlternativas();
-
 		result.include("questao", questao);
-		result.include("numeroDeAlternativas", numeroDeAlternativas);
-		result.include("alternativas", alternativasEnviadas);
+		result.include("numeroDeAlternativas", questao.getAlternativas().size());
 	}
 
 	@Put
@@ -71,14 +60,10 @@ public class QuestoesDeMultiplaEscolhaController {
 	 * Verifica se a questão de múltipla escolha fornecida é válida e atualiza no banco de dados.
 	 * @param questao
 	 */
-	public void altera(QuestaoDeMultiplaEscolha questao,
-			List<String> alternativasEnviadas) {
+	public void altera(QuestaoDeMultiplaEscolha questao) {
 		validator.validate(questao);
-		validator.onErrorUsePageOf(QuestoesDeMultiplaEscolhaController.class)
-				.alteracao(questao.getId(), alternativasEnviadas,
-						alternativasEnviadas.size());
+		validator.onErrorUsePageOf(this).alteracao(questao.getId());
 
-		questao.setAlternativas(alternativasEnviadas);
 		dao.atualiza(questao);
 
 		result.redirectTo(this).lista();
@@ -97,21 +82,6 @@ public class QuestoesDeMultiplaEscolhaController {
 	}
 
 	@Get
-	@Path("/questoes/mult/cadastro")
-	/**
-	 * Redireciona para a página com formulário para cadastro de uma nova 
-	 * questão de múltipla escolha.
-	 */
-	public void cadastro(Integer numeroDeAlternativas,
-			QuestaoDeMultiplaEscolha questao, List<String> alternativasEnviadas) {
-		if (numeroDeAlternativas == null)
-			numeroDeAlternativas = new Integer(5);
-		result.include("numeroDeAlternativas", numeroDeAlternativas);
-		result.include("questao", questao);
-		result.include("alternativas", alternativasEnviadas);
-	}
-
-	@Get
 	@Path("/questoes/mult")
 	/**
 	 * Retorna uma lista com todas as questões de múltipla escolha cadastradas 
@@ -119,6 +89,7 @@ public class QuestoesDeMultiplaEscolhaController {
 	 * @return List<QuestaoDeMultiplaEscolha>
 	 */
 	public void lista() {
+		result.include("tipoDaQuestao", TipoDeQuestao.MULTIPLAESCOLHA);
 		result.include("lista", dao.listaTudo());
 	}
 }

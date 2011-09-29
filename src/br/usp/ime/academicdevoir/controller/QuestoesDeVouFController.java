@@ -33,7 +33,7 @@ public class QuestoesDeVouFController {
 	 */
 	public void cadastra(final QuestaoDeVouF questao) {
 		validator.validate(questao);
-		validator.onErrorUsePageOf(QuestoesDeVouFController.class).cadastro();
+		validator.onErrorUsePageOf(QuestoesController.class).cadastro();
 
 		dao.salva(questao);
 		result.redirectTo(this).lista();
@@ -75,14 +75,6 @@ public class QuestoesDeVouFController {
 		QuestaoDeVouF questao = dao.carrega(id);
 		dao.remove(questao);
 		result.redirectTo(this).lista();
-	}
-
-	@Get
-	@Path("/questoes/vouf/cadastro")
-	/**
-	 * Redireciona para a página com formulário para cadastro de uma nova questão de V ou F.
-	 */
-	public void cadastro() {
 	}
 
 	@Get
