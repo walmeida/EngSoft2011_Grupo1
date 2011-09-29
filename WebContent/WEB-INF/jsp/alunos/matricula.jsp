@@ -2,33 +2,22 @@
 <html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>CRUD</title>
 <style type="text/css">
-body
-{
-background-color:#dfdfdf;
-}
-h1
-{
-color:black;
-text-align:center;
-}
-p
-{
-font-family:"Verdana";
-font-size:18px;
-}
-</style> 
+<%@ include file="../css/formatacao.css" %>
+</style>
+<title>Academic Devoir</title>
 </head>
+
 <body>
-	<h1>Inscrever-se em Turma</h1>
-	<p>Coloque o Id da turma na qual quer se matricular</p>
+	<h1>Academic Devoir</h1>
+	<h2>Grupo 1 - Engenharia de Software</h2>
 	<form action='inscreve'>
-	 Olá, ${usuarioSession.usuario.nome}, coloque a id da turma na qual vc quer se matricular<br/>
+	<fieldset><legend>Inscri&ccedil;&atilde;o:</legend><br/>
+	 Olá, ${usuarioSession.usuario.nome}, coloque a id da turma na qual você quer se matricular.<br/><br/>
 		<!-- Id do Aluno: <input type="text" name="idAluno"/><br/> -->
-		Id da Turma: <input type="text" name="idTurma"/><br/>
+		Id da Turma: <input type="text" size="30" name="idTurma"/><br/><br/>
 		<input type="submit" value="OK"/>
+	</fieldset>
 	</form>
 	</body>
 </html>

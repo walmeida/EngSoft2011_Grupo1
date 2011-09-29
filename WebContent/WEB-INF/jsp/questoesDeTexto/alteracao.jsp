@@ -54,7 +54,7 @@ width: 62%;
 		<br/>
 		<form action="<c:url value="/questoes/texto/${questao.id }" />" method="post" accept-charset="us-ascii">
 			<fieldset>
-				<legend>Alterar questão de texto</legend>
+				<legend>Alterar quest&atilde;o de texto</legend>
 				<br/>
 				<label for="enunciado">Enunciado:</label><br/>
 					<textarea id="enunciado" rows= "5" cols="80" name="questao.enunciado">${questao.enunciado }</textarea>
@@ -62,7 +62,7 @@ width: 62%;
 				<label for="resposta">Resposta:</label><br/>
 					<textarea id="resposta" rows= "5" cols="80" name="questao.resposta">${questao.resposta }</textarea>
 				<br/><br/>
-				<button type="submit" name="_method" value="put">Salvar Alterações</button>
+				<button type="submit" name="_method" value="put">Salvar altera&ccedil;&otilde;es</button>
 			</fieldset>					
 		</form>
 		<br/>
