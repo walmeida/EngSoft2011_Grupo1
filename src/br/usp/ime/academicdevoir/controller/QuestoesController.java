@@ -69,7 +69,7 @@ public class QuestoesController {
 	@Get
 	@Path("/questoes/{id}")
 	/** 
-	 * Retorna uma questão de múltipla escolha com o id fornecido.
+	 * Devolve uma questão de múltipla escolha com o id fornecido.
 	 * @param id
 	 * */
 	public void alteracao(Long id) {
@@ -117,8 +117,7 @@ public class QuestoesController {
 	@Get
 	@Path("/questoes")
 	/**
-	 * Retorna uma lista com todas as questões cadastradas no banco de dados.
-	 * @return List<Questao>
+	 * Devolve uma lista com todas as questões cadastradas no banco de dados.
 	 */
 	public void lista() {
 		result.include("lista", dao.listaTudo());

@@ -24,6 +24,13 @@ public class TurmaDao {
 		this.session = session;
 	}
 
+	/**
+	 * Cadastra a turma de uma determinada disciplina e de um determinado professor no banco de dados.
+	 * 
+	 * @param turma
+	 * @param idDaDisciplina
+	 * @param idDoProfessor
+	 */
 	public void salvaTurma(Turma turma, Long idDaDisciplina, Long idDoProfessor) {
 		Disciplina d = (Disciplina) session.load(Disciplina.class, idDaDisciplina);
 		Professor p = (Professor) session.load(Professor.class, idDoProfessor);
@@ -33,25 +40,46 @@ public class TurmaDao {
 		session.save(turma);
 		tx.commit();
 	}
-
-	public void alteraTurma(Turma turma) {
+	
+	/**
+	 * Atualiza a turma fornecida no banco de dados.
+	 *  
+	 * @param turma
+	 */
+	public void atualizaTurma(Turma turma) {
 		Transaction tx = session.beginTransaction();
 		session.update(turma);
 		tx.commit();
 	}
 
+	/**
+	 * Remove a turma fornecida do banco de dados.
+	 * 
+	 * @param turma
+	 */
 	public void removeTurma(Turma turma) {
 		Transaction tx = session.beginTransaction();
 		session.delete(turma);
 		tx.commit();
 	}
-	
-	public Turma carregaPelaId(Long id) {
+
+	/**
+	 * Devolve uma turma com o id fornecido.
+	 * 
+	 * @param id
+	 * @return Turma
+	 */
+	public Turma carrega(Long id) {
 		return (Turma) session.load(Turma.class, id);
 	}
 	
     @SuppressWarnings("unchecked")
-	public List<Turma> getLista() {
+    /**
+	 * Devolve uma lista com todas as turmas cadastradas no banco de dados.
+	 * 
+	 * @return List<Turma>
+	 */
+	public List<Turma> listaTudo() {
 		/*String nome = "SELECT id, nome FROM Turma p";
 		Query query = session.createQuery(nome);
 		List<Turma> listaDeTurmas = query.list(); */
@@ -60,6 +88,11 @@ public class TurmaDao {
 	}
 
     @SuppressWarnings("unchecked")
+    /**
+	 * Devolve uma lista com todas as turmas de um dado professor.
+	 * 
+	 * @return List<Turma>
+	 */
     public List<Turma> buscaTurmasDoProfessor(Professor professor) {
         return session.createCriteria(Turma.class)
         .add(Restrictions.like("professor", professor)).addOrder(Order.asc("disciplina"))

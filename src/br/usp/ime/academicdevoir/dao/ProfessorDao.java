@@ -22,30 +22,56 @@ public class ProfessorDao {
 		this.session = session;
 	}
 
+	/**
+	 * Cadastra o professor fornecido no banco de dados.
+	 * 
+	 * @param professor
+	 */
 	public void salvaProfessor(Professor professor) {
 		Transaction tx = session.beginTransaction();
 		session.save(professor);
 		tx.commit();
 	}
 
-	public void alteraProfessor(Professor professor) {
+	/**
+	 * Atualiza o professor fornecido no banco de dados.
+	 * 
+	 * @param professor
+	 */
+	public void atualizaProfessor(Professor professor) {
 		Transaction tx = session.beginTransaction();
 		session.update(professor);
 		tx.commit();
 	}
 
+	/**
+	 * Remove o professor fornecido do banco de dados.
+	 * 
+	 * @param professor
+	 */
 	public void removeProfessor(Professor professor) {
 		Transaction tx = session.beginTransaction();
 		session.delete(professor);
 		tx.commit();
 	}
 
-	public Professor carregaPelaId(Long id) {
+	/**
+	 * Devolve um Professor com o id fornecido.
+	 * 
+	 * @param id
+	 * @return Professor
+	 */
+	public Professor carrega(Long id) {
 		return (Professor) session.load(Professor.class, id);
 	}
 
     @SuppressWarnings("unchecked")
-	public List<Professor> getLista() {
+    /**
+	 * Devolve uma lista com todos os professore cadastrados no banco de dados.
+	 * 
+	 * @return List<Professor>
+	 */
+	public List<Professor> listaTudo() {
 		String nome = "SELECT p FROM Professor p";
 		Query query = session.createQuery(nome);
 		List<Professor> listaDeProfessores = query.list();

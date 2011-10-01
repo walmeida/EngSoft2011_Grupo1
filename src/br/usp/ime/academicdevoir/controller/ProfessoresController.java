@@ -45,11 +45,11 @@ public class ProfessoresController {
 	}
 
 	public void altera(Long id, String novoNome, String novoEmail, String novaSenha) {
-		Professor p = professorDao.carregaPelaId(id);
+		Professor p = professorDao.carrega(id);
 		if (!novoNome.equals("")) p.setNome(novoNome);
 		if (!novoEmail.equals("")) p.setEmail(novoEmail);
 		if (!novaSenha.equals("")) p.setSenha(novaSenha);
-		professorDao.alteraProfessor(p);
+		professorDao.atualizaProfessor(p);
 		result.redirectTo(ProfessoresController.class).lista();
 	}
 	
@@ -57,7 +57,7 @@ public class ProfessoresController {
 	}
 
 	public void remove(final Long id) {
-		Professor professor = professorDao.carregaPelaId(id);
+		Professor professor = professorDao.carrega(id);
 		professorDao.removeProfessor(professor);
 		result.redirectTo(ProfessoresController.class).lista();
 	}

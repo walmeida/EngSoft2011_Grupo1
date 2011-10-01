@@ -20,7 +20,8 @@ public class QuestaoDeSubmissaoDeArquivoDao {
 
     @SuppressWarnings("unchecked")
 	/**
-	 * Retorna uma lista com todas as questões de submissão de arquivo cadastradas no banco de dados.
+	 * Devolve uma lista com todas as questões de submissão de arquivo cadastradas no banco de dados.
+	 * 
 	 * @return List<QuestaoDeSubmissaoDeArquivo>
 	 */
 	public List<QuestaoDeSubmissaoDeArquivo> listaTudo() {
@@ -30,6 +31,7 @@ public class QuestaoDeSubmissaoDeArquivoDao {
 
 	/**
 	 * Cadastra a questão fornecida no banco de dados.
+	 * 
 	 * @param questao
 	 */
 	public void salva(QuestaoDeSubmissaoDeArquivo questao) {
@@ -39,7 +41,8 @@ public class QuestaoDeSubmissaoDeArquivoDao {
 	}
 
 	/**
-	 * Retorna uma questão de submissão de arquivo com o id fornecido.
+	 * Devolve uma questão de submissão de arquivo com o id fornecido.
+	 * 
 	 * @param id
 	 * @return QuestaoDeSubmissaoDeArquivo
 	 */
@@ -50,6 +53,7 @@ public class QuestaoDeSubmissaoDeArquivoDao {
 
 	/**
 	 * Atualiza a questão fornecida no banco de dados. 
+	 * 
 	 * @param questao
 	 */
 	public void atualiza(QuestaoDeSubmissaoDeArquivo questao) {
@@ -60,6 +64,7 @@ public class QuestaoDeSubmissaoDeArquivoDao {
 
 	/**
 	 * Remove a questão fornecida do banco de dados.
+	 * 
 	 * @param questao
 	 */
 	public void remove(QuestaoDeSubmissaoDeArquivo questao) {
@@ -69,8 +74,9 @@ public class QuestaoDeSubmissaoDeArquivoDao {
 	}
 	
 	/**
-	 * Retorna uma QuestaoDeSubmissaoDeArquivo com o id fornecido, se existir. 
+	 * Devolve uma QuestaoDeSubmissaoDeArquivo com o id fornecido, se existir. 
 	 * Caso contrário, retorna null. 
+	 * 
 	 * @param id
 	 * @return QuestaoDeSubmissaoDeArquivo
 	 */

@@ -14,7 +14,7 @@ public class QuestaoDaListaDao {
 	}
 
 	/**
-	 * Retorna uma questão de uma lista de exercícios com o id fornecido.
+	 * Devolve uma questão de uma lista de exercícios com o id fornecido.
 	 * 
 	 * @param id
 	 * @return QuestaoDaLista

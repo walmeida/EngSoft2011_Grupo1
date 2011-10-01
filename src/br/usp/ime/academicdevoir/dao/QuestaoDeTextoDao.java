@@ -22,7 +22,8 @@ public class QuestaoDeTextoDao {
 
     @SuppressWarnings("unchecked")
 	/**
-	 * Retorna uma lista com todas as questões de texto cadastradas no banco de dados.
+	 * Devolve uma lista com todas as questões de texto cadastradas no banco de dados.
+	 * 
 	 * @return List<QuestaoDeTexto>
 	 */
 	public List<QuestaoDeTexto> listaTudo() {
@@ -31,6 +32,7 @@ public class QuestaoDeTextoDao {
 
 	/**
 	 * Cadastra a questão fornecida no banco de dados.
+	 * 
 	 * @param questao
 	 */
 	public void salva(QuestaoDeTexto questao) {
@@ -40,7 +42,8 @@ public class QuestaoDeTextoDao {
 	}
 
 	/**
-	 * Retorna uma questão de texto com o id fornecido.
+	 * Devolve uma questão de texto com o id fornecido.
+	 * 
 	 * @param id
 	 * @return QuestaoDeTexto
 	 */
@@ -50,6 +53,7 @@ public class QuestaoDeTextoDao {
 
 	/**
 	 * Atualiza a questão fornecida no banco de dados. 
+	 * 
 	 * @param questao
 	 */
 	public void atualiza(QuestaoDeTexto questao) {
@@ -60,6 +64,7 @@ public class QuestaoDeTextoDao {
 
 	/**
 	 * Remove a questão fornecida do banco de dados.
+	 * 
 	 * @param questao
 	 */
 	public void remove(QuestaoDeTexto questao) {
@@ -69,7 +74,8 @@ public class QuestaoDeTextoDao {
 	}
 	
 	/**
-	 * Retorna uma QuestaoDeTexto com o id fornecido, se existir. Caso contrário, retorna null. 
+	 * Devolve uma QuestaoDeTexto com o id fornecido, se existir. Caso contrário, retorna null. 
+	 * 
 	 * @param id
 	 * @return QuestaoDeTexto
 	 */

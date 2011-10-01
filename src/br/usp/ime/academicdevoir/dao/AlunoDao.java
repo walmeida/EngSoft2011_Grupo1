@@ -23,6 +23,11 @@ public class AlunoDao {
 		this.usuarioAtual = usuarioAtual;
 	}
 
+	/**
+	 * Cadastra o aluno fornecido no banco de dados.
+	 * 
+	 * @param aluno
+	 */
 	public void salvaAluno(Aluno aluno) {
 			// Criptografando a senha
 			aluno.setSenha(new Criptografia().geraMd5(aluno.getSenha()));
@@ -32,30 +37,56 @@ public class AlunoDao {
 			tx.commit();
 	}
 
-	public void alteraAluno(Aluno aluno) {
+	/**
+	 * Atualiza o aluno fornecido no banco de dados.
+	 * 
+	 * @param aluno
+	 */
+	public void atualizaAluno(Aluno aluno) {
 		Transaction tx = session.beginTransaction();
 		session.update(aluno);
 		tx.commit();
 	}
 
+	/**
+	 * Remove o aluno fornecido do banco de dados.
+	 * 
+	 * @param aluno
+	 */
 	public void removeAluno(Aluno aluno) {
 		Transaction tx = session.beginTransaction();
 		session.delete(aluno);
 		tx.commit();
 	}
 
-	public Aluno carregaPelaId(Long id) {
+	/**
+	 * Devolve um Aluno com o id fornecido.
+	 * 
+	 * @param id
+	 * @return Aluno
+	 */
+	public Aluno carrega(Long id) {
 		return (Aluno) session.load(Aluno.class, id);
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Aluno> getLista() {
+	/**
+	 * Devolve uma lista com todos os alunos cadastrados no banco de dados.
+	 * 
+	 * @return List<Aluno>
+	 */
+	public List<Aluno> listaTudo() {
 		String nome = "SELECT a FROM Aluno a";
 		Query query = session.createQuery(nome);
 		List<Aluno> listaDeAlunos = query.list();
 		return listaDeAlunos;
 	}
 
+	/**
+	 * Inscreve o aluno na turma com id fornecido.
+	 * 
+	 * @param idTurma
+	 */
 	public void inscreve(Long idTurma) {
 		Transaction tx = session.beginTransaction();
 		Aluno a = (Aluno) usuarioAtual.getUsuario();

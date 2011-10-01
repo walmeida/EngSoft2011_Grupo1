@@ -19,7 +19,7 @@ public class ListaDeExerciciosDao {
 
 	@SuppressWarnings("unchecked")
 	/**
-	 * Retorna uma lista com todas as listas de exercícios cadastradas no banco
+	 * Devolve uma lista com todas as listas de exercícios cadastradas no banco
 	 * de dados.
 	 * 
 	 * @return List<ListaDeExercicios>
@@ -40,7 +40,7 @@ public class ListaDeExerciciosDao {
 	}
 
 	/**
-	 * Retorna uma lista de exercícios com o id fornecido.
+	 * Devolve uma lista de exercícios com o id fornecido.
 	 * 
 	 * @param id
 	 * @return ListaDeExercicios

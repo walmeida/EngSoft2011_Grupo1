@@ -40,12 +40,12 @@ public class AlunosControllerTeste {
     public void testeAltera() {
         Aluno a = new Aluno();
         a.setId(0L);
-        when(alunodao.carregaPelaId(0L)).thenReturn(a);
+        when(alunodao.carrega(0L)).thenReturn(a);
         alunoC.altera(0L, "novo nome", "novo email", "nova senha");
         assertEquals(a.getNome(), "novo nome");
         assertEquals(a.getEmail(), "novo email");
         assertEquals(a.getSenha(), "nova senha");
-        verify(alunodao).alteraAluno(a);
+        verify(alunodao).atualizaAluno(a);
         verify(result).redirectTo(AlunosController.class);
     }
 
@@ -53,7 +53,7 @@ public class AlunosControllerTeste {
     public void testeRemove() {
         Aluno a = new Aluno();
         a.setId(0L);
-        when(alunodao.carregaPelaId(0L)).thenReturn(a);
+        when(alunodao.carrega(0L)).thenReturn(a);
         alunoC.remove(0L);
         verify(alunodao).removeAluno(a);
         verify(result).redirectTo(AlunosController.class);

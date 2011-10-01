@@ -73,7 +73,7 @@ public class ListasDeExerciciosController {
 		List<Turma> turmas = new ArrayList<Turma>();
 		if(idDasTurmas == null) idDasTurmas = new ArrayList<Long>();
 		for (Long id : idDasTurmas) {
-			turma = turmaDao.carregaPelaId(id);
+			turma = turmaDao.carrega(id);
 			turmas.add(turma);
 		}
 
@@ -242,12 +242,12 @@ public class ListasDeExerciciosController {
 	 * @param idDaTurma
 	 */
 	public void incluiTurma(Long id, Long idDaTurma) {
-		Turma turma = (Turma) turmaDao.carregaPelaId(idDaTurma);
+		Turma turma = (Turma) turmaDao.carrega(idDaTurma);
 
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
 		List<Turma> turmas = listaDeExercicios.getTurmas();
 		turmas.add(turma);
-		listaDeExercicios.setTurmaretornas(turmas);
+		listaDeExercicios.setTurmas(turmas);
 
 		dao.atualiza(listaDeExercicios);
 		result.redirectTo(this).verLista(listaDeExercicios.getId());

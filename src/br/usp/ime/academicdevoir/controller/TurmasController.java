@@ -28,7 +28,7 @@ public class TurmasController {
 
     @Path("/turmas/home/{id}")
     public void home(Long id) {
-        Turma turma = turmaDao.carregaPelaId(id);
+        Turma turma = turmaDao.carrega(id);
         result.include("turma", turma);
     }
 
@@ -44,7 +44,7 @@ public class TurmasController {
     }
 
     public void listaTodas() {
-        result.include("listaDeTurmas", turmaDao.getLista());
+        result.include("listaDeTurmas", turmaDao.listaTudo());
         result.redirectTo(TurmasController.class).lista();
     }
 
@@ -62,15 +62,15 @@ public class TurmasController {
     }
 
     public void alteracao(Long id) {
-        Turma turma = turmaDao.carregaPelaId(id);
+        Turma turma = turmaDao.carrega(id);
         result.include("turma", turma);
     }
 
     public void altera(Long id, String novoNome) {
-        Turma t = turmaDao.carregaPelaId(id);
+        Turma t = turmaDao.carrega(id);
         if (!novoNome.equals(""))
             t.setNome(novoNome);
-        turmaDao.alteraTurma(t);
+        turmaDao.atualizaTurma(t);
         result.redirectTo(TurmasController.class).listaTurmasDoProfessor(t.getProfessor());
     }
 
@@ -83,7 +83,7 @@ public class TurmasController {
      * @param id
      */
     public void remove(final Long id) {
-        Turma turma = turmaDao.carregaPelaId(id);
+        Turma turma = turmaDao.carrega(id);
         turmaDao.removeTurma(turma);
         result.redirectTo(TurmasController.class).listaTurmasDoProfessor(turma.getProfessor());
     }

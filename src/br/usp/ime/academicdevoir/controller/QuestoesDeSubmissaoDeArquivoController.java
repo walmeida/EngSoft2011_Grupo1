@@ -13,7 +13,7 @@ import br.com.caelum.vraptor.Validator;
 
 @Resource
 /**
- * Controlador de questões/exercicio de submissão.
+ * Controlador de questões de submissão.
  */
 public class QuestoesDeSubmissaoDeArquivoController {
 
@@ -51,10 +51,9 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	@Get
 	@Path("/questoes/submissao/{id}")
 	/** 
-	 * Retorna uma questão de submissão de arquivo com o id fornecido.
+	 * Devolve uma questão de submissão de arquivo com o id fornecido.
 	 * @param id
-	 * @return QuestaoDeSubmissaoDeArquivo 
-	 * */
+     */
 	public void alteracao(Long id) {
 		result.include("questao", dao.carrega(id));
 	}
@@ -90,8 +89,7 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	@Get
 	@Path("/questoes/submissao")
 	/**
-	 * Retorna uma lista com todas as questões de submissão de arquivo cadastradas no banco de dados.
-	 * @return List<QuestaoDeMultiplaEscolha>
+	 * Devolve uma lista com todas as questões de submissão de arquivo cadastradas no banco de dados.
 	 */
 	public void lista() {
 		result.include("lista", dao.listaTudo());

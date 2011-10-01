@@ -18,18 +18,18 @@ public class QuestaoDao {
 		this.session = session;
 	}
 
+	@SuppressWarnings("unchecked")
 	/**
-	 * Retorna uma lista com todas as questões cadastradas no banco de dados.
+	 * Devolve uma lista com todas as questões cadastradas no banco de dados.
 	 * 
-	 * @return List<QuestaoDeMultiplaEscolha>
+	 * @return List<Questao>
 	 */
-    @SuppressWarnings("unchecked")
 	public List<Questao> listaTudo() {
 		return this.session.createCriteria(Questao.class).list();
 	}
 
 	/**
-	 * Retorna uma questão com o id fornecido.
+	 * Devolve uma questão com o id fornecido.
 	 * 
 	 * @param id
 	 * @return Questao
@@ -50,7 +50,7 @@ public class QuestaoDao {
 	}
 
 	/**
-	 * Retorna uma Questao com o id fornecido, se existir. Caso contrário,
+	 * Devolve uma Questao com o id fornecido, se existir. Caso contrário,
 	 * retorna null.
 	 * 
 	 * @param id

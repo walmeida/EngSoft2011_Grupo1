@@ -14,7 +14,7 @@ import br.com.caelum.vraptor.Validator;
 
 @Resource
 /**
- * Controlador de questões/exercicio de múltipla escolha.
+ * Controlador de questões de múltipla escolha.
  */
 public class QuestoesDeMultiplaEscolhaController {
 
@@ -52,10 +52,10 @@ public class QuestoesDeMultiplaEscolhaController {
 	@Get
 	@Path("/questoes/mult/{id}")
 	/** 
-	 * Retorna uma questão de múltipla escolha com o id fornecido.
+	 * Devolve uma questão de múltipla escolha com o id fornecido.
 	 * 
 	 * @param id
-	 * */
+	 */
 	public void alteracao(Long id) {
 		QuestaoDeMultiplaEscolha questao = dao.carrega(id);
 		result.include("questao", questao);
@@ -94,7 +94,7 @@ public class QuestoesDeMultiplaEscolhaController {
 	@Get
 	@Path("/questoes/mult")
 	/**
-	 * Retorna uma lista com todas as questões de múltipla escolha cadastradas 
+	 * Devolve uma lista com todas as questões de múltipla escolha cadastradas 
 	 * no banco de dados.
 	 */
 	public void lista() {

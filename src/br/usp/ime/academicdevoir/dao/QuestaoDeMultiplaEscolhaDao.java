@@ -20,7 +20,7 @@ public class QuestaoDeMultiplaEscolhaDao {
 
     @SuppressWarnings("unchecked")
 	/**
-	 * Retorna uma lista com todas as questões de múltipla escolha cadastradas
+	 * Devolve uma lista com todas as questões de múltipla escolha cadastradas
 	 * no banco de dados.
 	 * 
 	 * @return List<QuestaoDeMultiplaEscolha>
@@ -42,7 +42,7 @@ public class QuestaoDeMultiplaEscolhaDao {
 	}
 
 	/**
-	 * Retorna uma questão de múltipla escolha com o id fornecido.
+	 * Devolve uma questão de múltipla escolha com o id fornecido.
 	 * 
 	 * @param id
 	 * @return QuestaoDeMultiplaEscolha
@@ -75,7 +75,8 @@ public class QuestaoDeMultiplaEscolhaDao {
 	}
 	
 	/**
-	 * Retorna uma QuestaoDeMultiplaEscolha com o id fornecido, se existir. Caso contrário, retorna null. 
+	 * Devolve uma QuestaoDeMultiplaEscolha com o id fornecido, se existir. Caso contrário, retorna null. 
+	 * 
 	 * @param id
 	 * @return QuestaoDeMultiplaEscolha
 	 */

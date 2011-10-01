@@ -13,7 +13,7 @@ import br.com.caelum.vraptor.Validator;
 
 @Resource
 /**
- * Controlador de questões/exercicio de texto.
+ * Controlador de questões de texto.
  */
 public class QuestoesDeTextoController {
 
@@ -50,10 +50,9 @@ public class QuestoesDeTextoController {
 	@Get
 	@Path("/questoes/texto/{id}")
 	/** 
-	 * Retorna uma questão de texto com o id fornecido.
+	 * Devolve uma questão de texto com o id fornecido.
 	 * @param id
-	 * @return QuestaoDeMultiplaEscolha	 * 
-	 * */
+     */
 	public void alteracao(Long id) {
 		result.include("questao", dao.carrega(id));
 	}
@@ -88,8 +87,7 @@ public class QuestoesDeTextoController {
 	@Get
 	@Path("/questoes/texto")
 	/**
-	 * Retorna uma lista com todas as questões de texto cadastradas no banco de dados.
-	 * @return List<QuestaoDeMultiplaEscolha>
+	 * Devolve uma lista com todas as questões de texto cadastradas no banco de dados.
 	 */
 	public void lista() {
 		result.include("lista", dao.listaTudo());

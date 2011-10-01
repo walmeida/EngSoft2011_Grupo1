@@ -64,9 +64,9 @@ public class DisciplinasController {
 	 * @param id
 	 */
 	public void altera(Long id, String novoNome) {
-		Disciplina d = disciplinaDao.carregaPelaId(id);
+		Disciplina d = disciplinaDao.carrega(id);
 		if (!novoNome.equals("")) d.setNome(novoNome);
-		disciplinaDao.alteraDisciplina(d);
+		disciplinaDao.atualizaDisciplina(d);
 		result.redirectTo(DisciplinasController.class).lista();
 	}
 	
@@ -82,7 +82,7 @@ public class DisciplinasController {
 	 * @param id
 	 */
 	public void remove(final Long id) {
-		Disciplina disciplina = disciplinaDao.carregaPelaId(id);
+		Disciplina disciplina = disciplinaDao.carrega(id);
 		disciplinaDao.removeDisciplina(disciplina);
 		result.redirectTo(DisciplinasController.class).lista();
 	}

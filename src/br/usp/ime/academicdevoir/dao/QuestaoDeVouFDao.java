@@ -20,8 +20,9 @@ public class QuestaoDeVouFDao {
 
 	@SuppressWarnings("unchecked")
 	/**
-	 * Retorna uma lista com todas as questões de V ou F cadastradas
+	 * Devolve uma lista com todas as questões de V ou F cadastradas
 	 * no banco de dados.
+	 * 
 	 * @return List<QuestaoDeVouF>
 	 */
 	public List<QuestaoDeVouF> listaTudo() {
@@ -40,7 +41,7 @@ public class QuestaoDeVouFDao {
 	}
 
 	/**
-	 * Retorna uma questão de V ou F com o id fornecido.
+	 * Devolve uma questão de V ou F com o id fornecido.
 	 * 
 	 * @param id
 	 * @return QuestaoDeVouF
@@ -72,7 +73,7 @@ public class QuestaoDeVouFDao {
 	}
 
 	/**
-	 * Retorna uma QuestaoDeVouF com o id fornecido, se existir. Caso contrário,
+	 * Devolve uma QuestaoDeVouF com o id fornecido, se existir. Caso contrário,
 	 * retorna null.
 	 * 
 	 * @param id

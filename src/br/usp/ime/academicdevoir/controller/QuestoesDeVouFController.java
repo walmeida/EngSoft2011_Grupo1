@@ -13,7 +13,7 @@ import br.com.caelum.vraptor.Validator;
 
 @Resource
 /**
- * Controlador de questões/exercicio de V ou F.
+ * Controlador de questões de V ou F.
  */
 public class QuestoesDeVouFController {
 
@@ -50,9 +50,8 @@ public class QuestoesDeVouFController {
 	@Get
 	@Path("/questoes/vouf/{id}")
 	/** 
-	 * Retorna uma questão de V ou F com o id fornecido.
+	 * Devolve uma questão de V ou F com o id fornecido.
 	 * @param id
-	 * @return QuestaoDeMultiplaEscolha	 * 
 	 * */
 	public void alteracao(Long id) {
 		result.include("questao", dao.carrega(id));
@@ -88,8 +87,7 @@ public class QuestoesDeVouFController {
 	@Get
 	@Path("/questoes/vouf")
 	/**
-	 * Retorna uma lista com todas as questões de V ou F cadastradas no banco de dados.
-	 * @return List<QuestaoDeMultiplaEscolha>
+	 * Devolve uma lista com todas as questões de V ou F cadastradas no banco de dados.
 	 */
 	public void lista() {
 		result.include("lista", dao.listaTudo());
