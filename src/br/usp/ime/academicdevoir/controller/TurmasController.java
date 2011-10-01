@@ -9,6 +9,7 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.usp.ime.academicdevoir.dao.DisciplinaDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.Professor;
@@ -20,10 +21,12 @@ import br.usp.ime.academicdevoir.infra.UsuarioSession;
 public class TurmasController {
     private final Result result;
     private TurmaDao turmaDao;
+    private DisciplinaDao disciplinaDao;
 
-    public TurmasController(Result result, TurmaDao turmaDao) {
+    public TurmasController(Result result, TurmaDao turmaDao, DisciplinaDao disciplinaDao) {
         this.result = result;
         this.turmaDao = turmaDao;
+        this.disciplinaDao = disciplinaDao;
     }
 
     @Path("/turmas/home/{id}")
@@ -52,8 +55,8 @@ public class TurmasController {
 
     }
 
-    public void cadastro(Long idProfessor) {
-        result.include("idProfessor", idProfessor);
+    public void cadastro() {
+        result.include("disciplinaDao", disciplinaDao);
     }
 
     public void cadastra(final Turma nova, Long idProfessor, Long idDisciplina) {

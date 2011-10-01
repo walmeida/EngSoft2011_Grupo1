@@ -16,9 +16,15 @@ import="java.sql.*" errorPage="" %>
 	<h2>Grupo 1 - Engenharia de Software</h2>
 	<form action='cadastra'>
 	<fieldset><legend>Cadastrar nova turma:</legend><br/>
-		<input type="hidden" name="idProfessor", value="${idProfessor }"/>
+		<input type="hidden" name="idProfessor", value="${usuarioSession.usuario.id }"/>
 		Nome: <br/><input type="text" size="30" name="nova.nome"/><br/>
-		Disciplina: <br/><input type="text" size="30" name="idDisciplina"/><br/><br/>
+		Disciplina:<br />
+    <select name="idDisciplina">
+    <c:forEach items="${disciplinaDao.lista}" var="disciplina">
+          <option value="${disciplina.id }">${disciplina.nome }</option> 
+    </c:forEach>
+    </select>
+        <br /><br />		
 	<input type="submit" value="Enviar"/>
 	</fieldset>
 	</form>
