@@ -23,16 +23,24 @@ import br.usp.ime.academicdevoir.entidade.QuestaoDaLista;
 import br.usp.ime.academicdevoir.entidade.Turma;
 
 @Resource
+/**
+ * Controlador de listas de exercicios.
+ */
 public class ListasDeExerciciosController {
 
+	private final Result result;
 	private final ListaDeExerciciosDao dao;
 	private final QuestaoDao questaoDao;
 	private final TurmaDao turmaDao;
-	private final Result result;
 	private final Validator validator;
 
-	public ListasDeExerciciosController(ListaDeExerciciosDao dao,
-			QuestaoDao questaoDao, TurmaDao turmaDao, Result result,
+	/**
+	 * @param result para interação com o jsp da lista de exercicio.
+	 * @param dao para interação com o banco de dados
+	 * @param validator 
+	 */
+	public ListasDeExerciciosController(Result result,
+			ListaDeExerciciosDao dao, QuestaoDao questaoDao, TurmaDao turmaDao,
 			Validator validator) {
 		this.dao = dao;
 		this.questaoDao = questaoDao;
@@ -45,7 +53,10 @@ public class ListasDeExerciciosController {
 	@Path("/listasDeExercicios")
 	/**
 	 * Verifica se a lista de exercícios fornecida é válida e adiciona no banco de dados.
-	 * @param lista
+	 * 
+	 * @param listaDeExercicios
+	 * @param prazoDeEntrega
+	 * @param idDasTurmas
 	 */
 	public void cadastra(ListaDeExercicios listaDeExercicios,
 			final List<Integer> prazoDeEntrega, List<Long> idDasTurmas) {
@@ -76,9 +87,9 @@ public class ListasDeExerciciosController {
 	@Get
 	@Path("/listasDeExercicios/{id}")
 	/** 
-	 * Retorna uma lista de exercícios com o id fornecido.
+	 * Devolve uma lista de exercícios com o id fornecido.
+	 * 
 	 * @param id
-	 * @return ListaDeExercicios 
 	 * */
 	public void verLista(Long id) {
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
@@ -94,6 +105,7 @@ public class ListasDeExerciciosController {
 	@Path("/listasDeExercicios/altera/{id}")
 	/** 
 	 * Retorna uma lista de exercícios com o id fornecido.
+	 * 
 	 * @param id
 	 * @return ListaDeExercicios 
 	 * */
@@ -116,7 +128,9 @@ public class ListasDeExerciciosController {
 	@Path("/listasDeExercicios/{listaDeExercicios.id}")
 	/**
 	 * Verifica se a lista de exercícios fornecida é válida e atualiza no banco de dados.
-	 * @param id
+	 * 
+	 * @param listaDeExercicios
+	 * @param prazoDeEntrega
 	 */
 	public void altera(ListaDeExercicios listaDeExercicios,
 			final List<Integer> prazoDeEntrega) {
@@ -144,6 +158,7 @@ public class ListasDeExerciciosController {
 
 	/**
 	 * Remove uma lista de exercícios do banco de dados com o id fornecido.
+	 * 
 	 * @param id
 	 */
 	@Delete
@@ -178,10 +193,12 @@ public class ListasDeExerciciosController {
 	@Put
 	@Path("/listasDeExercicios/{id}/questoes/{indice}")
 	/**
-	 * Altera a questão com o id fornecido na lista de exercícios.
+	 * Altera a questão com o indice fornecido (na lista de exercícios com o id fornecido)
+	 * para a questão com id fornecido.
 	 * 
-	 * @param listaDeExercicios
-	 * @param idDaQuestaoAserAlterada
+	 * @param id
+	 * @param indice
+	 * @param idDaNovaQuestao
 	 */
 	public void alteraQuestao(Long id, Integer indice, Long idDaNovaQuestao) {
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
@@ -201,10 +218,10 @@ public class ListasDeExerciciosController {
 	@Delete
 	@Path("/listasDeExercicios/{id}/questoes/{indice}")
 	/**
-	 * Remove a questão com o indice fornecido na lista de exercícios.
+	 * Remove a questão com o indice fornecido na lista de exercícios com o id fornecido.
 	 * 
-	 * @param listaDeExercicios
-	 * @param idDaQuestaoAserIncluida
+	 * @param id
+	 * @param indice
 	 */
 	public void removeQuestao(Long id, Integer indice) {
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
@@ -220,8 +237,8 @@ public class ListasDeExerciciosController {
 	@Put
 	@Path("/listasDeExercicios/{id}/turmas/inclui")
 	/**
-	 * Adiciona a turma com o id fornecido na lista de exercícios fornecida.
-	 * @param listaDeExercicios
+	 * Adiciona a turma com o id fornecido na lista de exercícios com o id fornecido.
+	 * @param id
 	 * @param idDaTurma
 	 */
 	public void incluiTurma(Long id, Long idDaTurma) {
@@ -230,7 +247,7 @@ public class ListasDeExerciciosController {
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
 		List<Turma> turmas = listaDeExercicios.getTurmas();
 		turmas.add(turma);
-		listaDeExercicios.setTurmas(turmas);
+		listaDeExercicios.setTurmaretornas(turmas);
 
 		dao.atualiza(listaDeExercicios);
 		result.redirectTo(this).verLista(listaDeExercicios.getId());
@@ -239,8 +256,8 @@ public class ListasDeExerciciosController {
 	@Delete
 	@Path("/listasDeExercicios/{listaDeExercicios.id}/turmas/{indice}")
 	/**
-	 * Remove a turma com o índice fornecido da lista de exercícios com o id fornecido.
-	 * @param id
+	 * Remove a turma com o índice fornecido da lista de exercícios fornecida.
+	 * @param listaDeExercicios
 	 * @param indice
 	 */
 	public void removeTurma(ListaDeExercicios listaDeExercicios, Integer indice) {
@@ -265,8 +282,7 @@ public class ListasDeExerciciosController {
 	@Get
 	@Path("/listasDeExercicios")
 	/**
-	 * Retorna uma lista com todas as listas de exercícios cadastradas no banco de dados.
-	 * @return List<ListaDeExercicios>
+	 * Devolve uma lista com todas as listas de exercícios cadastradas no banco de dados.
 	 */
 	public void lista() {
 		result.include("listaDeListas", dao.listaTudo());

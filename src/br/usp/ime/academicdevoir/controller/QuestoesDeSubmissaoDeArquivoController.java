@@ -12,14 +12,22 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 
 @Resource
+/**
+ * Controlador de questões/exercicio de submissão.
+ */
 public class QuestoesDeSubmissaoDeArquivoController {
 
 	private QuestaoDeSubmissaoDeArquivoDao dao;
 	private final Result result;
 	private Validator validator;
 
+	/**
+	 * @param result para interação com o jsp da questão.
+	 * @param dao para interação com o banco de dados
+	 * @param validator 
+	 */
 	public QuestoesDeSubmissaoDeArquivoController(
-			QuestaoDeSubmissaoDeArquivoDao dao, Result result,
+			Result result, QuestaoDeSubmissaoDeArquivoDao dao,
 			Validator validator) {
 		this.dao = dao;
 		this.result = result;

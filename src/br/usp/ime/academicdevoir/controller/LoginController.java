@@ -13,7 +13,11 @@ import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 @Public
 @Resource
+/**
+ * Controlador de login.
+ */
 public class LoginController {
+	
 	private final Result result;
 	private UsuarioSession usuarioSession;
 	private UsuarioDao usuarioDao;

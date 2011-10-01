@@ -13,6 +13,7 @@ import br.usp.ime.academicdevoir.infra.Public;
  * @author Vinicius Rezende
  */
 public class AlunosController {
+	
 	private final Result result;
 	private AlunoDao alunoDao;
 
@@ -48,7 +49,7 @@ public class AlunosController {
 	}
 	
 	/**
-     * Método associado ao .jsp que lista os alunos cadastrados.
+     * Método está associado ao .jsp do formulário de cadastro de um aluno no sistema.
      */
 	@Public
 	public void cadastro() {

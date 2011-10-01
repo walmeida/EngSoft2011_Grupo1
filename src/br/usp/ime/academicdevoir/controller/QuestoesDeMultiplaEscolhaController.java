@@ -13,12 +13,20 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 
 @Resource
+/**
+ * Controlador de questões/exercicio de múltipla escolha.
+ */
 public class QuestoesDeMultiplaEscolhaController {
 
 	private QuestaoDeMultiplaEscolhaDao dao;
 	private final Result result;
 	private Validator validator;
-
+	
+	/**
+	 * @param result para interação com o jsp da questão.
+	 * @param dao para interação com o banco de dados
+	 * @param validator 
+	 */
 	public QuestoesDeMultiplaEscolhaController(QuestaoDeMultiplaEscolhaDao dao,
 			Result result, Validator validator) {
 		this.dao = dao;
@@ -45,8 +53,8 @@ public class QuestoesDeMultiplaEscolhaController {
 	@Path("/questoes/mult/{id}")
 	/** 
 	 * Retorna uma questão de múltipla escolha com o id fornecido.
+	 * 
 	 * @param id
-	 * @return QuestaoDeMultiplaEscolha	 * 
 	 * */
 	public void alteracao(Long id) {
 		QuestaoDeMultiplaEscolha questao = dao.carrega(id);
@@ -58,6 +66,7 @@ public class QuestoesDeMultiplaEscolhaController {
 	@Path("/questoes/mult/{questao.id}")
 	/**
 	 * Verifica se a questão de múltipla escolha fornecida é válida e atualiza no banco de dados.
+	 * 
 	 * @param questao
 	 */
 	public void altera(QuestaoDeMultiplaEscolha questao) {
@@ -73,6 +82,7 @@ public class QuestoesDeMultiplaEscolhaController {
 	@Path("/questoes/mult/{id}")
 	/**
 	 * Remove uma questão de múltipla escolha do banco de dados com o id fornecido.
+	 * 
 	 * @param id
 	 */
 	public void remove(Long id) {
@@ -86,7 +96,6 @@ public class QuestoesDeMultiplaEscolhaController {
 	/**
 	 * Retorna uma lista com todas as questões de múltipla escolha cadastradas 
 	 * no banco de dados.
-	 * @return List<QuestaoDeMultiplaEscolha>
 	 */
 	public void lista() {
 		result.include("tipoDaQuestao", TipoDeQuestao.MULTIPLAESCOLHA);

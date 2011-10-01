@@ -24,7 +24,7 @@ public class Criptografia {
 			return hexString.toString();
 			
 		}catch(NoSuchAlgorithmException nsae){
-			//FIXME Redirecionar para uma página de erro???        
+			//FIXME Redirecionar para uma pagina de erro???        
 		}
 		
 		//FIXME Isso deve ser assim mesmo??

@@ -12,13 +12,21 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 
 @Resource
+/**
+ * Controlador de questões/exercicio de texto.
+ */
 public class QuestoesDeTextoController {
 
 	private QuestaoDeTextoDao dao;
 	private final Result result;
 	private Validator validator;
 
-	public QuestoesDeTextoController(QuestaoDeTextoDao dao, Result result,
+	/**
+	 * @param result para interação com o jsp da questão.
+	 * @param dao para interação com o banco de dados
+	 * @param validator 
+	 */
+	public QuestoesDeTextoController(Result result, QuestaoDeTextoDao dao,
 			Validator validator) {
 		this.dao = dao;
 		this.result = result;

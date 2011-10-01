@@ -14,6 +14,9 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 
 @Resource
+/**
+ * Controlador de questões.
+ */
 public class QuestoesController {
 
 	private final QuestaoDao dao;
@@ -22,12 +25,16 @@ public class QuestoesController {
 	private final QuestaoDeTextoDao questaoDeTextoDao;
 	private final QuestaoDeVouFDao questaoDeVouFDao;
 	private final Result result;
-
-	public QuestoesController(QuestaoDao dao,
+	
+	/**
+	 * @param result para interação com o jsp da questao.
+	 * @param dao para interação com o banco de dados
+	 */
+	public QuestoesController(Result result,
+			QuestaoDao dao,
 			QuestaoDeMultiplaEscolhaDao questaoDeMultiplaEscolhaDao,
 			QuestaoDeSubmissaoDeArquivoDao questaoDeSubmissaoDeArquivoDao,
-			QuestaoDeTextoDao questaoDeTextoDao,
-			QuestaoDeVouFDao questaoDeVouFDao, Result result) {
+			QuestaoDeTextoDao questaoDeTextoDao, QuestaoDeVouFDao questaoDeVouFDao) {
 		this.dao = dao;
 		this.questaoDeMultiplaEscolhaDao = questaoDeMultiplaEscolhaDao;
 		this.questaoDeSubmissaoDeArquivoDao = questaoDeSubmissaoDeArquivoDao;
@@ -37,10 +44,10 @@ public class QuestoesController {
 	}
 
 	/**
-	 * Recebe um id de questão e retorna o seu tipo.
+	 * Recebe um id de questão e devolve o seu tipo.
 	 * 
 	 * @param id
-	 * @return int
+	 * @return TipoDeQuestao
 	 */
 	public TipoDeQuestao getTipoDeQuestao(Long id) {
 		Object questao;
@@ -64,7 +71,6 @@ public class QuestoesController {
 	/** 
 	 * Retorna uma questão de múltipla escolha com o id fornecido.
 	 * @param id
-	 * @return QuestaoDeMultiplaEscolha
 	 * */
 	public void alteracao(Long id) {
 		switch (this.getTipoDeQuestao(id)) {
