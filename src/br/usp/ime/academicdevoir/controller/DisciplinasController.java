@@ -87,5 +87,4 @@ public class DisciplinasController {
 		result.redirectTo(DisciplinasController.class).lista();
 	}
 	
-
 }

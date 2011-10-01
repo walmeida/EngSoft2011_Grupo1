@@ -26,8 +26,7 @@ public class AlunoDao {
 	public void salvaAluno(Aluno aluno) {
 			// Criptografando a senha
 			aluno.setSenha(new Criptografia().geraMd5(aluno.getSenha()));
-	
-			Transaction tx = session.beginTransaction();
+	        Transaction tx = session.beginTransaction();
 			session.save(aluno);
 			tx.commit();
 	}

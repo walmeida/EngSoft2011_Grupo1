@@ -18,13 +18,12 @@ public class ProfessoresControllerTeste {
     private ProfessoresController profC;
     private Result result;
     private ProfessorDao professordao;
-    private UsuarioSession usuarioSession;
 
     @Before
     public void SetUp() {
         result = mock(Result.class);
         professordao = mock(ProfessorDao.class);
-        profC = new ProfessoresController(result, professordao, usuarioSession);
+        profC = new ProfessoresController(result, professordao);
         when(result.redirectTo(ProfessoresController.class)).thenReturn(profC);
     }
 

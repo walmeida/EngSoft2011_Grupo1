@@ -16,18 +16,16 @@
 	<h1>Academic Devoir</h1>
 	<h2>Grupo 1 - Engenharia de Software</h2>
 	<form action='../disciplinas/cadastro' method="get">
-        <input type="hidden" value="${professor.id}" name="idProfessor"/>        
         <input type="submit" value="Cadastrar disciplina"/>
     </form>
     <form action='../turmas/cadastro' method="get">
-        <input type="hidden" value="${professor.id}" name="idProfessor"/>        
         <input type="submit" value="Cadastrar Turma"/>
     </form>
     <form action='../questoes' method="get">
         <input type="submit" value="Cadastrar questão"/>
     </form>
     <form action='../turmas/listaTurmasDoProfessor' method="get">
-        <input type="hidden" value="${professor.id}" name="professor.id"/>
+        <input type="hidden" value="${usuarioSession.usuario.id}" name="professor.id"/>
         <input type="submit" value="Meus cursos"/>
     </form>
 </body>

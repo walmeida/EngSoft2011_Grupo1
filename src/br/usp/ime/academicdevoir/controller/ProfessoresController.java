@@ -13,12 +13,10 @@ import br.usp.ime.academicdevoir.infra.Privilegio;
 public class ProfessoresController {
 	private final Result result;
 	private ProfessorDao professorDao;
-	private UsuarioSession usuarioSession;
 	
-	public ProfessoresController(Result result, ProfessorDao professorDao, UsuarioSession usarioSession) {
+	public ProfessoresController(Result result, ProfessorDao professorDao) {
 		this.result = result;
 		this.professorDao = professorDao;
-		this.usuarioSession = usarioSession;
 	}
 
 	public void menu() {
@@ -26,7 +24,6 @@ public class ProfessoresController {
 	}
 	
 	public void home() {
-	    result.include("professor", usuarioSession.getUsuario());
 	}
 
 	public void lista() {
