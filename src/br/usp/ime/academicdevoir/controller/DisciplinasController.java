@@ -45,6 +45,11 @@ public class DisciplinasController {
 	public void cadastro() {
 	}
 
+	/**
+     * Cadastra uma disciplina nova no sistema.
+     * 
+     * @param nova
+     */
 	public void cadastra(final Disciplina nova) {
 		disciplinaDao.salvaDisciplina(nova);
 		result.redirectTo(DisciplinasController.class).lista();
@@ -79,6 +84,7 @@ public class DisciplinasController {
 
 	/**
 	 * Remove uma disciplina do banco de dados com o id fornecido.
+	 * 
 	 * @param id
 	 */
 	public void remove(final Long id) {

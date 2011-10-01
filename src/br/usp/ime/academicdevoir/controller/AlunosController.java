@@ -65,7 +65,9 @@ public class AlunosController {
 	}
 
 	/**
-	 * @param novo aluno a ser cadastrado no sitema
+	 * Cadastra novo aluno no sitema
+	 * 
+	 * @param novo 
 	 */
 	@Public
 	public void cadastra(final Aluno novo) {
@@ -104,7 +106,7 @@ public class AlunosController {
 	}
 	
 	/**
-	 * Remove uma aluno do banco de dados com o id fornecido.
+	 * Remove um aluno do banco de dados com o id fornecido.
 	 * 
 	 * @param id
 	 */
