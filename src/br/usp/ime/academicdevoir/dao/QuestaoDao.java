@@ -34,8 +34,8 @@ public class QuestaoDao {
 	 * @param id
 	 * @return Questao
 	 */
-	public Object carrega(Long id) {
-		return this.session.load(Questao.class, id);
+	public Questao carrega(Long id) {
+		return (Questao) this.session.load(Questao.class, id);
 	}
 
 	/**

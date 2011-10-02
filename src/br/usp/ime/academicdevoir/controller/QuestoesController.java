@@ -101,15 +101,15 @@ public class QuestoesController {
 	 * @param id
 	 */
 	public void remove(Long id) {
-		Object questao = dao.carrega(id);
-		dao.remove((Questao) questao);
+		Questao questao = dao.carrega(id);
+		dao.remove(questao);
 		result.redirectTo(this).lista();
 	}
 
 	@Get
 	@Path("/questoes/cadastro")
 	/**
-	 * Redireciona para a página com formulário para cadastro de uma nova questão.
+	 * Permite acesso à página com formulário para cadastro de uma nova questão.
 	 */
 	public void cadastro() {
 	}

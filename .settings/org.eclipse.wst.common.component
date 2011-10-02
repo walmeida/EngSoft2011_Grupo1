@@ -3,6 +3,7 @@
 <wb-module deploy-name="academic-devoir">
 <wb-resource deploy-path="/" source-path="/WebContent"/>
 <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Testes"/>
 <property name="java-output-path"/>
         <property name="context-root" value="academic-devoir"/>
 </wb-module>
