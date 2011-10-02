@@ -3,6 +3,7 @@ package br.usp.ime.academicdevoir.controller;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.usp.ime.academicdevoir.dao.AlunoDao;
+import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.Turma;
 import br.usp.ime.academicdevoir.infra.Public;
@@ -16,14 +17,16 @@ public class AlunosController {
 	
 	private final Result result;
 	private AlunoDao alunoDao;
+	private TurmaDao turmaDao;
 
 	/**
 	 * @param result para interação com o jsp do aluno.
 	 * @param alunoDao para interação com o banco de dados
 	 */
-	public AlunosController(Result result, AlunoDao alunoDao) {
+	public AlunosController(Result result, AlunoDao alunoDao, TurmaDao turmaDao) {
 		this.result = result;
 		this.alunoDao = alunoDao;
+		this.turmaDao = turmaDao;
 	}
 
 	/**
@@ -37,16 +40,17 @@ public class AlunosController {
 	 * 
 	 * @param turma
 	 */
-	public void listaAlunosNaTurma(Turma turma) {
-        result.include("listaDeAlunos", turma.getAlunos());
-        result.redirectTo(TurmasController.class).lista();
+	public void listaAlunosNaTurma(Long idDaTurma) {
+	    Turma turma = turmaDao.carrega(idDaTurma);
+        result.include("listaDeAlunos", turma.getAlunos().toArray());
+        result.redirectTo(AlunosController.class).lista();
     }
 
 
 	/**
 	 * Lista todos os alunos do banco de dados.
 	 */
-    public void listaTodas() {
+    public void listaTodosAlunos() {
         result.include("listaDeAlunos", alunoDao.listaTudo());
         result.redirectTo(AlunosController.class).lista();
     }

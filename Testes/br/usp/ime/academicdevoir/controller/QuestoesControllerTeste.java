@@ -25,7 +25,7 @@ import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeTexto;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeVouF;
-import br.usp.ime.academicdevoir.util.TipoDeQuestao;
+import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 
 public class QuestoesControllerTeste {
 	

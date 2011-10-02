@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import br.com.caelum.vraptor.util.test.MockResult;
 import br.usp.ime.academicdevoir.dao.AlunoDao;
+import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 
 import static org.junit.Assert.assertEquals;
@@ -18,12 +19,14 @@ public class AlunosControllerTeste {
     private AlunosController alunoC;
     private MockResult result;
     private AlunoDao alunodao;
+	private TurmaDao turmaDao;
 
     @Before
     public void SetUp() {
     	result = spy(new MockResult());
         alunodao = mock(AlunoDao.class);
-        alunoC = new AlunosController(result, alunodao);
+        turmaDao = mock(TurmaDao.class);
+        alunoC = new AlunosController(result, alunodao, turmaDao);
     }
 
     @Test
