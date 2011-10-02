@@ -68,18 +68,18 @@ public class TurmasController {
     /**
 	 * Devolve uma lista com todas as turmas cadastradas no banco de dados.
 	 */
-    public void listaTodas() {
+    public void listaTodasTurmas() {
         result.include("listaDeTurmas", turmaDao.listaTudo());
         result.redirectTo(TurmasController.class).lista();
     }
-
+    
 	/**
 	 * Método associado ao .jsp que lista as turmas.
 	 */
     public void lista() {
 
     }
-
+    
 	/**
      * Método está associado ao .jsp do formulário de cadastro de uma turma no sistema.
      */
