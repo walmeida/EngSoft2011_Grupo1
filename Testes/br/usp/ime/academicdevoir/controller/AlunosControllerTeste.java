@@ -26,7 +26,7 @@ public class AlunosControllerTeste {
     	result = spy(new MockResult());
         alunodao = mock(AlunoDao.class);
         turmaDao = mock(TurmaDao.class);
-        alunoC = new AlunosController(result, alunodao, turmaDao);
+        alunoC = new AlunosController(result, alunodao);
     }
 
     @Test
