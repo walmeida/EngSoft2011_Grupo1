@@ -6,7 +6,7 @@ import br.usp.ime.academicdevoir.dao.QuestaoDeSubmissaoDeArquivoDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDeTextoDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDeVouFDao;
 import br.usp.ime.academicdevoir.entidade.Questao;
-import br.usp.ime.academicdevoir.util.TipoDeQuestao;
+import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -101,15 +101,15 @@ public class QuestoesController {
 	 * @param id
 	 */
 	public void remove(Long id) {
-		Object questao = dao.carrega(id);
-		dao.remove((Questao) questao);
+		Questao questao = dao.carrega(id);
+		dao.remove(questao);
 		result.redirectTo(this).lista();
 	}
 
 	@Get
 	@Path("/questoes/cadastro")
 	/**
-	 * Redireciona para a página com formulário para cadastro de uma nova questão.
+	 * Permite acesso à página com formulário para cadastro de uma nova questão.
 	 */
 	public void cadastro() {
 	}

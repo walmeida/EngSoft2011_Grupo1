@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Future;
 
 @Entity
 /**
@@ -35,6 +36,7 @@ public class ListaDeExercicios {
 	private Boolean visivel;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@Future
 	private Date prazoDeEntrega;
 
 	@ManyToMany(fetch = FetchType.LAZY)

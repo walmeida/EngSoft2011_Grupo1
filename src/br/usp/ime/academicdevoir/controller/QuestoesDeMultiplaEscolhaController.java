@@ -2,7 +2,7 @@ package br.usp.ime.academicdevoir.controller;
 
 import br.usp.ime.academicdevoir.dao.QuestaoDeMultiplaEscolhaDao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
-import br.usp.ime.academicdevoir.util.TipoDeQuestao;
+import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;

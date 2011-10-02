@@ -60,8 +60,6 @@ public class ListasDeExerciciosController {
 	 */
 	public void cadastra(ListaDeExercicios listaDeExercicios,
 			final List<Integer> prazoDeEntrega, List<Long> idDasTurmas) {
-		validator.validate(listaDeExercicios);
-		validator.onErrorUsePageOf(this).cadastro();
 
 		Calendar data = Calendar.getInstance();
 		data.set(prazoDeEntrega.get(2).intValue(), prazoDeEntrega.get(1)
@@ -79,6 +77,9 @@ public class ListasDeExerciciosController {
 
 		listaDeExercicios.setTurmas(turmas);
 		listaDeExercicios.setPrazoDeEntrega(dataDoBD);
+
+		validator.validate(listaDeExercicios);
+		validator.onErrorUsePageOf(this).cadastro();
 
 		dao.salva(listaDeExercicios);
 		result.redirectTo(this).verLista(listaDeExercicios.getId());
@@ -134,10 +135,6 @@ public class ListasDeExerciciosController {
 	 */
 	public void altera(ListaDeExercicios listaDeExercicios,
 			final List<Integer> prazoDeEntrega) {
-		validator.validate(listaDeExercicios);
-		validator
-				.onErrorUsePageOf(QuestoesDeSubmissaoDeArquivoController.class)
-				.alteracao(listaDeExercicios.getId());
 
 		ListaDeExercicios listaDoBD = dao.carrega(listaDeExercicios.getId());
 		Calendar data = Calendar.getInstance();
@@ -151,6 +148,11 @@ public class ListasDeExerciciosController {
 		listaDoBD.setPeso(listaDeExercicios.getPeso());
 		listaDoBD.setVisivel(listaDeExercicios.getVisivel());
 		listaDoBD.setPrazoDeEntrega(dataDoBD);
+
+		validator.validate(listaDeExercicios);
+		validator
+				.onErrorUsePageOf(QuestoesDeSubmissaoDeArquivoController.class)
+				.alteracao(listaDeExercicios.getId());
 
 		dao.atualiza(listaDoBD);
 		result.redirectTo(this).verLista(listaDoBD.getId());
