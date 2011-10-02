@@ -14,7 +14,7 @@
 	<form action='altera'>
 	<fieldset><legend>Altera&ccedil;&atilde;o de Disciplina:</legend><br/>
 		Id da disciplina a alterar: <br/><input type="text" size="30" name="id" /> <br />
-		Novo nome: <br/><input type="text" size="30" name="novoNome"/><br/><br/>
+		Novo nome: <br/><input type="text" size="30"/><br/><br/>
 	<input type="submit" value="Alterar"/>
 	</fieldset>
 	</form>

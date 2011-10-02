@@ -24,17 +24,15 @@ import br.usp.ime.academicdevoir.infra.UsuarioSession;
 public class TurmasController {
     private final Result result;
     private TurmaDao turmaDao;
-    private DisciplinaDao disciplinaDao;
 
 	/**
 	 * @param result para interação com o jsp da turma.
 	 * @param turmaDao para interação com o banco de dados
 	 * @param disciplinaDao para interação com o banco de dados 
 	 */
-    public TurmasController(Result result, TurmaDao turmaDao, DisciplinaDao disciplinaDao) {
+    public TurmasController(Result result, TurmaDao turmaDao) {
         this.result = result;
         this.turmaDao = turmaDao;
-        this.disciplinaDao = disciplinaDao;
     }
 
 	/**
@@ -64,7 +62,7 @@ public class TurmasController {
         result.include("listaDeTurmas", listaDeTurmas);
         result.redirectTo(TurmasController.class).lista();
     }
-
+    
     /**
 	 * Devolve uma lista com todas as turmas cadastradas no banco de dados.
 	 */
@@ -84,7 +82,7 @@ public class TurmasController {
      * Método está associado ao .jsp do formulário de cadastro de uma turma no sistema.
      */
     public void cadastro() {
-        result.include("disciplinaDao", disciplinaDao);
+        result.include("listaDeDisciplinas", turmaDao.buscaDisciplinas());
     }
 
 	/**

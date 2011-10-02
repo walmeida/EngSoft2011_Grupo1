@@ -16,8 +16,8 @@ import="java.sql.*" errorPage="" %>
 	<h2>Grupo 1 - Engenharia de Software</h2>
 	<form action='altera'>	
 	<fieldset><legend>Altera&cceil;&atilde;o de turma:</legend><br/>	
-		Id da turma a alterar: <br/><input type="text" size="30" name="id" /> <br />
-		Novo nome: <br/><input type="text" size="30" name="novoNome"/><br/><br/>
+		<input type="hidden" size="30" name="id" value="${turma.id }"/> <br />
+		Novo nome: <br/><input type="text" size="30" name="novoNome" value="${turma.nome }"/><br/><br/>
 	<input type="submit" value="Alterar"/>
 	</fieldset>
 	</form>

@@ -20,7 +20,7 @@ import="java.sql.*" errorPage="" %>
 		Nome: <br/><input type="text" size="30" name="nova.nome"/><br/>
 		Disciplina:<br />
     <select name="idDisciplina">
-    <c:forEach items="${disciplinaDao.lista}" var="disciplina">
+    <c:forEach items="${listaDeDisciplinas}" var="disciplina">
           <option value="${disciplina.id }">${disciplina.nome }</option> 
     </c:forEach>
     </select>

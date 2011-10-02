@@ -17,16 +17,14 @@ public class AlunosController {
 	
 	private final Result result;
 	private AlunoDao alunoDao;
-	private TurmaDao turmaDao;
 
 	/**
 	 * @param result para interação com o jsp do aluno.
 	 * @param alunoDao para interação com o banco de dados
 	 */
-	public AlunosController(Result result, AlunoDao alunoDao, TurmaDao turmaDao) {
+	public AlunosController(Result result, AlunoDao alunoDao) {
 		this.result = result;
 		this.alunoDao = alunoDao;
-		this.turmaDao = turmaDao;
 	}
 
 	/**
@@ -40,9 +38,8 @@ public class AlunosController {
 	 * 
 	 * @param turma
 	 */
-	public void listaAlunosNaTurma(Long idDaTurma) {
-	    Turma turma = turmaDao.carrega(idDaTurma);
-        result.include("listaDeAlunos", turma.getAlunos().toArray());
+	public void listaAlunosNaTurma(Turma turma) {
+        result.include("listaDeAlunos", alunoDao.buscaAlunosNaTurma(turma).toArray());
         result.redirectTo(AlunosController.class).lista();
     }
 
@@ -82,8 +79,11 @@ public class AlunosController {
 	/**
 	 * Método associado ao .jsp com formulário para alteração de cadastro de
 	 * aluno.
+	 * 
+	 * @param id   identificador do aluno
 	 */
-	public void alteracao() {
+	public void alteracao(Long id) {
+	    result.include("aluno", alunoDao.carrega(id));
 	}
 	
 	/**

@@ -63,12 +63,14 @@ public class ProfessoresController {
 	}
 
 	/**
-	 * Método associado ao .jsp com formulário para alteração de cadastro de
-	 * professor.
-	 */
-	public void alteracao() {
-	}
-
+     * Método associado ao .jsp com formulário para alteração de cadastro de
+     * professor.
+     * 
+     * @param id   identificador do professor
+     */
+    public void alteracao(Long id) {
+        result.include("professor", professorDao.carrega(id));
+    }
 	/**
 	 * Altera um professor no banco de dados com o id fornecido e set o nome
 	 * do professor para novoNome, o email para novoEmail e a senha para novaSenha.

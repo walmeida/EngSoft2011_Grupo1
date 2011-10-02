@@ -15,6 +15,11 @@
 <body>
 	<h1>Academic Devoir</h1>
 	<h2>Grupo 1 - Engenharia de Software</h2>
+	
+	<form action='alteracao' method="get">
+	    <input type="hidden" value="${usuarioSession.usuario.id}" name="id"/>
+        <input type="submit" value="Alterar dados pessoais"/>
+    </form>
 	<form action='../disciplinas/cadastro' method="get">
         <input type="submit" value="Cadastrar disciplina"/>
     </form>

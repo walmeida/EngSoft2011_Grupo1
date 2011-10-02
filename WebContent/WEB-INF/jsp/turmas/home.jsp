@@ -22,7 +22,7 @@
         <input type="submit" value="Criar lista de exercícios"/>
     </form>
     <form action='../../alunos/listaAlunosNaTurma' method="get">
-        <input type="hidden" value="${turma.id}" name="idDaTurma">
+        <input type="hidden" value="${turma.id}" name="turma.id">
         <input type="submit" value="Gerenciar alunos"/>
     </form>
 </body>

@@ -1,10 +1,15 @@
 package br.usp.ime.academicdevoir.dao;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.impl.CriteriaImpl.Subcriteria;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.usp.ime.academicdevoir.entidade.Aluno;
@@ -96,6 +101,15 @@ public class AlunoDao {
 		session.update(t);
 		tx.commit();
 	}
+
+	/**
+	 * @param turma    
+	 * @return alunos  coleção de alunos matriculados na turma
+	 */
+    public Collection<Aluno> buscaAlunosNaTurma(Turma turma) {
+        turma = (Turma) session.load(Turma.class, turma.getId());
+        return turma.getAlunos();
+    }
 
 //	@SuppressWarnings("unchecked")
 //	public List<Turma> getTurmas() {

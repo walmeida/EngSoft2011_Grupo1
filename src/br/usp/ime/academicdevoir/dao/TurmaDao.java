@@ -98,4 +98,11 @@ public class TurmaDao {
         .add(Restrictions.like("professor", professor)).addOrder(Order.asc("disciplina"))
         .list();
     }
+
+    /**
+     * @return disciplinas  lista das disciplinas no Banco de Dados. 
+     */
+    public Object buscaDisciplinas() {
+        return session.createCriteria(Disciplina.class).list();
+    }
 }

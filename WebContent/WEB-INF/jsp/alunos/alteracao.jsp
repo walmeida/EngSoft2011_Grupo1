@@ -14,9 +14,9 @@
 	<form action='altera'>	
 	<fieldset>
 	<legend>Alterando dados cadastrais do aluno:</legend><br/>
-		Id do aluno a alterar: <br/><input type="text" size="30" name="id" /> <br/>
-		Novo Nome: <br/><input type="text" size="30" name="novoNome"/><br/>
-		Novo E-mail : <br/><input type="text" size="30" name="novoEmail"/><br/>
+		<input type="hidden" size="30" name="id" value="${aluno.id}"/>
+		Novo Nome: <br/><input type="text" size="30" name="novoNome" value="${aluno.nome}"/><br/>
+		Novo E-mail : <br/><input type="text" size="30" name="novoEmail" value="${aluno.email}"/><br/>
 		Nova Senha : <br/><input type="password" size="30" name="novaSenha"/><br/><br/>
 	<input type="submit" value="Enviar"/>
 	</fieldset>

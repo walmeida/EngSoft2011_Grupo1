@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
+import javax.persistence.OrderBy;
 
 @Entity
 /**
@@ -16,6 +17,7 @@ import javax.persistence.ManyToMany;
 public class Aluno extends Usuario {
 	@ManyToMany(mappedBy = "alunos", cascade = { CascadeType.PERSIST,
 			CascadeType.MERGE }, fetch=FetchType.EAGER)
+	@OrderBy("nome")
 	private Collection<Turma> turmas = new ArrayList<Turma>();
 
 	/**
