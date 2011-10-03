@@ -2,6 +2,7 @@ package br.usp.ime.academicdevoir.dao;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
@@ -24,6 +25,9 @@ public class UsuarioDao {
         List<Usuario> user = session.createCriteria(Usuario.class)
                 .add(Restrictions.like("login", login))
                 .list();
+        
+        if(StringUtils.isBlank(login) || StringUtils.isBlank(senha))
+        	return null;
         
         if (user == null) return null;
         
