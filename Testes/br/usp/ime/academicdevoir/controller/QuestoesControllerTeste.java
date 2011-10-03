@@ -28,7 +28,7 @@ import br.usp.ime.academicdevoir.entidade.QuestaoDeVouF;
 import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 
 public class QuestoesControllerTeste {
-	
+
 	private QuestoesController questoesController;
 	private QuestaoDao dao;
 	private QuestaoDeMultiplaEscolhaDao questaoDeMultiplaEscolhaDao;
@@ -40,7 +40,7 @@ public class QuestoesControllerTeste {
 	private QuestaoDeSubmissaoDeArquivo questaoDeSubmissaoDeArquivo;
 	private QuestaoDeTexto questaoDeTexto;
 	private QuestaoDeVouF questaoDeVouF;
-	
+
 	@Before
 	public void SetUp() {
 		result = spy(new MockResult());
@@ -49,81 +49,94 @@ public class QuestoesControllerTeste {
 		questaoDeSubmissaoDeArquivoDao = mock(QuestaoDeSubmissaoDeArquivoDao.class);
 		questaoDeTextoDao = mock(QuestaoDeTextoDao.class);
 		questaoDeVouFDao = mock(QuestaoDeVouFDao.class);
-				
-		questoesController = new QuestoesController(result, dao, questaoDeMultiplaEscolhaDao, questaoDeSubmissaoDeArquivoDao, questaoDeTextoDao, questaoDeVouFDao);
+
+		questoesController = new QuestoesController(result, dao,
+				questaoDeMultiplaEscolhaDao, questaoDeSubmissaoDeArquivoDao,
+				questaoDeTextoDao, questaoDeVouFDao);
 		questaoDeMultiplaEscolha = new QuestaoDeMultiplaEscolha();
 		questaoDeSubmissaoDeArquivo = new QuestaoDeSubmissaoDeArquivo();
 		questaoDeTexto = new QuestaoDeTexto();
 		questaoDeVouF = new QuestaoDeVouF();
-		
+
 		questaoDeMultiplaEscolha.setId(0L);
 		questaoDeSubmissaoDeArquivo.setId(1L);
 		questaoDeTexto.setId(2L);
 		questaoDeVouF.setId(3L);
-		
+
 		when(dao.listaTudo()).thenReturn(new ArrayList<Questao>());
-		when(questaoDeMultiplaEscolhaDao.buscaPorId(questaoDeMultiplaEscolha.getId())).thenReturn(questaoDeMultiplaEscolha);		
-		when(questaoDeSubmissaoDeArquivoDao.buscaPorId(questaoDeSubmissaoDeArquivo.getId())).thenReturn(questaoDeSubmissaoDeArquivo);
-		when(questaoDeTextoDao.buscaPorId(questaoDeTexto.getId())).thenReturn(questaoDeTexto);
-		when(questaoDeVouFDao.buscaPorId(questaoDeVouF.getId())).thenReturn(questaoDeVouF);
+		when(
+				questaoDeMultiplaEscolhaDao.buscaPorId(questaoDeMultiplaEscolha
+						.getId())).thenReturn(questaoDeMultiplaEscolha);
+		when(
+				questaoDeSubmissaoDeArquivoDao
+						.buscaPorId(questaoDeSubmissaoDeArquivo.getId()))
+				.thenReturn(questaoDeSubmissaoDeArquivo);
+		when(questaoDeTextoDao.buscaPorId(questaoDeTexto.getId())).thenReturn(
+				questaoDeTexto);
+		when(questaoDeVouFDao.buscaPorId(questaoDeVouF.getId())).thenReturn(
+				questaoDeVouF);
 	}
-	
+
 	@Test
-	public void testeDeveRetornarMULTIPLAESCOLHA () {
-		TipoDeQuestao tipoDeQuestao = questoesController.getTipoDeQuestao(questaoDeMultiplaEscolha.getId());
+	public void testeDeveRetornarMULTIPLAESCOLHA() {
+		TipoDeQuestao tipoDeQuestao = questoesController
+				.getTipoDeQuestao(questaoDeMultiplaEscolha.getId());
 		assertEquals(TipoDeQuestao.MULTIPLAESCOLHA, tipoDeQuestao);
 	}
-	
+
 	@Test
-	public void testeDeveRetornarTipoDeQuestaoSUBMISSAODEARQUIVO () {
-		TipoDeQuestao tipoDeQuestao = questoesController.getTipoDeQuestao(questaoDeSubmissaoDeArquivo.getId());
+	public void testeDeveRetornarTipoDeQuestaoSUBMISSAODEARQUIVO() {
+		TipoDeQuestao tipoDeQuestao = questoesController
+				.getTipoDeQuestao(questaoDeSubmissaoDeArquivo.getId());
 		assertEquals(TipoDeQuestao.SUBMISSAODEARQUIVO, tipoDeQuestao);
 	}
-	
+
 	@Test
-	public void testeDeveRetornarTipoDeQuestaoTEXTO () {
-		TipoDeQuestao tipoDeQuestao = questoesController.getTipoDeQuestao(questaoDeTexto.getId());
+	public void testeDeveRetornarTipoDeQuestaoTEXTO() {
+		TipoDeQuestao tipoDeQuestao = questoesController
+				.getTipoDeQuestao(questaoDeTexto.getId());
 		assertEquals(TipoDeQuestao.TEXTO, tipoDeQuestao);
 	}
-	
+
 	@Test
-	public void testeDeveRetornarTipoDeQuestaoVOUF () {
-		TipoDeQuestao tipoDeQuestao = questoesController.getTipoDeQuestao(questaoDeVouF.getId());
+	public void testeDeveRetornarTipoDeQuestaoVOUF() {
+		TipoDeQuestao tipoDeQuestao = questoesController
+				.getTipoDeQuestao(questaoDeVouF.getId());
 		assertEquals(TipoDeQuestao.VOUF, tipoDeQuestao);
 	}
-	
+
 	@Test
-	public void testeAlteracaoQuestaoDeMultiplaEscolha () {
+	public void testeAlteracaoQuestaoDeMultiplaEscolha() {
 		questoesController.alteracao(questaoDeMultiplaEscolha.getId());
 		verify(result).redirectTo(QuestoesDeMultiplaEscolhaController.class);
 	}
-	
+
 	@Test
-	public void testeAlteracaoQuestaoDeSubmissaoDeArquivo () {
+	public void testeAlteracaoQuestaoDeSubmissaoDeArquivo() {
 		questoesController.alteracao(questaoDeSubmissaoDeArquivo.getId());
 		verify(result).redirectTo(QuestoesDeSubmissaoDeArquivoController.class);
 	}
-	
+
 	@Test
-	public void testeAlteracaoQuestaoDeTexto () {
+	public void testeAlteracaoQuestaoDeTexto() {
 		questoesController.alteracao(questaoDeTexto.getId());
 		verify(result).redirectTo(QuestoesDeTextoController.class);
 	}
-	
+
 	@Test
-	public void testeAlteracaoQuestaoDeVouF () {
+	public void testeAlteracaoQuestaoDeVouF() {
 		questoesController.alteracao(questaoDeVouF.getId());
 		verify(result).redirectTo(QuestoesDeVouFController.class);
 	}
-	
+
 	@Test
-	public void testeRemove () {
+	public void testeRemove() {
 		questoesController.remove(new Random().nextLong() % 4);
 		verify(result).redirectTo(QuestoesController.class);
 	}
-	
+
 	@Test
-	public void testeListaIncluidaEmResult () {
+	public void testeLista() {
 		questoesController.lista();
 		List<Questao> questoes = result.included("lista");
 		assertNotNull(questoes);
