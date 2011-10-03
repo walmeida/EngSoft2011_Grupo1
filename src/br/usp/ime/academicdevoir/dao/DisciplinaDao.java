@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.SessionScoped;
 import br.usp.ime.academicdevoir.entidade.Disciplina;
+import br.usp.ime.academicdevoir.entidade.Questao;
 import br.usp.ime.academicdevoir.entidade.Turma;
 
 @Component
@@ -68,11 +69,15 @@ public class DisciplinaDao {
 	 * 
 	 * @return List<Disciplina>
 	 */
-	public List<Disciplina> listaTudo() {
+   /* public List<Disciplina> listaTudo() {
 		String nome = "SELECT p FROM Disciplina p";
 		Query query = session.createQuery(nome);
 		List<Disciplina> listaDeDisciplinas = query.list();
 		return listaDeDisciplinas;
+	}*/
+    
+    public List<Disciplina> listaTudo() {
+		return this.session.createCriteria(Disciplina.class).list();
 	}
 
 }

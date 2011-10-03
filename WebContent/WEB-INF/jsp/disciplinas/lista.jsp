@@ -20,7 +20,7 @@
         </tr>
     </thead>
     <tbody>
-        <c:forEach items="${disciplinaDao.lista}" var="disciplina">
+        <c:forEach items="${lista }" var="disciplina">
             <tr>
                 <td>${disciplina.id}</td>
                 <td>${disciplina.nome}</td>
