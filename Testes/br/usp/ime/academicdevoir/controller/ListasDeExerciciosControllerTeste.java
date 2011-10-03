@@ -16,11 +16,15 @@ import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
+import br.usp.ime.academicdevoir.entidade.QuestaoDaLista;
+import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
+import br.usp.ime.academicdevoir.entidade.Turma;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.any;
 
 import static org.junit.Assert.*;
 
@@ -35,6 +39,8 @@ public class ListasDeExerciciosControllerTeste {
 	private ListaDeExercicios listaDeExercicios;
 	private List<Integer> prazoDeEntrega;
 	private Calendar prazoProvisorio = Calendar.getInstance();
+	private QuestaoDeMultiplaEscolha questao;
+	private Turma turma;
 
 	@Before
 	public void SetUp() {
@@ -46,26 +52,52 @@ public class ListasDeExerciciosControllerTeste {
 
 		listasDeExerciciosController = new ListasDeExerciciosController(result,
 				dao, questaoDao, turmaDao, validator);
+		
 		listaDeExercicios = new ListaDeExercicios();
-
 		listaDeExercicios.setId(0L);
+		
 		Calendar prazoProvisorio = Calendar.getInstance();
 		prazoProvisorio.setTimeInMillis(System.currentTimeMillis());
+
 		prazoDeEntrega = new ArrayList<Integer>();
-
-		when(dao.carrega(listaDeExercicios.getId())).thenReturn(
-				listaDeExercicios);
-		when(dao.listaTudo()).thenReturn(new ArrayList<ListaDeExercicios>());
-	}
-
-	@Test
-	public void testeCadastra() {
 		prazoDeEntrega.add(prazoProvisorio.get(Calendar.DAY_OF_MONTH));
 		prazoDeEntrega.add(prazoProvisorio.get(Calendar.MONTH));
 		prazoDeEntrega.add(prazoProvisorio.get(Calendar.YEAR));
 		prazoDeEntrega.add(prazoProvisorio.get(Calendar.HOUR_OF_DAY));
+
+		questao = new QuestaoDeMultiplaEscolha();
+		questao.setId(0L);
+		
+		turma = new Turma();
+		turma.setId(0L);
+
+		when(dao.carrega(listaDeExercicios.getId())).thenReturn(
+				listaDeExercicios);
+		when(dao.listaTudo()).thenReturn(new ArrayList<ListaDeExercicios>());
+
+		when(questaoDao.carrega(questao.getId())).thenReturn(questao);
+		
+		when(turmaDao.carrega(turma.getId())).thenReturn(turma);
+	}
+
+	private void prazoFuturo(List<Integer> prazoDeEntrega) {
 		prazoDeEntrega.add(prazoProvisorio.get(Calendar.MINUTE) + 1
-				+ new Random().nextInt(1000));
+				+ new Random().nextInt(100000));
+	}
+
+	private Date prazoFuturo() {
+		Date prazoDeEntrega = new Date(System.currentTimeMillis() + 1000000L);
+		return prazoDeEntrega;
+	}
+
+	private void prazoPassado(List<Integer> prazoDeEntrega) {
+		prazoDeEntrega.add(prazoProvisorio.get(Calendar.MINUTE)
+				- new Random().nextInt(100000));
+	}
+
+	@Test
+	public void testeCadastra() {
+		prazoFuturo(prazoDeEntrega);
 
 		listasDeExerciciosController.cadastra(listaDeExercicios,
 				prazoDeEntrega, null);
@@ -78,12 +110,7 @@ public class ListasDeExerciciosControllerTeste {
 
 	@Test(expected = ValidationException.class)
 	public void testeNaoDeveCadastrarQuestaoComPrazoPassado() {
-		prazoDeEntrega.add(prazoProvisorio.get(Calendar.DAY_OF_MONTH));
-		prazoDeEntrega.add(prazoProvisorio.get(Calendar.MONTH));
-		prazoDeEntrega.add(prazoProvisorio.get(Calendar.YEAR));
-		prazoDeEntrega.add(prazoProvisorio.get(Calendar.HOUR_OF_DAY));
-		prazoDeEntrega.add(prazoProvisorio.get(Calendar.MINUTE)
-				- new Random().nextInt(1000));
+		prazoPassado(prazoDeEntrega);
 
 		listasDeExerciciosController.cadastra(listaDeExercicios,
 				prazoDeEntrega, null);
@@ -94,7 +121,7 @@ public class ListasDeExerciciosControllerTeste {
 
 	@Test
 	public void testeVerListaIncluiListaEDataEmResult() {
-		Date prazoDeEntrega = new Date(System.currentTimeMillis() + 1000000L);
+		Date prazoDeEntrega = prazoFuturo();
 		listaDeExercicios.setPrazoDeEntrega(prazoDeEntrega);
 		listasDeExerciciosController.verLista(listaDeExercicios.getId());
 		ListaDeExercicios lista = result.included("listaDeExercicios");
@@ -102,10 +129,10 @@ public class ListasDeExerciciosControllerTeste {
 		assertNotNull(lista);
 		assertNotNull(prazo);
 	}
-	
+
 	@Test
-	public void testeAlteracao() {		
-		Date prazoDeEntrega = new Date(System.currentTimeMillis() + 1000000L);
+	public void testeAlteracao() {
+		Date prazoDeEntrega = prazoFuturo();
 		listaDeExercicios.setPrazoDeEntrega(prazoDeEntrega);
 		listasDeExerciciosController.alteracao(listaDeExercicios.getId());
 		ListaDeExercicios lista = result.included("listaDeExercicios");
@@ -113,6 +140,109 @@ public class ListasDeExerciciosControllerTeste {
 		assertNotNull(lista);
 		assertNotNull(prazo);
 	}
+
+	@Test
+	public void testeAltera() {
+		prazoFuturo(prazoDeEntrega);
+		listasDeExerciciosController.altera(listaDeExercicios, prazoDeEntrega);
+
+		verify(validator).validate(listaDeExercicios);
+		verify(validator).onErrorUsePageOf(ListasDeExerciciosController.class);
+		verify(dao).atualiza(any(ListaDeExercicios.class));
+		verify(result).redirectTo(listasDeExerciciosController);
+	}
+
+	@Test(expected = ValidationException.class)
+	public void testeNaoDeveAlterarQuestaoComPrazoPassado() {
+		prazoPassado(prazoDeEntrega);
+		listasDeExerciciosController.altera(listaDeExercicios, prazoDeEntrega);
+
+		verify(validator).validate(listaDeExercicios);
+		verify(validator).onErrorUsePageOf(ListasDeExerciciosController.class);
+		verify(dao).atualiza(any(ListaDeExercicios.class));
+		verify(result).redirectTo(listasDeExerciciosController);
+	}
+
+	@Test
+	public void testeRemove() {
+		listasDeExerciciosController.remove(listaDeExercicios.getId());
+		verify(dao).remove(listaDeExercicios);
+		verify(result).redirectTo(listasDeExerciciosController);
+	}
+
+	@Test
+	public void testeIncluiQuestao() {
+		listaDeExercicios.setQuestoes(new ArrayList<QuestaoDaLista>());
+		listasDeExerciciosController.incluiQuestao(listaDeExercicios,
+				questao.getId());
+
+		assertEquals(questao, listaDeExercicios.getQuestoes().get(0)
+				.getQuestao());
+		verify(dao).atualiza(listaDeExercicios);
+		verify(result).redirectTo(listasDeExerciciosController);
+	}
+
+	@Test
+	public void testeAlteraQuestao() {
+		List<QuestaoDaLista> questoesDaLista = new ArrayList<QuestaoDaLista>();
+		questoesDaLista.add(new QuestaoDaLista());
+		listaDeExercicios.setQuestoes(questoesDaLista);
+		listasDeExerciciosController.alteraQuestao(listaDeExercicios.getId(), 0, questao.getId());
+		
+		assertEquals(questao, listaDeExercicios.getQuestoes().get(0)
+				.getQuestao());
+		verify(dao).atualiza(listaDeExercicios);
+		verify(result).redirectTo(listasDeExerciciosController);
+	}
 	
+	@Test(expected = IndexOutOfBoundsException.class)
+	public void testeRemoveQuestao() {
+		QuestaoDaLista questao0 = new QuestaoDaLista();
+		QuestaoDaLista questao1 = new QuestaoDaLista();
+		
+		List<QuestaoDaLista> questoesDaLista = new ArrayList<QuestaoDaLista>();
+		questoesDaLista.add(questao0);
+		questoesDaLista.add(questao1);
+		
+		listaDeExercicios.setQuestoes(questoesDaLista);
+		int numeroInicialDeQuestoes = listaDeExercicios.getQuestoes().size();
+		listasDeExerciciosController.removeQuestao(listaDeExercicios.getId(), 0);
+		
+		assertEquals(questao1, listaDeExercicios.getQuestoes().get(0));
+		listaDeExercicios.getQuestoes().get(numeroInicialDeQuestoes);
+		
+		verify(dao).atualiza(listaDeExercicios);
+		verify(result).redirectTo(listasDeExerciciosController);
+	}
 	
+	@Test
+	public void testeIncluiTurma() {
+		listaDeExercicios.setTurmas(new ArrayList<Turma>());
+		listasDeExerciciosController.incluiTurma(listaDeExercicios.getId(), turma.getId());
+		
+		assertEquals(turma, listaDeExercicios.getTurmas().get(0));
+		
+		verify(dao).atualiza(listaDeExercicios);
+		verify(result).redirectTo(listasDeExerciciosController);
+	}
+	
+	@Test(expected = IndexOutOfBoundsException.class)
+	public void testeRemoveTurma() {
+		Turma turma0 = new Turma();
+		Turma turma1 = new Turma();
+		
+		List<Turma> turmas = new ArrayList<Turma>();
+		turmas.add(turma0);
+		turmas.add(turma1);
+		
+		listaDeExercicios.setTurmas(turmas);
+		int numeroInicialDeTurmas = listaDeExercicios.getTurmas().size();
+		listasDeExerciciosController.removeTurma(listaDeExercicios, 0);
+		
+		assertEquals(turma1, listaDeExercicios.getTurmas().get(0));
+		listaDeExercicios.getTurmas().get(numeroInicialDeTurmas);
+		
+		verify(dao).atualiza(listaDeExercicios);
+		verify(result).redirectTo(listasDeExerciciosController);
+	}
 }

@@ -60,5 +60,4 @@ public class QuestoesDeMultiplaEscolhaControllerTeste {
 		verify(dao).remove(temp);
 		verify(result).redirectTo(questoesC);
 	}
-
 }

@@ -25,7 +25,7 @@ public class QuestoesDeTextoControllerTeste {
         dao = mock(QuestaoDeTextoDao.class);
         result = spy(new MockResult());
         validator = spy(new JSR303MockValidator());
-        questoesC = new QuestoesDeTextoController(result, dao,
+        questoesC = new QuestoesDeTextoController(dao, result,
                 validator);
     }
 

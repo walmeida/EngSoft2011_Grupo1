@@ -22,11 +22,13 @@ public class QuestoesDeTextoController {
 	private Validator validator;
 
 	/**
-	 * @param result para interação com o jsp da questão.
-	 * @param dao para interação com o banco de dados
-	 * @param validator 
+	 * @param result
+	 *            para interação com o jsp da questão.
+	 * @param dao
+	 *            para interação com o banco de dados
+	 * @param validator
 	 */
-	public QuestoesDeTextoController(Result result, QuestaoDeTextoDao dao,
+	public QuestoesDeTextoController(QuestaoDeTextoDao dao, Result result,
 			Validator validator) {
 		this.dao = dao;
 		this.result = result;
@@ -52,7 +54,7 @@ public class QuestoesDeTextoController {
 	/** 
 	 * Devolve uma questão de texto com o id fornecido.
 	 * @param id
-     */
+	 */
 	public void alteracao(Long id) {
 		result.include("questao", dao.carrega(id));
 	}

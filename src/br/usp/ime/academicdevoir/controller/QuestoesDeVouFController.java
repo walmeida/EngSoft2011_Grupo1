@@ -22,11 +22,13 @@ public class QuestoesDeVouFController {
 	private Validator validator;
 
 	/**
-	 * @param result para interação com o jsp da questão.
-	 * @param dao para interação com o banco de dados
-	 * @param validator 
+	 * @param result
+	 *            para interação com o jsp da questão.
+	 * @param dao
+	 *            para interação com o banco de dados
+	 * @param validator
 	 */
-	public QuestoesDeVouFController(Result result, QuestaoDeVouFDao dao,
+	public QuestoesDeVouFController(QuestaoDeVouFDao dao, Result result,
 			Validator validator) {
 		this.dao = dao;
 		this.result = result;

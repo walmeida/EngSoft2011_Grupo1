@@ -22,12 +22,14 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	private Validator validator;
 
 	/**
-	 * @param result para interação com o jsp da questão.
-	 * @param dao para interação com o banco de dados
-	 * @param validator 
+	 * @param result
+	 *            para interação com o jsp da questão.
+	 * @param dao
+	 *            para interação com o banco de dados
+	 * @param validator
 	 */
 	public QuestoesDeSubmissaoDeArquivoController(
-			Result result, QuestaoDeSubmissaoDeArquivoDao dao,
+			QuestaoDeSubmissaoDeArquivoDao dao, Result result,
 			Validator validator) {
 		this.dao = dao;
 		this.result = result;
@@ -53,7 +55,7 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	/** 
 	 * Devolve uma questão de submissão de arquivo com o id fornecido.
 	 * @param id
-     */
+	 */
 	public void alteracao(Long id) {
 		result.include("questao", dao.carrega(id));
 	}

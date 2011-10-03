@@ -151,7 +151,7 @@ public class ListasDeExerciciosController {
 
 		validator.validate(listaDeExercicios);
 		validator
-				.onErrorUsePageOf(QuestoesDeSubmissaoDeArquivoController.class)
+				.onErrorUsePageOf(ListasDeExerciciosController.class)
 				.alteracao(listaDeExercicios.getId());
 
 		dao.atualiza(listaDoBD);
@@ -181,13 +181,14 @@ public class ListasDeExerciciosController {
 	 */
 	public void incluiQuestao(ListaDeExercicios listaDeExercicios, Long idDaQuestao) {
 		QuestaoDaLista novaQuestao = new QuestaoDaLista();
-		Questao questao = (Questao) questaoDao.carrega(idDaQuestao);
+		Questao questao = questaoDao.carrega(idDaQuestao);
 		novaQuestao.setQuestao(questao);
 
 		dao.recarrega(listaDeExercicios);
 		List<QuestaoDaLista> questoes = listaDeExercicios.getQuestoes();
 		questoes.add(novaQuestao);
 		listaDeExercicios.setQuestoes(questoes);
+		
 		dao.atualiza(listaDeExercicios);
 		result.redirectTo(this).verLista(listaDeExercicios.getId());
 	}
@@ -207,7 +208,7 @@ public class ListasDeExerciciosController {
 		List<QuestaoDaLista> questoesDaLista = listaDeExercicios.getQuestoes();
 		QuestaoDaLista questaoDaLista = listaDeExercicios.getQuestoes().get(
 				indice.intValue());
-		Questao questao = (Questao) questaoDao.carrega(idDaNovaQuestao);
+		Questao questao = questaoDao.carrega(idDaNovaQuestao);
 
 		questaoDaLista.setQuestao(questao);
 		questoesDaLista.set(indice.intValue(), questaoDaLista);
