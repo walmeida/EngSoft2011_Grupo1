@@ -6,6 +6,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Test;
 
@@ -22,6 +23,7 @@ public class AlunoTest extends TestaBase {
 		final Professor p1 = new Professor();
 		final Turma t2 = new Turma();
 		final Aluno a1 = new Aluno();
+		Session session;
 		
 		a1.setNome("Vinicius G. de Rezende");
 		a1.setLogin("rezende");
