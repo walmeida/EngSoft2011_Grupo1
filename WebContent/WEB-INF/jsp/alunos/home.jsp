@@ -20,8 +20,8 @@
     </form>
     <form action='matricula' method="get">
         <input type="submit" value="Fazer matricula numa turma" /></form>
-    <form action='listaTurmasDoAluno' method="get">
-        <input type = "hidden" name="idDoAluno" 
+    <form action='listaTurmas' method="get">
+        <input type = "hidden" name="idAluno" 
             value="${usuarioSession.usuario.id}" />
         <input type="submit"value="Meus cursos"/></form>
 </body>

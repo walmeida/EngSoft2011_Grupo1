@@ -3,6 +3,7 @@ package br.usp.ime.academicdevoir.controller;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.usp.ime.academicdevoir.dao.AlunoDao;
+import br.usp.ime.academicdevoir.dao.DisciplinaDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.Turma;
@@ -17,14 +18,21 @@ public class AlunosController {
 	
 	private final Result result;
 	private AlunoDao alunoDao;
+	private DisciplinaDao disciplinaDao;
+	private TurmaDao turmaDao;
 
 	/**
 	 * @param result para interação com o jsp do aluno.
 	 * @param alunoDao para interação com o banco de dados
+	 * @param disciplinaDao para interação com o banco de dados
+	 * @param turmaDao para interação com o banco de dados
 	 */
-	public AlunosController(Result result, AlunoDao alunoDao) {
+	public AlunosController(Result result, AlunoDao alunoDao, 
+	        DisciplinaDao disciplinaDao, TurmaDao turmaDao) {
 		this.result = result;
 		this.alunoDao = alunoDao;
+		this.disciplinaDao = disciplinaDao;
+		this.turmaDao = turmaDao;
 	}
 
 	/**
@@ -34,28 +42,20 @@ public class AlunosController {
 	}
 
 	/**
-	 * Lista todos os alunos da turma fornecida.
-	 * 
-	 * @param turma
-	 */
-	public void listaAlunosNaTurma(Turma turma) {
-        result.include("listaDeAlunos", alunoDao.buscaAlunosNaTurma(turma).toArray());
-        result.redirectTo(AlunosController.class).lista();
-    }
-
-
-	/**
-	 * Lista todos os alunos do banco de dados.
-	 */
-    public void listaTodosAlunos() {
-        result.include("listaDeAlunos", alunoDao.listaTudo());
-        result.redirectTo(AlunosController.class).lista();
-    }
-	
-	/**
-	 * Método associado ao .jsp que lista os alunos.
+	 * Método associado ao .jsp que lista os alunos cadastrados no banco de 
+	 * dados.
 	 */
 	public void lista() {
+	    result.include("listaDeAlunos", alunoDao.listaTudo());
+	}
+	
+	/**
+	 * Método associado ao .jsp que lista as turmas em que o aluno está 
+	 * matriculado.
+	 * @param idAluno id do aluno
+	 */
+	public void listaTurmas(Long idAluno) {
+	    result.include("aluno", alunoDao.carrega(idAluno));
 	}
 	
 	/**
@@ -124,16 +124,31 @@ public class AlunosController {
 	 * Método associado ao .jsp com formulário para matricula do aluno.
 	 */
 	public void matricula() {
-		result.include("alunoDao", alunoDao);
+	    result.include("listaDeDisciplinas", disciplinaDao.listaTudo());
 	}
-
+	
 	/**
 	 * Inscreve o aluno na turma com o id fornecido.
 	 * 
 	 * @param idTurma
+	 * @param idAluno
 	 */
-	public void inscreve(Long idTurma) {
-		alunoDao.inscreve(idTurma);
+	public void inscreve(Long idAluno, Long idTurma) {
+		Aluno aluno = alunoDao.carrega(idAluno);
+		Turma turma = turmaDao.carrega(idTurma);
+	    alunoDao.inscreve(aluno, turma);
 		result.redirectTo(AlunosController.class).lista();
 	}
+	
+	/**
+	 * Remove a matricula do aluno na turma.
+	 * @param idAluno id do aluno
+	 * @param idTurma id da turma
+	 */
+    public void removeMatricula(Long idAluno, Long idTurma) {
+        Aluno aluno = alunoDao.carrega(idAluno);
+        Turma turma = turmaDao.carrega(idTurma);
+        alunoDao.removeMatricula(aluno, turma);
+        result.redirectTo(AlunosController.class).listaTurmas(idAluno);
+    }
 }

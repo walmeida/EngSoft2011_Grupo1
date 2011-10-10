@@ -25,7 +25,7 @@ public class QuestoesDeSubmissaoDeArquivoControllerTeste {
         dao = mock(QuestaoDeSubmissaoDeArquivoDao.class);
         result = mock(Result.class);
         validator = mock(Validator.class);
-        questoesC = new QuestoesDeSubmissaoDeArquivoController(result, dao,
+        questoesC = new QuestoesDeSubmissaoDeArquivoController(dao, result,
                 validator);
         when(
                 validator

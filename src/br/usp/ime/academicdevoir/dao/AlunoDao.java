@@ -91,24 +91,27 @@ public class AlunoDao {
 	 * 
 	 * @param idTurma
 	 */
-	public void inscreve(Long idTurma) {
+	public void inscreve(Aluno aluno, Turma turma) {
 		Transaction tx = session.beginTransaction();
-		Aluno a = (Aluno) usuarioAtual.getUsuario();
-		Turma t = (Turma) session.load(Turma.class, idTurma);
-		a.getTurmas().add(t);
-		t.getAlunos().add(a);
-		session.update(a);
-		session.update(t);
+		aluno.getTurmas().add(turma);
+		turma.getAlunos().add(aluno);
+		session.update(aluno);
+		session.update(turma);
 		tx.commit();
 	}
 
 	/**
-	 * @param turma    
-	 * @return alunos  coleção de alunos matriculados na turma
+	 * Remove a matricula do aluno na turma especificada
+	 * @param aluno
+	 * @param turma
 	 */
-    public Collection<Aluno> buscaAlunosNaTurma(Turma turma) {
-        turma = (Turma) session.load(Turma.class, turma.getId());
-        return turma.getAlunos();
+    public void removeMatricula(Aluno aluno, Turma turma) {
+        Transaction tx = session.beginTransaction();
+        aluno.getTurmas().remove(turma);
+        turma.getAlunos().remove(aluno);
+        session.update(aluno);
+        session.update(turma);
+        tx.commit();
     }
 
 //	@SuppressWarnings("unchecked")

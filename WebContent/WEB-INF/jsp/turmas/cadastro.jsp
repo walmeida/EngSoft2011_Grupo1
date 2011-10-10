@@ -16,10 +16,10 @@ import="java.sql.*" errorPage="" %>
 	<h2>Grupo 1 - Engenharia de Software</h2>
 	<form action='cadastra'>
 	<fieldset><legend>Cadastrar nova turma:</legend><br/>
-		<input type="hidden" name="idProfessor", value="${usuarioSession.usuario.id }"/>
+		<input type="hidden" name="nova.professor.id", value="${usuarioSession.usuario.id }"/>
 		Nome: <br/><input type="text" size="30" name="nova.nome"/><br/>
 		Disciplina:<br />
-    <select name="idDisciplina">
+    <select name="nova.disciplina.id">
     <c:forEach items="${listaDeDisciplinas}" var="disciplina">
           <option value="${disciplina.id }">${disciplina.nome }</option> 
     </c:forEach>

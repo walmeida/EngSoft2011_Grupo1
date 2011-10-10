@@ -24,7 +24,7 @@ public class QuestoesDeTextoController {
 	/**
 	 * @param result
 	 *            para interação com o jsp da questão.
-	 * @param dao
+	 * @param turmaDao
 	 *            para interação com o banco de dados
 	 * @param validator
 	 */

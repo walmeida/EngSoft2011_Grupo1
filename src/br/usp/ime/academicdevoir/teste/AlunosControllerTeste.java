@@ -10,6 +10,8 @@ import org.junit.Test;
 import br.com.caelum.vraptor.Result;
 import br.usp.ime.academicdevoir.controller.AlunosController;
 import br.usp.ime.academicdevoir.dao.AlunoDao;
+import br.usp.ime.academicdevoir.dao.DisciplinaDao;
+import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 
 import static org.junit.Assert.assertEquals;
@@ -17,13 +19,17 @@ import static org.junit.Assert.assertEquals;
 public class AlunosControllerTeste {
     private AlunosController alunoC;
     private Result result;
-    private AlunoDao alunodao;
-
+    private AlunoDao alunoDao;
+    private DisciplinaDao disciplinaDao;
+    private TurmaDao turmaDao;
+    
     @Before
     public void SetUp() {
         result = mock(Result.class);
-        alunodao = mock(AlunoDao.class);
-        alunoC = new AlunosController(result, alunodao);
+        alunoDao = mock(AlunoDao.class);
+        disciplinaDao = mock(DisciplinaDao.class);
+        turmaDao = mock(TurmaDao.class);
+        alunoC = new AlunosController(result, alunoDao, disciplinaDao, turmaDao);
         when(result.redirectTo(AlunosController.class)).thenReturn(alunoC);
     }
 
@@ -32,7 +38,7 @@ public class AlunosControllerTeste {
         Aluno novo = new Aluno();
         novo.setId(0L);
         alunoC.cadastra(novo);
-        verify(alunodao).salvaAluno(novo);
+        verify(alunoDao).salvaAluno(novo);
         verify(result).redirectTo(AlunosController.class);
     }
 
@@ -40,12 +46,12 @@ public class AlunosControllerTeste {
     public void testeAltera() {
         Aluno a = new Aluno();
         a.setId(0L);
-        when(alunodao.carrega(0L)).thenReturn(a);
+        when(alunoDao.carrega(0L)).thenReturn(a);
         alunoC.altera(0L, "novo nome", "novo email", "nova senha");
         assertEquals(a.getNome(), "novo nome");
         assertEquals(a.getEmail(), "novo email");
         assertEquals(a.getSenha(), "nova senha");
-        verify(alunodao).atualizaAluno(a);
+        verify(alunoDao).atualizaAluno(a);
         verify(result).redirectTo(AlunosController.class);
     }
 
@@ -53,9 +59,9 @@ public class AlunosControllerTeste {
     public void testeRemove() {
         Aluno a = new Aluno();
         a.setId(0L);
-        when(alunodao.carrega(0L)).thenReturn(a);
+        when(alunoDao.carrega(0L)).thenReturn(a);
         alunoC.remove(0L);
-        verify(alunodao).removeAluno(a);
+        verify(alunoDao).removeAluno(a);
         verify(result).redirectTo(AlunosController.class);
     }
 }

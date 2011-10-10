@@ -24,7 +24,7 @@ public class QuestoesDeMultiplaEscolhaController {
 	
 	/**
 	 * @param result para interação com o jsp da questão.
-	 * @param dao para interação com o banco de dados
+	 * @param turmaDao para interação com o banco de dados
 	 * @param validator 
 	 */
 	public QuestoesDeMultiplaEscolhaController(QuestaoDeMultiplaEscolhaDao dao,

@@ -29,8 +29,8 @@
     <form action='../questoes' method="get">
         <input type="submit" value="Cadastrar questão"/>
     </form>
-    <form action='../turmas/listaTurmasDoProfessor' method="get">
-        <input type="hidden" value="${usuarioSession.usuario.id}" name="professor.id"/>
+    <form action='listaTurmas' method="get">
+        <input type="hidden" value="${usuarioSession.usuario.id}" name="idProfessor"/>
         <input type="submit" value="Meus cursos"/>
     </form>
 </body>

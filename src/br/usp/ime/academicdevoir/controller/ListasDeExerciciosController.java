@@ -36,7 +36,7 @@ public class ListasDeExerciciosController {
 
 	/**
 	 * @param result para interação com o jsp da lista de exercicio.
-	 * @param dao para interação com o banco de dados
+	 * @param turmaDao para interação com o banco de dados
 	 * @param validator 
 	 */
 	public ListasDeExerciciosController(Result result,

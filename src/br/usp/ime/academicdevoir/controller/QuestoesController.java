@@ -28,7 +28,7 @@ public class QuestoesController {
 	
 	/**
 	 * @param result para interação com o jsp da questao.
-	 * @param dao para interação com o banco de dados
+	 * @param turmaDao para interação com o banco de dados
 	 */
 	public QuestoesController(Result result,
 			QuestaoDao dao,

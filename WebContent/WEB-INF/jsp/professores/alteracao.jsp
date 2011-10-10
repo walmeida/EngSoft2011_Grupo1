@@ -14,7 +14,7 @@
 	<form action='altera'>	
 	<fieldset>
 	<legend>Alterando dados cadastrais do professor:</legend><br/>
-		<input type="hidden" size="30" name="id" value="${professor.id}}"/> <br />
+		<input type="hidden" size="30" name="id" value="${professor.id}"/> <br />
 		Novo Nome: <br/><input type="text" size="30" name="novoNome" value="${professor.nome}"/><br/>
 		Nova E-mail : <br/><input type="text" size="30" name="novoEmail" value="${professor.email}"/><br/>
 		Nova Senha : <br/><input type="password" size="32" name="novaSenha"/><br/><br/>

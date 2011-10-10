@@ -9,6 +9,7 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.usp.ime.academicdevoir.dao.AlunoDao;
 import br.usp.ime.academicdevoir.dao.DisciplinaDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
@@ -24,15 +25,21 @@ import br.usp.ime.academicdevoir.infra.UsuarioSession;
 public class TurmasController {
     private final Result result;
     private TurmaDao turmaDao;
+    private DisciplinaDao disciplinaDao;
+    private AlunoDao alunoDao;
 
 	/**
 	 * @param result para interação com o jsp da turma.
 	 * @param turmaDao para interação com o banco de dados
 	 * @param disciplinaDao para interação com o banco de dados 
+	 * @param alunoDao para interação com o banco de dados
 	 */
-    public TurmasController(Result result, TurmaDao turmaDao) {
+    public TurmasController(Result result, TurmaDao turmaDao, 
+            DisciplinaDao disciplinaDao, AlunoDao alunoDao) {
         this.result = result;
         this.turmaDao = turmaDao;
+        this.disciplinaDao = disciplinaDao;
+        this.alunoDao = alunoDao;
     }
 
 	/**
@@ -53,36 +60,27 @@ public class TurmasController {
 
     }
     
-    /**
-	 * Devolve uma lista com todas as turmas de um dado professor.
-	 */
-    public void listaTurmasDoProfessor(Professor professor) {
-        List<Turma> listaDeTurmas = turmaDao
-                .buscaTurmasDoProfessor(professor);
-        result.include("listaDeTurmas", listaDeTurmas);
-        result.redirectTo(TurmasController.class).lista();
-    }
-    
-    /**
-	 * Devolve uma lista com todas as turmas cadastradas no banco de dados.
-	 */
-    public void listaTodasTurmas() {
-        result.include("listaDeTurmas", turmaDao.listaTudo());
-        result.redirectTo(TurmasController.class).lista();
-    }
-    
 	/**
-	 * Método associado ao .jsp que lista as turmas.
+	 * Método associado ao .jsp que lista as turmas cadastradas no banco de 
+	 * dados.
 	 */
     public void lista() {
-
+        result.include("listaDeTurmas", turmaDao.listaTudo());
+    }
+    
+    /**
+     * Método associado ao .jsp que lista os alunos inscritos na turma
+     * @param idTurma   id da turma
+     */
+    public void listaAlunos(long idTurma) {
+        result.include("turma", turmaDao.carrega(idTurma));
     }
     
 	/**
      * Método está associado ao .jsp do formulário de cadastro de uma turma no sistema.
      */
     public void cadastro() {
-        result.include("listaDeDisciplinas", turmaDao.buscaDisciplinas());
+        result.include("listaDeDisciplinas", disciplinaDao.listaTudo());
     }
 
 	/**
@@ -90,9 +88,9 @@ public class TurmasController {
      * 
      * @param nova
      */
-    public void cadastra(final Turma nova, Long idProfessor, Long idDisciplina) {
-        turmaDao.salvaTurma(nova, idDisciplina, idProfessor);
-        result.redirectTo(TurmasController.class).listaTurmasDoProfessor(nova.getProfessor());
+    public void cadastra(final Turma nova) {
+        turmaDao.salvaTurma(nova);
+        result.redirectTo(TurmasController.class).lista();
     }
 
 	/**
@@ -115,7 +113,7 @@ public class TurmasController {
         if (!novoNome.equals(""))
             t.setNome(novoNome);
         turmaDao.atualizaTurma(t);
-        result.redirectTo(TurmasController.class).listaTurmasDoProfessor(t.getProfessor());
+        result.redirectTo(TurmasController.class).lista();
     }
 
 	/**
@@ -133,6 +131,18 @@ public class TurmasController {
     public void remove(final Long id) {
         Turma turma = turmaDao.carrega(id);
         turmaDao.removeTurma(turma);
-        result.redirectTo(TurmasController.class).listaTurmasDoProfessor(turma.getProfessor());
+        result.redirectTo(TurmasController.class).lista();
+    }
+    
+    /**
+     * Remove a matricula do aluno na turma.
+     * @param idAluno id do aluno
+     * @param idTurma id da turma
+     */
+    public void removeMatricula(Long idAluno, Long idTurma) {
+        Aluno aluno = alunoDao.carrega(idAluno);
+        Turma turma = turmaDao.carrega(idTurma);
+        alunoDao.removeMatricula(aluno, turma);
+        result.redirectTo(TurmasController.class).listaAlunos(idTurma);
     }
 }

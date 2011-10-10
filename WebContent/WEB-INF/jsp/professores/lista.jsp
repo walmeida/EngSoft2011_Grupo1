@@ -23,7 +23,7 @@
         </tr>
     </thead>
     <tbody>
-        <c:forEach items="${professorDao.lista}" var="professor">
+        <c:forEach items="${listaDeProfessores}" var="professor">
             <tr>
                 <td>${professor.id}</td>
                 <td>${professor.nome}</td>

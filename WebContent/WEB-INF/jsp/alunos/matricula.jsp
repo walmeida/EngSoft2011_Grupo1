@@ -12,11 +12,18 @@
 	<h1>Academic Devoir</h1>
 	<h2>Grupo 1 - Engenharia de Software</h2>
 	<form action='inscreve'>
+	<input type="hidden" name="idAluno" value="${usuarioSession.usuario.id}">
 	<fieldset><legend>Inscri&ccedil;&atilde;o:</legend><br/>
-	 Olá, ${usuarioSession.usuario.nome}, coloque a id da turma na qual você quer se matricular.<br/><br/>
-		<!-- Id do Aluno: <input type="text" name="idAluno"/><br/> -->
-		Id da Turma: <input type="text" size="30" name="idTurma"/><br/><br/>
-		<input type="submit" value="OK"/>
+	 Olá, ${usuarioSession.usuario.nome}, selecione turma na qual você quer se matricular.<br/><br/>
+	<select name="idTurma">
+    <c:forEach items="${listaDeDisciplinas}" var="disciplina">
+          <c:forEach items="${disciplina.turmas}" var="turma">
+          <option value="${turma.id }">${disciplina.nome } - ${turma.nome }</option> 
+          </c:forEach>
+    </c:forEach>
+    </select>
+        <br /><br />        
+    <input type="submit" value="Ok"/>
 	</fieldset>
 	</form>
 	</body>

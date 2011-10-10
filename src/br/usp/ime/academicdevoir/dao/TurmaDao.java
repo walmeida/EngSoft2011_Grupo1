@@ -25,17 +25,11 @@ public class TurmaDao {
 	}
 
 	/**
-	 * Cadastra a turma de uma determinada disciplina e de um determinado professor no banco de dados.
+	 * Cadastra a turma no banco de dados.
 	 * 
 	 * @param turma
-	 * @param idDaDisciplina
-	 * @param idDoProfessor
 	 */
-	public void salvaTurma(Turma turma, Long idDaDisciplina, Long idDoProfessor) {
-		Disciplina d = (Disciplina) session.load(Disciplina.class, idDaDisciplina);
-		Professor p = (Professor) session.load(Professor.class, idDoProfessor);
-		turma.setDisciplina(d);
-		turma.setProfessor(p);
+	public void salvaTurma(Turma turma) {
 		Transaction tx = session.beginTransaction();
 		session.save(turma);
 		tx.commit();
@@ -86,23 +80,4 @@ public class TurmaDao {
         List<Turma> listaDeTurmas = session.createCriteria(Turma.class).list();
 		return listaDeTurmas;
 	}
-
-    @SuppressWarnings("unchecked")
-    /**
-	 * Devolve uma lista com todas as turmas de um dado professor.
-	 * 
-	 * @return List<Turma>
-	 */
-    public List<Turma> buscaTurmasDoProfessor(Professor professor) {
-        return session.createCriteria(Turma.class)
-        .add(Restrictions.like("professor", professor)).addOrder(Order.asc("disciplina"))
-        .list();
-    }
-
-    /**
-     * @return disciplinas  lista das disciplinas no Banco de Dados. 
-     */
-    public Object buscaDisciplinas() {
-        return session.createCriteria(Disciplina.class).list();
-    }
 }

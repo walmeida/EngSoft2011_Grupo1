@@ -43,7 +43,15 @@ public class ProfessoresController {
 	 * Método associado ao .jsp que lista os professores.
 	 */
 	public void lista() {
-		result.include("professorDao", professorDao);
+		result.include("listaDeProfessres", professorDao.listaTudo());
+	}
+	
+	/**
+	 * Método associado ao .jsp que lista as turmas do professor
+	 * @param idProfessor id do professor 
+	 */
+	public void listaTurmas(Long idProfessor) {
+	    result.include("professor", professorDao.carrega(idProfessor));   
 	}
 
 	/**
@@ -71,11 +79,15 @@ public class ProfessoresController {
     public void alteracao(Long id) {
         result.include("professor", professorDao.carrega(id));
     }
+    
 	/**
 	 * Altera um professor no banco de dados com o id fornecido e set o nome
 	 * do professor para novoNome, o email para novoEmail e a senha para novaSenha.
 	 * 
 	 * @param id
+	 * @param novoNome
+	 * @param novoEmail
+	 * @param novaSenha
 	 */
 	public void altera(Long id, String novoNome, String novoEmail, String novaSenha) {
 		Professor p = professorDao.carrega(id);
