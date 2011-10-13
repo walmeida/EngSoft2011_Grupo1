@@ -18,5 +18,7 @@
 	<input type="submit" value="Alterar"/>
 	</fieldset>
 	</form>
+	<a href="<c:url value='/login'/>">Sair</a>
+	<a href="<c:url value='/disciplinas/home'/>">Voltar</a>
 </body>
 </html>

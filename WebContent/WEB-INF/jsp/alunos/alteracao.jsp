@@ -18,8 +18,10 @@
 		Novo Nome: <br/><input type="text" size="30" name="novoNome" value="${aluno.nome}"/><br/>
 		Novo E-mail : <br/><input type="text" size="30" name="novoEmail" value="${aluno.email}"/><br/>
 		Nova Senha : <br/><input type="password" size="30" name="novaSenha"/><br/><br/>
-	<input type="submit" value="Enviar"/>
+	<input type="submit" value="Enviar"/><br/>
 	</fieldset>
 	</form>
+	<a href="<c:url value='/login'/>">Sair</a>
+	<a href="<c:url value='/alunos/home'/>">Página Principal</a><br/>
 </body>
 </html>

@@ -25,21 +25,13 @@
                 <td>${disciplina.id}</td>
                 <td>${disciplina.nome}</td>
             </tr>
-        </c:forEach>
-        <form action='cadastro'>
-        	<input type="submit" value="Inserir"/>
-        </form>
-        <form action='alteracao'>
-        	<input type="submit" value="Alterar"/>
-        </form>
-        <form action='remocao'>
-        	<input type="submit" value="Excluir"/>
-        </form>
-        <form action='home'>
-        	<input type="submit" value="Voltar"/>
-        </form>
+        </c:forEach>             
     </tbody>
 </table>
-	
+<a href="<c:url value='/login'/>">Sair</a>
+<a href="<c:url value='cadastro'/>">Inserir</a>
+<a href="<c:url value='alteracao'/>">Alterar</a>
+<a href="<c:url value='remocao'/>">Excluir</a>
+<a href="<c:url value='home'/>">Voltar</a>
 </body>
 </html>

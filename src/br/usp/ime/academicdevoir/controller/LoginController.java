@@ -1,6 +1,6 @@
 package br.usp.ime.academicdevoir.controller;
 
-import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Get; 
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;

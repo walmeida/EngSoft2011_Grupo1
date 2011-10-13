@@ -16,19 +16,21 @@ import="java.sql.*" errorPage="" %>
 	<h2>Grupo 1 - Engenharia de Software</h2>
 		<div>
 		<br/><br/>
-		<form action="/academic-devoir/turmas/listaTodas">
-		<input type="submit" value="Listar turmas"></input><br/>
+		<form action="/academic-devoir/turmas/listaAlunos">
+		<a href="<c:url value='/turmas/listaAlunos'/>">Listar turmas</a><br/>
 		</form>
 		<form action="/academic-devoir/turmas/cadastro">
-		<input type="submit" value="Cadastrar nova turma"></input><br/>
+		<a href="<c:url value='/turmas/cadastro'/>">Cadastrar nova turma</a><br/>
 		</form>
 		<form action="/academic-devoir/turmas/remocao">
-		<input type="submit" value="Remover turma"></input><br/>
+		<a href="<c:url value='/turmas/remocao'/>">Remover turma</a><br/>
 		</form>
 		<form action="/academic-devoir/turmas/alteracao">
-		<input type="submit" value="Alterar dados da turma"></input><br/>
+		<a href="<c:url value='/turmas/alteracao'/>">Alterar dados da turma</a><br/>
 		</form>
 	</div>
+	<a href="<c:url value='/login'/>">Sair</a>
+	<a href="<c:url value='/turmas/lista'/>">Pagina Principal</a><br/>
 </body>
 
 </html>

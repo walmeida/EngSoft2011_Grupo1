@@ -18,20 +18,24 @@
 	
 	<form action='alteracao' method="get">
 	    <input type="hidden" value="${usuarioSession.usuario.id}" name="id"/>
-        <input type="submit" value="Alterar dados pessoais"/>
+        <a href="<c:url value='/alunos/alteracao?id=${usuarioSession.usuario.id}'/>">Alterar dados pessoais</a><br/>
     </form>
 	<form action='../disciplinas/cadastro' method="get">
-        <input type="submit" value="Cadastrar disciplina"/>
+        <!--input type="submit" value="Cadastrar disciplina"/-->
+        <a href="<c:url value='../disciplinas/cadastro'/>">Cadastrar disciplina</a><br/>
     </form>
     <form action='../turmas/cadastro' method="get">
-        <input type="submit" value="Cadastrar Turma"/>
+        <!--input type="submit" value="Cadastrar Turma"/-->
+        <a href="<c:url value='../turmas/cadastro'/>">Cadastrar Turma</a><br/>
     </form>
     <form action='../questoes' method="get">
-        <input type="submit" value="Cadastrar questão"/>
+        <!--input type="submit" value="Cadastrar questão"/-->
+        <a href="<c:url value='../questoes'/>">Cadastrar questão</a><br/>
     </form>
     <form action='listaTurmas' method="get">
         <input type="hidden" value="${usuarioSession.usuario.id}" name="idProfessor"/>
-        <input type="submit" value="Meus cursos"/>
+        <a href="<c:url value='/alunos/listaTurmas?idProfessor=${usuarioSession.usuario.id}'/>">Meus cursos</a><br/>
     </form>
+    <a href="<c:url value='/login'/>">Sair</a>
 </body>
 </html>

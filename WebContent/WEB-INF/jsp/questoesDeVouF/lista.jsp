@@ -77,8 +77,11 @@ font-family:"Times New Roman";
 		</div>	
 	<form action="<c:url value="/questoes/cadastro"/>">
 		<fieldset class="fieldsetSemFormatacao">
-			<input type="submit" value="Cadastrar nova questão"></input>
+			<!--input type="submit" value="Cadastrar nova questão"></input-->
+			<a href="<c:url value='/questoes/cadastro'/>">Cadastrar nova questão</a><br/>
 		</fieldset>
 	</form>	
+	<a href="<c:url value='/login'/>">Sair</a>
+	<a href="<c:url value='../questoes'/>">Voltar</a><br/>
 </body>
 </html>

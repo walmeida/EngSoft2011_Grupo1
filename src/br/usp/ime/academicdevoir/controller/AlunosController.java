@@ -1,5 +1,9 @@
 package br.usp.ime.academicdevoir.controller;
 
+import org.apache.commons.lang.StringUtils;
+
+import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.usp.ime.academicdevoir.dao.AlunoDao;
@@ -8,6 +12,7 @@ import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.Turma;
 import br.usp.ime.academicdevoir.infra.Public;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 @Resource
 /**
@@ -20,6 +25,7 @@ public class AlunosController {
 	private AlunoDao alunoDao;
 	private DisciplinaDao disciplinaDao;
 	private TurmaDao turmaDao;
+	private UsuarioSession usuarioSession;
 
 	/**
 	 * @param result para interação com o jsp do aluno.
@@ -28,16 +34,18 @@ public class AlunosController {
 	 * @param turmaDao para interação com o banco de dados
 	 */
 	public AlunosController(Result result, AlunoDao alunoDao, 
-	        DisciplinaDao disciplinaDao, TurmaDao turmaDao) {
+	        DisciplinaDao disciplinaDao, TurmaDao turmaDao, UsuarioSession alunodao) {
 		this.result = result;
 		this.alunoDao = alunoDao;
 		this.disciplinaDao = disciplinaDao;
 		this.turmaDao = turmaDao;
+		this.usuarioSession = alunodao;
 	}
 
 	/**
 	 * Método associado à home page do aluno.
 	 */
+
 	public void home() {
 	}
 
@@ -83,7 +91,7 @@ public class AlunosController {
 	 * @param id   identificador do aluno
 	 */
 	public void alteracao(Long id) {
-	    result.include("aluno", alunoDao.carrega(id));
+		result.include("aluno", alunoDao.carrega(id));
 	}
 	
 	/**
@@ -95,11 +103,11 @@ public class AlunosController {
 	public void altera(Long id, String novoNome, String novoEmail,
 			String novaSenha) {
 		Aluno a = alunoDao.carrega(id);
-		if (!novoNome.equals("")) a.setNome(novoNome);
-		if (!novoEmail.equals("")) a.setEmail(novoEmail);
-		if (!novaSenha.equals("")) a.setSenha(novaSenha);
+		if (!novoNome.equals("") || !StringUtils.isBlank(novoNome)) a.setNome(novoNome);
+		if (!novoEmail.equals("") || !StringUtils.isBlank(novoEmail)) a.setEmail(novoEmail);
+		if (!novaSenha.equals("") || !StringUtils.isBlank(novaSenha)) a.setSenha(novaSenha);
 		alunoDao.atualizaAluno(a);
-		result.redirectTo(AlunosController.class).lista();
+		result.redirectTo(AlunosController.class).home();
 	}
 
 	/**

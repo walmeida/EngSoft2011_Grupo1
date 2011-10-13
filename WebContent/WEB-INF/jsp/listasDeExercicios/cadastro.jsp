@@ -93,5 +93,8 @@ display: inline;
 		</form>
 		<br/>
 	</div>
+	<a href="<c:url value='/login'/>">Sair</a>
+	<a href="<c:url value='../listasDeExercicios'/>">Voltar</a>
+	<a href="<c:url value='../professores/home'/>">Pagina principal</a><br/>
 </body>
 </html>
