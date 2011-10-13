@@ -25,8 +25,10 @@
         </c:forEach>
     </table>
     <form action='matricula'>
-            <input type="submit" value="Inscrever-me em um nova turma"/>
+            <!-- input type="submit" value="Inscrever-me em um nova turma"/-->
+            <a href="<c:url value='/alunos/matricula'/>">Inscrever-me em um nova turma</a><br/>
     </form>
-    
+    <a href="<c:url value='/login'/>">Sair</a>
+    <a href="<c:url value='/alunos/home'/>">Página Principal</a><br/>
 </body>
 </html>

@@ -223,5 +223,7 @@ display: inline;
 		</form>
 		<br/>
 	</div>
+	<a href="<c:url value='/login'/>">Sair</a>
+	<a href="<c:url value='../questoes'/>">Voltar</a><br/>
 </body>
 </html>

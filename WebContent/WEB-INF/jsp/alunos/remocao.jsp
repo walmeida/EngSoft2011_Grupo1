@@ -18,5 +18,7 @@
 		<input type="submit" value="Remover"/>
 	</fieldset>
 	</form>
+	<a href="<c:url value='/login'/>">Sair</a><br/>
+	<a href="<c:url value='/alunos/home'/>">Página Principal</a><br/>
 </body>
 </html>

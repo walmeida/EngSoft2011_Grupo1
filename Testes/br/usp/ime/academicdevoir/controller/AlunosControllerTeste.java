@@ -13,6 +13,7 @@ import br.usp.ime.academicdevoir.dao.AlunoDao;
 import br.usp.ime.academicdevoir.dao.DisciplinaDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,14 +23,15 @@ public class AlunosControllerTeste {
     private AlunoDao alunoDao;
 	private TurmaDao turmaDao;
     private DisciplinaDao disciplinaDao;
-	
+    private UsuarioSession usuarioSession;
+    
     @Before
     public void SetUp() {
     	result = spy(new MockResult());
         alunoDao = mock(AlunoDao.class);
         disciplinaDao = mock(DisciplinaDao.class);
         turmaDao = mock(TurmaDao.class);
-        alunoC = new AlunosController(result, alunoDao, disciplinaDao, turmaDao);
+        alunoC = new AlunosController(result, alunoDao, disciplinaDao, turmaDao, usuarioSession);
     }
 
     @Test

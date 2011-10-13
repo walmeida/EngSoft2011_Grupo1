@@ -25,5 +25,10 @@
 	<input type="submit" value="Enviar"/>
 	</fieldset>
 	</form>
+	<a href="<c:url value='/login'/>">Sair</a>
+	
+	<c:if test ="${usuarioSession.usuario.id != null}">
+        <a href="<c:url value='/alunos/lista'/>">Voltar</a><br/>              
+    </c:if>
 </body>
 </html>

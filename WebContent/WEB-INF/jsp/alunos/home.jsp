@@ -14,15 +14,20 @@
 <body>
 	<h1>Academic Devoir</h1>
 	<h2>Grupo 1 - Engenharia de Software</h2>
+	
 	<form action='alteracao' method="get">
         <input type="hidden" value="${usuarioSession.usuario.id}" name="id"/>
-        <input type="submit" value="Alterar dados pessoais"/>
+        <a href="<c:url value='/alunos/alteracao?id=${usuarioSession.usuario.id}'/>">Alterar dados pessoais</a><br/>
     </form>
+    
     <form action='matricula' method="get">
-        <input type="submit" value="Fazer matricula numa turma" /></form>
+        <a href="<c:url value='/alunos/matricula'/>">Fazer matricula numa turma</a><br/>
+    </form>	
+    
     <form action='listaTurmas' method="get">
-        <input type = "hidden" name="idAluno" 
-            value="${usuarioSession.usuario.id}" />
-        <input type="submit"value="Meus cursos"/></form>
+        <input type = "hidden" name="idAluno" value="${usuarioSession.usuario.id}" />
+        <a href="<c:url value='/alunos/listaTurmas?idAluno=${usuarioSession.usuario.id}'/>">Meus cursos</a><br/>
+    </form>
+    <a href="<c:url value='/login'/>">Sair</a>
 </body>
 </html>

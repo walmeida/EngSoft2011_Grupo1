@@ -12,16 +12,18 @@
 	<h1>Academic Devoir</h1>
 	<h2>Grupo 1 - Engenharia de Software</h2>
         <form action='cadastro'>
-        	<input type="submit" value="Inserir"/>
+        	<!-- input type="submit" value="Inserir"/-->
+        	<a href="<c:url value='/alunos/cadastro'/>">Inserir</a><br/>
         </form>
         <form action='alteracao'>
         	<input type="submit" value="Alterar"/>
         </form>
         <form action='remocao'>
-        	<input type="submit" value="Excluir"/>
+        	<!--input type="submit" value="Excluir"/-->
+        	<a href="<c:url value='/alunos/remocao'/>">Excluir</a><br/>
         </form>
         <form action='home'>
-        	<input type="submit" value="Voltar"/>
+        	<!--input type="submit" value="Voltar"/-->
 		</form>
     <p>Lista de Alunos</p>
 	<table>
@@ -46,6 +48,7 @@
         </c:forEach>
     </tbody>
 </table>
-	
+<a href="<c:url value='/login'/>">Sair</a>
+<a href="<c:url value='/professores/home'/>">Voltar</a><br/>
 </body>
 </html>

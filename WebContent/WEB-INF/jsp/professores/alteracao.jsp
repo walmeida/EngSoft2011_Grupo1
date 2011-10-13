@@ -21,5 +21,6 @@
 	<input type="submit" value="Enviar"/>
 	</fieldset>
 	</form>
+	<a href="<c:url value='/login'/>">Sair</a>
 </body>
 </html>

@@ -72,8 +72,11 @@ font-family:"Times New Roman";
 	</div>
 	<form id="cadastrarQuestao" action="/academic-devoir/questoes/cadastro">
 		<fieldset class="fieldsetSemFormatacao">
-			<input type="submit" value="Cadastrar nova questão"></input>
+			<!--input type="submit" value="Cadastrar nova questão"></input-->
+			<a href="<c:url value='questoes/cadastro'/>">Cadastrar nova questão</a>
 		</fieldset>
-	</form>	
+	</form>
+	<a href="<c:url value='/login'/>">Sair</a>
+	<a href="<c:url value='/professores/home'/>">Voltar</a><br/>	
 </body>
 </html>

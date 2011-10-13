@@ -13,6 +13,7 @@ import br.usp.ime.academicdevoir.dao.AlunoDao;
 import br.usp.ime.academicdevoir.dao.DisciplinaDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,6 +23,7 @@ public class AlunosControllerTeste {
     private AlunoDao alunoDao;
     private DisciplinaDao disciplinaDao;
     private TurmaDao turmaDao;
+    private UsuarioSession usuarioSession;
     
     @Before
     public void SetUp() {
@@ -29,7 +31,7 @@ public class AlunosControllerTeste {
         alunoDao = mock(AlunoDao.class);
         disciplinaDao = mock(DisciplinaDao.class);
         turmaDao = mock(TurmaDao.class);
-        alunoC = new AlunosController(result, alunoDao, disciplinaDao, turmaDao);
+        alunoC = new AlunosController(result, alunoDao, disciplinaDao, turmaDao, usuarioSession);
         when(result.redirectTo(AlunosController.class)).thenReturn(alunoC);
     }
 

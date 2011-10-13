@@ -21,5 +21,6 @@
     value="Listar aluno" /></form>
     <form action='remocao' method="get"><input type="submit"
     value="Remover aluno" /></form>
+    <a href="<c:url value='/login'/>">Sair</a><br/>
 </body>
 </html>

@@ -17,5 +17,7 @@
 	<input type="submit" value="Enviar"/>
 	</fieldset>
 	</form>
+	<a href="<c:url value='/login'/>">Sair</a>
+	<a href="<c:url value='/professores/home'/>">Voltar</a><br/>
 </body>
 </html>

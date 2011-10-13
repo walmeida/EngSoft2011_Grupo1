@@ -24,10 +24,10 @@
             </tr>
         </c:forEach>
         <form action='cadastro'>
-        	<input type="submit" value="Inserir"/>
+        	<a href="<c:url value='/turmas/cadastro'/>">Inserir</a>
        	</form>
         <form action='home'>
-        	<input type="submit" value="Voltar"/>
+        	<a href="<c:url value='/turmas/menu'/>">Voltar</a>
         </form>
 </table>
 	

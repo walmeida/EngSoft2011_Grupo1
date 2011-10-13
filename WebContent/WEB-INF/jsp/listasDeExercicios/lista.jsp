@@ -52,8 +52,11 @@ font-family:"Times New Roman";
 	</div>	
 	<form action="<c:url value="/listasDeExercicios/cadastro"/>">
 		<fieldset class="fieldsetSemFormatacao">
-			<input type="submit" value="Cadastrar nova lista"></input>
+			<!--input type="submit" value="Cadastrar nova lista"></input-->
+			<a href="<c:url value='/listasDeExercicios/cadastro'/>">Cadastrar nova lista</a><br/>	
 		</fieldset>
-	</form>	
+	</form>
+	<a href="<c:url value='/login'/>">Sair</a>
+	<a href="<c:url value='questoes'/>">Voltar</a><br/>	
 </body>
 </html>

@@ -42,9 +42,10 @@
 	            </form> 
 			</c:when>
 			<c:otherwise>
-			    Olá, ${usuarioSession.usuario.nome}
+			    Tem certeza ${usuarioSession.usuario.nome}?
 			    <div>    
-                    <p><a href="logout">Logout</a></p>
+                    <a href="logout">Sair</a>
+                    <a href="<c:url value='/alunos/home'/>">Página Principal</a><br/>
                 </div> 
 			</c:otherwise>
 	     </c:choose>
