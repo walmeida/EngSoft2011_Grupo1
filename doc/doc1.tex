@@ -1,0 +1,320 @@
+\documentclass[12pt,letterpaper]{article}
+
+
+
+% Page margin settings
+\setlength{\textwidth}{6.5in} \setlength{\textheight}{9.0in}
+\setlength{\topmargin}{-.25in} \setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+
+
+% For encapsulated postscript figures
+%\usepackage{epsfig}
+% For figures in other image formats
+\usepackage{graphicx,psfrag}
+\usepackage{indentfirst}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+%\usepackage[a4paper, tmargin=2.5cm, bmargin=2.5cm, lmargin=2.5cm, rmargin=2.5cm]{geometry}
+
+
+\begin{document}
+
+\sloppy
+
+\title{
+{\Large Instituto de Matemática e Estatística} \\
+{\large Universidade de S\~ao Paulo, Brasil} \\
+\vspace{2cm}
+{\bf Academic Devoir}
+}
+
+
+\author{
+André Satoshi\\
+António Castro\\
+Bruno Padilha\\
+Gustavo Coelho\\
+Luciana Kayo\\
+Susanna Rezende\\
+Suzana Santos\\
+Vinicius Rezende\\
+\vspace{2cm}
+Wallace Almeida\\
+{\small Professor: Marco Gerosa}\\
+{\small Disciplina: MAC0332 Engenharia de Software}
+\vspace{2cm}
+{\small Versão: 2.0}
+}
+
+\date{\today}
+
+\maketitle
+
+\thispagestyle{empty}
+
+%\begin{abstract}
+%\end{abstract}
+
+\pagebreak
+
+\tableofcontents
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\pagebreak
+%\section{Introdução}
+
+
+\pagebreak
+\section{Analista}
+
+\subsection{Visão}
+``Academic Devoir'' é um sistema a ser desenvolvido para uso em plataforma Web,  utilizando Java como linguagem básica de desenvolvimento, e adotando como tecnologias au\-xi\-liares os frameworks vRaptor e Hibernate.
+
+O sofware tem como característica principal a gestão de tarefas acadêmicas das turmas de variadas disciplinas, baseadas em listas de exercícios, por sua vez constituídas de questões em diversas categorias, como dissertativa e ``Verdadeiro ou Falso'', e de correção automática.
+
+O uso do sistema será destinado a professores e alunos. Os primeiros podem elaborar as atividades e visualizar a correção automática efetuada. Já os últimos poderão exibir as atividades disponíveis e solucioná-las.
+
+\subsection{Requerimentos do Sistema (System-Wide Requirements)}
+\subsection{Casos de Uso}
+De acordo com o tipo de usuário (aluno ou professor), existirão tarefas que devem ser atendidas pelo sistema. Podemos listar algumas das possiveis utilizações:
+\begin{itemize}
+\item {Professor gerencia alunos}
+\item {Professor cadastra disciplina}
+\item {Professor cadastra turma}
+\item {Professor cadastra lista de exercício}
+\item {Professor cadastra questões}
+\item {Professor lista respostas de questão}
+\item {Professor pode reordenar questões de uma lista}
+\item {Professor determina o tipo de matricula}
+\item {Aluno se cadastra}
+\item {Aluno se matricula em uma turma de uma disciplina}
+\item {Aluno entra em uma disciplina e visualiza as listas}
+\item {Aluno resolve uma lista de exercícios}
+\end{itemize}
+
+\subsection{Modelo de Casos de Uso}
+\subsection{Glossário}
+
+
+\pagebreak
+\section{Gerente}
+
+\subsection{Plano da Iteração}
+
+\vspace{1cm}
+{\large {\bf Objetivos da iteração}}
+\vspace{0.5cm}
+
+
+A primeira iteração do projeto tem por objetivo a adaptação dos integrantes aos respectivos papéis e às práticas de desenvolvimento adotadas.
+
+Após as 3 primeiras semanas de desenvolvimento, o grupo deverá apresentar um sistema funcional que realize o cadastro de alunos e professores e o login de usuários.
+
+Não será exigido que o sistema permita o cadastro de disciplinas, turmas, questões ou listas de exercícios, porém, essas funcionalidades deverão estar trabalhando corretamente nos testes  de unidade.
+
+Ao longo da iteração, espera-se que todas as partes do desenvolvimento estejam bem documentadas, conforme a metodologia OpenUP e que seja feita uma boa modelagem das classes do sistema e um levantamento de requisitos detalhado.
+
+\vspace{1cm}
+{\large {\bf Atribuições de trabalho}}
+\vspace{0.5cm}
+
+As tarefas foram atribuídas conforme o papel dos integrantes. Dependendo da dificuldade da tarefa e de sua relevância para o desenvolvimento do projeto, todos os integrantes devem contribuir.
+
+Segue uma lista dos participantes e de seus respectivos itens de trabalho:
+
+\begin{itemize}
+\item {} André Satoshi Fujii de Siqueira (Desenvolvedor)
+Divisão das tarefas de implementação
+Implementação do CRUD de questões e listas de exercício.
+\item {}Antonio Junior (Documentrelacionadaador)
+Estudar documentação OpenUP e instruir os integrantes do grupo sobre como deve ser a documentação
+Acompanhar a documentação do projeto e dar as orientações necessárias.
+Reunir a documetação de todas as partes do desenvolvimento.
+\item {}Bruno Padilha (Desenvolvedor)
+Divisão das tarefas de implementação
+Implementação do cadastro de uma lista de exercícios.
+Gustavo Coelho (Analista de qualidade)
+Testes de Unidade para os CRUDS desenvolvidos.
+Implementação do login no sistema
+\item {}Luciana Kayo (Arquiteta)
+Modelagem das classes do sistema.
+Formatação das páginas com css.
+\item {}Susanna Rezende (Arquiteta)
+Durante essa iteração, a integrante não terá disponibilidade para executar as tarefas.
+O tempo de ausência poderá ser compensado em outras iterações.
+\item {}Suzana de S. Santos (Gerente)
+Monitoramento das tarefas desenvolvidas e atribuição de novas tarefas
+Modelagem das classes do sistema
+Implementação do cadastro de uma resposta dada por um aluno no sistema.
+\item {}Vinicius Rezende (Desenvolvedor)
+Implementação do CRUD de aluno, professor, disciplina e turma.
+\item {}Wallace Faveron de Almeida (Analista de requisitos)
+Levantamento de requisitos
+Implementação do Login no sistema.
+\end{itemize}
+
+Para maior detalhamento dos itens de trabalho, visite a página: 
+\url{https://www.pivotaltracker.com/projects/355453#}
+
+\vspace{1cm}
+{\large {\bf Critérios de avaliação}}
+\vspace{0.5cm}
+
+Para avaliarmos o desenvolvimento, usaremos os testes de Unidade e a avaliação do cliente sobre o sistema.
+Veja maiores detalhes sobre os testes na documentação do analista de qualidade.
+
+
+\subsection{Plano do Projeto}
+
+
+\vspace{1cm}
+{\large {\bf Organização}}
+\vspace{0.5cm}
+
+O trabalho no projeto é dividido nas seguintes áreas:
+
+
+\begin{table}[ht!]
+\begin{small} %tiny
+    \hspace*{-4mm}
+    \begin{tabular}{| l | p{5cm} | p{5cm} |}
+    \hline
+    Identificação & Responsabilidades & Stakeholders\\
+    \hline
+    \hline
+    Gerente do Projeto &
+    Atribuições de caráter decisório e estratégico quanto aos rumos do projeto. &
+    Suzana Santos\\
+    \hline
+    Analistas &
+    Definir e aprovar os requisitos e especificações de negócio do sistema. &
+    Wallace Almeida\\
+    \hline
+    Arquiteto do Projeto &
+    Definir a arquitetura a ser utilizada no sistema. &
+    Luciana e Susanna Rezende \\
+    & & Colaboradora: Suzana Santos\\
+    \hline
+    Documentação &
+    Documentar &
+    António Castro\\
+    & & Colaboradores: Todos\\
+    \hline
+    Programadores &
+    Implementar o sistema conforme as especificações. &
+    André, Bruno e Vinícius \\
+    & & Colaboradores: Todos\\
+    \hline
+    Testes &
+    Padronizar os testes, homologar. &
+    Gustavo\\
+    \hline
+    \end{tabular}
+\end{small}
+\end{table}
+
+
+\vspace{1cm}
+{\large {\bf Medições}}
+\vspace{0.5cm}
+
+A cada item de trabalho atribuímos pontos, que representam horas de dedicação (1 ponto equivale a uma hora).
+Na página \url{https://www.pivotaltracker.com/projects/355453#}, temos os seguintes agrupamentos de itens de trabalho:
+\begin{enumerate}
+\item{Current (trabalho em desenvolvimento, concluído ou a ser desenvolvido em breve)}
+\item{Backlog (trabalho a ser desenvolvido em breve)}
+\item{Icebox (trabalho a ser desenvolvido sem data para início)}
+\end{enumerate}
+
+\vspace{1cm}
+{\large {\bf Objetivos}}
+\vspace{0.5cm}
+
+Criar um sistema de resolução e correção de listas de exercício na Web.
+O desenvolvimento consistirá de 3 iterações (cada uma com 3 semanas de duração) durante as quais serão implementadas as histórias:
+
+\begin{itemize}
+\item{Aluno se cadastra}
+\item{Login de aluno/professor}
+\item{Professor gerencia alunos (CRUD)}
+\item{Professor cadastra disciplina}
+\item{Professor cadastra turma}
+\item{Professor cadastra lista de exercício}
+\item{Professor cadastra questão de texto}
+\item{Professor cadastra questão de V ou F}
+\item{Professor cadastra questão de múltipla escolha}
+\item{Professor cadastra questão de submissão de arquivo}
+\item{Aluno se matricula em uma turma de uma disciplina}
+\item{Professor lista respostas de questão de texto que ainda não foram corrigidas e pode corrigi-la}
+\item{Professor pode reordenar questões de uma lista}
+\item{Aluno entra em uma disciplina e visualiza as listas a serem feitas e as já corrigidas}
+\item{Aluno resolve uma lista de exercícios}
+\item{Professor determina o tipo de matricula em uma turma (imediato ou com prazo definido)}
+\end{itemize}
+Aguardamos mais informações do professor para completar a lista de histórias a serem implementadas.
+
+
+
+\subsection{Lista de Riscos}
+
+Perguntar para o professor o que seriam os riscos do projeto.
+
+\subsection{Avaliação de status}
+
+Aguardando feedback do cliente.
+
+
+
+\subsection{Lista de Itens de Trabalhos}
+
+A lista dos itens de trabalho pode ser visualizada em: \url{https://www.pivotaltracker.com/projects/355453#}
+
+
+\pagebreak
+\section{Arquiteto}
+
+\subsection{Caderno de Arquitetura}
+
+
+
+
+\pagebreak
+\section{Desenvolvedor}
+
+\subsection{Build}
+\subsection{Design}
+\subsection{Developer Test}
+\subsection{Implementation}
+
+
+
+
+
+\pagebreak
+\section{Testador}
+
+A maioria dos testes realizados até o momento são testes nas classes Controller, ou seja, que testam se os Controllers chamam os métodos apropriados dos DAOs e se o usuário é redirecionado para as páginas certas. 
+
+Há também testes que consistem em verificar se os diferentes objetos (Alunos, Professores, etc...) estão sendo corretamente inseridos em suas tabelas no banco de dados.
+
+Para não afetar o banco de dados, todas os objetos que lidam com o banco de dados diratemente são mocks (imitações) dos objetos reais.
+
+\subsection{Test Case}
+\subsection{Test Log}
+\subsection{Test Script}
+
+
+
+
+%\pagebreak
+%\section{Bibliografia}\label{bibliografia}
+%\bibliographystyle{plain}
+%\bibliography{referencias}   % .bib
+
+
+\end{document}
