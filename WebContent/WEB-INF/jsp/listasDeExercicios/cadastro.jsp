@@ -81,7 +81,7 @@ display: inline;
 					
 				<label for="turmas">Turmas:</label>
 				<br />
-				<c:forEach items="${usuarioSession.usuario.turmas }" var="turma">
+				<c:forEach items="${turmasDoProfessor }" var="turma">
 					<input type="checkbox" name="idDasTurmas[]" value="${turma.id }" />
 					<p> ${turma.nome }</p>
 					<br />
@@ -93,8 +93,10 @@ display: inline;
 		</form>
 		<br/>
 	</div>
-	<a href="<c:url value='/login'/>">Sair</a>
-	<a href="<c:url value='../listasDeExercicios'/>">Voltar</a>
-	<a href="<c:url value='../professores/home'/>">Pagina principal</a><br/>
+	<div>
+		<a href="<c:url value='/login'/>">Sair</a>
+		<a href="<c:url value='/listasDeExercicios'/>">Voltar</a>
+		<a href="<c:url value='/professores/home'/>">Pagina principal</a><br/>
+	</div>
 </body>
 </html>

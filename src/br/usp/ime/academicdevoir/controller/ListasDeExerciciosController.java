@@ -15,12 +15,15 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
+import br.usp.ime.academicdevoir.dao.ProfessorDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
+import br.usp.ime.academicdevoir.entidade.Professor;
 import br.usp.ime.academicdevoir.entidade.Questao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDaLista;
 import br.usp.ime.academicdevoir.entidade.Turma;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 @Resource
 /**
@@ -31,8 +34,10 @@ public class ListasDeExerciciosController {
 	private final Result result;
 	private final ListaDeExerciciosDao dao;
 	private final QuestaoDao questaoDao;
+	private final ProfessorDao professorDao;
 	private final TurmaDao turmaDao;
 	private final Validator validator;
+	private final UsuarioSession usuarioLogado;
 
 	/**
 	 * @param result para interação com o jsp da lista de exercicio.
@@ -40,13 +45,17 @@ public class ListasDeExerciciosController {
 	 * @param validator 
 	 */
 	public ListasDeExerciciosController(Result result,
-			ListaDeExerciciosDao dao, QuestaoDao questaoDao, TurmaDao turmaDao,
-			Validator validator) {
+			ListaDeExerciciosDao dao, QuestaoDao questaoDao,
+			ProfessorDao professorDao, TurmaDao turmaDao, Validator validator,
+			UsuarioSession usuarioLogado) {
+		super();
+		this.result = result;
 		this.dao = dao;
 		this.questaoDao = questaoDao;
+		this.professorDao = professorDao;
 		this.turmaDao = turmaDao;
-		this.result = result;
 		this.validator = validator;
+		this.usuarioLogado = usuarioLogado;
 	}
 
 	@Post
@@ -280,6 +289,8 @@ public class ListasDeExerciciosController {
 	 * Redireciona para a página com formulário para cadastro de uma nova lista de exercícios.
 	 */
 	public void cadastro() {
+		Professor professor = professorDao.carrega(usuarioLogado.getUsuario().getId());
+		result.include("turmasDoProfessor", professor.getTurmas());
 	}
 
 	@Get

@@ -76,7 +76,6 @@ public class TurmasControllerTeste {
 		List<Turma> turmas = result.included("listaDeTurmas");
 		
 		assertNotNull(turmas);
-		verify(result).redirectTo(TurmasController.class);	
 	}
 	
 	@Test

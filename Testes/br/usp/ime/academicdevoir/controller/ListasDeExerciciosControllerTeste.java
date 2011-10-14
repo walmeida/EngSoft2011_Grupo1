@@ -9,16 +9,19 @@ import java.util.Random;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.util.test.JSR303MockValidator;
 import br.com.caelum.vraptor.util.test.MockResult;
 import br.com.caelum.vraptor.validator.ValidationException;
 import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
+import br.usp.ime.academicdevoir.dao.ProfessorDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.QuestaoDaLista;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
 import br.usp.ime.academicdevoir.entidade.Turma;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -41,6 +44,8 @@ public class ListasDeExerciciosControllerTeste {
 	private Calendar prazoProvisorio = Calendar.getInstance();
 	private QuestaoDeMultiplaEscolha questao;
 	private Turma turma;
+	private ProfessorDao professorDao;
+	private UsuarioSession usuarioLogado;
 
 	@Before
 	public void SetUp() {
@@ -51,7 +56,7 @@ public class ListasDeExerciciosControllerTeste {
 		validator = spy(new JSR303MockValidator());
 
 		listasDeExerciciosController = new ListasDeExerciciosController(result,
-				dao, questaoDao, turmaDao, validator);
+				dao, questaoDao, professorDao, turmaDao, validator, usuarioLogado);
 		
 		listaDeExercicios = new ListaDeExercicios();
 		listaDeExercicios.setId(0L);
