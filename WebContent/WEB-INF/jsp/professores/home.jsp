@@ -20,17 +20,17 @@
 	    <input type="hidden" value="${usuarioSession.usuario.id}" name="id"/>
         <a href="<c:url value='/alunos/alteracao?id=${usuarioSession.usuario.id}'/>">Alterar dados pessoais</a><br/>
     </form>
-	<form action='../disciplinas/cadastro' method="get">
+	<form action='/disciplinas/cadastro' method="get">
         <!--input type="submit" value="Cadastrar disciplina"/-->
-        <a href="<c:url value='../disciplinas/cadastro'/>">Cadastrar disciplina</a><br/>
+        <a href="<c:url value='/disciplinas/cadastro'/>">Cadastrar disciplina</a><br/>
     </form>
     <form action='../turmas/cadastro' method="get">
         <!--input type="submit" value="Cadastrar Turma"/-->
-        <a href="<c:url value='../turmas/cadastro'/>">Cadastrar Turma</a><br/>
+        <a href="<c:url value='/turmas/cadastro'/>">Cadastrar Turma</a><br/>
     </form>
     <form action='../questoes' method="get">
         <!--input type="submit" value="Cadastrar questão"/-->
-        <a href="<c:url value='../questoes'/>">Cadastrar questão</a><br/>
+        <a href="<c:url value='/questoes/cadastro'/>">Cadastrar questão</a><br/>
     </form>
     <form action='listaTurmas' method="get">
         <input type="hidden" value="${usuarioSession.usuario.id}" name="idProfessor"/>

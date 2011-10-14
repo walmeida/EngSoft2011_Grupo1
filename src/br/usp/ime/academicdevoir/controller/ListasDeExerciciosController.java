@@ -286,7 +286,7 @@ public class ListasDeExerciciosController {
 	@Get
 	@Path("/listasDeExercicios/cadastro")
 	/**
-	 * Redireciona para a página com formulário para cadastro de uma nova lista de exercícios.
+	 * Permite acesso à página com formulário para cadastro de uma nova lista de exercícios.
 	 */
 	public void cadastro() {
 		Professor professor = professorDao.carrega(usuarioLogado.getUsuario().getId());

@@ -14,6 +14,7 @@ import static org.mockito.Mockito.spy;
 
 import static org.junit.Assert.*;
 
+import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.util.test.MockResult;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDeMultiplaEscolhaDao;
@@ -26,33 +27,26 @@ import br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeTexto;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeVouF;
 import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
+import br.usp.ime.academicdevoir.util.QuestoesUtil;
 
 public class QuestoesControllerTeste {
 
 	private QuestoesController questoesController;
 	private QuestaoDao dao;
-	private QuestaoDeMultiplaEscolhaDao questaoDeMultiplaEscolhaDao;
-	private QuestaoDeSubmissaoDeArquivoDao questaoDeSubmissaoDeArquivoDao;
-	private QuestaoDeTextoDao questaoDeTextoDao;
-	private QuestaoDeVouFDao questaoDeVouFDao;
 	private MockResult result;
 	private QuestaoDeMultiplaEscolha questaoDeMultiplaEscolha;
 	private QuestaoDeSubmissaoDeArquivo questaoDeSubmissaoDeArquivo;
 	private QuestaoDeTexto questaoDeTexto;
 	private QuestaoDeVouF questaoDeVouF;
+	private QuestoesUtil questoesUtil;
 
 	@Before
 	public void SetUp() {
 		result = spy(new MockResult());
 		dao = mock(QuestaoDao.class);
-		questaoDeMultiplaEscolhaDao = mock(QuestaoDeMultiplaEscolhaDao.class);
-		questaoDeSubmissaoDeArquivoDao = mock(QuestaoDeSubmissaoDeArquivoDao.class);
-		questaoDeTextoDao = mock(QuestaoDeTextoDao.class);
-		questaoDeVouFDao = mock(QuestaoDeVouFDao.class);
+		questoesUtil = mock(QuestoesUtil.class);
 
-		questoesController = new QuestoesController(result, dao,
-				questaoDeMultiplaEscolhaDao, questaoDeSubmissaoDeArquivoDao,
-				questaoDeTextoDao, questaoDeVouFDao);
+		questoesController = new QuestoesController(dao, questoesUtil, result);
 		questaoDeMultiplaEscolha = new QuestaoDeMultiplaEscolha();
 		questaoDeSubmissaoDeArquivo = new QuestaoDeSubmissaoDeArquivo();
 		questaoDeTexto = new QuestaoDeTexto();
@@ -64,45 +58,14 @@ public class QuestoesControllerTeste {
 		questaoDeVouF.setId(3L);
 
 		when(dao.listaTudo()).thenReturn(new ArrayList<Questao>());
-		when(
-				questaoDeMultiplaEscolhaDao.buscaPorId(questaoDeMultiplaEscolha
-						.getId())).thenReturn(questaoDeMultiplaEscolha);
-		when(
-				questaoDeSubmissaoDeArquivoDao
-						.buscaPorId(questaoDeSubmissaoDeArquivo.getId()))
-				.thenReturn(questaoDeSubmissaoDeArquivo);
-		when(questaoDeTextoDao.buscaPorId(questaoDeTexto.getId())).thenReturn(
-				questaoDeTexto);
-		when(questaoDeVouFDao.buscaPorId(questaoDeVouF.getId())).thenReturn(
-				questaoDeVouF);
-	}
-
-	@Test
-	public void testeDeveRetornarMULTIPLAESCOLHA() {
-		TipoDeQuestao tipoDeQuestao = questoesController
-				.getTipoDeQuestao(questaoDeMultiplaEscolha.getId());
-		assertEquals(TipoDeQuestao.MULTIPLAESCOLHA, tipoDeQuestao);
-	}
-
-	@Test
-	public void testeDeveRetornarTipoDeQuestaoSUBMISSAODEARQUIVO() {
-		TipoDeQuestao tipoDeQuestao = questoesController
-				.getTipoDeQuestao(questaoDeSubmissaoDeArquivo.getId());
-		assertEquals(TipoDeQuestao.SUBMISSAODEARQUIVO, tipoDeQuestao);
-	}
-
-	@Test
-	public void testeDeveRetornarTipoDeQuestaoTEXTO() {
-		TipoDeQuestao tipoDeQuestao = questoesController
-				.getTipoDeQuestao(questaoDeTexto.getId());
-		assertEquals(TipoDeQuestao.TEXTO, tipoDeQuestao);
-	}
-
-	@Test
-	public void testeDeveRetornarTipoDeQuestaoVOUF() {
-		TipoDeQuestao tipoDeQuestao = questoesController
-				.getTipoDeQuestao(questaoDeVouF.getId());
-		assertEquals(TipoDeQuestao.VOUF, tipoDeQuestao);
+		when(questoesUtil.getTipoDeQuestao(questaoDeMultiplaEscolha.getId()))
+				.thenReturn(TipoDeQuestao.MULTIPLAESCOLHA);
+		when(questoesUtil.getTipoDeQuestao(questaoDeSubmissaoDeArquivo.getId()))
+		.thenReturn(TipoDeQuestao.SUBMISSAODEARQUIVO);
+		when(questoesUtil.getTipoDeQuestao(questaoDeTexto.getId()))
+		.thenReturn(TipoDeQuestao.TEXTO);
+		when(questoesUtil.getTipoDeQuestao(questaoDeVouF.getId()))
+		.thenReturn(TipoDeQuestao.VOUF);
 	}
 
 	@Test

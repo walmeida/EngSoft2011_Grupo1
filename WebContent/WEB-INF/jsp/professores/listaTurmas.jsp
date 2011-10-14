@@ -24,7 +24,7 @@
             </tr>
         </c:forEach>
     </table>
-    <form action='../turmas/cadastro'>
+    <form action='/turmas/cadastro'>
             <input type="submit" value="Cadastrar nova turma"/>
 	</form>
     
