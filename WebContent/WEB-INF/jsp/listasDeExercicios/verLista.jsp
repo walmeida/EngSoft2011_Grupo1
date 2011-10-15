@@ -98,9 +98,10 @@ font-family:"Times New Roman";
 	<form action="<c:url value="/listasDeExercicios/altera/${listaDeExercicios.id }"/>">
 		<fieldset class="fieldsetSemFormatacao">
 			<button type="submit">Alterar</button>
+			<a href="<c:url value='/listasDeExercicios/resolver/${listaDeExercicios.id }'/>">Resolver Lista</a>
 		</fieldset>
 	</form>
-	
+		
 	<h3>Turmas</h3>
 	
 	<div>

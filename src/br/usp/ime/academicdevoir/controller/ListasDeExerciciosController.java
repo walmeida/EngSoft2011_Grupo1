@@ -103,11 +103,25 @@ public class ListasDeExerciciosController {
 	 * */
 	public void verLista(Long id) {
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
-		SimpleDateFormat dataFormatada = new SimpleDateFormat(
-				"EEE, dd'/'MM'/'YYYY HH:mm");
+		/*SimpleDateFormat dataFormatada = new SimpleDateFormat(
+				"EEE, dd'/'MM'/'AAAA HH:mm");*/
 
 		result.include("prazo",
-				dataFormatada.format(listaDeExercicios.getPrazoDeEntrega()));
+				listaDeExercicios.getPrazoDeEntrega());
+		result.include("listaDeExercicios", listaDeExercicios);
+	}
+	
+	@Get
+	@Path("/listasDeExercicios/resolver/{id}")
+	/** 
+	 * Devolve uma lista de exercícios com o id fornecido.
+	 * 
+	 * @param id
+	 * */
+	public void resolverLista(Long id) {
+		ListaDeExercicios listaDeExercicios = dao.carrega(id);
+		
+		//result.include("prazo", listaDeExercicios.getPrazoDeEntrega());
 		result.include("listaDeExercicios", listaDeExercicios);
 	}
 

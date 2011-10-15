@@ -25,5 +25,9 @@
         <input type="hidden" value="${turma.id}" name="idTurma">
         <input type="submit" value="Gerenciar alunos"/>
     </form>
+    <form action='../../listasDeExercicios' method="get">
+        <input type="hidden" value="${turma.id}" name="idTurma">
+        <input type="submit" value="Resolver lista"/>
+    </form>
 </body>
 </html>
