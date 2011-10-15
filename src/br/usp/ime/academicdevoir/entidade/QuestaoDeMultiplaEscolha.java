@@ -31,5 +31,26 @@ public class QuestaoDeMultiplaEscolha extends Questao {
 	public void setResposta(Integer resposta) {
 		this.resposta = resposta;
 	}
+	
+	public String renderiza(){
+		String htmlResult = "";
+		StringBuffer buffer = new StringBuffer();
+		
+		buffer.append("<div><p>questao.order) ");
+		buffer.append(this.getEnunciado());
+	    buffer.append("</p></div><table>");
+		for (int i = 0; i < alternativas.size(); i++) {
+			buffer.append("<tr><td><input type=\"radio\" name=\"");
+			buffer.append("Q + questao.order");
+			buffer.append("\" value=\"");
+			buffer.append(this.getId());
+			buffer.append("\" /></td><td>");
+			buffer.append(alternativas.get(i));
+			buffer.append("</td></tr>");
+		}
+		buffer.append("</table>");
+		
+		return htmlResult;
+	}
 
 }

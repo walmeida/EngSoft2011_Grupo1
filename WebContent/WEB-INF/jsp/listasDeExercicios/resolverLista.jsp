@@ -39,6 +39,15 @@ font-family:"Times New Roman";
 	<h1>Academic Devoir</h1>
 	<h2>Grupo 1 - Engenharia de Software</h2>
 	
+	<table>
+		<tr>
+			<td>${listaDeExercicios.nome}</td>
+		</tr>
+		<tr>
+			<td>${listaDeExercicios.enunciado}</td>
+		</tr>
+	</table>
+	
 	<h3>Questões</h3>
 	
 	<div>

@@ -33,4 +33,10 @@ public abstract class Questao {
 	public void setEnunciado(String enunciado) {
 		this.enunciado = enunciado;
 	}
+	
+	public String renderiza(){
+		return null;
+	}
+		
+	
 }
