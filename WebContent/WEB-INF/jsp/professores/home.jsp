@@ -34,7 +34,7 @@
     </form>
     <form action='listaTurmas' method="get">
         <input type="hidden" value="${usuarioSession.usuario.id}" name="idProfessor"/>
-        <a href="<c:url value='/alunos/listaTurmas?idProfessor=${usuarioSession.usuario.id}'/>">Meus cursos</a><br/>
+        <a href="<c:url value='/professores/listaTurmas?idProfessor=${usuarioSession.usuario.id}'/>">Meus cursos</a><br/>
     </form>
     <a href="<c:url value='/login'/>">Sair</a>
 </body>
