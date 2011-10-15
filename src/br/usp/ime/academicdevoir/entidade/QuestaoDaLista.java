@@ -12,12 +12,22 @@ import org.hibernate.annotations.Fetch;
 
 @Embeddable
 public class QuestaoDaLista {
+	
+	private Integer peso;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "questao_id")
 	@Fetch(FetchMode.JOIN)
 	@Cascade(CascadeType.SAVE_UPDATE)
 	private Questao questao;
+
+	public Integer getPeso() {
+		return peso;
+	}
+
+	public void setPeso(Integer peso) {
+		this.peso = peso;
+	}
 
 	public Questao getQuestao() {
 		return questao;

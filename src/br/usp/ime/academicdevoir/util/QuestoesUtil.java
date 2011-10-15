@@ -11,24 +11,24 @@ import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 @Component
 @RequestScoped
 public class QuestoesUtil {
-	
+
 	private final QuestaoDeMultiplaEscolhaDao questaoDeMultiplaEscolhaDao;
 	private final QuestaoDeSubmissaoDeArquivoDao questaoDeSubmissaoDeArquivoDao;
 	private final QuestaoDeTextoDao questaoDeTextoDao;
 	private final QuestaoDeVouFDao questaoDeVouFDao;
-	
+
 	public QuestoesUtil(
 			QuestaoDeMultiplaEscolhaDao questaoDeMultiplaEscolhaDao,
 			QuestaoDeSubmissaoDeArquivoDao questaoDeSubmissaoDeArquivoDao,
 			QuestaoDeTextoDao questaoDeTextoDao,
 			QuestaoDeVouFDao questaoDeVouFDao) {
-		
+
 		this.questaoDeMultiplaEscolhaDao = questaoDeMultiplaEscolhaDao;
 		this.questaoDeSubmissaoDeArquivoDao = questaoDeSubmissaoDeArquivoDao;
 		this.questaoDeTextoDao = questaoDeTextoDao;
 		this.questaoDeVouFDao = questaoDeVouFDao;
 	}
-	
+
 	public TipoDeQuestao getTipoDeQuestao(Long id) {
 		Object questao;
 		questao = questaoDeMultiplaEscolhaDao.buscaPorId(id);

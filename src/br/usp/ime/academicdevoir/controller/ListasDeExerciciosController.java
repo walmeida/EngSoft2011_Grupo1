@@ -190,7 +190,7 @@ public class ListasDeExerciciosController {
 	 */
 	public void incluiQuestao(ListaDeExercicios listaDeExercicios, Long idDaQuestao) {
 		QuestaoDaLista novaQuestao = new QuestaoDaLista();
-		Questao questao = questaoDao.carrega(idDaQuestao);
+		Questao questao = (Questao) questaoDao.carrega(idDaQuestao);
 		novaQuestao.setQuestao(questao);
 
 		dao.recarrega(listaDeExercicios);
@@ -217,7 +217,7 @@ public class ListasDeExerciciosController {
 		List<QuestaoDaLista> questoesDaLista = listaDeExercicios.getQuestoes();
 		QuestaoDaLista questaoDaLista = listaDeExercicios.getQuestoes().get(
 				indice.intValue());
-		Questao questao = questaoDao.carrega(idDaNovaQuestao);
+		Questao questao = (Questao) questaoDao.carrega(idDaNovaQuestao);
 
 		questaoDaLista.setQuestao(questao);
 		questoesDaLista.set(indice.intValue(), questaoDaLista);

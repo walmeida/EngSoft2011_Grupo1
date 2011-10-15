@@ -46,7 +46,7 @@ public class ListaDeExercicios {
 	@ElementCollection
 	@CollectionTable(name = "questoesDaLista")
 	private List<QuestaoDaLista> questoes;
-
+	
 	/**
 	 * @return id da lista de exercícios
 	 */

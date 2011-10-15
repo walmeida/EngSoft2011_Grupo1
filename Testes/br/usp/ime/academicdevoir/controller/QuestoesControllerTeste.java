@@ -14,13 +14,8 @@ import static org.mockito.Mockito.spy;
 
 import static org.junit.Assert.*;
 
-import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.util.test.MockResult;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
-import br.usp.ime.academicdevoir.dao.QuestaoDeMultiplaEscolhaDao;
-import br.usp.ime.academicdevoir.dao.QuestaoDeSubmissaoDeArquivoDao;
-import br.usp.ime.academicdevoir.dao.QuestaoDeTextoDao;
-import br.usp.ime.academicdevoir.dao.QuestaoDeVouFDao;
 import br.usp.ime.academicdevoir.entidade.Questao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;
@@ -58,6 +53,7 @@ public class QuestoesControllerTeste {
 		questaoDeVouF.setId(3L);
 
 		when(dao.listaTudo()).thenReturn(new ArrayList<Questao>());
+		
 		when(questoesUtil.getTipoDeQuestao(questaoDeMultiplaEscolha.getId()))
 				.thenReturn(TipoDeQuestao.MULTIPLAESCOLHA);
 		when(questoesUtil.getTipoDeQuestao(questaoDeSubmissaoDeArquivo.getId()))
