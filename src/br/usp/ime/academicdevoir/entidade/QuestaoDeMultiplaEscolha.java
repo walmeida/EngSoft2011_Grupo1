@@ -50,6 +50,8 @@ public class QuestaoDeMultiplaEscolha extends Questao {
 		}
 		buffer.append("</table>");
 		
+		htmlResult = buffer.toString();
+		
 		return htmlResult;
 	}
 
