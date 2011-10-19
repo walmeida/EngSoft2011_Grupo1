@@ -32,7 +32,7 @@ public class QuestaoDeMultiplaEscolha extends Questao {
 		this.resposta = resposta;
 	}
 	
-	public String renderiza(){
+	public String getRenderizacao(){
 		String htmlResult = "";
 		StringBuffer buffer = new StringBuffer();
 		

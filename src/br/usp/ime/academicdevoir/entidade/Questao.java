@@ -34,7 +34,7 @@ public abstract class Questao {
 		this.enunciado = enunciado;
 	}
 	
-	public String renderiza(){
+	public String getRenderizacao(){
 		return null;
 	}
 		

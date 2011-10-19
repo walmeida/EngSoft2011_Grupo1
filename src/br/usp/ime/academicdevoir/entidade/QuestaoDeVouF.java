@@ -15,7 +15,7 @@ public class QuestaoDeVouF extends Questao {
 		this.resposta = resposta;
 	}
 	
-	public String renderiza(){
+	public String getRenderizacao(){
 		String htmlResult = "";
 		StringBuffer buffer = new StringBuffer();
 		

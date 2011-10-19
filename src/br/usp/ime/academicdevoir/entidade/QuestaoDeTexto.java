@@ -15,7 +15,7 @@ public class QuestaoDeTexto extends Questao {
 		this.resposta = resposta;
 	}
 	
-	public String renderiza(){
+	public String getRenderizacao(){
 		String htmlResult = "";
 		StringBuffer buffer = new StringBuffer();
 		
@@ -25,7 +25,7 @@ public class QuestaoDeTexto extends Questao {
 		
 		buffer.append("<div><textarea id=\" ");
 		buffer.append("Q + questao.order");
-		buffer.append("\" rows=\"30\" cols=\"50\" ");
+		buffer.append("\" rows=\"30\" cols=\"50\"></textarea>");
 		buffer.append("</div>");
 				
 		htmlResult = buffer.toString();
