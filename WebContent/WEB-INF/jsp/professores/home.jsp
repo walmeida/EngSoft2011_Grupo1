@@ -31,7 +31,6 @@
     <form action='../questoes' method="get">
         <!--input type="submit" value="Cadastrar questão"/-->
         <a href="<c:url value='/questoes/cadastro'/>">Cadastrar questão</a><br/>
-    </form>
     <form action='listaTurmas' method="get">
         <input type="hidden" value="${usuarioSession.usuario.id}" name="idProfessor"/>
         <a href="<c:url value='/professores/listaTurmas?idProfessor=${usuarioSession.usuario.id}'/>">Meus cursos</a><br/>
