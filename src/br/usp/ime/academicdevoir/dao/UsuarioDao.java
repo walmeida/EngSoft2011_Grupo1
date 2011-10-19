@@ -21,15 +21,15 @@ public class UsuarioDao {
  
     @SuppressWarnings("unchecked")
     public Usuario fazLogin(String login, String senha){
-    	  
+    	
         List<Usuario> user = session.createCriteria(Usuario.class)
                 .add(Restrictions.like("login", login))
                 .list();
         
+        if (user == null) return null;
+        
         if(StringUtils.isBlank(login) || StringUtils.isBlank(senha))
         	return null;
-        
-        if (user == null) return null;
         
         // Gerando a senha criptografada para comparar
         String senhaCripto = new Criptografia().geraMd5(senha);

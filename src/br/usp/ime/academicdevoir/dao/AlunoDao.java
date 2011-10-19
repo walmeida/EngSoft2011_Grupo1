@@ -7,6 +7,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.impl.CriteriaImpl.Subcriteria;
@@ -14,6 +15,7 @@ import org.hibernate.impl.CriteriaImpl.Subcriteria;
 import br.com.caelum.vraptor.ioc.Component;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.Turma;
+import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Criptografia;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
@@ -35,10 +37,17 @@ public class AlunoDao {
 	 */
 	public void salvaAluno(Aluno aluno) {
 			// Criptografando a senha
-			aluno.setSenha(new Criptografia().geraMd5(aluno.getSenha()));
-	        Transaction tx = session.beginTransaction();
-			session.save(aluno);
-			tx.commit();
+	    String login = aluno.getLogin();
+	    List<Usuario> listaDeAlunos = session.createCriteria(Usuario.class)
+                .add(Restrictions.like("login", login, MatchMode.EXACT))
+                .list();
+        
+	    if (listaDeAlunos.size() != 0) return;
+	        
+		aluno.setSenha(new Criptografia().geraMd5(aluno.getSenha()));
+	    Transaction tx = session.beginTransaction();
+		session.save(aluno);
+		tx.commit();
 	}
 
 	/**
