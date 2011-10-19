@@ -21,11 +21,9 @@ import br.usp.ime.academicdevoir.infra.UsuarioSession;
 public class AlunoDao {
 
 	private final Session session;
-	private UsuarioSession usuarioAtual;
 
-	public AlunoDao(Session session, UsuarioSession usuarioAtual) {
+	public AlunoDao(Session session) {
 		this.session = session;
-		this.usuarioAtual = usuarioAtual;
 	}
 
 	/**
@@ -114,13 +112,5 @@ public class AlunoDao {
         tx.commit();
     }
 
-//	@SuppressWarnings("unchecked")
-//	public List<Turma> getTurmas() {
-//		String texto = "SELECT t.nome,t.id FROM Turma t INNER JOIN Turma_Aluno WHERE aluno_id=8";
-////				+ usuarioAtual.getUsuario().getId();
-//		Query query = session.createQuery(texto);
-//		List<Turma> listaDeTurmas = query.list();
-//		return listaDeTurmas;
-//	}
 
 }
