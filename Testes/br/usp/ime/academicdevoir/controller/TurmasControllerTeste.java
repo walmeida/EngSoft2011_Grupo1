@@ -20,6 +20,7 @@ import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Disciplina;
 import br.usp.ime.academicdevoir.entidade.Professor;
 import br.usp.ime.academicdevoir.entidade.Turma;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 public class TurmasControllerTeste {
 	
@@ -62,6 +63,8 @@ public class TurmasControllerTeste {
 	 */
 	private List<Turma> turmas;
 	
+	private UsuarioSession usuarioSession;
+	
 	@Before
 	public void SetUp() {
 		turmaDao = mock(TurmaDao.class);
@@ -69,7 +72,7 @@ public class TurmasControllerTeste {
 		alunoDao = mock(AlunoDao.class);
 		result = spy(new MockResult());
 		
-		turmasController = new TurmasController(result, turmaDao, disciplinaDao, alunoDao);
+		turmasController = new TurmasController(result, turmaDao, disciplinaDao, alunoDao, usuarioSession);
 		
 		turma = new Turma();
 		turma.setId(0L);

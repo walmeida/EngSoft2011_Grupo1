@@ -17,6 +17,7 @@ import br.usp.ime.academicdevoir.entidade.Turma;
 import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Public;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
+import br.usp.ime.academicdevoir.infra.Criptografia;
 import org.hibernate.HibernateException;
 import org.hibernate.criterion.Restrictions;
 
@@ -131,7 +132,7 @@ public class AlunosController {
 		Aluno a = alunoDao.carrega(id);
 		if (!novoNome.equals("") || !StringUtils.isBlank(novoNome)) a.setNome(novoNome);
 		if (!novoEmail.equals("") || !StringUtils.isBlank(novoEmail)) a.setEmail(novoEmail);
-		if (!novaSenha.equals("") || !StringUtils.isBlank(novaSenha)) a.setSenha(novaSenha);
+		if (!novaSenha.equals("") || !StringUtils.isBlank(novaSenha)) a.setSenha(new Criptografia().geraMd5(novaSenha));
 		alunoDao.atualizaAluno(a);
 		result.redirectTo(AlunosController.class).home();
 	}
