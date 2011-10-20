@@ -37,6 +37,7 @@ public class AlunoDao {
 	 * 
 	 * @param aluno
 	 */
+	@SuppressWarnings("unchecked")
 	public void salvaAluno(Aluno aluno) {
 			// Criptografando a senha
 	    String login = aluno.getLogin();
