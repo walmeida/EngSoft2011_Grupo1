@@ -13,6 +13,10 @@ import br.usp.ime.academicdevoir.infra.Criptografia;
 @Component
 public class UsuarioDao {
 	
+	/**
+	 * @uml.property  name="session"
+	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="br.usp.ime.academicdevoir.entidade.Usuario"
+	 */
 	private final Session session;
 	
 	public UsuarioDao(Session session){

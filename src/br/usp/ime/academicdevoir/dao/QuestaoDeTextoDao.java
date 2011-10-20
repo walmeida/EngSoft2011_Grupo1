@@ -14,6 +14,10 @@ import br.com.caelum.vraptor.ioc.Component;
 @Component
 @PrimaryKeyJoinColumn(name="id")
 public class QuestaoDeTextoDao {
+	/**
+	 * @uml.property  name="session"
+	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="br.usp.ime.academicdevoir.entidade.QuestaoDeTexto"
+	 */
 	private final Session session;
 
 	public QuestaoDeTextoDao(Session session) {

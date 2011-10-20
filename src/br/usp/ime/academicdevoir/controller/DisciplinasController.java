@@ -16,7 +16,15 @@ import br.usp.ime.academicdevoir.entidade.Turma;
  */
 public class DisciplinasController {
 
+	/**
+	 * @uml.property  name="result"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final Result result;
+	/**
+	 * @uml.property  name="disciplinaDao"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private DisciplinaDao disciplinaDao;
 
 	/**

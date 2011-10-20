@@ -7,6 +7,10 @@ import br.usp.ime.academicdevoir.entidade.QuestaoDaLista;
 
 public class QuestaoDaListaDao {
 
+	/**
+	 * @uml.property  name="session"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final Session session;
 
 	public QuestaoDaListaDao(Session session) {

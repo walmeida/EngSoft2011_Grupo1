@@ -15,7 +15,15 @@ import br.usp.ime.academicdevoir.controller.LoginController;
 @RequestScoped
 public class LoginInterceptor implements Interceptor {
 
+	/**
+	 * @uml.property  name="result"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private Result result;
+	/**
+	 * @uml.property  name="usuarioSession"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private UsuarioSession usuarioSession;
 
 	public LoginInterceptor(Result result, UsuarioSession usuarioSession) {

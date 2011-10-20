@@ -15,8 +15,20 @@ import br.com.caelum.vraptor.Result;
  */
 public class QuestoesController {
 
+	/**
+	 * @uml.property  name="dao"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final QuestaoDao dao;
+	/**
+	 * @uml.property  name="questoesUtil"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final QuestoesUtil questoesUtil;
+	/**
+	 * @uml.property  name="result"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final Result result;
 
 	/**

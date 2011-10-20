@@ -12,9 +12,25 @@ import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 @RequestScoped
 public class QuestoesUtil {
 
+	/**
+	 * @uml.property  name="questaoDeMultiplaEscolhaDao"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final QuestaoDeMultiplaEscolhaDao questaoDeMultiplaEscolhaDao;
+	/**
+	 * @uml.property  name="questaoDeSubmissaoDeArquivoDao"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final QuestaoDeSubmissaoDeArquivoDao questaoDeSubmissaoDeArquivoDao;
+	/**
+	 * @uml.property  name="questaoDeTextoDao"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final QuestaoDeTextoDao questaoDeTextoDao;
+	/**
+	 * @uml.property  name="questaoDeVouFDao"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final QuestaoDeVouFDao questaoDeVouFDao;
 
 	public QuestoesUtil(

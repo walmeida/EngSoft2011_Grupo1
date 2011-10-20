@@ -10,10 +10,17 @@ import javax.persistence.FetchType;
 @Entity
 public class QuestaoDeMultiplaEscolha extends Questao {
 	
+	/**
+	 * @uml.property  name="alternativas"
+	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="java.lang.String"
+	 */
 	@ElementCollection(fetch=FetchType.LAZY)
 	@CollectionTable(name = "alternativasDasQuestoes")
 	private List<String> alternativas;
 
+	/**
+	 * @uml.property  name="resposta"
+	 */
 	private Integer resposta;
 	
 	public List<String> getAlternativas() {
@@ -24,10 +31,18 @@ public class QuestaoDeMultiplaEscolha extends Questao {
 		this.alternativas = alternativas;
 	}
 
+	/**
+	 * @return
+	 * @uml.property  name="resposta"
+	 */
 	public Integer getResposta() {
 		return resposta;
 	}
 
+	/**
+	 * @param resposta
+	 * @uml.property  name="resposta"
+	 */
 	public void setResposta(Integer resposta) {
 		this.resposta = resposta;
 	}

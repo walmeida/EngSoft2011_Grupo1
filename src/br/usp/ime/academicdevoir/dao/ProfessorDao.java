@@ -16,6 +16,10 @@ import br.usp.ime.academicdevoir.entidade.Professor;
 @Component
 public class ProfessorDao {
 
+	/**
+	 * @uml.property  name="session"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final Session session;
 
 	public ProfessorDao(Session session) {

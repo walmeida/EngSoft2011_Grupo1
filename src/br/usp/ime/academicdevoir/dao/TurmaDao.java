@@ -16,6 +16,10 @@ import br.usp.ime.academicdevoir.entidade.Turma;
 @Component
 public class TurmaDao {
 
+	/**
+	 * @uml.property  name="session"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final Session session;
 
 	public TurmaDao(Session session) {

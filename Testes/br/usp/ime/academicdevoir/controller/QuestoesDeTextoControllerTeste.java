@@ -15,9 +15,25 @@ import br.usp.ime.academicdevoir.dao.QuestaoDeTextoDao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeTexto;
 
 public class QuestoesDeTextoControllerTeste {
+    /**
+	 * @uml.property  name="questoesC"
+	 * @uml.associationEnd  
+	 */
     private QuestoesDeTextoController questoesC;
+    /**
+	 * @uml.property  name="dao"
+	 * @uml.associationEnd  
+	 */
     private QuestaoDeTextoDao dao;
+    /**
+	 * @uml.property  name="result"
+	 * @uml.associationEnd  
+	 */
     private MockResult result;
+    /**
+	 * @uml.property  name="validator"
+	 * @uml.associationEnd  
+	 */
     private JSR303MockValidator validator;
 
     @Before

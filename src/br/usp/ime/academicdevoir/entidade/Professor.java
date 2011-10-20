@@ -8,6 +8,10 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Professor extends Usuario {
+	/**
+	 * @uml.property  name="turmas"
+	 * @uml.associationEnd  multiplicity="(0 -1)" inverse="professor:br.usp.ime.academicdevoir.entidade.Turma"
+	 */
 	@OneToMany(mappedBy = "professor")
 	private Collection<Turma> turmas = new ArrayList<Turma>();
 

@@ -27,10 +27,30 @@ import org.hibernate.criterion.Restrictions;
  */
 public class AlunosController {
 	
+	/**
+	 * @uml.property  name="result"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final Result result;
+	/**
+	 * @uml.property  name="alunoDao"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private AlunoDao alunoDao;
+	/**
+	 * @uml.property  name="disciplinaDao"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private DisciplinaDao disciplinaDao;
+	/**
+	 * @uml.property  name="turmaDao"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private TurmaDao turmaDao;
+	/**
+	 * @uml.property  name="usuarioSession"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private UsuarioSession usuarioSession;
 
 	/**

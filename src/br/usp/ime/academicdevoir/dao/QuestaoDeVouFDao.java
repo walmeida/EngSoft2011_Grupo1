@@ -12,6 +12,10 @@ import br.com.caelum.vraptor.ioc.Component;
 @Component
 public class QuestaoDeVouFDao {
 
+	/**
+	 * @uml.property  name="session"
+	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="br.usp.ime.academicdevoir.entidade.QuestaoDeVouF"
+	 */
 	private final Session session;
 
 	public QuestaoDeVouFDao(Session session) {

@@ -22,6 +22,10 @@ import br.usp.ime.academicdevoir.infra.UsuarioSession;
 @Component
 public class AlunoDao {
 
+	/**
+	 * @uml.property  name="session"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final Session session;
 
 	public AlunoDao(Session session) {

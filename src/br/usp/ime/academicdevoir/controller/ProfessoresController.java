@@ -14,7 +14,15 @@ import br.usp.ime.academicdevoir.infra.Privilegio;
  * Controlador de professores.
  */
 public class ProfessoresController {
+	/**
+	 * @uml.property  name="result"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final Result result;
+	/**
+	 * @uml.property  name="professorDao"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private ProfessorDao professorDao;
 
 	/**

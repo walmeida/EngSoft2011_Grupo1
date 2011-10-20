@@ -26,13 +26,45 @@ import br.usp.ime.academicdevoir.util.QuestoesUtil;
 
 public class QuestoesControllerTeste {
 
+	/**
+	 * @uml.property  name="questoesController"
+	 * @uml.associationEnd  
+	 */
 	private QuestoesController questoesController;
+	/**
+	 * @uml.property  name="dao"
+	 * @uml.associationEnd  
+	 */
 	private QuestaoDao dao;
+	/**
+	 * @uml.property  name="result"
+	 * @uml.associationEnd  
+	 */
 	private MockResult result;
+	/**
+	 * @uml.property  name="questaoDeMultiplaEscolha"
+	 * @uml.associationEnd  
+	 */
 	private QuestaoDeMultiplaEscolha questaoDeMultiplaEscolha;
+	/**
+	 * @uml.property  name="questaoDeSubmissaoDeArquivo"
+	 * @uml.associationEnd  
+	 */
 	private QuestaoDeSubmissaoDeArquivo questaoDeSubmissaoDeArquivo;
+	/**
+	 * @uml.property  name="questaoDeTexto"
+	 * @uml.associationEnd  
+	 */
 	private QuestaoDeTexto questaoDeTexto;
+	/**
+	 * @uml.property  name="questaoDeVouF"
+	 * @uml.associationEnd  
+	 */
 	private QuestaoDeVouF questaoDeVouF;
+	/**
+	 * @uml.property  name="questoesUtil"
+	 * @uml.associationEnd  
+	 */
 	private QuestoesUtil questoesUtil;
 
 	@Before

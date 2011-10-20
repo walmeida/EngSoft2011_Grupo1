@@ -11,6 +11,10 @@ import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
 @Component
 public class ListaDeExerciciosDao {
 
+	/**
+	 * @uml.property  name="session"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final Session session;
 
 	public ListaDeExerciciosDao(Session session) {

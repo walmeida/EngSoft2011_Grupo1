@@ -23,13 +23,43 @@ import br.usp.ime.academicdevoir.entidade.Turma;
 
 public class TurmasControllerTeste {
 	
+	/**
+	 * @uml.property  name="turmasController"
+	 * @uml.associationEnd  readOnly="true"
+	 */
 	TurmasController turmasController;
+	/**
+	 * @uml.property  name="turmaDao"
+	 * @uml.associationEnd  readOnly="true"
+	 */
 	TurmaDao turmaDao;
+	/**
+	 * @uml.property  name="disciplinaDao"
+	 * @uml.associationEnd  readOnly="true"
+	 */
 	DisciplinaDao disciplinaDao;
+	/**
+	 * @uml.property  name="alunoDao"
+	 * @uml.associationEnd  readOnly="true"
+	 */
 	AlunoDao alunoDao;
+	/**
+	 * @uml.property  name="result"
+	 * @uml.associationEnd  readOnly="true"
+	 */
 	MockResult result;
+	/**
+	 * @uml.property  name="turma"
+	 * @uml.associationEnd  readOnly="true"
+	 */
 	private Turma turma;
+	/**
+	 * @uml.property  name="disciplinas"
+	 */
 	private List<Disciplina> disciplinas;
+	/**
+	 * @uml.property  name="turmas"
+	 */
 	private List<Turma> turmas;
 	
 	@Before

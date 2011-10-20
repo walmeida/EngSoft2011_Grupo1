@@ -5,12 +5,23 @@ import javax.persistence.Entity;
 @Entity
 public class QuestaoDeTexto extends Questao {
 	
+	/**
+	 * @uml.property  name="resposta"
+	 */
 	private String resposta;
 
+	/**
+	 * @return
+	 * @uml.property  name="resposta"
+	 */
 	public String getResposta() {
 		return resposta;
 	}
 
+	/**
+	 * @param resposta
+	 * @uml.property  name="resposta"
+	 */
 	public void setResposta(String resposta) {
 		this.resposta = resposta;
 	}

@@ -14,37 +14,50 @@ import javax.persistence.OneToMany;
  * @author Vinicius Rezende
  */
 public class Disciplina {
+    /**
+	 * @uml.property  name="id"
+	 */
     @Id
     @GeneratedValue
     private Long id;
+    /**
+	 * @uml.property  name="nome"
+	 */
     private String nome;
+    /**
+	 * @uml.property  name="turmas" multiplicity="(0 -1)"
+	 */
     @OneToMany(mappedBy = "disciplina")
     private Collection<Turma> turmas = new ArrayList<Turma>();
 
     /**
-     * @return id da disciplina
-     */
+	 * @return  id da disciplina
+	 * @uml.property  name="id"
+	 */
     public Long getId() {
         return id;
     }
 
     /**
-     * @param id id da disciplina
-     */
+	 * @param id  id da disciplina
+	 * @uml.property  name="id"
+	 */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * @return nome da disciplina
-     */
+	 * @return  nome da disciplina
+	 * @uml.property  name="nome"
+	 */
     public String getNome() {
         return nome;
     }
 
     /**
-     * @param nome nome da disciplina
-     */
+	 * @param nome  nome da disciplina
+	 * @uml.property  name="nome"
+	 */
     public void setNome(String nome) {
         this.nome = nome;
     }
