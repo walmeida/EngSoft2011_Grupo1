@@ -12,6 +12,12 @@
 	<h1>Academic Devoir</h1>
 	<h2>Grupo 1 - Engenharia de Software</h2>
 	<p>Lista de Professores</p><br/>
+
+    <form action='cadastro'>
+       	<a href="<c:url value='/professores/cadastro'/>">Inserir</a><br/>
+    </form>
+
+	
 	<table>
     <thead>
         <tr>
@@ -30,22 +36,15 @@
                 <td>${professor.email}</td>
                 <td>${professor.login}</td>
                 <td>${professor.senha}</td>
+                <td><a href="./alteracao?id=${professor.id}">  Alterar</a> <a href="./remove?id=${professor.id}">  Excluir</a></td>
             </tr>
         </c:forEach>
-        <form action='cadastro'>
-        	<input type="submit" value="Inserir"/>
-        </form>
-        <form action='alteracao'>
-        	<input type="submit" value="Alterar"/>
-        </form>
-        <form action='remocao'>
-        	<input type="submit" value="Excluir"/>
-        </form>
-        <form action='home'>
-        	<input type="submit" value="Voltar"/>
         </form>
     </tbody>
 </table>
+<a href="<c:url value='/login'/>">Sair</a>
+<a href="<c:url value='/professores/home'/>">Voltar</a><br/>
+
 	
 </body>
 </html>

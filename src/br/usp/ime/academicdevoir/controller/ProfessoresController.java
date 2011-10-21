@@ -1,6 +1,7 @@
 package br.usp.ime.academicdevoir.controller;
 
 import org.apache.commons.lang.StringUtils;
+import java.util.List;
 
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
@@ -54,7 +55,7 @@ public class ProfessoresController {
 	 * Método associado ao .jsp que lista os professores.
 	 */
 	public void lista() {
-		result.include("listaDeProfessres", professorDao.listaTudo());
+		result.include("listaDeProfessores", professorDao.listaTudo());
 	}
 	
 	/**

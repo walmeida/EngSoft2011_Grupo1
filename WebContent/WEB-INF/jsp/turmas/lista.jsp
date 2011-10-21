@@ -14,6 +14,9 @@
 	<h1>Academic Devoir</h1>
 	<h2>Grupo 1 - Engenharia de Software</h2>
 	<h4>Lista de Turmas</h4>
+	<form action='cadastro'>
+       	<a href="<c:url value='/turmas/cadastro'/>">Inserir</a>
+    </form>
 	<table>
         <c:forEach items="${listaDeTurmas}" var="turma">
             <tr>
@@ -21,15 +24,12 @@
                     <a href="<c:url value="/turmas/home/${turma.id }"/>">
                         ${turma.disciplina.nome} - ${turma.nome} </a>
                 </td>
+                <td><a href="./alteracao?id=${turma.id}">  Alterar</a> <a href="./remove?id=${turma.id}">  Excluir</a></td>
             </tr>
         </c:forEach>
-        <form action='cadastro'>
-        	<a href="<c:url value='/turmas/cadastro'/>">Inserir</a>
-       	</form>
-        <form action='home'>
-        	<a href="<c:url value='/turmas/menu'/>">Voltar</a>
-        </form>
 </table>
-	
+<form action='home'>
+   	<a href="<c:url value='/turmas/menu'/>">Voltar</a>
+</form>
 </body>
 </html>

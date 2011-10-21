@@ -11,21 +11,24 @@
 <body>
 	<h1>Academic Devoir</h1>
 	<h2>Grupo 1 - Engenharia de Software</h2>
+	<p>Lista de Alunos</p>
+	
         <form action='cadastro'>
         	<!-- input type="submit" value="Inserir"/-->
         	<a href="<c:url value='/alunos/cadastro'/>">Inserir</a><br/>
         </form>
-        <form action='alteracao'>
+<!--        <form action='alteracao'>
         	<input type="submit" value="Alterar"/>
         </form>
         <form action='remocao'>
-        	<!--input type="submit" value="Excluir"/-->
+        	
         	<a href="<c:url value='/alunos/remocao'/>">Excluir</a><br/>
         </form>
         <form action='home'>
-        	<!--input type="submit" value="Voltar"/-->
+        	
 		</form>
-    <p>Lista de Alunos</p>
+-->
+    
 	<table>
     <thead>
         <tr>
@@ -44,6 +47,7 @@
                 <td>${aluno.email}</td>
                 <td>${aluno.login}</td>
                 <td>${aluno.senha}</td>
+                <td><a href="./alteracao?id=${aluno.id}">  Alterar</a> <a href="./remove?id=${aluno.id}">  Excluir</a></td>
             </tr>
         </c:forEach>
     </tbody>
