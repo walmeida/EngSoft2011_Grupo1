@@ -39,7 +39,7 @@ public class ListaDeExerciciosDao {
 	 */
 	public void salva(ListaDeExercicios lista) {
 		Transaction tx = session.beginTransaction();
-		session.save(lista);
+		session.saveOrUpdate(lista);
 		tx.commit();
 	}
 

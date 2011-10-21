@@ -2,11 +2,13 @@ package br.usp.ime.academicdevoir.entidade;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
 @Entity
@@ -20,9 +22,12 @@ public class Aluno extends Usuario {
 	 * @uml.associationEnd  multiplicity="(0 -1)" inverse="alunos:br.usp.ime.academicdevoir.entidade.Turma"
 	 */
 	@ManyToMany(mappedBy = "alunos", cascade = { CascadeType.PERSIST,
-			CascadeType.MERGE }, fetch=FetchType.EAGER)
+			CascadeType.MERGE }, fetch = FetchType.EAGER)
 	@OrderBy("nome")
 	private Collection<Turma> turmas = new ArrayList<Turma>();
+
+	@OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<ListaDeRespostas> listasDeRespostas;
 
 	/**
 	 * @return lista das turmas em que o aluno está matriculado
@@ -37,5 +42,13 @@ public class Aluno extends Usuario {
 	 */
 	public void setTurmas(Collection<Turma> turmas) {
 		this.turmas = turmas;
+	}
+
+	public List<ListaDeRespostas> getListasDeRespostas() {
+		return listasDeRespostas;
+	}
+
+	public void setListasDeRespostas(List<ListaDeRespostas> listasDeRespostas) {
+		this.listasDeRespostas = listasDeRespostas;
 	}
 }

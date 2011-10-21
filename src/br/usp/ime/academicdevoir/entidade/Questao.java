@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
+import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Questao {
@@ -55,10 +57,10 @@ public abstract class Questao {
 	public void setEnunciado(String enunciado) {
 		this.enunciado = enunciado;
 	}
+
+	public abstract TipoDeQuestao getTipo();
 	
 	public String getRenderizacao(){
 		return null;
 	}
-		
-	
 }

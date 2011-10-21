@@ -3,6 +3,7 @@ package br.usp.ime.academicdevoir.entidade;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -12,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Future;
@@ -72,7 +75,10 @@ public class ListaDeExercicios {
 	@ElementCollection
 	@CollectionTable(name = "questoesDaLista")
 	private List<QuestaoDaLista> questoes;
-	
+
+	@OneToMany(mappedBy = "listaDeExercicios", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<ListaDeRespostas> respostas;
+
 	/**
 	 * @return  id da lista de exercícios
 	 * @uml.property  name="id"
@@ -179,5 +185,13 @@ public class ListaDeExercicios {
 
 	public void setQuestoes(List<QuestaoDaLista> questoes) {
 		this.questoes = questoes;
+	}
+
+	public List<ListaDeRespostas> getRespostas() {
+		return respostas;
+	}
+
+	public void setRespostas(List<ListaDeRespostas> respostas) {
+		this.respostas = respostas;
 	}
 }

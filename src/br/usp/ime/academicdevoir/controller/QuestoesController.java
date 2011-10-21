@@ -2,7 +2,6 @@ package br.usp.ime.academicdevoir.controller;
 
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.entidade.Questao;
-import br.usp.ime.academicdevoir.util.QuestoesUtil;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -21,11 +20,6 @@ public class QuestoesController {
 	 */
 	private final QuestaoDao dao;
 	/**
-	 * @uml.property  name="questoesUtil"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
-	private final QuestoesUtil questoesUtil;
-	/**
 	 * @uml.property  name="result"
 	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
@@ -35,11 +29,8 @@ public class QuestoesController {
 	 * @param result para interação com o jsp da questao.
 	 * @param turmaDao para interação com o banco de dados
 	 */
-	public QuestoesController(QuestaoDao dao, QuestoesUtil questoesUtil,
-			Result result) {
-		super();
+	public QuestoesController(QuestaoDao dao, Result result) {
 		this.dao = dao;
-		this.questoesUtil = questoesUtil;
 		this.result = result;
 	}
 
@@ -50,7 +41,7 @@ public class QuestoesController {
 	 * @param id
 	 * */
 	public void alteracao(Long id) {
-		switch (questoesUtil.getTipoDeQuestao(id)) {
+		switch (dao.carrega(id).getTipo()) {
 		case MULTIPLAESCOLHA:
 			result.redirectTo(QuestoesDeMultiplaEscolhaController.class)
 					.alteracao(id);

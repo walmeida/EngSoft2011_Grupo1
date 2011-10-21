@@ -9,7 +9,6 @@ import java.util.Random;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.util.test.JSR303MockValidator;
 import br.com.caelum.vraptor.util.test.MockResult;
 import br.com.caelum.vraptor.validator.ValidationException;
@@ -182,7 +181,7 @@ public class ListasDeExerciciosControllerTeste {
 		listaDeExercicios.setPrazoDeEntrega(prazoDeEntrega);
 		listasDeExerciciosController.verLista(listaDeExercicios.getId());
 		ListaDeExercicios lista = result.included("listaDeExercicios");
-		String prazo = result.included("prazo");
+		Date prazo = result.included("prazo");
 		assertNotNull(lista);
 		assertNotNull(prazo);
 	}

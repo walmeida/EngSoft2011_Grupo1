@@ -7,6 +7,9 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 
+import br.usp.ime.academicdevoir.controller.QuestoesDeMultiplaEscolhaController;
+import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
+
 @Entity
 public class QuestaoDeMultiplaEscolha extends Questao {
 	
@@ -45,6 +48,10 @@ public class QuestaoDeMultiplaEscolha extends Questao {
 	 */
 	public void setResposta(Integer resposta) {
 		this.resposta = resposta;
+	}
+	
+	public TipoDeQuestao getTipo() {
+		return TipoDeQuestao.MULTIPLAESCOLHA;
 	}
 	
 	public String getRenderizacao(){

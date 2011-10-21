@@ -13,6 +13,7 @@ import br.usp.ime.academicdevoir.dao.AlunoDao;
 import br.usp.ime.academicdevoir.dao.DisciplinaDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
+import br.usp.ime.academicdevoir.infra.Criptografia;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 import static org.junit.Assert.assertEquals;
@@ -75,7 +76,7 @@ public class AlunosControllerTeste {
         alunoC.altera(0L, "novo nome", "novo email", "nova senha");
         assertEquals(a.getNome(), "novo nome");
         assertEquals(a.getEmail(), "novo email");
-        assertEquals(a.getSenha(), "nova senha");
+        assertEquals(a.getSenha(), new Criptografia().geraMd5("nova senha"));
         verify(alunoDao).atualizaAluno(a);
         verify(result).redirectTo(AlunosController.class);
     }

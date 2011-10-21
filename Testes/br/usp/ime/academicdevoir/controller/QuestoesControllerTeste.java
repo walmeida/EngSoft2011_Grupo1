@@ -21,8 +21,6 @@ import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeTexto;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeVouF;
-import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
-import br.usp.ime.academicdevoir.util.QuestoesUtil;
 
 public class QuestoesControllerTeste {
 
@@ -61,19 +59,13 @@ public class QuestoesControllerTeste {
 	 * @uml.associationEnd  
 	 */
 	private QuestaoDeVouF questaoDeVouF;
-	/**
-	 * @uml.property  name="questoesUtil"
-	 * @uml.associationEnd  
-	 */
-	private QuestoesUtil questoesUtil;
 
 	@Before
 	public void SetUp() {
 		result = spy(new MockResult());
 		dao = mock(QuestaoDao.class);
-		questoesUtil = mock(QuestoesUtil.class);
 
-		questoesController = new QuestoesController(dao, questoesUtil, result);
+		questoesController = new QuestoesController(dao, result);
 		questaoDeMultiplaEscolha = new QuestaoDeMultiplaEscolha();
 		questaoDeSubmissaoDeArquivo = new QuestaoDeSubmissaoDeArquivo();
 		questaoDeTexto = new QuestaoDeTexto();
@@ -86,14 +78,10 @@ public class QuestoesControllerTeste {
 
 		when(dao.listaTudo()).thenReturn(new ArrayList<Questao>());
 		
-		when(questoesUtil.getTipoDeQuestao(questaoDeMultiplaEscolha.getId()))
-				.thenReturn(TipoDeQuestao.MULTIPLAESCOLHA);
-		when(questoesUtil.getTipoDeQuestao(questaoDeSubmissaoDeArquivo.getId()))
-		.thenReturn(TipoDeQuestao.SUBMISSAODEARQUIVO);
-		when(questoesUtil.getTipoDeQuestao(questaoDeTexto.getId()))
-		.thenReturn(TipoDeQuestao.TEXTO);
-		when(questoesUtil.getTipoDeQuestao(questaoDeVouF.getId()))
-		.thenReturn(TipoDeQuestao.VOUF);
+		when(dao.carrega(questaoDeMultiplaEscolha.getId())).thenReturn(questaoDeMultiplaEscolha);
+		when(dao.carrega(questaoDeSubmissaoDeArquivo.getId())).thenReturn(questaoDeSubmissaoDeArquivo);
+		when(dao.carrega(questaoDeTexto.getId())).thenReturn(questaoDeTexto);
+		when(dao.carrega(questaoDeVouF.getId())).thenReturn(questaoDeVouF);		
 	}
 
 	@Test
