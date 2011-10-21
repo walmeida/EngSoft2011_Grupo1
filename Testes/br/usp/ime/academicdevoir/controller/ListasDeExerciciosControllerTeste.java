@@ -130,7 +130,7 @@ public class ListasDeExerciciosControllerTeste {
 		listaDeExercicios.setPrazoDeEntrega(prazoDeEntrega);
 		listasDeExerciciosController.verLista(listaDeExercicios.getId());
 		ListaDeExercicios lista = result.included("listaDeExercicios");
-		String prazo = result.included("prazo");
+		Date prazo = result.included("prazo");
 		assertNotNull(lista);
 		assertNotNull(prazo);
 	}

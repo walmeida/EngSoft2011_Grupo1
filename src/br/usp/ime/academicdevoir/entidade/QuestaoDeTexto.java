@@ -2,6 +2,8 @@ package br.usp.ime.academicdevoir.entidade;
 
 import javax.persistence.Entity;
 
+import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
+
 @Entity
 public class QuestaoDeTexto extends Questao {
 	
@@ -13,6 +15,10 @@ public class QuestaoDeTexto extends Questao {
 
 	public void setResposta(String resposta) {
 		this.resposta = resposta;
+	}
+	
+	public TipoDeQuestao getTipo() {
+		return TipoDeQuestao.TEXTO;
 	}
 	
 	public String renderiza(){
