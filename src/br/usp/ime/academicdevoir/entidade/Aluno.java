@@ -17,6 +17,10 @@ import javax.persistence.OrderBy;
  * @author Vinicius Rezende
  */
 public class Aluno extends Usuario {
+	/**
+	 * @uml.property  name="turmas"
+	 * @uml.associationEnd  multiplicity="(0 -1)" inverse="alunos:br.usp.ime.academicdevoir.entidade.Turma"
+	 */
 	@ManyToMany(mappedBy = "alunos", cascade = { CascadeType.PERSIST,
 			CascadeType.MERGE }, fetch = FetchType.EAGER)
 	@OrderBy("nome")

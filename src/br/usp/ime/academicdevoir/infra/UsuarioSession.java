@@ -8,12 +8,24 @@ import br.usp.ime.academicdevoir.entidade.Usuario;
 @SessionScoped
 public class UsuarioSession {
 
+	/**
+	 * @uml.property  name="usuario"
+	 * @uml.associationEnd  
+	 */
 	private Usuario usuario;
 
+	/**
+	 * @return
+	 * @uml.property  name="usuario"
+	 */
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
+	/**
+	 * @param usuario
+	 * @uml.property  name="usuario"
+	 */
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}

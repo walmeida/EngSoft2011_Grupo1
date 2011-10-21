@@ -7,12 +7,19 @@ import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 @Entity
 public class QuestaoDeVouF extends Questao {
 	
+	/**
+	 * @uml.property  name="resposta"
+	 */
 	private Boolean resposta;
 
 	public Boolean getResposta() {
 		return resposta;
 	}
 
+	/**
+	 * @param resposta
+	 * @uml.property  name="resposta"
+	 */
 	public void setResposta(Boolean resposta) {
 		this.resposta = resposta;
 	}
@@ -21,7 +28,7 @@ public class QuestaoDeVouF extends Questao {
 		return TipoDeQuestao.VOUF;
 	}
 	
-	public String renderiza(){
+	public String getRenderizacao(){
 		String htmlResult = "";
 		StringBuffer buffer = new StringBuffer();
 		

@@ -12,6 +12,10 @@ import br.com.caelum.vraptor.ioc.Component;
 @Component
 public class QuestaoDeSubmissaoDeArquivoDao {
 	
+	/**
+	 * @uml.property  name="session"
+	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo"
+	 */
 	private final Session session;
 
 	public QuestaoDeSubmissaoDeArquivoDao(Session session) {

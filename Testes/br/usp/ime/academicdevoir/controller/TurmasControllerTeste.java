@@ -18,19 +18,51 @@ import br.usp.ime.academicdevoir.dao.AlunoDao;
 import br.usp.ime.academicdevoir.dao.DisciplinaDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Disciplina;
-import br.usp.ime.academicdevoir.entidade.Professor;
 import br.usp.ime.academicdevoir.entidade.Turma;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 public class TurmasControllerTeste {
 	
+	/**
+	 * @uml.property  name="turmasController"
+	 * @uml.associationEnd  readOnly="true"
+	 */
 	TurmasController turmasController;
+	/**
+	 * @uml.property  name="turmaDao"
+	 * @uml.associationEnd  readOnly="true"
+	 */
 	TurmaDao turmaDao;
+	/**
+	 * @uml.property  name="disciplinaDao"
+	 * @uml.associationEnd  readOnly="true"
+	 */
 	DisciplinaDao disciplinaDao;
+	/**
+	 * @uml.property  name="alunoDao"
+	 * @uml.associationEnd  readOnly="true"
+	 */
 	AlunoDao alunoDao;
+	/**
+	 * @uml.property  name="result"
+	 * @uml.associationEnd  readOnly="true"
+	 */
 	MockResult result;
+	/**
+	 * @uml.property  name="turma"
+	 * @uml.associationEnd  readOnly="true"
+	 */
 	private Turma turma;
+	/**
+	 * @uml.property  name="disciplinas"
+	 */
 	private List<Disciplina> disciplinas;
+	/**
+	 * @uml.property  name="turmas"
+	 */
 	private List<Turma> turmas;
+	
+	private UsuarioSession usuarioSession;
 	
 	@Before
 	public void SetUp() {
@@ -39,7 +71,7 @@ public class TurmasControllerTeste {
 		alunoDao = mock(AlunoDao.class);
 		result = spy(new MockResult());
 		
-		turmasController = new TurmasController(result, turmaDao, disciplinaDao, alunoDao);
+		turmasController = new TurmasController(result, turmaDao, disciplinaDao, alunoDao, usuarioSession);
 		
 		turma = new Turma();
 		turma.setId(0L);

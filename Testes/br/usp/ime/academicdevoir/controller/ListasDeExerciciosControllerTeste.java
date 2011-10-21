@@ -9,7 +9,6 @@ import java.util.Random;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.util.test.JSR303MockValidator;
 import br.com.caelum.vraptor.util.test.MockResult;
 import br.com.caelum.vraptor.validator.ValidationException;
@@ -33,18 +32,70 @@ import static org.junit.Assert.*;
 
 public class ListasDeExerciciosControllerTeste {
 
+	/**
+	 * @uml.property  name="listasDeExerciciosController"
+	 * @uml.associationEnd  
+	 */
 	private ListasDeExerciciosController listasDeExerciciosController;
+	/**
+	 * @uml.property  name="result"
+	 * @uml.associationEnd  
+	 */
 	private MockResult result;
+	/**
+	 * @uml.property  name="dao"
+	 * @uml.associationEnd  
+	 */
 	private ListaDeExerciciosDao dao;
+	/**
+	 * @uml.property  name="questaoDao"
+	 * @uml.associationEnd  
+	 */
 	private QuestaoDao questaoDao;
+	/**
+	 * @uml.property  name="turmaDao"
+	 * @uml.associationEnd  
+	 */
 	private TurmaDao turmaDao;
+	/**
+	 * @uml.property  name="validator"
+	 * @uml.associationEnd  
+	 */
 	private JSR303MockValidator validator;
+	/**
+	 * @uml.property  name="listaDeExercicios"
+	 * @uml.associationEnd  
+	 */
 	private ListaDeExercicios listaDeExercicios;
+	/**
+	 * @uml.property  name="prazoDeEntrega"
+	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="java.lang.Integer"
+	 */
 	private List<Integer> prazoDeEntrega;
+	/**
+	 * @uml.property  name="prazoProvisorio"
+	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="java.lang.Integer"
+	 */
 	private Calendar prazoProvisorio = Calendar.getInstance();
+	/**
+	 * @uml.property  name="questao"
+	 * @uml.associationEnd  
+	 */
 	private QuestaoDeMultiplaEscolha questao;
+	/**
+	 * @uml.property  name="turma"
+	 * @uml.associationEnd  
+	 */
 	private Turma turma;
+	/**
+	 * @uml.property  name="professorDao"
+	 * @uml.associationEnd  readOnly="true"
+	 */
 	private ProfessorDao professorDao;
+	/**
+	 * @uml.property  name="usuarioLogado"
+	 * @uml.associationEnd  readOnly="true"
+	 */
 	private UsuarioSession usuarioLogado;
 
 	@Before

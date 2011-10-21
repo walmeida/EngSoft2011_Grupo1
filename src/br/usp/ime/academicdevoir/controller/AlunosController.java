@@ -1,18 +1,25 @@
 package br.usp.ime.academicdevoir.controller;
 
+import java.util.List;
+
 import org.apache.commons.lang.StringUtils;
 
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.InterceptionException;
 import br.usp.ime.academicdevoir.dao.AlunoDao;
 import br.usp.ime.academicdevoir.dao.DisciplinaDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.Turma;
+import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Public;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
+import br.usp.ime.academicdevoir.infra.Criptografia;
+import org.hibernate.HibernateException;
+import org.hibernate.criterion.Restrictions;
 
 @Resource
 /**
@@ -21,10 +28,30 @@ import br.usp.ime.academicdevoir.infra.UsuarioSession;
  */
 public class AlunosController {
 	
+	/**
+	 * @uml.property  name="result"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final Result result;
+	/**
+	 * @uml.property  name="alunoDao"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private AlunoDao alunoDao;
+	/**
+	 * @uml.property  name="disciplinaDao"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private DisciplinaDao disciplinaDao;
+	/**
+	 * @uml.property  name="turmaDao"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private TurmaDao turmaDao;
+	/**
+	 * @uml.property  name="usuarioSession"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private UsuarioSession usuarioSession;
 
 	/**
@@ -79,9 +106,9 @@ public class AlunosController {
 	 * @param novo 
 	 */
 	@Public
-	public void cadastra(final Aluno novo) {
-		alunoDao.salvaAluno(novo);
-		result.redirectTo(AlunosController.class).lista();
+	public void cadastra(final Aluno novo) {        
+	    alunoDao.salvaAluno(novo);
+	    result.redirectTo(AlunosController.class).lista();
 	}
 
 	/**
@@ -105,7 +132,7 @@ public class AlunosController {
 		Aluno a = alunoDao.carrega(id);
 		if (!novoNome.equals("") || !StringUtils.isBlank(novoNome)) a.setNome(novoNome);
 		if (!novoEmail.equals("") || !StringUtils.isBlank(novoEmail)) a.setEmail(novoEmail);
-		if (!novaSenha.equals("") || !StringUtils.isBlank(novaSenha)) a.setSenha(novaSenha);
+		if (!novaSenha.equals("") || !StringUtils.isBlank(novaSenha)) a.setSenha(new Criptografia().geraMd5(novaSenha));
 		alunoDao.atualizaAluno(a);
 		result.redirectTo(AlunosController.class).home();
 	}

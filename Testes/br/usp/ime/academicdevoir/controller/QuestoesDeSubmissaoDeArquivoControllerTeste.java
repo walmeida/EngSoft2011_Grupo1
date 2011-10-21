@@ -15,9 +15,25 @@ import br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;
 import br.usp.ime.academicdevoir.controller.QuestoesDeSubmissaoDeArquivoController;
 
 public class QuestoesDeSubmissaoDeArquivoControllerTeste {
+    /**
+	 * @uml.property  name="questoesC"
+	 * @uml.associationEnd  
+	 */
     private QuestoesDeSubmissaoDeArquivoController questoesC;
+    /**
+	 * @uml.property  name="dao"
+	 * @uml.associationEnd  
+	 */
     private QuestaoDeSubmissaoDeArquivoDao dao;
+    /**
+	 * @uml.property  name="result"
+	 * @uml.associationEnd  
+	 */
     private MockResult result;
+    /**
+	 * @uml.property  name="validator"
+	 * @uml.associationEnd  
+	 */
     private JSR303MockValidator validator;
     
     @Before

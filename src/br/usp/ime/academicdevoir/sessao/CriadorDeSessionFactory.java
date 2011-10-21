@@ -14,6 +14,10 @@ import br.com.caelum.vraptor.ioc.ComponentFactory;
 @ApplicationScoped
 public class CriadorDeSessionFactory implements ComponentFactory<SessionFactory> {
 
+	/**
+	 * @uml.property  name="factory"
+	 * @uml.associationEnd  
+	 */
 	private SessionFactory factory;
 
 	@PostConstruct

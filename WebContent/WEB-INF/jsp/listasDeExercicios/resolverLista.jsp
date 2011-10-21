@@ -51,27 +51,9 @@ font-family:"Times New Roman";
 	<h3>Questões</h3>
 	
 	<div>
-		<c:forEach items="${listaDeExercicios.questoes }" var="questaoDaLista" varStatus="status">
-				<table>
-					<tr>
-						<td>${status.index+1 }. ${questaoDaLista.questao.enunciado }</td>
-						<td>
-							<button id="ativaAlterarQuestao${status.index }" class="ativaAlterarQuestao" type="button">Alterar Questão</button>
-							<form id="formAlterarQuestao${status.index }" action="<c:url value="/listasDeExercicios/${listaDeExercicios.id }/questoes/${status.index }"/>" method="post" accept-charset="us-ascii">							
-								<fieldset class="fieldsetSemFormatacao">
-									<label for="idDaNovaQuestao">ID da nova Questão:</label>
-									<input type="text" size="6" maxlength="6" name="idDaNovaQuestao" />
-									<button type="submit" name="_method" value="put">alterar</button>
-								</fieldset>
-							</form>
-						</td>
-						<td>
-						</td>							
-					</tr>						
-				</table>
+		<c:forEach items="${listaDeExercicios.questoes}" var="questaoDaLista">
+				${questaoDaLista.questao.renderizacao}
 		</c:forEach>
-		
-		
 	</div>
 	
 </body>

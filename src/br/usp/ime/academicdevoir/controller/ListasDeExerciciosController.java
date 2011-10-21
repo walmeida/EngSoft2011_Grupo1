@@ -31,12 +31,40 @@ import br.usp.ime.academicdevoir.infra.UsuarioSession;
  */
 public class ListasDeExerciciosController {
 
+	/**
+	 * @uml.property  name="result"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final Result result;
+	/**
+	 * @uml.property  name="dao"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final ListaDeExerciciosDao dao;
+	/**
+	 * @uml.property  name="questaoDao"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final QuestaoDao questaoDao;
+	/**
+	 * @uml.property  name="professorDao"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final ProfessorDao professorDao;
+	/**
+	 * @uml.property  name="turmaDao"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final TurmaDao turmaDao;
+	/**
+	 * @uml.property  name="validator"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final Validator validator;
+	/**
+	 * @uml.property  name="usuarioLogado"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final UsuarioSession usuarioLogado;
 
 	/**

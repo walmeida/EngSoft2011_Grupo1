@@ -18,8 +18,20 @@ import br.usp.ime.academicdevoir.infra.UsuarioSession;
  */
 public class LoginController {
 	
+	/**
+	 * @uml.property  name="result"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final Result result;
+	/**
+	 * @uml.property  name="usuarioSession"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private UsuarioSession usuarioSession;
+	/**
+	 * @uml.property  name="usuarioDao"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private UsuarioDao usuarioDao;
 
 	public LoginController(Result result, UsuarioDao usuarioDao,

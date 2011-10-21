@@ -17,8 +17,20 @@ import br.com.caelum.vraptor.Validator;
  */
 public class QuestoesDeVouFController {
 
+	/**
+	 * @uml.property  name="dao"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private QuestaoDeVouFDao dao;
+	/**
+	 * @uml.property  name="result"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final Result result;
+	/**
+	 * @uml.property  name="validator"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private Validator validator;
 
 	/**

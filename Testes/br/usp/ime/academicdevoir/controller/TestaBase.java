@@ -10,7 +10,15 @@ import org.hibernate.cfg.Configuration;
 import org.junit.Before;
 
 public class TestaBase {
+	/**
+	 * @uml.property  name="session"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	Session session;
+    /**
+	 * @uml.property  name="transaction"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
     Transaction transaction;
 
 	public TestaBase() {

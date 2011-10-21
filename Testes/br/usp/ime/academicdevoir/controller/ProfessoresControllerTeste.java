@@ -15,8 +15,20 @@ import br.usp.ime.academicdevoir.dao.ProfessorDao;
 import br.usp.ime.academicdevoir.entidade.Professor;
 
 public class ProfessoresControllerTeste {
+    /**
+	 * @uml.property  name="profC"
+	 * @uml.associationEnd  
+	 */
     private ProfessoresController profC;
+    /**
+	 * @uml.property  name="result"
+	 * @uml.associationEnd  
+	 */
     private MockResult result;
+    /**
+	 * @uml.property  name="professordao"
+	 * @uml.associationEnd  
+	 */
     private ProfessorDao professordao;
 
     @Before

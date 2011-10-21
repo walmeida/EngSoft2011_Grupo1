@@ -12,7 +12,15 @@ import br.com.caelum.vraptor.ioc.ComponentFactory;
 @Component
 public class CriadorDeSessao implements ComponentFactory<Session> {
 
+	/**
+	 * @uml.property  name="factory"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final SessionFactory factory;
+	/**
+	 * @uml.property  name="session"
+	 * @uml.associationEnd  
+	 */
 	private Session session;
 
 	public CriadorDeSessao(SessionFactory factory) {

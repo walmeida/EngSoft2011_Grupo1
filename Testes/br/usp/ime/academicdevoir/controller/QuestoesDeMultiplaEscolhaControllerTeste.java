@@ -13,9 +13,25 @@ import br.usp.ime.academicdevoir.dao.QuestaoDeMultiplaEscolhaDao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
 
 public class QuestoesDeMultiplaEscolhaControllerTeste {
+	/**
+	 * @uml.property  name="questoesC"
+	 * @uml.associationEnd  
+	 */
 	private QuestoesDeMultiplaEscolhaController questoesC;
+	/**
+	 * @uml.property  name="dao"
+	 * @uml.associationEnd  
+	 */
 	private QuestaoDeMultiplaEscolhaDao dao;
+	/**
+	 * @uml.property  name="result"
+	 * @uml.associationEnd  
+	 */
 	private MockResult result;
+	/**
+	 * @uml.property  name="validator"
+	 * @uml.associationEnd  
+	 */
 	private JSR303MockValidator validator;
 
 	@Before

@@ -18,10 +18,29 @@ import br.usp.ime.academicdevoir.entidade.Disciplina;
 
 public class DisciplinasControllerTeste {
 
+	/**
+	 * @uml.property  name="disciplinasController"
+	 * @uml.associationEnd  
+	 */
 	private DisciplinasController disciplinasController;
+	/**
+	 * @uml.property  name="result"
+	 * @uml.associationEnd  
+	 */
 	private MockResult result;
+	/**
+	 * @uml.property  name="dao"
+	 * @uml.associationEnd  
+	 */
 	private DisciplinaDao dao;
+	/**
+	 * @uml.property  name="disciplina"
+	 * @uml.associationEnd  
+	 */
 	private Disciplina disciplina;
+	/**
+	 * @uml.property  name="disciplinas"
+	 */
 	private List<Disciplina> disciplinas;
 
 	@Before

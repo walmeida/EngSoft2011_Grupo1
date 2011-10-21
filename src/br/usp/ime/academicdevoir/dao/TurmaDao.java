@@ -1,9 +1,7 @@
 package br.usp.ime.academicdevoir.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.MatchMode;
@@ -18,6 +16,10 @@ import br.usp.ime.academicdevoir.entidade.Turma;
 @Component
 public class TurmaDao {
 
+	/**
+	 * @uml.property  name="session"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final Session session;
 
 	public TurmaDao(Session session) {
@@ -74,9 +76,6 @@ public class TurmaDao {
 	 * @return List<Turma>
 	 */
 	public List<Turma> listaTudo() {
-		/*String nome = "SELECT id, nome FROM Turma p";
-		Query query = session.createQuery(nome);
-		List<Turma> listaDeTurmas = query.list(); */
         List<Turma> listaDeTurmas = session.createCriteria(Turma.class).list();
 		return listaDeTurmas;
 	}

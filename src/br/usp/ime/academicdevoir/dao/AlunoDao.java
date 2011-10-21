@@ -7,6 +7,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.impl.CriteriaImpl.Subcriteria;
@@ -14,18 +15,21 @@ import org.hibernate.impl.CriteriaImpl.Subcriteria;
 import br.com.caelum.vraptor.ioc.Component;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.Turma;
+import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Criptografia;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 @Component
 public class AlunoDao {
 
+	/**
+	 * @uml.property  name="session"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private final Session session;
-	private UsuarioSession usuarioAtual;
 
-	public AlunoDao(Session session, UsuarioSession usuarioAtual) {
+	public AlunoDao(Session session) {
 		this.session = session;
-		this.usuarioAtual = usuarioAtual;
 	}
 
 	/**
@@ -33,12 +37,20 @@ public class AlunoDao {
 	 * 
 	 * @param aluno
 	 */
+	@SuppressWarnings("unchecked")
 	public void salvaAluno(Aluno aluno) {
 			// Criptografando a senha
-			aluno.setSenha(new Criptografia().geraMd5(aluno.getSenha()));
-	        Transaction tx = session.beginTransaction();
-			session.save(aluno);
-			tx.commit();
+	    String login = aluno.getLogin();
+	    List<Usuario> listaDeAlunos = session.createCriteria(Usuario.class)
+                .add(Restrictions.like("login", login, MatchMode.EXACT))
+                .list();
+        
+	    if (listaDeAlunos.size() != 0) return;
+	        
+		aluno.setSenha(new Criptografia().geraMd5(aluno.getSenha()));
+	    Transaction tx = session.beginTransaction();
+		session.save(aluno);
+		tx.commit();
 	}
 
 	/**
@@ -114,13 +126,5 @@ public class AlunoDao {
         tx.commit();
     }
 
-//	@SuppressWarnings("unchecked")
-//	public List<Turma> getTurmas() {
-//		String texto = "SELECT t.nome,t.id FROM Turma t INNER JOIN Turma_Aluno WHERE aluno_id=8";
-////				+ usuarioAtual.getUsuario().getId();
-//		Query query = session.createQuery(texto);
-//		List<Turma> listaDeTurmas = query.list();
-//		return listaDeTurmas;
-//	}
 
 }

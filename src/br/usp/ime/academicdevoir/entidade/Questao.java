@@ -13,32 +13,54 @@ import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Questao {
 
+	/**
+	 * @uml.property  name="id"
+	 */
 	@Id
 	@GeneratedValue
 	private Long id;
 
+	/**
+	 * @uml.property  name="enunciado"
+	 */
 	@Column(length = 1024)
 	private String enunciado;
 
+	/**
+	 * @return
+	 * @uml.property  name="id"
+	 */
 	public Long getId() {
 		return id;
 	}
 
+	/**
+	 * @param id
+	 * @uml.property  name="id"
+	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 	
+	/**
+	 * @return
+	 * @uml.property  name="enunciado"
+	 */
 	public String getEnunciado() {
 		return enunciado;
 	}
 
+	/**
+	 * @param enunciado
+	 * @uml.property  name="enunciado"
+	 */
 	public void setEnunciado(String enunciado) {
 		this.enunciado = enunciado;
 	}
 
 	public abstract TipoDeQuestao getTipo();
 	
-	public String renderiza(){
+	public String getRenderizacao(){
 		return null;
 	}
 }

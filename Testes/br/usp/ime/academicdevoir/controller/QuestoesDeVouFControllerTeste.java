@@ -14,9 +14,25 @@ import br.usp.ime.academicdevoir.dao.QuestaoDeVouFDao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeVouF;
 
 public class QuestoesDeVouFControllerTeste {
+	/**
+	 * @uml.property  name="questoesDeVouFController"
+	 * @uml.associationEnd  
+	 */
 	private QuestoesDeVouFController questoesDeVouFController;
+	/**
+	 * @uml.property  name="dao"
+	 * @uml.associationEnd  
+	 */
 	private QuestaoDeVouFDao dao;
+	/**
+	 * @uml.property  name="result"
+	 * @uml.associationEnd  
+	 */
 	private MockResult result;
+	/**
+	 * @uml.property  name="validator"
+	 * @uml.associationEnd  
+	 */
 	private JSR303MockValidator validator;
 
 	@Before

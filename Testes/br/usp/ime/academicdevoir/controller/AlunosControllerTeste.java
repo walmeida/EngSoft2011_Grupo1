@@ -18,11 +18,35 @@ import br.usp.ime.academicdevoir.infra.UsuarioSession;
 import static org.junit.Assert.assertEquals;
 
 public class AlunosControllerTeste {
+    /**
+	 * @uml.property  name="alunoC"
+	 * @uml.associationEnd  
+	 */
     private AlunosController alunoC;
+    /**
+	 * @uml.property  name="result"
+	 * @uml.associationEnd  
+	 */
     private MockResult result;
+    /**
+	 * @uml.property  name="alunoDao"
+	 * @uml.associationEnd  
+	 */
     private AlunoDao alunoDao;
+	/**
+	 * @uml.property  name="turmaDao"
+	 * @uml.associationEnd  
+	 */
 	private TurmaDao turmaDao;
+    /**
+	 * @uml.property  name="disciplinaDao"
+	 * @uml.associationEnd  
+	 */
     private DisciplinaDao disciplinaDao;
+    /**
+	 * @uml.property  name="usuarioSession"
+	 * @uml.associationEnd  readOnly="true"
+	 */
     private UsuarioSession usuarioSession;
     
     @Before
