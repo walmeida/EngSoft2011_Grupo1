@@ -18,7 +18,7 @@
 	
 	<form action='alteracao' method="get">
 	    <input type="hidden" value="${usuarioSession.usuario.id}" name="id"/>
-        <a href="<c:url value='/alunos/alteracao?id=${usuarioSession.usuario.id}'/>">Alterar dados pessoais</a><br/>
+        <a href="<c:url value='/professores/alteracao?id=${usuarioSession.usuario.id}'/>">Alterar dados pessoais</a><br/>
     </form>
 	<form action='/disciplinas/cadastro' method="get">
         <!--input type="submit" value="Cadastrar disciplina"/-->

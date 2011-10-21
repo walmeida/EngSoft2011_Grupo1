@@ -41,11 +41,11 @@ public class AlunoDao {
 	public void salvaAluno(Aluno aluno) {
 			// Criptografando a senha
 	    String login = aluno.getLogin();
-	    List<Usuario> listaDeAlunos = session.createCriteria(Usuario.class)
+	    List<Usuario> listaDeUsuarios = session.createCriteria(Usuario.class)
                 .add(Restrictions.like("login", login, MatchMode.EXACT))
                 .list();
         
-	    if (listaDeAlunos.size() != 0) return;
+	    if (listaDeUsuarios.size() != 0) return;
 	        
 		aluno.setSenha(new Criptografia().geraMd5(aluno.getSenha()));
 	    Transaction tx = session.beginTransaction();

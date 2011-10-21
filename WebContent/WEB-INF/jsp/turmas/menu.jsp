@@ -16,8 +16,8 @@ import="java.sql.*" errorPage="" %>
 	<h2>Grupo 1 - Engenharia de Software</h2>
 		<div>
 		<br/><br/>
-		<form action="/academic-devoir/turmas/listaAlunos">
-		<a href="<c:url value='/turmas/listaAlunos'/>">Listar turmas</a><br/>
+		<form action="/academic-devoir/turmas/lista">
+		<a href="<c:url value='/turmas/lista'/>">Listar turmas</a><br/>
 		</form>
 		<form action="/academic-devoir/turmas/cadastro">
 		<a href="<c:url value='/turmas/cadastro'/>">Cadastrar nova turma</a><br/>

@@ -1,9 +1,12 @@
 package br.usp.ime.academicdevoir.controller;
 
+import org.apache.commons.lang.StringUtils;
+
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
 import br.usp.ime.academicdevoir.entidade.Professor;
+import br.usp.ime.academicdevoir.infra.Criptografia;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 import br.usp.ime.academicdevoir.infra.Permission;
 import br.usp.ime.academicdevoir.infra.Privilegio;
@@ -99,9 +102,9 @@ public class ProfessoresController {
 	 */
 	public void altera(Long id, String novoNome, String novoEmail, String novaSenha) {
 		Professor p = professorDao.carrega(id);
-		if (!novoNome.equals("")) p.setNome(novoNome);
-		if (!novoEmail.equals("")) p.setEmail(novoEmail);
-		if (!novaSenha.equals("")) p.setSenha(novaSenha);
+		if (!novoNome.equals("") || !StringUtils.isBlank(novoNome)) p.setNome(novoNome);
+		if (!novoEmail.equals("") || !StringUtils.isBlank(novoEmail)) p.setEmail(novoEmail);
+		if (!novaSenha.equals("") || !StringUtils.isBlank(novaSenha)) p.setSenha(new Criptografia().geraMd5(novaSenha));
 		professorDao.atualizaProfessor(p);
 		result.redirectTo(ProfessoresController.class).lista();
 	}
