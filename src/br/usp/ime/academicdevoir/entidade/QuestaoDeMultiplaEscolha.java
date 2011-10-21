@@ -54,10 +54,6 @@ public class QuestaoDeMultiplaEscolha extends Questao {
 		return TipoDeQuestao.MULTIPLAESCOLHA;
 	}
 	
-	public Class<QuestoesDeMultiplaEscolhaController> getController() {
-		return QuestoesDeMultiplaEscolhaController.class;
-	}
-	
 	public String getRenderizacao(){
 		String htmlResult = "";
 		StringBuffer buffer = new StringBuffer();

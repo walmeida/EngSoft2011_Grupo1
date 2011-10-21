@@ -17,7 +17,6 @@ import br.usp.ime.academicdevoir.dao.ListaDeRespostasDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.ListaDeRespostas;
-import br.usp.ime.academicdevoir.entidade.Resposta;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 @Resource
@@ -41,6 +40,11 @@ public class RespostasController {
 		this.result = result;
 	}
 
+	/**
+	 * Salva uma lista de respostas (enviada pelo aluno) referente a lista de exercícios fornecida no banco de dados.
+	 * @param listaDeRespostas
+	 * @param listaDeExercicios
+	 */
 	@Post
 	@Path("/respostas/cadastra")
 	public void salvaRespostas(ListaDeRespostas listaDeRespostas, ListaDeExercicios listaDeExercicios) {
@@ -52,8 +56,13 @@ public class RespostasController {
 		/*result.redirectTo;*/
 	}
 	
+	/**
+	 * Altera respostas da lista fornecida.
+	 * @param id
+	 * @param listaDeExercicios
+	 */
 	@Put
-	@Path("/respostas/altera/{id}")
+	@Path("/respostas/{id}")
 	public void alteraRespostas(Long id, ListaDeExercicios listaDeExercicios) {
 		ListaDeRespostas listaDeRespostas = dao.carrega(id);
 		listaDeExerciciosDao.recarrega(listaDeExercicios);
@@ -65,8 +74,12 @@ public class RespostasController {
 		/*result.redirectTo;*/
 	}
 	
+	/**
+	 * Remove a lista de respostas fornecida do banco de dados.
+	 * @param id
+	 */
 	@Delete
-	@Path("/respostas/altera/{listaDeRespostas.id}")
+	@Path("/respostas/{id}")
 	public void removeRespostas(Long id) {
 		ListaDeRespostas listaDeRespostas = dao.carrega(id);
 		dao.remove(listaDeRespostas);		

@@ -18,6 +18,7 @@ import br.usp.ime.academicdevoir.dao.AlunoDao;
 import br.usp.ime.academicdevoir.dao.DisciplinaDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Disciplina;
+import br.usp.ime.academicdevoir.entidade.Professor;
 import br.usp.ime.academicdevoir.entidade.Turma;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
@@ -43,6 +44,7 @@ public class TurmasControllerTeste {
 	 * @uml.associationEnd  readOnly="true"
 	 */
 	AlunoDao alunoDao;
+	
 	/**
 	 * @uml.property  name="result"
 	 * @uml.associationEnd  readOnly="true"
@@ -70,6 +72,7 @@ public class TurmasControllerTeste {
 		disciplinaDao = mock(DisciplinaDao.class);
 		alunoDao = mock(AlunoDao.class);
 		result = spy(new MockResult());
+		usuarioSession = mock(UsuarioSession.class);
 		
 		turmasController = new TurmasController(result, turmaDao, disciplinaDao, alunoDao, usuarioSession);
 		
@@ -82,6 +85,7 @@ public class TurmasControllerTeste {
 		when(turmaDao.carrega(turma.getId())).thenReturn(turma);
 		when(turmaDao.listaTudo()).thenReturn(turmas);
 		// FIXME when(turmaDao.buscaDisciplinas()).thenReturn(disciplinas);
+		
 	}
 	
 	@Test
@@ -127,6 +131,10 @@ public class TurmasControllerTeste {
 	
 	@Test
 	public void testeAlteracao() {
+		Professor p = new Professor();
+		when(usuarioSession.getUsuario()).thenReturn(p);		
+		turma.setProfessor(p);
+		
 		turmasController.alteracao(turma.getId());
 		Turma turma = result.included("turma");
 		
