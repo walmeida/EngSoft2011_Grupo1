@@ -45,7 +45,14 @@
 			    Tem certeza ${usuarioSession.usuario.nome}?
 			    <div>    
                     <a href="logout">Sair</a>
-                    <a href="<c:url value='/alunos/home'/>">Página Principal</a><br/>
+                    <c:choose>
+                    <c:when test="${usuarioSession.usuario.intPrivilegio==0}">
+                        <a href="<c:url value='/alunos/home'/>">Página Principal</a><br/>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="<c:url value='/professores/home'/>">Página Principal</a><br/>
+                    </c:otherwise>
+                    </c:choose>
                 </div> 
 			</c:otherwise>
 	     </c:choose>
