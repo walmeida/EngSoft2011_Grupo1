@@ -45,14 +45,13 @@
 			    Tem certeza ${usuarioSession.usuario.nome}?
 			    <div>    
                     <a href="logout">Sair</a>
-                    <c:choose>
-	                    <c:when test="${usuarioSession.usuario.intPrivilegio==0}">
-	                        <a href="<c:url value='/alunos/home'/>">Página Principal</a><br/>
-	                    </c:when>
-	                    <c:otherwise>
-	                        <a href="<c:url value='/professores/home'/>">Página Principal</a><br/>
-	                    </c:otherwise>
-                    </c:choose>
+                    <c:if test ="${usuarioSession.usuario.privilegio == 'PROFESSOR' || usuarioSession.usuario.privilegio == 'ADMINISTRADOR'}">
+        				<a href="<c:url value='/professores/home'/>">Página Principal</a><br/>              
+    				</c:if>
+                	
+                	<c:if test ="${usuarioSession.usuario.privilegio == 'ALUNO'}">
+        				<a href="<c:url value='/alunos/home'/>">Página Principal</a><br/>              
+ 				   	</c:if>
                 </div> 
 			</c:otherwise>
 	     </c:choose>
