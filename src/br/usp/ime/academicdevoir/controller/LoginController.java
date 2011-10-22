@@ -66,7 +66,7 @@ public class LoginController {
 				result.redirectTo(AlunosController.class).home();
 			}
 		} else {
-			result.include("error", "E-mail ou senha incorreta!")
+			result.include("error", "Login ou senha incorreta!")
 					.redirectTo(this).login();
 		}
 

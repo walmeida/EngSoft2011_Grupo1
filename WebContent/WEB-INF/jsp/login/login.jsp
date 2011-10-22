@@ -38,7 +38,7 @@
 	                        <p><a href="#">Esqueci minha senha xD</a></p>
 	                    </div> 
 	                </fieldset>
-	                
+	                <c:out value="${error}"></c:out>
 	            </form> 
 			</c:when>
 			<c:otherwise>

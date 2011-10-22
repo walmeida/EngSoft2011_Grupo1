@@ -3,12 +3,16 @@ package br.usp.ime.academicdevoir.infra;
 import java.util.Arrays;
 import java.util.Collection;
 
+import org.hibernate.JDBCException;
+import org.hibernate.exception.JDBCConnectionException;
+
 import br.com.caelum.vraptor.Intercepts;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.core.InterceptorStack;
 import br.com.caelum.vraptor.interceptor.Interceptor;
 import br.com.caelum.vraptor.ioc.RequestScoped;
 import br.com.caelum.vraptor.resource.ResourceMethod;
+import br.usp.ime.academicdevoir.controller.AlunosController;
 import br.usp.ime.academicdevoir.controller.LoginController;
 
 @Intercepts
@@ -50,21 +54,21 @@ public class LoginInterceptor implements Interceptor {
 
 	public void intercept(InterceptorStack stack, ResourceMethod method,
 			Object resourceInstance) {
-		if (usuarioSession.getUsuario() != null) {
-			Permission methodPermission = method.getMethod().getAnnotation(
-					Permission.class);
-			Permission controllerPermission = method.getResource().getType()
-					.getAnnotation(Permission.class);
-			if (this.hasAccess(methodPermission)
-					&& this.hasAccess(controllerPermission)) {
-				stack.next(method, resourceInstance);
-			} else {
-				result.redirectTo(LoginController.class).acessoNegado();
-			}
-
-		} else {
-			result.redirectTo(LoginController.class).login();
-		}
+    	if (usuarioSession.getUsuario() != null) {
+    		Permission methodPermission = method.getMethod().getAnnotation(
+    				Permission.class);
+    		Permission controllerPermission = method.getResource().getType()
+    				.getAnnotation(Permission.class);
+    		if (this.hasAccess(methodPermission)
+    				&& this.hasAccess(controllerPermission)) {
+    			stack.next(method, resourceInstance);
+    		} else {
+    			result.redirectTo(LoginController.class).acessoNegado();
+    		}
+    
+    	} else {
+    		result.redirectTo(LoginController.class).login();
+    	}
 	}
 
 }

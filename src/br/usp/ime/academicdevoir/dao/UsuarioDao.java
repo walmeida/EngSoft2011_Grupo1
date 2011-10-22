@@ -29,8 +29,9 @@ public class UsuarioDao {
 	        List<Usuario> user = session.createCriteria(Usuario.class)
 	                .add(Restrictions.like("login", login))
 	                .list();
-	        
-	        if (user == null) return null;
+
+            if (user == null) return null;
+	        if (user.size() == 0) return null;
 	        
 	        if(StringUtils.isBlank(login) || StringUtils.isBlank(senha))
 	        	return null;
