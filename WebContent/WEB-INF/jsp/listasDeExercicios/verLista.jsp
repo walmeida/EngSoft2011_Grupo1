@@ -71,29 +71,58 @@ font-family:"Times New Roman";
 	<table>
 		<tr>
 			<td>Nome:</td>
-			<td>${listaDeExercicios.nome }</td>
+			<td>${listaDeExercicios.propriedades.nome }</td>
 		</tr>
 		<tr>
 			<td>Enunciado:</td>
-			<td>${listaDeExercicios.enunciado }</td>
+			<td>${listaDeExercicios.propriedades.enunciado }</td>
 		</tr>
 		<tr>
 			<td>Visível:</td>
 			<td>
 				<c:choose>
-					<c:when test="${listaDeExercicios.visivel }">Sim</c:when>
+					<c:when test="${listaDeExercicios.propriedades.visivel }">Sim</c:when>
 					<c:otherwise>Não</c:otherwise>
 				</c:choose>
 			</td>
 		</tr>
 		<tr>
 			<td>Peso:</td>
-			<td>${listaDeExercicios.peso }</td>
+			<td>${listaDeExercicios.propriedades.peso }</td>
 		</tr>
 		<tr>
 			<td>Prazo de Entrega:</td>
 			<td>${prazo }</td>
 		</tr>
+		<tr>
+			<td>Número Máximo de Envios:</td>
+			<td>
+				<c:choose>
+					<c:when test="${empty (listaDeExercicios.propriedades.numeroMaximoDeEnvios) or (listaDeExercicios.propriedades.numeroMaximoDeEnvios eq 0)}">
+						Ilimitado
+					</c:when>
+					<c:otherwise>
+						${listaDeExercicios.propriedades.numeroMaximoDeEnvios }
+					</c:otherwise>
+				</c:choose>
+			</td>
+		</tr>
+		<tr>
+			<td>Auto Correção:</td>
+			<td>
+				<c:choose>
+					<c:when test="${listaDeExercicios.propriedades.autoCorrecao eq 'DESATIVADA' }">
+						Desabilitada
+					</c:when>
+					<c:when test="${listaDeExercicios.propriedades.autoCorrecao eq 'PROFESSOR' }">
+						Somente Professor
+					</c:when>
+					<c:otherwise>
+						Professor e Aluno
+					</c:otherwise>
+				</c:choose>
+			</td>
+		</tr>		
 	</table>
 	<form action="<c:url value="/listasDeExercicios/altera/${listaDeExercicios.id }"/>">
 		<fieldset class="fieldsetSemFormatacao">

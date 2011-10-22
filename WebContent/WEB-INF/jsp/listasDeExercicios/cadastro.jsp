@@ -54,16 +54,16 @@ display: inline;
 			<fieldset>
 				<legend>Cadastrar lista de exercícios</legend>				
 				<label for="nome">Nome:</label>
-					<input id="nome" type="text" name="listaDeExercicios.nome" />
+					<input id="nome" type="text" name="propriedades.nome" />
 					<br/>
 				<label for="enunciado">Enunciado:</label>
-					<input id="enunciado" type="text" name="listaDeExercicios.enunciado" />
+					<input id="enunciado" type="text" name="propriedades.enunciado" />
 					<br/>
 				<label for="visivel">Visível:</label>
-					<input id="visivel" type="checkbox" name="listaDeExercicios.visivel" value="true" />
+					<input id="visivel" type="checkbox" name="propriedades.visivel" value="true" />
 					<br/>
 				<label for="Peso">Peso:</label>
-					<input id="peso" type="text" size="5" maxlength="3" name="listaDeExercicios.peso" />
+					<input id="peso" type="text" size="5" maxlength="3" name="propriedades.peso" />
 					<br/>
 				<label for="prazoDeEntrega">Prazo de entrega:</label>
 				<br/>
@@ -78,6 +78,16 @@ display: inline;
 					<p>:</p>
 					<input id="minuto" type="text" size="2" maxlength="2" name="prazoDeEntrega[4]" />
 					<br/>
+				<label for="numeroMaximoDeEnvios">Número Máximo de Envios:</label>
+					<input id="numeroMaximoDeEnvios" type="text" size="2" maxlength="2" name="propriedades.numeroMaximoDeEnvios" />
+					<br/>
+				<label for="autoCorrecao">Auto Correção:</label>
+					<select id="autoCorrecao" name="propriedades.autoCorrecao">
+						<option value="0">Desativada</option>
+						<option value="1">Professor</option>
+						<option value="2">Aluno e Professor</option>
+					</select>
+				<br/><br/>
 					
 				<label for="turmas">Turmas:</label>
 				<br />

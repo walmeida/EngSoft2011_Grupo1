@@ -1,9 +1,6 @@
 package br.usp.ime.academicdevoir.controller;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import br.com.caelum.vraptor.Delete;
@@ -20,6 +17,7 @@ import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.Professor;
+import br.usp.ime.academicdevoir.entidade.PropriedadesDaListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.Questao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDaLista;
 import br.usp.ime.academicdevoir.entidade.Turma;
@@ -95,15 +93,10 @@ public class ListasDeExerciciosController {
 	 * @param prazoDeEntrega
 	 * @param idDasTurmas
 	 */
-	public void cadastra(ListaDeExercicios listaDeExercicios,
-			final List<Integer> prazoDeEntrega, List<Long> idDasTurmas) {
+	public void cadastra(PropriedadesDaListaDeExercicios propriedades, final List<Integer> prazoDeEntrega, List<Long> idDasTurmas) {			
 
-		Calendar data = Calendar.getInstance();
-		data.set(prazoDeEntrega.get(2).intValue(), prazoDeEntrega.get(1)
-				.intValue(), prazoDeEntrega.get(0).intValue(), prazoDeEntrega
-				.get(3).intValue(), prazoDeEntrega.get(4).intValue());
-		Date dataDoBD = new Date(data.getTimeInMillis());
-
+		ListaDeExercicios listaDeExercicios = new ListaDeExercicios();
+		
 		Turma turma;
 		List<Turma> turmas = new ArrayList<Turma>();
 		if(idDasTurmas == null) idDasTurmas = new ArrayList<Long>();
@@ -111,9 +104,10 @@ public class ListasDeExerciciosController {
 			turma = turmaDao.carrega(id);
 			turmas.add(turma);
 		}
-
-		listaDeExercicios.setTurmas(turmas);
-		listaDeExercicios.setPrazoDeEntrega(dataDoBD);
+		
+		propriedades.setPrazoDeEntrega(prazoDeEntrega);
+		listaDeExercicios.setTurmas(turmas);		
+		listaDeExercicios.setPropriedades(propriedades);
 
 		validator.validate(listaDeExercicios);
 		validator.onErrorUsePageOf(this).cadastro();
@@ -131,12 +125,9 @@ public class ListasDeExerciciosController {
 	 * */
 	public void verLista(Long id) {
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
-		/*SimpleDateFormat dataFormatada = new SimpleDateFormat(
-				"EEE, dd'/'MM'/'AAAA HH:mm");*/
 
-		result.include("prazo",
-				listaDeExercicios.getPrazoDeEntrega());
 		result.include("listaDeExercicios", listaDeExercicios);
+		result.include("prazo", listaDeExercicios.getPropriedades().getPrazoDeEntregaFormatado());
 	}
 	
 	@Get
@@ -162,18 +153,10 @@ public class ListasDeExerciciosController {
 	 * @return ListaDeExercicios 
 	 * */
 	public void alteracao(Long id) {
-		ListaDeExercicios listaDeExercicios = dao.carrega(id);
-		Calendar data = Calendar.getInstance();
-		data.setTimeInMillis(listaDeExercicios.getPrazoDeEntrega().getTime());
-		List<Integer> prazo = new ArrayList<Integer>();
-		prazo.add(data.get(Calendar.DAY_OF_MONTH));
-		prazo.add(data.get(Calendar.MONTH));
-		prazo.add(data.get(Calendar.YEAR));
-		prazo.add(data.get(Calendar.HOUR_OF_DAY));
-		prazo.add(data.get(Calendar.MINUTE));
+		ListaDeExercicios listaDeExercicios = dao.carrega(id);		
 
 		result.include("listaDeExercicios", listaDeExercicios);
-		result.include("prazo", prazo);
+		result.include("prazo", listaDeExercicios.getPropriedades().getPrazoPrazoDeEntregaEmLista());
 	}
 
 	@Put
@@ -184,22 +167,13 @@ public class ListasDeExerciciosController {
 	 * @param listaDeExercicios
 	 * @param prazoDeEntrega
 	 */
-	public void altera(ListaDeExercicios listaDeExercicios,
-			final List<Integer> prazoDeEntrega) {
+	public void altera(ListaDeExercicios listaDeExercicios, PropriedadesDaListaDeExercicios propriedades, List<Integer> prazoDeEntrega) {
 
 		ListaDeExercicios listaDoBD = dao.carrega(listaDeExercicios.getId());
-		Calendar data = Calendar.getInstance();
-		data.set(prazoDeEntrega.get(2).intValue(), prazoDeEntrega.get(1)
-				.intValue(), prazoDeEntrega.get(0).intValue(), prazoDeEntrega
-				.get(3).intValue(), prazoDeEntrega.get(4).intValue());
-		Date dataDoBD = new Date(data.getTimeInMillis());
-
-		listaDoBD.setNome(listaDeExercicios.getNome());
-		listaDoBD.setEnunciado(listaDeExercicios.getEnunciado());
-		listaDoBD.setPeso(listaDeExercicios.getPeso());
-		listaDoBD.setVisivel(listaDeExercicios.getVisivel());
-		listaDoBD.setPrazoDeEntrega(dataDoBD);
-
+		
+		propriedades.setPrazoDeEntrega(prazoDeEntrega);
+		listaDoBD.setPropriedades(propriedades);
+		
 		validator.validate(listaDeExercicios);
 		validator
 				.onErrorUsePageOf(ListasDeExerciciosController.class)

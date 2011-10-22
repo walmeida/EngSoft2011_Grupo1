@@ -46,7 +46,7 @@ font-family:"Times New Roman";
 	<div>
 		<ul>
 			<c:forEach items="${listaDeListas }" var="lista">
-				<li><a href="<c:url value="/listasDeExercicios/${lista.id }"/>">${lista.nome }</a></li>
+				<li><a href="<c:url value="/listasDeExercicios/${lista.id }"/>">${lista.propriedades.nome }</a></li>
 			</c:forEach>
 		</ul>
 	</div>	

@@ -54,23 +54,23 @@ display: inline;
 			<fieldset>
 				<legend>Alterar lista de exercícios</legend>
 				<label for="nome">Nome:</label>
-					<input id="nome" type="text" name="listaDeExercicios.nome" value="${listaDeExercicios.nome }"/>
+					<input id="nome" type="text" name="propriedades.nome" value="${listaDeExercicios.propriedades.nome }"/>
 					<br/>
 				<label for="enunciado">Enunciado:</label>
-					<input id="enunciado" type="text" name="listaDeExercicios.enunciado" value="${listaDeExercicios.enunciado }"/>
+					<input id="enunciado" type="text" name="propriedades.enunciado" value="${listaDeExercicios.propriedades.enunciado }"/>
 					<br/>
 				<label for="visivel">Visível:</label>
 					<c:choose>
-						<c:when test="${listaDeExercicios.visivel }">
-							<input id="visivel" type="checkbox" checked="checked" name="listaDeExercicios.visivel" value="true"/>
+						<c:when test="${listaDeExercicios.propriedades.visivel }">
+							<input id="visivel" type="checkbox" checked="checked" name="propriedades.visivel" value="true"/>
 						</c:when>
 						<c:otherwise>
-							<input id="visivel" type="checkbox" name="listaDeExercicios.visivel" value="true"/>
+							<input id="visivel" type="checkbox" name="propriedades.visivel" value="true"/>
 						</c:otherwise>
 					</c:choose>
 					<br/>
 				<label for="Peso">Peso:</label>
-					<input id="peso" type="text" size="5" maxlength="3" name="listaDeExercicios.peso" value="${listaDeExercicios.peso }"/>
+					<input id="peso" type="text" size="5" maxlength="3" name="propriedades.peso" value="${listaDeExercicios.propriedades.peso }"/>
 					<br/>
 				<label for="prazoDeEntrega">Prazo de entrega:</label>
 				<br/>
@@ -84,7 +84,31 @@ display: inline;
 					<input id="hora" type="text" size="2" maxlength="2" name="prazoDeEntrega[3]" value="${prazo[3] }"/>
 					<p>:</p>
 					<input id="minuto" type="text" size="2" maxlength="2" name="prazoDeEntrega[4]" value="${prazo[4] }"/>
-					<br/> 
+					<br/>
+				<label for="numeroMaximoDeEnvios">Número Máximo de Envios:</label>
+					<input id="numeroMaximoDeEnvios" type="text" size="2" maxlength="2" name="propriedades.numeroMaximoDeEnvios" value="${listaDeExercicios.propriedades.numeroMaximoDeEnvios }"/>
+					<br/>
+				<label for="autoCorrecao">Auto Correção:</label>
+					<select id="autoCorrecao" name="propriedades.autoCorrecao">
+						<c:choose>
+							<c:when test="${listaDeExercicios.propriedades.autoCorrecao eq 'DESATIVADA' }">
+								<option selected="selected" value="0">Desativada</option>
+								<option value="1">Professor</option>
+								<option value="2">Aluno e Professor</option>
+							</c:when>
+							<c:when test="${listaDeExercicios.propriedades.autoCorrecao eq 'PROFESSOR' }">
+								<option value="0">Desativada</option>
+								<option selected="selected" value="1">Professor</option>
+								<option value="2">Aluno e Professor</option>
+							</c:when>
+							<c:otherwise>
+								<option value="0">Desativada</option>
+								<option value="1">Professor</option>
+								<option selected="selected" value="2">Aluno e Professor</option>
+							</c:otherwise>
+						</c:choose>						
+					</select>
+					<br/><br/>
 				<button type="submit" name="_method" value="put">Salvar Alterações</button>
 			</fieldset>
 		</form>

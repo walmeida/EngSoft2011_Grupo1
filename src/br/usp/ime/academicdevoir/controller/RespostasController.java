@@ -17,6 +17,7 @@ import br.usp.ime.academicdevoir.dao.ListaDeRespostasDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.ListaDeRespostas;
+import br.usp.ime.academicdevoir.entidade.Resposta;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 @Resource
@@ -63,10 +64,11 @@ public class RespostasController {
 	 */
 	@Put
 	@Path("/respostas/{id}")
-	public void alteraRespostas(Long id, ListaDeExercicios listaDeExercicios) {
+	public void alteraRespostas(Long id, ListaDeExercicios listaDeExercicios, List<Resposta> respostas) {
 		ListaDeRespostas listaDeRespostas = dao.carrega(id);
 		listaDeExerciciosDao.recarrega(listaDeExercicios);
 
+		listaDeRespostas.setRespostas(respostas);
 		listaDeRespostas.setAluno((Aluno) usuario.getUsuario());
 		listaDeRespostas.setListaDeExercicios(listaDeExercicios);
 		

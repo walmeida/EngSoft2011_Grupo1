@@ -5,17 +5,20 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SecondaryTable;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 @Entity
+@SecondaryTable(name = "propriedadesDaListaDeRespostas")
 public class ListaDeRespostas {
 	
 	@Id
@@ -39,6 +42,11 @@ public class ListaDeRespostas {
 	@ElementCollection
 	@CollectionTable(name = "notasDaLista")
 	private List<Integer> notas;
+	
+	private Integer notaFinal;
+	
+	@Embedded
+	private PropriedadesDaListaDeRespostas propriedades;
 
 	public Long getId() {
 		return id;
@@ -78,5 +86,25 @@ public class ListaDeRespostas {
 
 	public void setNotas(List<Integer> notas) {
 		this.notas = notas;
+	}
+
+	public PropriedadesDaListaDeRespostas getPropriedades() {
+		return propriedades;
+	}
+
+	public void setPropriedades(PropriedadesDaListaDeRespostas propriedades) {
+		this.propriedades = propriedades;
+	}
+
+	public Integer getNotaFinal() {
+		return notaFinal;
+	}
+
+	public void setNotaFinal() {
+		Integer notaFinal = new Integer(0);
+		for(Integer nota : notas) {
+			notaFinal += nota;
+		}
+		this.notaFinal = notaFinal;
 	}
 }
