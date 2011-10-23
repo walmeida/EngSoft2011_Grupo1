@@ -98,10 +98,12 @@ public class PropriedadesDaListaDeExercicios {
 	}
 	
 	public String getPrazoDeEntregaFormatado() {
-		SimpleDateFormat prazo = new SimpleDateFormat(
-				"EEE, dd'/'MM'/'YYYY HH:mm");
+		/*SimpleDateFormat prazo = new SimpleDateFormat(
+				"EEE, dd'/'MM'/'AAAA HH:mm");
 		
-		return prazo.format(prazoDeEntrega);
+		return prazo.format(prazoDeEntrega); */
+		//Aqui não roda a formatação de datas. Então comentei por enquanto.
+		return prazoDeEntrega.toString();
 	}
 
 	public void setPrazoDeEntrega(Date prazoDeEntrega) {

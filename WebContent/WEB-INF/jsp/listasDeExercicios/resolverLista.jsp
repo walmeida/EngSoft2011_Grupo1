@@ -41,10 +41,10 @@ font-family:"Times New Roman";
 	
 	<table>
 		<tr>
-			<td>${listaDeExercicios.nome}</td>
+			<td>${listaDeExercicios.propriedades.nome}</td>
 		</tr>
 		<tr>
-			<td>${listaDeExercicios.enunciado}</td>
+			<td>${listaDeExercicios.propriedades.enunciado}</td>
 		</tr>
 	</table>
 	
