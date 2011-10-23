@@ -36,13 +36,9 @@ public class QuestaoDeTexto extends Questao {
 		String htmlResult = "";
 		StringBuffer buffer = new StringBuffer();
 		
-		buffer.append("<div><p>questao.order) ");
-		buffer.append(this.getEnunciado());
-	    buffer.append("</p></div>");
-		
 		buffer.append("<div><textarea id=\" ");
-		buffer.append("Q + questao.order");
-		buffer.append("\" rows=\"30\" cols=\"50\"></textarea>");
+		buffer.append(this.getId());
+		buffer.append("\" rows=\"10\" cols=\"50\"></textarea>");
 		buffer.append("</div>");
 				
 		htmlResult = buffer.toString();

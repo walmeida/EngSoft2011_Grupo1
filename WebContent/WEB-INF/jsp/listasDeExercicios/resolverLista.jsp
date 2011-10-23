@@ -52,6 +52,10 @@ font-family:"Times New Roman";
 	
 	<div>
 		<c:forEach items="${listaDeExercicios.questoes}" var="questaoDaLista">
+				<div>
+					<p>${questaoDaLista.ordem} )
+						${questaoDaLista.questao.enunciado}</p>
+				</div>
 				${questaoDaLista.questao.renderizacao}
 		</c:forEach>
 	</div>

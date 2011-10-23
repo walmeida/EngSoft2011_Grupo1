@@ -58,12 +58,10 @@ public class QuestaoDeMultiplaEscolha extends Questao {
 		String htmlResult = "";
 		StringBuffer buffer = new StringBuffer();
 		
-		buffer.append("<div><p>questao.order) ");
-		buffer.append(this.getEnunciado());
-	    buffer.append("</p></div><table>");
+		buffer.append("<table>");
 		for (int i = 0; i < alternativas.size(); i++) {
 			buffer.append("<tr><td><input type=\"radio\" name=\"");
-			buffer.append("Q + questao.order");
+			buffer.append(this.getId());
 			buffer.append("\" value=\"");
 			buffer.append(this.getId());
 			buffer.append("\" /></td><td>");
