@@ -132,7 +132,7 @@ public class TurmasController {
 	public void alteracao(Long id) {
 		Turma turma = turmaDao.carrega(id);
 		Professor p = (Professor) usuarioSession.getUsuario();
-		if (p.equals(turma.getProfessor())) {
+		if (p.getId() == turma.getProfessor().getId()) {
 			result.include("turma", turma);
 		} 
 		else

@@ -22,12 +22,12 @@ import="java.sql.*" errorPage="" %>
 		<form action="/academic-devoir/turmas/cadastro">
 		<a href="<c:url value='/turmas/cadastro'/>">Cadastrar nova turma</a><br/>
 		</form>
-		<form action="/academic-devoir/turmas/remocao">
+		<!-- <form action="/academic-devoir/turmas/remocao">
 		<a href="<c:url value='/turmas/remocao'/>">Remover turma</a><br/>
 		</form>
 		<form action="/academic-devoir/turmas/alteracao">
 		<a href="<c:url value='/turmas/alteracao'/>">Alterar dados da turma</a><br/>
-		</form>
+		</form> -->
 	</div>
 	<a href="<c:url value='/login'/>">Sair</a>
 	<a href="<c:url value='/turmas/lista'/>">Pagina Principal</a><br/>
