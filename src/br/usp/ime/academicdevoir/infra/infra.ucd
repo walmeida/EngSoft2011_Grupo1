@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="infra" size="783,564" id="br.usp.ime.academicdevoir.infra" metadata="uml2-1.0" initialized="true" tag="10" key="32303037303533312D31302061636164656D69632D6465766F6972">
+  <children xsi:type="editmodel:ClassEditModel" name="Criptografia" location="231,243" size="134,68" id="br.usp.ime.academicdevoir.infra/Criptografia" runTimeClassModel="geraMd5(Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="78,18">
+      <children xsi:type="editmodel:MethodEditModel" name="geraMd5" id="br.usp.ime.academicdevoir.infra/Criptografia#geraMd5(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:EnumerationEditModel" name="Privilegio" location="50,243" size="131,125" id="br.usp.ime.academicdevoir.infra/Privilegio" runTimeClassModel="ADMINISTRADOR%,ALUNO%,PROFESSOR%,MONITOR%">
+    <children xsi:type="editmodel:CompartmentEditModel" size="108,72">
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="PROFESSOR" id="br.usp.ime.academicdevoir.infra/Privilegio#PROFESSOR%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="MONITOR" id="br.usp.ime.academicdevoir.infra/Privilegio#MONITOR%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="ALUNO" id="br.usp.ime.academicdevoir.infra/Privilegio#ALUNO%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="ADMINISTRADOR" id="br.usp.ime.academicdevoir.infra/Privilegio#ADMINISTRADOR%"/>
+    </children>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:EnumerationEditModel" name="TipoDeQuestao" location="435,243" size="168,143" id="br.usp.ime.academicdevoir.infra/TipoDeQuestao" runTimeClassModel="MULTIPLAESCOLHA%,SUBMISSAODEARQUIVO%,VOUF%,INVALIDA%,TEXTO%">
+    <children xsi:type="editmodel:CompartmentEditModel" size="145,90">
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="SUBMISSAODEARQUIVO" location="481,205" id="br.usp.ime.academicdevoir.infra/TipoDeQuestao#SUBMISSAODEARQUIVO%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="VOUF" id="br.usp.ime.academicdevoir.infra/TipoDeQuestao#VOUF%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="MULTIPLAESCOLHA" id="br.usp.ime.academicdevoir.infra/TipoDeQuestao#MULTIPLAESCOLHA%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="TEXTO" id="br.usp.ime.academicdevoir.infra/TipoDeQuestao#TEXTO%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="INVALIDA" id="br.usp.ime.academicdevoir.infra/TipoDeQuestao#INVALIDA%"/>
+    </children>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="LoginInterceptor" location="50,50" size="169,104" id="br.usp.ime.academicdevoir.infra/LoginInterceptor" runTimeClassModel="LoginInterceptor(Lbr.com.caelum.vraptor.Result;Lbr.usp.ime.academicdevoir.infra.UsuarioSession;),accepts(Lbr.com.caelum.vraptor.resource.ResourceMethod;),intercept(Lbr.com.caelum.vraptor.core.InterceptorStack;Lbr.com.caelum.vraptor.resource.ResourceMethod;Ljava.lang.Object;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="120,54">
+      <children xsi:type="editmodel:MethodEditModel" name="LoginInterceptor" id="br.usp.ime.academicdevoir.infra/LoginInterceptor#LoginInterceptor(Lbr.com.caelum.vraptor.Result;Lbr.usp.ime.academicdevoir.infra.UsuarioSession;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="accepts" id="br.usp.ime.academicdevoir.infra/LoginInterceptor#accepts(Lbr.com.caelum.vraptor.resource.ResourceMethod;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="intercept" id="br.usp.ime.academicdevoir.infra/LoginInterceptor#intercept(Lbr.com.caelum.vraptor.core.InterceptorStack;Lbr.com.caelum.vraptor.resource.ResourceMethod;Ljava.lang.Object;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.infra/UsuarioSession@usuarioSession+br.usp.ime.academicdevoir.infra/LoginInterceptor@" source="//@children.3" target="//@children.4" targetEnd="//@children.3/@sourceConnections.0/@children.2" label="//@children.3/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="169,42" id="br.usp.ime.academicdevoir.infra/UsuarioSession@usuarioSession+br.usp.ime.academicdevoir.infra/LoginInterceptor@|br.usp.ime.academicdevoir.infra/LoginInterceptor#" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="usuarioSession" location="0,42" id="br.usp.ime.academicdevoir.infra/UsuarioSession@usuarioSession+br.usp.ime.academicdevoir.infra/LoginInterceptor@|br.usp.ime.academicdevoir.infra/UsuarioSession#usuarioSession" multiplicityLabel="//@children.3/@sourceConnections.0/@children.2/@children.1" roleLabel="//@children.3/@sourceConnections.0/@children.2/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - usuarioSession" location="304,72" size="94,13" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="391,99" size="7,13" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.infra/LoginInterceptor-Standard::Call->br.usp.ime.academicdevoir.infra/UsuarioSession*br.usp.ime.academicdevoir.infra/LoginInterceptor-Soyatec::Import->br.usp.ime.academicdevoir.infra/UsuarioSession" source="//@children.3" target="//@children.4" targetEnd="//@children.3/@sourceConnections.1/@children.2" label="//@children.3/@sourceConnections.1/@children.0" sourceEnd="//@children.3/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import, Call»" size="75,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="169,62" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,77"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@sourceConnections.0 //@children.3/@sourceConnections.1" name="UsuarioSession" location="405,50" size="158,86" id="br.usp.ime.academicdevoir.infra/UsuarioSession" runTimeClassModel="isLogged(),logout()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="80,36">
+      <children xsi:type="editmodel:MethodEditModel" name="isLogged" id="br.usp.ime.academicdevoir.infra/UsuarioSession#isLogged()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="logout" id="br.usp.ime.academicdevoir.infra/UsuarioSession#logout()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" level="-1" showScope="InPackage" properties="wireOptions=7;Product=eUML2"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

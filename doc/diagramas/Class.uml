@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_-MPhsP12EeCrPve4tQIM_A" name="Class">
+  <elementImport xmi:id="_-NGdUP12EeCrPve4tQIM_A">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+  </elementImport>
+  <elementImport xmi:id="_-NHEYP12EeCrPve4tQIM_A">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_-NHEYf12EeCrPve4tQIM_A">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <elementImport xmi:id="_-NHEYv12EeCrPve4tQIM_A">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CMS2wP13EeCrPve4tQIM_A" name="Usuário" clientDependency="_H89_cP14EeCrPve4tQIM_A _QG57AP14EeCrPve4tQIM_A" isAbstract="true">
+    <ownedAttribute xmi:id="_EpyM4P13EeCrPve4tQIM_A" name="id" aggregation="composite"/>
+    <ownedAttribute xmi:id="_F9kI8P13EeCrPve4tQIM_A" name="nome" aggregation="composite"/>
+    <ownedOperation xmi:id="_HUnbcP13EeCrPve4tQIM_A" name="getId">
+      <ownedParameter xmi:id="_JkhBgP13EeCrPve4tQIM_A" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_cbmcQP13EeCrPve4tQIM_A" name="Professor  "/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_H8qdcP14EeCrPve4tQIM_A" name="Aluno"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_H89_cP14EeCrPve4tQIM_A" name="" supplier="_H8qdcP14EeCrPve4tQIM_A" client="_CMS2wP13EeCrPve4tQIM_A"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_QG57AP14EeCrPve4tQIM_A" name="" supplier="_cbmcQP13EeCrPve4tQIM_A" client="_CMS2wP13EeCrPve4tQIM_A"/>
+</uml:Package>
