@@ -172,7 +172,7 @@ public class AlunosController {
 		Aluno aluno = alunoDao.carrega(idAluno);
 		Turma turma = turmaDao.carrega(idTurma);
 	    alunoDao.inscreve(aluno, turma);
-		result.redirectTo(AlunosController.class).lista();
+		result.redirectTo(AlunosController.class).listaTurmas(idAluno);
 	}
 	
 	/**

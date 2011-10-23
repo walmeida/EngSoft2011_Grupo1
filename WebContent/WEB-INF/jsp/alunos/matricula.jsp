@@ -12,8 +12,7 @@
 	<h1>Academic Devoir</h1>
 	<h2>Grupo 1 - Engenharia de Software</h2>
 	
-	<!-- form action='inscreve'-->
-	<form action='listaTurmas' method="get">
+	<form action='inscreve'>
 	<input type="hidden" name="idAluno" value="${usuarioSession.usuario.id}">
 	<fieldset><legend>Inscri&ccedil;&atilde;o:</legend><br/>
 	 Olá, ${usuarioSession.usuario.nome}, selecione a turma na qual você quer se matricular.<br/><br/>
