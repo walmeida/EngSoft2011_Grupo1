@@ -10,24 +10,47 @@
     <h1>Academic Devoir</h1>
     <h2>Grupo 1 - Engenharia de Software</h2>
     <br/><br/>
+    
     <form action='../alteracao' method="get">
-        <input type="hidden" value="${turma.id}" name="id">
-        <input type="submit" value="Alterar informações da turma"/>
+        <input type="hidden" value="${turma.id}" name="id"/>
+        <!-- input type="submit" value="Alterar informações da turma"/-->
+        <c:if test ="${usuarioSession.usuario.privilegio != 'ALUNO' && usuarioSession.usuario.privilegio != 'MONITOR'}">
+        	<a href="<c:url value='../alteracao?id=${turma.id}'/>">Alterar informações da turma</a><br/>         
+ 		</c:if>
     </form>
     <form action='../remove' method="get">
         <input type="hidden" value="${turma.id}" name="id">
-        <input type="submit" value="Excluir Turma"/>
+        <!--input type="submit" value="Excluir Turma"/-->
+        <c:if test ="${usuarioSession.usuario.privilegio != 'ALUNO' && usuarioSession.usuario.privilegio != 'MONITOR'}">
+        	<a href="<c:url value='../remove?id=${turma.id}'/>">Excluir Turma</a><br/>	         
+ 		</c:if>
     </form>
     <form action='../../listasDeExercicios/cadastro' method="get">
-        <input type="submit" value="Criar lista de exercícios"/>
+        <!-- input type="submit" value="Criar lista de exercícios"/-->
+        <c:if test ="${usuarioSession.usuario.privilegio != 'ALUNO' && usuarioSession.usuario.privilegio != 'MONITOR'}">
+        	<a href="<c:url value='../../listasDeExercicios/cadastro'/>">Criar lista de exercícios</a><br/>	         
+ 		</c:if>
     </form>
     <form action='../listaAlunos' method="get">
         <input type="hidden" value="${turma.id}" name="idTurma">
-        <input type="submit" value="Gerenciar alunos"/>
+        <!--input type="submit" value="Gerenciar alunos"/-->
+        <c:if test ="${usuarioSession.usuario.privilegio != 'ALUNO' && usuarioSession.usuario.privilegio != 'MONITOR'}">
+        	<a href="<c:url value='../listaAlunos?idTurma=${turma.id}'/>">Gerenciar alunos</a><br/>	         
+ 		</c:if>
     </form>
     <form action='../../listasDeExercicios' method="get">
         <input type="hidden" value="${turma.id}" name="idTurma">
-        <input type="submit" value="Resolver lista"/>
+        <!--input type="submit" value="Resolver lista"/-->
+        <a href="<c:url value='../../listasDeExercicios?idTurma=${turma.id}'/>">Resolver lista</a><br/>
     </form>
+    
+    <a href="<c:url value='/login'/>">Sair</a>
+    
+    <c:if test ="${usuarioSession.usuario.privilegio == 'ALUNO' || usuarioSession.usuario.privilegio == 'MONITOR'}">
+    	<a href="<c:url value='/alunos/home'/>">Voltar</a><br/>
+ 	</c:if>
+    <c:if test ="${usuarioSession.usuario.privilegio == 'PROFESSOR' || usuarioSession.usuario.privilegio == 'ADMINISTRADOR'}">
+    	<a href="<c:url value='/professores/home'/>">Voltar</a><br/>    		         
+ 	</c:if>
 </body>
 </html>
