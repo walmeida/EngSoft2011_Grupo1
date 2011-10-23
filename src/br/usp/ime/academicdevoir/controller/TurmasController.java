@@ -150,7 +150,7 @@ public class TurmasController {
         if (!novoNome.equals(""))
             t.setNome(novoNome);
         turmaDao.atualizaTurma(t);
-        result.redirectTo(TurmasController.class).lista();
+        result.redirectTo(TurmasController.class).home(t.getId());
     }
 
     /**
