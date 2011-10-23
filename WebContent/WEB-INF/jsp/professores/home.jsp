@@ -15,26 +15,15 @@
 <body>
 	<h1>Academic Devoir</h1>
 	<h2>Grupo 1 - Engenharia de Software</h2>
-	
-	<form action='alteracao' method="get">
-	    <input type="hidden" value="${usuarioSession.usuario.id}" name="id"/>
-        <a href="<c:url value='/professores/alteracao?id=${usuarioSession.usuario.id}'/>">Alterar dados pessoais</a><br/>
-    </form>
-	<form action='/disciplinas/cadastro' method="get">
-        <!--input type="submit" value="Cadastrar disciplina"/-->
-        <a href="<c:url value='/disciplinas/cadastro'/>">Cadastrar disciplina</a><br/>
-    </form>
-    <form action='../turmas/cadastro' method="get">
-        <!--input type="submit" value="Cadastrar Turma"/-->
-        <a href="<c:url value='/turmas/cadastro'/>">Cadastrar Turma</a><br/>
-    </form>
-    <form action='../questoes' method="get">
-        <!--input type="submit" value="Cadastrar questão"/-->
-        <a href="<c:url value='/questoes/cadastro'/>">Cadastrar questão</a><br/>
-    <form action='listaTurmas' method="get">
-        <input type="hidden" value="${usuarioSession.usuario.id}" name="idProfessor"/>
-        <a href="<c:url value='/professores/listaTurmas?idProfessor=${usuarioSession.usuario.id}'/>">Meus cursos</a><br/>
-    </form>
+	<div align="center">
+	    <a href="<c:url value='/professores/alteracao?id=${usuarioSession.usuario.id}'/>">Alterar dados pessoais</a><br/><br/>
+	    <a href="<c:url value='/professores/listaTurmas?idProfessor=${usuarioSession.usuario.id}'/>">Meus cursos</a><br/><br/>    
+	    <a href="<c:url value='/disciplinas/lista'/>">Listar disciplinas</a><br/><br/>
+	    <a href="<c:url value='/questoes/cadastro'/>">Cadastrar questão</a><br/><br/>
+	    <a href="<c:url value='/turmas/cadastro'/>">Cadastrar Turma</a><br/><br/>
+	    <a href="<c:url value='/disciplinas/cadastro'/>">Cadastrar disciplina</a><br/><br/>
+    </div>
     <a href="<c:url value='/login'/>">Sair</a>
+    
 </body>
 </html>

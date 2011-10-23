@@ -60,5 +60,7 @@ font-family:"Times New Roman";
 		</c:forEach>
 	</div>
 	
+    <a href="<c:url value='/login'/>">Sair</a>
+    <!-- TODO a href="<c:url value='/alunos/home'/>">Página Principal</a><br/ -->	
 </body>
 </html>

@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 @Entity
 public class Professor extends Usuario {
@@ -13,6 +14,7 @@ public class Professor extends Usuario {
 	 * @uml.associationEnd  multiplicity="(0 -1)" inverse="professor:br.usp.ime.academicdevoir.entidade.Turma"
 	 */
 	@OneToMany(mappedBy = "professor")
+	@OrderBy("disciplina")
 	private Collection<Turma> turmas = new ArrayList<Turma>();
 
 

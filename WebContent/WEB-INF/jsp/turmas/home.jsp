@@ -44,13 +44,16 @@
         <a href="<c:url value='../../listasDeExercicios?idTurma=${turma.id}'/>">Resolver lista</a><br/>
     </form>
     
+    <!-- a href="<c:url value='/professores/listaTurmas?idProfessor=${usuarioSession.usuario.id}'/>">Meus cursos</a-->
+    
     <a href="<c:url value='/login'/>">Sair</a>
     
     <c:if test ="${usuarioSession.usuario.privilegio == 'ALUNO' || usuarioSession.usuario.privilegio == 'MONITOR'}">
     	<a href="<c:url value='/alunos/home'/>">Voltar</a><br/>
  	</c:if>
     <c:if test ="${usuarioSession.usuario.privilegio == 'PROFESSOR' || usuarioSession.usuario.privilegio == 'ADMINISTRADOR'}">
-    	<a href="<c:url value='/professores/home'/>">Voltar</a><br/>    		         
+    	<a href="<c:url value='/professores/home'/>">Página Principal</a><br/>    		         
  	</c:if>
+    
 </body>
 </html>
