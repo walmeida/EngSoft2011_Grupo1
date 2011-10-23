@@ -29,5 +29,7 @@
         <input type="hidden" value="${turma.id}" name="idTurma">
         <input type="submit" value="Resolver lista"/>
     </form>
+    <a href="<c:url value='/login'/>">Sair</a>
+    <a href="<c:url value='/professores/home'/>">Página Principal</a><br/>
 </body>
 </html>

@@ -49,6 +49,7 @@ public class AlunosController {
 	 */
 	private TurmaDao turmaDao;
 	/**
+	 * TODO Iremos utilizar um usuarioSession aqui?
 	 * @uml.property  name="usuarioSession"
 	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
@@ -61,12 +62,11 @@ public class AlunosController {
 	 * @param turmaDao para interação com o banco de dados
 	 */
 	public AlunosController(Result result, AlunoDao alunoDao, 
-	        DisciplinaDao disciplinaDao, TurmaDao turmaDao, UsuarioSession alunodao) {
+	        DisciplinaDao disciplinaDao, TurmaDao turmaDao) {
 		this.result = result;
 		this.alunoDao = alunoDao;
 		this.disciplinaDao = disciplinaDao;
 		this.turmaDao = turmaDao;
-		this.usuarioSession = alunodao;
 	}
 
 	/**

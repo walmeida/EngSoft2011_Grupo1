@@ -11,10 +11,10 @@
 <body>
 	<h1>Academic Devoir</h1>
 	<h2>Grupo 1 - Engenharia de Software</h2>
-	<form action='altera'>
+	<form action='../altera'>
 	<fieldset><legend>Altera&ccedil;&atilde;o de Disciplina:</legend><br/>
-		Id da disciplina a alterar: <br/><input type="text" size="30" name="id" /> <br />
-		Novo nome: <br/><input type="text" size="30"/><br/><br/>
+		<input type="hidden" name="id" value="${disciplina.id}"/> <br />
+		Novo nome: <br/><input type="text" size="30" name="novoNome" value="${disciplina.nome}"/><br/><br/>
 	<input type="submit" value="Alterar"/>
 	</fieldset>
 	</form>
