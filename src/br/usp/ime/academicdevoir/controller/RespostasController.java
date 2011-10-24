@@ -1,19 +1,14 @@
 package br.usp.ime.academicdevoir.controller;
 
-import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.caelum.vraptor.Delete;
-import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
-import br.com.caelum.vraptor.interceptor.download.FileDownload;
-import br.com.caelum.vraptor.interceptor.multipart.UploadedFile;
 import br.usp.ime.academicdevoir.arquivos.Arquivos;
 import br.usp.ime.academicdevoir.dao.AlunoDao;
 import br.usp.ime.academicdevoir.dao.DisciplinaDao;
@@ -23,7 +18,6 @@ import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.ListaDeRespostas;
-import br.usp.ime.academicdevoir.entidade.Questao;
 import br.usp.ime.academicdevoir.entidade.Resposta;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 

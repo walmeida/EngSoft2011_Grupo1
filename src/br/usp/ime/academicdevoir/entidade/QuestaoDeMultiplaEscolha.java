@@ -7,7 +7,6 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 
-import br.usp.ime.academicdevoir.controller.QuestoesDeMultiplaEscolhaController;
 import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 
 @Entity

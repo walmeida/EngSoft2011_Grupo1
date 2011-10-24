@@ -1,8 +1,5 @@
 package br.usp.ime.academicdevoir.controller;
 
-import java.io.File;
-import java.util.List;
-
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;

@@ -1,6 +1,5 @@
 package br.usp.ime.academicdevoir.entidade;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;

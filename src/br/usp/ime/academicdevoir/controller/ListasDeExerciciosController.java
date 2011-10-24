@@ -1,7 +1,6 @@
 package br.usp.ime.academicdevoir.controller;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import br.com.caelum.vraptor.Delete;
