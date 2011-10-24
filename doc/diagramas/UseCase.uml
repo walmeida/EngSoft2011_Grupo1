@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_XFSmQP10EeCrPve4tQIM_A" name="UseCase">
+  <elementImport xmi:id="_XGI60P10EeCrPve4tQIM_A">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+  </elementImport>
+  <elementImport xmi:id="_XGL-IP10EeCrPve4tQIM_A">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_XGMlMP10EeCrPve4tQIM_A">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <elementImport xmi:id="_XGMlMf10EeCrPve4tQIM_A">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_9B7VkP10EeCrPve4tQIM_A" name="Professor  "/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_9X4-gP10EeCrPve4tQIM_A" name="Aluno"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_Gg5xcP11EeCrPve4tQIM_A" name="Cadastra no sistema"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_OZh6kP11EeCrPve4tQIM_A" memberEnd="_OZjvwP11EeCrPve4tQIM_A _OZkW0v11EeCrPve4tQIM_A" navigableOwnedEnd="_OZkW0v11EeCrPve4tQIM_A">
+    <ownedEnd xmi:id="_OZjvwP11EeCrPve4tQIM_A" name="src" type="_9X4-gP10EeCrPve4tQIM_A" association="_OZh6kP11EeCrPve4tQIM_A">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_OZkW0f11EeCrPve4tQIM_A" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_OZkW0P11EeCrPve4tQIM_A" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_OZkW0v11EeCrPve4tQIM_A" name="dst" type="_Gg5xcP11EeCrPve4tQIM_A" association="_OZh6kP11EeCrPve4tQIM_A">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_OZkW1P11EeCrPve4tQIM_A" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_OZkW0_11EeCrPve4tQIM_A" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Package>

@@ -23,7 +23,7 @@ public class Aluno extends Usuario {
 	 */
 	@ManyToMany(mappedBy = "alunos", cascade = { CascadeType.PERSIST,
 			CascadeType.MERGE }, fetch = FetchType.EAGER)
-	@OrderBy("nome")
+	@OrderBy("disciplina")
 	private Collection<Turma> turmas = new ArrayList<Turma>();
 
 	@OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

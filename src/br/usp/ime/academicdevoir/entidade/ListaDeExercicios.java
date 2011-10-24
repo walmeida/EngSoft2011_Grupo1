@@ -1,5 +1,8 @@
 package br.usp.ime.academicdevoir.entidade;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -78,6 +81,11 @@ public class ListaDeExercicios {
 	}
 
 	public List<QuestaoDaLista> getQuestoes() {
+		Collections.sort(questoes, new Comparator<QuestaoDaLista>() {  
+            public int compare(QuestaoDaLista q1, QuestaoDaLista q2) {  
+                return q1.getOrdem() < q2.getOrdem() ? -1 : (q1.getOrdem() > q2.getOrdem() ? +1 : 0);  
+            }  
+        }); 
 		return questoes;
 	}
 

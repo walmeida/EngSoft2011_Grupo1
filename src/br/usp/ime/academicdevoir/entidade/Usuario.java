@@ -124,7 +124,4 @@ public class Usuario {
 		this.privilegio = privilegio;
 	}
 	
-	public int getIntPrivilegio() {
-		return privilegio.privilegioToInt();
-	}
 }

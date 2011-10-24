@@ -30,15 +30,16 @@ import="java.sql.*" errorPage="" %>
 		</form>
 		<form action="/academic-devoir/turmas/cadastro">
 		<!--input type="submit" value="Cadastrar nova turma em uma disciplina"></input-->
-		<a href="<c:url value='/turmas/cadastro'/>">Cadastrar nova turma em uma disciplina</a><br/>
+		<a href="<c:url value='/turmas/cadastro'/>">Cadastrar nova turma</a><br/>
 		</form>
 		<form action="/academic-devoir/disciplinas/alteracao">
 		<!--input type="submit" value="Alterar dados da disciplina"></input-->
-		<a href="<c:url value='/disciplinas/alteracao'/>">Alterar dados da disciplina</a><br/>
+		<a href="<c:url value='/disciplinas/alteracao/${disciplina.id}'/>">Alterar dados da disciplina</a><br/>
 		</form>
 
 		<br/>
 	</div>
 </body>
 <a href="<c:url value='/login'/>">Sair</a>
+<a href="<c:url value='/professores/home'/>">Voltar</a><br/>
 </html>

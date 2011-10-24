@@ -18,15 +18,19 @@
         <c:forEach items="${professor.turmas}" var="turma">
             <tr>
                 <td>
-                    <a href="<c:url value="/turmas/home/${turma.id }"/>">
+                    <a href="<c:url value="/turmas/home/${turma.id}"/>">
                         ${turma.disciplina.nome} - ${turma.nome} </a>
                 </td>
             </tr>
         </c:forEach>
     </table>
     <form action='../turmas/cadastro'>
-            <input type="submit" value="Cadastrar nova turma"/>
+            <!-- input type="submit" value="Cadastrar nova turma"/-->
+            <a href="<c:url value='../turmas/cadastro'/>">Cadastrar nova turma</a><br/>
 	</form>
+    
+    <a href="<c:url value='/login'/>">Sair</a>
+    <a href="<c:url value='/professores/home'/>">Página Principal</a><br/>
     
 </body>
 </html>

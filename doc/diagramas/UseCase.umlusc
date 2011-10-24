@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:uml2tools.notation="http://www.eclipse.org/mdt/uml2tools/gmf/notation/ext/2008" xmi:id="_XHygoP10EeCrPve4tQIM_A" type="UMLUseCase" name="UseCase.umlusc" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_YWiLsP10EeCrPve4tQIM_A" type="2001" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_YWmdIP10EeCrPve4tQIM_A" type="5001"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_YWmdIf10EeCrPve4tQIM_A" type="5016"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_YWqHgP10EeCrPve4tQIM_A" type="7001" collapsed="true">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_YWqHgf10EeCrPve4tQIM_A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_YWqHgv10EeCrPve4tQIM_A"/>
+      <styles xmi:type="notation:CanonicalStyle" xmi:id="_YWqukP10EeCrPve4tQIM_A"/>
+    </children>
+    <element xmi:type="uml:Package" href="UseCase.uml#_XFSmQP10EeCrPve4tQIM_A"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YWiLsf10EeCrPve4tQIM_A"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_9SorEP10EeCrPve4tQIM_A" type="2002" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_9SpSIf10EeCrPve4tQIM_A" type="5002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_9SpSIv10EeCrPve4tQIM_A" x="-20" y="70"/>
+    </children>
+    <element xmi:type="uml:Actor" href="UseCase.uml#_9B7VkP10EeCrPve4tQIM_A"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9SpSIP10EeCrPve4tQIM_A" x="420" y="132"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_9YbKAP10EeCrPve4tQIM_A" type="2002" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_9YbKAv10EeCrPve4tQIM_A" type="5002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_9YbxEP10EeCrPve4tQIM_A" x="-20" y="70"/>
+    </children>
+    <element xmi:type="uml:Actor" href="UseCase.uml#_9X4-gP10EeCrPve4tQIM_A"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9YbKAf10EeCrPve4tQIM_A" x="144" y="132"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_GhRk4P11EeCrPve4tQIM_A" type="2003" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_GhSL8P11EeCrPve4tQIM_A" type="5003">
+      <styles xmi:type="notation:FontStyle" xmi:id="_GhiDkP11EeCrPve4tQIM_A" bold="true"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_GhTaEP11EeCrPve4tQIM_A" type="7002">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_GhTaEf11EeCrPve4tQIM_A" showTitle="true"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_GhTaEv11EeCrPve4tQIM_A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_GhTaE_11EeCrPve4tQIM_A"/>
+      <styles xmi:type="notation:CanonicalStyle" xmi:id="_GhTaFP11EeCrPve4tQIM_A"/>
+    </children>
+    <element xmi:type="uml:UseCase" href="UseCase.uml#_Gg5xcP11EeCrPve4tQIM_A"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GhRk4f11EeCrPve4tQIM_A" x="216" y="36" width="241"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_XHygof10EeCrPve4tQIM_A"/>
+  <styles xmi:type="uml2tools.notation:U2TDiagramCanonicalStyle" xmi:id="_XHygov10EeCrPve4tQIM_A"/>
+  <element xmi:type="uml:Package" href="UseCase.uml#_XFSmQP10EeCrPve4tQIM_A"/>
+  <edges xmi:type="notation:Edge" xmi:id="_OZrrkP11EeCrPve4tQIM_A" type="4004" source="_9YbKAP10EeCrPve4tQIM_A" target="_GhRk4P11EeCrPve4tQIM_A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_OZrrlP11EeCrPve4tQIM_A" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_OZsSoP11EeCrPve4tQIM_A" y="15"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_OZsSof11EeCrPve4tQIM_A" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_OZsSov11EeCrPve4tQIM_A" y="15"/>
+    </children>
+    <styles xmi:type="notation:RoutingStyle" xmi:id="_OZrrkf11EeCrPve4tQIM_A"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_OZrrkv11EeCrPve4tQIM_A" fontName="Sans"/>
+    <element xmi:type="uml:Association" href="UseCase.uml#_OZh6kP11EeCrPve4tQIM_A"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_OZrrk_11EeCrPve4tQIM_A" points="[0, 0, -78, 61]$[42, -59, -36, 2]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Oafj4P11EeCrPve4tQIM_A" id="(1.0,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Oafj4f11EeCrPve4tQIM_A" id="(0.0990990990990991,0.7833333333333333)"/>
+  </edges>
+</notation:Diagram>

@@ -36,10 +36,15 @@ public class DisciplinasController {
 		this.disciplinaDao = disciplinaDao;
 	}
 	
+	// FIXME Arrumar home da disciplina
+    @Get
+    @Path("/disciplinas/home/{id}")
 	/**
-	 * Método associado à home page da disciplina.
+	 * Método associado à home page da disciplina com o id fornecido.
+	 * @param id identificador da disciplina
 	 */
-	public void home() {
+	public void home(Long id) {
+        result.include("disciplina", disciplinaDao.carrega(id));
 	}
 
 	/**
@@ -65,11 +70,15 @@ public class DisciplinasController {
 		result.redirectTo(DisciplinasController.class).lista();
 	}
 	
+	@Get
+	@Path("/disciplinas/alteracao/{id}")
 	/**
 	 * Método associado ao .jsp com formulário para alteração de cadastro de
-	 * disciplina.
+	 * disciplina com o id fornecido.
+	 * @param id
 	 */
-	public void alteracao() {
+	public void alteracao(Long id) {
+	    result.include("disciplina", disciplinaDao.carrega(id));
 	}
 	
 	/**

@@ -22,6 +22,5 @@
 	<input type="submit" value="OK"/>
 	</fieldset>
 	</form>
-	<a href="<c:url value='/login'/>">Sair</a>
 </body>
 </html>

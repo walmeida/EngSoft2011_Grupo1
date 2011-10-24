@@ -17,6 +17,11 @@ public class QuestaoDaLista {
 	 * @uml.property  name="peso"
 	 */
 	private Integer peso;
+	
+	/**
+	 * @uml.property  name="peso"
+	 */
+	private Integer ordem;
 
 	/**
 	 * @uml.property  name="questao"
@@ -42,6 +47,22 @@ public class QuestaoDaLista {
 	 */
 	public void setPeso(Integer peso) {
 		this.peso = peso;
+	}
+	
+	/**
+	 * @return
+	 * @uml.property  name="ordem"
+	 */
+	public Integer getOrdem() {
+		return ordem;
+	}
+
+	/**
+	 * @param ordem
+	 * @uml.property  name="ordem"
+	 */
+	public void setOrdem(Integer ordem) {
+		this.ordem = ordem;
 	}
 
 	/**

@@ -52,9 +52,13 @@ public class DisciplinaDao {
 	 * @param disciplina
 	 */
 	public void removeDisciplina(Disciplina disciplina) {
-		Transaction tx = session.beginTransaction();
-		session.delete(disciplina);
-		tx.commit();
+		try{
+			Transaction tx = session.beginTransaction();
+			session.delete(disciplina);
+			tx.commit();
+		} catch (Exception e) { 
+    		return; /*Não foi possível remover a disciplina, pois tem alguma turma associada.*/
+    	}
 	}
 	
 	/**

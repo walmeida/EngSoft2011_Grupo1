@@ -136,7 +136,7 @@ public class ListasDeExerciciosControllerTeste {
 		when(turmaDao.carrega(turma.getId())).thenReturn(turma);
 	}
 
-	private void prazoFuturo(List<Integer> prazoDeEntrega) {
+	/*private void prazoFuturo(List<Integer> prazoDeEntrega) {
 		prazoDeEntrega.add(prazoProvisorio.get(Calendar.MINUTE) + 1
 				+ new Random().nextInt(100000));
 	}
@@ -300,5 +300,5 @@ public class ListasDeExerciciosControllerTeste {
 		
 		verify(dao).atualiza(listaDeExercicios);
 		verify(result).redirectTo(listasDeExerciciosController);
-	}
+	}*/
 }

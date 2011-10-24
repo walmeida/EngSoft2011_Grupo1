@@ -41,10 +41,10 @@ font-family:"Times New Roman";
 	
 	<table>
 		<tr>
-			<td>${listaDeExercicios.nome}</td>
+			<td>${listaDeExercicios.propriedades.nome}</td>
 		</tr>
 		<tr>
-			<td>${listaDeExercicios.enunciado}</td>
+			<td>${listaDeExercicios.propriedades.enunciado}</td>
 		</tr>
 	</table>
 	
@@ -52,9 +52,15 @@ font-family:"Times New Roman";
 	
 	<div>
 		<c:forEach items="${listaDeExercicios.questoes}" var="questaoDaLista">
+				<div>
+					<p>${questaoDaLista.ordem} )
+						${questaoDaLista.questao.enunciado}</p>
+				</div>
 				${questaoDaLista.questao.renderizacao}
 		</c:forEach>
 	</div>
 	
+    <a href="<c:url value='/login'/>">Sair</a>
+    <!-- TODO a href="<c:url value='/alunos/home'/>">Página Principal</a><br/ -->	
 </body>
 </html>
