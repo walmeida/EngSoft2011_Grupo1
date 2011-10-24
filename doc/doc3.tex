@@ -134,22 +134,24 @@ De acordo com o tipo de usuário (aluno ou professor), existirão tarefas que de
 {\large {\bf Objetivos da iteração}}
 \vspace{0.5cm}
 
-Após as 3 primeiras semanas de ênfase na modelagem e na adaptação as práticas 
-de desenvolvimento, inicia-se a segunda iteração do projeto junto a mudança de 
-papéis dos integrantes.
+Após as 2 primeiras iterações, que nos deram um esboço final de como será o sistema 
+e que implementaram parte considerável de suas funcionalidades, o objetivo agora é a 
+melhoria de tais funcionalidades, bem como a implementação do fator diferencial do 
+sistema, que é o seu sub-sistema de cadastro e resolução de questões e listas.
 Os objetivos propostos para a atual fase de desenvolvimento são:
 
 \begin{itemize}
-\item{} Complementar e aprimorar as funcionalidades elaboradas durante a primeira iteração;
-\item{} Estabelecer os niveis de privilégio aos tipos de usuário;
-\item{} Iniciar a integração entre os diversos módulos de uso do sistema;
-\item{} Implementar o gerenciamento das turmas e disciplinas por parte dos professores;
+\item{} Complementar e aprimorar as funcionalidades elaboradas durante as duas iterações anteriores;
+\item{} Realizar o cadastro de questões e listas, bem como sua resolução;
+\item{} Melhorar a navegabilidade do sistema para fins de depuração;
 \item{} Acrescentar mais informações a documentação do projeto.
 \end{itemize}
 
-Não será exigido até o momento que o sistema apresente funcionalidades 
-completas com relação a elaboração de questões e de listas de exercícios por 
-parte dos professores e a resolução destas por partes dos alunos.
+Apesar de parte dos objetivos desta iteração, que visam fazer o sistema vir a ser 
+completo, não se faz necessário, pelo menos temporariamente, um sistema visualmente 
+navegável e agradável visualmente. Por enquanto, apenas o mínimo necessário de tais 
+partes foi implementado. Isso será refinado apenas quando o sistema tido como completo 
+do ponto de vista funcional.
 
 
 
@@ -161,86 +163,83 @@ parte dos professores e a resolução destas por partes dos alunos.
 
 A cada iteração, os cargos e responsabilidades devem ser trocados. As tarefas foram atribuídas conforme o papel dos integrantes. Dependendo da dificuldade da tarefa e de sua relevância para o desenvolvimento do projeto, todos os integrantes devem contribuir.
 
-Segue uma lista dos participantes e de seus respectivos itens de trabalho, para essa segunda iteração: 
+Segue uma lista dos participantes e de seus respectivos itens de trabalho, para essa terceira iteração: 
 
 
 
 
 \begin{itemize}
 
-\item {}André Satoshi Fujii de Siqueira (Analista de Qualidade)\\
+\item {}André Satoshi Fujii de Siqueira (Arquiteto)\\
 \vspace{-0.5cm}
 \begin{itemize}
-\item{}Testes de Unidade para os CRUDS desenvolvidos.
-%Divisão das tarefas de implementação
-%Implementação do CRUD de questões e listas de exercício.
+\item{}Modelagem das classes do sistema.\\
+\item{}Refinamento do código do sistema.\\
+\item{}Implementação do cadastro e resolução de questões e listas.
+%Implementação do CRUD de aluno, professor, disciplina e turma.
 \end{itemize}
 \vspace{0.5cm}
 
 \item {}Antonio Junior (Desenvolvedor)\\
 \vspace{-0.5cm}
 \begin{itemize}
-\item{}Divisão das tarefas de implementação
-\end{itemize}
-\vspace{0.5cm}
-
-\item {}Bruno Padilha (Arquiteto)\\
-\vspace{-0.5cm}
-\begin{itemize}
-\item{}Modelagem das classes do sistema.
+\item{}Refinamento do código do sistema.\\
+\item{}Implementação do cadastro e resolução de questões e listas.
 \end{itemize}
 \vspace{0.5cm}
 
 %Implementação do cadastro de uma lista de exercícios.
-\item {}Gustavo Coelho (Analista de Requisitos)\\
+\item {}Gustavo Coelho (Gerente)\\
 \vspace{-0.5cm}
 \begin{itemize}
-\item{}Levantamento de requisitos
+\item{}Monitoramento de algumas atividades realizadas pelos integrantes do grupo.\\
+\item{}Levantamento da visão do projeto e dos requisitos cumpridos até o momento.\\
+\item{}Implementação de connection pooling.
 \end{itemize}
 \vspace{0.5cm}
 
 %Implementação do login no sistema
-\item {}Luciana Kayo (Desenvolvedor)\\
+\item {}Luciana Kayo (Analista de Requisitos)\\
 \vspace{-0.5cm}
 \begin{itemize}
-\item{}Divisão das tarefas de implementação\\
-\item{}Formatação das páginas com css.
+\item{}Levantamento de requisitos do sistema.\\
+\item{}Manutenção dos arquivos jsp.
 \end{itemize}
 \vspace{0.5cm}
 
-\item {}Susanna Rezende (Documentador)\\
+\item {}Susanna Rezende (Arquiteto)\\
+\vspace{-0.5cm}
+\begin{itemize}
+\item{}Refinamento do código do sistema.\\
+\item{}Modelagem das classes do sistema.
+\end{itemize}
+\vspace{0.5cm}
+
+\item {}Suzana de S. Santos (Documentador)\\
 \vspace{-0.5cm}
 \begin{itemize}
 \item{}Estudar documentação OpenUP e instruir os integrantes do grupo sobre como deve ser a documentação.\\
 \item{}Acompanhar a documentação do projeto e dar as orientações necessárias.\\
+\item{}Refinamento do código do sistema.
 %\item{}Ajudar a refatorar e comentar o código seguindo o padrão Javadoc.\\
-\item{}Reunir a documetação de todas as partes do desenvolvimento.
 \end{itemize}
 \vspace{0.5cm}
 
-\item {}Suzana de S. Santos (Desenvolvedor)\\
+\item {}Vinicius Rezende (Analista de Qualidade)\\
 \vspace{-0.5cm}
 \begin{itemize}
-\item{}Divisão das tarefas de implementação
-%Modelagem das classes do sistema
-%Implementação do cadastro de uma resposta dada por um aluno no sistema.
+\item{}Mapeamento ORM no hibernate.\\
+\item{}Implementação de testes para fins de depuração e manutenção.
+%Divisão das tarefas de implementação
+%Implementação do CRUD de questões e listas de exercício.
 \end{itemize}
 \vspace{0.5cm}
 
-\item {}Vinicius Rezende (Arquiteto)\\
+\item {}Wallace Faveron de Almeida (Desenvolvedor)\\
 \vspace{-0.5cm}
 \begin{itemize}
-\item{}Modelagem das classes do sistema.
-%Implementação do CRUD de aluno, professor, disciplina e turma.
-\end{itemize}
-\vspace{0.5cm}
-
-\item {}Wallace Faveron de Almeida (Gerente)\\
-\vspace{-0.5cm}
-\begin{itemize}
-\item{}Monitoramento de algumas atividades realizadas pelos integrantes do grupo.\\
-\item{}Coordenar a finalização das permissões nas classes e métodos.\\
-\item{}Levantamento da visão do projeto e dos requisitos cumpridos até o momento.
+\item{}Refinamento do código do sistema.\\
+\item{}Criação de renderizadores para as diferentes questões.
 \end{itemize}
 
 \end{itemize}
@@ -277,29 +276,29 @@ O trabalho no projeto é dividido nas seguintes áreas:
     \hline
     Gerente do Projeto &
     Atribuições de caráter decisório e estratégico quanto aos rumos do projeto. &
-    Wallace\\
+    Gustavo\\
     \hline
     Analistas &
     Definir e aprovar os requisitos e especificações de negócio do sistema. &
-    Gustavo\\
+    Luciana\\
     \hline
     Arquiteto do Projeto &
     Definir a arquitetura a ser utilizada no sistema. &
-    Bruno e Vinícius \\
+    André e Susanna\\
     \hline
     Documentação &
     Documentar &
-    Susanna\\
+    Suzana\\
     & & Colaboradores: Todos\\
     \hline
     Programadores &
     Implementar o sistema conforme as especificações. &
-    Luciana, Suzana e Antònio\\
+    Wallace e Antònio\\
     & & Colaboradores: Todos\\
     \hline
     Testes &
     Padronizar os testes, homologar. &
-    André\\
+    Vinícius\\
     \hline
     \end{tabular}
 \end{small}
