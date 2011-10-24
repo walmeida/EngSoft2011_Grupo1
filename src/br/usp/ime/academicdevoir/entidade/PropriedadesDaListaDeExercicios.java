@@ -102,7 +102,7 @@ public class PropriedadesDaListaDeExercicios {
 				"EEE, dd'/'MM'/'AAAA HH:mm");
 		
 		return prazo.format(prazoDeEntrega); */
-		//Aqui n„o roda a formataÁ„o de datas. Ent„o comentei por enquanto.
+		//Aqui n√£o roda a formata√ß√£o de datas. Ent√£o comentei por enquanto.
 		return prazoDeEntrega.toString();
 	}
 
