@@ -394,6 +394,7 @@ Obs.: Os nomes dados aos métodos e atributos nesse esboço são apenas descriti
 \begin{verbatim}
 Classe abstrata
 
+Classe abstrata
 Usuário {
     ----- Atributos -----
     id
@@ -402,43 +403,42 @@ Usuário {
     senha
     email
     privilégio
-
     ----- Métodos -----
     fazerLogin()
     alterarDados()
 }
 
 Classes que implementam Usuário:
-Aluno {
-    ----- Atributos -----
-    lista de respostas
-    lista de turmas (ids) [agregação n - n]
+    Aluno {
+        ----- Atributos -----
+        lista de respostas
+        lista de turmas (ids) [agregação n - n]
+        ----- Métodos -----
+        fazerCadastro()
+        listarTurmas()
+        inscriçãoNaTurma()
+        remoçãoDaTurma()
+        entregarLista()
+    }
 
-    ----- Métodos -----
-    fazerCadastro()
-    listarTurmas()
-    inscriçãoNaTurma()
-    remoçãoDaTurma()
-    entregarLista()
-}
+    Professor {
+        ----- Atributos -----
+        lista de turmas (ids) [agregação 1 - n]
+        ----- Métodos -----
+        criarTurma()
+        removerTurma()
+        cadastrarDsiciplina()
+        cadastrarLista()
+        removerLista()
+        cadastrarQuestão()
+        cadastrarAlunoNaTurma()
+        removerAlunoDaTurma()
+        cadastrarOutroProfessor()
+    }
 
-Professor {
-    ----- Atributos -----
-    lista de turmas (ids) [agregação 1 - n]
-    ----- Métodos -----
-    criarTurma()
-    removerTurma()
-    cadastrarDsiciplina()
-    cadastrarLista()
-    removerLista()
-    cadastrarQuestão()
-    cadastrarAlunoNaTurma()
-    removerAlunoDaTurma()
-    cadastrarOutroProfessor()
-}
 
 Turma {
-	----- Atributos -----
+    ----- Atributos -----
     id 
     disciplina 
     tipoDeMatricula 
@@ -446,14 +446,13 @@ Turma {
     professor responsável
     lista de alunos (ids)
     lista de atividades (lista de lista de exercicíos) [agregação 1 - n]
-    
     ----- Métodos -----
     listarAlunos() 
     listarListasDeAtividades() 
 }
 
 Disciplina {
-	----- Atributos -----
+    ----- Atributos -----
     id
     nome
     lista de turmas [composição 1 - n]
@@ -471,7 +470,7 @@ ListaDeExercicios {
 }
 
 ListaDeRespostas {
-	----- Atributos -----
+    ----- Atributos -----
     id
     aluno
     propriedades (estado)
@@ -479,7 +478,6 @@ ListaDeRespostas {
     lista de respostas [composição 1 – n]
     lista de notas
     nota final
-    
     ----- Métodos -----
     notaDaLista()
     salvaLista()
@@ -495,26 +493,25 @@ Resposta {
 }
 
 Classes que implementam Resposta:
+    Multipla escolha {
+        ----- Atributos -----
+        alternativa escolhida pelo aluno
+    }
 
-Multipla escolha {
-	----- Atributos -----
-	alternativa escolhida pelo aluno
-}
+    VouF {
+        ----- Atributos -----
+        alternativa escolhida pelo aluno
+    }
 
-VouF {
-	----- Atributos -----
-	alternativa escolhida pelo aluno
-}
+    Submissão de arquivo: {
+        ----- Atributos -----
+        arquivo enviado pelo aluno
+    }
 
-Submissão de arquivo: {
-	----- Atributos -----
-    arquivo enviado pelo aluno
-}
-
-Texto {
-	----- Atributos -----
-	texto da resposta dada pelo aluno
-}
+    Texto {
+        ----- Atributos -----
+        texto da resposta dada pelo aluno
+    }
 
 
 Classe abstrata
@@ -524,55 +521,51 @@ Questão {
     enunciado 
     tags predefinidas
     tags definidas pelo usuário
-
     ----- Métodos ----- 
     renderização //abstrato
     devolve tipo //abstrato
 }
 
 Classes que inplementam Questões:
-Multipla escolha {
-    ----- Atributos -----
-    resposta
+    Multipla escolha {
+        ----- Atributos -----
+        resposta
+        ----- Métodos -----
+        devolve alternativas
+        renderização
+        devolve tipo
+    }
 
-    ----- Métodos ----- 
-    devolve alternativas
-    renderização
-    devolve tipo
-}
+    V ou F {
+        ----- Atributos -----
+        resposta
+        ----- Métodos -----
+        devolve resposta
+        renderização
+        devolve tipo
+    }
 
-V ou F {
-    ----- Atributos -----
-    resposta
- 
-    ----- Métodos ----- 
-    devolve resposta
-    renderização
-    devolve tipo
-}
+    Submissão de arquivo: {
+        ----- Métodos -----
+        devolve tipo
+    }
 
-Submissão de arquivo: {
-    ----- Métodos ----- 
-    devolve tipo
-}
+    Texto {
+        ----- Atributos -----
+        resposta correta
+        ----- Métodos -----
+        devolve alternativas
+        renderização
+        devolve tipo
+    }
 
-Texto {
-    ----- Atributos -----
-    resposta correta
- 
-    ----- Métodos ----- 
-    devolve alternativas
-    renderização
-    devolve tipo
-}
 
 QuestaoDaLista: {
     ----- Atributos -----
     questão
     valor
-    ordem
+ordem
 }
-
 
 BancoDeQuestões {
     lista de questões
@@ -591,85 +584,86 @@ BancoDeQuestões {
 Aqui juntamos alguns dos comentários, discussões e problemas em aberto mais relevantes com relação às decisões de arquitetura tomadas no projeto. A maioria desses comentários surgiram espontaneamente das discussões entre os membros da equipe.\\
 
 
-\textbf{Classes que implementam usuário (Aluno e Professor):}
+\textbf{Classes que implementam usuário (Aluno e Professor):}\\
 Como Aluno e Professor compartilham muitos campos, optamos por essa herança, evitando assim repetição de código.\\
 
 
-\textbf{Atributo lista de turmas (ids) em Aluno e Professor:}
+\textbf{Atributo lista de turmas (ids) em Aluno e Professor:}\\
 Esse campo não está em "Usuário", pois a relação ente Aluno e Turma é n-n, enquanto a relação entre Professor e Turma é 1-n.\\
 
 
-\textbf{Método entregar listas na classe aluno:}
+\textbf{Método entregar listas na classe aluno:}\\
 O aluno também pode salvar uma lista além de enviá-la (ou finalizá-la), dependendo das configurações da lista de exercícios.\\
 
 
-\textbf{Atributo períodoDeMatrícula em turma:}
+\textbf{Atributo períodoDeMatrícula em turma:}\\
 Dependendo do tipo de matrícula, haverá um período determinado para o aluno se matricular em uma turma.\\
 
 
-\textbf{Método listarListasDeAtividades em turma:}
+\textbf{Método listarListasDeAtividades em turma:}\\
 Listar as listas de exercícios.\\
 
 
-\textbf{Atributo prazoDeEntrega da listaDeExercícios:}
+\textbf{Atributo prazoDeEntrega da listaDeExercícios:}\\
 O professor pode definir um prazo de entrega.\\
-Dúvida: colocar horário limite tbm?\\
+Dúvida: Colocar horário limite também?\\
 
 
-\textbf{Atributo visibilidade da listaDeExercícios:}
-visível ou invisível para os alunos\\
-Dúvida: o professor, pode programar uma data para a lista passar a ficar visível?\\
+\textbf{Atributo visibilidade da listaDeExercícios:}\\
+Dita se a lista é visível ou invisível para os alunos.\\
+Dúvida: O professor pode programar uma data para a lista passar a ficar visível?\\
 
 
-\textbf{Atributo lista de listas de respostas da listaDeExercícios:}
+\textbf{Atributo lista de listas de respostas da listaDeExercícios:}\\
 Lista com as listas de exercícios respondidas pelos alunos (exercícios esses que estão na mesma ordem em que aparecem na lista de questões).\\
 
 
 \textbf{Atributo “id da listaDeExercícios” na listaDeRespostas: }\\
 Pergunta: Dado que a ListaDeExercicios tem um id, não seria interessante que a lista de respostas carregasse também o id da lista a qual ela pertence? Ou isso seria redundante?\\
 
-Resposta: A ListaDeRespostas é sempre acessada a partir da ListaDeExercícios, certo? Nesse caso, talvez não tenha necessidade de ListaDeResposta guardar o id da ListaDeExercícios\\
+Resposta: A ListaDeRespostas é sempre acessada a partir da ListaDeExercícios, certo? Nesse caso, talvez não haja necessidade de ListaDeResposta guardar o id da ListaDeExercícios.\\
 
 
-\textbf{Atributo estado em propriedades da listaDeRespostas:}
-A lista pode não ter sido inicializada, ter sido inicializada ou finalizada\\
+\textbf{Atributo estado em propriedades da listaDeRespostas:}\\
+A lista pode não ter sido inicializada, ter sido inicializada ou finalizada.\\
 
 
-\textbf{Atributo lista de respostas na listaDeRespostas:}
+\textbf{Atributo lista de respostas na listaDeRespostas:}\\
 Respostas dadas pelos alunos, de fato.\\
 
 
 \textbf{Atributo corrigido na classe Resposta: }\\
 Pergunta: Precisamos desse status?\\
-Resposta: Acho que não\\
+Resposta: Achamos que não.\\
 
 
-\textbf{Classes que implementam Resposta:}
+\textbf{Classes que implementam Resposta:}\\
 A princípio, pensamos nessas especializações de Resposta. Há também a possibilidade de implementar todas as respostas em uma mesma classe. Acabamos escolhendo essa última opção.\\
 
 
-\textbf{Atributo alternativa escolhida pelo aluno na classe Resposta:}
+\textbf{Atributo alternativa escolhida pelo aluno na classe Resposta:}\\
 A princípio pensamos em permitir várias alternativas corretas, mas finalmente decidimos que uma questão de múltipla escolha permitiria apenas uma alternativa correta.\\
 
 
-\textbf{Classe abstrata Questão:}
+\textbf{Classe abstrata Questão:}\\
 A herança entre questão e os variados tipos de questão permite o polimorfismo e o aproveitamento de alguns campos entre os tipos de questões.\\
 
 
-\textbf{Classe BancoDeQuestões:}
+\textbf{Classe BancoDeQuestões:}\\
 Decidimos por criar um “banco de questões” onde os professores poderiam compartilhar questões entre si. Para isso, a classe Questão não podia conter nenhum atributo que fosse específico da instância dessa questão em uma lista específica (como valor e ordem). Para resolver esse problema criamos uma classe chamada QuestãoDaLista. Cada objeto dessa classe contém uma questão, seu valor e sua posição na lista.\\
 
 
-\textbf{Classe QuestãoDaLista:}
+\textbf{Classe QuestãoDaLista:}\\
 Classe para guardar o valor da questão e a questão.\\
 
-\textbf{Atributo valor na classe QuestãoDaLista:}
-O professor pode atribuir uma valor para cada questão.\\
+\textbf{Atributo valor na classe QuestãoDaLista:}\\
+O professor pode atribuir um valor para cada questão.\\
 A princípio essa propriedade estava na classe Questão, mas como depende do contexto em que a questão está sendo utilizada, colocamos nessa classe.\\
 
 
 \textbf{Atributo questão da classe QuestãoDaLista:}\\
 Dúvida: Aqui seria a questão mesmo ou Id?\\
+\newline
 Discussão:
 \begin{itemize}
 \item{}Se fosse a questão mesmo, elas não poderiam ter valores diferentes em listas de exercícios diferentes (que podem ser dadas por professores distintos). Sendo apenas a id não teríamos esse problema, certo?
