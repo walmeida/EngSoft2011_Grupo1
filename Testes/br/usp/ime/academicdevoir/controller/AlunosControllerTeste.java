@@ -56,7 +56,7 @@ public class AlunosControllerTeste {
         alunoDao = mock(AlunoDao.class);
         disciplinaDao = mock(DisciplinaDao.class);
         turmaDao = mock(TurmaDao.class);
-        alunoC = new AlunosController(result, alunoDao, disciplinaDao, turmaDao, usuarioSession);
+        alunoC = new AlunosController(result, alunoDao, disciplinaDao, turmaDao);
     }
 
     @Test

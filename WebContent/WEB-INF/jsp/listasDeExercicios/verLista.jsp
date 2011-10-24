@@ -130,6 +130,13 @@ font-family:"Times New Roman";
 			<a href="<c:url value='/listasDeExercicios/resolver/${listaDeExercicios.id }'/>">Resolver Lista</a>
 		</fieldset>
 	</form>
+	
+	<form action="<c:url value="/listasDeExercicios/${listaDeExercicios.id }"/>" method="post">
+		<fieldset class="fieldsetSemFormatacao">
+			<button type="submit" name="_method" value="delete">Excluir Lista</button>
+		</fieldset>
+	</form>
+	
 		
 	<h3>Turmas</h3>
 	
@@ -149,13 +156,16 @@ font-family:"Times New Roman";
 			</c:forEach>
 		</table>
 	</div>
-		
+
 	<div>
 		<button id="ativaIncluirTurma" type="button">Incluir nova Turma</button>
 		<form id="formIncluirTurma" action="<c:url value="/listasDeExercicios/${listaDeExercicios.id }/turmas/inclui"/>" method="post">
 			<fieldset class="fieldsetSemFormatacao">
-				<label for="idDaTurma">ID da Turma:</label>
-				<input type="text" size="6" maxlength="6" name="idDaTurma" />
+				<select id="turmaASerIncluida" name="idDaTurma">
+					<c:forEach items="${turmasDoProfessor }" var="turma">
+						<option value="${turma.id }">${turma.disciplina.nome } - ${turma.nome }</option>
+					</c:forEach>
+				</select>				
 				<button type="submit" name="_method" value="put">Incluir</button>
 			</fieldset>
 		</form>	
@@ -204,6 +214,7 @@ font-family:"Times New Roman";
 			</fieldset>
 		</form>
 	</div>
-	
+	<a href="<c:url value='/login'/>">Sair</a>
+    <!--  TODO a href="<c:url value='/alunos/home'/>">Página Principal</a><br/> -->
 </body>
 </html>

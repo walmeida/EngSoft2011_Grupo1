@@ -79,4 +79,12 @@ public class TurmaDao {
         List<Turma> listaDeTurmas = session.createCriteria(Turma.class).list();
 		return listaDeTurmas;
 	}
+
+    /**
+     * Carrega os dados da questão fornecida a partir do banco de dados.
+     * @param turma
+     */
+	public void recarrega(Turma turma) {
+		session.refresh(turma);
+	}
 }

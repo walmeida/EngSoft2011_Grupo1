@@ -12,7 +12,8 @@
 	<h1>Academic Devoir</h1>
 	<h2>Grupo 1 - Engenharia de Software</h2>
 	<h4>Lista de Disciplinas</h4>
-	<a href="<c:url value='cadastro'/>">Inserir</a>
+	<a href="<c:url value='/turmas/cadastro'/>">Cadastrar nova turma</a>  
+    <a href="<c:url value='/disciplinas/cadastro'/>">Cadastrar nova disciplina</a>
 
 	<table>
     <thead>
@@ -26,12 +27,13 @@
             <tr>
                 <td>${disciplina.id}</td>
                 <td>${disciplina.nome}</td>
-                <td><a href="./alteracao?id=${disciplina.id}">  Alterar</a> <a href="./remove?id=${disciplina.id}">  Excluir</a></td>
+                <td><a href="<c:url value='/disciplinas/alteracao/${disciplina.id}'/>"> Alterar</a> <a href="./remove?id=${disciplina.id}">  Excluir</a></td>
             </tr>
         </c:forEach>             
     </tbody>
-</table>
-<a href="<c:url value='/login'/>">Sair</a>
-<a href="<c:url value='home'/>">Voltar</a>
+	</table>
+	
+	<a href="<c:url value='/login'/>">Sair</a>
+	<a href="<c:url value='/professores/home'/>">Página Principal</a><br/>
 </body>
 </html>
