@@ -1,6 +1,7 @@
 package br.usp.ime.academicdevoir.controller;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import br.com.caelum.vraptor.Delete;
@@ -125,9 +126,11 @@ public class ListasDeExerciciosController {
 	 * */
 	public void verLista(Long id) {
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
-
+		Professor professor = professorDao.carrega(usuarioLogado.getUsuario().getId());
+		
 		result.include("listaDeExercicios", listaDeExercicios);
-		result.include("prazo", listaDeExercicios.getPropriedades().getPrazoDeEntregaFormatado());
+		result.include("prazo", listaDeExercicios.getPropriedades().getPrazoDeEntregaFormatado());		
+		result.include("turmasDoProfessor", professor.getTurmas());
 	}
 	
 	@Get

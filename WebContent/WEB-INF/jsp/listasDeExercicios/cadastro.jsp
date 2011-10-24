@@ -93,7 +93,7 @@ display: inline;
 				<br />
 				<c:forEach items="${turmasDoProfessor }" var="turma">
 					<input type="checkbox" name="idDasTurmas[]" value="${turma.id }" />
-					<p> ${turma.nome }</p>
+					<p> ${turma.disciplina.nome } - ${turma.nome }</p>
 					<br />
 				</c:forEach>
 				
