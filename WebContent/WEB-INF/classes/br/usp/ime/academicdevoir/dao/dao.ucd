@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="dao" size="1414,1168" id="br.usp.ime.academicdevoir.dao" metadata="uml2-1.0" initialized="true" tag="10" key="32303037303533312D31302061636164656D69632D6465766F6972">
+  <children xsi:type="editmodel:ClassEditModel" name="AlunoDao" location="305,538" size="144,194" id="br.usp.ime.academicdevoir.dao/AlunoDao" runTimeClassModel="removeMatricula(Lbr.usp.ime.academicdevoir.entidade.Aluno;Lbr.usp.ime.academicdevoir.entidade.Turma;),listaTudo(),removeAluno(Lbr.usp.ime.academicdevoir.entidade.Aluno;),carrega(Ljava.lang.Long;),atualizaAluno(Lbr.usp.ime.academicdevoir.entidade.Aluno;),inscreve(Lbr.usp.ime.academicdevoir.entidade.Aluno;Lbr.usp.ime.academicdevoir.entidade.Turma;),AlunoDao(Lorg.hibernate.Session;),salvaAluno(Lbr.usp.ime.academicdevoir.entidade.Aluno;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="121,144">
+      <children xsi:type="editmodel:MethodEditModel" name="AlunoDao" id="br.usp.ime.academicdevoir.dao/AlunoDao#AlunoDao(Lorg.hibernate.Session;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="atualizaAluno" id="br.usp.ime.academicdevoir.dao/AlunoDao#atualizaAluno(Lbr.usp.ime.academicdevoir.entidade.Aluno;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="carrega" id="br.usp.ime.academicdevoir.dao/AlunoDao#carrega(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="inscreve" id="br.usp.ime.academicdevoir.dao/AlunoDao#inscreve(Lbr.usp.ime.academicdevoir.entidade.Aluno;Lbr.usp.ime.academicdevoir.entidade.Turma;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="listaTudo" id="br.usp.ime.academicdevoir.dao/AlunoDao#listaTudo()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeAluno" id="br.usp.ime.academicdevoir.dao/AlunoDao#removeAluno(Lbr.usp.ime.academicdevoir.entidade.Aluno;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeMatricula" id="br.usp.ime.academicdevoir.dao/AlunoDao#removeMatricula(Lbr.usp.ime.academicdevoir.entidade.Aluno;Lbr.usp.ime.academicdevoir.entidade.Turma;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="salvaAluno" id="br.usp.ime.academicdevoir.dao/AlunoDao#salvaAluno(Lbr.usp.ime.academicdevoir.entidade.Aluno;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="DisciplinaDao" location="50,782" size="150,158" id="br.usp.ime.academicdevoir.dao/DisciplinaDao" runTimeClassModel="atualizaDisciplina(Lbr.usp.ime.academicdevoir.entidade.Disciplina;),listaTudo(),carrega(Ljava.lang.Long;),DisciplinaDao(Lorg.hibernate.Session;),salvaDisciplina(Lbr.usp.ime.academicdevoir.entidade.Disciplina;),removeDisciplina(Lbr.usp.ime.academicdevoir.entidade.Disciplina;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="127,108">
+      <children xsi:type="editmodel:MethodEditModel" name="DisciplinaDao" id="br.usp.ime.academicdevoir.dao/DisciplinaDao#DisciplinaDao(Lorg.hibernate.Session;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="atualizaDisciplina" id="br.usp.ime.academicdevoir.dao/DisciplinaDao#atualizaDisciplina(Lbr.usp.ime.academicdevoir.entidade.Disciplina;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="carrega" id="br.usp.ime.academicdevoir.dao/DisciplinaDao#carrega(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="listaTudo" id="br.usp.ime.academicdevoir.dao/DisciplinaDao#listaTudo()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeDisciplina" id="br.usp.ime.academicdevoir.dao/DisciplinaDao#removeDisciplina(Lbr.usp.ime.academicdevoir.entidade.Disciplina;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="salvaDisciplina" id="br.usp.ime.academicdevoir.dao/DisciplinaDao#salvaDisciplina(Lbr.usp.ime.academicdevoir.entidade.Disciplina;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ListaDeExerciciosDao" location="50,538" size="205,176" id="br.usp.ime.academicdevoir.dao/ListaDeExerciciosDao" runTimeClassModel="recarrega(Lbr.usp.ime.academicdevoir.entidade.ListaDeExercicios;),ListaDeExerciciosDao(Lorg.hibernate.Session;),listaTudo(),carrega(Ljava.lang.Long;),salva(Lbr.usp.ime.academicdevoir.entidade.ListaDeExercicios;),atualiza(Lbr.usp.ime.academicdevoir.entidade.ListaDeExercicios;),remove(Lbr.usp.ime.academicdevoir.entidade.ListaDeExercicios;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="148,126">
+      <children xsi:type="editmodel:MethodEditModel" name="ListaDeExerciciosDao" id="br.usp.ime.academicdevoir.dao/ListaDeExerciciosDao#ListaDeExerciciosDao(Lorg.hibernate.Session;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="atualiza" id="br.usp.ime.academicdevoir.dao/ListaDeExerciciosDao#atualiza(Lbr.usp.ime.academicdevoir.entidade.ListaDeExercicios;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="carrega" id="br.usp.ime.academicdevoir.dao/ListaDeExerciciosDao#carrega(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="listaTudo" id="br.usp.ime.academicdevoir.dao/ListaDeExerciciosDao#listaTudo()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="recarrega" id="br.usp.ime.academicdevoir.dao/ListaDeExerciciosDao#recarrega(Lbr.usp.ime.academicdevoir.entidade.ListaDeExercicios;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remove" id="br.usp.ime.academicdevoir.dao/ListaDeExerciciosDao#remove(Lbr.usp.ime.academicdevoir.entidade.ListaDeExercicios;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="salva" id="br.usp.ime.academicdevoir.dao/ListaDeExerciciosDao#salva(Lbr.usp.ime.academicdevoir.entidade.ListaDeExercicios;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ProfessorDao" location="499,538" size="148,176" id="br.usp.ime.academicdevoir.dao/ProfessorDao" runTimeClassModel="atualizaProfessor(Lbr.usp.ime.academicdevoir.entidade.Professor;),listaTudo(),carrega(Ljava.lang.Long;),ProfessorDao(Lorg.hibernate.Session;),salvaProfessor(Lbr.usp.ime.academicdevoir.entidade.Professor;),removeProfessor(Lbr.usp.ime.academicdevoir.entidade.Professor;),alteraTipo(Ljava.lang.Long;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="125,126">
+      <children xsi:type="editmodel:MethodEditModel" name="ProfessorDao" id="br.usp.ime.academicdevoir.dao/ProfessorDao#ProfessorDao(Lorg.hibernate.Session;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="alteraTipo" id="br.usp.ime.academicdevoir.dao/ProfessorDao#alteraTipo(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="atualizaProfessor" id="br.usp.ime.academicdevoir.dao/ProfessorDao#atualizaProfessor(Lbr.usp.ime.academicdevoir.entidade.Professor;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="carrega" id="br.usp.ime.academicdevoir.dao/ProfessorDao#carrega(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="listaTudo" id="br.usp.ime.academicdevoir.dao/ProfessorDao#listaTudo()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeProfessor" id="br.usp.ime.academicdevoir.dao/ProfessorDao#removeProfessor(Lbr.usp.ime.academicdevoir.entidade.Professor;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="salvaProfessor" id="br.usp.ime.academicdevoir.dao/ProfessorDao#salvaProfessor(Lbr.usp.ime.academicdevoir.entidade.Professor;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="QuestaoDaListaDao" location="250,782" size="189,122" id="br.usp.ime.academicdevoir.dao/QuestaoDaListaDao" runTimeClassModel="remove(Lbr.usp.ime.academicdevoir.entidade.QuestaoDaLista;),carrega(Ljava.lang.Long;),QuestaoDaListaDao(Lorg.hibernate.Session;),recarrega(Lbr.usp.ime.academicdevoir.entidade.QuestaoDaLista;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="139,72">
+      <children xsi:type="editmodel:MethodEditModel" name="QuestaoDaListaDao" id="br.usp.ime.academicdevoir.dao/QuestaoDaListaDao#QuestaoDaListaDao(Lorg.hibernate.Session;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="carrega" id="br.usp.ime.academicdevoir.dao/QuestaoDaListaDao#carrega(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="recarrega" id="br.usp.ime.academicdevoir.dao/QuestaoDaListaDao#recarrega(Lbr.usp.ime.academicdevoir.entidade.QuestaoDaLista;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remove" id="br.usp.ime.academicdevoir.dao/QuestaoDaListaDao#remove(Lbr.usp.ime.academicdevoir.entidade.QuestaoDaLista;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="QuestaoDao" location="489,782" size="132,158" id="br.usp.ime.academicdevoir.dao/QuestaoDao" runTimeClassModel="QuestaoDao(Lorg.hibernate.Session;),listaTudo(),carrega(Ljava.lang.Long;),busca(Ljava.lang.Long;),remove(Lbr.usp.ime.academicdevoir.entidade.Questao;),recarrega(Lbr.usp.ime.academicdevoir.entidade.Questao;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="98,108">
+      <children xsi:type="editmodel:MethodEditModel" name="QuestaoDao" id="br.usp.ime.academicdevoir.dao/QuestaoDao#QuestaoDao(Lorg.hibernate.Session;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="busca" id="br.usp.ime.academicdevoir.dao/QuestaoDao#busca(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="carrega" id="br.usp.ime.academicdevoir.dao/QuestaoDao#carrega(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="listaTudo" id="br.usp.ime.academicdevoir.dao/QuestaoDao#listaTudo()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="recarrega" id="br.usp.ime.academicdevoir.dao/QuestaoDao#recarrega(Lbr.usp.ime.academicdevoir.entidade.Questao;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remove" id="br.usp.ime.academicdevoir.dao/QuestaoDao#remove(Lbr.usp.ime.academicdevoir.entidade.Questao;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="QuestaoDeMultiplaEscolhaDao" location="413,50" size="271,194" id="br.usp.ime.academicdevoir.dao/QuestaoDeMultiplaEscolhaDao" runTimeClassModel="recarrega(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;),remove(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;),listaTudo(),carrega(Ljava.lang.Long;),salva(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;),atualiza(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;),QuestaoDeMultiplaEscolhaDao(Lorg.hibernate.Session;),buscaPorId(Ljava.lang.Long;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="199,144">
+      <children xsi:type="editmodel:MethodEditModel" name="QuestaoDeMultiplaEscolhaDao" id="br.usp.ime.academicdevoir.dao/QuestaoDeMultiplaEscolhaDao#QuestaoDeMultiplaEscolhaDao(Lorg.hibernate.Session;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="atualiza" id="br.usp.ime.academicdevoir.dao/QuestaoDeMultiplaEscolhaDao#atualiza(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="buscaPorId" id="br.usp.ime.academicdevoir.dao/QuestaoDeMultiplaEscolhaDao#buscaPorId(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="carrega" id="br.usp.ime.academicdevoir.dao/QuestaoDeMultiplaEscolhaDao#carrega(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="listaTudo" id="br.usp.ime.academicdevoir.dao/QuestaoDeMultiplaEscolhaDao#listaTudo()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="recarrega" id="br.usp.ime.academicdevoir.dao/QuestaoDeMultiplaEscolhaDao#recarrega(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remove" id="br.usp.ime.academicdevoir.dao/QuestaoDeMultiplaEscolhaDao#remove(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="salva" id="br.usp.ime.academicdevoir.dao/QuestaoDeMultiplaEscolhaDao#salva(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="QuestaoDeSubmissaoDeArquivoDao" location="50,50" size="313,194" id="br.usp.ime.academicdevoir.dao/QuestaoDeSubmissaoDeArquivoDao" runTimeClassModel="listaTudo(),carrega(Ljava.lang.Long;),recarrega(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;),remove(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;),QuestaoDeSubmissaoDeArquivoDao(Lorg.hibernate.Session;),salva(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;),buscaPorId(Ljava.lang.Long;),atualiza(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="229,144">
+      <children xsi:type="editmodel:MethodEditModel" name="QuestaoDeSubmissaoDeArquivoDao" id="br.usp.ime.academicdevoir.dao/QuestaoDeSubmissaoDeArquivoDao#QuestaoDeSubmissaoDeArquivoDao(Lorg.hibernate.Session;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="atualiza" id="br.usp.ime.academicdevoir.dao/QuestaoDeSubmissaoDeArquivoDao#atualiza(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="buscaPorId" id="br.usp.ime.academicdevoir.dao/QuestaoDeSubmissaoDeArquivoDao#buscaPorId(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="carrega" id="br.usp.ime.academicdevoir.dao/QuestaoDeSubmissaoDeArquivoDao#carrega(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="listaTudo" id="br.usp.ime.academicdevoir.dao/QuestaoDeSubmissaoDeArquivoDao#listaTudo()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="recarrega" id="br.usp.ime.academicdevoir.dao/QuestaoDeSubmissaoDeArquivoDao#recarrega(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remove" id="br.usp.ime.academicdevoir.dao/QuestaoDeSubmissaoDeArquivoDao#remove(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="salva" id="br.usp.ime.academicdevoir.dao/QuestaoDeSubmissaoDeArquivoDao#salva(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="QuestaoDeTextoDao" location="50,294" size="192,194" id="br.usp.ime.academicdevoir.dao/QuestaoDeTextoDao" runTimeClassModel="QuestaoDeTextoDao(Lorg.hibernate.Session;),recarrega(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeTexto;),listaTudo(),atualiza(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeTexto;),carrega(Ljava.lang.Long;),salva(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeTexto;),remove(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeTexto;),buscaPorId(Ljava.lang.Long;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="142,144">
+      <children xsi:type="editmodel:MethodEditModel" name="QuestaoDeTextoDao" id="br.usp.ime.academicdevoir.dao/QuestaoDeTextoDao#QuestaoDeTextoDao(Lorg.hibernate.Session;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="atualiza" id="br.usp.ime.academicdevoir.dao/QuestaoDeTextoDao#atualiza(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeTexto;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="buscaPorId" id="br.usp.ime.academicdevoir.dao/QuestaoDeTextoDao#buscaPorId(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="carrega" id="br.usp.ime.academicdevoir.dao/QuestaoDeTextoDao#carrega(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="listaTudo" id="br.usp.ime.academicdevoir.dao/QuestaoDeTextoDao#listaTudo()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="recarrega" id="br.usp.ime.academicdevoir.dao/QuestaoDeTextoDao#recarrega(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeTexto;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remove" id="br.usp.ime.academicdevoir.dao/QuestaoDeTextoDao#remove(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeTexto;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="salva" id="br.usp.ime.academicdevoir.dao/QuestaoDeTextoDao#salva(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeTexto;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="QuestaoDeVouFDao" location="292,294" size="188,194" id="br.usp.ime.academicdevoir.dao/QuestaoDeVouFDao" runTimeClassModel="QuestaoDeVouFDao(Lorg.hibernate.Session;),listaTudo(),carrega(Ljava.lang.Long;),recarrega(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeVouF;),atualiza(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeVouF;),salva(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeVouF;),remove(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeVouF;),buscaPorId(Ljava.lang.Long;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="139,144">
+      <children xsi:type="editmodel:MethodEditModel" name="QuestaoDeVouFDao" id="br.usp.ime.academicdevoir.dao/QuestaoDeVouFDao#QuestaoDeVouFDao(Lorg.hibernate.Session;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="atualiza" id="br.usp.ime.academicdevoir.dao/QuestaoDeVouFDao#atualiza(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeVouF;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="buscaPorId" id="br.usp.ime.academicdevoir.dao/QuestaoDeVouFDao#buscaPorId(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="carrega" id="br.usp.ime.academicdevoir.dao/QuestaoDeVouFDao#carrega(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="listaTudo" id="br.usp.ime.academicdevoir.dao/QuestaoDeVouFDao#listaTudo()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="recarrega" id="br.usp.ime.academicdevoir.dao/QuestaoDeVouFDao#recarrega(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeVouF;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remove" id="br.usp.ime.academicdevoir.dao/QuestaoDeVouFDao#remove(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeVouF;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="salva" id="br.usp.ime.academicdevoir.dao/QuestaoDeVouFDao#salva(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeVouF;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="TurmaDao" location="50,990" size="130,158" id="br.usp.ime.academicdevoir.dao/TurmaDao" runTimeClassModel="TurmaDao(Lorg.hibernate.Session;),salvaTurma(Lbr.usp.ime.academicdevoir.entidade.Turma;),listaTudo(),carrega(Ljava.lang.Long;),atualizaTurma(Lbr.usp.ime.academicdevoir.entidade.Turma;),removeTurma(Lbr.usp.ime.academicdevoir.entidade.Turma;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="107,108">
+      <children xsi:type="editmodel:MethodEditModel" name="TurmaDao" id="br.usp.ime.academicdevoir.dao/TurmaDao#TurmaDao(Lorg.hibernate.Session;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="atualizaTurma" id="br.usp.ime.academicdevoir.dao/TurmaDao#atualizaTurma(Lbr.usp.ime.academicdevoir.entidade.Turma;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="carrega" id="br.usp.ime.academicdevoir.dao/TurmaDao#carrega(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="listaTudo" id="br.usp.ime.academicdevoir.dao/TurmaDao#listaTudo()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeTurma" id="br.usp.ime.academicdevoir.dao/TurmaDao#removeTurma(Lbr.usp.ime.academicdevoir.entidade.Turma;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="salvaTurma" id="br.usp.ime.academicdevoir.dao/TurmaDao#salvaTurma(Lbr.usp.ime.academicdevoir.entidade.Turma;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="UsuarioDao" location="230,990" size="129,86" id="br.usp.ime.academicdevoir.dao/UsuarioDao" runTimeClassModel="UsuarioDao(Lorg.hibernate.Session;),fazLogin(Ljava.lang.String;Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="94,36">
+      <children xsi:type="editmodel:MethodEditModel" name="UsuarioDao" id="br.usp.ime.academicdevoir.dao/UsuarioDao#UsuarioDao(Lorg.hibernate.Session;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="fazLogin" id="br.usp.ime.academicdevoir.dao/UsuarioDao#fazLogin(Ljava.lang.String;Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" level="-1" showScope="InPackage" properties="wireOptions=7;Product=eUML2"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

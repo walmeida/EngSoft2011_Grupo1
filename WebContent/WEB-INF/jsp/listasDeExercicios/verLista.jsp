@@ -206,6 +206,10 @@ font-family:"Times New Roman";
 				
 				<label id="labelIdDaQuestao" for="idDaQuestao">ID da Questao:</label>
 				<input id="idDaQuestao" type="text" size="6" maxlength="6" name="idDaQuestao" />
+				<label id="labelPesoDaQuestao" for="pesoDaQuestao">Peso:</label>
+				<input id="pesoDaQuestao" type="text" size="6" maxlength="6" name="pesoDaQuestao" />
+				<label id="labelOrdemDaQuestao" for="ordemDaQuestao">Ordem:</label>
+				<input id="ordemDaQuestao" type="text" size="6" maxlength="6" name="ordemDaQuestao" />
 				<button id="incluiQuestao" type="submit" name="_method" value="put">Incluir</button>
 			</fieldset>
 		</form>

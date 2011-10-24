@@ -31,45 +31,47 @@ import br.usp.ime.academicdevoir.infra.UsuarioSession;
 public class ListasDeExerciciosController {
 
 	/**
-	 * @uml.property  name="result"
-	 * @uml.associationEnd  multiplicity="(1 1)"
+	 * @uml.property name="result"
+	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private final Result result;
 	/**
-	 * @uml.property  name="dao"
-	 * @uml.associationEnd  multiplicity="(1 1)"
+	 * @uml.property name="dao"
+	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private final ListaDeExerciciosDao dao;
 	/**
-	 * @uml.property  name="questaoDao"
-	 * @uml.associationEnd  multiplicity="(1 1)"
+	 * @uml.property name="questaoDao"
+	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private final QuestaoDao questaoDao;
 	/**
-	 * @uml.property  name="professorDao"
-	 * @uml.associationEnd  multiplicity="(1 1)"
+	 * @uml.property name="professorDao"
+	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private final ProfessorDao professorDao;
 	/**
-	 * @uml.property  name="turmaDao"
-	 * @uml.associationEnd  multiplicity="(1 1)"
+	 * @uml.property name="turmaDao"
+	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private final TurmaDao turmaDao;
 	/**
-	 * @uml.property  name="validator"
-	 * @uml.associationEnd  multiplicity="(1 1)"
+	 * @uml.property name="validator"
+	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private final Validator validator;
 	/**
-	 * @uml.property  name="usuarioLogado"
-	 * @uml.associationEnd  multiplicity="(1 1)"
+	 * @uml.property name="usuarioLogado"
+	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private final UsuarioSession usuarioLogado;
 
 	/**
-	 * @param result para interação com o jsp da lista de exercicio.
-	 * @param turmaDao para interação com o banco de dados
-	 * @param validator 
+	 * @param result
+	 *            para interação com o jsp da lista de exercicio.
+	 * @param turmaDao
+	 *            para interação com o banco de dados
+	 * @param validator
 	 */
 	public ListasDeExerciciosController(Result result,
 			ListaDeExerciciosDao dao, QuestaoDao questaoDao,
@@ -94,20 +96,22 @@ public class ListasDeExerciciosController {
 	 * @param prazoDeEntrega
 	 * @param idDasTurmas
 	 */
-	public void cadastra(PropriedadesDaListaDeExercicios propriedades, final List<Integer> prazoDeEntrega, List<Long> idDasTurmas) {			
+	public void cadastra(PropriedadesDaListaDeExercicios propriedades,
+			final List<Integer> prazoDeEntrega, List<Long> idDasTurmas) {
 
 		ListaDeExercicios listaDeExercicios = new ListaDeExercicios();
-		
+
 		Turma turma;
 		List<Turma> turmas = new ArrayList<Turma>();
-		if(idDasTurmas == null) idDasTurmas = new ArrayList<Long>();
+		if (idDasTurmas == null)
+			idDasTurmas = new ArrayList<Long>();
 		for (Long id : idDasTurmas) {
 			turma = turmaDao.carrega(id);
 			turmas.add(turma);
 		}
-		
+
 		propriedades.setPrazoDeEntrega(prazoDeEntrega);
-		listaDeExercicios.setTurmas(turmas);		
+		listaDeExercicios.setTurmas(turmas);
 		listaDeExercicios.setPropriedades(propriedades);
 
 		validator.validate(listaDeExercicios);
@@ -129,10 +133,12 @@ public class ListasDeExerciciosController {
 		Professor professor = professorDao.carrega(usuarioLogado.getUsuario().getId());
 		
 		result.include("listaDeExercicios", listaDeExercicios);
+		result.include("prazo", listaDeExercicios.getPropriedades()
+				.getPrazoDeEntregaFormatado());
 		result.include("prazo", listaDeExercicios.getPropriedades().getPrazoDeEntregaFormatado());		
 		result.include("turmasDoProfessor", professor.getTurmas());
 	}
-	
+
 	@Get
 	@Path("/listasDeExercicios/resolver/{id}")
 	/** 
@@ -142,8 +148,8 @@ public class ListasDeExerciciosController {
 	 * */
 	public void resolverLista(Long id) {
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
-		
-		//result.include("prazo", listaDeExercicios.getPrazoDeEntrega());
+
+		// result.include("prazo", listaDeExercicios.getPrazoDeEntrega());
 		result.include("listaDeExercicios", listaDeExercicios);
 	}
 
@@ -156,10 +162,11 @@ public class ListasDeExerciciosController {
 	 * @return ListaDeExercicios 
 	 * */
 	public void alteracao(Long id) {
-		ListaDeExercicios listaDeExercicios = dao.carrega(id);		
+		ListaDeExercicios listaDeExercicios = dao.carrega(id);
 
 		result.include("listaDeExercicios", listaDeExercicios);
-		result.include("prazo", listaDeExercicios.getPropriedades().getPrazoPrazoDeEntregaEmLista());
+		result.include("prazo", listaDeExercicios.getPropriedades()
+				.getPrazoPrazoDeEntregaEmLista());
 	}
 
 	@Put
@@ -170,16 +177,17 @@ public class ListasDeExerciciosController {
 	 * @param listaDeExercicios
 	 * @param prazoDeEntrega
 	 */
-	public void altera(ListaDeExercicios listaDeExercicios, PropriedadesDaListaDeExercicios propriedades, List<Integer> prazoDeEntrega) {
+	public void altera(ListaDeExercicios listaDeExercicios,
+			PropriedadesDaListaDeExercicios propriedades,
+			List<Integer> prazoDeEntrega) {
 
 		ListaDeExercicios listaDoBD = dao.carrega(listaDeExercicios.getId());
-		
+
 		propriedades.setPrazoDeEntrega(prazoDeEntrega);
 		listaDoBD.setPropriedades(propriedades);
-		
+
 		validator.validate(listaDeExercicios);
-		validator
-				.onErrorUsePageOf(ListasDeExerciciosController.class)
+		validator.onErrorUsePageOf(ListasDeExerciciosController.class)
 				.alteracao(listaDeExercicios.getId());
 
 		dao.atualiza(listaDoBD);
@@ -207,8 +215,11 @@ public class ListasDeExerciciosController {
 	 * @param listaDeExercicios
 	 * @param idDaQuestao
 	 */
-	public void incluiQuestao(ListaDeExercicios listaDeExercicios, Long idDaQuestao) {
+	public void incluiQuestao(ListaDeExercicios listaDeExercicios,
+			Long idDaQuestao, Integer pesoDaQuestao, Integer ordemDaQuestao) {
 		QuestaoDaLista novaQuestao = new QuestaoDaLista();
+		novaQuestao.setPeso(pesoDaQuestao);
+		novaQuestao.setOrdem(ordemDaQuestao);
 		Questao questao = (Questao) questaoDao.carrega(idDaQuestao);
 		novaQuestao.setQuestao(questao);
 
@@ -216,7 +227,7 @@ public class ListasDeExerciciosController {
 		List<QuestaoDaLista> questoes = listaDeExercicios.getQuestoes();
 		questoes.add(novaQuestao);
 		listaDeExercicios.setQuestoes(questoes);
-		
+
 		dao.atualiza(listaDeExercicios);
 		result.redirectTo(this).verLista(listaDeExercicios.getId());
 	}
@@ -308,7 +319,8 @@ public class ListasDeExerciciosController {
 	 * Permite acesso à página com formulário para cadastro de uma nova lista de exercícios.
 	 */
 	public void cadastro() {
-		Professor professor = professorDao.carrega(usuarioLogado.getUsuario().getId());
+		Professor professor = professorDao.carrega(usuarioLogado.getUsuario()
+				.getId());
 		result.include("turmasDoProfessor", professor.getTurmas());
 	}
 

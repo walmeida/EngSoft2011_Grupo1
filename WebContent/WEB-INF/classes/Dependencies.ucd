@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="Dependencies" size="1093,737" id="." metadata="uml2-1.0" initialized="true" tag="10" key="32303037303533312D31302061636164656D69632D6465766F6972">
+  <children xsi:type="editmodel:PackageEditModel" name="br.usp.ime.academicdevoir.sessao" location="50,657" size="295,60" id="br.usp.ime.academicdevoir.sessao"/>
+  <children xsi:type="editmodel:PackageEditModel" targetConnections="//@children.4/@sourceConnections.1 //@children.3/@sourceConnections.0 //@children.2/@sourceConnections.0" name="br.usp.ime.academicdevoir.entidade" location="762,221" size="311,60" id="br.usp.ime.academicdevoir.entidade">
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade-Soyatec::Import->br.usp.ime.academicdevoir.infra" source="//@children.1" target="//@children.2" targetEnd="//@children.1/@sourceConnections.0/@children.2" label="//@children.1/@sourceConnections.0/@children.0" sourceEnd="//@children.1/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" location="734,149" size="49,13" automaticRelocationAllowed="false" locationOnWireFromSource="-20.538461538461537" distanceFromWire="-18.30769230769231" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="103,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="232,60"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:PackageEditModel" targetConnections="//@children.1/@sourceConnections.0 //@children.4/@sourceConnections.0 //@children.5/@sourceConnections.0 //@children.3/@sourceConnections.2" name="br.usp.ime.academicdevoir.infra" location="369,50" size="280,60" id="br.usp.ime.academicdevoir.infra">
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.infra-Standard::Call->br.usp.ime.academicdevoir.entidade*br.usp.ime.academicdevoir.infra-Soyatec::Import->br.usp.ime.academicdevoir.entidade" source="//@children.2" target="//@children.1" targetEnd="//@children.2/@sourceConnections.0/@children.2" label="//@children.2/@sourceConnections.0/@children.0" sourceEnd="//@children.2/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import, Call»" size="75,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="212,60" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="83,0"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.infra-Standard::Call->br.usp.ime.academicdevoir.controller" source="//@children.2" target="//@children.3" targetEnd="//@children.2/@sourceConnections.1/@children.2" label="//@children.2/@sourceConnections.1/@children.0" sourceEnd="//@children.2/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Call»" location="520,180" size="34,13" automaticRelocationAllowed="false" locationOnWireFromSource="-22.999999999999996" distanceFromWire="24.000000000000004" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="144,60" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="135,0"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:PackageEditModel" targetConnections="//@children.2/@sourceConnections.1" name="br.usp.ime.academicdevoir.controller" location="378,309" size="318,60" id="br.usp.ime.academicdevoir.controller">
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.controller-Standard::Call->br.usp.ime.academicdevoir.entidade*br.usp.ime.academicdevoir.controller-Standard::Instantiate->br.usp.ime.academicdevoir.entidade*br.usp.ime.academicdevoir.controller-Soyatec::Import->br.usp.ime.academicdevoir.entidade" source="//@children.3" target="//@children.1" targetEnd="//@children.3/@sourceConnections.0/@children.2" label="//@children.3/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import, Call, Instantiate»" size="0,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="289,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="25,60"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.controller-Standard::Call->br.usp.ime.academicdevoir.dao*br.usp.ime.academicdevoir.controller-Soyatec::Import->br.usp.ime.academicdevoir.dao" source="//@children.3" target="//@children.4" targetEnd="//@children.3/@sourceConnections.1/@children.2" label="//@children.3/@sourceConnections.1/@children.0" sourceEnd="//@children.3/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import, Call»" size="0,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="211,60" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="106,0"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.controller-Standard::Call->br.usp.ime.academicdevoir.infra*br.usp.ime.academicdevoir.controller-Soyatec::Access->br.usp.ime.academicdevoir.infra*br.usp.ime.academicdevoir.controller-Soyatec::Import->br.usp.ime.academicdevoir.infra" source="//@children.3" target="//@children.2" targetEnd="//@children.3/@sourceConnections.2/@children.2" label="//@children.3/@sourceConnections.2/@children.0" sourceEnd="//@children.3/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import, Call, Access»" size="0,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="115,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="124,60"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.controller-Standard::Call->br.usp.ime.academicdevoir.util*br.usp.ime.academicdevoir.controller-Soyatec::Import->br.usp.ime.academicdevoir.util" source="//@children.3" target="//@children.5" targetEnd="//@children.3/@sourceConnections.3/@children.2" label="//@children.3/@sourceConnections.3/@children.0" sourceEnd="//@children.3/@sourceConnections.3/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import, Call»" size="0,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="20,60" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="269,1"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:PackageEditModel" targetConnections="//@children.5/@sourceConnections.1 //@children.3/@sourceConnections.1" name="br.usp.ime.academicdevoir.dao" location="483,547" size="272,60" id="br.usp.ime.academicdevoir.dao">
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.dao-Standard::Call->br.usp.ime.academicdevoir.infra*br.usp.ime.academicdevoir.dao-Standard::Instantiate->br.usp.ime.academicdevoir.infra" source="//@children.4" target="//@children.2" targetEnd="//@children.4/@sourceConnections.0/@children.2" label="//@children.4/@sourceConnections.0/@children.0" sourceEnd="//@children.4/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Call, Instantiate»" size="0,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="82,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="196,60"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.dao-Standard::Call->br.usp.ime.academicdevoir.entidade*br.usp.ime.academicdevoir.dao-Soyatec::Import->br.usp.ime.academicdevoir.entidade" source="//@children.4" target="//@children.1" targetEnd="//@children.4/@sourceConnections.1/@children.2" label="//@children.4/@sourceConnections.1/@children.0" sourceEnd="//@children.4/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import, Call»" size="0,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="163,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="128,60"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:PackageEditModel" targetConnections="//@children.3/@sourceConnections.3" name="br.usp.ime.academicdevoir.util" location="50,385" size="269,60" id="br.usp.ime.academicdevoir.util">
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.util-Soyatec::Access->br.usp.ime.academicdevoir.infra*br.usp.ime.academicdevoir.util-Soyatec::Import->br.usp.ime.academicdevoir.infra" source="//@children.5" target="//@children.2" targetEnd="//@children.5/@sourceConnections.0/@children.2" label="//@children.5/@sourceConnections.0/@children.0" sourceEnd="//@children.5/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import, Access»" size="93,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="163,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="111,60"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.util-Standard::Call->br.usp.ime.academicdevoir.dao*br.usp.ime.academicdevoir.util-Soyatec::Import->br.usp.ime.academicdevoir.dao" source="//@children.5" target="//@children.4" targetEnd="//@children.5/@sourceConnections.1/@children.2" label="//@children.5/@sourceConnections.1/@children.0" sourceEnd="//@children.5/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import, Call»" size="75,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="215,60" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="55,0"/>
+    </sourceConnections>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" interactive="false" properties="wireOptions=4;Product=eUML2;displayOptions=1"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+</editmodel:ClassDiagramEditModel>

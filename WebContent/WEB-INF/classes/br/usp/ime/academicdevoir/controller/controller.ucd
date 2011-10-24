@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="controller" size="1381,2153" id="br.usp.ime.academicdevoir.controller" metadata="uml2-1.0" initialized="true" tag="10" key="32303037303533312D31302061636164656D69632D6465766F6972">
+  <children xsi:type="editmodel:ClassEditModel" name="DisciplinasController" location="360,1831" size="201,212" id="br.usp.ime.academicdevoir.controller/DisciplinasController" runTimeClassModel="altera(Ljava.lang.Long;Ljava.lang.String;),cadastra(Lbr.usp.ime.academicdevoir.entidade.Disciplina;),remocao(),lista(),alteracao(),remove(Ljava.lang.Long;),DisciplinasController(Lbr.com.caelum.vraptor.Result;Lbr.usp.ime.academicdevoir.dao.DisciplinaDao;),cadastro(),home()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="142,162">
+      <children xsi:type="editmodel:MethodEditModel" name="DisciplinasController" id="br.usp.ime.academicdevoir.controller/DisciplinasController#DisciplinasController(Lbr.com.caelum.vraptor.Result;Lbr.usp.ime.academicdevoir.dao.DisciplinaDao;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="altera" id="br.usp.ime.academicdevoir.controller/DisciplinasController#altera(Ljava.lang.Long;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="alteracao" id="br.usp.ime.academicdevoir.controller/DisciplinasController#alteracao()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="cadastra" id="br.usp.ime.academicdevoir.controller/DisciplinasController#cadastra(Lbr.usp.ime.academicdevoir.entidade.Disciplina;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="cadastro" id="br.usp.ime.academicdevoir.controller/DisciplinasController#cadastro()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="home" id="br.usp.ime.academicdevoir.controller/DisciplinasController#home()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="lista" id="br.usp.ime.academicdevoir.controller/DisciplinasController#lista()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remocao" id="br.usp.ime.academicdevoir.controller/DisciplinasController#remocao()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remove" id="br.usp.ime.academicdevoir.controller/DisciplinasController#remove(Ljava.lang.Long;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ListasDeExerciciosController" location="50,1831" size="260,302" id="br.usp.ime.academicdevoir.controller/ListasDeExerciciosController" runTimeClassModel="cadastra(Lbr.usp.ime.academicdevoir.entidade.ListaDeExercicios;Ljava.util.List;Ljava.util.List;),removeTurma(Lbr.usp.ime.academicdevoir.entidade.ListaDeExercicios;Ljava.lang.Integer;),verLista(Ljava.lang.Long;),incluiTurma(Ljava.lang.Long;Ljava.lang.Long;),ListasDeExerciciosController(Lbr.com.caelum.vraptor.Result;Lbr.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;Lbr.usp.ime.academicdevoir.dao.QuestaoDao;Lbr.usp.ime.academicdevoir.dao.ProfessorDao;Lbr.usp.ime.academicdevoir.dao.TurmaDao;Lbr.com.caelum.vraptor.Validator;Lbr.usp.ime.academicdevoir.infra.UsuarioSession;),altera(Lbr.usp.ime.academicdevoir.entidade.ListaDeExercicios;Ljava.util.List;),lista(),alteracao(Ljava.lang.Long;),resolverLista(Ljava.lang.Long;),remove(Ljava.lang.Long;),incluiQuestao(Lbr.usp.ime.academicdevoir.entidade.ListaDeExercicios;Ljava.lang.Long;),cadastro(),alteraQuestao(Ljava.lang.Long;Ljava.lang.Integer;Ljava.lang.Long;),removeQuestao(Ljava.lang.Long;Ljava.lang.Integer;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="185,252">
+      <children xsi:type="editmodel:MethodEditModel" name="ListasDeExerciciosController" id="br.usp.ime.academicdevoir.controller/ListasDeExerciciosController#ListasDeExerciciosController(Lbr.com.caelum.vraptor.Result;Lbr.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;Lbr.usp.ime.academicdevoir.dao.QuestaoDao;Lbr.usp.ime.academicdevoir.dao.ProfessorDao;Lbr.usp.ime.academicdevoir.dao.TurmaDao;Lbr.com.caelum.vraptor.Validator;Lbr.usp.ime.academicdevoir.infra.UsuarioSession;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="altera" id="br.usp.ime.academicdevoir.controller/ListasDeExerciciosController#altera(Lbr.usp.ime.academicdevoir.entidade.ListaDeExercicios;Ljava.util.List;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="alteraQuestao" id="br.usp.ime.academicdevoir.controller/ListasDeExerciciosController#alteraQuestao(Ljava.lang.Long;Ljava.lang.Integer;Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="alteracao" id="br.usp.ime.academicdevoir.controller/ListasDeExerciciosController#alteracao(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="cadastra" id="br.usp.ime.academicdevoir.controller/ListasDeExerciciosController#cadastra(Lbr.usp.ime.academicdevoir.entidade.ListaDeExercicios;Ljava.util.List;Ljava.util.List;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="cadastro" id="br.usp.ime.academicdevoir.controller/ListasDeExerciciosController#cadastro()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="incluiQuestao" id="br.usp.ime.academicdevoir.controller/ListasDeExerciciosController#incluiQuestao(Lbr.usp.ime.academicdevoir.entidade.ListaDeExercicios;Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="incluiTurma" id="br.usp.ime.academicdevoir.controller/ListasDeExerciciosController#incluiTurma(Ljava.lang.Long;Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="lista" id="br.usp.ime.academicdevoir.controller/ListasDeExerciciosController#lista()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remove" id="br.usp.ime.academicdevoir.controller/ListasDeExerciciosController#remove(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeQuestao" id="br.usp.ime.academicdevoir.controller/ListasDeExerciciosController#removeQuestao(Ljava.lang.Long;Ljava.lang.Integer;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeTurma" id="br.usp.ime.academicdevoir.controller/ListasDeExerciciosController#removeTurma(Lbr.usp.ime.academicdevoir.entidade.ListaDeExercicios;Ljava.lang.Integer;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="resolverLista" id="br.usp.ime.academicdevoir.controller/ListasDeExerciciosController#resolverLista(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="verLista" id="br.usp.ime.academicdevoir.controller/ListasDeExerciciosController#verLista(Ljava.lang.Long;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.4/@sourceConnections.1" name="QuestoesDeTextoController" location="576,50" size="247,158" id="br.usp.ime.academicdevoir.controller/QuestoesDeTextoController" runTimeClassModel="cadastra(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeTexto;),lista(),alteracao(Ljava.lang.Long;),QuestoesDeTextoController(Lbr.usp.ime.academicdevoir.dao.QuestaoDeTextoDao;Lbr.com.caelum.vraptor.Result;Lbr.com.caelum.vraptor.Validator;),remove(Ljava.lang.Long;),altera(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeTexto;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="179,108">
+      <children xsi:type="editmodel:MethodEditModel" name="QuestoesDeTextoController" id="br.usp.ime.academicdevoir.controller/QuestoesDeTextoController#QuestoesDeTextoController(Lbr.usp.ime.academicdevoir.dao.QuestaoDeTextoDao;Lbr.com.caelum.vraptor.Result;Lbr.com.caelum.vraptor.Validator;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="altera" id="br.usp.ime.academicdevoir.controller/QuestoesDeTextoController#altera(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeTexto;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="alteracao" id="br.usp.ime.academicdevoir.controller/QuestoesDeTextoController#alteracao(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="cadastra" id="br.usp.ime.academicdevoir.controller/QuestoesDeTextoController#cadastra(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeTexto;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="lista" id="br.usp.ime.academicdevoir.controller/QuestoesDeTextoController#lista()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remove" id="br.usp.ime.academicdevoir.controller/QuestoesDeTextoController#remove(Ljava.lang.Long;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.controller/QuestoesDeTextoController-Standard::Call->br.usp.ime.academicdevoir.controller/QuestoesController" source="//@children.2" target="//@children.4" targetEnd="//@children.2/@sourceConnections.0/@children.2" label="//@children.2/@sourceConnections.0/@children.0" sourceEnd="//@children.2/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Call»" location="660,315" size="34,13" automaticRelocationAllowed="false" locationOnWireFromSource="-27.999999999999996" distanceFromWire="31.0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="70,158" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="155,0"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.4/@sourceConnections.3" name="QuestoesDeMultiplaEscolhaController" location="933,576" size="326,158" id="br.usp.ime.academicdevoir.controller/QuestoesDeMultiplaEscolhaController" runTimeClassModel="QuestoesDeMultiplaEscolhaController(Lbr.usp.ime.academicdevoir.dao.QuestaoDeMultiplaEscolhaDao;Lbr.com.caelum.vraptor.Result;Lbr.com.caelum.vraptor.Validator;),lista(),alteracao(Ljava.lang.Long;),cadastra(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;),remove(Ljava.lang.Long;),altera(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="236,108">
+      <children xsi:type="editmodel:MethodEditModel" name="QuestoesDeMultiplaEscolhaController" id="br.usp.ime.academicdevoir.controller/QuestoesDeMultiplaEscolhaController#QuestoesDeMultiplaEscolhaController(Lbr.usp.ime.academicdevoir.dao.QuestaoDeMultiplaEscolhaDao;Lbr.com.caelum.vraptor.Result;Lbr.com.caelum.vraptor.Validator;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="altera" id="br.usp.ime.academicdevoir.controller/QuestoesDeMultiplaEscolhaController#altera(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="alteracao" id="br.usp.ime.academicdevoir.controller/QuestoesDeMultiplaEscolhaController#alteracao(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="cadastra" id="br.usp.ime.academicdevoir.controller/QuestoesDeMultiplaEscolhaController#cadastra(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="lista" id="br.usp.ime.academicdevoir.controller/QuestoesDeMultiplaEscolhaController#lista()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remove" id="br.usp.ime.academicdevoir.controller/QuestoesDeMultiplaEscolhaController#remove(Ljava.lang.Long;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.controller/QuestoesDeMultiplaEscolhaController-Standard::Call->br.usp.ime.academicdevoir.controller/QuestoesController" source="//@children.3" target="//@children.4" targetEnd="//@children.3/@sourceConnections.0/@children.2" label="//@children.3/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Call»" size="34,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,31" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="187,132"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@sourceConnections.0 //@children.5/@sourceConnections.0 //@children.2/@sourceConnections.0 //@children.6/@sourceConnections.0" name="QuestoesController" location="491,491" size="187,140" id="br.usp.ime.academicdevoir.controller/QuestoesController" runTimeClassModel="lista(),alteracao(Ljava.lang.Long;),remove(Ljava.lang.Long;),cadastro(),QuestoesController(Lbr.usp.ime.academicdevoir.dao.QuestaoDao;Lbr.usp.ime.academicdevoir.util.QuestoesUtil;Lbr.com.caelum.vraptor.Result;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="135,90">
+      <children xsi:type="editmodel:MethodEditModel" name="QuestoesController" id="br.usp.ime.academicdevoir.controller/QuestoesController#QuestoesController(Lbr.usp.ime.academicdevoir.dao.QuestaoDao;Lbr.usp.ime.academicdevoir.util.QuestoesUtil;Lbr.com.caelum.vraptor.Result;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="alteracao" id="br.usp.ime.academicdevoir.controller/QuestoesController#alteracao(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="cadastro" id="br.usp.ime.academicdevoir.controller/QuestoesController#cadastro()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="lista" id="br.usp.ime.academicdevoir.controller/QuestoesController#lista()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remove" id="br.usp.ime.academicdevoir.controller/QuestoesController#remove(Ljava.lang.Long;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.controller/QuestoesController-Standard::Call->br.usp.ime.academicdevoir.controller/QuestoesDeVouFController" source="//@children.4" target="//@children.6" targetEnd="//@children.4/@sourceConnections.0/@children.2" label="//@children.4/@sourceConnections.0/@children.0" sourceEnd="//@children.4/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Call»" size="34,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="79,140" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="163,0"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.controller/QuestoesController-Standard::Call->br.usp.ime.academicdevoir.controller/QuestoesDeTextoController" source="//@children.4" target="//@children.2" targetEnd="//@children.4/@sourceConnections.1/@children.2" label="//@children.4/@sourceConnections.1/@children.0" sourceEnd="//@children.4/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Call»" size="34,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="135,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="50,158"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.controller/QuestoesController-Standard::Call->br.usp.ime.academicdevoir.controller/QuestoesDeSubmissaoDeArquivoController" source="//@children.4" target="//@children.5" targetEnd="//@children.4/@sourceConnections.2/@children.2" label="//@children.4/@sourceConnections.2/@children.0" sourceEnd="//@children.4/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Call»" size="34,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,37" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="368,121"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.controller/QuestoesController-Standard::Call->br.usp.ime.academicdevoir.controller/QuestoesDeMultiplaEscolhaController" source="//@children.4" target="//@children.3" targetEnd="//@children.4/@sourceConnections.3/@children.2" label="//@children.4/@sourceConnections.3/@children.0" sourceEnd="//@children.4/@sourceConnections.3/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Call»" size="34,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="187,112" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,27"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.4/@sourceConnections.2" name="QuestoesDeSubmissaoDeArquivoController" location="50,407" size="368,158" id="br.usp.ime.academicdevoir.controller/QuestoesDeSubmissaoDeArquivoController" runTimeClassModel="cadastra(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;),lista(),QuestoesDeSubmissaoDeArquivoController(Lbr.usp.ime.academicdevoir.dao.QuestaoDeSubmissaoDeArquivoDao;Lbr.com.caelum.vraptor.Result;Lbr.com.caelum.vraptor.Validator;),altera(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;),alteracao(Ljava.lang.Long;),remove(Ljava.lang.Long;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="266,108">
+      <children xsi:type="editmodel:MethodEditModel" name="QuestoesDeSubmissaoDeArquivoController" id="br.usp.ime.academicdevoir.controller/QuestoesDeSubmissaoDeArquivoController#QuestoesDeSubmissaoDeArquivoController(Lbr.usp.ime.academicdevoir.dao.QuestaoDeSubmissaoDeArquivoDao;Lbr.com.caelum.vraptor.Result;Lbr.com.caelum.vraptor.Validator;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="altera" id="br.usp.ime.academicdevoir.controller/QuestoesDeSubmissaoDeArquivoController#altera(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="alteracao" id="br.usp.ime.academicdevoir.controller/QuestoesDeSubmissaoDeArquivoController#alteracao(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="cadastra" id="br.usp.ime.academicdevoir.controller/QuestoesDeSubmissaoDeArquivoController#cadastra(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="lista" id="br.usp.ime.academicdevoir.controller/QuestoesDeSubmissaoDeArquivoController#lista()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remove" id="br.usp.ime.academicdevoir.controller/QuestoesDeSubmissaoDeArquivoController#remove(Ljava.lang.Long;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.controller/QuestoesDeSubmissaoDeArquivoController-Standard::Call->br.usp.ime.academicdevoir.controller/QuestoesController" source="//@children.5" target="//@children.4" targetEnd="//@children.5/@sourceConnections.0/@children.2" label="//@children.5/@sourceConnections.0/@children.0" sourceEnd="//@children.5/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Call»" size="34,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="368,101" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,17"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.4/@sourceConnections.0" name="QuestoesDeVouFController" location="407,933" size="243,158" id="br.usp.ime.academicdevoir.controller/QuestoesDeVouFController" runTimeClassModel="lista(),QuestoesDeVouFController(Lbr.usp.ime.academicdevoir.dao.QuestaoDeVouFDao;Lbr.com.caelum.vraptor.Result;Lbr.com.caelum.vraptor.Validator;),alteracao(Ljava.lang.Long;),cadastra(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeVouF;),remove(Ljava.lang.Long;),altera(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeVouF;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="176,108">
+      <children xsi:type="editmodel:MethodEditModel" name="QuestoesDeVouFController" id="br.usp.ime.academicdevoir.controller/QuestoesDeVouFController#QuestoesDeVouFController(Lbr.usp.ime.academicdevoir.dao.QuestaoDeVouFDao;Lbr.com.caelum.vraptor.Result;Lbr.com.caelum.vraptor.Validator;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="altera" id="br.usp.ime.academicdevoir.controller/QuestoesDeVouFController#altera(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeVouF;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="alteracao" id="br.usp.ime.academicdevoir.controller/QuestoesDeVouFController#alteracao(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="cadastra" id="br.usp.ime.academicdevoir.controller/QuestoesDeVouFController#cadastra(Lbr.usp.ime.academicdevoir.entidade.QuestaoDeVouF;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="lista" id="br.usp.ime.academicdevoir.controller/QuestoesDeVouFController#lista()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remove" id="br.usp.ime.academicdevoir.controller/QuestoesDeVouFController#remove(Ljava.lang.Long;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.controller/QuestoesDeVouFController-Standard::Call->br.usp.ime.academicdevoir.controller/QuestoesController" source="//@children.6" target="//@children.4" targetEnd="//@children.6/@sourceConnections.0/@children.2" label="//@children.6/@sourceConnections.0/@children.0" sourceEnd="//@children.6/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Call»" size="34,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="243,15" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="99,140"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.9/@sourceConnections.0" name="LoginController" location="648,1351" size="160,158" id="br.usp.ime.academicdevoir.controller/LoginController" runTimeClassModel="LoginController(Lbr.com.caelum.vraptor.Result;Lbr.usp.ime.academicdevoir.dao.UsuarioDao;Lbr.usp.ime.academicdevoir.infra.UsuarioSession;),login(),logout(),login(Lbr.usp.ime.academicdevoir.entidade.Usuario;),acessoNegado(),index()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="113,108">
+      <children xsi:type="editmodel:MethodEditModel" name="LoginController" id="br.usp.ime.academicdevoir.controller/LoginController#LoginController(Lbr.com.caelum.vraptor.Result;Lbr.usp.ime.academicdevoir.dao.UsuarioDao;Lbr.usp.ime.academicdevoir.infra.UsuarioSession;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="acessoNegado" id="br.usp.ime.academicdevoir.controller/LoginController#acessoNegado()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="index" id="br.usp.ime.academicdevoir.controller/LoginController#index()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="login" id="br.usp.ime.academicdevoir.controller/LoginController#login()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="login" id="br.usp.ime.academicdevoir.controller/LoginController#login(Lbr.usp.ime.academicdevoir.entidade.Usuario;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="logout" id="br.usp.ime.academicdevoir.controller/LoginController#logout()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.controller/LoginController-Standard::Call->br.usp.ime.academicdevoir.controller/AlunosController" source="//@children.7" target="//@children.10" targetEnd="//@children.7/@sourceConnections.0/@children.2" label="//@children.7/@sourceConnections.0/@children.0" sourceEnd="//@children.7/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Call»" size="34,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,78" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="168,195"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.controller/LoginController-Standard::Call->br.usp.ime.academicdevoir.controller/ProfessoresController" source="//@children.7" target="//@children.8" targetEnd="//@children.7/@sourceConnections.1/@children.2" label="//@children.7/@sourceConnections.1/@children.0" sourceEnd="//@children.7/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Call»" size="34,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,37" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="208,247"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.7/@sourceConnections.1" name="ProfessoresController" location="50,1141" size="208,284" id="br.usp.ime.academicdevoir.controller/ProfessoresController" runTimeClassModel="cadastra(Lbr.usp.ime.academicdevoir.entidade.Professor;),altera(Ljava.lang.Long;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;),menu(),ProfessoresController(Lbr.com.caelum.vraptor.Result;Lbr.usp.ime.academicdevoir.dao.ProfessorDao;),home(),remocao(),lista(),alteracao(Ljava.lang.Long;),mudarTipo(Ljava.lang.Long;),remove(Ljava.lang.Long;),listaTurmas(Ljava.lang.Long;),cadastro(),mudanca()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="147,234">
+      <children xsi:type="editmodel:MethodEditModel" name="ProfessoresController" id="br.usp.ime.academicdevoir.controller/ProfessoresController#ProfessoresController(Lbr.com.caelum.vraptor.Result;Lbr.usp.ime.academicdevoir.dao.ProfessorDao;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="altera" id="br.usp.ime.academicdevoir.controller/ProfessoresController#altera(Ljava.lang.Long;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="alteracao" id="br.usp.ime.academicdevoir.controller/ProfessoresController#alteracao(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="cadastra" id="br.usp.ime.academicdevoir.controller/ProfessoresController#cadastra(Lbr.usp.ime.academicdevoir.entidade.Professor;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="cadastro" id="br.usp.ime.academicdevoir.controller/ProfessoresController#cadastro()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="home" id="br.usp.ime.academicdevoir.controller/ProfessoresController#home()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="lista" id="br.usp.ime.academicdevoir.controller/ProfessoresController#lista()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="listaTurmas" id="br.usp.ime.academicdevoir.controller/ProfessoresController#listaTurmas(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="menu" id="br.usp.ime.academicdevoir.controller/ProfessoresController#menu()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mudanca" id="br.usp.ime.academicdevoir.controller/ProfessoresController#mudanca()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mudarTipo" id="br.usp.ime.academicdevoir.controller/ProfessoresController#mudarTipo(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remocao" id="br.usp.ime.academicdevoir.controller/ProfessoresController#remocao()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remove" id="br.usp.ime.academicdevoir.controller/ProfessoresController#remove(Ljava.lang.Long;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="TurmasController" location="1113,1515" size="173,266" id="br.usp.ime.academicdevoir.controller/TurmasController" runTimeClassModel="altera(Ljava.lang.Long;Ljava.lang.String;),home(Ljava.lang.Long;),remocao(),removeMatricula(Ljava.lang.Long;Ljava.lang.Long;),lista(),alteracao(Ljava.lang.Long;),TurmasController(Lbr.com.caelum.vraptor.Result;Lbr.usp.ime.academicdevoir.dao.TurmaDao;Lbr.usp.ime.academicdevoir.dao.DisciplinaDao;Lbr.usp.ime.academicdevoir.dao.AlunoDao;Lbr.usp.ime.academicdevoir.infra.UsuarioSession;),remove(Ljava.lang.Long;),cadastro(),menu(),cadastra(Lbr.usp.ime.academicdevoir.entidade.Turma;),listaAlunos(J)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="122,216">
+      <children xsi:type="editmodel:MethodEditModel" name="TurmasController" id="br.usp.ime.academicdevoir.controller/TurmasController#TurmasController(Lbr.com.caelum.vraptor.Result;Lbr.usp.ime.academicdevoir.dao.TurmaDao;Lbr.usp.ime.academicdevoir.dao.DisciplinaDao;Lbr.usp.ime.academicdevoir.dao.AlunoDao;Lbr.usp.ime.academicdevoir.infra.UsuarioSession;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="altera" id="br.usp.ime.academicdevoir.controller/TurmasController#altera(Ljava.lang.Long;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="alteracao" id="br.usp.ime.academicdevoir.controller/TurmasController#alteracao(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="cadastra" id="br.usp.ime.academicdevoir.controller/TurmasController#cadastra(Lbr.usp.ime.academicdevoir.entidade.Turma;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="cadastro" id="br.usp.ime.academicdevoir.controller/TurmasController#cadastro()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="home" id="br.usp.ime.academicdevoir.controller/TurmasController#home(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="lista" id="br.usp.ime.academicdevoir.controller/TurmasController#lista()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="listaAlunos" id="br.usp.ime.academicdevoir.controller/TurmasController#listaAlunos(J)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="menu" id="br.usp.ime.academicdevoir.controller/TurmasController#menu()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remocao" id="br.usp.ime.academicdevoir.controller/TurmasController#remocao()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remove" id="br.usp.ime.academicdevoir.controller/TurmasController#remove(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeMatricula" id="br.usp.ime.academicdevoir.controller/TurmasController#removeMatricula(Ljava.lang.Long;Ljava.lang.Long;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.controller/TurmasController-Standard::Call->br.usp.ime.academicdevoir.controller/LoginController" source="//@children.9" target="//@children.7" targetEnd="//@children.9/@sourceConnections.0/@children.2" label="//@children.9/@sourceConnections.0/@children.0" sourceEnd="//@children.9/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Call»" size="34,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,93" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="160,116"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.7/@sourceConnections.0" name="AlunosController" location="316,1234" size="168,284" id="br.usp.ime.academicdevoir.controller/AlunosController" runTimeClassModel="cadastra(Lbr.usp.ime.academicdevoir.entidade.Aluno;),removeMatricula(Ljava.lang.Long;Ljava.lang.Long;),altera(Ljava.lang.Long;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;),AlunosController(Lbr.com.caelum.vraptor.Result;Lbr.usp.ime.academicdevoir.dao.AlunoDao;Lbr.usp.ime.academicdevoir.dao.DisciplinaDao;Lbr.usp.ime.academicdevoir.dao.TurmaDao;Lbr.usp.ime.academicdevoir.infra.UsuarioSession;),home(),remocao(),lista(),inscreve(Ljava.lang.Long;Ljava.lang.Long;),alteracao(Ljava.lang.Long;),remove(Ljava.lang.Long;),matricula(),cadastro(),listaTurmas(Ljava.lang.Long;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="121,234">
+      <children xsi:type="editmodel:MethodEditModel" name="AlunosController" id="br.usp.ime.academicdevoir.controller/AlunosController#AlunosController(Lbr.com.caelum.vraptor.Result;Lbr.usp.ime.academicdevoir.dao.AlunoDao;Lbr.usp.ime.academicdevoir.dao.DisciplinaDao;Lbr.usp.ime.academicdevoir.dao.TurmaDao;Lbr.usp.ime.academicdevoir.infra.UsuarioSession;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="altera" id="br.usp.ime.academicdevoir.controller/AlunosController#altera(Ljava.lang.Long;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="alteracao" id="br.usp.ime.academicdevoir.controller/AlunosController#alteracao(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="cadastra" id="br.usp.ime.academicdevoir.controller/AlunosController#cadastra(Lbr.usp.ime.academicdevoir.entidade.Aluno;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="cadastro" id="br.usp.ime.academicdevoir.controller/AlunosController#cadastro()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="home" id="br.usp.ime.academicdevoir.controller/AlunosController#home()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="inscreve" id="br.usp.ime.academicdevoir.controller/AlunosController#inscreve(Ljava.lang.Long;Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="lista" id="br.usp.ime.academicdevoir.controller/AlunosController#lista()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="listaTurmas" id="br.usp.ime.academicdevoir.controller/AlunosController#listaTurmas(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="matricula" id="br.usp.ime.academicdevoir.controller/AlunosController#matricula()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remocao" id="br.usp.ime.academicdevoir.controller/AlunosController#remocao()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remove" id="br.usp.ime.academicdevoir.controller/AlunosController#remove(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeMatricula" id="br.usp.ime.academicdevoir.controller/AlunosController#removeMatricula(Ljava.lang.Long;Ljava.lang.Long;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" level="-1" showScope="InPackage" properties="wireOptions=7;Product=eUML2"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

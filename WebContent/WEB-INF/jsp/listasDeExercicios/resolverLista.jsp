@@ -51,13 +51,18 @@ font-family:"Times New Roman";
 	<h3>Questões</h3>
 	
 	<div>
-		<c:forEach items="${listaDeExercicios.questoes}" var="questaoDaLista">
-				<div>
-					<p>${questaoDaLista.ordem} )
-						${questaoDaLista.questao.enunciado}</p>
-				</div>
-				${questaoDaLista.questao.renderizacao}
-		</c:forEach>
+		<form action="<c:url value="/respostas/cadastra"/>" method="post" accept-charset="us-ascii">
+			<fieldset>
+				<c:forEach items="${listaDeExercicios.questoes}" var="questaoDaLista">
+						<div>
+							<p>${questaoDaLista.ordem} )
+								${questaoDaLista.questao.enunciado}</p>
+						</div>
+						${questaoDaLista.questao.renderizacao}
+				</c:forEach>
+				<button type="submit">Enviar</button>
+			</fieldset>
+		</form>
 	</div>
 	
     <a href="<c:url value='/login'/>">Sair</a>
