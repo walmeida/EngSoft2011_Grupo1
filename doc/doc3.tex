@@ -19,9 +19,14 @@
 %\usepackage[a4paper, tmargin=2.5cm, bmargin=2.5cm, lmargin=2.5cm, rmargin=2.5cm]{geometry}
 
 
+% Início do documento ----------------------------------------------------------
+
 \begin{document}
 
 \sloppy
+
+
+% Capa -------------------------------------------------------------------------
 
 \title{
 {\Large Instituto de Matemática e Estatística} \\
@@ -69,6 +74,8 @@ Wallace Almeida\\
 %\section{Introdução}
 
 
+% Analista --------- ----------------------------------------------------------
+
 \pagebreak
 \section{Analista}
 
@@ -79,69 +86,118 @@ O sofware tem como característica principal a gestão de tarefas acadêmicas da
 
 O uso do sistema será destinado a professores e alunos. Os primeiros podem elaborar as atividades e visualizar a correção automática efetuada. Já os últimos poderão exibir as atividades disponíveis e solucioná-las.
 
-%\pagebreak
-%\subsection{Requerimentos do Sistema (System-Wide Requirements)}
+\pagebreak
 
+% Requerimentos do sistema
+\subsection{Requerimentos do Sistema (System-Wide Requirements)}
+
+Por ser um software de aplicação acadêmica que permitirá o acesso de vários usuários diferentes, tanto alunos como professores, o “Academic Devoir” visa uma interface simples e prática de comunicação com o usuário. Sendo assim, uma “linkagem” bem estruturada entre as páginas, bem como a clareza das informações apresentadas em cada tela, se faz imensamente necessária.
+
+Além disso, por ser um sistema acessado por usuários de tipos diferentes, o controle de login e de permissões para a realização de tarefas, ou seja, o monitoramento do que cada tipo de usuário pode fazer, e das páginas que pode acessar, é fundamental.
+
+Dada a proposta do sistema, de administrar turmas e disciplinas diferentes, e vários alunos, a cada semestre, e a dinânima das ações realizadas (a constante adição de novos recursos, como exercícios, e de novos usuários; a atualização de informações, como notas etc), é de extrema importância que o software tenha interfaces que agilizem certas funcionalidades, como telas para alteração de dados, e que todas as funcionalidades estejam devidamente testadas, para não causarem erros devido às constantes mudanças. 
+
+Também como pedido pelo cliente (que aqui vem a ser o próprio professor de nossa disciplina), o “Academic Devoir” deve apresentar a opção de correção automática de listas, com opções, quanto a prazos e formas de entrega, que possam ser configurados pelo professor, segundo seus próprios critérios.
 
 \pagebreak
+
+% Casos de Uso
 \subsection{Casos de Uso}
-De acordo com o tipo de usuário (aluno ou professor), existirão tarefas que devem ser atendidas pelo sistema. Podemos listar algumas das possiveis utilizações:
+
+As funcionalidades mostradas pelo sistema variam de acordo com o tipo de usuário, aluno ou professor, que o estiver usando. Podemos, assim, separar tais funcionalidades em casos de uso, simplificando a visão das ações permitidas pelo software. 
+
+Um caso de uso representa simplesmente uma funcionalidade dentro do sistema. O projeto acompanha um diagrama, de nome \texttt{CasosDeUso.png}, com todas as ações possíveis para os atores do software.
+No “Academic Devoir” o caso de uso mais geral é o login. Este é efetuado por usuários em geral, independente do tipo, resultado da herança existente entre as classes Usuário, Aluno e Professor. No diagrama, a relação de herança entre os atores é representada com uma seta direcionada ao Usuário, indicando que tanto Aluno quanto Professor apresentam a funcionalidade de login. 
+Os usos específicos dos atores Aluno e Professor estão relacionados abaixo.
+
+% Aluno
+\vspace{1cm}
+{\large {\bf Ator: Aluno}}
+\vspace{0.5cm}
+
 \begin{itemize}
-\item {Professor gerencia alunos}
-\item {Professor cadastra disciplina}
-\item {Professor cadastra turma}
-\item {Professor cadastra lista de exercício}
-\item {Professor cadastra questões}
-\item {Professor lista respostas de questão}
-\item {Professor pode reordenar questões de uma lista}
-\item {Professor determina o tipo de matricula}
-\item {Aluno se cadastra}
-\item {Aluno se matricula em uma turma de uma disciplina}
-\item {Aluno entra em uma disciplina e visualiza as listas}
-\item {Aluno resolve uma lista de exercícios}
+\item{}Cadastrar-se: um aluno pode adicionar-se ao sistema, tendo seu acesso mais restrito em relação ao usuário do tipo professor;
+\item{}Alterar dados pessoais: permite a alteração ou correção de dados após efetuado o cadastro;
+\item{}Listar turmas: essa funcionalidade apresenta duas derivações: listagem de turmas existentes no sistema e listagem de turmas na qual o aluno está matriculado. A primeira é uma listagem geral de todas as turmas disponíveis para a disciplina que o aluno vai cursar, permitindo a ele se cadastrar numa específica. A segunda é a visualização de todas as turmas na qual o aluno efetivamente se matriculou, permitindo o acesso a outros recursos relacionados a essas turmas;
+\item{}Matricular-se numa turma: como extensão do primeiro tipo de listagem, permite que o aluno escolha uma turma específica relacionada à disciplina que pretende cursar e increver-se nela;
+\item{}Visualização da turma: possível apenas após a matrícula, quando são liberados recursos como listas de exercícios;
+\item{}Visualização de listas de exercícios: dada uma turma específica, um aluno devidamente matriculado deve poder ver as tarefas disponíveis para entrega, bem como seus prazos;
+\item{}Resolução de lista: uma vez visualizada uma lista, o aluno pode decidir se entrega ou não a lista, e quando a entrega (considerando, obviamente, o prazo disponível para tal tarefa);
+\item{}Visualização de nota: o aluno tem acesso às notas das tarefas que entregou;
 \end{itemize}
 
+% Professor
+\vspace{1cm}
+{\large {\bf Ator: Professor}}
+\vspace{0.5cm}
+
+\begin{itemize}
+\item{}Cadastrar-se: ao professor é permitido adicionar-se ao sistema com maiores privilégios de acesso do que um aluno;
+\item{}Alterar dados pessoais: permite a alteração ou correção de dado após efetuado o cadastro, da mesma forma que é permitido a um aluno;
+\item{}Gerenciamento de alunos: dadas as permissões oferecidas a esse tipo de usuário, a tarefa de gerenciamento de alunos, que foca no controle dos alunos de uma turma comandada por um professor, pode ser extendida em subtarefas;
+\item{}Listagem de alunos: subtarefa diretamente ligada ao gerenciamento, é necessário que o professor esteja na página de gerenciamento, ou que efetue previamente a listagem de turmas, escolhendo uma de suas turmas, para ter acesso aos alunos de uma turma em específico;
+\item{}Remoção de aluno: efetuada uma listagem, é possível que o professor exclua um aluno de sua turma que está presente na lista. O professor pode precisar dessa funcionalidade para o caso, por exemplo, de um aluno ter comportamento inadequado diante de algum fórum de uma disciplina, e o professor necessitar tomar providências;
+\item{}Cadastrar monitor: após a listagem, o professor poe identificar um aluno específico, e alterar seus privilégios transformando-o em monitor. Importante observar que o privilégio de um aluno como monitor muda na turma específica que ele auxilia. Para outras turmas, ele ainda é apenas um aluno comum;
+\item{}Cadastra disciplina: usuários do tipo professor tem permissão para adicionar novas disciplinas ao sistema. Efetuado o cadastro de uma disciplina, tanto o professor que a cadastrou, quanto outros professores, estão aptos a adicionar às disciplinas novas turmas;
+\item{}Cadastra turma: dadas as disciplinas disponíveis, ele pode criar uma nova turma, sendo automaticamente colocado como professor responsável por ela. Uma vez cadastrada uma turma por um professor, outro professor não pode alterá-la. 
+\item{}Listar disciplinas: listagem de disciplinas nas quais o professor tem ao menos uma turma pela qual é responsável;
+\item{}Listar turmas: apresenta a listagem de turmas cadastradas por aquele professor, ou seja, as turmas pelas quais ele é responsável. Pode ser vista como uma extensão da listagem de disciplinas, uma vez que ao acessar uma disciplina o professor, consequentemente, tem acesso às turmas que comanda dentro dela;
+\item{}Cadastra lista de exercícios: ao professor é permitido criar novas listas de exercícios nas turmas para as quais leciona;
+\item{}Corrige lista: cadastrada uma lista, o professor corrige as listas resolvidas pelos alunos baseado nas respostas corretas de cada questão;
+\item{}Visualiza listas de exercícios: listagem das listas que o professor cadastrou para sua turma;
+\item{}Reordena questões: o professor pode mudar a ordem das questões que vão aparecer na lista, uma vez que a lista foi salva no banco de dados do sistema;
+\item{}Cadastro de questões: é a forma mais genérica da ação de adicionar uma nova questão que ficará disponível no banco de dados. Esse cadastro é especificado em quatro subtipos, de acordo com a espécie da questão desejada: cadastro de questão de texto, cadastro de questão de V ou F, cadastro de questão de múltipla escolha e, por fim, cadastro de questão de submissão de arquivo.
+\end{itemize}
 
 \pagebreak
+
+% Modelos de Casos de Uso
 \subsection{Modelo de Casos de Uso}
 
-\vspace{1cm}
-{\large {\bf Visão global}}
-\vspace{0.5cm}
+% TODO Visão Global
+%\vspace{1cm}
+%{\large {\bf Visão global}}
+%\vspace{0.5cm}
 
-\pagebreak
+%\pagebreak
 
-\vspace{1cm}
-{\large {\bf Objetivos da iteração}}
-\vspace{0.5cm}
-
-\pagebreak
-
+% Diagrama de casos de uso
 \vspace{1cm}
 {\large {\bf Diagrama de casos de uso}}
 \vspace{0.5cm}
 
+O diagrama de casos de uso se encontra em \texttt{CasosDeUso.png} no diretório \texttt{doc/diagramas}.
+
+%\pagebreak
+
+% TODO Atores
+%\vspace{1cm}
+%{\large {\bf Atores}}
+%\vspace{0.5cm}
+
+%\pagebreak
+
+% TODO Casos de uso
+%\vspace{1cm}
+%{\large {\bf Casos de uso}}
+%\vspace{0.5cm}
+
 \pagebreak
 
-\vspace{1cm}
-{\large {\bf Atores}}
-\vspace{0.5cm}
-
-\pagebreak
-
-\vspace{1cm}
-{\large {\bf Casos de uso}}
-\vspace{0.5cm}
-
-\pagebreak
-
+% Glossário
 \subsection{Glossário}
 
   {\bf G}\\
     Gerenciar: Entende-se que um usuário está apto a gerenciar uma dada
   estrutura do sistema quando possui permissões e interfaces para inclusão,
   edição, visualização e remoção de elementos dessa estrutura. 
-    
+  
+  {\bf L}\\
+	Lista de exercícios: Conjunto de questões, criado para uma turma, por um professor específico responsável por tal turma. Devem ser resolvidas e entregues pelos alunos daquela turma.
+ 
+  {\bf Q}\\
+	Questão: Entidade que representa um exercício, contendo enunciado e resposta correta. É criada por usuários do tipo professor.
+	
   {\bf T}\\
     Turma: Conjunto composto por alunos (e monitor) que cursam uma disciplina 
     determinada oferecida por um professor em um dado semestre. Podem
@@ -152,12 +208,17 @@ De acordo com o tipo de usuário (aluno ou professor), existirão tarefas que de
     Usuário: Aquele que interage e utiliza o sistema. Nas especificações
     atuais, pode ser um professor ou um aluno.
 
-
 \pagebreak
+
+
+% Gerente ----------------------------------------------------------------------
+
 \section{Gerente}
 
+% Plano da Interação
 \subsection{Plano da Iteração}
 
+% Objetivos da iteração
 \vspace{1cm}
 {\large {\bf Objetivos da iteração}}
 \vspace{0.5cm}
@@ -181,10 +242,7 @@ navegável e agradável visualmente. Por enquanto, apenas o mínimo necessário 
 partes foi implementado. Isso será refinado apenas quando o sistema for tido como completo 
 do ponto de vista funcional.
 
-
-
-
-
+% Atribuições de trabalho
 \vspace{1cm}
 {\large {\bf Atribuições de trabalho}}
 \vspace{0.5cm}
@@ -192,9 +250,6 @@ do ponto de vista funcional.
 A cada iteração, os cargos e responsabilidades devem ser trocados. As tarefas foram atribuídas conforme o papel dos integrantes. Dependendo da dificuldade da tarefa e de sua relevância para o desenvolvimento do projeto, todos os integrantes devem contribuir.
 
 Segue uma lista dos participantes e de seus respectivos itens de trabalho, para essa terceira iteração: 
-
-
-
 
 \begin{itemize}
 
@@ -277,6 +332,7 @@ Segue uma lista dos participantes e de seus respectivos itens de trabalho, para 
 Para maior detalhamento dos itens de trabalho, visite a página: 
 \url{https://www.pivotaltracker.com/projects/355453#}
 
+% Critérios de avaliação
 \vspace{1cm}
 {\large {\bf Critérios de avaliação}}
 \vspace{0.5cm}
@@ -285,15 +341,16 @@ Para avaliarmos o desenvolvimento, usaremos os testes de Unidade e a avaliação
 Veja maiores detalhes sobre os testes na documentação do analista de qualidade.
 
 \pagebreak
+
+% Plano do projeto
 \subsection{Plano do Projeto}
 
-
+% Organização
 \vspace{1cm}
 {\large {\bf Organização}}
 \vspace{0.5cm}
 
 O trabalho no projeto é dividido nas seguintes áreas:
-
 
 \begin{table}[ht!]
 \begin{small} %tiny
@@ -332,7 +389,7 @@ O trabalho no projeto é dividido nas seguintes áreas:
 \end{small}
 \end{table}
 
-
+% Medições
 \vspace{1cm}
 {\large {\bf Medições}}
 \vspace{0.5cm}
@@ -345,6 +402,7 @@ Na página \url{https://www.pivotaltracker.com/projects/355453#}, temos os segui
 \item{Icebox (trabalho a ser desenvolvido sem data para início)}
 \end{enumerate}
 
+% Objetivos
 \vspace{1cm}
 {\large {\bf Objetivos}}
 \vspace{0.5cm}
@@ -372,28 +430,38 @@ O desenvolvimento consistirá de 3 iterações (cada uma com 3 semanas de duraç
 \end{itemize}
 Aguardamos mais informações do professor para completar a lista de histórias a serem implementadas.
 
-
 \pagebreak
+
+% Lista de Riscos
 \subsection{Lista de Riscos}
 
 Perguntar para o professor o que seriam os riscos do projeto.
 
 \pagebreak
+
+% Avaliação de status
 \subsection{Avaliação de status}
 
 Aguardando feedback do cliente.
 
 \pagebreak
+
+% Lista de Itens de Trabalho
 \subsection{Lista de Itens de Trabalhos}
 
 A lista dos itens de trabalho pode ser visualizada em: \url{https://www.pivotaltracker.com/projects/355453#}
 
-
 \pagebreak
+
+
+% Arquiteto --------------------------------------------------------------------
+
 \section{Arquiteto}
 
+% Caderno de Arquitetura
 \subsection{Caderno de Arquitetura}
 
+% Objetivos arquiteturais
 \vspace{1cm}
 {\large {\bf Objetivos arquiteturais}}
 \vspace{0.5cm}
@@ -401,16 +469,14 @@ A lista dos itens de trabalho pode ser visualizada em: \url{https://www.pivotalt
 O planejamento da arquitetura do sistema tem por objetivos minimizar riscos, organizar o desenvolvimento e
 dar uma visão geral do projeto para todos os integrantes do grupo, além de abrir um canal de comunicação para discutir dificuldades que surgem na implementação. Isso possibilita a criação de um sistema robusto para manutenções a longo prazo.
 
-
 O caderno de arquitetura descreve o contexto para o desenvolvimento de software, 
 contendo as decisões, a análise racional, as explicações e as implicações em formar a 
 arquitetura do sistema. Seu propósito é descrever o contexto e a perspectiva do sistema para 
 garantir a integridade e compreensão.
 
-
-
 \pagebreak
 
+% Esboço do diagrama de classes
 \vspace{1cm}
 {\large {\bf Esboço do diagrama de classes}}
 \vspace{0.5cm}
@@ -602,84 +668,66 @@ BancoDeQuestões {
 \end{verbatim}
 %\end{tabbing}
 
-
 \pagebreak
 
+% Comentários sobre as decisões tomadas
 \vspace{1cm}
 {\large {\bf Comentários sobre as decisões tomadas}}
 \vspace{0.5cm}
 
 Aqui juntamos alguns dos comentários, discussões e problemas em aberto mais relevantes com relação às decisões de arquitetura tomadas no projeto. A maioria desses comentários surgiram espontaneamente das discussões entre os membros da equipe.\\
 
-
 \textbf{Classes que implementam usuário (Aluno e Professor):}\\
 Como Aluno e Professor compartilham muitos campos, optamos por essa herança, evitando assim repetição de código.\\
-
 
 \textbf{Atributo lista de turmas (ids) em Aluno e Professor:}\\
 Esse campo não está em "Usuário", pois a relação ente Aluno e Turma é n-n, enquanto a relação entre Professor e Turma é 1-n.\\
 
-
 \textbf{Método entregar listas na classe aluno:}\\
 O aluno também pode salvar uma lista além de enviá-la (ou finalizá-la), dependendo das configurações da lista de exercícios.\\
-
 
 \textbf{Atributo períodoDeMatrícula em turma:}\\
 Dependendo do tipo de matrícula, haverá um período determinado para o aluno se matricular em uma turma.\\
 
-
 \textbf{Método listarListasDeAtividades em turma:}\\
 Listar as listas de exercícios.\\
-
 
 \textbf{Atributo prazoDeEntrega da listaDeExercícios:}\\
 O professor pode definir um prazo de entrega.\\
 Dúvida: Colocar horário limite também?\\
 
-
 \textbf{Atributo visibilidade da listaDeExercícios:}\\
 Dita se a lista é visível ou invisível para os alunos.\\
 Dúvida: O professor pode programar uma data para a lista passar a ficar visível?\\
 
-
 \textbf{Atributo lista de listas de respostas da listaDeExercícios:}\\
 Lista com as listas de exercícios respondidas pelos alunos (exercícios esses que estão na mesma ordem em que aparecem na lista de questões).\\
 
-
 \textbf{Atributo “id da listaDeExercícios” na listaDeRespostas: }\\
 Pergunta: Dado que a ListaDeExercicios tem um id, não seria interessante que a lista de respostas carregasse também o id da lista a qual ela pertence? Ou isso seria redundante?\\
-
 Resposta: A ListaDeRespostas é sempre acessada a partir da ListaDeExercícios, certo? Nesse caso, talvez não haja necessidade de ListaDeResposta guardar o id da ListaDeExercícios.\\
-
 
 \textbf{Atributo estado em propriedades da listaDeRespostas:}\\
 A lista pode não ter sido inicializada, ter sido inicializada ou finalizada.\\
 
-
 \textbf{Atributo lista de respostas na listaDeRespostas:}\\
 Respostas dadas pelos alunos, de fato.\\
-
 
 \textbf{Atributo corrigido na classe Resposta: }\\
 Pergunta: Precisamos desse status?\\
 Resposta: Achamos que não.\\
 
-
 \textbf{Classes que implementam Resposta:}\\
 A princípio, pensamos nessas especializações de Resposta. Há também a possibilidade de implementar todas as respostas em uma mesma classe. Acabamos escolhendo essa última opção.\\
-
 
 \textbf{Atributo alternativa escolhida pelo aluno na classe Resposta:}\\
 A princípio pensamos em permitir várias alternativas corretas, mas finalmente decidimos que uma questão de múltipla escolha permitiria apenas uma alternativa correta.\\
 
-
 \textbf{Classe abstrata Questão:}\\
 A herança entre questão e os variados tipos de questão permite o polimorfismo e o aproveitamento de alguns campos entre os tipos de questões.\\
 
-
 \textbf{Classe BancoDeQuestões:}\\
 Decidimos por criar um “banco de questões” onde os professores poderiam compartilhar questões entre si. Para isso, a classe Questão não podia conter nenhum atributo que fosse específico da instância dessa questão em uma lista específica (como valor e ordem). Para resolver esse problema criamos uma classe chamada QuestãoDaLista. Cada objeto dessa classe contém uma questão, seu valor e sua posição na lista.\\
-
 
 \textbf{Classe QuestãoDaLista:}\\
 Classe para guardar o valor da questão e a questão.\\
@@ -687,7 +735,6 @@ Classe para guardar o valor da questão e a questão.\\
 \textbf{Atributo valor na classe QuestãoDaLista:}\\
 O professor pode atribuir um valor para cada questão.\\
 A princípio essa propriedade estava na classe Questão, mas como depende do contexto em que a questão está sendo utilizada, colocamos nessa classe.\\
-
 
 \textbf{Atributo questão da classe QuestãoDaLista:}\\
 Dúvida: Aqui seria a questão mesmo ou Id?\\
@@ -700,11 +747,12 @@ Discussão:
 
 \pagebreak
 
+% Diagramas de classe
 \vspace{1cm}
 {\large {\bf Diagramas de classe}}
 \vspace{0.5cm}
 
-Os diagramas de classe consistem nos seguintes arquivos (no diretório \texttt{doc/diagramas}):
+Os diagramas de classe se encontram nos seguintes arquivos (no diretório \texttt{doc/diagramas}):
 
 \begin{itemize}
 \item{}\texttt{Dependência.png}: mostra as dependências entre as classes
@@ -712,20 +760,20 @@ Os diagramas de classe consistem nos seguintes arquivos (no diretório \texttt{d
 \item{}\texttt{Herança.png}: mostras as heranças de classes
 \end{itemize}
 
-
 \pagebreak
 
+% Desenvolvedr
 \section{Desenvolvedor}
 
+% Design
 \subsection{Design}
 
+% Design structure
 \vspace{1cm}
 {\large {\bf Design structure}}
 \vspace{0.5cm}
 
-
 %[Describe the design from the highest level. This is commonly done with a diagram that shows a layered architecture.]
-
 
 Subsystems
 
@@ -737,11 +785,10 @@ Subsystems
 
 %You can break this section down into lower-level subsections to describe lower-level, encapsulated subsystems.]
 
-
+% Patterns
 \vspace{1cm}
 {\large {\bf Patterns}}
 \vspace{0.5cm}
-
 
 %[Pattern1]
 
@@ -760,12 +807,10 @@ Behavior
 Example
 %[Often, you can convey the nature of the pattern better with an additional concrete example.]
 
-
-
+% Requirements realizations
 \vspace{1cm}
 {\large {\bf Requirement realizations}}
 \vspace{0.5cm}
-
 
 %[Realization1]
 
@@ -793,10 +838,11 @@ View of participants
 %\item{} Clean-Up
 %\end{itemize}
 
-
-
-
 \pagebreak
+
+
+% Testador ---------------------------------------------------------------------
+
 \section{Testador}
 
 A maioria dos testes realizados até o momento são testes nas classes Controller, ou seja, que testam se os Controllers chamam os métodos apropriados dos DAOs e se o usuário é redirecionado para as páginas certas. 
@@ -805,8 +851,8 @@ Há também testes que consistem em verificar se os diferentes objetos (Alunos, 
 
 Para não afetar o banco de dados, todas os objetos que lidam com o banco de dados diratemente são mocks (imitações) dos objetos reais.
 
+% Test Case
 \subsection{Test Case}
-
 
 \noindent Test Case ID - Test Case Name:\\
 Descrição:\\ % [Describe the logical condition that the Test Case evaluates. Include the expected result.]\\
@@ -814,8 +860,9 @@ Pré-condições:\\ % [List conditions that must be true before this Test Case c
 Pós-condições:\\ % [List conditions that should be true when this Test Case ends.]\\
 Dados requeridos:\\ %[Identify the type of data required for this Test Case.]\\
 
-
 \pagebreak
+
+% Test Log
 \subsection{Test Log}
 
 Produzido automaticamente. %Pode ser encontrado na pasta...
@@ -823,9 +870,6 @@ Produzido automaticamente. %Pode ser encontrado na pasta...
 
 %\pagebreak
 %TODO: \subsection{Test Script} %não entendi esse item. Precisamos?
-
-
-
 
 %\pagebreak
 %\section{Bibliografia}\label{bibliografia}
