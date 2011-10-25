@@ -76,6 +76,7 @@ public class ProfessoresController {
 	 * @param novo 
 	 */
 	public void cadastra(final Professor novo) {
+		novo.setSenha(new Criptografia().geraMd5(novo.getSenha()));
 		professorDao.salvaProfessor(novo);
 		result.redirectTo(ProfessoresController.class).lista();
 	}

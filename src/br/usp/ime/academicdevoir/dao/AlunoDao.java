@@ -16,7 +16,6 @@ import br.com.caelum.vraptor.ioc.Component;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.Turma;
 import br.usp.ime.academicdevoir.entidade.Usuario;
-import br.usp.ime.academicdevoir.infra.Criptografia;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 @Component
@@ -39,7 +38,6 @@ public class AlunoDao {
 	 */
 	@SuppressWarnings("unchecked")
 	public void salvaAluno(Aluno aluno) {
-			// Criptografando a senha
 	    String login = aluno.getLogin();
 	    List<Usuario> listaDeUsuarios = session.createCriteria(Usuario.class)
                 .add(Restrictions.like("login", login, MatchMode.EXACT))
@@ -47,7 +45,6 @@ public class AlunoDao {
         
 	    if (listaDeUsuarios.size() != 0) return;
 	        
-		aluno.setSenha(new Criptografia().geraMd5(aluno.getSenha()));
 	    Transaction tx = session.beginTransaction();
 		session.save(aluno);
 		tx.commit();
@@ -104,7 +101,7 @@ public class AlunoDao {
 	 * @param idTurma
 	 */
 	public void inscreve(Aluno aluno, Turma turma) {
-		Transaction tx = session.beginTransaction();
+	    Transaction tx = session.beginTransaction();
 		aluno.getTurmas().add(turma);
 		turma.getAlunos().add(aluno);
 		session.update(aluno);

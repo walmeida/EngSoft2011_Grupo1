@@ -1,5 +1,7 @@
 package br.usp.ime.academicdevoir.controller;
 
+import java.util.Collection;
+
 import org.apache.commons.lang.StringUtils;
 
 import br.com.caelum.vraptor.Resource;
@@ -98,7 +100,8 @@ public class AlunosController {
 	 * @param novo 
 	 */
 	@Public
-	public void cadastra(final Aluno novo) {        
+	public void cadastra(final Aluno novo) {
+		novo.setSenha(new Criptografia().geraMd5(novo.getSenha()));
 	    alunoDao.salvaAluno(novo);
 	    result.redirectTo(AlunosController.class).lista();
 	}
@@ -163,6 +166,10 @@ public class AlunosController {
 	public void inscreve(Long idAluno, Long idTurma) {
 		Aluno aluno = alunoDao.carrega(idAluno);
 		Turma turma = turmaDao.carrega(idTurma);
+		
+		Collection<Turma> listaDeTurmas = aluno.getTurmas();
+	    if(listaDeTurmas.contains(turma)) return;
+		
 	    alunoDao.inscreve(aluno, turma);
 		result.redirectTo(AlunosController.class).listaTurmas(idAluno);
 	}

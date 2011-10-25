@@ -15,7 +15,6 @@ import java.sql.Connection;
 import br.com.caelum.vraptor.ioc.Component;
 import br.usp.ime.academicdevoir.entidade.Professor;
 import br.usp.ime.academicdevoir.entidade.Usuario;
-import br.usp.ime.academicdevoir.infra.Criptografia;
 
 @Component
 public class ProfessorDao {
@@ -44,7 +43,6 @@ public class ProfessorDao {
         
 	    if (listaDeUsuarios.size() != 0) return;
 	        
-		professor.setSenha(new Criptografia().geraMd5(professor.getSenha()));
 	    Transaction tx = session.beginTransaction();
 	    session.save(professor);
 		tx.commit();
