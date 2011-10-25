@@ -287,10 +287,11 @@ public class ListasDeExerciciosController {
 
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
 		List<Turma> turmas = listaDeExercicios.getTurmas();
-		turmas.add(turma);
-		listaDeExercicios.setTurmas(turmas);
-
-		dao.atualiza(listaDeExercicios);
+		if(!turmas.contains(turma)) {
+			turmas.add(turma);
+			listaDeExercicios.setTurmas(turmas);
+			dao.atualiza(listaDeExercicios);
+		}
 		result.redirectTo(this).verLista(listaDeExercicios.getId());
 	}
 
