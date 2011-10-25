@@ -65,6 +65,11 @@ font-family:"Times New Roman";
 	</form>
 	<a href="<c:url value='/login'/>">Sair</a>
 	<!-- a href="<c:url value='questoes'/>">Voltar</a><br/ -->	
-    <a href="<c:url value='/professores/home'/>">Página Principal</a><br/>
+    <c:if test ="${usuarioSession.usuario.privilegio == 'PROFESSOR' || usuarioSession.usuario.privilegio == 'ADMINISTRADOR'}">
+    	<a href="<c:url value='/professores/home'/>">Página Principal</a><br/>              
+    </c:if>
+    <c:if test ="${usuarioSession.usuario.privilegio == 'ALUNO' || usuarioSession.usuario.privilegio == 'MONITOR'}">
+    	<a href="<c:url value='/alunos/home'/>">Página Principal</a><br/>              
+ 	</c:if>
 </body>
 </html>
