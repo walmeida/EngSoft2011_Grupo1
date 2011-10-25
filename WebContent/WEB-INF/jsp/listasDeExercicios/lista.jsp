@@ -46,7 +46,14 @@ font-family:"Times New Roman";
 	<div>
 		<ul>
 			<c:forEach items="${listaDeListas }" var="lista">
-				<li><a href="<c:url value="/listasDeExercicios/${lista.id }"/>">${lista.propriedades.nome }</a></li>
+				<c:if test ="${usuarioSession.usuario.privilegio == 'PROFESSOR' || usuarioSession.usuario.privilegio == 'ADMINISTRADOR' || usuarioSession.usuario.privilegio == 'MONITOR'}">
+        			<li><a href="<c:url value="/listasDeExercicios/${lista.id }"/>">${lista.propriedades.nome }</a></li>              
+    			</c:if>
+                	
+                <c:if test ="${usuarioSession.usuario.privilegio == 'ALUNO'}">
+        			<li><a href="<c:url value="/listasDeExercicios/resolver/${lista.id }"/>">${lista.propriedades.nome }</a></li>
+ 				</c:if>
+				
 			</c:forEach>
 		</ul>
 	</div>	
