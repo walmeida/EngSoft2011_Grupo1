@@ -183,7 +183,7 @@ font-family:"Times New Roman";
 							<form id="formAlterarQuestao${status.index }" action="<c:url value="/listasDeExercicios/${listaDeExercicios.id }/questoes/${status.index }"/>" method="post" accept-charset="us-ascii">							
 								<fieldset class="fieldsetSemFormatacao">
 									<label for="idDaNovaQuestao">ID da nova Questão:</label>
-									<input type="text" value="${questaoDaLista.id} size="6" maxlength="6" name="idDaNovaQuestao" />
+									<input type="text" value="${questaoDaLista.questao.id}" size="6" maxlength="6" name="idDaNovaQuestao" />
 									<input type="text" value="${questaoDaLista.ordem}" size="6" maxlength="6" name="ordemDaQuestao" />
 									<button type="submit" name="_method" value="put">alterar</button>
 								</fieldset>
