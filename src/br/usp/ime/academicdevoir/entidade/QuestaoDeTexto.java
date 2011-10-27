@@ -38,8 +38,12 @@ public class QuestaoDeTexto extends Questao {
 		
 		buffer.append("<div><textarea id=\" ");
 		buffer.append(this.getId());
+		buffer.append("\" name=\"listaDeRespostas.respostas[].valor\"");
 		buffer.append("\" rows=\"10\" cols=\"50\"></textarea>");
 		buffer.append("</div>");
+		buffer.append("<input type=\"hidden\" name=\"listaDeIdsQuestoes[]\" value=\"");
+		buffer.append(this.getId());
+		buffer.append("\" />");
 				
 		htmlResult = buffer.toString();
 		

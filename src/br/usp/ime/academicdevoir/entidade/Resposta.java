@@ -2,52 +2,44 @@ package br.usp.ime.academicdevoir.entidade;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Embeddable
 public class Resposta {
+	
+	private String valor;
 
-	private Integer inteiro;
+	/**
+	 * @uml.property  name="questao"
+	 * @uml.associationEnd  
+	 */
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "questao_id")
+	@Fetch(FetchMode.JOIN)
+	@Cascade(CascadeType.SAVE_UPDATE)
+	private Questao questao;
 	
-	private Boolean booleano;
 	
-	private String texto;
-	
-	@Embedded
-	private NomeDeArquivo arquivo;
-	
-	public Object getValor() {
-		if (inteiro != null) return inteiro;
-		if (booleano != null) return booleano;
-		if (texto != null) return texto;
-		if (arquivo != null) return arquivo;
-		return null;
+	public Questao getQuestao() {
+		return questao;
 	}
 
-	public void setInteiro(Integer inteiro) {
-		this.inteiro = inteiro;
-		this.booleano = null;
-		this.texto = null;
-		this.arquivo = null;
+	public void setQuestao(Questao questao) {
+		this.questao = questao;
 	}
 
-	public void setBooleano(Boolean booleano) {
-		this.inteiro = null;
-		this.booleano = booleano;
-		this.texto = null;
-		this.arquivo = null;
+	public String getValor() {
+		return valor;
 	}
 
-	public void setTexto(String texto) {
-		this.inteiro = null;
-		this.booleano = null;
-		this.texto = texto;
-		this.arquivo = null;
-	}
-
-	public void setArquivo(NomeDeArquivo arquivo) {
-		this.inteiro = null;
-		this.booleano = null;
-		this.texto = null;
-		this.arquivo = arquivo;
+	public void setValor(String valor) {
+		this.valor = valor;
 	}	
 }

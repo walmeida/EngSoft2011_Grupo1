@@ -1,5 +1,7 @@
 package br.usp.ime.academicdevoir.controller;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import br.com.caelum.vraptor.Delete;
@@ -18,6 +20,8 @@ import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.ListaDeRespostas;
+import br.usp.ime.academicdevoir.entidade.Questao;
+import br.usp.ime.academicdevoir.entidade.QuestaoDaLista;
 import br.usp.ime.academicdevoir.entidade.Resposta;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
@@ -54,10 +58,21 @@ public class RespostasController {
 	 * @param listaDeExercicios
 	 */
 	@Post
-	@Path("/respostas/cadastra")
-	public void salvaRespostas(ListaDeRespostas listaDeRespostas, ListaDeExercicios listaDeExercicios) {
+	@Path("/respostas/{listaDeExercicios.id}/cadastra")
+	public void salvaRespostas(ListaDeRespostas listaDeRespostas, ListaDeExercicios listaDeExercicios, List<Long> listaDeIdsQuestoes) {
 		
-		if(listaDeRespostas == null) listaDeRespostas = new ListaDeRespostas();
+		listaDeExerciciosDao.recarrega(listaDeExercicios);
+		Iterator<Long> iListaDeIds = listaDeIdsQuestoes.iterator();
+		Resposta resposta;
+		Iterator<Resposta> iRespostas = listaDeRespostas.getRespostas().iterator();
+		List<Resposta> respostas = new ArrayList<Resposta>();
+		
+		while(iRespostas.hasNext() && iListaDeIds.hasNext()) {
+			resposta = iRespostas.next();
+			resposta.setQuestao(questaoDao.carrega(iListaDeIds.next()));
+			respostas.add(resposta);
+		}
+		listaDeRespostas.setRespostas(respostas);
 		
 		listaDeExerciciosDao.recarrega(listaDeExercicios);
 		listaDeRespostas.setAluno((Aluno) usuario.getUsuario());

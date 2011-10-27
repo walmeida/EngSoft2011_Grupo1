@@ -51,7 +51,7 @@ font-family:"Times New Roman";
 	<h3>Questões</h3>
 	
 	<div>
-		<form action="<c:url value="/respostas/cadastra"/>" method="post" accept-charset="us-ascii">
+		<form action="<c:url value="/respostas/${listaDeExercicios.id }/cadastra"/>" method="post" accept-charset="us-ascii">
 			<fieldset>
 				<c:forEach items="${listaDeExercicios.questoes}" var="questaoDaLista">
 						<div>
