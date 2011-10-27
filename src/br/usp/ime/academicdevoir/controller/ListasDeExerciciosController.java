@@ -240,8 +240,9 @@ public class ListasDeExerciciosController {
 	 * @param id
 	 * @param indice
 	 * @param idDaNovaQuestao
+	 * @param ordemDaQuestao
 	 */
-	public void alteraQuestao(Long id, Integer indice, Long idDaNovaQuestao) {
+	public void alteraQuestao(Long id, Integer indice, Long idDaNovaQuestao, Integer ordemDaQuestao) {
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
 		List<QuestaoDaLista> questoesDaLista = listaDeExercicios.getQuestoes();
 		QuestaoDaLista questaoDaLista = listaDeExercicios.getQuestoes().get(
@@ -249,6 +250,7 @@ public class ListasDeExerciciosController {
 		Questao questao = (Questao) questaoDao.carrega(idDaNovaQuestao);
 
 		questaoDaLista.setQuestao(questao);
+		questaoDaLista.setOrdem(ordemDaQuestao);
 		questoesDaLista.set(indice.intValue(), questaoDaLista);
 		listaDeExercicios.setQuestoes(questoesDaLista);
 
