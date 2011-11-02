@@ -79,6 +79,7 @@ public class RespostasController {
 		listaDeRespostas.setListaDeExercicios(listaDeExercicios);
 				
 		dao.salva(listaDeRespostas);
+		result.redirectTo(ListasDeExerciciosController.class).lista();
 	}
 	
 	/**

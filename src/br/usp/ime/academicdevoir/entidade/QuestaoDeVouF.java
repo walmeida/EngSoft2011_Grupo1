@@ -35,15 +35,20 @@ public class QuestaoDeVouF extends Questao {
 		
 	    buffer.append("<table>");
 		
-		buffer.append("<tr><td><input type=\"radio\" name=\"");
+		buffer.append("<tr><td><input type=\"radio\" name=\"listaDeRespostas.respostas[");
 		buffer.append(this.getId());
-		buffer.append("\" value=\"1\" />Verdadeiro </td>");
-		buffer.append("<td><input type=\"radio\" name=\"");
+		buffer.append("].valor\" value=\"1\" />Verdadeiro </td>");
+		buffer.append("<td><input type=\"radio\" name=\"listaDeRespostas.respostas[");
 		buffer.append(this.getId());
-		buffer.append("\" value=\"0\">Falso");
+		buffer.append("].valor\" value=\"0\">Falso");
 		buffer.append("</td></tr>");
+		
+		buffer.append("<input type=\"hidden\" name=\"listaDeIdsQuestoes[]\" value=\"");
+		buffer.append(this.getId());
+		buffer.append("\" />");
 				
 		buffer.append("</table>");
+		
 		
 		htmlResult = buffer.toString();
 		
