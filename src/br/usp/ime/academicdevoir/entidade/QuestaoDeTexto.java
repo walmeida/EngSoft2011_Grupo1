@@ -36,12 +36,12 @@ public class QuestaoDeTexto extends Questao {
 		String htmlResult = "";
 		StringBuffer buffer = new StringBuffer();
 		
-		buffer.append("<div><textarea id=\" ");
+		buffer.append("<div><textarea id=\"resposta");
 		buffer.append(this.getId());
-		buffer.append("\" name=\"listaDeRespostas.respostas[].valor\"");
-		buffer.append("\" rows=\"10\" cols=\"50\"></textarea>");
+		buffer.append("\" name=\"resposta.valor\"");
+		buffer.append(" rows=\"10\" cols=\"50\"></textarea>");
 		buffer.append("</div>");
-		buffer.append("<input type=\"hidden\" name=\"listaDeIdsQuestoes[]\" value=\"");
+		buffer.append("<input type=\"hidden\" name=\"idDaQuestao\" value=\"");
 		buffer.append(this.getId());
 		buffer.append("\" />");
 				
@@ -49,5 +49,4 @@ public class QuestaoDeTexto extends Questao {
 		
 		return htmlResult;
 	}
-	
 }

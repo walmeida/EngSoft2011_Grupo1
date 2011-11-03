@@ -12,14 +12,20 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
+import br.usp.ime.academicdevoir.dao.ListaDeRespostasDao;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
+import br.usp.ime.academicdevoir.entidade.Aluno;
+import br.usp.ime.academicdevoir.entidade.EstadoDaListaDeRespostas;
 import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
+import br.usp.ime.academicdevoir.entidade.ListaDeRespostas;
 import br.usp.ime.academicdevoir.entidade.Professor;
 import br.usp.ime.academicdevoir.entidade.PropriedadesDaListaDeExercicios;
+import br.usp.ime.academicdevoir.entidade.PropriedadesDaListaDeRespostas;
 import br.usp.ime.academicdevoir.entidade.Questao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDaLista;
+import br.usp.ime.academicdevoir.entidade.Resposta;
 import br.usp.ime.academicdevoir.entidade.Turma;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
@@ -39,6 +45,11 @@ public class ListasDeExerciciosController {
 	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private final ListaDeExerciciosDao dao;
+	/**
+	 * @uml.property name="listaDeRespostasDao"
+	 * @uml.associationEnd multiplicity="(1 1)"
+	 */
+	private final ListaDeRespostasDao listaDeRespostasDao;
 	/**
 	 * @uml.property name="questaoDao"
 	 * @uml.associationEnd multiplicity="(1 1)"
@@ -73,12 +84,12 @@ public class ListasDeExerciciosController {
 	 * @param validator
 	 */
 	public ListasDeExerciciosController(Result result,
-			ListaDeExerciciosDao dao, QuestaoDao questaoDao,
-			ProfessorDao professorDao, TurmaDao turmaDao, Validator validator,
-			UsuarioSession usuarioLogado) {
-		super();
+			ListaDeExerciciosDao dao, ListaDeRespostasDao listaDeRespostasDao,
+			QuestaoDao questaoDao, ProfessorDao professorDao,
+			TurmaDao turmaDao, Validator validator, UsuarioSession usuarioLogado) {
 		this.result = result;
 		this.dao = dao;
+		this.listaDeRespostasDao = listaDeRespostasDao;
 		this.questaoDao = questaoDao;
 		this.professorDao = professorDao;
 		this.turmaDao = turmaDao;
@@ -139,7 +150,7 @@ public class ListasDeExerciciosController {
 	}
 
 	@Get
-	@Path("/listasDeExercicios/resolver/{id}")
+	@Path(value = "/listasDeExercicios/resolver/{id}", priority=Path.HIGH)
 	/** 
 	 * Devolve uma lista de exercícios com o id fornecido.
 	 * 
@@ -148,10 +159,42 @@ public class ListasDeExerciciosController {
 	public void resolverLista(Long id) {
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
 
-		// result.include("prazo", listaDeExercicios.getPrazoDeEntrega());
+		Aluno aluno = (Aluno) usuarioLogado.getUsuario();
+		if (aluno != null)
+			System.out.println("\n\n***************\n***************\n***************\n***************\n***************\n***************\n***************");
+		ListaDeRespostas listaDeRespostas = listaDeRespostasDao.getRespostasDoAluno(id, aluno);
+		System.out.println("\n\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------");
+		
+		if (listaDeRespostas == null) {
+			PropriedadesDaListaDeRespostas propriedades = new PropriedadesDaListaDeRespostas();
+			propriedades.setEstado(EstadoDaListaDeRespostas.SALVA);
+			propriedades.setNumeroDeEnvios(0);
+			
+			listaDeRespostas = new ListaDeRespostas();
+			listaDeRespostas.setListaDeExercicios(listaDeExercicios);
+			listaDeRespostas.setAluno(aluno);
+		}
+		
+		else if (listaDeRespostas.getRespostas() != null)
+			result.redirectTo(this).alterarRespostas(listaDeRespostas);
+		
+		listaDeRespostas.setRespostas(new ArrayList<Resposta>());
+		listaDeRespostasDao.salva(listaDeRespostas);
+		
+		// result.include("prazo", listaDeExercicios.getPrazoDeEntreg a());
 		result.include("listaDeExercicios", listaDeExercicios);
+		result.include("numeroDeQuestoes", listaDeExercicios.getQuestoes().size());
+		result.include("listaDeRespostas", listaDeRespostas);
 	}
 
+	@Get
+	@Path("/respostas/{listaDerespostas.id}")
+	public void alterarRespostas(ListaDeRespostas listaDeRespostas) {
+		listaDeRespostasDao.recarrega(listaDeRespostas);
+		result.include("listaDeRespostas", listaDeRespostas);
+		result.include("listaDeExercicios",	listaDeRespostas.getListaDeExercicios());
+	}
+	
 	@Get
 	@Path("/listasDeExercicios/altera/{id}")
 	/** 
