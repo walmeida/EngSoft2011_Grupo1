@@ -10,21 +10,27 @@ import="java.sql.*" errorPage="" %>
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery.form.js"/>"></script>
 
 <script type="text/javascript" charset="utf-8">	
+	function redireciona() {
+		window.location.href =  '<c:url value="/listasDeExercicios/${listaDeExercicios.id }"/>';
+	}
+	
 	$(document).ready(function () {
 		var restantes = ${numeroDeQuestoes };
 		
-		$('.respostaForm').ajaxForm();
-		
-		$('.respostaForm').submit(function() {
-			restantes--;
-		});
+		<c:forEach begin="0" end="${numeroDeQuestoes - 1}" varStatus="iteracao">
+			$('#questao' + ${iteracao.index}).ajaxForm({
+				success: function() {
+					<c:choose>
+						<c:when test="${iteracao.index eq numeroDeQuestoes - 1}">redireciona();</c:when>
+						<c:otherwise>$('#questao' + ${iteracao.index + 1}).submit();</c:otherwise>
+					</c:choose>	
+		        }
+			});		
+		</c:forEach>
 		
 		$('#enviaRespostas').click(function() {
-			$(this).hide();
-			$('.respostaForm').each(function() {
-				$(this).submit();
-				if (restantes == 0) window.location.href =  '<c:url value="/listasDeExercicios/${listaDeExercicios.id }"/>';				 
-			});
+			$(this).attr("disabled", "disabled").empty().append("Enviando");
+			$('#questao0').submit();
 		});
 	});
 </script>
@@ -73,11 +79,11 @@ font-family:"Times New Roman";
 	
 	<div>
 		<c:forEach items="${listaDeExercicios.questoes}" var="questaoDaLista" varStatus="iteracao">
-			<form id="questao${iteracao.index }" class="respostaForm" action="<c:url value="/respostas/${listaDeRespostas.id }"/>" method="post" accept-charset="us-ascii" enctype="multipart/form-data">
+			<form id="questao${iteracao.index }" class="respostaForm" action="<c:url value="/respostas/${listaDeRespostas.id }/${iteracao.index }"/>" method="post" accept-charset="us-ascii" enctype="multipart/form-data">
 				<fieldset>
 						<p>${questaoDaLista.ordem} )
 								${questaoDaLista.questao.enunciado}</p>
-						${questaoDaLista.questao.renderAlteracao}
+						${questaoDaLista.questao.renderizacao}
 				</fieldset>
 			</form>
 		</c:forEach>

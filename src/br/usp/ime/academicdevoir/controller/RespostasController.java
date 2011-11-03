@@ -81,6 +81,7 @@ public class RespostasController {
 		listaDeRespostas.setRespostas(respostas);
 				
 		dao.salva(listaDeRespostas);
+		result.redirectTo(ListasDeExerciciosController.class).lista();
 	}
 	
 	/**
@@ -89,7 +90,7 @@ public class RespostasController {
 	 * @param listaDeExercicios
 	 */
 	@Post
-	@Path("/respostas/{id}")
+	@Path("/respostas/{id}/{indice}")
 	public void alteraResposta(Long id, Resposta resposta, Integer indice) {
 		ListaDeRespostas listaDeRespostas = dao.carrega(id);
 

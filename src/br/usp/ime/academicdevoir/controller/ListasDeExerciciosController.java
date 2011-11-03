@@ -150,7 +150,7 @@ public class ListasDeExerciciosController {
 	}
 
 	@Get
-	@Path(value = "/listasDeExercicios/resolver/{id}", priority=Path.HIGH)
+	@Path("/listasDeExercicios/resolver/{id}")
 	/** 
 	 * Devolve uma lista de exercícios com o id fornecido.
 	 * 
@@ -160,10 +160,7 @@ public class ListasDeExerciciosController {
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
 
 		Aluno aluno = (Aluno) usuarioLogado.getUsuario();
-		if (aluno != null)
-			System.out.println("\n\n***************\n***************\n***************\n***************\n***************\n***************\n***************");
 		ListaDeRespostas listaDeRespostas = listaDeRespostasDao.getRespostasDoAluno(id, aluno);
-		System.out.println("\n\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------");
 		
 		if (listaDeRespostas == null) {
 			PropriedadesDaListaDeRespostas propriedades = new PropriedadesDaListaDeRespostas();
@@ -188,7 +185,7 @@ public class ListasDeExerciciosController {
 	}
 
 	@Get
-	@Path("/respostas/{listaDerespostas.id}")
+	@Path("/listasDeExercicios/alterar/{listaDeRespostas.id}")
 	public void alterarRespostas(ListaDeRespostas listaDeRespostas) {
 		listaDeRespostasDao.recarrega(listaDeRespostas);
 		result.include("listaDeRespostas", listaDeRespostas);

@@ -10,20 +10,27 @@ import="java.sql.*" errorPage="" %>
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery.form.js"/>"></script>
 
 <script type="text/javascript" charset="utf-8">	
+	function redireciona() {
+		window.location.href =  '<c:url value="/listasDeExercicios/${listaDeExercicios.id }"/>';
+	}
+
 	$(document).ready(function () {
-		var numeroDeQuestoes = ${numeroDeQuestoes };
+		var restantes = ${numeroDeQuestoes };
 		
-		$('.respostaForm').ajaxForm();
+		<c:forEach begin="0" end="${numeroDeQuestoes - 1}" varStatus="iteracao">
+			$('#questao' + ${iteracao.index}).ajaxForm({
+				success: function() {
+					<c:choose>
+						<c:when test="${iteracao.index eq numeroDeQuestoes - 1}">redireciona();</c:when>
+						<c:otherwise>$('#questao' + ${iteracao.index + 1}).submit();</c:otherwise>
+					</c:choose>	
+		        }
+			});		
+		</c:forEach>
 		
 		$('#enviaRespostas').click(function() {
-			$(this).hide();
-			var i;
-			for (i = 0; i <= numeroDeQuestoes; i++) {
-				if (i == numeroDeQuestoes) {
-					window.location.href =  '<c:url value="/listasDeExercicios/${listaDeExercicios.id }"/>';
-				}
-				$('#questao' + i).submit();
-			};			
+			$(this).attr("disabled", "disabled").empty().append("Enviando");
+			$('#questao0').submit();
 		});
 	});
 </script>
