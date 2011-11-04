@@ -1,5 +1,7 @@
 package br.usp.ime.academicdevoir.entidade;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -41,9 +43,9 @@ public class ListaDeRespostas {
 	
 	@ElementCollection
 	@CollectionTable(name = "notasDaLista")
-	private List<Integer> notas;
+	private List<Double> notas;
 	
-	private Integer notaFinal;
+	private Double notaFinal;
 	
 	@Embedded
 	private PropriedadesDaListaDeRespostas propriedades;
@@ -80,11 +82,11 @@ public class ListaDeRespostas {
 		this.respostas = respostas;
 	}
 
-	public List<Integer> getNotas() {
+	public List<Double> getNotas() {
 		return notas;
 	}
 
-	public void setNotas(List<Integer> notas) {
+	public void setNotas(List<Double> notas) {
 		this.notas = notas;
 	}
 
@@ -96,15 +98,27 @@ public class ListaDeRespostas {
 		this.propriedades = propriedades;
 	}
 
-	public Integer getNotaFinal() {
+	public Double getNotaFinal() {
 		return notaFinal;
 	}
 
-	public void setNotaFinal() {
-		Integer notaFinal = new Integer(0);
-		for(Integer nota : notas) {
-			notaFinal += nota;
+	public void setNotaFinal(List<Integer> pesos) {
+		Iterator<Double> iNotas = notas.iterator();
+		Iterator<Integer> iPesos = pesos.iterator();
+		Double nota;
+		Double notaFinal = new Double(0.0);
+		Integer peso;
+		Integer somaDosPesos = new Integer(0); 
+		
+		while (iNotas.hasNext()) {
+			nota = iNotas.next();
+			peso = iPesos.next();
+			if (nota != null && peso != null) {
+				notaFinal += nota*peso;
+				somaDosPesos += peso;
+			}
 		}
+		notaFinal /= somaDosPesos;
 		this.notaFinal = notaFinal;
 	}
 }

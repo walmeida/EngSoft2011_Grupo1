@@ -5,12 +5,14 @@ import java.util.Iterator;
 import java.util.List;
 
 import br.com.caelum.vraptor.Delete;
+import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
+import br.com.caelum.vraptor.interceptor.multipart.UploadedFile;
 import br.usp.ime.academicdevoir.arquivos.Arquivos;
 import br.usp.ime.academicdevoir.dao.AlunoDao;
 import br.usp.ime.academicdevoir.dao.DisciplinaDao;
@@ -23,6 +25,7 @@ import br.usp.ime.academicdevoir.entidade.ListaDeRespostas;
 import br.usp.ime.academicdevoir.entidade.Questao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDaLista;
 import br.usp.ime.academicdevoir.entidade.Resposta;
+import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 @Resource
@@ -53,51 +56,50 @@ public class RespostasController {
 	}
 
 	/**
-	 * Salva uma lista de respostas (enviada pelo aluno) referente a lista de exercícios fornecida no banco de dados.
+	 * Salva uma resposta referente na lista de respostas fornecida.
 	 * @param listaDeRespostas
 	 * @param listaDeExercicios
 	 */
 	@Post
-	@Path("/respostas/{listaDeExercicios.id}/cadastra")
-	public void salvaRespostas(ListaDeRespostas listaDeRespostas, ListaDeExercicios listaDeExercicios, List<Long> listaDeIdsQuestoes) {
+	@Path("/respostas/{listaDeRespostas.id}/cadastra")
+	public void salvaResposta(ListaDeRespostas listaDeRespostas, Resposta resposta, Long idDaQuestao, UploadedFile arquivo) {
 		
-		listaDeExerciciosDao.recarrega(listaDeExercicios);
-		Iterator<Long> iListaDeIds = listaDeIdsQuestoes.iterator();
-		Resposta resposta;
-		Iterator<Resposta> iRespostas = listaDeRespostas.getRespostas().iterator();
-		List<Resposta> respostas = new ArrayList<Resposta>();
+		dao.recarrega(listaDeRespostas);
+		List<Resposta> respostas = listaDeRespostas.getRespostas();
 		
-		while(iRespostas.hasNext() && iListaDeIds.hasNext()) {
-			resposta = iRespostas.next();
-			resposta.setQuestao(questaoDao.carrega(iListaDeIds.next()));
-			respostas.add(resposta);
+		Questao questao = questaoDao.carrega(idDaQuestao);		
+				
+		if (questao.getTipo() == TipoDeQuestao.SUBMISSAODEARQUIVO) {
+			resposta = new Resposta();
+			arquivos.salva(arquivo, idDaQuestao);
+			resposta.setValor(arquivo.getFileName());
 		}
-		listaDeRespostas.setRespostas(respostas);
 		
-		listaDeExerciciosDao.recarrega(listaDeExercicios);
-		listaDeRespostas.setAluno((Aluno) usuario.getUsuario());
-		listaDeRespostas.setListaDeExercicios(listaDeExercicios);
+		resposta.setQuestao(questao);
+		respostas.add(resposta);
+		
+		listaDeRespostas.setRespostas(respostas);
 				
 		dao.salva(listaDeRespostas);
+		result.redirectTo(ListasDeExerciciosController.class).lista();
 	}
 	
 	/**
-	 * Altera respostas da lista fornecida.
+	 * Altera uma resposta da lista fornecida.
 	 * @param id
 	 * @param listaDeExercicios
 	 */
-	@Put
-	@Path("/respostas/{id}")
-	public void alteraRespostas(Long id, ListaDeExercicios listaDeExercicios, List<Resposta> respostas) {
+	@Post
+	@Path("/respostas/{id}/{indice}")
+	public void alteraResposta(Long id, Resposta resposta, Integer indice) {
 		ListaDeRespostas listaDeRespostas = dao.carrega(id);
-		listaDeExerciciosDao.recarrega(listaDeExercicios);
 
+		List<Resposta> respostas = listaDeRespostas.getRespostas();
+		respostas.set(indice, resposta);
+		
 		listaDeRespostas.setRespostas(respostas);
-		listaDeRespostas.setAluno((Aluno) usuario.getUsuario());
-		listaDeRespostas.setListaDeExercicios(listaDeExercicios);
 		
 		dao.atualiza(listaDeRespostas);
-		/*result.redirectTo;*/
 	}
 	
 	/**

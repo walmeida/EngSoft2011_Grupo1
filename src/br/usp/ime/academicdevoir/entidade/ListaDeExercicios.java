@@ -1,5 +1,6 @@
 package br.usp.ime.academicdevoir.entidade;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -106,5 +107,12 @@ public class ListaDeExercicios {
 
 	public void setPropriedades(PropriedadesDaListaDeExercicios propriedades) {
 		this.propriedades = propriedades;
+	}
+	
+	public void getPesos() {
+		List<Integer> pesos = new ArrayList<Integer>();
+		for(QuestaoDaLista questao : questoes) {
+			pesos.add(questao.getPeso());
+		}
 	}
 }

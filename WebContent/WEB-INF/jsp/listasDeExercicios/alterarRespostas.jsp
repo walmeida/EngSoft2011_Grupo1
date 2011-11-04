@@ -13,7 +13,7 @@ import="java.sql.*" errorPage="" %>
 	function redireciona() {
 		window.location.href =  '<c:url value="/listasDeExercicios/${listaDeExercicios.id }"/>';
 	}
-
+	
 	$(document).ready(function () {
 		var restantes = ${numeroDeQuestoes };
 		
@@ -79,7 +79,7 @@ font-family:"Times New Roman";
 	
 	<div>
 		<c:forEach items="${listaDeExercicios.questoes}" var="questaoDaLista" varStatus="iteracao">
-			<form id="questao${iteracao.index }" class="respostaForm" action="<c:url value="/respostas/${listaDeRespostas.id }/cadastra"/>" method="post" accept-charset="us-ascii" enctype="multipart/form-data">
+			<form id="questao${iteracao.index }" class="respostaForm" action="<c:url value="/respostas/${listaDeRespostas.id }/${iteracao.index }"/>" method="post" accept-charset="us-ascii" enctype="multipart/form-data">
 				<fieldset>
 						<p>${questaoDaLista.ordem} )
 								${questaoDaLista.questao.enunciado}</p>

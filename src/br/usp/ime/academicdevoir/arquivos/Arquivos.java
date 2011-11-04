@@ -11,28 +11,34 @@ import org.apache.commons.io.IOUtils;
 import br.com.caelum.vraptor.interceptor.download.FileDownload;
 import br.com.caelum.vraptor.interceptor.multipart.UploadedFile;
 import br.com.caelum.vraptor.ioc.Component;
+import br.com.caelum.vraptor.ioc.RequestScoped;
+import br.com.caelum.vraptor.ioc.SessionScoped;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 @Component
+@SessionScoped
 public class Arquivos {
 
 	private File pastaDeArquivos;
+	private UsuarioSession usuarioSession;
 
 	public Arquivos(ServletContext context, UsuarioSession usuarioSession) {
-		String caminho = context.getRealPath("WEB-INF//arquivos//" + usuarioSession.getUsuario().getLogin());
+		String caminho = context.getRealPath("WEB-INF//arquivos//");
 		pastaDeArquivos = new File(caminho);
-		pastaDeArquivos.mkdirs();		
+		pastaDeArquivos.mkdirs();
+		
+		this.usuarioSession = usuarioSession;
 	}
 
 	public void salva(UploadedFile arquivo, Long idDaQuestao) {
 		
-		File pastaDaQuestao = new File(pastaDeArquivos, "//" + idDaQuestao);
+		File pastaDaQuestao = new File(pastaDeArquivos, "//" + usuarioSession.getUsuario().getLogin() + "//" + idDaQuestao);
 		
 		if (!pastaDaQuestao.mkdirs()) {
 			for (File arq : pastaDeArquivos.listFiles()) {
 				arq.delete();
 			}
-		}
+		}		
 		
 		File destino = new File(pastaDaQuestao, arquivo.getFileName());
 

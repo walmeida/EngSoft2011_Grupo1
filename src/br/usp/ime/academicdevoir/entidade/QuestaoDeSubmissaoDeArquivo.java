@@ -8,5 +8,22 @@ import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 public class QuestaoDeSubmissaoDeArquivo extends Questao {
 	public TipoDeQuestao getTipo() {
 		return TipoDeQuestao.SUBMISSAODEARQUIVO;
-	}	
+	}
+	
+	public String getRenderizacao(){
+		String htmlResult = "";
+		StringBuffer buffer = new StringBuffer();
+		
+		buffer.append("<div><input type=\"file\" id=\"resposta");
+		buffer.append(this.getId());
+		buffer.append("\" name=\"arquivo\" />");
+		buffer.append("</div>");
+		buffer.append("<input type=\"hidden\" name=\"idDaQuestao\" value=\"");
+		buffer.append(this.getId());
+		buffer.append("\" />");
+				
+		htmlResult = buffer.toString();
+		
+		return htmlResult;
+	}
 }
