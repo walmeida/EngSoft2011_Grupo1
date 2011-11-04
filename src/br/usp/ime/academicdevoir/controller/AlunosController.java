@@ -47,7 +47,6 @@ public class AlunosController {
 	 * @uml.property  name="usuarioSession"
 	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
-	private UsuarioSession usuarioSession;
 
 	/**
 	 * @param result para interação com o jsp do aluno.
