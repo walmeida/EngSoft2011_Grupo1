@@ -63,6 +63,7 @@ public class AlunosControllerTeste {
     public void testeCadastra() {
         Aluno novo = new Aluno();
         novo.setId(0L);
+        novo.setSenha("senha");
         alunoC.cadastra(novo);
         verify(alunoDao).salvaAluno(novo);
         verify(result).redirectTo(AlunosController.class);

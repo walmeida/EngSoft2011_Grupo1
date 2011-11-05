@@ -78,6 +78,7 @@ public class TurmasControllerTeste {
 		
 		turma = new Turma();
 		turma.setId(0L);
+		turma.setProfessor(new Professor());
 		
 		turmas = new ArrayList<Turma>();
 		disciplinas = new ArrayList<Disciplina>();
@@ -126,7 +127,7 @@ public class TurmasControllerTeste {
 	public void testeCadastra() {
 		turmasController.cadastra(turma);
 		
-		verify(result).redirectTo(TurmasController.class);
+		verify(result).redirectTo(ProfessoresController.class);
 	}
 	
 	@Test
