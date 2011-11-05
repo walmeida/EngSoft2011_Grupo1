@@ -58,6 +58,7 @@ public class TurmasControllerTeste {
 	/**
 	 * @uml.property  name="disciplinas"
 	 */
+	@SuppressWarnings("unused")
 	private List<Disciplina> disciplinas;
 	/**
 	 * @uml.property  name="turmas"

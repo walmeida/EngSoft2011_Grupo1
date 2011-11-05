@@ -1,35 +1,26 @@
 package br.usp.ime.academicdevoir.controller;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.when;
+
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 import org.junit.Before;
-import org.junit.Test;
 
 import br.com.caelum.vraptor.util.test.JSR303MockValidator;
 import br.com.caelum.vraptor.util.test.MockResult;
-import br.com.caelum.vraptor.validator.ValidationException;
 import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
 import br.usp.ime.academicdevoir.dao.ListaDeRespostasDao;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
-import br.usp.ime.academicdevoir.entidade.QuestaoDaLista;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
 import br.usp.ime.academicdevoir.entidade.Turma;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
-
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.any;
-
-import static org.junit.Assert.*;
 
 public class ListasDeExerciciosControllerTeste {
 
@@ -37,6 +28,7 @@ public class ListasDeExerciciosControllerTeste {
 	 * @uml.property  name="listasDeExerciciosController"
 	 * @uml.associationEnd  
 	 */
+	@SuppressWarnings("unused")
 	private ListasDeExerciciosController listasDeExerciciosController;
 	/**
 	 * @uml.property  name="result"
@@ -82,7 +74,7 @@ public class ListasDeExerciciosControllerTeste {
 	 * @uml.property  name="prazoProvisorio"
 	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="java.lang.Integer"
 	 */
-	private Calendar prazoProvisorio = Calendar.getInstance();
+	//private Calendar prazoProvisorio = Calendar.getInstance();
 	/**
 	 * @uml.property  name="questao"
 	 * @uml.associationEnd  

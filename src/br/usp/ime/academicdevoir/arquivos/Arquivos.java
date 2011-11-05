@@ -11,7 +11,6 @@ import org.apache.commons.io.IOUtils;
 import br.com.caelum.vraptor.interceptor.download.FileDownload;
 import br.com.caelum.vraptor.interceptor.multipart.UploadedFile;
 import br.com.caelum.vraptor.ioc.Component;
-import br.com.caelum.vraptor.ioc.RequestScoped;
 import br.com.caelum.vraptor.ioc.SessionScoped;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
