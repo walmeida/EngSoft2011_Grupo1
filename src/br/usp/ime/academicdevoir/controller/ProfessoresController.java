@@ -106,7 +106,7 @@ public class ProfessoresController {
 		if (!novoEmail.equals("") || !StringUtils.isBlank(novoEmail)) p.setEmail(novoEmail);
 		if (!novaSenha.equals("") || !StringUtils.isBlank(novaSenha)) p.setSenha(new Criptografia().geraMd5(novaSenha));
 		professorDao.atualizaProfessor(p);
-		result.redirectTo(ProfessoresController.class).lista();
+		result.redirectTo(ProfessoresController.class).home();
 	}
 
 	/**
