@@ -2,7 +2,6 @@ package br.usp.ime.academicdevoir.dao;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -11,7 +10,7 @@ import br.com.caelum.vraptor.ioc.Component;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.ListaDeRespostas;
-import br.usp.ime.academicdevoir.entidade.ListaDeRespostas;
+
 
 @Component
 public class ListaDeRespostasDao {

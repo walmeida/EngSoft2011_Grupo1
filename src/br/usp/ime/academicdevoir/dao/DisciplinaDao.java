@@ -1,15 +1,11 @@
 package br.usp.ime.academicdevoir.dao;
 import java.util.List;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import br.com.caelum.vraptor.ioc.Component;
-import br.com.caelum.vraptor.ioc.SessionScoped;
 import br.usp.ime.academicdevoir.entidade.Disciplina;
-import br.usp.ime.academicdevoir.entidade.Questao;
-import br.usp.ime.academicdevoir.entidade.Turma;
 
 @Component
 public class DisciplinaDao {

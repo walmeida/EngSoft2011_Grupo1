@@ -13,6 +13,7 @@ import br.com.caelum.vraptor.util.test.MockResult;
 import br.usp.ime.academicdevoir.controller.ProfessoresController;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
 import br.usp.ime.academicdevoir.entidade.Professor;
+import br.usp.ime.academicdevoir.infra.Criptografia;
 
 public class ProfessoresControllerTeste {
     /**
@@ -42,6 +43,7 @@ public class ProfessoresControllerTeste {
     public void testeCadastra() {
         Professor novo = new Professor();
         novo.setId(0L);
+        novo.setSenha("senha");
         profC.cadastra(novo);
         verify(professordao).salvaProfessor(novo);
         verify(result).redirectTo(ProfessoresController.class);
@@ -55,7 +57,7 @@ public class ProfessoresControllerTeste {
         profC.altera(0L, "novo nome", "novo email", "nova senha");
         assertEquals(a.getNome(), "novo nome");
         assertEquals(a.getEmail(), "novo email");
-        assertEquals(a.getSenha(), "nova senha");
+        assertEquals(a.getSenha(), new Criptografia().geraMd5("nova senha"));
         verify(professordao).atualizaProfessor(a);
         verify(result).redirectTo(ProfessoresController.class);
     }

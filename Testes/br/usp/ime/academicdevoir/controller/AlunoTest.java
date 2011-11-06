@@ -2,14 +2,12 @@ package br.usp.ime.academicdevoir.controller;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import org.hibernate.Transaction;
 import org.junit.Test;
 
-import br.usp.ime.academicdevoir.dao.AlunoDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.Professor;
 import br.usp.ime.academicdevoir.entidade.Turma;

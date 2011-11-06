@@ -1,9 +1,10 @@
 package br.usp.ime.academicdevoir.controller;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.spy;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,9 +15,6 @@ import br.usp.ime.academicdevoir.dao.DisciplinaDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.infra.Criptografia;
-import br.usp.ime.academicdevoir.infra.UsuarioSession;
-
-import static org.junit.Assert.assertEquals;
 
 public class AlunosControllerTeste {
     /**
@@ -48,7 +46,7 @@ public class AlunosControllerTeste {
 	 * @uml.property  name="usuarioSession"
 	 * @uml.associationEnd  readOnly="true"
 	 */
-    private UsuarioSession usuarioSession;
+    //private UsuarioSession usuarioSession;
     
     @Before
     public void SetUp() {
@@ -63,6 +61,7 @@ public class AlunosControllerTeste {
     public void testeCadastra() {
         Aluno novo = new Aluno();
         novo.setId(0L);
+        novo.setSenha("senha");
         alunoC.cadastra(novo);
         verify(alunoDao).salvaAluno(novo);
         verify(result).redirectTo(AlunosController.class);
