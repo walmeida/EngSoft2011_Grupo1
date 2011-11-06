@@ -1,6 +1,7 @@
 package br.usp.ime.academicdevoir.controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import br.com.caelum.vraptor.Delete;
@@ -140,12 +141,14 @@ public class ListasDeExerciciosController {
 	 * */
 	public void verLista(Long id) {
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
-		Professor professor = professorDao.carrega(usuarioLogado.getUsuario().getId());
-		
+		Professor professor = professorDao.carrega(usuarioLogado.getUsuario()
+				.getId());
+
 		result.include("listaDeExercicios", listaDeExercicios);
 		result.include("prazo", listaDeExercicios.getPropriedades()
 				.getPrazoDeEntregaFormatado());
-		result.include("prazo", listaDeExercicios.getPropriedades().getPrazoDeEntregaFormatado());		
+		result.include("prazo", listaDeExercicios.getPropriedades()
+				.getPrazoDeEntregaFormatado());
 		result.include("turmasDoProfessor", professor.getTurmas());
 	}
 
@@ -160,38 +163,56 @@ public class ListasDeExerciciosController {
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
 
 		Aluno aluno = (Aluno) usuarioLogado.getUsuario();
-		ListaDeRespostas listaDeRespostas = listaDeRespostasDao.getRespostasDoAluno(id, aluno);
-		
+		ListaDeRespostas listaDeRespostas = listaDeRespostasDao
+				.getRespostasDoAluno(id, aluno);
+
 		if (listaDeRespostas == null) {
 			PropriedadesDaListaDeRespostas propriedades = new PropriedadesDaListaDeRespostas();
 			propriedades.setEstado(EstadoDaListaDeRespostas.SALVA);
 			propriedades.setNumeroDeEnvios(0);
-			
+
 			listaDeRespostas = new ListaDeRespostas();
 			listaDeRespostas.setListaDeExercicios(listaDeExercicios);
 			listaDeRespostas.setAluno(aluno);
 		}
-		
-		else if (listaDeRespostas.getRespostas() != null)
+
+		else if (listaDeRespostas.getRespostas() != null
+				&& listaDeRespostas.getRespostas().size() > 0) {
 			result.redirectTo(this).alterarRespostas(listaDeRespostas);
-		
+			return;
+		}
+
 		listaDeRespostas.setRespostas(new ArrayList<Resposta>());
 		listaDeRespostasDao.salva(listaDeRespostas);
-		
-		// result.include("prazo", listaDeExercicios.getPrazoDeEntreg a());
+
+		result.include("prazo", listaDeExercicios.getPropriedades()
+				.getPrazoDeEntregaFormatado());
 		result.include("listaDeExercicios", listaDeExercicios);
-		result.include("numeroDeQuestoes", listaDeExercicios.getQuestoes().size());
+		result.include("numeroDeQuestoes", listaDeExercicios.getQuestoes()
+				.size());
 		result.include("listaDeRespostas", listaDeRespostas);
 	}
 
 	@Get
-	@Path("/listasDeExercicios/alterar/{listaDeRespostas.id}")
+	@Path("/respostas/alterar/{listaDeRespostas.id}")
 	public void alterarRespostas(ListaDeRespostas listaDeRespostas) {
-		listaDeRespostasDao.recarrega(listaDeRespostas);
+		listaDeRespostas = listaDeRespostasDao
+				.carrega(listaDeRespostas.getId());
+		ListaDeExercicios listaDeExercicios = listaDeRespostas
+				.getListaDeExercicios();
+		List<String> renders = new ArrayList<String>();
+		List<Resposta> respostas = listaDeRespostas.getRespostas();
+		for (Resposta resposta : respostas) {
+			renders.add(resposta.getQuestao().getRenderAlteracao(resposta));
+		}
+
+		result.include("renderizacao", renders);
 		result.include("listaDeRespostas", listaDeRespostas);
-		result.include("listaDeExercicios",	listaDeRespostas.getListaDeExercicios());
+		result.include("listaDeExercicios", listaDeExercicios);
+		result.include("numeroDeQuestoes", listaDeExercicios.getQuestoes()
+				.size());
 	}
-	
+
 	@Get
 	@Path("/listasDeExercicios/altera/{id}")
 	/** 
@@ -282,7 +303,8 @@ public class ListasDeExerciciosController {
 	 * @param idDaNovaQuestao
 	 * @param ordemDaQuestao
 	 */
-	public void alteraQuestao(Long id, Integer indice, Long idDaNovaQuestao, Integer ordemDaQuestao) {
+	public void alteraQuestao(Long id, Integer indice, Long idDaNovaQuestao,
+			Integer ordemDaQuestao) {
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
 		List<QuestaoDaLista> questoesDaLista = listaDeExercicios.getQuestoes();
 		QuestaoDaLista questaoDaLista = listaDeExercicios.getQuestoes().get(
@@ -329,7 +351,7 @@ public class ListasDeExerciciosController {
 
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
 		List<Turma> turmas = listaDeExercicios.getTurmas();
-		if(!turmas.contains(turma)) {
+		if (!turmas.contains(turma)) {
 			turmas.add(turma);
 			listaDeExercicios.setTurmas(turmas);
 			dao.atualiza(listaDeExercicios);

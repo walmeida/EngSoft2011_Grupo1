@@ -60,7 +60,7 @@ public abstract class Questao {
 
 	public abstract TipoDeQuestao getTipo();
 	
-	public String getRenderizacao(){
-		return null;
-	}
+	public abstract String getRenderizacao();
+	
+	public abstract String getRenderAlteracao(Resposta resposta);	
 }
