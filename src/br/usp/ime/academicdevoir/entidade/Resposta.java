@@ -15,6 +15,8 @@ import org.hibernate.annotations.FetchMode;
 public class Resposta {
 	
 	private String valor;
+	
+	private Double nota;
 
 	/**
 	 * @uml.property  name="questao"
@@ -41,5 +43,13 @@ public class Resposta {
 
 	public void setValor(String valor) {
 		this.valor = valor;
+	}
+
+	public Double getNota() {
+		return nota;
+	}
+
+	public void setNota(Double nota) {
+		this.nota = nota;
 	}	
 }

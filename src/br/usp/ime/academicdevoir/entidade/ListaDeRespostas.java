@@ -1,6 +1,5 @@
 package br.usp.ime.academicdevoir.entidade;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -41,10 +40,6 @@ public class ListaDeRespostas {
 	@CollectionTable(name = "respostasDaLista")
 	private List<Resposta> respostas;
 	
-	@ElementCollection
-	@CollectionTable(name = "notasDaLista")
-	private List<Double> notas;
-	
 	private Double notaFinal;
 	
 	@Embedded
@@ -82,14 +77,6 @@ public class ListaDeRespostas {
 		this.respostas = respostas;
 	}
 
-	public List<Double> getNotas() {
-		return notas;
-	}
-
-	public void setNotas(List<Double> notas) {
-		this.notas = notas;
-	}
-
 	public PropriedadesDaListaDeRespostas getPropriedades() {
 		return propriedades;
 	}
@@ -103,15 +90,15 @@ public class ListaDeRespostas {
 	}
 
 	public void setNotaFinal(List<Integer> pesos) {
-		Iterator<Double> iNotas = notas.iterator();
+		Iterator<Resposta> iRespostas = respostas.iterator();
 		Iterator<Integer> iPesos = pesos.iterator();
 		Double nota;
 		Double notaFinal = new Double(0.0);
 		Integer peso;
 		Integer somaDosPesos = new Integer(0); 
 		
-		while (iNotas.hasNext()) {
-			nota = iNotas.next();
+		while (iRespostas.hasNext()) {
+			nota = iRespostas.next().getNota();
 			peso = iPesos.next();
 			if (nota != null && peso != null) {
 				notaFinal += nota*peso;
@@ -120,5 +107,17 @@ public class ListaDeRespostas {
 		}
 		notaFinal /= somaDosPesos;
 		this.notaFinal = notaFinal;
+	}
+
+	public void adiciona(Resposta novaResposta) {
+		Long id = novaResposta.getQuestao().getId();
+		
+		for (Resposta resposta : respostas) {
+			if (resposta.getQuestao().getId() == id) {
+				respostas.remove(resposta);
+				break;
+			}
+		}
+		respostas.add(novaResposta);
 	}
 }
