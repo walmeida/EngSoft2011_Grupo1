@@ -166,9 +166,8 @@ public class AlunosController {
 		Turma turma = turmaDao.carrega(idTurma);
 		
 		Collection<Turma> listaDeTurmas = aluno.getTurmas();
-	    if(listaDeTurmas.contains(turma)) return;
-		
-	    alunoDao.inscreve(aluno, turma);
+	    if(!listaDeTurmas.contains(turma)) 
+	    	alunoDao.inscreve(aluno, turma);
 		result.redirectTo(AlunosController.class).listaTurmas(idAluno);
 	}
 	
