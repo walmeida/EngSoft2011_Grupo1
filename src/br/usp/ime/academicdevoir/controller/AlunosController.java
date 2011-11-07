@@ -11,8 +11,11 @@ import br.usp.ime.academicdevoir.dao.DisciplinaDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.Turma;
+import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Public;
 import br.usp.ime.academicdevoir.infra.Criptografia;
+import br.usp.ime.academicdevoir.infra.Privilegio;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 @Resource
 /**
@@ -42,23 +45,25 @@ public class AlunosController {
 	 */
 	private TurmaDao turmaDao;
 	/**
-	 * TODO Iremos utilizar um usuarioSession aqui?
 	 * @uml.property  name="usuarioSession"
 	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
+	private UsuarioSession usuarioSession;
 
 	/**
 	 * @param result para interação com o jsp do aluno.
 	 * @param alunoDao para interação com o banco de dados
 	 * @param disciplinaDao para interação com o banco de dados
 	 * @param turmaDao para interação com o banco de dados
+	 * @param usuarioSession para controle de permissões
 	 */
 	public AlunosController(Result result, AlunoDao alunoDao, 
-	        DisciplinaDao disciplinaDao, TurmaDao turmaDao) {
+	        DisciplinaDao disciplinaDao, TurmaDao turmaDao, UsuarioSession usuarioSession) {
 		this.result = result;
 		this.alunoDao = alunoDao;
 		this.disciplinaDao = disciplinaDao;
 		this.turmaDao = turmaDao;
+		this.usuarioSession = usuarioSession;
 	}
 
 	/**
@@ -111,6 +116,10 @@ public class AlunosController {
 	 * @param id   identificador do aluno
 	 */
 	public void alteracao(Long id) {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.PROFESSOR || u.getId().longValue() == id))
+			result.redirectTo(LoginController.class).acessoNegado();
+		
 		result.include("aluno", alunoDao.carrega(id));
 	}
 	
@@ -122,7 +131,12 @@ public class AlunosController {
 	 */
 	public void altera(Long id, String novoNome, String novoEmail,
 			String novaSenha) {
-		Aluno a = alunoDao.carrega(id);
+		Aluno a;
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.PROFESSOR || u.getId().longValue() == id))
+			result.redirectTo(LoginController.class).acessoNegado();
+		
+		a = alunoDao.carrega(id);
 		if (!novoNome.equals("") || !StringUtils.isBlank(novoNome)) a.setNome(novoNome);
 		if (!novoEmail.equals("") || !StringUtils.isBlank(novoEmail)) a.setEmail(novoEmail);
 		if (!novaSenha.equals("") || !StringUtils.isBlank(novaSenha)) a.setSenha(new Criptografia().geraMd5(novaSenha));
@@ -143,7 +157,12 @@ public class AlunosController {
 	 * @param id
 	 */
 	public void remove(final Long id) {
-		Aluno aluno = alunoDao.carrega(id);
+		Aluno aluno;
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.PROFESSOR || u.getId().longValue() == id))
+			result.redirectTo(LoginController.class).acessoNegado();
+		
+		aluno = alunoDao.carrega(id);
 		alunoDao.removeAluno(aluno);
 		result.redirectTo(AlunosController.class).lista();
 	}
@@ -162,9 +181,14 @@ public class AlunosController {
 	 * @param idAluno
 	 */
 	public void inscreve(Long idAluno, Long idTurma) {
-		Aluno aluno = alunoDao.carrega(idAluno);
-		Turma turma = turmaDao.carrega(idTurma);
-		
+		Aluno aluno;
+		Turma turma;
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.PROFESSOR || u.getId().longValue() == idAluno))
+			result.redirectTo(LoginController.class).acessoNegado();
+
+		aluno = alunoDao.carrega(idAluno);
+		turma = turmaDao.carrega(idTurma);
 		Collection<Turma> listaDeTurmas = aluno.getTurmas();
 	    if(!listaDeTurmas.contains(turma)) 
 	    	alunoDao.inscreve(aluno, turma);
@@ -177,9 +201,15 @@ public class AlunosController {
 	 * @param idTurma id da turma
 	 */
     public void removeMatricula(Long idAluno, Long idTurma) {
-        Aluno aluno = alunoDao.carrega(idAluno);
-        Turma turma = turmaDao.carrega(idTurma);
-        alunoDao.removeMatricula(aluno, turma);
+        Aluno aluno;
+        Turma turma;
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.PROFESSOR || u.getId().longValue() == idAluno))
+			result.redirectTo(LoginController.class).acessoNegado();
+		
+		aluno = alunoDao.carrega(idAluno);
+		turma = turmaDao.carrega(idTurma);
+		alunoDao.removeMatricula(aluno, turma);
         result.redirectTo(AlunosController.class).listaTurmas(idAluno);
     }
 }

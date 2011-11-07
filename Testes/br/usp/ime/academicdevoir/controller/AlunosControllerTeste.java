@@ -15,6 +15,7 @@ import br.usp.ime.academicdevoir.dao.DisciplinaDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.infra.Criptografia;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 public class AlunosControllerTeste {
     /**
@@ -46,7 +47,7 @@ public class AlunosControllerTeste {
 	 * @uml.property  name="usuarioSession"
 	 * @uml.associationEnd  readOnly="true"
 	 */
-    //private UsuarioSession usuarioSession;
+    private UsuarioSession usuarioSession;
     
     @Before
     public void SetUp() {
@@ -54,7 +55,7 @@ public class AlunosControllerTeste {
         alunoDao = mock(AlunoDao.class);
         disciplinaDao = mock(DisciplinaDao.class);
         turmaDao = mock(TurmaDao.class);
-        alunoC = new AlunosController(result, alunoDao, disciplinaDao, turmaDao);
+        alunoC = new AlunosController(result, alunoDao, disciplinaDao, turmaDao, usuarioSession);
     }
 
     @Test
