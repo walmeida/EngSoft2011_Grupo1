@@ -7,8 +7,9 @@ import br.usp.ime.academicdevoir.dao.AlunoDao;
 import br.usp.ime.academicdevoir.dao.DisciplinaDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
-import br.usp.ime.academicdevoir.entidade.Professor;
 import br.usp.ime.academicdevoir.entidade.Turma;
+import br.usp.ime.academicdevoir.entidade.Usuario;
+import br.usp.ime.academicdevoir.infra.Privilegio;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 @Resource
@@ -103,6 +104,10 @@ public class TurmasController {
      * sistema.
      */
     public void cadastro() {
+    	Usuario u = usuarioSession.getUsuario();
+    	if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
+		
         result.include("listaDeDisciplinas", disciplinaDao.listaTudo());
     }
 
@@ -112,6 +117,10 @@ public class TurmasController {
      * @param nova
      */
     public void cadastra(final Turma nova) {
+    	Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
+		
         turmaDao.salvaTurma(nova);
         result.redirectTo(ProfessoresController.class).listaTurmas(
                 nova.getProfessor().getId());
@@ -123,11 +132,11 @@ public class TurmasController {
      */
     public void alteracao(Long id) {
         Turma turma = turmaDao.carrega(id);
-        Professor p = (Professor) usuarioSession.getUsuario();
-        if (p.getId() == turma.getProfessor().getId()) {
-            result.include("turma", turma);
-        } else
-            result.redirectTo(LoginController.class).acessoNegado();
+        Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId() == turma.getProfessor().getId()))
+			result.redirectTo(LoginController.class).acessoNegado();
+		
+        result.include("turma", turma);
     }
 
     /**
@@ -137,11 +146,15 @@ public class TurmasController {
      * @param id
      */
     public void altera(Long id, String novoNome) {
-        Turma t = turmaDao.carrega(id);
+        Turma turma = turmaDao.carrega(id);
+        Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId() == turma.getProfessor().getId()))
+			result.redirectTo(LoginController.class).acessoNegado();
+		
         if (!novoNome.equals(""))
-            t.setNome(novoNome);
-        turmaDao.atualizaTurma(t);
-        result.redirectTo(TurmasController.class).home(t.getId());
+            turma.setNome(novoNome);
+        turmaDao.atualizaTurma(turma);
+        result.redirectTo(TurmasController.class).home(turma.getId());
     }
 
     /**
@@ -149,6 +162,9 @@ public class TurmasController {
      * turma.
      */
     public void remocao() {
+    	Usuario u = usuarioSession.getUsuario();
+    	if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
     }
 
     /**
@@ -158,6 +174,10 @@ public class TurmasController {
      */
     public void remove(final Long id) {
         Turma turma = turmaDao.carrega(id);
+        Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId() == turma.getProfessor().getId()))
+			result.redirectTo(LoginController.class).acessoNegado();
+		
         turmaDao.removeTurma(turma);
         result.redirectTo(TurmasController.class).lista();
     }
@@ -173,6 +193,10 @@ public class TurmasController {
     public void removeMatricula(Long idAluno, Long idTurma) {
         Aluno aluno = alunoDao.carrega(idAluno);
         Turma turma = turmaDao.carrega(idTurma);
+        Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId() == turma.getProfessor().getId() || u.getId() == aluno.getId()))
+			result.redirectTo(LoginController.class).acessoNegado();
+        
         alunoDao.removeMatricula(aluno, turma);
         result.redirectTo(TurmasController.class).listaAlunos(idTurma);
     }
