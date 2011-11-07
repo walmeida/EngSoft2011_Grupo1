@@ -175,9 +175,6 @@ public class AlunosController {
 	 * Método associado ao .jsp com formulário para matricula do aluno.
 	 */
 	public void matricula() {
-		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR || u.getId().longValue() == id))
-			result.redirectTo(LoginController.class).acessoNegado();
 	    result.include("listaDeDisciplinas", disciplinaDao.listaTudo());
 	}
 	
