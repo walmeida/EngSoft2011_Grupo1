@@ -21,6 +21,7 @@
                     <a href="<c:url value="/turmas/home/${turma.id}"/>">
                         ${turma.disciplina.nome} - ${turma.nome} </a>
                 </td>
+                <td><a href="../turmas/alteracao?id=${turma.id}">  Alterar</a> <a href="../turmas/remove?id=${turma.id}">  Excluir</a></td>
             </tr>
         </c:forEach>
     </table>
