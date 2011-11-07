@@ -117,7 +117,7 @@ public class AlunosController {
 	 */
 	public void alteracao(Long id) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.PROFESSOR || u.getId().longValue() == id))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR || u.getId().longValue() == id))
 			result.redirectTo(LoginController.class).acessoNegado();
 		
 		result.include("aluno", alunoDao.carrega(id));
@@ -133,7 +133,7 @@ public class AlunosController {
 			String novaSenha) {
 		Aluno a;
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.PROFESSOR || u.getId().longValue() == id))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR || u.getId().longValue() == id))
 			result.redirectTo(LoginController.class).acessoNegado();
 		
 		a = alunoDao.carrega(id);
@@ -147,8 +147,12 @@ public class AlunosController {
 	/**
 	 * Método associado ao .jsp com formulário para remoção de cadastro de
 	 * aluno.
+	 * TODO podemos remover esse método e o jsp correspondente?
 	 */
 	public void remocao() {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR))
+			result.redirectTo(LoginController.class).acessoNegado();
 	}
 	
 	/**
@@ -159,7 +163,7 @@ public class AlunosController {
 	public void remove(final Long id) {
 		Aluno aluno;
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.PROFESSOR || u.getId().longValue() == id))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId().longValue() == id))
 			result.redirectTo(LoginController.class).acessoNegado();
 		
 		aluno = alunoDao.carrega(id);
@@ -171,6 +175,9 @@ public class AlunosController {
 	 * Método associado ao .jsp com formulário para matricula do aluno.
 	 */
 	public void matricula() {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR || u.getId().longValue() == id))
+			result.redirectTo(LoginController.class).acessoNegado();
 	    result.include("listaDeDisciplinas", disciplinaDao.listaTudo());
 	}
 	

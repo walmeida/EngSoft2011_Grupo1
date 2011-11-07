@@ -65,6 +65,9 @@ public class DisciplinasController {
      * Método está associado ao .jsp do formulário de cadastro de uma disciplina no sistema.
      */
 	public void cadastro() {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
 	}
 
 	/**
@@ -74,7 +77,7 @@ public class DisciplinasController {
      */
 	public void cadastra(final Disciplina nova) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
 			result.redirectTo(LoginController.class).acessoNegado();
 		
 		disciplinaDao.salvaDisciplina(nova);
@@ -90,7 +93,7 @@ public class DisciplinasController {
 	 */
 	public void alteracao(Long id) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
 			result.redirectTo(LoginController.class).acessoNegado();
 		
 	    result.include("disciplina", disciplinaDao.carrega(id));
@@ -105,7 +108,7 @@ public class DisciplinasController {
 	public void altera(Long id, String novoNome) {
 		Disciplina d;
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
 			result.redirectTo(LoginController.class).acessoNegado();
 		
 		d = disciplinaDao.carrega(id);
@@ -119,6 +122,9 @@ public class DisciplinasController {
 	 * disciplina.
 	 */
 	public void remocao() {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
 	}
 
 	/**
@@ -129,7 +135,7 @@ public class DisciplinasController {
 	public void remove(final Long id) {
 		Disciplina disciplina;
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
 			result.redirectTo(LoginController.class).acessoNegado();
 		
 		disciplina = disciplinaDao.carrega(id);

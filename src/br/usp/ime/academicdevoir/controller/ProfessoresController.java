@@ -77,6 +77,9 @@ public class ProfessoresController {
      * Método está associado ao .jsp do formulário de cadastro de um professor no sistema.
      */
 	public void cadastro() {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
 	}
 
 	/**
