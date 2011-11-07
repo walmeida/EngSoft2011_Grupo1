@@ -11,18 +11,18 @@ import br.usp.ime.academicdevoir.arquivos.Arquivos;
 import br.usp.ime.academicdevoir.dao.AlunoDao;
 import br.usp.ime.academicdevoir.dao.DisciplinaDao;
 import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
-import br.usp.ime.academicdevoir.dao.ListaDeRespostasDao;
+import br.usp.ime.academicdevoir.dao.ListaDeSolucoesDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
-import br.usp.ime.academicdevoir.entidade.ListaDeRespostas;
+import br.usp.ime.academicdevoir.entidade.ListaDeSolucoes;
 import br.usp.ime.academicdevoir.entidade.Questao;
 import br.usp.ime.academicdevoir.entidade.Resposta;
 import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 @Resource
-public class RespostasController {
+public class SolucoesController {
 
-	private final ListaDeRespostasDao dao;
+	private final ListaDeSolucoesDao dao;
 	//private final ListaDeExerciciosDao listaDeExerciciosDao;
 	//private final AlunoDao alunoDao;
 	//private final DisciplinaDao disciplinaDao;
@@ -32,7 +32,7 @@ public class RespostasController {
 	//private final Validator validator;
 	private final QuestaoDao questaoDao;
 
-	public RespostasController(ListaDeRespostasDao dao,
+	public SolucoesController(ListaDeSolucoesDao dao,
 			ListaDeExerciciosDao listaDeExerciciosDao, AlunoDao alunoDao, DisciplinaDao disciplinaDao,
 			UsuarioSession usuario, Arquivos arquivos, Result result, Validator validator, QuestaoDao questaoDao) {
 		this.dao = dao;
@@ -48,15 +48,15 @@ public class RespostasController {
 	
 	/**
 	 * Salva uma resposta referente na lista de respostas fornecida.
-	 * @param listaDeRespostas
+	 * @param listaDeSolucoes
 	 * @param listaDeExercicios
 	 */
 	@Post
-	@Path("/respostas/{listaDeRespostas.id}/cadastra")
-	public void salvaResposta(ListaDeRespostas listaDeRespostas, Resposta resposta, Long idDaQuestao, UploadedFile arquivo) {
+	@Path("/solucoes/{listaDeSolucoes.id}/cadastra")
+	public void salvaResposta(ListaDeSolucoes listaDeSolucoes, Resposta resposta, Long idDaQuestao, UploadedFile arquivo) {
 		if (resposta == null) resposta = new Resposta();
 		
-		dao.recarrega(listaDeRespostas);
+		dao.recarrega(listaDeSolucoes);
 		
 		Questao questao = questaoDao.carrega(idDaQuestao);		
 				
@@ -66,21 +66,21 @@ public class RespostasController {
 		}
 		
 		resposta.setQuestao(questao);
-		listaDeRespostas.adiciona(resposta);
+		listaDeSolucoes.adiciona(resposta);
 				
-		dao.atualiza(listaDeRespostas);
+		dao.atualiza(listaDeSolucoes);
 		result.redirectTo(ListasDeExerciciosController.class).lista();
 	}
 	
 	/**
-	 * Remove a lista de respostas fornecida do banco de dados.
+	 * Remove a lista de solucoes fornecida do banco de dados.
 	 * @param id
 	 */
 	@Delete
-	@Path("/respostas/{id}")
-	public void removeRespostas(Long id) {
-		ListaDeRespostas listaDeRespostas = dao.carrega(id);
-		dao.remove(listaDeRespostas);		
+	@Path("/solucoes/{id}")
+	public void removeSolucoes(Long id) {
+		ListaDeSolucoes listaDeSolucoes = dao.carrega(id);
+		dao.remove(listaDeSolucoes);		
 		/*result.redirectTo;*/
 	}
 }
