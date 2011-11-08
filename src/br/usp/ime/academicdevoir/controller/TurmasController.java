@@ -179,7 +179,7 @@ public class TurmasController {
 			result.redirectTo(LoginController.class).acessoNegado();
 		
         turmaDao.removeTurma(turma);
-        result.redirectTo(TurmasController.class).lista();
+        result.redirectTo(ProfessoresController.class).listaTurmas(u.getId());    
     }
 
     /**
