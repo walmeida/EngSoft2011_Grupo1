@@ -6,9 +6,11 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
 import br.usp.ime.academicdevoir.entidade.Professor;
+import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Criptografia;
 import br.usp.ime.academicdevoir.infra.Permission;
 import br.usp.ime.academicdevoir.infra.Privilegio;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 @Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
 @Resource
@@ -26,14 +28,21 @@ public class ProfessoresController {
 	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
 	private ProfessorDao professorDao;
+	/**
+	 * @uml.property  name="usuarioSession"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private UsuarioSession usuarioSession;
 
 	/**
 	 * @param result para interação com o jsp do professor.
 	 * @param professorDao para interação com o banco de dados
+	 * @param usuarioSession para controle de permissões
 	 */
-	public ProfessoresController(Result result, ProfessorDao professorDao) {
+	public ProfessoresController(Result result, ProfessorDao professorDao, UsuarioSession usuarioSession) {
 		this.result = result;
 		this.professorDao = professorDao;
+		this.usuarioSession = usuarioSession;
 	}
 
 	/**
@@ -68,6 +77,9 @@ public class ProfessoresController {
      * Método está associado ao .jsp do formulário de cadastro de um professor no sistema.
      */
 	public void cadastro() {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
 	}
 
 	/**
@@ -88,6 +100,9 @@ public class ProfessoresController {
      * @param id   identificador do professor
      */
     public void alteracao(Long id) {
+    	Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId().longValue() == id))
+			result.redirectTo(LoginController.class).acessoNegado();
         result.include("professor", professorDao.carrega(id));
     }
     
@@ -101,12 +116,17 @@ public class ProfessoresController {
 	 * @param novaSenha
 	 */
 	public void altera(Long id, String novoNome, String novoEmail, String novaSenha) {
-		Professor p = professorDao.carrega(id);
+		Professor p;
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId().longValue() == id))
+			result.redirectTo(LoginController.class).acessoNegado();
+		
+		p = professorDao.carrega(id);
 		if (!novoNome.equals("") || !StringUtils.isBlank(novoNome)) p.setNome(novoNome);
 		if (!novoEmail.equals("") || !StringUtils.isBlank(novoEmail)) p.setEmail(novoEmail);
 		if (!novaSenha.equals("") || !StringUtils.isBlank(novaSenha)) p.setSenha(new Criptografia().geraMd5(novaSenha));
 		professorDao.atualizaProfessor(p);
-		result.redirectTo(ProfessoresController.class).lista();
+		result.redirectTo(ProfessoresController.class).home();
 	}
 
 	/**
@@ -122,12 +142,21 @@ public class ProfessoresController {
 	 * @param id
 	 */
 	public void remove(final Long id) {
-		Professor professor = professorDao.carrega(id);
+		Professor professor;
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId().longValue() == id))
+			result.redirectTo(LoginController.class).acessoNegado();
+		
+		professor = professorDao.carrega(id);
 		professorDao.removeProfessor(professor);
 		result.redirectTo(ProfessoresController.class).lista();
 	}
 	
 	public void mudarTipo(Long id) {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR))
+			result.redirectTo(LoginController.class).acessoNegado();
+		
 		professorDao.alteraTipo(id);
 		result.redirectTo(ProfessoresController.class).lista();
 	}

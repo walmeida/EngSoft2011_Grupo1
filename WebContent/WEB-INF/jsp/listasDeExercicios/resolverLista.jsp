@@ -10,14 +10,15 @@ import="java.sql.*" errorPage="" %>
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery.form.js"/>"></script>
 
 <script type="text/javascript" charset="utf-8">	
-	function redireciona() {
-		window.location.href =  '<c:url value="/listasDeExercicios/${listaDeExercicios.id }"/>';
+	function redireciona() {		
+		// URL Provisoria
+		window.location.href =  '<c:url value="/alunos/home"/>';
 	}
 
 	$(document).ready(function () {
 		var restantes = ${numeroDeQuestoes };
 		
-		<c:forEach begin="0" end="${numeroDeQuestoes - 1}" varStatus="iteracao">
+		<c:forEach items="${listaDeExercicios.questoes}" varStatus="iteracao">
 			$('#questao' + ${iteracao.index}).ajaxForm({
 				success: function() {
 					<c:choose>

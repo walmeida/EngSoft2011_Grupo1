@@ -101,8 +101,10 @@ font-family:"Times New Roman";
 			<a href="<c:url value='/questoes/cadastro'/>">Cadastrar nova questão</a><br/>
 		</fieldset>
 	</form>
-	<a href="<c:url value='/login'/>">Sair</a>
-	<!--  a href="<c:url value='/questoes'/>">Voltar</a><br/> -->	
-    <a href="<c:url value='/professores/home'/>">Página Principal</a><br/>
+	<div>
+		<a href="<c:url value='/login'/>">Sair</a>
+		<!--  a href="<c:url value='/questoes'/>">Voltar</a><br/> -->	
+	    <a href="<c:url value='/professores/home'/>">Página Principal</a><br/>
+    </div>	
 </body>
 </html>

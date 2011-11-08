@@ -10,14 +10,24 @@ import="java.sql.*" errorPage="" %>
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery.form.js"/>"></script>
 
 <script type="text/javascript" charset="utf-8">	
-	function redireciona() {
-		window.location.href =  '<c:url value="/listasDeExercicios/${listaDeExercicios.id }"/>';
+	function redireciona() {		
+		// URL Provisoria
+		window.location.href =  '<c:url value="/alunos/home"/>';
 	}
 	
 	$(document).ready(function () {
-		var restantes = ${numeroDeQuestoes };
+		var restantes = ${numeroDeQuestoes };		
 		
-		<c:forEach begin="0" end="${numeroDeQuestoes - 1}" varStatus="iteracao">
+		
+		$('.upload').hide();
+		
+		$('.liberaUpload').click(function() {
+			var idDaQuestao = parseInt($(this).attr("id").replace(/\D/g, ''), 10);
+			$(this).hide();
+			$('#resposta' + idDaQuestao).removeAttr("disabled").show();
+		});
+		
+		<c:forEach items="${listaDeExercicios.questoes}" varStatus="iteracao">
 			$('#questao' + ${iteracao.index}).ajaxForm({
 				success: function() {
 					<c:choose>
@@ -79,11 +89,11 @@ font-family:"Times New Roman";
 	
 	<div>
 		<c:forEach items="${listaDeExercicios.questoes}" var="questaoDaLista" varStatus="iteracao">
-			<form id="questao${iteracao.index }" class="respostaForm" action="<c:url value="/respostas/${listaDeRespostas.id }/${iteracao.index }"/>" method="post" accept-charset="us-ascii" enctype="multipart/form-data">
+			<form id="questao${iteracao.index }" class="respostaForm" action="<c:url value="/respostas/${listaDeRespostas.id }/cadastra"/>" method="post" accept-charset="us-ascii" enctype="multipart/form-data">
 				<fieldset>
 						<p>${questaoDaLista.ordem} )
 								${questaoDaLista.questao.enunciado}</p>
-						${questaoDaLista.questao.renderizacao}
+						${renderizacao[iteracao.index]}
 				</fieldset>
 			</form>
 		</c:forEach>

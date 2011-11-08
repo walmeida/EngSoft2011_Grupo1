@@ -1,5 +1,6 @@
 package br.usp.ime.academicdevoir.entidade;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -97,12 +98,12 @@ public class PropriedadesDaListaDeExercicios {
 	}
 	
 	public String getPrazoDeEntregaFormatado() {
-		/*SimpleDateFormat prazo = new SimpleDateFormat(
-				"EEE, dd'/'MM'/'AAAA HH:mm");
+		SimpleDateFormat prazo = new SimpleDateFormat(
+				"EEE, dd'/'MM'/'yyyy HH:mm");
 		
-		return prazo.format(prazoDeEntrega); */
+		return prazo.format(prazoDeEntrega);
 		//Aqui não roda a formatação de datas. Então comentei por enquanto.
-		return prazoDeEntrega.toString();
+		//Agora deve rodar com JRE 6 e 7
 	}
 
 	public void setPrazoDeEntrega(Date prazoDeEntrega) {

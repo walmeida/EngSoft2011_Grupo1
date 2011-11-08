@@ -1,7 +1,5 @@
 package br.usp.ime.academicdevoir.controller;
 
-import java.util.List;
-
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -47,7 +45,7 @@ public class RespostasController {
 		this.result = result;
 		//this.validator = validator;
 	}
-
+	
 	/**
 	 * Salva uma resposta referente na lista de respostas fornecida.
 	 * @param listaDeRespostas
@@ -56,43 +54,22 @@ public class RespostasController {
 	@Post
 	@Path("/respostas/{listaDeRespostas.id}/cadastra")
 	public void salvaResposta(ListaDeRespostas listaDeRespostas, Resposta resposta, Long idDaQuestao, UploadedFile arquivo) {
+		if (resposta == null) resposta = new Resposta();
 		
 		dao.recarrega(listaDeRespostas);
-		List<Resposta> respostas = listaDeRespostas.getRespostas();
 		
 		Questao questao = questaoDao.carrega(idDaQuestao);		
 				
-		if (questao.getTipo() == TipoDeQuestao.SUBMISSAODEARQUIVO) {
-			resposta = new Resposta();
+		if (questao.getTipo() == TipoDeQuestao.SUBMISSAODEARQUIVO && arquivo != null) {
 			arquivos.salva(arquivo, idDaQuestao);
 			resposta.setValor(arquivo.getFileName());
 		}
 		
 		resposta.setQuestao(questao);
-		respostas.add(resposta);
-		
-		listaDeRespostas.setRespostas(respostas);
+		listaDeRespostas.adiciona(resposta);
 				
-		dao.salva(listaDeRespostas);
-		result.redirectTo(ListasDeExerciciosController.class).lista();
-	}
-	
-	/**
-	 * Altera uma resposta da lista fornecida.
-	 * @param id
-	 * @param listaDeExercicios
-	 */
-	@Post
-	@Path("/respostas/{id}/{indice}")
-	public void alteraResposta(Long id, Resposta resposta, Integer indice) {
-		ListaDeRespostas listaDeRespostas = dao.carrega(id);
-
-		List<Resposta> respostas = listaDeRespostas.getRespostas();
-		respostas.set(indice, resposta);
-		
-		listaDeRespostas.setRespostas(respostas);
-		
 		dao.atualiza(listaDeRespostas);
+		result.redirectTo(ListasDeExerciciosController.class).lista();
 	}
 	
 	/**

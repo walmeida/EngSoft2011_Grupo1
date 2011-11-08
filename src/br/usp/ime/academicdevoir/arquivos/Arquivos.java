@@ -34,10 +34,10 @@ public class Arquivos {
 		File pastaDaQuestao = new File(pastaDeArquivos, "//" + usuarioSession.getUsuario().getLogin() + "//" + idDaQuestao);
 		
 		if (!pastaDaQuestao.mkdirs()) {
-			for (File arq : pastaDeArquivos.listFiles()) {
+			for (File arq : pastaDaQuestao.listFiles()) {
 				arq.delete();
 			}
-		}		
+		}
 		
 		File destino = new File(pastaDaQuestao, arquivo.getFileName());
 
@@ -50,6 +50,7 @@ public class Arquivos {
 
 	public FileDownload carrega(String caminho) {
 		File pasta = new File(pastaDeArquivos, caminho);
-		return new FileDownload(pasta, "text/plain", "\"" + pasta.listFiles()[0] + "\"", true);
+		File arquivo = pasta.listFiles()[0];
+		return new FileDownload(arquivo, "text/plain", "\"" + arquivo.getName() + "\"", true);
 	}
 }

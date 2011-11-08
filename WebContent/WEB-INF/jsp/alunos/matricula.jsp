@@ -28,6 +28,6 @@
 	</fieldset>
 	</form>
 	<a href="<c:url value='/login'/>">Sair</a>
-	<a href="<c:url value='/alunos/home'/>">Página Principal</a><br/>
+	<a href="<c:url value='/alunos/home'/>">P&aacute;gina Principal</a><br/>
 	</body>
 </html>

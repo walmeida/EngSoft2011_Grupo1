@@ -14,6 +14,7 @@ import br.usp.ime.academicdevoir.controller.ProfessoresController;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
 import br.usp.ime.academicdevoir.entidade.Professor;
 import br.usp.ime.academicdevoir.infra.Criptografia;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 public class ProfessoresControllerTeste {
     /**
@@ -31,12 +32,17 @@ public class ProfessoresControllerTeste {
 	 * @uml.associationEnd  
 	 */
     private ProfessorDao professordao;
+    /**
+	 * @uml.property  name="usuarioSession"
+	 * @uml.associationEnd  readOnly="true"
+	 */
+    private UsuarioSession usuarioSession;
 
     @Before
     public void SetUp() {
         result = spy(new MockResult());
         professordao = mock(ProfessorDao.class);
-        profC = new ProfessoresController(result, professordao);
+        profC = new ProfessoresController(result, professordao, usuarioSession);
     }
 
     @Test
