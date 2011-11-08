@@ -1,14 +1,22 @@
 package br.usp.ime.academicdevoir.controller;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
+
+import javax.validation.ValidationException;
 
 import org.junit.Before;
+import org.junit.Test;
 
 import br.com.caelum.vraptor.util.test.JSR303MockValidator;
 import br.com.caelum.vraptor.util.test.MockResult;
@@ -18,6 +26,8 @@ import br.usp.ime.academicdevoir.dao.ProfessorDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
+import br.usp.ime.academicdevoir.entidade.PropriedadesDaListaDeExercicios;
+import br.usp.ime.academicdevoir.entidade.QuestaoDaLista;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
 import br.usp.ime.academicdevoir.entidade.Turma;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
@@ -28,7 +38,7 @@ public class ListasDeExerciciosControllerTeste {
 	 * @uml.property  name="listasDeExerciciosController"
 	 * @uml.associationEnd  
 	 */
-	@SuppressWarnings("unused")
+	//@SuppressWarnings("unused")
 	private ListasDeExerciciosController listasDeExerciciosController;
 	/**
 	 * @uml.property  name="result"
@@ -69,12 +79,15 @@ public class ListasDeExerciciosControllerTeste {
 	 * @uml.property  name="prazoDeEntrega"
 	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="java.lang.Integer"
 	 */
+	
+	private PropriedadesDaListaDeExercicios propriedadesDaListaDeExercicios;
+	
 	private List<Integer> prazoDeEntrega;
 	/**
 	 * @uml.property  name="prazoProvisorio"
 	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="java.lang.Integer"
 	 */
-	//private Calendar prazoProvisorio = Calendar.getInstance();
+	private Calendar prazoProvisorio = Calendar.getInstance();
 	/**
 	 * @uml.property  name="questao"
 	 * @uml.associationEnd  
@@ -135,7 +148,7 @@ public class ListasDeExerciciosControllerTeste {
 		when(turmaDao.carrega(turma.getId())).thenReturn(turma);
 	}
 
-	/*private void prazoFuturo(List<Integer> prazoDeEntrega) {
+	private void prazoFuturo(List<Integer> prazoDeEntrega) {
 		prazoDeEntrega.add(prazoProvisorio.get(Calendar.MINUTE) + 1
 				+ new Random().nextInt(100000));
 	}
@@ -154,7 +167,7 @@ public class ListasDeExerciciosControllerTeste {
 	public void testeCadastra() {
 		prazoFuturo(prazoDeEntrega);
 
-		listasDeExerciciosController.cadastra(listaDeExercicios,
+		listasDeExerciciosController.cadastra(propriedadesDaListaDeExercicios/*listaDeExercicios*/,
 				prazoDeEntrega, null);
 
 		verify(validator).validate(listaDeExercicios);
@@ -167,7 +180,7 @@ public class ListasDeExerciciosControllerTeste {
 	public void testeNaoDeveCadastrarQuestaoComPrazoPassado() {
 		prazoPassado(prazoDeEntrega);
 
-		listasDeExerciciosController.cadastra(listaDeExercicios,
+		listasDeExerciciosController.cadastra(propriedadesDaListaDeExercicios/*listaDeExercicios*/,
 				prazoDeEntrega, null);
 
 		verify(validator).validate(listaDeExercicios);
@@ -177,7 +190,7 @@ public class ListasDeExerciciosControllerTeste {
 	@Test
 	public void testeVerListaIncluiListaEDataEmResult() {
 		Date prazoDeEntrega = prazoFuturo();
-		listaDeExercicios.setPrazoDeEntrega(prazoDeEntrega);
+		propriedadesDaListaDeExercicios/*listaDeExercicios*/.setPrazoDeEntrega(prazoDeEntrega);
 		listasDeExerciciosController.verLista(listaDeExercicios.getId());
 		ListaDeExercicios lista = result.included("listaDeExercicios");
 		Date prazo = result.included("prazo");
@@ -188,7 +201,7 @@ public class ListasDeExerciciosControllerTeste {
 	@Test
 	public void testeAlteracao() {
 		Date prazoDeEntrega = prazoFuturo();
-		listaDeExercicios.setPrazoDeEntrega(prazoDeEntrega);
+		propriedadesDaListaDeExercicios/*listaDeExercicios*/.setPrazoDeEntrega(prazoDeEntrega);
 		listasDeExerciciosController.alteracao(listaDeExercicios.getId());
 		ListaDeExercicios lista = result.included("listaDeExercicios");
 		List<Integer> prazo = result.included("prazo");
@@ -199,22 +212,22 @@ public class ListasDeExerciciosControllerTeste {
 	@Test
 	public void testeAltera() {
 		prazoFuturo(prazoDeEntrega);
-		listasDeExerciciosController.altera(listaDeExercicios, prazoDeEntrega);
+		listasDeExerciciosController.altera(listaDeExercicios,propriedadesDaListaDeExercicios, prazoDeEntrega);
 
 		verify(validator).validate(listaDeExercicios);
 		verify(validator).onErrorUsePageOf(ListasDeExerciciosController.class);
-		verify(dao).atualiza(any(ListaDeExercicios.class));
+		verify(dao).atualiza(listaDeExercicios);
 		verify(result).redirectTo(listasDeExerciciosController);
 	}
 
 	@Test(expected = ValidationException.class)
 	public void testeNaoDeveAlterarQuestaoComPrazoPassado() {
 		prazoPassado(prazoDeEntrega);
-		listasDeExerciciosController.altera(listaDeExercicios, prazoDeEntrega);
+		listasDeExerciciosController.altera(listaDeExercicios,propriedadesDaListaDeExercicios, prazoDeEntrega);
 
 		verify(validator).validate(listaDeExercicios);
 		verify(validator).onErrorUsePageOf(ListasDeExerciciosController.class);
-		verify(dao).atualiza(any(ListaDeExercicios.class));
+		verify(dao).atualiza(listaDeExercicios);
 		verify(result).redirectTo(listasDeExerciciosController);
 	}
 
@@ -229,7 +242,7 @@ public class ListasDeExerciciosControllerTeste {
 	public void testeIncluiQuestao() {
 		listaDeExercicios.setQuestoes(new ArrayList<QuestaoDaLista>());
 		listasDeExerciciosController.incluiQuestao(listaDeExercicios,
-				questao.getId());
+				questao.getId(),1 ,0);
 
 		assertEquals(questao, listaDeExercicios.getQuestoes().get(0)
 				.getQuestao());
@@ -242,7 +255,7 @@ public class ListasDeExerciciosControllerTeste {
 		List<QuestaoDaLista> questoesDaLista = new ArrayList<QuestaoDaLista>();
 		questoesDaLista.add(new QuestaoDaLista());
 		listaDeExercicios.setQuestoes(questoesDaLista);
-		listasDeExerciciosController.alteraQuestao(listaDeExercicios.getId(), 0, questao.getId());
+		listasDeExerciciosController.alteraQuestao(listaDeExercicios.getId(), 0, questao.getId(), 0);
 		
 		assertEquals(questao, listaDeExercicios.getQuestoes().get(0)
 				.getQuestao());
@@ -299,5 +312,5 @@ public class ListasDeExerciciosControllerTeste {
 		
 		verify(dao).atualiza(listaDeExercicios);
 		verify(result).redirectTo(listasDeExerciciosController);
-	}*/
+	}
 }
