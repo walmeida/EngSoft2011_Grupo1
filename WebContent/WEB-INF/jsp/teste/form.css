@@ -1,0 +1,77 @@
+body
+{
+background-image:<c:url value="/css/ime.png"/>;
+background-repeat:no-repeat;
+}
+h2
+{
+font-family: "Arial";
+position:absolute;
+left:150px;
+top:40px;
+}
+legend
+{
+color: #ffffff;
+background: #88e356;
+border: 1px solid #00aa22;
+padding: 2px 6px
+} 
+label
+{
+width: 4em;
+float: left;
+text-align: right;
+margin-right: 0.5em;
+display: block
+}
+input
+{
+color: #781351;
+border: 1px solid #00aa22
+}
+.submit input
+{
+color: #000;
+background: #D6FFC1;
+margin-left: 5.5em;
+} 
+form {
+margin: 2em auto;
+width: 14em;
+}
+#grupo
+{
+font-family: "Times New Roman";
+position: absolute;
+font-size: 20px;
+right: 10px;
+bottom: 10px
+}
+fieldset
+{
+border: 1px solid #00aa22;
+width: 20em;
+
+}
+#link
+{
+margin-left: 4.5em;
+}
+a:link {
+color:#000000;
+text-decoration:none;
+}
+a:active {
+color:#00aa22;
+text-decoration:underline;
+background-color:#000000;
+}
+a:hover {
+color:#00aa22;
+text-decoration:underline;
+}
+a:visited {
+color:#999999;
+text-decoration:none;
+}
