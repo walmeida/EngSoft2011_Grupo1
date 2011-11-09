@@ -168,6 +168,19 @@ Os usos específicos dos atores Aluno e Professor estão relacionados abaixo.
 
 O diagrama de casos de uso se encontra em \texttt{CasosDeUso.png} no diretório \texttt{doc/diagramas}.
 
+\vspace{1cm}
+{\large {\bf Diagramas de sequência}}
+\vspace{0.5cm}
+
+Os diagramas de sequência se encontram nos seguintes arquivos (no diretório \texttt{doc/diagramas}):
+
+\begin{itemize}
+\item{}\texttt{SequenciaCadastroDeListaDeExercicios.png}: mostra a sequência de atividades para o cadastro de uma lista de exercício
+\item{}\texttt{SequenciaMatriculaEmTurmaDeDisciplina.png}: mostra a sequência de atividades para o aluno se matricular em uma turma
+\item{}\texttt{SequenciaAlunoResolveListaDeExercicios.png}: mostra a sequência de atividades para o aluno resolver uma lista de exercício
+\end{itemize}
+
+
 %\pagebreak
 
 % TODO Atores
@@ -223,24 +236,27 @@ O diagrama de casos de uso se encontra em \texttt{CasosDeUso.png} no diretório 
 {\large {\bf Objetivos da iteração}}
 \vspace{0.5cm}
 
-Após as 2 primeiras iterações, que nos deram um esboço final de como será o sistema 
-e que implementaram parte considerável de suas funcionalidades, o objetivo agora é a 
-melhoria de tais funcionalidades, bem como a implementação do fator diferencial do 
-sistema, que é o seu sub-sistema de cadastro e resolução de questões e listas.
+As primeiras duas iterações tiveram por objetivo definir a arquitetura que seria usada no projeto 
+e apresentar um sistema funcional que realizasse o cadastro e o login de usuários, 
+cadastro e gerenciamento de turmas e disciplinas e matrícula de aluno em turmas.
+Na terceira iteração, além de aprimorar as funcionalidades já existentes, também demos início
+a implementação do diferencial do sistema, que é o seu sub-sistema de cadastro e resolução
+de listas de exercício.
+Nesta iteração o objetivo é, além de aprimorar as funcionalidades já elaboradas, dar continuidade
+a implementação do sub-sistema de cadastro e resolução de listas de exercícios, em particular
+possibilitar a gravação e a resolução de exercícios.
 Os objetivos propostos para a atual fase de desenvolvimento são:
 
 \begin{itemize}
 \item{} Complementar e aprimorar as funcionalidades elaboradas durante as duas iterações anteriores;
-\item{} Realizar o cadastro de questões e listas, bem como sua resolução;
-\item{} Melhorar a navegabilidade do sistema para fins de depuração;
+\item{} Realizar a gravação e correção das listas de exercícios
+\item{} Estabelecer como será o layout final e iniciar sua implementação
 \item{} Acrescentar mais informações a documentação do projeto.
 \end{itemize}
 
-Apesar de parte dos objetivos desta iteração, que visam fazer o sistema vir a ser 
-completo, não se faz necessário, pelo menos temporariamente, um sistema facilmente 
-navegável e agradável visualmente. Por enquanto, apenas o mínimo necessário de tais 
-partes foi implementado. Isso será refinado apenas quando o sistema for tido como completo 
-do ponto de vista funcional.
+Apesar de um dos objetivos desta iteração ser estabelecer como será o layout final, não se faz 
+necessário nesta iteração que a implementação deste esteja completa. Isso será refinado na
+próxima iteração, quando o sistema já estará quase completo do ponto de vista funcional.
 
 % Atribuições de trabalho
 \vspace{1cm}
@@ -253,76 +269,76 @@ Segue uma lista dos participantes e de seus respectivos itens de trabalho, para 
 
 \begin{itemize}
 
-\item {}André Satoshi Fujii de Siqueira (Arquiteto)\\
-\vspace{-0.5cm}
-\begin{itemize}
-\item{}Modelagem das classes do sistema.\\
-\item{}Refinamento do código do sistema.\\
-\item{}Implementação do cadastro e resolução de questões e listas.
-%Implementação do CRUD de aluno, professor, disciplina e turma.
-\end{itemize}
-\vspace{0.5cm}
 
-\item {}Antonio Junior (Desenvolvedor)\\
-\vspace{-0.5cm}
-\begin{itemize}
-\item{}Refinamento do código do sistema.\\
-\item{}Implementação do cadastro e resolução de questões e listas.
-\end{itemize}
-\vspace{0.5cm}
-
-%Implementação do cadastro de uma lista de exercícios.
-\item {}Gustavo Coelho (Gerente)\\
+\item {}Susanna Rezende (Gerente)\\
 \vspace{-0.5cm}
 \begin{itemize}
 \item{}Monitoramento de algumas atividades realizadas pelos integrantes do grupo.\\
 \item{}Levantamento da visão do projeto e dos requisitos cumpridos até o momento.\\
-\item{}Implementação de connection pooling.
+\item{}Implementação das permissões de acesso.
 \end{itemize}
 \vspace{0.5cm}
 
-%Implementação do login no sistema
-\item {}Luciana Kayo (Analista de Requisitos)\\
+\item {}André Satoshi Fujii de Siqueira (Analista de Requisitos)\\
 \vspace{-0.5cm}
 \begin{itemize}
 \item{}Levantamento de requisitos do sistema.\\
-\item{}Manutenção dos arquivos jsp.
+\item{}Diagrama de sequência.\\
+\item{}Implementação da gravação de respostas.\\
+\item{}Implementação da submissão de arquivos.
 \end{itemize}
 \vspace{0.5cm}
 
-\item {}Susanna Rezende (Arquiteto)\\
+\item {}Suzana de S. Santos (Arquiteto)\\
 \vspace{-0.5cm}
 \begin{itemize}
 \item{}Refinamento do código do sistema.\\
-\item{}Modelagem das classes do sistema.
+\item{}Diagrama de arquitetura.\\
+\item{}Complementação do caderno de arquitetura.\\
+\item{}Gravação e correção da lista de exercícios.
 \end{itemize}
 \vspace{0.5cm}
 
-\item {}Suzana de S. Santos (Documentador)\\
+\item {}Luciana Kayo (Documentador)\\
 \vspace{-0.5cm}
 \begin{itemize}
-\item{}Estudar documentação OpenUP e instruir os integrantes do grupo sobre como deve ser a documentação.\\
+\item{}Instruir os integrantes do grupo sobre como deve ser a documentação.\\
 \item{}Acompanhar a documentação do projeto e dar as orientações necessárias.\\
-\item{}Refinamento do código do sistema.
-%\item{}Ajudar a refatorar e comentar o código seguindo o padrão Javadoc.\\
+\item{}Arrumar links do layout existente.\\
+\item{}Inicializar o desenvolvimento do layout final.
 \end{itemize}
 \vspace{0.5cm}
 
-\item {}Vinicius Rezende (Analista de Qualidade)\\
+\item {}Antonio Junior (Analista de Qualidade)\\
 \vspace{-0.5cm}
 \begin{itemize}
-\item{}Mapeamento ORM no hibernate.\\
-\item{}Implementação de testes para fins de depuração e manutenção.
-%Divisão das tarefas de implementação
-%Implementação do CRUD de questões e listas de exercício.
+\item{}Implementação de testes do JUnit para cadastro de questões.\\
+\item{}Manutenção dos testes e depuração do código.
 \end{itemize}
 \vspace{0.5cm}
 
-\item {}Wallace Faveron de Almeida (Desenvolvedor)\\
+\item {}Wallace Faveron de Almeida (Analista de Qualidade)\\
+\vspace{-0.5cm}
+\begin{itemize}
+\item{}Implementação de testes para fins de depuração e manutenção.\\
+\item{}Ordenação dos exercícios da lista.\\
+\item{}Gravação e correção da lista de exercícios.
+\end{itemize}
+\vspace{0.5cm}
+
+\item {}Vinicius Rezende (Desenvolvedor)\\
 \vspace{-0.5cm}
 \begin{itemize}
 \item{}Refinamento do código do sistema.\\
-\item{}Criação de renderizadores para as diferentes questões.
+\item{}Possibilitar definição do tipo de matricula.
+\end{itemize}
+\vspace{0.5cm}
+
+\item {}Gustavo Coelho (Desenvolvedor)\\
+\vspace{-0.5cm}
+\begin{itemize}
+\item{}Refinamento do código do sistema.\\
+\item{}Validação das entradas.
 \end{itemize}
 
 \end{itemize}
@@ -408,7 +424,7 @@ Na página \url{https://www.pivotaltracker.com/projects/355453#}, temos os segui
 \vspace{0.5cm}
 
 Criar um sistema de resolução e correção de listas de exercício na Web.
-O desenvolvimento consistirá de 3 iterações (cada uma com 3 semanas de duração) durante as quais serão implementadas as histórias:
+O desenvolvimento consistirá de 5 iterações (cada uma com 3 semanas de duração) durante as quais serão implementadas as histórias:
 
 \begin{itemize}
 \item{Aluno se cadastra}
@@ -755,6 +771,8 @@ Discussão:
 \item{}Se fosse a questão mesmo, elas não poderiam ter valores diferentes em listas de exercícios diferentes (que podem ser dadas por professores distintos). Sendo apenas a id não teríamos esse problema, certo?
 \item{}Pode ser a questão sim, já que agora o valor é um atributo da QuestaoDaLista. A diferença é que 2 listas não poderão conter a mesma QuestaoDaLista.
 \end{itemize}
+
+
 
 \pagebreak
 
