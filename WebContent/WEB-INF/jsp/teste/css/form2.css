@@ -1,0 +1,58 @@
+label
+{
+width: 4em;
+float: left;
+text-align: right;
+margin-right: 0.5em;
+display: block
+}
+form {
+margin: 2em auto;
+width: 14em;
+}
+#link
+{
+margin-left: 4.5em;
+}
+a:link {
+color:#000000;
+text-decoration:none;
+}
+a:active {
+color:#00aa22;
+text-decoration:underline;
+background-color:#000000;
+}
+a:hover {
+color:#00aa22;
+text-decoration:underline;
+}
+a:visited {
+color:#999999;
+text-decoration:none;
+}
+#menu 
+{
+font-family: "Times New Roman";
+font-size: 20px;
+color:#ffffff;
+align:left;
+background: #88e356;
+}
+#left
+{
+width:200px;
+float: left;
+}
+#right
+{
+width:800px;
+align:left top;
+margin-left: 220px;
+
+}
+#wrapper
+{
+width: 1000px;
+margin: 0px auto;
+}
