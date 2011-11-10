@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost/nome_da_base_de_dados</property>
+		<property name="hibernate.connection.username">user</property>
+		<property name="hibernate.connection.password">senha</property>
+		<property name="show_sql">true</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>		
+        <property name="hibernate.hbm2ddl.auto">update</property>
+		<!-- Mapping files -->
+		<mapping class="br.usp.ime.academicdevoir.entidade.Aluno" />
+		<mapping class="br.usp.ime.academicdevoir.entidade.Disciplina" />
+		<mapping class="br.usp.ime.academicdevoir.entidade.Professor" />
+		<mapping class="br.usp.ime.academicdevoir.entidade.Questao" />
+		<mapping class="br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha" />
+		<mapping class="br.usp.ime.academicdevoir.entidade.QuestaoDaLista" />
+		<mapping class="br.usp.ime.academicdevoir.entidade.Turma" />
+		<mapping class="br.usp.ime.academicdevoir.entidade.ListaDeExercicios" />
+		<mapping class="br.usp.ime.academicdevoir.entidade.ListaDeRespostas" />
+		<mapping class="br.usp.ime.academicdevoir.entidade.Usuario" />
+		<mapping
+			class="br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo" />
+		<mapping class="br.usp.ime.academicdevoir.entidade.QuestaoDeVouF" />
+		<mapping class="br.usp.ime.academicdevoir.entidade.QuestaoDeTexto" />
+	</session-factory>
+</hibernate-configuration>
