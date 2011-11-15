@@ -62,25 +62,12 @@ font-family:"Times New Roman";
 						<td>${questao.enunciado }</td>
 						<td>
 							<ol>
-								<c:set var="respostaCorreta" value="${questao.resposta }"/>
-								<c:set var="achou" value="false"/>
-								<c:forEach items="${questao.alternativas }" begin="0" var="alternativa" varStatus="iteracao">
-									<c:if test="${not achou }">
-										<c:choose>
-											<c:when test="${respostaCorreta % 2 eq 1}">
-												<c:set var="achou" value="true"/>
-												<c:set var="respostaCorreta" value="${iteracao.index+1 }"/>
-											</c:when>
-											<c:otherwise>
-												<c:set var="respostaCorreta" value="${respostaCorreta/2 }"/>
-											</c:otherwise>
-										</c:choose>
-									</c:if>
+								<c:forEach items="${questao.alternativas }" var="alternativa">
 									<li>${alternativa }</li><br/>
 								</c:forEach>
 							</ol>
 						</td>					
-						<td>${respostaCorreta }</td>
+						<td>${questao.alternativasCorretas }</td>
 						<td><a href="<c:url value="/questoes/mult/${questao.id }"/>">Alterar</a></td>
 						<td>
 							<form action="<c:url value="/questoes/mult/${questao.id }"/>" method="post">

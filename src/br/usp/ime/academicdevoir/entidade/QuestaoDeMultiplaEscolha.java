@@ -12,7 +12,7 @@ import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 @Entity
 public class QuestaoDeMultiplaEscolha extends Questao {
 
-	private Boolean respostaUnica;
+	private Boolean respostaUnica = false;
 
 	/**
 	 * @uml.property name="alternativas"
@@ -57,6 +57,15 @@ public class QuestaoDeMultiplaEscolha extends Questao {
 	 */
 	public void setResposta(Integer resposta) {
 		this.resposta = resposta;
+	}
+	
+	public void setResposta(List<Integer> resposta) {
+		this.resposta = 0;
+		if (resposta == null) return;
+		
+		for (Integer valor : resposta) {
+			this.resposta += valor;
+		}
 	}
 
 	public TipoDeQuestao getTipo() {
@@ -114,5 +123,25 @@ public class QuestaoDeMultiplaEscolha extends Questao {
 		htmlResult = buffer.toString();
 
 		return htmlResult;
+	}
+	
+	public String getAlternativasCorretas() {
+		int valor, resposta = this.resposta;
+		Boolean primeira = true;
+		StringBuffer alternativas = new StringBuffer();
+		
+		for (int i = 1; resposta != 0; resposta /= 2, i++) {
+			valor = resposta % 2;
+			if (valor == 1) {				
+				if (!primeira) {
+					if (resposta == 1)	alternativas.append(" e ");
+					else alternativas.append(", ");
+				}
+				primeira = false;
+				alternativas.append(i);
+			}
+		}
+				
+		return alternativas.toString(); 
 	}
 }

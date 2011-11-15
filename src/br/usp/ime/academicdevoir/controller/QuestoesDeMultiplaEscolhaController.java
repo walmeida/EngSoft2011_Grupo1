@@ -1,5 +1,7 @@
 package br.usp.ime.academicdevoir.controller;
 
+import java.util.List;
+
 import br.usp.ime.academicdevoir.dao.QuestaoDeMultiplaEscolhaDao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
 import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
@@ -53,7 +55,9 @@ public class QuestoesDeMultiplaEscolhaController {
 	 * no banco de dados.
 	 * @param questao
 	 */
-	public void cadastra(final QuestaoDeMultiplaEscolha questao) {
+	public void cadastra(final QuestaoDeMultiplaEscolha questao, List<Integer> resposta) {
+		if (!questao.getRespostaUnica()) questao.setResposta(resposta);
+		
 		validator.validate(questao);
 		validator.onErrorUsePageOf(QuestoesController.class).cadastro();
 
@@ -81,7 +85,9 @@ public class QuestoesDeMultiplaEscolhaController {
 	 * 
 	 * @param questao
 	 */
-	public void altera(QuestaoDeMultiplaEscolha questao) {
+	public void altera(QuestaoDeMultiplaEscolha questao, List<Integer> resposta) {
+		if (!questao.getRespostaUnica()) questao.setResposta(resposta);
+		
 		validator.validate(questao);
 		validator.onErrorUsePageOf(this).alteracao(questao.getId());
 

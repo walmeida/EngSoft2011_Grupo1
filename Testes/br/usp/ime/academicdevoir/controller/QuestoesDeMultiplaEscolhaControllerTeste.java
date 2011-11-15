@@ -47,7 +47,8 @@ public class QuestoesDeMultiplaEscolhaControllerTeste {
 	public void testeAdiciona() {
 		QuestaoDeMultiplaEscolha questao = new QuestaoDeMultiplaEscolha();
 		questao.setId(0L);
-		questoesC.cadastra(questao);
+		questao.setRespostaUnica(true);
+		questoesC.cadastra(questao, null);
 
 		verify(validator).validate(questao);
 		verify(validator).onErrorUsePageOf(QuestoesController.class);
@@ -56,10 +57,11 @@ public class QuestoesDeMultiplaEscolhaControllerTeste {
 	}
 
 	@Test
-	public void testeAtualiza() {
+	public void testeAltera() {
 		QuestaoDeMultiplaEscolha questao = new QuestaoDeMultiplaEscolha();
+		questao.setRespostaUnica(true);
 
-		questoesC.altera(questao);
+		questoesC.altera(questao, null);
 
 		verify(validator).validate(questao);
 		verify(validator).onErrorUsePageOf(questoesC);

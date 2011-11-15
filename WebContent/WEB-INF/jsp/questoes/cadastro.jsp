@@ -8,32 +8,44 @@ import="java.sql.*" errorPage="" %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-1.6.2.min.js"/>"></script>
 <script type="text/javascript" charset="utf-8">
-	function liberaAlternativas(numeroDeAlternativas) {
+	
+	function liberaAlternativas(respostaUnica, numeroDeAlternativas) {
 		var i = 0;
+		var tipo, outro;
+		
+		if (respostaUnica == 'checked') {
+			tipo = 'Unica';
+			outro = 'Multipla';
+		}
+		
+		else {
+			tipo = 'Multipla';
+			outro = 'Unica';
+		}
+		
 		while (i < numeroDeAlternativas) {
-			$('#respostaMultiplaEscolha'+i).removeAttr('disabled');
-			$('#alternativa'+i).removeAttr('disabled');
-			$('#respostaMultiplaEscolha'+i).show();
-			$('#alternativa'+i).show();
+			$('#resposta' + tipo + i).removeAttr('disabled').show();
+			$('#alternativa'+i).removeAttr('disabled').show();
 			$('#espacoAlternativas'+i).show();
 			$('#espacoAlternativas2_'+i).show();
+			$('#resposta' + outro + i).attr('disabled', 'disabled').hide();
 			i++;
 		}
+		
 		while (i < 10) {
-			$('#respostaMultiplaEscolha'+i).attr('disabled', 'disabled');
-			$('#alternativa'+i).attr('disabled', 'disabled');
-			$('#respostaMultiplaEscolha'+i).hide();
-			$('#alternativa'+i).hide();
+			$('#resposta' + tipo + i).attr('disabled', 'disabled').hide();
+			$('#alternativa'+i).attr('disabled', 'disabled').hide();
 			$('#espacoAlternativas'+i).hide();
 			$('#espacoAlternativas2_'+i).hide();
+			$('#resposta' + outro + i).attr('disabled', 'disabled').hide();
 			i++;
 		}
 	}
 	
 	function habilitaMultiplaEscolha(numeroDeAlternativas) {
-		$('form').attr('action', '<c:url value="/questoes/mult"/>');				
-		$('#respostaMultiplaEscolha0').attr('checked', 'checked');
-		liberaAlternativas (numeroDeAlternativas);
+		$('form').attr('action', '<c:url value="/questoes/mult"/>');
+		$('#tipoDeResposta').removeAttr('disabled', 'disabled');
+		liberaAlternativas($('#tipoDeResposta').attr('checked'), numeroDeAlternativas);
 		$('#questaoDeMultiplaEscolhaContainer').show();
 	}
 	
@@ -45,22 +57,20 @@ import="java.sql.*" errorPage="" %>
 	
 	function habilitaVouF() {
 		$('form').attr('action', '<c:url value="/questoes/vouf"/>');
-		$('#respostaVouFVerdadeiro').removeAttr('disabled');
+		$('#respostaVouFVerdadeiro').removeAttr('disabled').attr('checked', 'checked');
 		$('#respostaVouFFalso').removeAttr('disabled');
-		$('#respostaVouFVerdadeiro').attr('checked', 'checked');
 		$('#questaoDeVouFContainer').show();
 	}
 	
 	function desabilitaMultiplaEscolha() {
+		$('#tipoDeQuestao').attr('disabled', 'disabled');
 		$('.respostaDasAlternativas').attr('disabled', 'disabled');
-		$('.respostaDasAlternativas').removeAttr('checked', 'checked');
 		$('.alternativa').attr('disabled', 'disabled');
 		$('#questaoDeMultiplaEscolhaContainer').hide();
 	}
 	
 	function desabilitaVouF() {
-		$('.respostaVouF').removeAttr('checked', 'checked');
-		$('.respostaVouF').attr('disabled', 'disabled');
+		$('.respostaVouF').removeAttr('checked', 'checked').attr('disabled', 'disabled');
 		$('#questaoDeVouFContainer').hide();
 	}
 	
@@ -102,10 +112,14 @@ import="java.sql.*" errorPage="" %>
 		});
 		
 	 	$('#seletorDeAlternativas').change(function() {
-	 		var valor = $(this).val();	 		
+	 		var valor = $(this).val();
 	 		numeroDeAlternativas = parseInt(valor);
-	 		liberaAlternativas(numeroDeAlternativas);
+	 		liberaAlternativas($('#tipoDeResposta').attr('checked'), numeroDeAlternativas);
 		});
+	 	
+	 	$('#tipoDeResposta').change(function() {
+	 		liberaAlternativas($(this).attr('checked'), numeroDeAlternativas);
+	 	});
 	});
 </script>
 <style type="text/css">
@@ -184,6 +198,9 @@ display: inline;
 							</c:choose>
 						</c:forEach>
 					</select>
+					<br/>
+					<p>Resposta única: </p>
+					<input id="tipoDeResposta" type="checkbox" checked="checked" name="questao.respostaUnica" value="true" disabled="disabled" /> 
 					<br/><br/>
 					<label>Alternativas:</label>
 					<c:set var="valorResposta" value="1" />
@@ -192,14 +209,15 @@ display: inline;
 						<br id="espacoAlternativas2_${iteracao.index }"/>
 						<c:choose>
 							<c:when test="${iteracao.index eq 0 }">
-								<input id="respostaMultiplaEscolha${iteracao.index }" class="respostaDasAlternativas" type="radio" checked="checked" name="questao.resposta" value="${valorResposta }" disabled="disabled" />
-								<c:set var="valorResposta" value="${valorResposta+1 }"/>
+								<input id="respostaUnica${iteracao.index }" class="respostaDasAlternativas" type="radio" checked="checked" name="questao.resposta" value="${valorResposta }" disabled="disabled" />
+								<input id="respostaMultipla${iteracao.index }" class="respostaDasAlternativas" type="checkbox" checked="checked" name="resposta[]" value="${valorResposta }" disabled="disabled" />
 							</c:when>
 							<c:otherwise>
-								<input id="respostaMultiplaEscolha${iteracao.index }" class="respostaDasAlternativas" type="radio" name="questao.resposta" value="${valorResposta }" disabled="disabled" />
-								<c:set var="valorResposta" value="${valorResposta*2 }"/>
+								<input id="respostaUnica${iteracao.index }" class="respostaDasAlternativas" type="radio" name="questao.resposta" value="${valorResposta }" disabled="disabled" />
+								<input id="respostaMultipla${iteracao.index }" class="respostaDasAlternativas" type="checkbox" name="resposta[]" value="${valorResposta }" disabled="disabled" />
 							</c:otherwise>
 						</c:choose>
+								<c:set var="valorResposta" value="${valorResposta*2 }"/>
 								<input  id="alternativa${iteracao.index }" class="alternativa" type="text" size="100" name="questao.alternativas[]" disabled="disabled" />
 					</c:forEach>
 				</div>
