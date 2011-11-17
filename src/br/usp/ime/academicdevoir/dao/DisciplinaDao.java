@@ -53,8 +53,7 @@ public class DisciplinaDao {
                 .add(Restrictions.like("nome", nome, MatchMode.EXACT))
                 .list();
         
-	    if (listaDeDisciplinas.size() > 1) return;
-	    if (listaDeDisciplinas.size() == 1 && listaDeDisciplinas.get(0).getId() != disciplina.getId()) return;
+	    if (listaDeDisciplinas.size() != 0 && listaDeDisciplinas.get(0).getId() != disciplina.getId()) return;
 	    
 		Transaction tx = session.beginTransaction();
 		session.update(disciplina);
