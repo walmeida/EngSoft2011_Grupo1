@@ -46,7 +46,16 @@ public class DisciplinaDao {
 	 * 
 	 * @param disciplina
 	 */
+	@SuppressWarnings("unchecked")
 	public void atualizaDisciplina(Disciplina disciplina) {
+		String nome = disciplina.getNome();
+	    List<Disciplina> listaDeDisciplinas = session.createCriteria(Disciplina.class)
+                .add(Restrictions.like("nome", nome, MatchMode.EXACT))
+                .list();
+        
+	    if (listaDeDisciplinas.size() > 1) return;
+	    if (listaDeDisciplinas.size() == 1 && listaDeDisciplinas.get(0).getId() != disciplina.getId()) return;
+	    
 		Transaction tx = session.beginTransaction();
 		session.update(disciplina);
 		tx.commit();
