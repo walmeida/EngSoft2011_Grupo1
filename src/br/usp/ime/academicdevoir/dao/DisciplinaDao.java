@@ -3,6 +3,8 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.usp.ime.academicdevoir.entidade.Disciplina;
@@ -25,7 +27,15 @@ public class DisciplinaDao {
 	 * 
 	 * @param disciplina
 	 */
+	@SuppressWarnings("unchecked")
 	public void salvaDisciplina(Disciplina disciplina) {
+		String nome = disciplina.getNome();
+	    List<Disciplina> listaDeDisciplinas = session.createCriteria(Disciplina.class)
+                .add(Restrictions.like("nome", nome, MatchMode.EXACT))
+                .list();
+        
+	    if (listaDeDisciplinas.size() != 0) return;
+	    
 		Transaction tx = session.beginTransaction();
 		session.save(disciplina);
 		tx.commit();
