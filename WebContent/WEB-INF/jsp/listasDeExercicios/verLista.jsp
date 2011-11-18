@@ -78,6 +78,10 @@ font-family:"Times New Roman";
 			<td>${listaDeExercicios.propriedades.enunciado }</td>
 		</tr>
 		<tr>
+			<td>Turma:</td>
+			<td>${listaDeExercicios.turma.disciplina.nome } - ${listaDeExercicios.turma.nome }</td>
+		</tr>
+		<tr>
 			<td>Visível:</td>
 			<td>
 				<c:choose>
@@ -137,40 +141,6 @@ font-family:"Times New Roman";
 			<button type="submit" name="_method" value="delete">Excluir Lista</button>
 		</fieldset>
 	</form>
-	
-		
-	<h3>Turmas</h3>
-	
-	<div>
-		<table>
-			<c:forEach items="${listaDeExercicios.turmas }" var="turma" varStatus="status">
-				<tr>
-					<td>${turma.nome }</td>
-					<td>
-						<form action="<c:url value="/listasDeExercicios/${listaDeExercicios.id }/turmas/${status.index }" />" method="post" accept-charset="us-ascii">
-							<fieldset class="fieldsetSemFormatacao">
-								<button type="submit" name="_method" value="delete">Remover</button>
-							</fieldset>
-						</form>
-					</td>
-				</tr>
-			</c:forEach>
-		</table>
-	</div>
-
-	<div>
-		<button id="ativaIncluirTurma" type="button">Incluir nova Turma</button>
-		<form id="formIncluirTurma" action="<c:url value="/listasDeExercicios/${listaDeExercicios.id }/turmas/inclui"/>" method="post">
-			<fieldset class="fieldsetSemFormatacao">
-				<select id="turmaASerIncluida" name="idDaTurma">
-					<c:forEach items="${turmasDoProfessor }" var="turma">
-						<option value="${turma.id }">${turma.disciplina.nome } - ${turma.nome }</option>
-					</c:forEach>
-				</select>				
-				<button type="submit" name="_method" value="put">Incluir</button>
-			</fieldset>
-		</form>	
-	</div>
 	
 	<h3>Questões</h3>
 	

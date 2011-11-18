@@ -14,10 +14,14 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+//import javax.persistence.JoinTable;
+//import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.Valid;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 /**
@@ -41,9 +45,12 @@ public class ListaDeExercicios {
 	 * @uml.property  name="turmas"
 	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="br.usp.ime.academicdevoir.entidade.Turma"
 	 */
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "turma_listas", joinColumns = { @JoinColumn(name = "id_lista") }, inverseJoinColumns = { @JoinColumn(name = "id_turma") })
-	private List<Turma> turmas;
+	//@ManyToMany(fetch = FetchType.LAZY)
+	//@JoinTable(name = "turma_listas", joinColumns = { @JoinColumn(name = "id_lista") }, inverseJoinColumns = { @JoinColumn(name = "id_turma") })
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_turma")
+	@Fetch(FetchMode.JOIN)
+	private Turma turma;
 
 	/**
 	 * @uml.property  name="questoes"
@@ -72,12 +79,12 @@ public class ListaDeExercicios {
 		this.id = id;
 	}
 
-	public List<Turma> getTurmas() {
-		return turmas;
+	public Turma getTurma() {
+		return turma;
 	}
 
-	public void setTurmas(List<Turma> turmas) {
-		this.turmas = turmas;
+	public void setTurma(Turma turma) {
+		this.turma = turma;
 	}
 
 	public List<QuestaoDaLista> getQuestoes() {

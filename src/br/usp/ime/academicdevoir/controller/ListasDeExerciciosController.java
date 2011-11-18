@@ -107,21 +107,21 @@ public class ListasDeExerciciosController {
 	 * @param idDasTurmas
 	 */
 	public void cadastra(PropriedadesDaListaDeExercicios propriedades,
-			final List<Integer> prazoDeEntrega, List<Long> idDasTurmas) {
+			final List<Integer> prazoDeEntrega, Long idDaTurma) {
 
 		ListaDeExercicios listaDeExercicios = new ListaDeExercicios();
 
-		Turma turma;
-		List<Turma> turmas = new ArrayList<Turma>();
+		Turma turma = turmaDao.carrega(idDaTurma);
+		/*List<Turma> turmas = new ArrayList<Turma>();
 		if (idDasTurmas == null)
 			idDasTurmas = new ArrayList<Long>();
 		for (Long id : idDasTurmas) {
 			turma = turmaDao.carrega(id);
 			turmas.add(turma);
-		}
+		}*/
 
 		propriedades.setPrazoDeEntrega(prazoDeEntrega);
-		listaDeExercicios.setTurmas(turmas);
+		listaDeExercicios.setTurma(turma);
 		listaDeExercicios.setPropriedades(propriedades);
 
 		validator.validate(listaDeExercicios);
@@ -349,23 +349,24 @@ public class ListasDeExerciciosController {
 		Turma turma = (Turma) turmaDao.carrega(idDaTurma);
 
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
-		List<Turma> turmas = listaDeExercicios.getTurmas();
+		listaDeExercicios.setTurma(turma);
+		/*List<Turma> turmas = listaDeExercicios.getTurmas();
 		if (!turmas.contains(turma)) {
 			turmas.add(turma);
 			listaDeExercicios.setTurmas(turmas);
 			dao.atualiza(listaDeExercicios);
-		}
+		}*/
 		result.redirectTo(this).verLista(listaDeExercicios.getId());
 	}
 
-	@Delete
-	@Path("/listasDeExercicios/{listaDeExercicios.id}/turmas/{indice}")
+	//@Delete
+	//@Path("/listasDeExercicios/{listaDeExercicios.id}/turmas/{indice}")
 	/**
 	 * Remove a turma com o índice fornecido da lista de exercícios fornecida.
 	 * @param listaDeExercicios
 	 * @param indice
 	 */
-	public void removeTurma(ListaDeExercicios listaDeExercicios, Integer indice) {
+	/*public void removeTurma(ListaDeExercicios listaDeExercicios, Integer indice) {
 		dao.recarrega(listaDeExercicios);
 		List<Turma> turmas = listaDeExercicios.getTurmas();
 
@@ -374,7 +375,7 @@ public class ListasDeExerciciosController {
 
 		dao.atualiza(listaDeExercicios);
 		result.redirectTo(this).verLista(listaDeExercicios.getId());
-	}
+	}*/
 
 	@Get
 	@Path("/listasDeExercicios/cadastro")

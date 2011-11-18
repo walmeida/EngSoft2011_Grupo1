@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.usp.ime.academicdevoir.entidade.Turma;
+import br.usp.ime.academicdevoir.entidade.Disciplina;
 
 @Component
 public class TurmaDao {
@@ -26,7 +29,17 @@ public class TurmaDao {
 	 * 
 	 * @param turma
 	 */
+	@SuppressWarnings("unchecked")
 	public void salvaTurma(Turma turma) {
+		String nome = turma.getNome();
+		Disciplina disciplina = turma.getDisciplina();
+	    List<Turma> listaDeTurmas = session.createCriteria(Turma.class)
+                .add(Restrictions.like("nome", nome, MatchMode.EXACT))
+                .add(Restrictions.eq("disciplina", disciplina))
+                .list();
+        
+	    if (listaDeTurmas.size() != 0) return;
+	    
 		Transaction tx = session.beginTransaction();
 		session.save(turma);
 		tx.commit();
@@ -37,7 +50,17 @@ public class TurmaDao {
 	 *  
 	 * @param turma
 	 */
+	@SuppressWarnings("unchecked")
 	public void atualizaTurma(Turma turma) {
+		String nome = turma.getNome();
+		Disciplina disciplina = turma.getDisciplina();
+	    List<Turma> listaDeTurmas = session.createCriteria(Turma.class)
+                .add(Restrictions.like("nome", nome, MatchMode.EXACT))
+                .add(Restrictions.eq("disciplina", disciplina))
+                .list();
+        
+	    if (listaDeTurmas.size() != 0 && listaDeTurmas.get(0).getId() != turma.getId()) return;
+	    
 		Transaction tx = session.beginTransaction();
 		session.update(turma);
 		tx.commit();
