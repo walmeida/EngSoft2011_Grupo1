@@ -89,14 +89,23 @@ display: inline;
 					</select>
 				<br/><br/>
 					
-				<label for="turmas">Turmas:</label>
+				<!-- <label for="turmas">Turmas:</label>
 				<br />
 				<c:forEach items="${turmasDoProfessor }" var="turma">
 					<input type="checkbox" name="idDasTurmas[]" value="${turma.id }" />
 					<p> ${turma.disciplina.nome } - ${turma.nome }</p>
 					<br />
 				</c:forEach>
+				-->
 				
+				<label for="turmas">Turmas:</label>
+				<br />
+				<c:forEach items="${turmasDoProfessor }" var="turma">
+					<input type="radio" name="idDaTurma" value="${turma.id }" />
+					<p> ${turma.disciplina.nome } - ${turma.nome }</p>
+					<br />
+				</c:forEach>
+								
 				<br />
 				<button type="submit">Enviar</button>
 			</fieldset>
