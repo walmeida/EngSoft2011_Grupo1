@@ -14,6 +14,7 @@ import br.com.caelum.vraptor.Validator;
 import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
 import br.usp.ime.academicdevoir.dao.ListaDeRespostasDao;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
+import br.usp.ime.academicdevoir.dao.QuestaoDaListaDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
@@ -25,8 +26,11 @@ import br.usp.ime.academicdevoir.entidade.PropriedadesDaListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.PropriedadesDaListaDeRespostas;
 import br.usp.ime.academicdevoir.entidade.Questao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDaLista;
+import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
+import br.usp.ime.academicdevoir.entidade.QuestaoDeVouF;
 import br.usp.ime.academicdevoir.entidade.Resposta;
 import br.usp.ime.academicdevoir.entidade.Turma;
+import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 @Resource
@@ -406,6 +410,30 @@ public class ListasDeExerciciosController {
 	 * */
 	public void autoCorrecaoLista(Long id) {
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
+		List<ListaDeRespostas> listasDeRespostas = listaDeRespostasDao.listaRespostasDaLista(listaDeExercicios);
+		
+		for (ListaDeRespostas listaDeRespostas : listasDeRespostas) {
+			List<Resposta> respostas = listaDeRespostas.getRespostas();
+			Integer notaDaLista = 0;
+			for (Resposta resposta : respostas) {
+				Questao questao = resposta.getQuestao();
+				if(questao.getTipo() == TipoDeQuestao.VOUF){
+					Boolean valorGabarito = ((QuestaoDeVouF) questao).getResposta();
+					if (resposta.getValor().equals(valorGabarito)){
+						//Dar os pontos pro mano
+						//QuestaoDaLista questaoDaLista = listaDeExercicios.getQuestoes().
+						
+					}
+				}
+				else if(questao.getTipo() == TipoDeQuestao.MULTIPLAESCOLHA){
+					Integer valorGabarito = ((QuestaoDeMultiplaEscolha) questao).getResposta();
+					if (resposta.getValor().equals(valorGabarito)){
+						//Dar os pontos pro mano
+					}
+				}
+				
+			}
+		}
 
 		Aluno aluno = (Aluno) usuarioLogado.getUsuario();
 		ListaDeRespostas listaDeRespostas = listaDeRespostasDao
