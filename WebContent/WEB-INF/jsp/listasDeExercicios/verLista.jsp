@@ -128,6 +128,7 @@ font-family:"Times New Roman";
 		<fieldset class="fieldsetSemFormatacao">
 			<button type="submit">Alterar</button>
 			<a href="<c:url value='/listasDeExercicios/resolver/${listaDeExercicios.id }'/>">Resolver Lista</a>
+			<a href="<c:url value='/listasDeExercicios/autocorrecao/${listaDeExercicios.id }'/>">Correção Automática</a>
 		</fieldset>
 	</form>
 	
@@ -215,7 +216,9 @@ font-family:"Times New Roman";
 			</fieldset>
 		</form>
 	</div>
-	<a href="<c:url value='/login'/>">Sair</a>
+	<div>
+		<a href="<c:url value='/login'/>">Sair</a>
+	</div>
     <!--  TODO a href="<c:url value='/alunos/home'/>">Página Principal</a><br/> -->
 </body>
 </html>

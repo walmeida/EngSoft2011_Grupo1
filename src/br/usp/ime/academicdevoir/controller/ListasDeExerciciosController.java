@@ -395,4 +395,47 @@ public class ListasDeExerciciosController {
 	public void lista() {
 		result.include("listaDeListas", dao.listaTudo());
 	}
+	
+	@Get
+	@Path("/listasDeExercicios/autocorrecao/{id}")
+	/** 
+	 * Devolve uma lista de exercícios com o id fornecido.
+	 * 
+	 * @param id
+	 * */
+	public void autoCorrecaoLista(Long id) {
+		ListaDeExercicios listaDeExercicios = dao.carrega(id);
+
+		Aluno aluno = (Aluno) usuarioLogado.getUsuario();
+		ListaDeRespostas listaDeRespostas = listaDeRespostasDao
+				.getRespostasDoAluno(id, aluno);
+
+		if (listaDeRespostas == null) {
+			PropriedadesDaListaDeRespostas propriedades = new PropriedadesDaListaDeRespostas();
+			propriedades.setEstado(EstadoDaListaDeRespostas.SALVA);
+			propriedades.setNumeroDeEnvios(0);
+
+			listaDeRespostas = new ListaDeRespostas();
+			listaDeRespostas.setListaDeExercicios(listaDeExercicios);
+			listaDeRespostas.setAluno(aluno);
+		}
+
+		else if (listaDeRespostas.getRespostas() != null
+				&& listaDeRespostas.getRespostas().size() > 0) {
+			result.redirectTo(this).alterarRespostas(listaDeRespostas);
+			return;
+		}
+
+		listaDeRespostas.setRespostas(new ArrayList<Resposta>());
+		listaDeRespostasDao.salva(listaDeRespostas);
+
+		result.include("prazo", listaDeExercicios.getPropriedades()
+				.getPrazoDeEntregaFormatado());
+		result.include("listaDeExercicios", listaDeExercicios);
+		result.include("numeroDeQuestoes", listaDeExercicios.getQuestoes()
+				.size());
+		result.include("listaDeRespostas", listaDeRespostas);
+	}
+	
+	
 }
