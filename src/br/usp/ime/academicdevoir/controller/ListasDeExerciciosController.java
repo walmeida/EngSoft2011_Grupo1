@@ -14,9 +14,11 @@ import br.com.caelum.vraptor.Validator;
 import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
 import br.usp.ime.academicdevoir.dao.ListaDeRespostasDao;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
+import br.usp.ime.academicdevoir.dao.QuestaoDaListaDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
+import br.usp.ime.academicdevoir.entidade.AutoCorrecao;
 import br.usp.ime.academicdevoir.entidade.EstadoDaListaDeRespostas;
 import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.ListaDeRespostas;
@@ -25,10 +27,13 @@ import br.usp.ime.academicdevoir.entidade.PropriedadesDaListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.PropriedadesDaListaDeRespostas;
 import br.usp.ime.academicdevoir.entidade.Questao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDaLista;
+import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
+import br.usp.ime.academicdevoir.entidade.QuestaoDeVouF;
 import br.usp.ime.academicdevoir.entidade.Resposta;
 import br.usp.ime.academicdevoir.entidade.Turma;
 import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Privilegio;
+import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 
@@ -78,6 +83,11 @@ public class ListasDeExerciciosController {
 	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private final UsuarioSession usuarioSession;
+	/**
+	 * @uml.property name="questaoDaListaDao"
+	 * @uml.associationEnd multiplicity="(1 1)"
+	 */
+	private final QuestaoDaListaDao questaoDaListaDao;
 
 	/**
 	 * @param result
@@ -89,7 +99,7 @@ public class ListasDeExerciciosController {
 	public ListasDeExerciciosController(Result result,
 			ListaDeExerciciosDao dao, ListaDeRespostasDao listaDeRespostasDao,
 			QuestaoDao questaoDao, ProfessorDao professorDao,
-			TurmaDao turmaDao, Validator validator, UsuarioSession usuarioSession) {
+			TurmaDao turmaDao, Validator validator, UsuarioSession usuarioSession, QuestaoDaListaDao questaoDaListaDao) {
 		this.result = result;
 		this.dao = dao;
 		this.listaDeRespostasDao = listaDeRespostasDao;
@@ -98,6 +108,7 @@ public class ListasDeExerciciosController {
 		this.turmaDao = turmaDao;
 		this.validator = validator;
 		this.usuarioSession = usuarioSession;
+		this.questaoDaListaDao = questaoDaListaDao;
 	}
 
 	@Post
@@ -430,4 +441,72 @@ public class ListasDeExerciciosController {
 			result.redirectTo(LoginController.class).acessoNegado();
 		result.include("listaDeListas", dao.listaTudo());
 	}
+	
+	@Get
+	@Path("/listasDeExercicios/autocorrecao/{id}")
+	/** 
+	 * Corrige todas as respostas da lista de exercícios com o id fornecido.
+	 * 
+	 * @param id
+	 * */
+	public void autoCorrecaoLista(Long id) {
+		//Carrega a lista de exercícios com esse id
+		ListaDeExercicios listaDeExercicios = dao.carrega(id);
+		
+		//Carrega as propriedades da lista de exercícios
+		PropriedadesDaListaDeExercicios propriedades = listaDeExercicios.getPropriedades();
+		
+		//Não corrige se autocorreção estiver desativada para esse lista
+		if (propriedades.getAutoCorrecao() == AutoCorrecao.DESATIVADA)
+			result.redirectTo(this).lista();
+		
+		
+		//Pegando todas as listas de respostas. Cada elemento corresponde a Lista de um aluno
+		List<ListaDeRespostas> listasDeRespostas = listaDeRespostasDao.listaRespostasDaLista(listaDeExercicios);
+		
+		//Para cada Lista de Resposta (Aluno)
+		for (ListaDeRespostas listaDeRespostas : listasDeRespostas) {
+			
+			//Atribuindo a lista de respostas a variável
+			List<Resposta> respostas = listaDeRespostas.getRespostas();
+			
+			//List para os pesos das questões usados na nota final
+			List<Integer> pesosDasQuestoes = new ArrayList<Integer>();
+			
+			//Para cada resposta dessa lista
+			for (Resposta resposta : respostas) {
+				
+				//Pegando a questao a qual a resposta se refere
+				Questao questao = resposta.getQuestao();
+				
+				//Obtendo a Questao relacionada com a lista para obter as propriedades
+				QuestaoDaLista questaoDaLista = questaoDaListaDao.getQuestaoDaListaPorIds(id, questao.getId());
+				
+				//Monstando o vetor de pesos para o cálculo da nota final
+				pesosDasQuestoes.add(questaoDaLista.getPeso());
+				
+				//Verificando o tipo da questao para verificar se a resposta está certa ou não. Feio ='(
+				if(questao.getTipo() == TipoDeQuestao.VOUF){
+					Boolean valorGabarito = ((QuestaoDeVouF) questao).getResposta();
+					if (resposta.getValor().equals(valorGabarito)) resposta.setNota(1.0);
+					else resposta.setNota(0.0);
+				}
+				else if(questao.getTipo() == TipoDeQuestao.MULTIPLAESCOLHA){
+					Integer valorGabarito = ((QuestaoDeMultiplaEscolha) questao).getResposta();
+					if (resposta.getValor().equals(valorGabarito)) resposta.setNota(1.0);
+					else resposta.setNota(0.0);
+				}
+				
+			}
+			
+			//Atribuindo a nota final à lista
+			listaDeRespostas.setNotaFinal(pesosDasQuestoes);
+		}
+		
+		//Redireciona para o menu de listas
+		result.redirectTo(this).lista();
+		
+	}
+	
+	
 }

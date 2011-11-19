@@ -2,9 +2,12 @@ package br.usp.ime.academicdevoir.dao;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
+import br.com.caelum.vraptor.ioc.Component;
 import br.usp.ime.academicdevoir.entidade.QuestaoDaLista;
 
+@Component
 public class QuestaoDaListaDao {
 
 	/**
@@ -40,5 +43,16 @@ public class QuestaoDaListaDao {
 
 	public void recarrega(QuestaoDaLista questao) {
 		session.refresh(questao);
+	}
+	
+	/**
+	 * Devolve a questao da lista referente a questao e lista de exercícios
+	 * com o id fornecido.
+	 */
+	public QuestaoDaLista getQuestaoDaListaPorIds(Long idDaLista, Long idDaQuestao) {
+		return (QuestaoDaLista) this.session
+				.createCriteria(QuestaoDaLista.class)
+				.add(Restrictions.eq("listaDeExercicios.id", idDaLista))
+				.add(Restrictions.eq("questao.id", idDaQuestao)).uniqueResult();
 	}
 }

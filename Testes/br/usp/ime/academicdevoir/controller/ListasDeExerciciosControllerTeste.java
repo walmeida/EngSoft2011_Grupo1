@@ -23,6 +23,7 @@ import br.com.caelum.vraptor.util.test.MockResult;
 import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
 import br.usp.ime.academicdevoir.dao.ListaDeRespostasDao;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
+import br.usp.ime.academicdevoir.dao.QuestaoDaListaDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
@@ -108,6 +109,11 @@ public class ListasDeExerciciosControllerTeste {
 	 * @uml.associationEnd  readOnly="true"
 	 */
 	private UsuarioSession usuarioLogado;
+	/**
+	 * @uml.property  name="questaoDao"
+	 * @uml.associationEnd  
+	 */
+	private QuestaoDaListaDao questaoDaoDaListaDao;
 
 	@Before
 	public void SetUp() {
@@ -119,7 +125,7 @@ public class ListasDeExerciciosControllerTeste {
 		validator = spy(new JSR303MockValidator());
 
 		listasDeExerciciosController = new ListasDeExerciciosController(result,
-				dao, respostasDao, questaoDao, professorDao, turmaDao, validator, usuarioLogado);
+				dao, respostasDao, questaoDao, professorDao, turmaDao, validator, usuarioLogado, questaoDaoDaListaDao);
 		
 		listaDeExercicios = new ListaDeExercicios();
 		listaDeExercicios.setId(0L);
