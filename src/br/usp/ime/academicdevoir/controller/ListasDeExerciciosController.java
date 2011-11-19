@@ -18,6 +18,7 @@ import br.usp.ime.academicdevoir.dao.QuestaoDaListaDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
+import br.usp.ime.academicdevoir.entidade.AutoCorrecao;
 import br.usp.ime.academicdevoir.entidade.EstadoDaListaDeRespostas;
 import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.ListaDeRespostas;
@@ -79,6 +80,11 @@ public class ListasDeExerciciosController {
 	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private final UsuarioSession usuarioLogado;
+	/**
+	 * @uml.property name="questaoDaListaDao"
+	 * @uml.associationEnd multiplicity="(1 1)"
+	 */
+	private final QuestaoDaListaDao questaoDaListaDao;
 
 	/**
 	 * @param result
@@ -90,7 +96,7 @@ public class ListasDeExerciciosController {
 	public ListasDeExerciciosController(Result result,
 			ListaDeExerciciosDao dao, ListaDeRespostasDao listaDeRespostasDao,
 			QuestaoDao questaoDao, ProfessorDao professorDao,
-			TurmaDao turmaDao, Validator validator, UsuarioSession usuarioLogado) {
+			TurmaDao turmaDao, Validator validator, UsuarioSession usuarioLogado, QuestaoDaListaDao questaoDaListaDao) {
 		this.result = result;
 		this.dao = dao;
 		this.listaDeRespostasDao = listaDeRespostasDao;
@@ -99,6 +105,7 @@ public class ListasDeExerciciosController {
 		this.turmaDao = turmaDao;
 		this.validator = validator;
 		this.usuarioLogado = usuarioLogado;
+		this.questaoDaListaDao = questaoDaListaDao;
 	}
 
 	@Post
@@ -404,66 +411,67 @@ public class ListasDeExerciciosController {
 	@Get
 	@Path("/listasDeExercicios/autocorrecao/{id}")
 	/** 
-	 * Devolve uma lista de exercícios com o id fornecido.
+	 * Corrigi todas as respostas da lista de exercícios com o id fornecido.
 	 * 
 	 * @param id
 	 * */
 	public void autoCorrecaoLista(Long id) {
+		//Carrega a lista de exercícios com esse id
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
+		
+		//Carrega as propriedades da lista de exercícios
+		PropriedadesDaListaDeExercicios propriedades = listaDeExercicios.getPropriedades();
+		
+		//Não corrige se autocorreção estiver desativada para esse lista
+		if (propriedades.getAutoCorrecao() == AutoCorrecao.DESATIVADA)
+			result.redirectTo(this).lista();
+		
+		
+		//Pegando todas as listas de respostas. Cada elemento corresponde a Lista de um aluno
 		List<ListaDeRespostas> listasDeRespostas = listaDeRespostasDao.listaRespostasDaLista(listaDeExercicios);
 		
+		//Para cada Lista de Resposta (Aluno)
 		for (ListaDeRespostas listaDeRespostas : listasDeRespostas) {
+			
+			//Atribuindo a lista de respostas a variável
 			List<Resposta> respostas = listaDeRespostas.getRespostas();
-			Integer notaDaLista = 0;
+			
+			//List para os pesos das questões usados na nota final
+			List<Integer> pesosDasQuestoes = new ArrayList<Integer>();
+			
+			//Para cada resposta dessa lista
 			for (Resposta resposta : respostas) {
+				
+				//Pegando a questao a qual a resposta se refere
 				Questao questao = resposta.getQuestao();
+				
+				//Obtendo a Questao relacionada com a lista para obter as propriedades
+				QuestaoDaLista questaoDaLista = questaoDaListaDao.getQuestaoDaListaPorIds(id, questao.getId());
+				
+				//Monstando o vetor de pesos para o cálculo da nota final
+				pesosDasQuestoes.add(questaoDaLista.getPeso());
+				
+				//Verificando o tipo da questao para verificar se a resposta está certa ou não. Feio ='(
 				if(questao.getTipo() == TipoDeQuestao.VOUF){
 					Boolean valorGabarito = ((QuestaoDeVouF) questao).getResposta();
-					if (resposta.getValor().equals(valorGabarito)){
-						//Dar os pontos pro mano
-						//QuestaoDaLista questaoDaLista = listaDeExercicios.getQuestoes().
-						
-					}
+					if (resposta.getValor().equals(valorGabarito)) resposta.setNota(1.0);
+					else resposta.setNota(0.0);
 				}
 				else if(questao.getTipo() == TipoDeQuestao.MULTIPLAESCOLHA){
 					Integer valorGabarito = ((QuestaoDeMultiplaEscolha) questao).getResposta();
-					if (resposta.getValor().equals(valorGabarito)){
-						//Dar os pontos pro mano
-					}
+					if (resposta.getValor().equals(valorGabarito)) resposta.setNota(1.0);
+					else resposta.setNota(0.0);
 				}
 				
 			}
+			
+			//Atribuindo a nota final à lista
+			listaDeRespostas.setNotaFinal(pesosDasQuestoes);
 		}
-
-		Aluno aluno = (Aluno) usuarioLogado.getUsuario();
-		ListaDeRespostas listaDeRespostas = listaDeRespostasDao
-				.getRespostasDoAluno(id, aluno);
-
-		if (listaDeRespostas == null) {
-			PropriedadesDaListaDeRespostas propriedades = new PropriedadesDaListaDeRespostas();
-			propriedades.setEstado(EstadoDaListaDeRespostas.SALVA);
-			propriedades.setNumeroDeEnvios(0);
-
-			listaDeRespostas = new ListaDeRespostas();
-			listaDeRespostas.setListaDeExercicios(listaDeExercicios);
-			listaDeRespostas.setAluno(aluno);
-		}
-
-		else if (listaDeRespostas.getRespostas() != null
-				&& listaDeRespostas.getRespostas().size() > 0) {
-			result.redirectTo(this).alterarRespostas(listaDeRespostas);
-			return;
-		}
-
-		listaDeRespostas.setRespostas(new ArrayList<Resposta>());
-		listaDeRespostasDao.salva(listaDeRespostas);
-
-		result.include("prazo", listaDeExercicios.getPropriedades()
-				.getPrazoDeEntregaFormatado());
-		result.include("listaDeExercicios", listaDeExercicios);
-		result.include("numeroDeQuestoes", listaDeExercicios.getQuestoes()
-				.size());
-		result.include("listaDeRespostas", listaDeRespostas);
+		
+		//Redireciona para o menu de listas
+		result.redirectTo(this).lista();
+		
 	}
 	
 	
