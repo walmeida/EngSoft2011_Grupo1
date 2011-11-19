@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
+import br.usp.ime.academicdevoir.entidade.Turma;
 
 @Component
 public class ListaDeExerciciosDao {
@@ -30,6 +32,20 @@ public class ListaDeExerciciosDao {
 	 */
 	public List<ListaDeExercicios> listaTudo() {
 		return this.session.createCriteria(ListaDeExercicios.class).list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	/**
+	 * Devolve uma lista com todas as listas de exercícios cadastradas no banco
+	 * de dados.
+	 * 
+	 * @return List<ListaDeExercicios>
+	 */
+	public List<ListaDeExercicios> listaDeTurma(Turma turma) {
+		List<ListaDeExercicios> listaDeExercicios = this.session.createCriteria(ListaDeExercicios.class)
+        .add(Restrictions.eq("turma", turma))
+        .list();
+		return listaDeExercicios;
 	}
 
 	/**

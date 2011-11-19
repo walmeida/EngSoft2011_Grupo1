@@ -3,6 +3,9 @@ package br.usp.ime.academicdevoir.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
+
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
