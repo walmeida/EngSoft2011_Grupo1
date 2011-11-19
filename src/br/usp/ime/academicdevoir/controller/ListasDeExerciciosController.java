@@ -411,7 +411,7 @@ public class ListasDeExerciciosController {
 	@Get
 	@Path("/listasDeExercicios/autocorrecao/{id}")
 	/** 
-	 * Corrigi todas as respostas da lista de exercícios com o id fornecido.
+	 * Corrige todas as respostas da lista de exercícios com o id fornecido.
 	 * 
 	 * @param id
 	 * */
