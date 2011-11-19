@@ -2,6 +2,9 @@ package br.usp.ime.academicdevoir.controller;
 
 import br.usp.ime.academicdevoir.dao.QuestaoDeSubmissaoDeArquivoDao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;
+import br.usp.ime.academicdevoir.entidade.Usuario;
+import br.usp.ime.academicdevoir.infra.Privilegio;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -32,20 +35,27 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
 	private Validator validator;
+	/**
+	 * @uml.property  name="usuarioSession"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private final UsuarioSession usuarioSession;
 
 	/**
 	 * @param result
 	 *            para interação com o jsp da questão.
+	 * @param validator
+	 * @param usuarioSession para controle de permissões
 	 * @param turmaDao
 	 *            para interação com o banco de dados
-	 * @param validator
 	 */
 	public QuestoesDeSubmissaoDeArquivoController(
 			QuestaoDeSubmissaoDeArquivoDao dao, Result result,
-			Validator validator) {
+			Validator validator, UsuarioSession usuarioSession) {
 		this.dao = dao;
 		this.result = result;
 		this.validator = validator;
+		this.usuarioSession = usuarioSession;
 	}
 
 	@Post
@@ -55,6 +65,9 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 * @param questao
 	 */
 	public void cadastra(final QuestaoDeSubmissaoDeArquivo questao) {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
 		validator.validate(questao);
 		validator.onErrorUsePageOf(QuestoesController.class).cadastro();
 
@@ -69,6 +82,9 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 * @param id
 	 */
 	public void alteracao(Long id) {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
 		result.include("questao", dao.carrega(id));
 	}
 
@@ -79,6 +95,9 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 * @param id
 	 */
 	public void altera(QuestaoDeSubmissaoDeArquivo questao) {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
 		validator.validate(questao);
 		validator
 				.onErrorUsePageOf(QuestoesDeSubmissaoDeArquivoController.class)
@@ -95,6 +114,9 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 * @param id
 	 */
 	public void remove(Long id) {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
 		QuestaoDeSubmissaoDeArquivo questao = dao.carrega(id);
 		dao.remove(questao);
 		result.redirectTo(this).lista();
@@ -106,6 +128,9 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 * Devolve uma lista com todas as questões de submissão de arquivo cadastradas no banco de dados.
 	 */
 	public void lista() {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
 		result.include("lista", dao.listaTudo());
 	}
 }

@@ -155,6 +155,9 @@ public class ListasDeExerciciosController {
 	 * @param id
 	 * */
 	public void verLista(Long id) {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
 		Professor professor = professorDao.carrega(usuarioSession.getUsuario()
 				.getId());

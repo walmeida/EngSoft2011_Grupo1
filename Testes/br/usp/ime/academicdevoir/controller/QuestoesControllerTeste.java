@@ -21,6 +21,7 @@ import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeTexto;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeVouF;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 public class QuestoesControllerTeste {
 
@@ -59,13 +60,18 @@ public class QuestoesControllerTeste {
 	 * @uml.associationEnd  
 	 */
 	private QuestaoDeVouF questaoDeVouF;
+	/**
+	 * @uml.property  name="usuarioSession"
+	 * @uml.associationEnd
+	 */
+	private UsuarioSession usuarioSession;
 
 	@Before
 	public void SetUp() {
 		result = spy(new MockResult());
 		dao = mock(QuestaoDao.class);
 
-		questoesController = new QuestoesController(dao, result);
+		questoesController = new QuestoesController(dao, result, usuarioSession);
 		questaoDeMultiplaEscolha = new QuestaoDeMultiplaEscolha();
 		questaoDeSubmissaoDeArquivo = new QuestaoDeSubmissaoDeArquivo();
 		questaoDeTexto = new QuestaoDeTexto();

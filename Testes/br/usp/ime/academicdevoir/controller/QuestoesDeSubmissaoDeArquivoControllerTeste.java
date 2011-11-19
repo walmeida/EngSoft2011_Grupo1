@@ -12,6 +12,7 @@ import br.com.caelum.vraptor.util.test.JSR303MockValidator;
 import br.com.caelum.vraptor.util.test.MockResult;
 import br.usp.ime.academicdevoir.dao.QuestaoDeSubmissaoDeArquivoDao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 import br.usp.ime.academicdevoir.controller.QuestoesDeSubmissaoDeArquivoController;
 
 public class QuestoesDeSubmissaoDeArquivoControllerTeste {
@@ -35,6 +36,11 @@ public class QuestoesDeSubmissaoDeArquivoControllerTeste {
 	 * @uml.associationEnd  
 	 */
     private JSR303MockValidator validator;
+    /**
+	 * @uml.property  name="usuarioSession"
+	 * @uml.associationEnd
+	 */
+	private UsuarioSession usuarioSession;
     
     @Before
     public void SetUp() {
@@ -42,7 +48,7 @@ public class QuestoesDeSubmissaoDeArquivoControllerTeste {
         result = spy(new MockResult());
         validator = spy(new JSR303MockValidator());
         questoesC = new QuestoesDeSubmissaoDeArquivoController(dao, result,
-                validator);
+                validator, usuarioSession);
     }
     
     @Test

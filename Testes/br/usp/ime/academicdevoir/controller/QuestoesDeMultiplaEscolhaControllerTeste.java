@@ -11,6 +11,7 @@ import br.com.caelum.vraptor.util.test.MockResult;
 import br.usp.ime.academicdevoir.controller.QuestoesDeMultiplaEscolhaController;
 import br.usp.ime.academicdevoir.dao.QuestaoDeMultiplaEscolhaDao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 public class QuestoesDeMultiplaEscolhaControllerTeste {
 	/**
@@ -33,6 +34,11 @@ public class QuestoesDeMultiplaEscolhaControllerTeste {
 	 * @uml.associationEnd  
 	 */
 	private JSR303MockValidator validator;
+	/**
+	 * @uml.property  name="usuarioSession"
+	 * @uml.associationEnd
+	 */
+	private UsuarioSession usuarioSession;
 
 	@Before
 	public void SetUp() {
@@ -40,7 +46,7 @@ public class QuestoesDeMultiplaEscolhaControllerTeste {
 		result = spy(new MockResult());
 		validator = spy(new JSR303MockValidator());
 		questoesC = new QuestoesDeMultiplaEscolhaController(dao, result,
-				validator);
+				validator, usuarioSession);
 	}
 
 	@Test

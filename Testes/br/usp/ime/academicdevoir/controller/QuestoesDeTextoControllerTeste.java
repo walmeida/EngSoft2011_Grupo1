@@ -13,6 +13,7 @@ import br.com.caelum.vraptor.util.test.MockResult;
 import br.usp.ime.academicdevoir.controller.QuestoesDeTextoController;
 import br.usp.ime.academicdevoir.dao.QuestaoDeTextoDao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeTexto;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 public class QuestoesDeTextoControllerTeste {
     /**
@@ -35,6 +36,11 @@ public class QuestoesDeTextoControllerTeste {
 	 * @uml.associationEnd  
 	 */
     private JSR303MockValidator validator;
+    /**
+	 * @uml.property  name="usuarioSession"
+	 * @uml.associationEnd
+	 */
+	private UsuarioSession usuarioSession;
 
     @Before
     public void SetUp() {
@@ -42,7 +48,7 @@ public class QuestoesDeTextoControllerTeste {
         result = spy(new MockResult());
         validator = spy(new JSR303MockValidator());
         questoesC = new QuestoesDeTextoController(dao, result,
-                validator);
+                validator, usuarioSession);
     }
 
     @Test

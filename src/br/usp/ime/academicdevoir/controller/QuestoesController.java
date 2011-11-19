@@ -2,6 +2,9 @@ package br.usp.ime.academicdevoir.controller;
 
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.entidade.Questao;
+import br.usp.ime.academicdevoir.entidade.Usuario;
+import br.usp.ime.academicdevoir.infra.Privilegio;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -24,14 +27,21 @@ public class QuestoesController {
 	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
 	private final Result result;
-
 	/**
-	 * @param result para interação com o jsp da questao.
-	 * @param turmaDao para interação com o banco de dados
+	 * @uml.property  name="usuarioSession"
+	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
-	public QuestoesController(QuestaoDao dao, Result result) {
+	private final UsuarioSession usuarioSession;
+	
+	/**
+	 * @param turmaDao para interação com o banco de dados
+	 * @param result para interação com o jsp da questao.
+	 * @param usuarioSession para controle de permissões
+	 */
+	public QuestoesController(QuestaoDao dao, Result result, UsuarioSession usuarioSession) {
 		this.dao = dao;
 		this.result = result;
+		this.usuarioSession = usuarioSession;
 	}
 
 	@Get
@@ -41,6 +51,9 @@ public class QuestoesController {
 	 * @param id
 	 * */
 	public void alteracao(Long id) {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
 		switch (dao.carrega(id).getTipo()) {
 		case MULTIPLAESCOLHA:
 			result.redirectTo(QuestoesDeMultiplaEscolhaController.class)
@@ -69,6 +82,9 @@ public class QuestoesController {
 	 * @param id
 	 */
 	public void remove(Long id) {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
 		Questao questao = dao.carrega(id);
 		dao.remove(questao);
 		result.redirectTo(this).lista();
@@ -80,6 +96,9 @@ public class QuestoesController {
 	 * Permite acesso à página com formulário para cadastro de uma nova questão.
 	 */
 	public void cadastro() {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
 	}
 	
 	@Get
@@ -88,6 +107,9 @@ public class QuestoesController {
 	 * Devolve uma lista com todas as questões cadastradas no banco de dados.
 	 */
 	public void lista() {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
 		result.include("lista", dao.listaTudo());
 	}
 }

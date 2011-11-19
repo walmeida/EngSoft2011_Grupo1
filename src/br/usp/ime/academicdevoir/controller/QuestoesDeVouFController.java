@@ -2,6 +2,9 @@ package br.usp.ime.academicdevoir.controller;
 
 import br.usp.ime.academicdevoir.dao.QuestaoDeVouFDao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeVouF;
+import br.usp.ime.academicdevoir.entidade.Usuario;
+import br.usp.ime.academicdevoir.infra.Privilegio;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -32,19 +35,26 @@ public class QuestoesDeVouFController {
 	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
 	private Validator validator;
+	/**
+	 * @uml.property  name="usuarioSession"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private final UsuarioSession usuarioSession;
 
 	/**
 	 * @param result
 	 *            para interação com o jsp da questão.
+	 * @param validator
+	 * @param usuarioSession para controle de permissões
 	 * @param turmaDao
 	 *            para interação com o banco de dados
-	 * @param validator
 	 */
 	public QuestoesDeVouFController(QuestaoDeVouFDao dao, Result result,
-			Validator validator) {
+			Validator validator, UsuarioSession usuarioSession) {
 		this.dao = dao;
 		this.result = result;
 		this.validator = validator;
+		this.usuarioSession = usuarioSession;
 	}
 
 	@Post
@@ -54,6 +64,9 @@ public class QuestoesDeVouFController {
 	 * @param questao
 	 */
 	public void cadastra(final QuestaoDeVouF questao) {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
 		validator.validate(questao);
 		validator.onErrorUsePageOf(QuestoesController.class).cadastro();
 
@@ -68,6 +81,9 @@ public class QuestoesDeVouFController {
 	 * @param id
 	 * */
 	public void alteracao(Long id) {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
 		result.include("questao", dao.carrega(id));
 	}
 
@@ -78,6 +94,9 @@ public class QuestoesDeVouFController {
 	 * @param id
 	 */
 	public void altera(QuestaoDeVouF questao) {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
 		validator.validate(questao);
 		validator.onErrorUsePageOf(QuestoesDeVouFController.class).alteracao(
 				questao.getId());
@@ -93,6 +112,9 @@ public class QuestoesDeVouFController {
 	 * @param id
 	 */
 	public void remove(Long id) {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
 		QuestaoDeVouF questao = dao.carrega(id);
 		dao.remove(questao);
 		result.redirectTo(this).lista();
@@ -104,6 +126,9 @@ public class QuestoesDeVouFController {
 	 * Devolve uma lista com todas as questões de V ou F cadastradas no banco de dados.
 	 */
 	public void lista() {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+			result.redirectTo(LoginController.class).acessoNegado();
 		result.include("lista", dao.listaTudo());
 	}
 }
