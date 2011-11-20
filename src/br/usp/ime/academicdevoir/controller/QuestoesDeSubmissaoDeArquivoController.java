@@ -66,8 +66,11 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 */
 	public void cadastra(final QuestaoDeSubmissaoDeArquivo questao) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
+		
 		validator.validate(questao);
 		validator.onErrorUsePageOf(QuestoesController.class).cadastro();
 
@@ -83,8 +86,11 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 */
 	public void alteracao(Long id) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
+		
 		result.include("questao", dao.carrega(id));
 	}
 
@@ -96,8 +102,11 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 */
 	public void altera(QuestaoDeSubmissaoDeArquivo questao) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
+		
 		validator.validate(questao);
 		validator
 				.onErrorUsePageOf(QuestoesDeSubmissaoDeArquivoController.class)
@@ -115,8 +124,11 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 */
 	public void remove(Long id) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
+		
 		QuestaoDeSubmissaoDeArquivo questao = dao.carrega(id);
 		dao.remove(questao);
 		result.redirectTo(this).lista();
@@ -129,8 +141,11 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 */
 	public void lista() {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
+		
 		result.include("lista", dao.listaTudo());
 	}
 }

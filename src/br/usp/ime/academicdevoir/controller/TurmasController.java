@@ -108,11 +108,17 @@ public class TurmasController {
      */
     public void cadastro() {
     	Usuario u = usuarioSession.getUsuario();
-    	if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+    	if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+    	}
+    	
 		List<Disciplina> listaDeDisciplinas = disciplinaDao.listaTudo();
-		if(listaDeDisciplinas.isEmpty())
+		if(listaDeDisciplinas.isEmpty()) {
 			result.redirectTo(DisciplinasController.class).cadastro();
+			return;
+		}
+		
         result.include("listaDeDisciplinas", listaDeDisciplinas);
     }
 
@@ -123,10 +129,16 @@ public class TurmasController {
      */
     public void cadastra(final Turma nova) {
     	Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
-		if(nova.getDisciplina() == null)
+			return;
+		}
+		
+		if(nova.getDisciplina() == null) {
 			result.redirectTo(DisciplinasController.class).cadastro();
+			return;
+		}
+		
         turmaDao.salvaTurma(nova);
         result.redirectTo(ProfessoresController.class).listaTurmas(
                 nova.getProfessor().getId());
@@ -139,8 +151,10 @@ public class TurmasController {
     public void alteracao(Long id) {
         Turma turma = turmaDao.carrega(id);
         Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId() == turma.getProfessor().getId()))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId() == turma.getProfessor().getId())) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
 		
         result.include("turma", turma);
     }
@@ -154,8 +168,10 @@ public class TurmasController {
     public void altera(Long id, String novoNome) {
         Turma turma = turmaDao.carrega(id);
         Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId() == turma.getProfessor().getId()))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId() == turma.getProfessor().getId())) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
 		
         if (!novoNome.equals(""))
             turma.setNome(novoNome);
@@ -181,8 +197,10 @@ public class TurmasController {
     public void remove(final Long id) {
         Turma turma = turmaDao.carrega(id);
         Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId() == turma.getProfessor().getId()))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId() == turma.getProfessor().getId())) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
 		
         turmaDao.removeTurma(turma);
         result.redirectTo(ProfessoresController.class).listaTurmas(u.getId());    
@@ -200,8 +218,10 @@ public class TurmasController {
         Aluno aluno = alunoDao.carrega(idAluno);
         Turma turma = turmaDao.carrega(idTurma);
         Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId() == turma.getProfessor().getId() || u.getId() == aluno.getId()))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId() == turma.getProfessor().getId() || u.getId() == aluno.getId())) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
         
         alunoDao.removeMatricula(aluno, turma);
         result.redirectTo(TurmasController.class).listaAlunos(idTurma);

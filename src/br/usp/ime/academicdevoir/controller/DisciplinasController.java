@@ -77,8 +77,10 @@ public class DisciplinasController {
      */
 	public void cadastra(final Disciplina nova) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
 		
 		disciplinaDao.salvaDisciplina(nova);
 		result.redirectTo(DisciplinasController.class).lista();
@@ -93,8 +95,10 @@ public class DisciplinasController {
 	 */
 	public void alteracao(Long id) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
 		
 	    result.include("disciplina", disciplinaDao.carrega(id));
 	}
@@ -108,8 +112,10 @@ public class DisciplinasController {
 	public void altera(Long id, String novoNome) {
 		Disciplina d;
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
 		
 		d = disciplinaDao.carrega(id);
 		if (!novoNome.equals("")) d.setNome(novoNome);
@@ -135,8 +141,10 @@ public class DisciplinasController {
 	public void remove(final Long id) {
 		Disciplina disciplina;
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
 		
 		disciplina = disciplinaDao.carrega(id);
 		disciplinaDao.removeDisciplina(disciplina);

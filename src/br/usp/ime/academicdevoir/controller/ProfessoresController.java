@@ -101,8 +101,10 @@ public class ProfessoresController {
      */
     public void alteracao(Long id) {
     	Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId().longValue() == id))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId().longValue() == id)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
         result.include("professor", professorDao.carrega(id));
     }
     
@@ -118,8 +120,10 @@ public class ProfessoresController {
 	public void altera(Long id, String novoNome, String novoEmail, String novaSenha) {
 		Professor p;
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId().longValue() == id))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId().longValue() == id)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
 		
 		p = professorDao.carrega(id);
 		if (!novoNome.equals("") || !StringUtils.isBlank(novoNome)) p.setNome(novoNome);
@@ -144,8 +148,10 @@ public class ProfessoresController {
 	public void remove(final Long id) {
 		Professor professor;
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId().longValue() == id))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId().longValue() == id)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
 		
 		professor = professorDao.carrega(id);
 		professorDao.removeProfessor(professor);
@@ -154,8 +160,10 @@ public class ProfessoresController {
 	
 	public void mudarTipo(Long id) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
 		
 		professorDao.alteraTipo(id);
 		result.redirectTo(ProfessoresController.class).lista();

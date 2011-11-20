@@ -123,8 +123,11 @@ public class ListasDeExerciciosController {
 	public void cadastra(PropriedadesDaListaDeExercicios propriedades,
 			final List<Integer> prazoDeEntrega, Long idDaTurma) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
+		
 		ListaDeExercicios listaDeExercicios = new ListaDeExercicios();
 
 		Turma turma = turmaDao.carrega(idDaTurma);
@@ -156,8 +159,11 @@ public class ListasDeExerciciosController {
 	 * */
 	public void verLista(Long id) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
+		
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
 		Professor professor = professorDao.carrega(usuarioSession.getUsuario()
 				.getId());
@@ -241,8 +247,11 @@ public class ListasDeExerciciosController {
 	 * */
 	public void alteracao(Long id) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
+		
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
 
 		result.include("listaDeExercicios", listaDeExercicios);
@@ -262,8 +271,11 @@ public class ListasDeExerciciosController {
 			PropriedadesDaListaDeExercicios propriedades,
 			List<Integer> prazoDeEntrega) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
+		
 		ListaDeExercicios listaDoBD = dao.carrega(listaDeExercicios.getId());
 
 		propriedades.setPrazoDeEntrega(prazoDeEntrega);
@@ -286,8 +298,11 @@ public class ListasDeExerciciosController {
 	@Path("/listasDeExercicios/{id}")
 	public void remove(Long id) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
+		
 		ListaDeExercicios lista = dao.carrega(id);
 		dao.remove(lista);
 		result.redirectTo(this).lista();
@@ -304,8 +319,11 @@ public class ListasDeExerciciosController {
 	public void incluiQuestao(ListaDeExercicios listaDeExercicios,
 			Long idDaQuestao, Integer pesoDaQuestao, Integer ordemDaQuestao) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
+		
 		QuestaoDaLista novaQuestao = new QuestaoDaLista();
 		novaQuestao.setPeso(pesoDaQuestao);
 		novaQuestao.setOrdem(ordemDaQuestao);
@@ -335,8 +353,11 @@ public class ListasDeExerciciosController {
 	public void alteraQuestao(Long id, Integer indice, Long idDaNovaQuestao,
 			Integer ordemDaQuestao) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
+		
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
 		List<QuestaoDaLista> questoesDaLista = listaDeExercicios.getQuestoes();
 		QuestaoDaLista questaoDaLista = listaDeExercicios.getQuestoes().get(
@@ -362,8 +383,11 @@ public class ListasDeExerciciosController {
 	 */
 	public void removeQuestao(Long id, Integer indice) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
+		
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
 		List<QuestaoDaLista> questoes = listaDeExercicios.getQuestoes();
 
@@ -383,8 +407,11 @@ public class ListasDeExerciciosController {
 	 */
 /*	public void incluiTurma(Long id, Long idDaTurma) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
+		
 		Turma turma = (Turma) turmaDao.carrega(idDaTurma);
 
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
@@ -423,8 +450,11 @@ public class ListasDeExerciciosController {
 	 */
 	public void cadastro() {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
+		
 		Professor professor = professorDao.carrega(usuarioSession.getUsuario()
 				.getId());
 		result.include("turmasDoProfessor", professor.getTurmas());
@@ -465,8 +495,10 @@ public class ListasDeExerciciosController {
 		PropriedadesDaListaDeExercicios propriedades = listaDeExercicios.getPropriedades();
 		
 		//Não corrige se autocorreção estiver desativada para esse lista
-		if (propriedades.getAutoCorrecao() == AutoCorrecao.DESATIVADA)
+		if (propriedades.getAutoCorrecao() == AutoCorrecao.DESATIVADA) {
 			result.redirectTo(this).lista();
+			return;
+		}
 		
 		
 		//Pegando todas as listas de respostas. Cada elemento corresponde a Lista de um aluno
