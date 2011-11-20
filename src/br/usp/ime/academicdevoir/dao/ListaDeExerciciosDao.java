@@ -36,8 +36,7 @@ public class ListaDeExerciciosDao {
 	
 	@SuppressWarnings("unchecked")
 	/**
-	 * Devolve uma lista com todas as listas de exercícios cadastradas no banco
-	 * de dados.
+	 * Devolve uma lista com todas as listas de exercícios de uma determinada turma.
 	 * 
 	 * @return List<ListaDeExercicios>
 	 */
