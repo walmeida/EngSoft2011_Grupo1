@@ -1,5 +1,7 @@
 package br.usp.ime.academicdevoir.controller;
 
+import java.util.List;
+
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
@@ -7,6 +9,7 @@ import br.usp.ime.academicdevoir.dao.AlunoDao;
 import br.usp.ime.academicdevoir.dao.DisciplinaDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
+import br.usp.ime.academicdevoir.entidade.Disciplina;
 import br.usp.ime.academicdevoir.entidade.Turma;
 import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Privilegio;
@@ -107,8 +110,10 @@ public class TurmasController {
     	Usuario u = usuarioSession.getUsuario();
     	if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
 			result.redirectTo(LoginController.class).acessoNegado();
-		
-        result.include("listaDeDisciplinas", disciplinaDao.listaTudo());
+		List<Disciplina> listaDeDisciplinas = disciplinaDao.listaTudo();
+		if(listaDeDisciplinas.isEmpty())
+			result.redirectTo(DisciplinasController.class).cadastro();
+        result.include("listaDeDisciplinas", listaDeDisciplinas);
     }
 
     /**
@@ -120,7 +125,8 @@ public class TurmasController {
     	Usuario u = usuarioSession.getUsuario();
 		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
 			result.redirectTo(LoginController.class).acessoNegado();
-		
+		if(nova.getDisciplina() == null)
+			result.redirectTo(DisciplinasController.class).cadastro();
         turmaDao.salvaTurma(nova);
         result.redirectTo(ProfessoresController.class).listaTurmas(
                 nova.getProfessor().getId());
