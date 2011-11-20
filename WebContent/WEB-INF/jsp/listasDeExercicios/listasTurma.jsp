@@ -37,11 +37,8 @@ font-family:"Times New Roman";
 <body>
 	<h1>Academic Devoir</h1>
 	<h2>Grupo 1 - Engenharia de Software</h2>
-	<div id="menu">
-		<%@ include file="../questoes/menu.jsp" %><br/>
-	</div>
 		
-	<h3>Listas de Exerc&iacute;cios</h3>
+	<h3>Listas de Exerc&iacute;cios da Turma</h3>
 	
 	<div>
 		<ul>
@@ -98,11 +95,7 @@ font-family:"Times New Roman";
         		</c:forEach><br/><br/><br/>
         		Todas as Listas de Exerc&iacute;cios desta turma
         		<c:forEach items="${listaDeListas }" var="lista">
-                	<c:forEach items="${lista.respostas }" var="resposta">
-                		<c:if test ="${resposta.aluno.id == usuarioSession.usuario.id}">
-        						<li><a href="<c:url value="/listasDeExercicios/resolver/${lista.id }"/>">${lista.propriedades.nome }</a></li>
-        				</c:if>
-        			</c:forEach>
+       				<li><a href="<c:url value="/listasDeExercicios/resolver/${lista.id }"/>">${lista.propriedades.nome }</a></li>
         		</c:forEach>        			
 			</c:if>
 

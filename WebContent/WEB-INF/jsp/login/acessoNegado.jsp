@@ -13,7 +13,12 @@
 	
 	<p>Erro 403 - Acesso negado</p>
 	<p>Você não tem permissão. Pare de querer zuar o bang =/</p>
-    <p><a href="../">Página Principal</a></p>
+    <c:if test ="${usuarioSession.usuario.privilegio == 'ALUNO' || usuarioSession.usuario.privilegio == 'MONITOR'}">
+    	<a href="<c:url value='/alunos/home'/>">Página Principal</a><br/>
+ 	</c:if>
+    <c:if test ="${usuarioSession.usuario.privilegio == 'PROFESSOR' || usuarioSession.usuario.privilegio == 'ADMINISTRADOR'}">
+    	<a href="<c:url value='/professores/home'/>">Página Principal</a><br/>    		         
+ 	</c:if>
     
 </body>
 </html>
