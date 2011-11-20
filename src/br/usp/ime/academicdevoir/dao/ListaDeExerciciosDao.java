@@ -40,13 +40,13 @@ public class ListaDeExerciciosDao {
 	 * 
 	 * @return List<ListaDeExercicios>
 	 */
-	public List<ListaDeExercicios> listaDeTurma(Turma turma) {
+	public List<ListaDeExercicios> listasDeTurma(Turma turma) {
 		List<ListaDeExercicios> listaDeExercicios = this.session.createCriteria(ListaDeExercicios.class)
         .add(Restrictions.eq("turma", turma))
         .list();
 		return listaDeExercicios;
 	}
-
+	
 	/**
 	 * Cadastra a lista fornecida no banco de dados.
 	 * 

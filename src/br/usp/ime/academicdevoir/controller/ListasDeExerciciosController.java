@@ -460,24 +460,26 @@ public class ListasDeExerciciosController {
 		result.include("turmasDoProfessor", professor.getTurmas());
 	}
 
-	/**
-	 * Devolve uma lista com todas as listas de exercícios de uma determinada turma.
-	 */
-	public void listaTurma(Long idTurma) {
-		Turma turma = turmaDao.carrega(idTurma);
-		result.include("listaDeListas", dao.listaDeTurma(turma));
-	}
-	
 	@Get
 	@Path("/listasDeExercicios")
 	/**
 	 * Devolve uma lista com todas as listas de exercícios cadastradas no banco de dados.
 	 */
 	public void lista() {
-		/*Usuario u = usuarioSession.getUsuario();
+		Usuario u = usuarioSession.getUsuario();
 		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
-			result.redirectTo(LoginController.class).acessoNegado();*/
+			result.redirectTo(LoginController.class).acessoNegado();
 		result.include("listaDeListas", dao.listaTudo());
+	}
+	
+	@Get
+	@Path("/listasDeExercicios/listasTurma/{idTurma}")
+	/**
+	 * Devolve uma lista com todas as listas de exercícios de uma determinada turma.
+	 */
+	public void listasTurma(Long idTurma) {
+		Turma turma = turmaDao.carrega(idTurma);
+		result.include("listaDeListas", dao.listasDeTurma(turma));
 	}
 	
 	@Get

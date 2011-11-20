@@ -10,6 +10,7 @@ import br.com.caelum.vraptor.ioc.Component;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.ListaDeRespostas;
+import br.usp.ime.academicdevoir.entidade.EstadoDaListaDeRespostas;
 
 
 @Component
@@ -48,6 +49,7 @@ public class ListaDeRespostasDao {
 	 */
 	public void salva(ListaDeRespostas lista) {
 		Transaction tx = session.beginTransaction();
+		lista.getPropriedades().setEstado(EstadoDaListaDeRespostas.SALVA);
 		session.save(lista);
 		tx.commit();
 	}

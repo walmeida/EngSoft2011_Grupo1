@@ -2,11 +2,9 @@ package br.usp.ime.academicdevoir.entidade;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
@@ -48,13 +46,14 @@ public class Turma {
 	@ManyToOne
 	private Disciplina disciplina;
 
-	/**
+	/* FIXME pode apagar?
 	 * @uml.property  name="listasDeExercicios"
+	 
+	@OneToMany(mappedBy = "turma")
+	private Collection<ListaDeExercicios> listasDeExercicios;
 	 */
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "turma_listas", joinColumns = @JoinColumn(name = "id_turma"), inverseJoinColumns = @JoinColumn(name = "id_lista"))
-	private List<ListaDeExercicios> listasDeExercicios;
-
+	
+	
 	/**
 	 * @return
 	 * @uml.property  name="disciplina"
@@ -127,12 +126,14 @@ public class Turma {
 		this.id = id;
 	}
 
-	public List<ListaDeExercicios> getListas() {
+	/* FIXME pode apagar?
+	public Collection<ListaDeExercicios> getListas() {
 		return listasDeExercicios;
 	}
 
-	public void setListas(List<ListaDeExercicios> listas) {
+	public void setListas(Collection<ListaDeExercicios> listas) {
 		this.listasDeExercicios = listas;
 	}
+	*/
 
 }

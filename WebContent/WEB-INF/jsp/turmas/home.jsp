@@ -41,7 +41,7 @@
     <form action='../../listasDeExercicios' method="get">
         <input type="hidden" value="${turma.id}" name="idTurma">
         <!--input type="submit" value="Resolver lista"/-->
-        <a href="<c:url value='../../listasDeExercicios?idTurma=${turma.id}'/>">Resolver lista</a><br/>
+        <a href="<c:url value='../../listasDeExercicios/listasTurma/${turma.id}'/>">Resolver lista</a><br/>
     </form>
     
     <!-- a href="<c:url value='/professores/listaTurmas?idProfessor=${usuarioSession.usuario.id}'/>">Meus cursos</a-->
