@@ -163,8 +163,10 @@ public class AlunosController {
 	public void remove(final Long id) {
 		Aluno aluno;
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId().longValue() == id))
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId().longValue() == id)){
 			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
 		
 		aluno = alunoDao.carrega(id);
 		alunoDao.removeAluno(aluno);
@@ -188,9 +190,15 @@ public class AlunosController {
 		Aluno aluno;
 		Turma turma;
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.PROFESSOR || u.getId().longValue() == idAluno))
+		if(!(u.getPrivilegio() == Privilegio.PROFESSOR || u.getId().longValue() == idAluno)){
 			result.redirectTo(LoginController.class).acessoNegado();
-
+			return;
+		}
+		
+		if(idTurma < 0) {
+			result.redirectTo(AlunosController.class).matricula();
+			return;
+		}
 		aluno = alunoDao.carrega(idAluno);
 		turma = turmaDao.carrega(idTurma);
 		Collection<Turma> listaDeTurmas = aluno.getTurmas();

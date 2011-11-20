@@ -17,6 +17,7 @@
 	<fieldset><legend>Inscri&ccedil;&atilde;o:</legend><br/>
 	 Olá, ${usuarioSession.usuario.nome}, selecione a turma na qual você quer se matricular.<br/><br/>
 	<select name="idTurma">
+	<option value="-1">selecione</option>
     <c:forEach items="${listaDeDisciplinas}" var="disciplina">
           <c:forEach items="${disciplina.turmas}" var="turma">
           <option value="${turma.id }">${disciplina.nome } - ${turma.nome }</option> 
