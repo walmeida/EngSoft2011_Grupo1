@@ -49,53 +49,36 @@ font-family:"Times New Roman";
     		</c:if>
                 	
             <c:if test ="${usuarioSession.usuario.privilegio == 'ALUNO'}">
-            	Listas de Exerc&iacute;cios corrigidas
+            	<!-- Listas de Exerc&iacute;cios corrigidas -->
             	<c:forEach items="${listaDeListas }" var="lista">
+					<%boolean flag=true;%>
                 	<c:forEach items="${lista.respostas }" var="resposta">
                 		<c:if test ="${resposta.aluno.id == usuarioSession.usuario.id}">
         					<c:if test ="${resposta.propriedades.estado == 'CORRIGIDA'}">
-        						<li><a href="<c:url value="/listasDeExercicios/resolver/${lista.id }"/>">${lista.propriedades.nome } Corrigida</a></li>
+        						<li><a href="<c:url value="/listasDeExercicios/resolver/${lista.id }"/>">${lista.propriedades.nome }</a> - Corrigida</li>
+        						<%flag=false;%>
         					</c:if>
-        				</c:if>
-        			</c:forEach>
-        		</c:forEach><br/><br/><br/>
-        		Listas de Exerc&iacute;cios finalizadas
-        		<c:forEach items="${listaDeListas }" var="lista">
-                	<c:forEach items="${lista.respostas }" var="resposta">
-                		<c:if test ="${resposta.aluno.id == usuarioSession.usuario.id}">
+        		<!-- Listas de Exerc&iacute;cios finalizadas -->
         					<c:if test ="${resposta.propriedades.estado == 'FINALIZADA'}">
-        						<li><a href="<c:url value="/listasDeExercicios/resolver/${lista.id }"/>">${lista.propriedades.nome } Finalizada</a></li>
+        						<li><a href="<c:url value="/listasDeExercicios/resolver/${lista.id }"/>">${lista.propriedades.nome }</a> - Finalizada</li>
+        						<%flag=false;%>
         					</c:if>
-        				</c:if>
-        			</c:forEach>
-        		</c:forEach><br/><br/><br/>
-        		Listas de Exerc&iacute;cios salvas
-        		<c:forEach items="${listaDeListas }" var="lista">
-                	<c:forEach items="${lista.respostas }" var="resposta">
-                		<c:if test ="${resposta.aluno.id == usuarioSession.usuario.id}">
+        		<!-- Listas de Exerc&iacute;cios salvas -->
         					<c:if test ="${resposta.propriedades.estado == 'SALVA'}">
-        						<li><a href="<c:url value="/listasDeExercicios/resolver/${lista.id }"/>">${lista.propriedades.nome } Salva</a></li>
+        						<li><a href="<c:url value="/listasDeExercicios/resolver/${lista.id }"/>">${lista.propriedades.nome }</a> - Salva</li>
+        						<%flag=false;%>
+        					</c:if>
+        		<!-- Listas de Exerc&iacute;cios inicializdas -->        					
+        					<c:if test ="<%=flag%>" >
+        						<li><a href="<c:url value="/listasDeExercicios/resolver/${lista.id }"/>">${lista.propriedades.nome }</a> - Inicializada</li>
+        						<%flag=false;%>
         					</c:if>
         				</c:if>
         			</c:forEach>
-        		</c:forEach><br/><br/><br/>
-        		Listas de Exerc&iacute;cios inicializdas
-        		<c:forEach items="${listaDeListas }" var="lista">
-                	<c:forEach items="${lista.respostas }" var="resposta">
-                		<c:if test ="${resposta.aluno.id == usuarioSession.usuario.id}">
-        					<c:if test ="${resposta.propriedades.estado != 'CORRIGIDA'}">
-        					<c:if test ="${resposta.propriedades.estado != 'FINALIZADA'}">
-        					<c:if test ="${resposta.propriedades.estado != 'SALVA'}">
-        						<li><a href="<c:url value="/listasDeExercicios/resolver/${lista.id }"/>">${lista.propriedades.nome } Inicializada</a></li>
-        					</c:if>
-        					</c:if>
-        					</c:if>
-        				</c:if>
-        			</c:forEach>
-        		</c:forEach><br/><br/><br/>
-        		Todas as Listas de Exerc&iacute;cios desta turma
-        		<c:forEach items="${listaDeListas }" var="lista">
-       				<li><a href="<c:url value="/listasDeExercicios/resolver/${lista.id }"/>">${lista.propriedades.nome }</a></li>
+        		<!-- Listas de Exerc&iacute;cios não inicializadas -->
+        			<c:if test ="<%=flag%>" >
+	       				<li><a href="<c:url value="/listasDeExercicios/resolver/${lista.id }"/>">${lista.propriedades.nome }</a> - Não inicializada</li>
+     				</c:if>
         		</c:forEach>        			
 			</c:if>
 
