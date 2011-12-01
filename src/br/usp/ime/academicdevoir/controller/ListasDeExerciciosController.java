@@ -27,13 +27,10 @@ import br.usp.ime.academicdevoir.entidade.PropriedadesDaListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.PropriedadesDaListaDeRespostas;
 import br.usp.ime.academicdevoir.entidade.Questao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDaLista;
-import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
-import br.usp.ime.academicdevoir.entidade.QuestaoDeVouF;
 import br.usp.ime.academicdevoir.entidade.Resposta;
 import br.usp.ime.academicdevoir.entidade.Turma;
 import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Privilegio;
-import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 
@@ -524,21 +521,18 @@ public class ListasDeExerciciosController {
 				//Obtendo a Questao relacionada com a lista para obter as propriedades
 				QuestaoDaLista questaoDaLista = questaoDaListaDao.getQuestaoDaListaPorIds(id, questao.getId());
 				
-				//Monstando o vetor de pesos para o cálculo da nota final
+				//Montando o vetor de pesos para o cálculo da nota final
 				pesosDasQuestoes.add(questaoDaLista.getPeso());
 				
-				//Verificando o tipo da questao para verificar se a resposta está certa ou não. Feio ='(
-				if(questao.getTipo() == TipoDeQuestao.VOUF){
-					Boolean valorGabarito = ((QuestaoDeVouF) questao).getResposta();
-					if (resposta.getValor().equals(valorGabarito)) resposta.setNota(1.0);
-					else resposta.setNota(0.0);
-				}
-				else if(questao.getTipo() == TipoDeQuestao.MULTIPLAESCOLHA){
-					Integer valorGabarito = ((QuestaoDeMultiplaEscolha) questao).getResposta();
-					if (resposta.getValor().equals(valorGabarito)) resposta.setNota(1.0);
-					else resposta.setNota(0.0);
-				}
+				//Resultado da Comparação da Resposta (Correção): True se correta, False se errada e NULL se aberta. 
+				Boolean resultado = questao.respostaDoAlunoEhCorreta(resposta);
 				
+				//Verificando se a resposta está certa ou não.
+				if(resultado == true) resposta.setNota(1.0);
+				//#TODO Questões abertas?? Como faz??
+				//else if (resultado == false) resposta.setNota(0.0);  Abaixo seria o NULL
+				else resposta.setNota(0.0);
+								
 			}
 			
 			//Atribuindo a nota final à lista

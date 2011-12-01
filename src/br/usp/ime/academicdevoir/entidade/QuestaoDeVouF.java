@@ -76,4 +76,8 @@ public class QuestaoDeVouF extends Questao {
 
 		return htmlResult;
 	}
+	
+	public Boolean respostaDoAlunoEhCorreta(Resposta respostaAluno) {
+		return respostaAluno.getValor().equals(this.resposta.toString());
+	}
 }

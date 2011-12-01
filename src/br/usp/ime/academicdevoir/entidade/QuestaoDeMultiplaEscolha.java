@@ -144,4 +144,10 @@ public class QuestaoDeMultiplaEscolha extends Questao {
 				
 		return alternativas.toString(); 
 	}
+
+	public Boolean respostaDoAlunoEhCorreta(Resposta respostaAluno) {
+		return respostaAluno.getValor().equals(this.resposta.toString());
+	}
+	
+	
 }

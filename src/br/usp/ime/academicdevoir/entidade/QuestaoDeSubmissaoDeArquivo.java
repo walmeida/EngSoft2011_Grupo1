@@ -55,4 +55,8 @@ public class QuestaoDeSubmissaoDeArquivo extends Questao {
 
 		return htmlResult;
 	}
+	
+	public Boolean respostaDoAlunoEhCorreta(Resposta respostaAluno) {
+		return null;
+	}
 }

@@ -62,5 +62,7 @@ public abstract class Questao {
 	
 	public abstract String getRenderizacao();
 	
-	public abstract String getRenderAlteracao(Resposta resposta);	
+	public abstract String getRenderAlteracao(Resposta resposta);
+	
+	public abstract Boolean respostaDoAlunoEhCorreta(Resposta respostaAluno);
 }

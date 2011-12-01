@@ -71,4 +71,8 @@ public class QuestaoDeTexto extends Questao {
 
 		return htmlResult;
 	}
+	
+	public Boolean respostaDoAlunoEhCorreta(Resposta respostaAluno) {
+		return respostaAluno.getValor().equals(this.resposta.toString());
+	}
 }
