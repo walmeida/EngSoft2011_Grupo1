@@ -80,5 +80,11 @@ public class TagDao {
 	public Tag buscaPeloNome(String nome) {
 		return (Tag) session.createCriteria(Tag.class).add(Restrictions.eq("nome", nome)).uniqueResult();
 	}
-	
+
+	@SuppressWarnings("unchecked")
+	public List<String> autoCompletar(String nomeDaTag) {
+		return session.createCriteria(Tag.class)
+				.add(Restrictions.ilike("nome", nomeDaTag, MatchMode.ANYWHERE))
+				.list();
+	}
 }

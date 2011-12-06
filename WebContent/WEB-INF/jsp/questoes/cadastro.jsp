@@ -11,7 +11,7 @@ import="java.sql.*" errorPage="" %>
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.position.min.js"/>"></script>
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.widget.min.js"/>"></script>
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.autocomplete.min.js"/>"></script>
-<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="<c:url value="/css/jquery-ui-1.8.16.custom.css"/>"/>
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="<c:url value="/css/jquery.ui.autocomplete.css"/>"/>
 <script type="text/javascript" charset="utf-8">
 	
 	function liberaAlternativas(respostaUnica, numeroDeAlternativas) {
@@ -134,6 +134,44 @@ import="java.sql.*" errorPage="" %>
 	 	$('#tipoDeResposta').change(function() {
 	 		liberaAlternativas($(this).attr('checked'), numeroDeAlternativas);
 	 	});
+
+	 	//Adaptado do exemplo do JQuery UI 
+	 	$('#tags')
+		.bind('keydown', function(event) {
+			if (event.keyCode === $.ui.keyCode.TAB &&
+					$(this).data('autocomplete').menu.active) {
+				event.preventDefault();
+			}
+		})
+		.autocomplete({
+			source: function(request, response) {
+				$.getJSON('<c:url value="/questoes/tags/autocompletar.json"/>', {
+					term: extractLast(request.term)
+				}, 
+				function(result) {
+					response($.map(result, function(item) {
+						return item.nome;
+					}));
+				});
+			},
+			search: function() {
+				var term = extractLast(this.value);
+				if (term.length < 2) {
+					return false;
+				}
+			},
+			focus: function() {
+				return false;
+			},
+			select: function(event, ui) {
+				var terms = split(this.value);
+				terms.pop();
+				terms.push(ui.item.value);
+				terms.push("");
+				this.value = terms.join(", ");
+				return false;
+			}
+		});
 	});
 </script>
 <style type="text/css">
@@ -198,7 +236,7 @@ display: inline;
 				</select>
 				
 				<br/>
-				<label for="tags">Tags:</label><input id="tags" type="text" name="tags"/><button id="botao">teste</button>
+				<label for="tags">Tags:</label><input id="tags" type="text" name="tags"/>
 				
 				<div id="questaoDeMultiplaEscolhaContainer">
 					<br/><br/>
