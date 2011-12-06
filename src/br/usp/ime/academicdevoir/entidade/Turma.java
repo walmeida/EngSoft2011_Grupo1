@@ -46,7 +46,7 @@ public class Turma {
 	@ManyToOne
 	private Disciplina disciplina;
 
-	/* FIXME pode apagar?
+	/* FIXME pode apagar? Pode não, porque isto está comentado?
 	 * @uml.property  name="listasDeExercicios"
 	 
 	@OneToMany(mappedBy = "turma")

@@ -1,6 +1,7 @@
 package br.usp.ime.academicdevoir.controller;
 
 import br.usp.ime.academicdevoir.dao.QuestaoDeVouFDao;
+import br.usp.ime.academicdevoir.dao.TagDao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeVouF;
 import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Privilegio;
@@ -40,6 +41,7 @@ public class QuestoesDeVouFController {
 	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
 	private final UsuarioSession usuarioSession;
+	private TagDao tagDao;
 
 	/**
 	 * @param result
@@ -49,9 +51,10 @@ public class QuestoesDeVouFController {
 	 * @param turmaDao
 	 *            para interação com o banco de dados
 	 */
-	public QuestoesDeVouFController(QuestaoDeVouFDao dao, Result result,
+	public QuestoesDeVouFController(QuestaoDeVouFDao dao, TagDao tagDao, Result result,
 			Validator validator, UsuarioSession usuarioSession) {
 		this.dao = dao;
+		this.tagDao = tagDao;
 		this.result = result;
 		this.validator = validator;
 		this.usuarioSession = usuarioSession;
@@ -63,12 +66,14 @@ public class QuestoesDeVouFController {
 	 * Verifica se a questão de V ou F fornecida é válida e adiciona no banco de dados.
 	 * @param questao
 	 */
-	public void cadastra(final QuestaoDeVouF questao) {
+	public void cadastra(final QuestaoDeVouF questao, String tags) {
 		Usuario u = usuarioSession.getUsuario();
 		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
+		
+		questao.setTags(tags, tagDao);
 		
 		validator.validate(questao);
 		validator.onErrorUsePageOf(QuestoesController.class).cadastro();

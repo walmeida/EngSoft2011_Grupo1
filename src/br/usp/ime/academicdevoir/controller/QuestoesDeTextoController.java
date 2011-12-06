@@ -1,6 +1,7 @@
 package br.usp.ime.academicdevoir.controller;
 
 import br.usp.ime.academicdevoir.dao.QuestaoDeTextoDao;
+import br.usp.ime.academicdevoir.dao.TagDao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeTexto;
 import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Privilegio;
@@ -40,6 +41,7 @@ public class QuestoesDeTextoController {
 	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
 	private final UsuarioSession usuarioSession;
+	private TagDao tagDao;
 
 	/**
 	 * @param result
@@ -49,9 +51,10 @@ public class QuestoesDeTextoController {
 	 * @param turmaDao
 	 *            para interação com o banco de dados
 	 */
-	public QuestoesDeTextoController(QuestaoDeTextoDao dao, Result result,
+	public QuestoesDeTextoController(QuestaoDeTextoDao dao, TagDao tagDao, Result result,
 			Validator validator, UsuarioSession usuarioSession) {
 		this.dao = dao;
+		this.tagDao = tagDao;
 		this.result = result;
 		this.validator = validator;
 		this.usuarioSession = usuarioSession;
@@ -63,12 +66,14 @@ public class QuestoesDeTextoController {
 	 * Verifica se a questão de texto fornecida é válida e adiciona no banco de dados.
 	 * @param questao
 	 */
-	public void cadastra(final QuestaoDeTexto questao) {
+	public void cadastra(final QuestaoDeTexto questao, String tags) {
 		Usuario u = usuarioSession.getUsuario();
 		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
+		
+		questao.setTags(tags, tagDao);
 		
 		validator.validate(questao);
 		validator.onErrorUsePageOf(QuestoesController.class).cadastro();

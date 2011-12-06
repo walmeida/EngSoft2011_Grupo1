@@ -1,6 +1,9 @@
 package br.usp.ime.academicdevoir.controller;
 
+import static br.com.caelum.vraptor.view.Results.json;
+
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
+import br.usp.ime.academicdevoir.dao.TagDao;
 import br.usp.ime.academicdevoir.entidade.Questao;
 import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Privilegio;
@@ -32,14 +35,16 @@ public class QuestoesController {
 	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
 	private final UsuarioSession usuarioSession;
+	private TagDao tagDao;
 	
 	/**
 	 * @param turmaDao para interação com o banco de dados
 	 * @param result para interação com o jsp da questao.
 	 * @param usuarioSession para controle de permissões
 	 */
-	public QuestoesController(QuestaoDao dao, Result result, UsuarioSession usuarioSession) {
+	public QuestoesController(QuestaoDao dao, TagDao tagDao, Result result, UsuarioSession usuarioSession) {
 		this.dao = dao;
+		this.tagDao = tagDao;
 		this.result = result;
 		this.usuarioSession = usuarioSession;
 	}
@@ -120,4 +125,10 @@ public class QuestoesController {
 		
 		result.include("lista", dao.listaTudo());
 	}
+	
+	@Get
+	@Path("/questoes/tags/autocompletar.json")
+	public void autoCompletar(String q) {
+	}
+	
 }

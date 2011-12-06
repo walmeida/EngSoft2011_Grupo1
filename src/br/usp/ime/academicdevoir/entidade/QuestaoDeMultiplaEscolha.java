@@ -132,7 +132,7 @@ public class QuestaoDeMultiplaEscolha extends Questao {
 		
 		for (int i = 1; resposta != 0; resposta /= 2, i++) {
 			valor = resposta % 2;
-			if (valor == 1) {				
+			if (valor == 1) {
 				if (!primeira) {
 					if (resposta == 1)	alternativas.append(" e ");
 					else alternativas.append(", ");

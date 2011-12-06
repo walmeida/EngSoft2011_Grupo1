@@ -7,6 +7,11 @@ import="java.sql.*" errorPage="" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-1.6.2.min.js"/>"></script>
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.core.min.js"/>"></script>
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.position.min.js"/>"></script>
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.widget.min.js"/>"></script>
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.autocomplete.min.js"/>"></script>
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="<c:url value="/css/jquery-ui-1.8.16.custom.css"/>"/>
 <script type="text/javascript" charset="utf-8">
 	
 	function liberaAlternativas(respostaUnica, numeroDeAlternativas) {
@@ -77,6 +82,15 @@ import="java.sql.*" errorPage="" %>
 	function desabilitaTexto() {
 		$('#respostaTexto').attr('disabled', 'disabled');
 		$('#questaoDeTextoContainer').hide();
+	}
+	
+ 	//Função retirada do exemplo do JQuery UI
+ 	function split( val ) {
+		return val.split( /,\s*/ );
+	}
+ 	//Função retirada do exemplo do JQuery UI
+	function extractLast( term ) {
+		return split( term ).pop();
 	}
 	
 	$(document).ready(function() {		
@@ -182,6 +196,9 @@ display: inline;
 					<option value="VouF">V ou F</option>
 					<option value="submissao">Submissão de Arquivo</option>
 				</select>
+				
+				<br/>
+				<label for="tags">Tags:</label><input id="tags" type="text" name="tags"/><button id="botao">teste</button>
 				
 				<div id="questaoDeMultiplaEscolhaContainer">
 					<br/><br/>

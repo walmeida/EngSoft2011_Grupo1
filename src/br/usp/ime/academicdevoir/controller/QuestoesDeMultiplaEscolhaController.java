@@ -3,6 +3,7 @@ package br.usp.ime.academicdevoir.controller;
 import java.util.List;
 
 import br.usp.ime.academicdevoir.dao.QuestaoDeMultiplaEscolhaDao;
+import br.usp.ime.academicdevoir.dao.TagDao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
 import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Privilegio;
@@ -43,6 +44,7 @@ public class QuestoesDeMultiplaEscolhaController {
 	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
 	private final UsuarioSession usuarioSession;
+	private TagDao tagDao;
 	
 	/**
 	 * @param result para interação com o jsp da questão.
@@ -50,9 +52,10 @@ public class QuestoesDeMultiplaEscolhaController {
 	 * @param usuarioSession para controle de permissões
 	 * @param turmaDao para interação com o banco de dados
 	 */
-	public QuestoesDeMultiplaEscolhaController(QuestaoDeMultiplaEscolhaDao dao,
+	public QuestoesDeMultiplaEscolhaController(QuestaoDeMultiplaEscolhaDao dao, TagDao tagDao,
 			Result result, Validator validator, UsuarioSession usuarioSession) {
 		this.dao = dao;
+		this.tagDao = tagDao;
 		this.result = result;
 		this.validator = validator;
 		this.usuarioSession = usuarioSession;
@@ -65,12 +68,14 @@ public class QuestoesDeMultiplaEscolhaController {
 	 * no banco de dados.
 	 * @param questao
 	 */
-	public void cadastra(final QuestaoDeMultiplaEscolha questao, List<Integer> resposta) {
+	public void cadastra(final QuestaoDeMultiplaEscolha questao, List<Integer> resposta, String tags) {
 		Usuario u = usuarioSession.getUsuario();
 		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
+		
+		questao.setTags(tags, tagDao);
 		
 		if (!questao.getRespostaUnica()) questao.setResposta(resposta);
 		

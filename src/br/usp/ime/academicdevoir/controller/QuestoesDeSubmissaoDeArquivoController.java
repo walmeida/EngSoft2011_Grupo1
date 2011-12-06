@@ -1,6 +1,7 @@
 package br.usp.ime.academicdevoir.controller;
 
 import br.usp.ime.academicdevoir.dao.QuestaoDeSubmissaoDeArquivoDao;
+import br.usp.ime.academicdevoir.dao.TagDao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;
 import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Privilegio;
@@ -40,6 +41,7 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
 	private final UsuarioSession usuarioSession;
+	private TagDao tagDao;
 
 	/**
 	 * @param result
@@ -50,9 +52,10 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 *            para interação com o banco de dados
 	 */
 	public QuestoesDeSubmissaoDeArquivoController(
-			QuestaoDeSubmissaoDeArquivoDao dao, Result result,
+			QuestaoDeSubmissaoDeArquivoDao dao, TagDao tagDao, Result result,
 			Validator validator, UsuarioSession usuarioSession) {
 		this.dao = dao;
+		this.tagDao = tagDao;
 		this.result = result;
 		this.validator = validator;
 		this.usuarioSession = usuarioSession;
@@ -64,12 +67,14 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 * Verifica se a questão de submissão de arquivo fornecida é válida e adiciona no banco de dados.
 	 * @param questao
 	 */
-	public void cadastra(final QuestaoDeSubmissaoDeArquivo questao) {
+	public void cadastra(final QuestaoDeSubmissaoDeArquivo questao, String tags) {
 		Usuario u = usuarioSession.getUsuario();
 		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
+		
+		questao.setTags(tags, tagDao);
 		
 		validator.validate(questao);
 		validator.onErrorUsePageOf(QuestoesController.class).cadastro();
