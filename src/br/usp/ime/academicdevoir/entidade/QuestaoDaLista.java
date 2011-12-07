@@ -32,7 +32,7 @@ public class QuestaoDaLista {
 	@Fetch(FetchMode.JOIN)
 	@Cascade(CascadeType.SAVE_UPDATE)
 	private Questao questao;
-
+	
 	/**
 	 * @return
 	 * @uml.property  name="peso"
@@ -80,4 +80,5 @@ public class QuestaoDaLista {
 	public void setQuestao(Questao questao) {
 		this.questao = questao;
 	}
+
 }
