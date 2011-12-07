@@ -14,7 +14,6 @@ import br.com.caelum.vraptor.Validator;
 import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
 import br.usp.ime.academicdevoir.dao.ListaDeRespostasDao;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
-import br.usp.ime.academicdevoir.dao.QuestaoDaListaDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
@@ -80,11 +79,6 @@ public class ListasDeExerciciosController {
 	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private final UsuarioSession usuarioSession;
-	/**
-	 * @uml.property name="questaoDaListaDao"
-	 * @uml.associationEnd multiplicity="(1 1)"
-	 */
-	private final QuestaoDaListaDao questaoDaListaDao;
 
 	/**
 	 * @param result
@@ -96,7 +90,7 @@ public class ListasDeExerciciosController {
 	public ListasDeExerciciosController(Result result,
 			ListaDeExerciciosDao dao, ListaDeRespostasDao listaDeRespostasDao,
 			QuestaoDao questaoDao, ProfessorDao professorDao,
-			TurmaDao turmaDao, Validator validator, UsuarioSession usuarioSession, QuestaoDaListaDao questaoDaListaDao) {
+			TurmaDao turmaDao, Validator validator, UsuarioSession usuarioSession) {
 		this.result = result;
 		this.dao = dao;
 		this.listaDeRespostasDao = listaDeRespostasDao;
@@ -105,7 +99,6 @@ public class ListasDeExerciciosController {
 		this.turmaDao = turmaDao;
 		this.validator = validator;
 		this.usuarioSession = usuarioSession;
-		this.questaoDaListaDao = questaoDaListaDao;
 	}
 
 	@Post

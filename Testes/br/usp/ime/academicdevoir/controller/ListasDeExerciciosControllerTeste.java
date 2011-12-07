@@ -24,7 +24,6 @@ import br.com.caelum.vraptor.util.test.MockResult;
 import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
 import br.usp.ime.academicdevoir.dao.ListaDeRespostasDao;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
-import br.usp.ime.academicdevoir.dao.QuestaoDaListaDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
@@ -112,11 +111,6 @@ public class ListasDeExerciciosControllerTeste {
 	 * @uml.associationEnd  readOnly="true"
 	 */
 	private UsuarioSession usuarioSession;
-	/**
-	 * @uml.property  name="questaoDao"
-	 * @uml.associationEnd  
-	 */
-	private QuestaoDaListaDao questaoDaoDaListaDao;
 	private ArrayList<Turma> turmas;
 
 	@Before
@@ -137,7 +131,7 @@ public class ListasDeExerciciosControllerTeste {
 		validator = spy(new JSR303MockValidator());
 
 		listasDeExerciciosController = new ListasDeExerciciosController(result,
-				dao, respostasDao, questaoDao, professorDao, turmaDao, validator, usuarioSession, questaoDaoDaListaDao);
+				dao, respostasDao, questaoDao, professorDao, turmaDao, validator, usuarioSession);
 		
 		listaDeExercicios = new ListaDeExercicios();
 		listaDeExercicios.setId(0L);
@@ -149,7 +143,7 @@ public class ListasDeExerciciosControllerTeste {
 
 		prazoDeEntrega = new ArrayList<Integer>();
 		prazoDeEntrega.add(prazoProvisorio.get(Calendar.DAY_OF_MONTH));
-		prazoDeEntrega.add(prazoProvisorio.get(Calendar.MONTH));
+		prazoDeEntrega.add(prazoProvisorio.get(Calendar.MONTH) + 1);
 		prazoDeEntrega.add(prazoProvisorio.get(Calendar.YEAR));
 		prazoDeEntrega.add(prazoProvisorio.get(Calendar.HOUR_OF_DAY));
 		
@@ -207,7 +201,7 @@ public class ListasDeExerciciosControllerTeste {
 		listasDeExerciciosController.cadastra(propriedadesDaListaDeExercicios,
 				prazoDeEntrega, turma.getId());
 
-		verify(validator).validate(listaDeExercicios);
+		verify(validator).validate(propriedadesDaListaDeExercicios);
 		verify(validator).onErrorUsePageOf(listasDeExerciciosController);
 	}
 

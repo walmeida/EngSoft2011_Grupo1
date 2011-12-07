@@ -102,8 +102,6 @@ public class PropriedadesDaListaDeExercicios {
 				"EEE, dd'/'MM'/'yyyy HH:mm");
 		
 		return prazo.format(prazoDeEntrega);
-		//Aqui não roda a formatação de datas. Então comentei por enquanto.
-		//Agora deve rodar com JRE 6 e 7
 	}
 
 	public void setPrazoDeEntrega(Date prazoDeEntrega) {
@@ -112,8 +110,7 @@ public class PropriedadesDaListaDeExercicios {
 	
 	public void setPrazoDeEntrega(List<Integer> prazoDeEntrega) {
 		Calendar data = Calendar.getInstance();
-		data.set(prazoDeEntrega.get(2).intValue(), prazoDeEntrega.get(1)
-				.intValue(), prazoDeEntrega.get(0).intValue(), prazoDeEntrega
+		data.set(prazoDeEntrega.get(2).intValue(), prazoDeEntrega.get(1).intValue() - 1, prazoDeEntrega.get(0).intValue(), prazoDeEntrega
 				.get(3).intValue(), prazoDeEntrega.get(4).intValue());
 		
 		this.prazoDeEntrega = new Date(data.getTimeInMillis());
