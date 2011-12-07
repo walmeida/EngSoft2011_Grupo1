@@ -2,12 +2,9 @@ package br.usp.ime.academicdevoir.controller;
 
 import static br.com.caelum.vraptor.view.Results.json;
 
-import java.util.List;
-
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.TagDao;
 import br.usp.ime.academicdevoir.entidade.Questao;
-import br.usp.ime.academicdevoir.entidade.Tag;
 import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Privilegio;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;

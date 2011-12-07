@@ -113,7 +113,7 @@ public class PropriedadesDaListaDeExercicios {
 	public void setPrazoDeEntrega(List<Integer> prazoDeEntrega) {
 		Calendar data = Calendar.getInstance();
 		data.set(prazoDeEntrega.get(2).intValue(), prazoDeEntrega.get(1)
-				.intValue() - 1, prazoDeEntrega.get(0).intValue(), prazoDeEntrega
+				.intValue(), prazoDeEntrega.get(0).intValue(), prazoDeEntrega
 				.get(3).intValue(), prazoDeEntrega.get(4).intValue());
 		
 		this.prazoDeEntrega = new Date(data.getTimeInMillis());
