@@ -194,7 +194,7 @@ public class AlunosController {
 		Aluno aluno;
 		Turma turma;
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.PROFESSOR || u.getId().longValue() == idAluno)){
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR || u.getId().longValue() == idAluno)){
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
@@ -220,7 +220,7 @@ public class AlunosController {
         Aluno aluno;
         Turma turma;
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.PROFESSOR || u.getId().longValue() == idAluno)){
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR || u.getId().longValue() == idAluno)){
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}

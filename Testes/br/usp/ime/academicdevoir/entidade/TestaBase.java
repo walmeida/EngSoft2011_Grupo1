@@ -1,4 +1,4 @@
-package br.usp.ime.academicdevoir.controller;
+package br.usp.ime.academicdevoir.entidade;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;

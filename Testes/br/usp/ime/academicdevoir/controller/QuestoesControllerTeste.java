@@ -16,11 +16,14 @@ import static org.junit.Assert.*;
 
 import br.com.caelum.vraptor.util.test.MockResult;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
+import br.usp.ime.academicdevoir.dao.TagDao;
+import br.usp.ime.academicdevoir.entidade.Professor;
 import br.usp.ime.academicdevoir.entidade.Questao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeTexto;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeVouF;
+import br.usp.ime.academicdevoir.infra.Privilegio;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 public class QuestoesControllerTeste {
@@ -65,13 +68,21 @@ public class QuestoesControllerTeste {
 	 * @uml.associationEnd
 	 */
 	private UsuarioSession usuarioSession;
+	
+	private TagDao tagDao;
 
 	@Before
-	public void SetUp() {
+	public void SetUp() {		
+		Professor professor = new Professor();
+		professor.setPrivilegio(Privilegio.ADMINISTRADOR);
+		
+		usuarioSession = new UsuarioSession();
+		usuarioSession.setUsuario(professor);
+
 		result = spy(new MockResult());
 		dao = mock(QuestaoDao.class);
-
-		questoesController = new QuestoesController(dao, result, usuarioSession);
+		
+		questoesController = new QuestoesController(dao, tagDao, result, usuarioSession);
 		questaoDeMultiplaEscolha = new QuestaoDeMultiplaEscolha();
 		questaoDeSubmissaoDeArquivo = new QuestaoDeSubmissaoDeArquivo();
 		questaoDeTexto = new QuestaoDeTexto();

@@ -1,4 +1,4 @@
-package br.usp.ime.academicdevoir.controller;
+package br.usp.ime.academicdevoir.entidade;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;

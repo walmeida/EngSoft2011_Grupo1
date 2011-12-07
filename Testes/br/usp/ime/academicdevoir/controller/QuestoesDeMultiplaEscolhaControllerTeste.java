@@ -10,7 +10,11 @@ import br.com.caelum.vraptor.util.test.MockResult;
 
 import br.usp.ime.academicdevoir.controller.QuestoesDeMultiplaEscolhaController;
 import br.usp.ime.academicdevoir.dao.QuestaoDeMultiplaEscolhaDao;
+import br.usp.ime.academicdevoir.dao.TagDao;
+import br.usp.ime.academicdevoir.entidade.Professor;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
+import br.usp.ime.academicdevoir.entidade.Tag;
+import br.usp.ime.academicdevoir.infra.Privilegio;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 public class QuestoesDeMultiplaEscolhaControllerTeste {
@@ -39,14 +43,24 @@ public class QuestoesDeMultiplaEscolhaControllerTeste {
 	 * @uml.associationEnd
 	 */
 	private UsuarioSession usuarioSession;
+	private TagDao tagDao;
 
 	@Before
-	public void SetUp() {
+	public void SetUp() {		
+		Professor professor = new Professor();
+		professor.setPrivilegio(Privilegio.ADMINISTRADOR);
+		
+		usuarioSession = new UsuarioSession();
+		usuarioSession.setUsuario(professor);
+
 		dao = mock(QuestaoDeMultiplaEscolhaDao.class);
+		tagDao = mock(TagDao.class);
 		result = spy(new MockResult());
 		validator = spy(new JSR303MockValidator());
-		questoesC = new QuestoesDeMultiplaEscolhaController(dao, result,
+		questoesC = new QuestoesDeMultiplaEscolhaController(dao, tagDao, result,
 				validator, usuarioSession);
+		
+		when(tagDao.buscaPeloNome(any(String.class))).thenReturn(new Tag("tagQualquer"));
 	}
 
 	@Test
@@ -54,7 +68,7 @@ public class QuestoesDeMultiplaEscolhaControllerTeste {
 		QuestaoDeMultiplaEscolha questao = new QuestaoDeMultiplaEscolha();
 		questao.setId(0L);
 		questao.setRespostaUnica(true);
-		questoesC.cadastra(questao, null);
+		questoesC.cadastra(questao, null, new String("tagQualquer"));
 
 		verify(validator).validate(questao);
 		verify(validator).onErrorUsePageOf(QuestoesController.class);
@@ -67,7 +81,7 @@ public class QuestoesDeMultiplaEscolhaControllerTeste {
 		QuestaoDeMultiplaEscolha questao = new QuestaoDeMultiplaEscolha();
 		questao.setRespostaUnica(true);
 
-		questoesC.altera(questao, null);
+		questoesC.altera(questao, null, new String("tagQualquer"));
 
 		verify(validator).validate(questao);
 		verify(validator).onErrorUsePageOf(questoesC);

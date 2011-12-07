@@ -1,5 +1,6 @@
 package br.usp.ime.academicdevoir.controller;
 
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -11,7 +12,11 @@ import org.junit.Test;
 import br.com.caelum.vraptor.util.test.JSR303MockValidator;
 import br.com.caelum.vraptor.util.test.MockResult;
 import br.usp.ime.academicdevoir.dao.QuestaoDeSubmissaoDeArquivoDao;
+import br.usp.ime.academicdevoir.dao.TagDao;
+import br.usp.ime.academicdevoir.entidade.Professor;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;
+import br.usp.ime.academicdevoir.entidade.Tag;
+import br.usp.ime.academicdevoir.infra.Privilegio;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 import br.usp.ime.academicdevoir.controller.QuestoesDeSubmissaoDeArquivoController;
 
@@ -41,20 +46,30 @@ public class QuestoesDeSubmissaoDeArquivoControllerTeste {
 	 * @uml.associationEnd
 	 */
 	private UsuarioSession usuarioSession;
+	private TagDao tagDao;
     
     @Before
-    public void SetUp() {
+    public void SetUp() {		
+		Professor professor = new Professor();
+		professor.setPrivilegio(Privilegio.ADMINISTRADOR);
+		
+		usuarioSession = new UsuarioSession();
+		usuarioSession.setUsuario(professor);
+
         dao = mock(QuestaoDeSubmissaoDeArquivoDao.class);
+		tagDao = mock(TagDao.class);
         result = spy(new MockResult());
         validator = spy(new JSR303MockValidator());
-        questoesC = new QuestoesDeSubmissaoDeArquivoController(dao, result,
+        questoesC = new QuestoesDeSubmissaoDeArquivoController(dao, tagDao, result,
                 validator, usuarioSession);
+        
+		when(tagDao.buscaPeloNome(any(String.class))).thenReturn(new Tag("tagQualquer"));
     }
     
     @Test
     public void testeAdiciona() {
         QuestaoDeSubmissaoDeArquivo questao = new QuestaoDeSubmissaoDeArquivo();
-        questoesC.cadastra(questao);
+        questoesC.cadastra(questao, new String("tagQualquer"));
 
         verify(validator).validate(questao);
         verify(validator).onErrorUsePageOf(QuestoesController.class);
@@ -65,7 +80,7 @@ public class QuestoesDeSubmissaoDeArquivoControllerTeste {
     @Test
     public void testeAtualiza() {
         QuestaoDeSubmissaoDeArquivo questao = new QuestaoDeSubmissaoDeArquivo();
-        questoesC.altera(questao);
+        questoesC.altera(questao, new String("tagQualquer"));
         
         verify(validator).validate(questao);
         verify(validator).onErrorUsePageOf(QuestoesDeSubmissaoDeArquivoController.class);

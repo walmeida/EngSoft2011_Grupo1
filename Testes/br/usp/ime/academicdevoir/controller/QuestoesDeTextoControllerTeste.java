@@ -1,5 +1,6 @@
 package br.usp.ime.academicdevoir.controller;
 
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -12,7 +13,11 @@ import br.com.caelum.vraptor.util.test.JSR303MockValidator;
 import br.com.caelum.vraptor.util.test.MockResult;
 import br.usp.ime.academicdevoir.controller.QuestoesDeTextoController;
 import br.usp.ime.academicdevoir.dao.QuestaoDeTextoDao;
+import br.usp.ime.academicdevoir.dao.TagDao;
+import br.usp.ime.academicdevoir.entidade.Professor;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeTexto;
+import br.usp.ime.academicdevoir.entidade.Tag;
+import br.usp.ime.academicdevoir.infra.Privilegio;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 public class QuestoesDeTextoControllerTeste {
@@ -41,20 +46,30 @@ public class QuestoesDeTextoControllerTeste {
 	 * @uml.associationEnd
 	 */
 	private UsuarioSession usuarioSession;
+	private TagDao tagDao;
 
     @Before
-    public void SetUp() {
+    public void SetUp() {		
+		Professor professor = new Professor();
+		professor.setPrivilegio(Privilegio.ADMINISTRADOR);
+		
+		usuarioSession = new UsuarioSession();
+		usuarioSession.setUsuario(professor);
+
         dao = mock(QuestaoDeTextoDao.class);
+		tagDao = mock(TagDao.class);
         result = spy(new MockResult());
         validator = spy(new JSR303MockValidator());
-        questoesC = new QuestoesDeTextoController(dao, result,
+        questoesC = new QuestoesDeTextoController(dao, tagDao, result,
                 validator, usuarioSession);
+        
+		when(tagDao.buscaPeloNome(any(String.class))).thenReturn(new Tag("tagQualquer"));
     }
 
     @Test
     public void testeAdiciona() {
         QuestaoDeTexto questao = new QuestaoDeTexto();
-        questoesC.cadastra(questao);
+        questoesC.cadastra(questao, new String("tagQualquer"));
 
         verify(validator).validate(questao);
         verify(validator).onErrorUsePageOf(QuestoesController.class);
@@ -65,7 +80,7 @@ public class QuestoesDeTextoControllerTeste {
     @Test
     public void testeAtualiza() {
         QuestaoDeTexto questao = new QuestaoDeTexto();
-        questoesC.altera(questao);
+        questoesC.altera(questao, new String("tagQualquer"));
         
         verify(validator).validate(questao);
         verify(validator).onErrorUsePageOf(QuestoesDeTextoController.class);
