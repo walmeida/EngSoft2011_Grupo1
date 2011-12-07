@@ -70,7 +70,7 @@ font-family:"Times New Roman";
 						<td>${questao.alternativasCorretas }</td>
 						<td><a href="<c:url value="/questoes/mult/${questao.id }"/>">Alterar</a></td>
 						<td>
-							<form action="<c:url value="/questoes/mult/${questao.id }"/>" method="post">
+							<form action="<c:url value="/questoes/${questao.id }"/>" method="post">
 								<fieldset class="fieldsetSemFormatacao">
 									<button name="_method" value="delete">Remover</button>
 								</fieldset>

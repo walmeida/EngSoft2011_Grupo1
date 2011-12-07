@@ -6,7 +6,7 @@ import="java.sql.*" errorPage="" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-1.6.2.min.js"/>"></script>
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-1.7.1.min.js"/>"></script>
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery.form.js"/>"></script>
 
 <script type="text/javascript" charset="utf-8">	

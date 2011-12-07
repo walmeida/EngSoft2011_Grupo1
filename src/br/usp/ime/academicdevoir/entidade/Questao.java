@@ -15,6 +15,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import br.usp.ime.academicdevoir.dao.TagDao;
 import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 
@@ -73,6 +76,15 @@ public abstract class Questao {
 
 	public List<Tag> getTags() {
 		return tags;
+	}
+	
+	public String getTagsEmString() {
+		StringBuffer buffer = new StringBuffer();
+		for (Tag tag : this.tags) {
+			buffer.append(tag.getNome());
+			buffer.append(", ");
+		}
+		return buffer.toString();
 	}
 
 	public void setTags(List<Tag> tags) {

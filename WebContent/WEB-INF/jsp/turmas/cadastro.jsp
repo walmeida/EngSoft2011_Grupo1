@@ -14,7 +14,7 @@ import="java.sql.*" errorPage="" %>
 <body>
 	<h1>Academic Devoir</h1>
 	<h2>Grupo 1 - Engenharia de Software</h2>
-	<form action='cadastra'>
+	<form action='cadastra' accept-charset="us-ascii">
 	<fieldset><legend>Cadastrar nova turma:</legend><br/>
 		<input type="hidden" name="nova.professor.id", value="${usuarioSession.usuario.id }"/>
 		Nome: <br/><input type="text" size="30" name="nova.nome"/><br/>

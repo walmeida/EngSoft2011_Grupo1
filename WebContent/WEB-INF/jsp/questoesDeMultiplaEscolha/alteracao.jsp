@@ -5,7 +5,13 @@
 import="java.sql.*" errorPage="" %>
 <html>
 <head>
-<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-1.6.2.min.js"/>"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-1.7.1.min.js"/>"></script>
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.core.min.js"/>"></script>
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.position.min.js"/>"></script>
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.widget.min.js"/>"></script>
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.autocomplete.min.js"/>"></script>
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/tag-autocomplete.js"/>"></script>
 <script type="text/javascript" charset="utf-8">
 	function liberaAlternativas(respostaUnica, numeroDeAlternativas) {
 		var i = 0;
@@ -40,6 +46,14 @@ import="java.sql.*" errorPage="" %>
 		}
 	}
 
+ 	function split( val ) {
+		return val.split( /,\s*/ );
+	}
+	
+	function extractLast( term ) {
+		return split( term ).pop();
+	}
+	
 	$(document).ready(function(){
 		var numeroDeAlternativas = ${numeroDeAlternativas};
 		liberaAlternativas($('#tipoDeResposta').attr('checked'), numeroDeAlternativas);
@@ -53,9 +67,47 @@ import="java.sql.*" errorPage="" %>
 	 	$('#tipoDeResposta').change(function() {
 	 		liberaAlternativas($(this).attr('checked'), numeroDeAlternativas);
 	 	});
+	 	
+	 	//Adaptado do exemplo do JQuery UI 
+	 	$('#tags')
+		.bind('keydown', function(event) {
+			if (event.keyCode === $.ui.keyCode.TAB &&
+					$(this).data('autocomplete').menu.active) {
+				event.preventDefault();
+			}
+		})
+		.autocomplete({
+			source: function(request, response) {
+				$.getJSON('<c:url value="/questoes/tags/autocompletar.json"/>', {
+					term: extractLast(request.term)
+				}, 
+				function(result) {
+					response($.map(result, function(item) {
+						return item.nome;
+					}));
+				});
+			},
+			search: function() {
+				var term = extractLast(this.value);
+				if (term.length < 2) {
+					return false;
+				}
+			},
+			focus: function() {
+				return false;
+			},
+			select: function(event, ui) {
+				var terms = split(this.value);
+				terms.pop();
+				terms.push(ui.item.value);
+				terms.push("");
+				this.value = terms.join(", ");
+				return false;
+			}
+		});
 	});
 </script>
-
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="<c:url value="/css/jquery.ui.autocomplete.css"/>"/>
 <style type="text/css">
 body
 {
@@ -113,6 +165,9 @@ display: inline;
 				<label for="enunciado">Enunciado:</label><br/>
 					<textarea id="enunciado" rows= "5" cols="80" name="questao.enunciado">${questao.enunciado }</textarea>
 				<br/>
+				<label for="tags">Tags: </label>
+					<input id="tags" type="text" name="tags" value="${tags }"></input>
+				<br/> 
 				<p>Número de Alternativas: </p>
 					<select id="seletorDeAlternativas" name="numeroDeAlternativas">
 						<c:forEach begin="2" end="10" step="1" varStatus="iteracao">
@@ -140,23 +195,23 @@ display: inline;
 							<c:when test="${verdadeiro % 2 eq 1 }">
 								<c:choose>
 									<c:when test="${respostaUnica }">
-										<input id="respostaUnica${iteracao.index }" class="respostaDasAlternativas" type="radio" checked="checked" name="questao.resposta" value="${valorResposta }" />
-										<input id="respostaMultipla${iteracao.index }" class="respostaDasAlternativas" type="checkbox" checked="checked" name="resposta" value="${valorResposta }" disabled="disabled" />
+										<input id="respostaUnica${iteracao.index }" class="respostaDasAlternativas" type="radio" checked="checked" name="resposta[]" value="${valorResposta }" />
+										<input id="respostaMultipla${iteracao.index }" class="respostaDasAlternativas" type="checkbox" checked="checked" name="resposta[]" value="${valorResposta }" disabled="disabled" />
 									</c:when>
 									<c:otherwise>
-										<input id="respostaUnica${iteracao.index }" class="respostaDasAlternativas" type="radio" checked="checked" name="questao.resposta" value="${valorResposta }" disabled="disabled" />
-										<input id="respostaMultipla${iteracao.index }" class="respostaDasAlternativas" type="checkbox" checked="checked" name="resposta" value="${valorResposta }"/>
+										<input id="respostaUnica${iteracao.index }" class="respostaDasAlternativas" type="radio" checked="checked" name="resposta[]" value="${valorResposta }" disabled="disabled" />
+										<input id="respostaMultipla${iteracao.index }" class="respostaDasAlternativas" type="checkbox" checked="checked" name="resposta[]" value="${valorResposta }"/>
 									</c:otherwise>
 								</c:choose>
 							</c:when>
 							<c:otherwise>
 								<c:choose>
 									<c:when test="${respostaUnica }">
-										<input id="respostaUnica${iteracao.index }" class="respostaDasAlternativas" type="radio" name="questao.resposta" value="${valorResposta }" />
-										<input id="respostaMultipla${iteracao.index }" class="respostaDasAlternativas" type="checkbox" name="resposta" value="${valorResposta }" disabled="disabled" />
+										<input id="respostaUnica${iteracao.index }" class="respostaDasAlternativas" type="radio" name="resposta[]" value="${valorResposta }" />
+										<input id="respostaMultipla${iteracao.index }" class="respostaDasAlternativas" type="checkbox" name="resposta[]" value="${valorResposta }" disabled="disabled" />
 									</c:when>
 									<c:otherwise>
-										<input id="respostaUnica${iteracao.index }" class="respostaDasAlternativas" type="radio" name="questao.resposta" value="${valorResposta }" disabled="disabled" />
+										<input id="respostaUnica${iteracao.index }" class="respostaDasAlternativas" type="radio" name="resposta[]" value="${valorResposta }" disabled="disabled" />
 										<input id="respostaMultipla${iteracao.index }" class="respostaDasAlternativas" type="checkbox" name="resposta" value="${valorResposta }"/>
 									</c:otherwise>
 								</c:choose>

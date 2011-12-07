@@ -6,14 +6,13 @@ import="java.sql.*" errorPage="" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-1.6.2.min.js"/>"></script>
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-1.7.1.min.js"/>"></script>
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.core.min.js"/>"></script>
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.position.min.js"/>"></script>
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.widget.min.js"/>"></script>
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.autocomplete.min.js"/>"></script>
-<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="<c:url value="/css/jquery.ui.autocomplete.css"/>"/>
-<script type="text/javascript" charset="utf-8">
-	
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/tag-autocomplete.js"/>"></script>
+<script type="text/javascript" charset="utf-8">	
 	function liberaAlternativas(respostaUnica, numeroDeAlternativas) {
 		var i = 0;
 		var tipo, outro;
@@ -84,15 +83,14 @@ import="java.sql.*" errorPage="" %>
 		$('#questaoDeTextoContainer').hide();
 	}
 	
- 	//Função retirada do exemplo do JQuery UI
  	function split( val ) {
 		return val.split( /,\s*/ );
 	}
- 	//Função retirada do exemplo do JQuery UI
+	
 	function extractLast( term ) {
 		return split( term ).pop();
 	}
-	
+		
 	$(document).ready(function() {		
 		var numeroDeAlternativas = 5;
 		
@@ -134,7 +132,7 @@ import="java.sql.*" errorPage="" %>
 	 	$('#tipoDeResposta').change(function() {
 	 		liberaAlternativas($(this).attr('checked'), numeroDeAlternativas);
 	 	});
-
+	 	
 	 	//Adaptado do exemplo do JQuery UI 
 	 	$('#tags')
 		.bind('keydown', function(event) {
@@ -174,6 +172,7 @@ import="java.sql.*" errorPage="" %>
 		});
 	});
 </script>
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="<c:url value="/css/jquery.ui.autocomplete.css"/>"/>
 <style type="text/css">
 body
 {
@@ -264,11 +263,11 @@ display: inline;
 						<br id="espacoAlternativas2_${iteracao.index }"/>
 						<c:choose>
 							<c:when test="${iteracao.index eq 0 }">
-								<input id="respostaUnica${iteracao.index }" class="respostaDasAlternativas" type="radio" checked="checked" name="questao.resposta" value="${valorResposta }" disabled="disabled" />
+								<input id="respostaUnica${iteracao.index }" class="respostaDasAlternativas" type="radio" checked="checked" name="resposta[]" value="${valorResposta }" disabled="disabled" />
 								<input id="respostaMultipla${iteracao.index }" class="respostaDasAlternativas" type="checkbox" checked="checked" name="resposta[]" value="${valorResposta }" disabled="disabled" />
 							</c:when>
 							<c:otherwise>
-								<input id="respostaUnica${iteracao.index }" class="respostaDasAlternativas" type="radio" name="questao.resposta" value="${valorResposta }" disabled="disabled" />
+								<input id="respostaUnica${iteracao.index }" class="respostaDasAlternativas" type="radio" name="resposta[]" value="${valorResposta }" disabled="disabled" />
 								<input id="respostaMultipla${iteracao.index }" class="respostaDasAlternativas" type="checkbox" name="resposta[]" value="${valorResposta }" disabled="disabled" />
 							</c:otherwise>
 						</c:choose>

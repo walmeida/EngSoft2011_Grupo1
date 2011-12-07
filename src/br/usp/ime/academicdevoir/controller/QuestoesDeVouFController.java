@@ -22,23 +22,23 @@ import br.com.caelum.vraptor.Validator;
 public class QuestoesDeVouFController {
 
 	/**
-	 * @uml.property  name="dao"
-	 * @uml.associationEnd  multiplicity="(1 1)"
+	 * @uml.property name="dao"
+	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private QuestaoDeVouFDao dao;
 	/**
-	 * @uml.property  name="result"
-	 * @uml.associationEnd  multiplicity="(1 1)"
+	 * @uml.property name="result"
+	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private final Result result;
 	/**
-	 * @uml.property  name="validator"
-	 * @uml.associationEnd  multiplicity="(1 1)"
+	 * @uml.property name="validator"
+	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private Validator validator;
 	/**
-	 * @uml.property  name="usuarioSession"
-	 * @uml.associationEnd  multiplicity="(1 1)"
+	 * @uml.property name="usuarioSession"
+	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private final UsuarioSession usuarioSession;
 	private TagDao tagDao;
@@ -47,12 +47,13 @@ public class QuestoesDeVouFController {
 	 * @param result
 	 *            para interação com o jsp da questão.
 	 * @param validator
-	 * @param usuarioSession para controle de permissões
+	 * @param usuarioSession
+	 *            para controle de permissões
 	 * @param turmaDao
 	 *            para interação com o banco de dados
 	 */
-	public QuestoesDeVouFController(QuestaoDeVouFDao dao, TagDao tagDao, Result result,
-			Validator validator, UsuarioSession usuarioSession) {
+	public QuestoesDeVouFController(QuestaoDeVouFDao dao, TagDao tagDao,
+			Result result, Validator validator, UsuarioSession usuarioSession) {
 		this.dao = dao;
 		this.tagDao = tagDao;
 		this.result = result;
@@ -68,13 +69,14 @@ public class QuestoesDeVouFController {
 	 */
 	public void cadastra(final QuestaoDeVouF questao, String tags) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
+		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
+				.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
-		
+
 		questao.setTags(tags, tagDao);
-		
+
 		validator.validate(questao);
 		validator.onErrorUsePageOf(QuestoesController.class).cadastro();
 
@@ -90,12 +92,15 @@ public class QuestoesDeVouFController {
 	 * */
 	public void alteracao(Long id) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
+		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
+				.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
-		
-		result.include("questao", dao.carrega(id));
+
+		QuestaoDeVouF questao = dao.carrega(id);
+		result.include("questao", questao);
+		result.include("tags", questao.getTagsEmString());
 	}
 
 	@Put
@@ -104,13 +109,16 @@ public class QuestoesDeVouFController {
 	 * Verifica se a questão de V ou F fornecida é válida e atualiza no banco de dados.
 	 * @param id
 	 */
-	public void altera(QuestaoDeVouF questao) {
+	public void altera(QuestaoDeVouF questao, String tags) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
+		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
+				.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
-		
+
+		questao.setTags(tags, tagDao);
+
 		validator.validate(questao);
 		validator.onErrorUsePageOf(QuestoesDeVouFController.class).alteracao(
 				questao.getId());
@@ -127,11 +135,12 @@ public class QuestoesDeVouFController {
 	 */
 	public void remove(Long id) {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
+		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
+				.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
-		
+
 		QuestaoDeVouF questao = dao.carrega(id);
 		dao.remove(questao);
 		result.redirectTo(this).lista();
@@ -144,11 +153,12 @@ public class QuestoesDeVouFController {
 	 */
 	public void lista() {
 		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
+		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
+				.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
-		
+
 		result.include("lista", dao.listaTudo());
 	}
 }

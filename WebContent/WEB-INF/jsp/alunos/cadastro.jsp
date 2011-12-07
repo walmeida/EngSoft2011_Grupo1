@@ -4,7 +4,7 @@
 <html>
 <head>
 
-<script src="../javascript/jquery-1.6.4.js" type="text/javascript"></script>
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-1.7.1.min.js"/>"></script>
 <script src="../javascript/jquery.validate.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">

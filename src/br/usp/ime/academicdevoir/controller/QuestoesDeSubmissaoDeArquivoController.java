@@ -96,7 +96,9 @@ public class QuestoesDeSubmissaoDeArquivoController {
 			return;
 		}
 		
-		result.include("questao", dao.carrega(id));
+		QuestaoDeSubmissaoDeArquivo questao = dao.carrega(id);
+		result.include("questao", questao);
+		result.include("tags", questao.getTagsEmString());
 	}
 
 	@Put
@@ -105,12 +107,14 @@ public class QuestoesDeSubmissaoDeArquivoController {
 	 * Verifica se a questão de submissão de arquivo fornecida é válida e atualiza no banco de dados.
 	 * @param id
 	 */
-	public void altera(QuestaoDeSubmissaoDeArquivo questao) {
+	public void altera(QuestaoDeSubmissaoDeArquivo questao, String tags) {
 		Usuario u = usuarioSession.getUsuario();
 		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
+		
+		questao.setTags(tags, tagDao);
 		
 		validator.validate(questao);
 		validator

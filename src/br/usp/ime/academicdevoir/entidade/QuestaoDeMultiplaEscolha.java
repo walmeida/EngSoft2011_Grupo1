@@ -6,6 +6,7 @@ import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.validation.constraints.NotNull;
 
 import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 
@@ -25,6 +26,7 @@ public class QuestaoDeMultiplaEscolha extends Questao {
 	/**
 	 * @uml.property name="resposta"
 	 */
+	@NotNull
 	private Integer resposta;
 
 	public Boolean getRespostaUnica() {
@@ -62,7 +64,7 @@ public class QuestaoDeMultiplaEscolha extends Questao {
 	public void setResposta(List<Integer> resposta) {
 		this.resposta = 0;
 		if (resposta == null) return;
-		
+				
 		for (Integer valor : resposta) {
 			this.resposta += valor;
 		}
@@ -141,7 +143,7 @@ public class QuestaoDeMultiplaEscolha extends Questao {
 				alternativas.append(i);
 			}
 		}
-				
+		
 		return alternativas.toString(); 
 	}
 
