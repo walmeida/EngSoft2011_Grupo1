@@ -57,7 +57,7 @@ public class ListaDeExercicios {
 	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="br.usp.ime.academicdevoir.entidade.QuestaoDaLista"
 	 */
 	@ElementCollection
-	@CollectionTable(name = "questoesDaLista")
+	@CollectionTable(name = "questoesDaLista") 
 	private List<QuestaoDaLista> questoes;
 
 	@OneToMany(mappedBy = "listaDeExercicios", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

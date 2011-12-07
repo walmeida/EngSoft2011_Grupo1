@@ -490,6 +490,8 @@ public class ListasDeExerciciosController {
 		//Carrega a lista de exercícios com esse id
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
 		
+		QuestaoDaLista questaoDaLista = null;
+		
 		//Carrega as propriedades da lista de exercícios
 		PropriedadesDaListaDeExercicios propriedades = listaDeExercicios.getPropriedades();
 		
@@ -519,14 +521,24 @@ public class ListasDeExerciciosController {
 				Questao questao = resposta.getQuestao();
 				
 				//Obtendo a Questao relacionada com a lista para obter as propriedades
-				QuestaoDaLista questaoDaLista = questaoDaListaDao.getQuestaoDaListaPorIds(id, questao.getId());
+				//QuestaoDaLista questaoDaLista = questaoDaListaDao.getQuestaoDaListaPorIds(id, questao.getId());
 				
+				for (QuestaoDaLista i : listaDeExercicios.getQuestoes())
+				    if (i.getQuestao().equals(questao)) {
+				        questaoDaLista = i;
+				        break;
+				    }
 				//Montando o vetor de pesos para o cálculo da nota final
 				pesosDasQuestoes.add(questaoDaLista.getPeso());
 				
 				//Resultado da Comparação da Resposta (Correção): True se correta, False se errada e NULL se aberta. 
 				Boolean resultado = questao.respostaDoAlunoEhCorreta(resposta);
 				
+				if (resultado == true)
+				    System.out.println("O BAGULHO É BEM LOUCO " +  resposta.getValor());
+				else 
+                    System.out.println("BAAAAAAAAAAAAAAANG " + resposta.getValor());
+
 				//Verificando se a resposta está certa ou não.
 				if(resultado == true) resposta.setNota(1.0);
 				//#TODO Questões abertas?? Como faz??
@@ -537,6 +549,7 @@ public class ListasDeExerciciosController {
 			
 			//Atribuindo a nota final à lista
 			listaDeRespostas.setNotaFinal(pesosDasQuestoes);
+			listaDeRespostasDao.salva(listaDeRespostas);
 		}
 		
 		//Redireciona para o menu de listas

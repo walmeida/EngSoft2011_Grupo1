@@ -58,10 +58,10 @@ public class QuestaoDeVouF extends Questao {
 		StringBuffer buffer = new StringBuffer();
 
 		buffer.append("<table>");
-		buffer.append("<tr><td><input type=\"radio\" name=\"resposta.valor\" value=\"1\"");
+		buffer.append("<tr><td><input type=\"radio\" name=\"resposta.valor\" value=\"true\"");
 		if (resposta.getValor().equals("1"))
 			buffer.append(" checked=\"checked\"");
-		buffer.append(" />Verdadeiro </td><td><input type=\"radio\" name=\"resposta.valor\" value=\"0\"");
+		buffer.append(" />Verdadeiro </td><td><input type=\"radio\" name=\"resposta.valor\" value=\"false\"");
 		if (resposta.getValor().equals("0"))
 			buffer.append(" checked=\"checked\"");
 		buffer.append("/>Falso</td></tr>");
@@ -78,6 +78,6 @@ public class QuestaoDeVouF extends Questao {
 	}
 	
 	public Boolean respostaDoAlunoEhCorreta(Resposta respostaAluno) {
-		return respostaAluno.getValor().equals(this.resposta.toString());
+	   return respostaAluno.getValor().equals(resposta.toString());
 	}
 }
