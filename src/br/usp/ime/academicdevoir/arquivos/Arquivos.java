@@ -20,9 +20,20 @@ public class Arquivos {
 
 	private File pastaDeArquivos;
 	private UsuarioSession usuarioSession;
+	private ServletContext context;
 
+	public File getPastaDaQuestao(Long idDaQuestao) {
+	    return new File(pastaDeArquivos, "//" + 
+	            usuarioSession.getUsuario().getLogin() + "//" + idDaQuestao);
+	}
+	
+	public String getCaminhoReal(String diretorio) {
+	       return context.getRealPath("WEB-INF//" + diretorio + "//");
+	}
+	
 	public Arquivos(ServletContext context, UsuarioSession usuarioSession) {
-		String caminho = context.getRealPath("WEB-INF//arquivos//");
+		this.context = context;
+	    String caminho = getCaminhoReal("arquivos");
 		pastaDeArquivos = new File(caminho);
 		pastaDeArquivos.mkdirs();
 		
@@ -31,7 +42,7 @@ public class Arquivos {
 
 	public void salva(UploadedFile arquivo, Long idDaQuestao) {
 		
-		File pastaDaQuestao = new File(pastaDeArquivos, "//" + usuarioSession.getUsuario().getLogin() + "//" + idDaQuestao);
+		File pastaDaQuestao = getPastaDaQuestao(idDaQuestao);
 		
 		if (!pastaDaQuestao.mkdirs()) {
 			for (File arq : pastaDaQuestao.listFiles()) {

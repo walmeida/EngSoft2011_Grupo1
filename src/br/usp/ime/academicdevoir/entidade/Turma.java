@@ -11,6 +11,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
 @Entity
@@ -46,12 +47,13 @@ public class Turma {
 	@ManyToOne
 	private Disciplina disciplina;
 
-	/* FIXME pode apagar? Pode não, porque isto está comentado?
-	 * @uml.property  name="listasDeExercicios"
+	/**
+	 * @uml.property  name="listasDeExercicios" 
+	 */
 	 
 	@OneToMany(mappedBy = "turma")
 	private Collection<ListaDeExercicios> listasDeExercicios;
-	 */
+	
 	
 	
 	/**
@@ -126,7 +128,6 @@ public class Turma {
 		this.id = id;
 	}
 
-	/* FIXME pode apagar?
 	public Collection<ListaDeExercicios> getListas() {
 		return listasDeExercicios;
 	}
@@ -134,6 +135,5 @@ public class Turma {
 	public void setListas(Collection<ListaDeExercicios> listas) {
 		this.listasDeExercicios = listas;
 	}
-	*/
 
 }

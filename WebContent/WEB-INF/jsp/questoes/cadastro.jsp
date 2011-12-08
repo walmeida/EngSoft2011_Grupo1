@@ -58,6 +58,12 @@ import="java.sql.*" errorPage="" %>
 		$('#respostaTexto').removeAttr('disabled');
 		$('#questaoDeTextoContainer').show();
 	}
+
+    function habilitaCodigo() {
+        $('form').attr('action', '<c:url value="/questoes/codigo"/>');
+        $('#codigoDeTeste').removeAttr('disabled');
+        $('#questaoDeCodigoContainer').show();
+    }
 	
 	function habilitaVouF() {
 		$('form').attr('action', '<c:url value="/questoes/vouf"/>');
@@ -82,6 +88,11 @@ import="java.sql.*" errorPage="" %>
 		$('#respostaTexto').attr('disabled', 'disabled');
 		$('#questaoDeTextoContainer').hide();
 	}
+
+	function desabilitaCodigo() {
+        $('#codigoDeTeste').attr('disabled', 'disabled');
+        $('#questaoDeCodigoContainer').hide();
+    }
 	
  	function split( val ) {
 		return val.split( /,\s*/ );
@@ -96,28 +107,39 @@ import="java.sql.*" errorPage="" %>
 		
 		$('#questaoDeMultiplaEscolhaContainer').hide();
 		$('#questaoDeVouFContainer').hide();
-				
+	    $('#questaoDeTextoContainer').hide();
+					
 		$('#seletorDeTipoDeQuestao').change(function() {
 			var idSeletor = $(this).val();
 			if (idSeletor == 'multiplaEscolha') {
 				desabilitaTexto();
 				desabilitaVouF();
+                desabilitaCodigo();
 				habilitaMultiplaEscolha(numeroDeAlternativas);
 			}
+			else if (idSeletor == 'codigo') {
+                desabilitaMultiplaEscolha();
+                desabilitaVouF();
+                desabilitaTexto();
+                habilitaCodigo();
+            }
 			else if (idSeletor == 'texto') {
 				desabilitaMultiplaEscolha();
 				desabilitaVouF();
+                desabilitaCodigo();
 				habilitaTexto();
 			}
 			else if (idSeletor == 'VouF') {
 				desabilitaMultiplaEscolha();
 				desabilitaTexto();
+                desabilitaCodigo();
 				habilitaVouF();
 			}
 			else {
 				desabilitaMultiplaEscolha();
 				desabilitaTexto();
 				desabilitaVouF();
+                desabilitaCodigo();
 				$('form').attr('action', '<c:url value="/questoes/submissao"/>');
 			}
 			$(this).attr('selected', 'selected');
@@ -218,7 +240,7 @@ display: inline;
 	
 	<div>
 		<br/>
-		<form action="<c:url value="/questoes/texto"/>" method="post" accept-charset="us-ascii">
+		<form action="<c:url value="/questoes/codigo"/>" method="post" accept-charset="us-ascii">
 			<fieldset>
 				<legend>Cadastrar Questão</legend>
 				<br/>
@@ -228,7 +250,8 @@ display: inline;
 				
 				<p>Tipo de Questão: </p>
 				<select id="seletorDeTipoDeQuestao" name="tipoDeQuestao">
-					<option selected="selected" value="texto">Texto</option>
+                    <option selected="selected" value="codigo">Código</option>
+					<option value="texto">Texto</option>
 					<option value="multiplaEscolha">Múltipla Escolha</option>
 					<option value="VouF">V ou F</option>
 					<option value="submissao">Submissão de Arquivo</option>
@@ -280,8 +303,16 @@ display: inline;
 					<br/><br/>
 					<label for="respostaTexto">Resposta:</label>
 					<br/>
-					<textarea id="respostaTexto" rows= "5" cols="80" name="questao.resposta"></textarea>
+					<textarea id="respostaTexto" rows= "5" cols="80" name="questao.resposta" disabled="disabled"></textarea>
 				</div>
+				
+			    <div id="questaoDeCodigoContainer">
+                    <br/><br/>
+                    <label for="codigoDeTeste">Código de teste:</label>
+                    <br/>
+                    <textarea id="codigoDeTeste" rows= "5" cols="80" name="questao.codigoDeTeste"></textarea>
+                </div>
+                
 				
 				<div id="questaoDeVouFContainer">
 					<br/>

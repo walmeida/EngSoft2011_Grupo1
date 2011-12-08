@@ -16,8 +16,10 @@ public class Resposta {
 	private String valor;
 	
 	private Double nota;
+	
+	private String comentario;
 
-	/**
+    /**
 	 * @uml.property  name="questao"
 	 * @uml.associationEnd  
 	 */
@@ -50,5 +52,14 @@ public class Resposta {
 
 	public void setNota(Double nota) {
 		this.nota = nota;
-	}	
+	}
+	
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
 }

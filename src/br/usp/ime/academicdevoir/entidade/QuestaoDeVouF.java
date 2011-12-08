@@ -34,8 +34,8 @@ public class QuestaoDeVouF extends Questao {
 
 		buffer.append("<table>");
 
-		buffer.append("<tr><td><input type=\"radio\" name=\"resposta.valor\" value=\"1\" />Verdadeiro </td>");
-		buffer.append("<td><input type=\"radio\" name=\"resposta.valor\" value=\"0\">Falso");
+		buffer.append("<tr><td><input type=\"radio\" name=\"resposta.valor\" value=\"true\" />Verdadeiro </td>");
+		buffer.append("<td><input type=\"radio\" name=\"resposta.valor\" value=\"false\">Falso");
 		buffer.append("</td></tr>");
 
 		buffer.append("<input type=\"hidden\" name=\"idDaQuestao\" value=\"");
