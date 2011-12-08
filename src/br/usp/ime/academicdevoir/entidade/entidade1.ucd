@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="entidade1" size="1271,1970" id="br.usp.ime.academicdevoir.entidade" metadata="uml2-1.0" initialized="true" scrolledY="1473" tag="10" key="32303037303533312D31302061636164656D69632D6465766F6972">
+  <children xsi:type="editmodel:ClassEditModel" name="Resposta" location="399,1422" size="178,212" id="br.usp.ime.academicdevoir.entidade/Resposta">
+    <children xsi:type="editmodel:CompartmentEditModel" size="155,72">
+      <children xsi:type="editmodel:AttributeEditModel" name="arquivo" id="br.usp.ime.academicdevoir.entidade/Resposta#arquivo"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="booleano" id="br.usp.ime.academicdevoir.entidade/Resposta#booleano"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="inteiro" id="br.usp.ime.academicdevoir.entidade/Resposta#inteiro"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="texto" id="br.usp.ime.academicdevoir.entidade/Resposta#texto"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="99,90">
+      <children xsi:type="editmodel:MethodEditModel" name="getValor" id="br.usp.ime.academicdevoir.entidade/Resposta#getValor()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setArquivo" id="br.usp.ime.academicdevoir.entidade/Resposta#setArquivo(Lbr.usp.ime.academicdevoir.entidade.NomeDeArquivo;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setBooleano" id="br.usp.ime.academicdevoir.entidade/Resposta#setBooleano(Ljava.lang.Boolean;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setInteiro" id="br.usp.ime.academicdevoir.entidade/Resposta#setInteiro(Ljava.lang.Integer;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTexto" id="br.usp.ime.academicdevoir.entidade/Resposta#setTexto(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:EnumerationEditModel" name="AutoCorrecao" location="723,1684" size="144,107" id="br.usp.ime.academicdevoir.entidade/AutoCorrecao">
+    <children xsi:type="editmodel:CompartmentEditModel" size="85,54">
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="DESATIVADA" id="br.usp.ime.academicdevoir.entidade/AutoCorrecao#DESATIVADA%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="PROFESSOR" id="br.usp.ime.academicdevoir.entidade/AutoCorrecao#PROFESSOR%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="AMBOS" id="br.usp.ime.academicdevoir.entidade/AutoCorrecao#AMBOS%"/>
+    </children>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ListaDeRespostas" location="50,944" size="307,428" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas">
+    <children xsi:type="editmodel:CompartmentEditModel" size="284,126">
+      <children xsi:type="editmodel:AttributeEditModel" name="aluno" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas#aluno"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="id" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas#id"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="listaDeExercicios" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas#listaDeExercicios"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="notaFinal" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas#notaFinal"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="notas" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas#notas"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="propriedades" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas#propriedades"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="respostas" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas#respostas"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="144,252">
+      <children xsi:type="editmodel:MethodEditModel" name="getAluno" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas#getAluno()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getId" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas#getId()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getListaDeExercicios" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas#getListaDeExercicios()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getNotaFinal" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas#getNotaFinal()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getNotas" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas#getNotas()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPropriedades" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas#getPropriedades()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getRespostas" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas#getRespostas()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setAluno" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas#setAluno(Lbr.usp.ime.academicdevoir.entidade.Aluno;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setId" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas#setId(Ljava.lang.Long;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setListaDeExercicios" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas#setListaDeExercicios(Lbr.usp.ime.academicdevoir.entidade.ListaDeExercicios;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setNotaFinal" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas#setNotaFinal()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setNotas" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas#setNotas(Ljava.util.List;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPropriedades" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas#setPropriedades(Lbr.usp.ime.academicdevoir.entidade.PropriedadesDaListaDeRespostas;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setRespostas" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas#setRespostas(Ljava.util.List;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="NomeDeArquivo" location="509,1684" size="164,104" id="br.usp.ime.academicdevoir.entidade/NomeDeArquivo">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="118,54">
+      <children xsi:type="editmodel:MethodEditModel" name="NomeDeArquivo" id="br.usp.ime.academicdevoir.entidade/NomeDeArquivo#NomeDeArquivo(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getValor" id="br.usp.ime.academicdevoir.entidade/NomeDeArquivo#getValor()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setValor" id="br.usp.ime.academicdevoir.entidade/NomeDeArquivo#setValor(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Disciplina" location="627,1422" size="221,140" id="br.usp.ime.academicdevoir.entidade/Disciplina">
+    <children xsi:type="editmodel:CompartmentEditModel" size="198,54">
+      <children xsi:type="editmodel:AttributeEditModel" name="id" id="br.usp.ime.academicdevoir.entidade/Disciplina#id"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="nome" id="br.usp.ime.academicdevoir.entidade/Disciplina#nome"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="turmas" id="br.usp.ime.academicdevoir.entidade/Disciplina#turmas"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="87,36">
+      <children xsi:type="editmodel:MethodEditModel" name="getTurmas" id="br.usp.ime.academicdevoir.entidade/Disciplina#getTurmas()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTurmas" id="br.usp.ime.academicdevoir.entidade/Disciplina#setTurmas(Ljava.util.Collection;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Turma" location="347,1684" size="112,158" id="br.usp.ime.academicdevoir.entidade/Turma">
+    <children xsi:type="editmodel:CompartmentEditModel" size="89,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="id" id="br.usp.ime.academicdevoir.entidade/Turma#id"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="nome" id="br.usp.ime.academicdevoir.entidade/Turma#nome"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="85,72">
+      <children xsi:type="editmodel:MethodEditModel" name="getAlunos" id="br.usp.ime.academicdevoir.entidade/Turma#getAlunos()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getListas" id="br.usp.ime.academicdevoir.entidade/Turma#getListas()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setAlunos" id="br.usp.ime.academicdevoir.entidade/Turma#setAlunos(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setListas" id="br.usp.ime.academicdevoir.entidade/Turma#setListas(Ljava.util.List;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="PropriedadesDaListaDeExercicios" location="50,412" size="299,482" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios">
+    <children xsi:type="editmodel:CompartmentEditModel" size="200,126">
+      <children xsi:type="editmodel:AttributeEditModel" name="autoCorrecao" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#autoCorrecao"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="enunciado" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#enunciado"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="nome" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#nome"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="numeroMaximoDeEnvios" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#numeroMaximoDeEnvios"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="peso" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#peso"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="prazoDeEntrega" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#prazoDeEntrega"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="visivel" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#visivel"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="209,306">
+      <children xsi:type="editmodel:MethodEditModel" name="getAutoCorrecao" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#getAutoCorrecao()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getEnunciado" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#getEnunciado()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getNome" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#getNome()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getNumeroMaximoDeEnvios" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#getNumeroMaximoDeEnvios()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPeso" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#getPeso()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPrazoDeEntrega" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#getPrazoDeEntrega()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPrazoDeEntregaFormatado" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#getPrazoDeEntregaFormatado()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPrazoPrazoDeEntregaEmLista" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#getPrazoPrazoDeEntregaEmLista()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getVisivel" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#getVisivel()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setAutoCorrecao" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#setAutoCorrecao(Lbr.usp.ime.academicdevoir.entidade.AutoCorrecao;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setEnunciado" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#setEnunciado(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setNome" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#setNome(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setNumeroMaximoDeEnvios" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#setNumeroMaximoDeEnvios(Ljava.lang.Integer;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPeso" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#setPeso(Ljava.lang.Integer;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPrazoDeEntrega" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#setPrazoDeEntrega(Ljava.util.List;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPrazoDeEntrega" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#setPrazoDeEntrega(Ljava.util.Date;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setVisivel" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios#setVisivel(Ljava.lang.Boolean;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="QuestaoDaLista" location="50,1892" size="160,58" id="br.usp.ime.academicdevoir.entidade/QuestaoDaLista">
+    <children xsi:type="editmodel:CompartmentEditModel" size="92,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="peso" id="br.usp.ime.academicdevoir.entidade/QuestaoDaLista#peso"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="PropriedadesDaListaDeRespostas" location="50,1422" size="299,158" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeRespostas">
+    <children xsi:type="editmodel:CompartmentEditModel" size="215,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="estado" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeRespostas#estado"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="numeroDeEnvios" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeRespostas#numeroDeEnvios"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="142,72">
+      <children xsi:type="editmodel:MethodEditModel" name="getEstado" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeRespostas#getEstado()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getNumeroDeEnvios" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeRespostas#getNumeroDeEnvios()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setEstado" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeRespostas#setEstado(Lbr.usp.ime.academicdevoir.entidade.EstadoDaListaDeRespostas;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setNumeroDeEnvios" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeRespostas#setNumeroDeEnvios(Ljava.lang.Integer;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:EnumerationEditModel" name="EstadoDaListaDeRespostas" location="50,1684" size="247,125" id="br.usp.ime.academicdevoir.entidade/EstadoDaListaDeRespostas">
+    <children xsi:type="editmodel:CompartmentEditModel" size="81,72">
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="SALVA" id="br.usp.ime.academicdevoir.entidade/EstadoDaListaDeRespostas#SALVA%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="CORRIGIDA" id="br.usp.ime.academicdevoir.entidade/EstadoDaListaDeRespostas#CORRIGIDA%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="ABERTA" id="br.usp.ime.academicdevoir.entidade/EstadoDaListaDeRespostas#ABERTA%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="FINALIZADA" id="br.usp.ime.academicdevoir.entidade/EstadoDaListaDeRespostas#FINALIZADA%"/>
+    </children>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ListaDeExercicios" location="407,944" size="305,248" id="br.usp.ime.academicdevoir.entidade/ListaDeExercicios">
+    <children xsi:type="editmodel:CompartmentEditModel" size="282,54">
+      <children xsi:type="editmodel:AttributeEditModel" name="id" id="br.usp.ime.academicdevoir.entidade/ListaDeExercicios#id"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="propriedades" id="br.usp.ime.academicdevoir.entidade/ListaDeExercicios#propriedades"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="respostas" id="br.usp.ime.academicdevoir.entidade/ListaDeExercicios#respostas"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="120,144">
+      <children xsi:type="editmodel:MethodEditModel" name="getPropriedades" id="br.usp.ime.academicdevoir.entidade/ListaDeExercicios#getPropriedades()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getQuestoes" id="br.usp.ime.academicdevoir.entidade/ListaDeExercicios#getQuestoes()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getRespostas" id="br.usp.ime.academicdevoir.entidade/ListaDeExercicios#getRespostas()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTurmas" id="br.usp.ime.academicdevoir.entidade/ListaDeExercicios#getTurmas()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPropriedades" id="br.usp.ime.academicdevoir.entidade/ListaDeExercicios#setPropriedades(Lbr.usp.ime.academicdevoir.entidade.PropriedadesDaListaDeExercicios;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setQuestoes" id="br.usp.ime.academicdevoir.entidade/ListaDeExercicios#setQuestoes(Ljava.util.List;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setRespostas" id="br.usp.ime.academicdevoir.entidade/ListaDeExercicios#setRespostas(Ljava.util.List;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTurmas" id="br.usp.ime.academicdevoir.entidade/ListaDeExercicios#setTurmas(Ljava.util.List;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="QuestaoDeVouF" location="829,222" size="159,122" id="br.usp.ime.academicdevoir.entidade/QuestaoDeVouF">
+    <children xsi:type="editmodel:CompartmentEditModel" size="119,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="resposta" id="br.usp.ime.academicdevoir.entidade/QuestaoDeVouF#resposta"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="123,54">
+      <children xsi:type="editmodel:MethodEditModel" name="getRenderizacao" id="br.usp.ime.academicdevoir.entidade/QuestaoDeVouF#getRenderizacao()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getResposta" id="br.usp.ime.academicdevoir.entidade/QuestaoDeVouF#getResposta()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTipo" id="br.usp.ime.academicdevoir.entidade/QuestaoDeVouF#getTipo()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Questao&lt;-br.usp.ime.academicdevoir.entidade/QuestaoDeVouF" source="//@children.11" target="//@children.12/@sourceConnections.0" targetEnd="//@children.11/@sourceConnections.0/@children.1" sourceEnd="//@children.11/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="79,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="QuestaoDeTexto" location="50,222" size="163,104" id="br.usp.ime.academicdevoir.entidade/QuestaoDeTexto">
+    <children xsi:type="editmodel:CompartmentEditModel" size="106,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="resposta" id="br.usp.ime.academicdevoir.entidade/QuestaoDeTexto#resposta"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="123,36">
+      <children xsi:type="editmodel:MethodEditModel" name="getRenderizacao" id="br.usp.ime.academicdevoir.entidade/QuestaoDeTexto#getRenderizacao()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTipo" id="br.usp.ime.academicdevoir.entidade/QuestaoDeTexto#getTipo()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" targetConnections="//@children.14/@sourceConnections.0 //@children.13/@sourceConnections.0 //@children.11/@sourceConnections.0" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Questao&lt;-br.usp.ime.academicdevoir.entidade/QuestaoDeTexto" source="//@children.12" target="//@children.15" targetEnd="//@children.12/@sourceConnections.0/@children.1" sourceEnd="//@children.12/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="81,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="73,122" anchorKind="FixedAtEdge"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="QuestaoDeMultiplaEscolha" location="557,222" size="242,140" id="br.usp.ime.academicdevoir.entidade/QuestaoDeMultiplaEscolha">
+    <children xsi:type="editmodel:CompartmentEditModel" size="113,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="resposta" id="br.usp.ime.academicdevoir.entidade/QuestaoDeMultiplaEscolha#resposta"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="123,72">
+      <children xsi:type="editmodel:MethodEditModel" name="getAlternativas" id="br.usp.ime.academicdevoir.entidade/QuestaoDeMultiplaEscolha#getAlternativas()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getRenderizacao" id="br.usp.ime.academicdevoir.entidade/QuestaoDeMultiplaEscolha#getRenderizacao()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTipo" id="br.usp.ime.academicdevoir.entidade/QuestaoDeMultiplaEscolha#getTipo()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setAlternativas" id="br.usp.ime.academicdevoir.entidade/QuestaoDeMultiplaEscolha#setAlternativas(Ljava.util.List;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Questao&lt;-br.usp.ime.academicdevoir.entidade/QuestaoDeMultiplaEscolha" source="//@children.13" target="//@children.12/@sourceConnections.0" targetEnd="//@children.13/@sourceConnections.0/@children.1" sourceEnd="//@children.13/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="121,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="QuestaoDeSubmissaoDeArquivo" location="243,222" size="284,68" id="br.usp.ime.academicdevoir.entidade/QuestaoDeSubmissaoDeArquivo">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="72,18">
+      <children xsi:type="editmodel:MethodEditModel" name="getTipo" id="br.usp.ime.academicdevoir.entidade/QuestaoDeSubmissaoDeArquivo#getTipo()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Questao&lt;-br.usp.ime.academicdevoir.entidade/QuestaoDeSubmissaoDeArquivo" source="//@children.14" target="//@children.12/@sourceConnections.0" targetEnd="//@children.14/@sourceConnections.0/@children.1" sourceEnd="//@children.14/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="142,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.12/@sourceConnections.0" name="Questao" location="452,50" size="146,122" id="br.usp.ime.academicdevoir.entidade/Questao">
+    <children xsi:type="editmodel:CompartmentEditModel" size="116,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="enunciado" id="br.usp.ime.academicdevoir.entidade/Questao#enunciado"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="id" id="br.usp.ime.academicdevoir.entidade/Questao#id"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="123,36">
+      <children xsi:type="editmodel:MethodEditModel" name="getRenderizacao" id="br.usp.ime.academicdevoir.entidade/Questao#getRenderizacao()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTipo" id="br.usp.ime.academicdevoir.entidade/Questao#getTipo()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.17/@sourceConnections.0" name="Usuario" location="599,412" size="115,130" id="br.usp.ime.academicdevoir.entidade/Usuario">
+    <children xsi:type="editmodel:CompartmentEditModel" size="92,90">
+      <children xsi:type="editmodel:AttributeEditModel" name="email" id="br.usp.ime.academicdevoir.entidade/Usuario#email"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="id" id="br.usp.ime.academicdevoir.entidade/Usuario#id"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="login" id="br.usp.ime.academicdevoir.entidade/Usuario#login"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="nome" id="br.usp.ime.academicdevoir.entidade/Usuario#nome"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="senha" location="7,72" id="br.usp.ime.academicdevoir.entidade/Usuario#senha"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Aluno" location="399,592" size="285,140" id="br.usp.ime.academicdevoir.entidade/Aluno">
+    <children xsi:type="editmodel:CompartmentEditModel" size="262,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="listasDeRespostas" id="br.usp.ime.academicdevoir.entidade/Aluno#listasDeRespostas"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="152,72">
+      <children xsi:type="editmodel:MethodEditModel" name="getListasDeRespostas" id="br.usp.ime.academicdevoir.entidade/Aluno#getListasDeRespostas()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTurmas" id="br.usp.ime.academicdevoir.entidade/Aluno#getTurmas()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setListasDeRespostas" id="br.usp.ime.academicdevoir.entidade/Aluno#setListasDeRespostas(Ljava.util.List;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTurmas" id="br.usp.ime.academicdevoir.entidade/Aluno#setTurmas(Ljava.util.Collection;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" targetConnections="//@children.18/@sourceConnections.0" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Usuario&lt;-br.usp.ime.academicdevoir.entidade/Aluno" source="//@children.17" target="//@children.16" targetEnd="//@children.17/@sourceConnections.0/@children.1" sourceEnd="//@children.17/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="142,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="57,130" anchorKind="FixedAtEdge"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Professor" location="714,592" size="115,86" id="br.usp.ime.academicdevoir.entidade/Professor">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="87,36">
+      <children xsi:type="editmodel:MethodEditModel" name="getTurmas" id="br.usp.ime.academicdevoir.entidade/Professor#getTurmas()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTurmas" id="br.usp.ime.academicdevoir.entidade/Professor#setTurmas(Ljava.util.Collection;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Usuario&lt;-br.usp.ime.academicdevoir.entidade/Professor" source="//@children.18" target="//@children.17/@sourceConnections.0" targetEnd="//@children.18/@sourceConnections.0/@children.1" sourceEnd="//@children.18/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="57,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" interactive="false" level="-1" showScope="InPackage" properties="wireOptions=1;Product=eUML2"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

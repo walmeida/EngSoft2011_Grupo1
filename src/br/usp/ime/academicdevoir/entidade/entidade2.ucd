@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="entidade2" size="763,1174" id="br.usp.ime.academicdevoir.entidade" metadata="uml2-1.0" initialized="true" scrolledX="-74" scrolledY="79" tag="10" key="32303037303533312D31302061636164656D69632D6465766F6972">
+  <children xsi:type="editmodel:ClassEditModel" name="Resposta" location="259,1124" size="111,30" id="br.usp.ime.academicdevoir.entidade/Resposta" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:EnumerationEditModel" name="AutoCorrecao" location="347,709" size="144,107" id="br.usp.ime.academicdevoir.entidade/AutoCorrecao" runTimeClassModel="AMBOS%,PROFESSOR%,DESATIVADA%">
+    <children xsi:type="editmodel:CompartmentEditModel" size="85,54">
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="PROFESSOR" id="br.usp.ime.academicdevoir.entidade/AutoCorrecao#PROFESSOR%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="DESATIVADA" id="br.usp.ime.academicdevoir.entidade/AutoCorrecao#DESATIVADA%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="AMBOS" id="br.usp.ime.academicdevoir.entidade/AutoCorrecao#AMBOS%"/>
+    </children>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ListaDeRespostas" location="50,1044" size="176,30" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="NomeDeArquivo" location="276,1044" size="164,30" id="br.usp.ime.academicdevoir.entidade/NomeDeArquivo" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="QuestaoDeTexto" location="490,1044" size="163,30" id="br.usp.ime.academicdevoir.entidade/QuestaoDeTexto" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="QuestaoDeVouF" location="50,1124" size="159,30" id="br.usp.ime.academicdevoir.entidade/QuestaoDeVouF" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="QuestaoDeMultiplaEscolha" location="384,964" size="242,30" id="br.usp.ime.academicdevoir.entidade/QuestaoDeMultiplaEscolha" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="PropriedadesDaListaDeExercicios" location="399,884" size="299,30" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="PropriedadesDaListaDeRespostas" location="50,884" size="299,30" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeRespostas" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="QuestaoDeSubmissaoDeArquivo" location="50,964" size="284,30" id="br.usp.ime.academicdevoir.entidade/QuestaoDeSubmissaoDeArquivo" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:EnumerationEditModel" name="EstadoDaListaDeRespostas" location="50,709" size="247,125" id="br.usp.ime.academicdevoir.entidade/EstadoDaListaDeRespostas" runTimeClassModel="FINALIZADA%,ABERTA%,SALVA%,CORRIGIDA%">
+    <children xsi:type="editmodel:CompartmentEditModel" size="81,72">
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="FINALIZADA" id="br.usp.ime.academicdevoir.entidade/EstadoDaListaDeRespostas#FINALIZADA%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="CORRIGIDA" id="br.usp.ime.academicdevoir.entidade/EstadoDaListaDeRespostas#CORRIGIDA%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="ABERTA" id="br.usp.ime.academicdevoir.entidade/EstadoDaListaDeRespostas#ABERTA%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="SALVA" id="br.usp.ime.academicdevoir.entidade/EstadoDaListaDeRespostas#SALVA%"/>
+    </children>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Usuario" location="420,1124" size="100,30" id="br.usp.ime.academicdevoir.entidade/Usuario" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.16/@sourceConnections.0" name="Turma" location="208,199" size="89,30" id="br.usp.ime.academicdevoir.entidade/Turma" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Turma@turmas+br.usp.ime.academicdevoir.entidade/Aluno@alunos" source="//@children.12" target="//@children.14" targetEnd="//@children.12/@sourceConnections.0/@children.2" label="//@children.12/@sourceConnections.0/@children.0" sourceEnd="//@children.12/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="turmas" location="27,0" id="br.usp.ime.academicdevoir.entidade/Turma@turmas+br.usp.ime.academicdevoir.entidade/Aluno@alunos|br.usp.ime.academicdevoir.entidade/Turma#turmas" attachSource="true" multiplicityLabel="//@children.12/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.12/@sourceConnections.0/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - turmas" location="242,179" size="48,13" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="*" location="223,179" size="5,13" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="alunos" location="55,30" id="br.usp.ime.academicdevoir.entidade/Turma@turmas+br.usp.ime.academicdevoir.entidade/Aluno@alunos|br.usp.ime.academicdevoir.entidade/Aluno#alunos" multiplicityLabel="//@children.12/@sourceConnections.0/@children.2/@children.1" roleLabel="//@children.12/@sourceConnections.0/@children.2/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" + alunos" location="242,87" size="52,13" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="*" location="223,87" size="5,13" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Turma@turmas+br.usp.ime.academicdevoir.entidade/Professor@professor" source="//@children.12" target="//@children.15" targetEnd="//@children.12/@sourceConnections.1/@children.2" label="//@children.12/@sourceConnections.1/@children.0" sourceEnd="//@children.12/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="turmas" location="79,0" id="br.usp.ime.academicdevoir.entidade/Turma@turmas+br.usp.ime.academicdevoir.entidade/Professor@professor|br.usp.ime.academicdevoir.entidade/Turma#turmas" attachSource="true" multiplicityLabel="//@children.12/@sourceConnections.1/@children.1/@children.1" roleLabel="//@children.12/@sourceConnections.1/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - turmas" location="198,180" size="48,13" automaticRelocationAllowed="false" locationOnWireFromSource="-7.000000000000001" distanceFromWire="65.0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="*" location="294,179" size="5,13" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="professor" location="0,20" id="br.usp.ime.academicdevoir.entidade/Turma@turmas+br.usp.ime.academicdevoir.entidade/Professor@professor|br.usp.ime.academicdevoir.entidade/Professor#professor" multiplicityLabel="//@children.12/@sourceConnections.1/@children.2/@children.1" roleLabel="//@children.12/@sourceConnections.1/@children.2/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" + professor" location="280,140" size="67,13" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="327,167" size="20,13" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Turma@turmas+br.usp.ime.academicdevoir.entidade/ListaDeExercicios@" source="//@children.12" target="//@children.18" targetEnd="//@children.12/@sourceConnections.2/@children.2" label="//@children.12/@sourceConnections.2/@children.0" sourceEnd="//@children.12/@sourceConnections.2/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="turmas" location="58,30" id="br.usp.ime.academicdevoir.entidade/Turma@turmas+br.usp.ime.academicdevoir.entidade/ListaDeExercicios@|br.usp.ime.academicdevoir.entidade/Turma#turmas" attachSource="true" multiplicityLabel="//@children.12/@sourceConnections.2/@children.1/@children.1" roleLabel="//@children.12/@sourceConnections.2/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - turmas" location="273,236" size="48,13" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="*" location="254,236" size="5,13" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="29,0" id="br.usp.ime.academicdevoir.entidade/Turma@turmas+br.usp.ime.academicdevoir.entidade/ListaDeExercicios@|br.usp.ime.academicdevoir.entidade/ListaDeExercicios#"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.17/@sourceConnections.0" name="Questao" location="289,629" size="103,30" id="br.usp.ime.academicdevoir.entidade/Questao" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.12/@sourceConnections.0" name="Aluno" location="180,50" size="84,30" id="br.usp.ime.academicdevoir.entidade/Aluno" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.12/@sourceConnections.1" name="Professor" location="354,140" size="115,30" id="br.usp.ime.academicdevoir.entidade/Professor" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Disciplina" location="50,197" size="117,30" id="br.usp.ime.academicdevoir.entidade/Disciplina" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Disciplina@disciplina+br.usp.ime.academicdevoir.entidade/Turma@" source="//@children.16" target="//@children.12" targetEnd="//@children.16/@sourceConnections.0/@children.2" label="//@children.16/@sourceConnections.0/@children.0" sourceEnd="//@children.16/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="disciplina" location="117,16" id="br.usp.ime.academicdevoir.entidade/Disciplina@disciplina+br.usp.ime.academicdevoir.entidade/Turma@|br.usp.ime.academicdevoir.entidade/Disciplina#disciplina" attachSource="true" multiplicityLabel="//@children.16/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.16/@sourceConnections.0/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - disciplina" location="174,193" size="62,13" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="174,220" size="20,13" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,14" id="br.usp.ime.academicdevoir.entidade/Disciplina@disciplina+br.usp.ime.academicdevoir.entidade/Turma@|br.usp.ime.academicdevoir.entidade/Turma#"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.18/@sourceConnections.0" name="QuestaoDaLista" location="263,491" size="160,30" id="br.usp.ime.academicdevoir.entidade/QuestaoDaLista" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Questao@questao+br.usp.ime.academicdevoir.entidade/QuestaoDaLista@" source="//@children.17" target="//@children.13" targetEnd="//@children.17/@sourceConnections.0/@children.2" label="//@children.17/@sourceConnections.0/@children.0" sourceEnd="//@children.17/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="77,30" id="br.usp.ime.academicdevoir.entidade/Questao@questao+br.usp.ime.academicdevoir.entidade/QuestaoDaLista@|br.usp.ime.academicdevoir.entidade/QuestaoDaLista#" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="questao" location="51,0" id="br.usp.ime.academicdevoir.entidade/Questao@questao+br.usp.ime.academicdevoir.entidade/QuestaoDaLista@|br.usp.ime.academicdevoir.entidade/Questao#questao" multiplicityLabel="//@children.17/@sourceConnections.0/@children.2/@children.1" roleLabel="//@children.17/@sourceConnections.0/@children.2/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - questao" location="347,609" size="55,13" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="313,609" size="20,13" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.12/@sourceConnections.2" name="ListaDeExercicios" location="237,350" size="176,30" id="br.usp.ime.academicdevoir.entidade/ListaDeExercicios" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/QuestaoDaLista@questoes+br.usp.ime.academicdevoir.entidade/ListaDeExercicios@" source="//@children.18" target="//@children.17" targetEnd="//@children.18/@sourceConnections.0/@children.2" label="//@children.18/@sourceConnections.0/@children.0" sourceEnd="//@children.18/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="100,30" id="br.usp.ime.academicdevoir.entidade/QuestaoDaLista@questoes+br.usp.ime.academicdevoir.entidade/ListaDeExercicios@|br.usp.ime.academicdevoir.entidade/ListaDeExercicios#" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="questoes" location="74,0" id="br.usp.ime.academicdevoir.entidade/QuestaoDaLista@questoes+br.usp.ime.academicdevoir.entidade/ListaDeExercicios@|br.usp.ime.academicdevoir.entidade/QuestaoDaLista#questoes" multiplicityLabel="//@children.18/@sourceConnections.0/@children.2/@children.1" roleLabel="//@children.18/@sourceConnections.0/@children.2/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - questoes" location="344,471" size="61,13" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="*" location="325,471" size="5,13" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" interactive="false" level="-1" showScope="InPackage" properties="wireOptions=2;Product=eUML2;displayOptions=1"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+</editmodel:ClassDiagramEditModel>

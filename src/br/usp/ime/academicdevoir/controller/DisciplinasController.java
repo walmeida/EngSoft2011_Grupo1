@@ -157,7 +157,7 @@ public class DisciplinasController {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
-
+/*TODO: apagar turmas associadas*/
 		disciplina = disciplinaDao.carrega(id);
 		disciplinaDao.removeDisciplina(disciplina);
 		result.redirectTo(DisciplinasController.class).lista();

@@ -201,7 +201,7 @@ public class TurmasController {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
-		
+		/*TODO: remove todas as listas associadas*/
         turmaDao.removeTurma(turma);
         result.redirectTo(ProfessoresController.class).listaTurmas(u.getId());    
     }
