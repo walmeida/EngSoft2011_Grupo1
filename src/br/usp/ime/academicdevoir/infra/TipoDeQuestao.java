@@ -5,5 +5,6 @@ public enum TipoDeQuestao {
 	MULTIPLAESCOLHA,
 	SUBMISSAODEARQUIVO,
 	TEXTO,
-	VOUF	
+	VOUF,
+	CODIGO
 }

@@ -27,6 +27,7 @@
 			class="br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo" />
 		<mapping class="br.usp.ime.academicdevoir.entidade.QuestaoDeVouF" />
 		<mapping class="br.usp.ime.academicdevoir.entidade.QuestaoDeTexto" />
+        <mapping class="br.usp.ime.academicdevoir.entidade.QuestaoDeCodigo" />
 		<mapping class="br.usp.ime.academicdevoir.entidade.Tag" />
 	</session-factory>
 </hibernate-configuration>

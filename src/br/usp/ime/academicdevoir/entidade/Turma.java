@@ -52,11 +52,13 @@ public class Turma {
 	 */
 	@ManyToOne
 	private Disciplina disciplina;
+
 	/**
 	 * @uml.property  name="listasDeExercicios"
 	 */
 	@OneToMany(mappedBy = "turma")
 	private List<ListaDeExercicios> listasDeExercicios;
+<<<<<<< HEAD
 	/**
 	 * @uml.property  name="dataLimite"
 	 * @uml.associationEnd  
@@ -65,6 +67,8 @@ public class Turma {
 	@Temporal(TemporalType.DATE)
 	private Date prazoDeMatricula;
 		
+=======
+>>>>>>> 42d9298564e812f95e633d62d85cfd31e1fa4599
 	
 	/**
 	 * @return
@@ -136,8 +140,13 @@ public class Turma {
 	 */
 	public void setId(Long id) {
 		this.id = id;
+<<<<<<< HEAD
 	}
 
+=======
+	}
+	
+>>>>>>> 42d9298564e812f95e633d62d85cfd31e1fa4599
 	public List<ListaDeExercicios> getListas() {
 		return listasDeExercicios;
 	}
@@ -145,6 +154,7 @@ public class Turma {
 	public void setListas(List<ListaDeExercicios> listas) {
 		this.listasDeExercicios = listas;
 	}
+<<<<<<< HEAD
 
 	public Date getPrazoDeMatricula() {
 		return prazoDeMatricula;
@@ -155,5 +165,7 @@ public class Turma {
 		data.set(prazoDeEntrega.get(2).intValue(), prazoDeEntrega.get(1).intValue() - 1, prazoDeEntrega.get(0).intValue());
 		this.prazoDeMatricula = new Date(data.getTimeInMillis());
 	}
+=======
+>>>>>>> 42d9298564e812f95e633d62d85cfd31e1fa4599
 
 }
