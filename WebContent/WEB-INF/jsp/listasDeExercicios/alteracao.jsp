@@ -77,7 +77,7 @@ display: inline;
 				<label for="dia">Dia:</label>
 					<input id="dia" type="text" size="2" maxlength="2" name="prazoDeEntrega[0]" value="${prazo[0] }"/>
 				<label for="mes">Mês:</label>
-					<input id="mes" type="text" size="2" maxlength="2" name="prazoDeEntrega[1]" value="${prazo[1] }"/>
+					<input id="mes" type="text" size="2" maxlength="2" name="prazoDeEntrega[1]" value="${prazo[1] + 1}"/>
 				<label for="ano">Ano:</label>
 					<input id="ano" type="text" size="2" maxlength="4" name="prazoDeEntrega[2]" value="${prazo[2] }"/>
 				<label for="hora">Hora:</label>

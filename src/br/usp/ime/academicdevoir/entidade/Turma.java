@@ -2,6 +2,7 @@ package br.usp.ime.academicdevoir.entidade;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -48,13 +49,10 @@ public class Turma {
 	private Disciplina disciplina;
 
 	/**
-	 * @uml.property  name="listasDeExercicios" 
+	 * @uml.property  name="listasDeExercicios"
 	 */
-	 
 	@OneToMany(mappedBy = "turma")
-	private Collection<ListaDeExercicios> listasDeExercicios;
-	
-	
+	private List<ListaDeExercicios> listasDeExercicios;
 	
 	/**
 	 * @return
@@ -127,12 +125,12 @@ public class Turma {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public Collection<ListaDeExercicios> getListas() {
+	
+	public List<ListaDeExercicios> getListas() {
 		return listasDeExercicios;
 	}
 
-	public void setListas(Collection<ListaDeExercicios> listas) {
+	public void setListas(List<ListaDeExercicios> listas) {
 		this.listasDeExercicios = listas;
 	}
 

@@ -1,6 +1,7 @@
 package br.usp.ime.academicdevoir.controller;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -14,6 +15,7 @@ import br.usp.ime.academicdevoir.controller.ProfessoresController;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
 import br.usp.ime.academicdevoir.entidade.Professor;
 import br.usp.ime.academicdevoir.infra.Criptografia;
+import br.usp.ime.academicdevoir.infra.Privilegio;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 public class ProfessoresControllerTeste {
@@ -37,44 +39,73 @@ public class ProfessoresControllerTeste {
 	 * @uml.associationEnd  readOnly="true"
 	 */
     private UsuarioSession usuarioSession;
+	private Professor professor;
 
     @Before
     public void SetUp() {
+		Professor admin = new Professor();
+		admin.setId(0L);
+		admin.setPrivilegio(Privilegio.ADMINISTRADOR);
+		
+		usuarioSession = new UsuarioSession();
+		usuarioSession.setUsuario(admin);
+		
         result = spy(new MockResult());
         professordao = mock(ProfessorDao.class);
         profC = new ProfessoresController(result, professordao, usuarioSession);
+        
+        professor = new Professor();
+        professor.setId(0L);
+        
+        when(professordao.carrega(professor.getId())).thenReturn(professor);
     }
 
     @Test
     public void testeCadastra() {
-        Professor novo = new Professor();
-        novo.setId(0L);
-        novo.setSenha("senha");
-        profC.cadastra(novo);
-        verify(professordao).salvaProfessor(novo);
+    	professor.setSenha("senhadoprofessor");
+        profC.cadastra(professor);
+        verify(professordao).salvaProfessor(professor);
         verify(result).redirectTo(ProfessoresController.class);
+    }
+    
+    @Test
+    public void testeListaTurmas() {
+    	profC.listaTurmas(this.professor.getId());
+    	
+    	Professor professor = result.included("professor");
+    	assertNotNull(professor);
     }
 
     @Test
-    public void testeAtualiza() {
-        Professor a = new Professor();
-        a.setId(0L);
-        when(professordao.carrega(0L)).thenReturn(a);
-        profC.altera(0L, "novo nome", "novo email", "nova senha");
-        assertEquals(a.getNome(), "novo nome");
-        assertEquals(a.getEmail(), "novo email");
-        assertEquals(a.getSenha(), new Criptografia().geraMd5("nova senha"));
-        verify(professordao).atualizaProfessor(a);
+    public void testeAlteracao() {
+    	profC.alteracao(this.professor.getId());
+    	
+    	Professor professor = result.included("professor");
+    	assertNotNull(professor);
+    }
+    
+    @Test
+    public void testeAltera() {        
+        profC.altera(professor.getId(), "novo nome", "novo email", "nova senha");
+        assertEquals(professor.getNome(), "novo nome");
+        assertEquals(professor.getEmail(), "novo email");
+        assertEquals(professor.getSenha(), new Criptografia().geraMd5("nova senha"));
+        verify(professordao).atualizaProfessor(professor);
         verify(result).redirectTo(ProfessoresController.class);
     }
 
     @Test
     public void testeRemove() {
-        Professor a = new Professor();
-        a.setId(0L);
-        when(professordao.carrega(0L)).thenReturn(a);
-        profC.remove(0L);
-        verify(professordao).removeProfessor(a);
+        profC.remove(professor.getId());
+        verify(professordao).removeProfessor(professor);
         verify(result).redirectTo(ProfessoresController.class);
+    }
+    
+    @Test
+    public void testeMudartipo() {
+    	profC.mudarTipo(professor.getId());
+    	
+    	verify(professordao).alteraTipo(professor.getId());
+    	verify(result).redirectTo(ProfessoresController.class);
     }
 }

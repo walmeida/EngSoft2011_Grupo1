@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="entidade3" size="1668,2324" id="br.usp.ime.academicdevoir.entidade" metadata="uml2-1.0" initialized="true" scrolledX="500" scrolledY="1453" tag="10" key="32303037303533312D31302061636164656D69632D6465766F6972">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.15/@sourceConnections.2" name="Resposta" location="451,581" size="111,30" id="br.usp.ime.academicdevoir.entidade/Resposta">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Resposta-Soyatec::Import->br.usp.ime.academicdevoir.entidade/NomeDeArquivo" source="//@children.0" target="//@children.10" targetEnd="//@children.0/@sourceConnections.0/@children.2" label="//@children.0/@sourceConnections.0/@children.0" sourceEnd="//@children.0/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="49,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="38,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="99,30"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@sourceConnections.3" name="Disciplina" location="1479,1341" size="117,30" id="br.usp.ime.academicdevoir.entidade/Disciplina">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Disciplina-Soyatec::Import->br.usp.ime.academicdevoir.entidade/Turma" source="//@children.1" target="//@children.3" targetEnd="//@children.1/@sourceConnections.0/@children.2" label="//@children.1/@sourceConnections.0/@children.0" sourceEnd="//@children.1/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" location="1379,1229" size="49,13" automaticRelocationAllowed="false" locationOnWireFromSource="4.95502486795332" distanceFromWire="-8.743439172200159" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="57,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="85,30"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="QuestaoDeMultiplaEscolha" location="309,1982" size="242,30" id="br.usp.ime.academicdevoir.entidade/QuestaoDeMultiplaEscolha">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/QuestaoDeMultiplaEscolha-Standard::Derive->br.usp.ime.academicdevoir.entidade/Questao" source="//@children.2" target="//@children.9" targetEnd="//@children.2/@sourceConnections.0/@children.2" label="//@children.2/@sourceConnections.0/@children.0" sourceEnd="//@children.2/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Derive»" size="49,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="209,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,24"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.6/@sourceConnections.0 //@children.14/@sourceConnections.1 //@children.13/@sourceConnections.0 //@children.1/@sourceConnections.0" name="Turma" location="1185,1122" size="89,30" id="br.usp.ime.academicdevoir.entidade/Turma">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Turma-Soyatec::Import->br.usp.ime.academicdevoir.entidade/Professor" source="//@children.3" target="//@children.13" targetEnd="//@children.3/@sourceConnections.0/@children.2" label="//@children.3/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" location="1394,1034" size="49,13" automaticRelocationAllowed="false" locationOnWireFromSource="16.631042478656234" distanceFromWire="13.57970640599906" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="79,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="22,30"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Turma-Soyatec::Import->br.usp.ime.academicdevoir.entidade/ListaDeExercicios" source="//@children.3" target="//@children.14" targetEnd="//@children.3/@sourceConnections.1/@children.2" label="//@children.3/@sourceConnections.1/@children.0" sourceEnd="//@children.3/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="49,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,1" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="161,0"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Turma-Soyatec::Import->br.usp.ime.academicdevoir.entidade/Aluno" source="//@children.3" target="//@children.6" targetEnd="//@children.3/@sourceConnections.2/@children.2" label="//@children.3/@sourceConnections.2/@children.0" sourceEnd="//@children.3/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="49,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="45,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="78,30"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Turma-Soyatec::Import->br.usp.ime.academicdevoir.entidade/Disciplina" source="//@children.3" target="//@children.1" targetEnd="//@children.3/@sourceConnections.3/@children.2" label="//@children.3/@sourceConnections.3/@children.0" sourceEnd="//@children.3/@sourceConnections.3/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" location="1394,1259" size="49,13" automaticRelocationAllowed="false" locationOnWireFromSource="40.91916883782438" distanceFromWire="4.64990554975285" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="65,30" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="37,0"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:EnumerationEditModel" targetConnections="//@children.12/@sourceConnections.0" name="AutoCorrecao" location="50,1168" size="144,107" id="br.usp.ime.academicdevoir.entidade/AutoCorrecao">
+    <children xsi:type="editmodel:CompartmentEditModel" size="85,54">
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="DESATIVADA" id="br.usp.ime.academicdevoir.entidade/AutoCorrecao#DESATIVADA%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="PROFESSOR" id="br.usp.ime.academicdevoir.entidade/AutoCorrecao#PROFESSOR%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="AMBOS" id="br.usp.ime.academicdevoir.entidade/AutoCorrecao#AMBOS%"/>
+    </children>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="QuestaoDeVouF" location="1025,2095" size="159,30" id="br.usp.ime.academicdevoir.entidade/QuestaoDeVouF">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/QuestaoDeVouF-Standard::Derive->br.usp.ime.academicdevoir.entidade/Questao" source="//@children.5" target="//@children.9" targetEnd="//@children.5/@sourceConnections.0/@children.2" label="//@children.5/@sourceConnections.0/@children.0" sourceEnd="//@children.5/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Derive»" location="868,1989" size="49,13" automaticRelocationAllowed="false" locationOnWireFromSource="37.25252579227339" distanceFromWire="-17.385319154275138" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="46,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="84,30"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.15/@sourceConnections.1 //@children.3/@sourceConnections.2" name="Aluno" location="1152,759" size="84,30" id="br.usp.ime.academicdevoir.entidade/Aluno">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Aluno-Soyatec::Import->br.usp.ime.academicdevoir.entidade/Turma" source="//@children.6" target="//@children.3" targetEnd="//@children.6/@sourceConnections.0/@children.2" label="//@children.6/@sourceConnections.0/@children.0" sourceEnd="//@children.6/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" location="1214,930" size="49,13" automaticRelocationAllowed="false" locationOnWireFromSource="-19.0" distanceFromWire="28.999999999999996" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="58,30" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="25,0"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Aluno-Soyatec::Import->br.usp.ime.academicdevoir.entidade/ListaDeRespostas" source="//@children.6" target="//@children.15" targetEnd="//@children.6/@sourceConnections.1/@children.2" label="//@children.6/@sourceConnections.1/@children.0" sourceEnd="//@children.6/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" location="1024,746" size="49,13" automaticRelocationAllowed="false" locationOnWireFromSource="1.5266044897397033" distanceFromWire="-10.083128419885695" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="5,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="166,0"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Aluno-Standard::Derive->br.usp.ime.academicdevoir.entidade/Usuario" source="//@children.6" target="//@children.8" targetEnd="//@children.6/@sourceConnections.2/@children.2" label="//@children.6/@sourceConnections.2/@children.0" sourceEnd="//@children.6/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Derive»" size="49,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="82,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="10,30"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.14/@sourceConnections.0" name="QuestaoDaLista" location="747,1552" size="160,30" id="br.usp.ime.academicdevoir.entidade/QuestaoDaLista">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/QuestaoDaLista-Soyatec::Import->br.usp.ime.academicdevoir.entidade/Questao" source="//@children.7" target="//@children.9" targetEnd="//@children.7/@sourceConnections.0/@children.2" label="//@children.7/@sourceConnections.0/@children.0" sourceEnd="//@children.7/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="49,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="20,30" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="82,0"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.6/@sourceConnections.2 //@children.13/@sourceConnections.1" name="Usuario" location="1497,628" size="100,30" id="br.usp.ime.academicdevoir.entidade/Usuario">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.7/@sourceConnections.0 //@children.18/@sourceConnections.0 //@children.5/@sourceConnections.0 //@children.2/@sourceConnections.0 //@children.16/@sourceConnections.0" name="Questao" location="685,1930" size="103,30" id="br.usp.ime.academicdevoir.entidade/Questao">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.0" name="NomeDeArquivo" location="173,354" size="164,30" id="br.usp.ime.academicdevoir.entidade/NomeDeArquivo">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.15/@sourceConnections.0" name="PropriedadesDaListaDeRespostas" location="831,401" size="299,30" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeRespostas">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeRespostas-Soyatec::Import->br.usp.ime.academicdevoir.entidade/EstadoDaListaDeRespostas" source="//@children.11" target="//@children.17" targetEnd="//@children.11/@sourceConnections.0/@children.2" label="//@children.11/@sourceConnections.0/@children.0" sourceEnd="//@children.11/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="49,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="161,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="123,125"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.14/@sourceConnections.3" name="PropriedadesDaListaDeExercicios" location="419,1172" size="299,30" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios-Soyatec::Import->br.usp.ime.academicdevoir.entidade/AutoCorrecao" source="//@children.12" target="//@children.4" targetEnd="//@children.12/@sourceConnections.0/@children.2" label="//@children.12/@sourceConnections.0/@children.0" sourceEnd="//@children.12/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="49,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,14" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="144,18"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@sourceConnections.0" name="Professor" location="1533,968" size="115,30" id="br.usp.ime.academicdevoir.entidade/Professor">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Professor-Soyatec::Import->br.usp.ime.academicdevoir.entidade/Turma" source="//@children.13" target="//@children.3" targetEnd="//@children.13/@sourceConnections.0/@children.2" label="//@children.13/@sourceConnections.0/@children.0" sourceEnd="//@children.13/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="49,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="42,30" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="89,10"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/Professor-Standard::Derive->br.usp.ime.academicdevoir.entidade/Usuario" source="//@children.13" target="//@children.8" targetEnd="//@children.13/@sourceConnections.1/@children.2" label="//@children.13/@sourceConnections.1/@children.0" sourceEnd="//@children.13/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Derive»" size="49,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="31,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="67,30"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.15/@sourceConnections.3 //@children.3/@sourceConnections.1" name="ListaDeExercicios" location="791,1166" size="176,30" id="br.usp.ime.academicdevoir.entidade/ListaDeExercicios">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/ListaDeExercicios-Soyatec::Import->br.usp.ime.academicdevoir.entidade/QuestaoDaLista" source="//@children.14" target="//@children.7" targetEnd="//@children.14/@sourceConnections.0/@children.2" label="//@children.14/@sourceConnections.0/@children.0" sourceEnd="//@children.14/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" location="854,1329" size="49,13" automaticRelocationAllowed="false" locationOnWireFromSource="-39.0" distanceFromWire="30.0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="57,30" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="101,0"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/ListaDeExercicios-Soyatec::Import->br.usp.ime.academicdevoir.entidade/Turma" source="//@children.14" target="//@children.3" targetEnd="//@children.14/@sourceConnections.1/@children.2" label="//@children.14/@sourceConnections.1/@children.0" sourceEnd="//@children.14/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="49,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="176,4" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,21"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/ListaDeExercicios-Soyatec::Import->br.usp.ime.academicdevoir.entidade/ListaDeRespostas" source="//@children.14" target="//@children.15" targetEnd="//@children.14/@sourceConnections.2/@children.2" label="//@children.14/@sourceConnections.2/@children.0" sourceEnd="//@children.14/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" location="885,956" size="49,13" automaticRelocationAllowed="false" locationOnWireFromSource="20.0" distanceFromWire="-37.0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="81,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="93,30"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/ListaDeExercicios-Soyatec::Import->br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeExercicios" source="//@children.14" target="//@children.12" targetEnd="//@children.14/@sourceConnections.3/@children.2" label="//@children.14/@sourceConnections.3/@children.0" sourceEnd="//@children.14/@sourceConnections.3/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="49,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,17" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="299,11"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.6/@sourceConnections.1 //@children.14/@sourceConnections.2" name="ListaDeRespostas" location="779,768" size="176,30" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas-Soyatec::Import->br.usp.ime.academicdevoir.entidade/PropriedadesDaListaDeRespostas" source="//@children.15" target="//@children.11" targetEnd="//@children.15/@sourceConnections.0/@children.2" label="//@children.15/@sourceConnections.0/@children.0" sourceEnd="//@children.15/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="49,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="113,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="61,30"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas-Soyatec::Import->br.usp.ime.academicdevoir.entidade/Aluno" source="//@children.15" target="//@children.6" targetEnd="//@children.15/@sourceConnections.1/@children.2" label="//@children.15/@sourceConnections.1/@children.0" sourceEnd="//@children.15/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="49,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="176,10" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,19"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas-Soyatec::Import->br.usp.ime.academicdevoir.entidade/Resposta" source="//@children.15" target="//@children.0" targetEnd="//@children.15/@sourceConnections.2/@children.2" label="//@children.15/@sourceConnections.2/@children.0" sourceEnd="//@children.15/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="49,13" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="59,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="84,30"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/ListaDeRespostas-Soyatec::Import->br.usp.ime.academicdevoir.entidade/ListaDeExercicios" source="//@children.15" target="//@children.14" targetEnd="//@children.15/@sourceConnections.3/@children.2" label="//@children.15/@sourceConnections.3/@children.0" sourceEnd="//@children.15/@sourceConnections.3/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" location="853,997" size="49,13" automaticRelocationAllowed="false" locationOnWireFromSource="21.0" distanceFromWire="26.0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="73,30" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="61,0"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="QuestaoDeSubmissaoDeArquivo" location="797,2274" size="284,30" id="br.usp.ime.academicdevoir.entidade/QuestaoDeSubmissaoDeArquivo">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/QuestaoDeSubmissaoDeArquivo-Standard::Derive->br.usp.ime.academicdevoir.entidade/Questao" source="//@children.16" target="//@children.9" targetEnd="//@children.16/@sourceConnections.0/@children.2" label="//@children.16/@sourceConnections.0/@children.0" sourceEnd="//@children.16/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Derive»" location="809,2054" size="49,13" automaticRelocationAllowed="false" locationOnWireFromSource="49.83245082833313" distanceFromWire="-25.72405186672118" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="133,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="60,30"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:EnumerationEditModel" targetConnections="//@children.11/@sourceConnections.0" name="EstadoDaListaDeRespostas" location="869,50" size="247,125" id="br.usp.ime.academicdevoir.entidade/EstadoDaListaDeRespostas">
+    <children xsi:type="editmodel:CompartmentEditModel" size="81,72">
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="CORRIGIDA" id="br.usp.ime.academicdevoir.entidade/EstadoDaListaDeRespostas#CORRIGIDA%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="SALVA" id="br.usp.ime.academicdevoir.entidade/EstadoDaListaDeRespostas#SALVA%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="ABERTA" id="br.usp.ime.academicdevoir.entidade/EstadoDaListaDeRespostas#ABERTA%"/>
+      <children xsi:type="editmodel:EnumerationLiteralEditModel" name="FINALIZADA" id="br.usp.ime.academicdevoir.entidade/EstadoDaListaDeRespostas#FINALIZADA%"/>
+    </children>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="QuestaoDeTexto" location="471,2223" size="163,30" id="br.usp.ime.academicdevoir.entidade/QuestaoDeTexto">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="br.usp.ime.academicdevoir.entidade/QuestaoDeTexto-Standard::Derive->br.usp.ime.academicdevoir.entidade/Questao" source="//@children.18" target="//@children.9" targetEnd="//@children.18/@sourceConnections.0/@children.2" label="//@children.18/@sourceConnections.0/@children.0" sourceEnd="//@children.18/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Derive»" location="632,2123" size="49,13" automaticRelocationAllowed="false" locationOnWireFromSource="-25.98648297283219" distanceFromWire="-31.854398482826554" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="90,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="42,30"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" interactive="false" level="-1" showScope="InPackage" properties="wireOptions=4;Product=eUML2;displayOptions=1"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+</editmodel:ClassDiagramEditModel>

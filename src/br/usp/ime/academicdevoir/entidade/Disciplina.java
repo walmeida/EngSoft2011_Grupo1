@@ -1,6 +1,6 @@
 package br.usp.ime.academicdevoir.entidade;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Entity;
@@ -28,7 +28,8 @@ public class Disciplina {
 	 * @uml.property  name="turmas" multiplicity="(0 -1)"
 	 */
     @OneToMany(mappedBy = "disciplina")
-    private Collection<Turma> turmas = new ArrayList<Turma>();
+    private Collection<Turma> turmas;
+    //TODO: estava assim: private Collection<Turma> turmas = new ArrayList<Turma>();
 
     /**
 	 * @return  id da disciplina

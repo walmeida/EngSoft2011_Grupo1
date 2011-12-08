@@ -83,11 +83,6 @@ public class ListasDeExerciciosController {
 	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private final UsuarioSession usuarioSession;
-	/**
-	 * @uml.property name="questaoDaListaDao"
-	 * @uml.associationEnd multiplicity="(1 1)"
-	 */
-	private final QuestaoDaListaDao questaoDaListaDao;
 
 	private Arquivos arquivos;
 	
@@ -102,7 +97,8 @@ public class ListasDeExerciciosController {
 			ListaDeExerciciosDao dao, ListaDeRespostasDao listaDeRespostasDao,
 			QuestaoDao questaoDao, ProfessorDao professorDao,
 			TurmaDao turmaDao, Validator validator, UsuarioSession usuarioSession, 
-			QuestaoDaListaDao questaoDaListaDao, Arquivos arquivos) {
+			Arquivos arquivos) {
+
 		this.result = result;
 		this.dao = dao;
 		this.listaDeRespostasDao = listaDeRespostasDao;
@@ -111,7 +107,6 @@ public class ListasDeExerciciosController {
 		this.turmaDao = turmaDao;
 		this.validator = validator;
 		this.usuarioSession = usuarioSession;
-		this.questaoDaListaDao = questaoDaListaDao;
 		this.arquivos = arquivos;
 	}
 
@@ -135,20 +130,14 @@ public class ListasDeExerciciosController {
 		ListaDeExercicios listaDeExercicios = new ListaDeExercicios();
 
 		Turma turma = turmaDao.carrega(idDaTurma);
-		/*List<Turma> turmas = new ArrayList<Turma>();
-		if (idDasTurmas == null)
-			idDasTurmas = new ArrayList<Long>();
-		for (Long id : idDasTurmas) {
-			turma = turmaDao.carrega(id);
-			turmas.add(turma);
-		}*/
 
 		propriedades.setPrazoDeEntrega(prazoDeEntrega);
+		
+		validator.validate(propriedades);
+		validator.onErrorUsePageOf(this).cadastro();
+		
 		listaDeExercicios.setTurma(turma);
 		listaDeExercicios.setPropriedades(propriedades);
-
-		validator.validate(listaDeExercicios);
-		validator.onErrorUsePageOf(this).cadastro();
 
 		dao.salva(listaDeExercicios);
 		result.redirectTo(this).verLista(listaDeExercicios.getId());
@@ -173,8 +162,6 @@ public class ListasDeExerciciosController {
 				.getId());
 
 		result.include("listaDeExercicios", listaDeExercicios);
-		result.include("prazo", listaDeExercicios.getPropriedades()
-				.getPrazoDeEntregaFormatado());
 		result.include("prazo", listaDeExercicios.getPropriedades()
 				.getPrazoDeEntregaFormatado());
 		result.include("turmasDoProfessor", professor.getTurmas());
@@ -354,7 +341,7 @@ public class ListasDeExerciciosController {
 	 * @param idDaNovaQuestao
 	 * @param ordemDaQuestao
 	 */
-	public void alteraQuestao(Long id, Integer indice, Long idDaNovaQuestao,
+	public void trocaQuestao(Long id, Integer indice, Long idDaNovaQuestao,
 			Integer ordemDaQuestao) {
 		Usuario u = usuarioSession.getUsuario();
 		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
@@ -401,51 +388,6 @@ public class ListasDeExerciciosController {
 		dao.atualiza(listaDeExercicios);
 		result.redirectTo(this).verLista(listaDeExercicios.getId());
 	}
-
-	//@Put
-	//@Path("/listasDeExercicios/{id}/turmas/inclui")
-	/**
-	 * Adiciona a turma com o id fornecido na lista de exercícios com o id fornecido.
-	 * @param id
-	 * @param idDaTurma
-	 */
-/*	public void incluiTurma(Long id, Long idDaTurma) {
-		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
-			result.redirectTo(LoginController.class).acessoNegado();
-			return;
-		}
-		
-		Turma turma = (Turma) turmaDao.carrega(idDaTurma);
-
-		ListaDeExercicios listaDeExercicios = dao.carrega(id);
-		listaDeExercicios.setTurma(turma);
-//		List<Turma> turmas = listaDeExercicios.getTurmas();
-//		if (!turmas.contains(turma)) {
-//			turmas.add(turma);
-//			listaDeExercicios.setTurmas(turmas);
-//			dao.atualiza(listaDeExercicios);
-//		}
-		result.redirectTo(this).verLista(listaDeExercicios.getId());
-	}
-*/
-	//@Delete
-	//@Path("/listasDeExercicios/{listaDeExercicios.id}/turmas/{indice}")
-	/**
-	 * Remove a turma com o índice fornecido da lista de exercícios fornecida.
-	 * @param listaDeExercicios
-	 * @param indice
-	 */
-	/*public void removeTurma(ListaDeExercicios listaDeExercicios, Integer indice) {
-		dao.recarrega(listaDeExercicios);
-		List<Turma> turmas = listaDeExercicios.getTurmas();
-
-		turmas.remove(indice.intValue());
-		listaDeExercicios.setTurmas(turmas);
-
-		dao.atualiza(listaDeExercicios);
-		result.redirectTo(this).verLista(listaDeExercicios.getId());
-	}*/
 
 	@Get
 	@Path("/listasDeExercicios/cadastro")

@@ -89,7 +89,7 @@ public abstract class Questao {
 	}
 	
 	public void setTags(String stringTags, TagDao dao) {
-		List<String> tags = Arrays.asList( stringTags.split(", ") );
+		List<String> tags = Arrays.asList( stringTags.split(",[ ]*") );
 		for (String nome : tags) {
 			Tag tag = dao.buscaPeloNome(nome);
 			if (tag == null) {
