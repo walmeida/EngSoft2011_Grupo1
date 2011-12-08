@@ -20,6 +20,7 @@ import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.Disciplina;
+import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.Professor;
 import br.usp.ime.academicdevoir.entidade.Turma;
 import br.usp.ime.academicdevoir.infra.Privilegio;
@@ -89,13 +90,12 @@ public class TurmasControllerTeste {
 		alunoDao = mock(AlunoDao.class);
 		result = spy(new MockResult());
 		
-		
 		turmasController = new TurmasController(result, turmaDao, disciplinaDao, alunoDao, listaDeExerciciosDao, usuarioSession);
 		turma = new Turma();
 		turma.setId(0L);
 		turma.setProfessor(new Professor());
 		turma.setDisciplina(new Disciplina());
-		
+		turma.setListas(new ArrayList<ListaDeExercicios>());
 		turmas = new ArrayList<Turma>();		
 		disciplinas = new ArrayList<Disciplina>();
 		disciplinas.add(new Disciplina());
@@ -161,7 +161,7 @@ public class TurmasControllerTeste {
 	public void testeRemove() {
 		turmasController.remove(turma.getId());
 		
-		verify(turmaDao).removeTurma(turma);
+	    verify(turmaDao).removeTurma(turma);
 		verify(result).redirectTo(ProfessoresController.class);
 	}
 	
