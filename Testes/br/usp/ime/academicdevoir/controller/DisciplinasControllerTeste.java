@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import br.com.caelum.vraptor.util.test.MockResult;
 import br.usp.ime.academicdevoir.dao.DisciplinaDao;
+import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Disciplina;
 import br.usp.ime.academicdevoir.entidade.Professor;
 import br.usp.ime.academicdevoir.infra.Privilegio;
@@ -49,6 +50,7 @@ public class DisciplinasControllerTeste {
 	 * @uml.property name="usuarioSession"
 	 * @uml.associationEnd readOnly="true"
 	 */
+	private TurmaDao turmaDao;
 	private UsuarioSession usuarioSession;
 
 	@Before
@@ -62,7 +64,7 @@ public class DisciplinasControllerTeste {
 
 		dao = mock(DisciplinaDao.class);
 		result = spy(new MockResult());
-		disciplinasController = new DisciplinasController(result, dao,
+		disciplinasController = new DisciplinasController(result, dao, turmaDao,
 				usuarioSession);
 
 		disciplina = new Disciplina();
