@@ -19,6 +19,6 @@
 	</fieldset>
 	</form>
 	<a href="<c:url value='/login'/>">Sair</a>
-	<a href="<c:url value='/disciplinas/home'/>">Voltar</a>
+	<a href="<c:url value='/disciplinas/lista'/>">Voltar</a>
 </body>
 </html>

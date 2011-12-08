@@ -18,6 +18,15 @@ import="java.sql.*" errorPage="" %>
 	<fieldset><legend>Cadastrar nova turma:</legend><br/>
 		<input type="hidden" name="nova.professor.id", value="${usuarioSession.usuario.id }"/>
 		Nome: <br/><input type="text" size="30" name="nova.nome"/><br/>
+		<label for="prazoDeEntrega">Prazo de entrega:</label>
+				<br/>
+				<label for="dia">Dia:</label>
+					<input id="dia" type="text" size="2" maxlength="2" name="prazoDeEntrega[0]" />
+				<label for="mes">Mês:</label>
+					<input id="mes" type="text" size="2" maxlength="2" name="prazoDeEntrega[1]" />
+				<label for="ano">Ano:</label>
+					<input id="ano" type="text" size="2" maxlength="4" name="prazoDeEntrega[2]" />
+					<br/>
 		Disciplina:<br />
     <select name="nova.disciplina.id">
     <c:forEach items="${listaDeDisciplinas}" var="disciplina">

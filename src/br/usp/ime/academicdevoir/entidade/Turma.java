@@ -1,7 +1,9 @@
 package br.usp.ime.academicdevoir.entidade;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,6 +16,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+//import javax.validation.constraints.Future;
 
 @Entity
 public class Turma {
@@ -52,8 +57,14 @@ public class Turma {
 	 */
 	@OneToMany(mappedBy = "turma")
 	private List<ListaDeExercicios> listasDeExercicios;
-	
-	
+	/**
+	 * @uml.property  name="dataLimite"
+	 * @uml.associationEnd  
+	 */
+//	@Future
+	@Temporal(TemporalType.DATE)
+	private Date prazoDeMatricula;
+		
 	
 	/**
 	 * @return
@@ -62,7 +73,7 @@ public class Turma {
 	public Disciplina getDisciplina() {
 		return disciplina;
 	}
-
+	
 	/**
 	 * @param disciplina
 	 * @uml.property  name="disciplina"
@@ -127,14 +138,22 @@ public class Turma {
 		this.id = id;
 	}
 
-	
 	public List<ListaDeExercicios> getListas() {
 		return listasDeExercicios;
 	}
-
+	
 	public void setListas(List<ListaDeExercicios> listas) {
 		this.listasDeExercicios = listas;
 	}
+
+	public Date getPrazoDeMatricula() {
+		return prazoDeMatricula;
+	}
 	
+	public void setPrazoDeEntrega(List<Integer> prazoDeEntrega) {
+		Calendar data = Calendar.getInstance();
+		data.set(prazoDeEntrega.get(2).intValue(), prazoDeEntrega.get(1).intValue() - 1, prazoDeEntrega.get(0).intValue());
+		this.prazoDeMatricula = new Date(data.getTimeInMillis());
+	}
 
 }
