@@ -72,9 +72,13 @@ public class TurmaDao {
 	 * @param turma
 	 */
 	public void removeTurma(Turma turma) {
-		Transaction tx = session.beginTransaction();
-		session.delete(turma);
-		tx.commit();
+		try {
+			Transaction tx = session.beginTransaction();
+			session.delete(turma);
+			tx.commit();
+		} catch (Exception e) { 
+			return; /*Não foi possível remover a turma, pois tem alguma lista associada.*/
+		}
 	}
 
 	/**

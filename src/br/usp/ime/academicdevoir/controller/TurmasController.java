@@ -7,9 +7,11 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.usp.ime.academicdevoir.dao.AlunoDao;
 import br.usp.ime.academicdevoir.dao.DisciplinaDao;
+import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.Disciplina;
+import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.Turma;
 import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Privilegio;
@@ -45,6 +47,7 @@ public class TurmasController {
      * @uml.associationEnd multiplicity="(1 1)"
      */
     private UsuarioSession usuarioSession;
+	private ListaDeExerciciosDao listaDeExerciciosDao;
 
     /**
      * @param result
@@ -57,12 +60,13 @@ public class TurmasController {
      *            para interação com o banco de dados
      */
     public TurmasController(Result result, TurmaDao turmaDao,
-            DisciplinaDao disciplinaDao, AlunoDao alunoDao,
+            DisciplinaDao disciplinaDao, AlunoDao alunoDao, ListaDeExerciciosDao listaDeExerciciosDao,
             UsuarioSession usuarioSession) {
         this.result = result;
         this.turmaDao = turmaDao;
         this.disciplinaDao = disciplinaDao;
         this.alunoDao = alunoDao;
+        this.listaDeExerciciosDao = listaDeExerciciosDao;
         this.usuarioSession = usuarioSession;
     }
 
@@ -201,7 +205,12 @@ public class TurmasController {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
-		/*TODO: remove todas as listas associadas*/
+
+		List<ListaDeExercicios> listasDeExercicios = turma.getListas();
+		
+		for (ListaDeExercicios lista : listasDeExercicios)
+			listaDeExerciciosDao.remove(lista);
+		
         turmaDao.removeTurma(turma);
         result.redirectTo(ProfessoresController.class).listaTurmas(u.getId());    
     }

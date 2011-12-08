@@ -16,6 +16,7 @@ import static org.junit.Assert.*;
 import br.com.caelum.vraptor.util.test.MockResult;
 import br.usp.ime.academicdevoir.dao.AlunoDao;
 import br.usp.ime.academicdevoir.dao.DisciplinaDao;
+import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.Disciplina;
@@ -67,6 +68,7 @@ public class TurmasControllerTeste {
 	private List<Turma> turmas;
 	
 	private UsuarioSession usuarioSession;
+	private ListaDeExerciciosDao listaDeExerciciosDao;
 	private Professor admin;
 	private Aluno aluno;
 	
@@ -87,8 +89,8 @@ public class TurmasControllerTeste {
 		alunoDao = mock(AlunoDao.class);
 		result = spy(new MockResult());
 		
-		turmasController = new TurmasController(result, turmaDao, disciplinaDao, alunoDao, usuarioSession);
 		
+		turmasController = new TurmasController(result, turmaDao, disciplinaDao, alunoDao, listaDeExerciciosDao, usuarioSession);
 		turma = new Turma();
 		turma.setId(0L);
 		turma.setProfessor(new Professor());
