@@ -1,11 +1,16 @@
 package br.usp.ime.academicdevoir.controller;
 
+//import java.util.List;
+import java.util.Collection;
+
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.usp.ime.academicdevoir.dao.DisciplinaDao;
+import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Disciplina;
+import br.usp.ime.academicdevoir.entidade.Turma;
 import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Privilegio;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
@@ -30,6 +35,7 @@ public class DisciplinasController {
 	 * @uml.property name="usuarioSession"
 	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
+	private TurmaDao turmaDao;
 	private UsuarioSession usuarioSession;
 
 	/**
@@ -41,9 +47,11 @@ public class DisciplinasController {
 	 *            para controle de permissões
 	 */
 	public DisciplinasController(Result result, DisciplinaDao disciplinaDao,
+			TurmaDao turmaDao,
 			UsuarioSession usuarioSession) {
 		this.result = result;
 		this.disciplinaDao = disciplinaDao;
+		this.turmaDao = turmaDao;
 		this.usuarioSession = usuarioSession;
 	}
 
@@ -157,8 +165,14 @@ public class DisciplinasController {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
-/*TODO: apagar turmas associadas*/
+
 		disciplina = disciplinaDao.carrega(id);
+		
+		Collection<Turma> listaDeTurmas = disciplina.getTurmas();
+		
+		for (Turma turma : listaDeTurmas)
+			turmaDao.removeTurma(turma);
+		
 		disciplinaDao.removeDisciplina(disciplina);
 		result.redirectTo(DisciplinasController.class).lista();
 	}
