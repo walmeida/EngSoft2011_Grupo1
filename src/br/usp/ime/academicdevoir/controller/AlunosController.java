@@ -1,6 +1,9 @@
 package br.usp.ime.academicdevoir.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Collection; 
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -191,6 +194,9 @@ public class AlunosController {
 	 * @param idAluno
 	 */
 	public void inscreve(Long idAluno, Long idTurma) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date atual = new Date();
+		sdf.format(atual);
 		Aluno aluno;
 		Turma turma;
 		Usuario u = usuarioSession.getUsuario();
@@ -205,6 +211,9 @@ public class AlunosController {
 		}
 		aluno = alunoDao.carrega(idAluno);
 		turma = turmaDao.carrega(idTurma);
+		if (turma.getPrazoDeMatricula().before(atual)) {
+			result.redirectTo(AlunosController.class).listaTurmas(idAluno);
+		}
 		Collection<Turma> listaDeTurmas = aluno.getTurmas();
 	    if(!listaDeTurmas.contains(turma)) 
 	    	alunoDao.inscreve(aluno, turma);
