@@ -19,11 +19,6 @@ import="java.sql.*" errorPage="" %>
 			$(this).hide();
 	  	});
 		
-		$('#ativaIncluirQuestao').click(function() {
-			$('#formIncluirQuestao').show();
-			$(this).hide();
-		});
-		
 		$('.ativaAlterarQuestao').click(function() {
 			var idBotaoClicado = $(this).attr('id');
 			var numero = parseInt(idBotaoClicado.replace(/\D/g, ''), 10);
@@ -171,20 +166,8 @@ font-family:"Times New Roman";
 				</table>
 		</c:forEach>
 		
-		<button id="ativaIncluirQuestao" type="button">Incluir nova Questao</button>
+		<a href="<c:url value='${listaDeExercicios.id }/inclusaoQuestoes'/>">Incluir nova Questão</a>
 		
-		<form id="formIncluirQuestao" action="<c:url value="/listasDeExercicios/${listaDeExercicios.id }/questoes/inclui"/>" method="post">
-			<fieldset class="fieldsetSemFormatacao">
-				
-				<label id="labelIdDaQuestao" for="idDaQuestao">ID da Questao:</label>
-				<input id="idDaQuestao" type="text" size="6" maxlength="6" name="idDaQuestao" />
-				<label id="labelPesoDaQuestao" for="pesoDaQuestao">Peso:</label>
-				<input id="pesoDaQuestao" type="text" size="6" maxlength="6" name="pesoDaQuestao" />
-				<label id="labelOrdemDaQuestao" for="ordemDaQuestao">Ordem:</label>
-				<input id="ordemDaQuestao" type="text" size="6" maxlength="6" name="ordemDaQuestao" />
-				<button id="incluiQuestao" type="submit" name="_method" value="put">Incluir</button>
-			</fieldset>
-		</form>
 	</div>
 	<div>
 		<a href="<c:url value='/login'/>">Sair</a>
