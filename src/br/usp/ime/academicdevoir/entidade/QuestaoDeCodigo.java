@@ -110,6 +110,7 @@ public class QuestaoDeCodigo extends Questao {
                     testador.testaCodigoJava(respostaAluno.getValor(), 
                             codigoDeTeste);
                 respostaAluno.setComentario(resultado);
+                System.out.println(resultado);
                 return resultado.startsWith("Executou corretamente. Parabens!");
             } catch (Exception e) {
                 e.printStackTrace();
