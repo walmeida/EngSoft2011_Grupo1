@@ -105,6 +105,16 @@ public class TurmasController {
     public void listaAlunos(long idTurma) {
         result.include("turma", turmaDao.carrega(idTurma));
     }
+    
+    /**
+     * Método associado ao .jsp que lista os alunos e listas de uma turma
+     * 
+     * @param idTurma
+     *            id da turma
+     */
+    public void listaAlunosEListas(long idTurma) {
+        result.include("turma", turmaDao.carrega(idTurma));
+    }
 
     /**
      * Método está associado ao .jsp do formulário de cadastro de uma turma no
