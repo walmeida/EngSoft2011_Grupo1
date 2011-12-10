@@ -25,8 +25,10 @@
     <tbody>
         <c:forEach items="${lista }" var="disciplina">
             <tr>
-                <td>${disciplina.id}</td>
-                <td>${disciplina.nome}</td>
+                <td>
+                	<a href="<c:url value="/disciplinas/home/${disciplina.id}"/>">
+                	${disciplina.nome}</a>
+                </td>
                 <td><a href="<c:url value='/disciplinas/alteracao/${disciplina.id}'/>"> Alterar</a> <a href="./remove?id=${disciplina.id}">  Excluir</a></td>
             </tr>
         </c:forEach>             
