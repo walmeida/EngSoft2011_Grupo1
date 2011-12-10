@@ -21,6 +21,8 @@
 	<p class="submit"><input type="submit" value="Enviar"/></p>
 	</fieldset>
 	</form>
+	</div>
+	</div>
 	
 </body>
 </html>
