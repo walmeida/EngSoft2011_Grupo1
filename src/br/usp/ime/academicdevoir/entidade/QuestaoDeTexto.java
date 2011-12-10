@@ -3,6 +3,7 @@ package br.usp.ime.academicdevoir.entidade;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import br.usp.ime.academicdevoir.dao.TagDao;
 import br.usp.ime.academicdevoir.infra.Constantes;
 import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 
@@ -79,11 +80,12 @@ public class QuestaoDeTexto extends Questao {
 		return respostaAluno.getValor().equals(this.resposta.toString());
 	}
 	
-	public QuestaoDeTexto copia() {
+	public QuestaoDeTexto copia(TagDao dao) {
 		QuestaoDeTexto questao = new QuestaoDeTexto();    	
     	questao.enunciado = this.enunciado;
-		questao.tags = this.tags;
     	questao.resposta = this.resposta;
+		
+		questao.setTags(this.getTagsEmString(), dao);
     	
     	return questao;
 	}

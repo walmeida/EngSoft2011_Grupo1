@@ -2,6 +2,7 @@ package br.usp.ime.academicdevoir.entidade;
 
 import javax.persistence.Entity;
 
+import br.usp.ime.academicdevoir.dao.TagDao;
 import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 
 @Entity
@@ -81,11 +82,12 @@ public class QuestaoDeVouF extends Questao {
 	   return respostaAluno.getValor().equals(resposta.toString());
 	}
 	
-	public QuestaoDeVouF copia() {
+	public QuestaoDeVouF copia(TagDao dao) {
 		QuestaoDeVouF questao = new QuestaoDeVouF();    	
     	questao.enunciado = this.enunciado;
-		questao.tags = this.tags;
 		questao.resposta = this.resposta;
+		
+		questao.setTags(this.getTagsEmString(), dao);
 		
 		return questao;
 	}
