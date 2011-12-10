@@ -13,8 +13,7 @@ public class QuestaoDeCodigo extends Questao {
      */
     private String codigoDeTeste;
     private String linguagem;
-    private String caminhoParaDiretorioDeTeste;
-    
+
     public QuestaoDeCodigo() {
    
         linguagem = "java";
@@ -52,10 +51,6 @@ public class QuestaoDeCodigo extends Questao {
         this.linguagem = linguagem;
     }
    
-    public void setCaminhoParaDiretorioDeTeste(String caminhoParaDiretorioDeTeste) {
-        this.caminhoParaDiretorioDeTeste = caminhoParaDiretorioDeTeste;
-    }
-    
     public TipoDeQuestao getTipo() {
         return TipoDeQuestao.CODIGO;
     }
@@ -100,11 +95,13 @@ public class QuestaoDeCodigo extends Questao {
         return htmlResult;
     }
     
+    
     public Boolean respostaDoAlunoEhCorreta(Resposta respostaAluno)  {
        String resultado;
-        if (linguagem.equals("java")) {
+       String caminho = respostaAluno.getCaminhoParaDiretorioDeTeste();
+       if (linguagem.equals("java")) {
             TestadorDeCodigoJava testador = new TestadorDeCodigoJava(
-                    caminhoParaDiretorioDeTeste);
+                    caminho);
             try {
                 resultado = 
                     testador.testaCodigoJava(respostaAluno.getValor(), 

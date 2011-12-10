@@ -18,6 +18,8 @@ public class Resposta {
 	private Double nota;
 	
 	private String comentario;
+	
+    private String caminhoParaDiretorioDeTeste;
 
     /**
 	 * @uml.property  name="questao"
@@ -28,7 +30,6 @@ public class Resposta {
 	@Fetch(FetchMode.JOIN)
 	@Cascade(CascadeType.SAVE_UPDATE)
 	private Questao questao;
-	
 	
 	public Questao getQuestao() {
 		return questao;
@@ -60,6 +61,14 @@ public class Resposta {
 
     public void setComentario(String comentario) {
         this.comentario = comentario;
+    }
+    
+    public void setCaminhoParaDiretorioDeTeste(String caminhoParaDiretorioDeTeste) {
+        this.caminhoParaDiretorioDeTeste = caminhoParaDiretorioDeTeste;
+    }
+
+    public String getCaminhoParaDiretorioDeTeste() {
+        return caminhoParaDiretorioDeTeste;
     }
 
 }
