@@ -1,7 +1,9 @@
 package br.usp.ime.academicdevoir.entidade;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import br.usp.ime.academicdevoir.infra.Constantes;
 import br.usp.ime.academicdevoir.infra.TestadorDeCodigoJava;
 import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 
@@ -11,6 +13,7 @@ public class QuestaoDeCodigo extends Questao {
     /**
      * @uml.property name="resposta"
      */
+    @Column(length = Constantes.MAX_TAM_CAMPO)
     private String codigoDeTeste;
     private String linguagem;
 

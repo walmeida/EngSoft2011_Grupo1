@@ -1,5 +1,6 @@
 package br.usp.ime.academicdevoir.entidade;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -10,17 +11,20 @@ import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import br.usp.ime.academicdevoir.infra.Constantes;
+
 @Embeddable
 public class Resposta {
-	
+    @Column(length = Constantes.MAX_TAM_CAMPO)
 	private String valor;
 	
 	private Double nota;
 	
+    @Column(length = Constantes.MAX_TAM_CAMPO)
 	private String comentario;
 	
     private String caminhoParaDiretorioDeTeste;
-
+    
     /**
 	 * @uml.property  name="questao"
 	 * @uml.associationEnd  
