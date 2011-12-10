@@ -61,10 +61,9 @@ public class QuestaoDeSubmissaoDeArquivo extends Questao {
 	}
 	
 	public QuestaoDeSubmissaoDeArquivo copia() {
-		QuestaoDeSubmissaoDeArquivo questao = new QuestaoDeSubmissaoDeArquivo();
-    	
+		QuestaoDeSubmissaoDeArquivo questao = new QuestaoDeSubmissaoDeArquivo();    	
     	questao.enunciado = this.enunciado;
-    	questao.tags = this.tags;
+		questao.tags = this.tags;
     	
     	return questao;
 	}

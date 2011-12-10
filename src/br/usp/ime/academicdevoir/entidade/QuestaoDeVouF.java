@@ -59,10 +59,10 @@ public class QuestaoDeVouF extends Questao {
 
 		buffer.append("<table>");
 		buffer.append("<tr><td><input type=\"radio\" name=\"resposta.valor\" value=\"true\"");
-		if (resposta.getValor().equals("1"))
+		if (resposta.getValor().equals("true"))
 			buffer.append(" checked=\"checked\"");
 		buffer.append(" />Verdadeiro </td><td><input type=\"radio\" name=\"resposta.valor\" value=\"false\"");
-		if (resposta.getValor().equals("0"))
+		if (resposta.getValor().equals("false"))
 			buffer.append(" checked=\"checked\"");
 		buffer.append("/>Falso</td></tr>");
 
@@ -82,10 +82,9 @@ public class QuestaoDeVouF extends Questao {
 	}
 	
 	public QuestaoDeVouF copia() {
-		QuestaoDeVouF questao = new QuestaoDeVouF();
-    	
+		QuestaoDeVouF questao = new QuestaoDeVouF();    	
     	questao.enunciado = this.enunciado;
-    	questao.tags = this.tags;
+		questao.tags = this.tags;
 		questao.resposta = this.resposta;
 		
 		return questao;

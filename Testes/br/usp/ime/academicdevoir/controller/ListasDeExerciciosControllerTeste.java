@@ -21,7 +21,6 @@ import org.junit.Test;
 
 import br.com.caelum.vraptor.util.test.JSR303MockValidator;
 import br.com.caelum.vraptor.util.test.MockResult;
-import br.usp.ime.academicdevoir.arquivos.Arquivos;
 import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
 import br.usp.ime.academicdevoir.dao.ListaDeRespostasDao;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
@@ -114,8 +113,6 @@ public class ListasDeExerciciosControllerTeste {
 	private UsuarioSession usuarioSession;
 	private ArrayList<Turma> turmas;
 	
-	private Arquivos arquivos;
-
 	@Before
 	public void SetUp() {		
 		Professor professor = new Professor();
@@ -133,10 +130,9 @@ public class ListasDeExerciciosControllerTeste {
 		turmaDao = mock(TurmaDao.class);
 		validator = spy(new JSR303MockValidator());
 
-		arquivos = mock(Arquivos.class);
 		listasDeExerciciosController = new ListasDeExerciciosController(result,
 				dao, respostasDao, questaoDao, professorDao, turmaDao, validator,
-				usuarioSession, arquivos);
+				usuarioSession);
 		
 		listaDeExercicios = new ListaDeExercicios();
 		listaDeExercicios.setId(0L);

@@ -43,6 +43,7 @@ public class QuestoesDeCodigoController {
     private final UsuarioSession usuarioSession;
     private TagDao tagDao;
     
+    
     /**
      * @param result
      *            para interação com o jsp da questão.
@@ -162,10 +163,8 @@ public class QuestoesDeCodigoController {
         result.include("lista", dao.listaTudo());
     }
 
-    @Get
-    @Path("/questoes/codigo/copia/{id}")
 	public void copia(QuestaoDeCodigo questao) {
-		dao.salva(questao);
+		dao.salva(questao);		
 		result.redirectTo(this).alteracao(questao.getId());
 	}
 }

@@ -162,8 +162,6 @@ public class QuestoesDeVouFController {
 		result.include("lista", dao.listaTudo());
 	}
 	
-	@Get
-	@Path("/questoes/vouf/copia/{id}")
 	public void copia(QuestaoDeVouF questao) {
 		dao.salva(questao);
 		result.redirectTo(this).alteracao(questao.getId());

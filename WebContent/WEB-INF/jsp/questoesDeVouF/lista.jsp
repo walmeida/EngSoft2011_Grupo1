@@ -46,7 +46,7 @@ import="java.sql.*" errorPage="" %>
 						modal: true,
 						buttons: {
 							'Criar uma nova questão': function() {
-								window.location.href = '<c:url value="/questoes/vouf/copia/"/>' + idDaQuestao;
+								window.location.href = '<c:url value="/questoes/copia/"/>' + idDaQuestao;
 							},
 							'Alterar esta questão': function() {
 								window.location.href =  paginaAlteracao;

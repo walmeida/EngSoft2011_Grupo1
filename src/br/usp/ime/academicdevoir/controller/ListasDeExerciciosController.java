@@ -11,7 +11,6 @@ import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
-import br.usp.ime.academicdevoir.arquivos.Arquivos;
 import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
 import br.usp.ime.academicdevoir.dao.ListaDeRespostasDao;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
@@ -27,12 +26,10 @@ import br.usp.ime.academicdevoir.entidade.PropriedadesDaListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.PropriedadesDaListaDeRespostas;
 import br.usp.ime.academicdevoir.entidade.Questao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDaLista;
-import br.usp.ime.academicdevoir.entidade.QuestaoDeCodigo;
 import br.usp.ime.academicdevoir.entidade.Resposta;
 import br.usp.ime.academicdevoir.entidade.Turma;
 import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Privilegio;
-import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 
@@ -83,8 +80,6 @@ public class ListasDeExerciciosController {
 	 */
 	private final UsuarioSession usuarioSession;
 
-	private Arquivos arquivos;
-	
 	/**
 	 * @param result
 	 *            para interação com o jsp da lista de exercicio.
@@ -95,8 +90,7 @@ public class ListasDeExerciciosController {
 	public ListasDeExerciciosController(Result result,
 			ListaDeExerciciosDao dao, ListaDeRespostasDao listaDeRespostasDao,
 			QuestaoDao questaoDao, ProfessorDao professorDao,
-			TurmaDao turmaDao, Validator validator, UsuarioSession usuarioSession, 
-			Arquivos arquivos) {
+			TurmaDao turmaDao, Validator validator, UsuarioSession usuarioSession) {
 
 		this.result = result;
 		this.dao = dao;
@@ -106,7 +100,6 @@ public class ListasDeExerciciosController {
 		this.turmaDao = turmaDao;
 		this.validator = validator;
 		this.usuarioSession = usuarioSession;
-		this.arquivos = arquivos;
 	}
 
 	@Post
@@ -437,7 +430,6 @@ public class ListasDeExerciciosController {
 	public void autoCorrecaoLista(Long id) {
 		//Carrega a lista de exercícios com esse id
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
-		String caminho;
 		QuestaoDaLista questaoDaLista = null;
 		
 		//Carrega as propriedades da lista de exercícios
@@ -448,7 +440,6 @@ public class ListasDeExerciciosController {
 			result.redirectTo(this).lista();
 			return;
 		}
-		
 		
 		//Pegando todas as listas de respostas. Cada elemento corresponde a Lista de um aluno
 		List<ListaDeRespostas> listasDeRespostas = listaDeRespostasDao.listaRespostasDaLista(listaDeExercicios);
@@ -468,12 +459,6 @@ public class ListasDeExerciciosController {
 				//Pegando a questao a qual a resposta se refere
 				Questao questao = resposta.getQuestao();
 				
-				if (questao.getTipo() == TipoDeQuestao.CODIGO) {
-				    caminho = arquivos.getPastaDaQuestao(questao.getId()).
-				                getAbsolutePath();
-				    ((QuestaoDeCodigo)questao).setCaminhoParaDiretorioDeTeste(caminho);
-				}
-
 				//Obtendo a Questao relacionada com a lista para obter as propriedades
 				//QuestaoDaLista questaoDaLista = questaoDaListaDao.getQuestaoDaListaPorIds(id, questao.getId());
 				

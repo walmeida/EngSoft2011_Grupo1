@@ -54,17 +54,19 @@ public class RespostasController {
 	@Post
 	@Path("/respostas/{listaDeRespostas.id}/cadastra")
 	public void salvaResposta(ListaDeRespostas listaDeRespostas, Resposta resposta, Long idDaQuestao, UploadedFile arquivo) {
-		if (resposta == null) resposta = new Resposta();
+	    String caminho;
+	    if (resposta == null) resposta = new Resposta();
 		
 		dao.recarrega(listaDeRespostas);
 		
 		Questao questao = questaoDao.carrega(idDaQuestao);		
-				
+			
 		if (questao.getTipo() == TipoDeQuestao.SUBMISSAODEARQUIVO && arquivo != null) {
 			arquivos.salva(arquivo, idDaQuestao);
 			resposta.setValor(arquivo.getFileName());
 		}
-		
+		caminho = arquivos.getPastaDaQuestao(questao.getId()).getAbsolutePath();
+		resposta.setCaminhoParaDiretorioDeTeste(caminho);
 		resposta.setQuestao(questao);
 		listaDeRespostas.adiciona(resposta);
 				

@@ -152,10 +152,9 @@ public class QuestaoDeMultiplaEscolha extends Questao {
 	}
 	
 	public QuestaoDeMultiplaEscolha copia() {
-		QuestaoDeMultiplaEscolha questao = new QuestaoDeMultiplaEscolha();
-    	
+		QuestaoDeMultiplaEscolha questao = new QuestaoDeMultiplaEscolha();    	
     	questao.enunciado = this.enunciado;
-    	questao.tags = this.tags;
+		questao.tags = this.tags;
     	questao.alternativas = this.alternativas;
     	questao.respostaUnica = this.respostaUnica;
     	questao.resposta = this.resposta;

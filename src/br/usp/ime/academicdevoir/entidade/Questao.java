@@ -16,6 +16,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import br.usp.ime.academicdevoir.dao.TagDao;
+import br.usp.ime.academicdevoir.infra.Constantes;
 import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 
 @Entity
@@ -29,10 +30,7 @@ public abstract class Questao {
 	@GeneratedValue
 	private Long id;
 
-	/**
-	 * @uml.property  name="enunciado"
-	 */
-	@Column(length = 1024)
+    @Column(length = Constantes.MAX_TAM_CAMPO)
 	protected String enunciado;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
