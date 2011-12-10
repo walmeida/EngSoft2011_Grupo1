@@ -3,8 +3,10 @@ package br.usp.ime.academicdevoir.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Restrictions;
 
 import br.usp.ime.academicdevoir.entidade.Questao;
@@ -48,8 +50,13 @@ public class QuestaoDao {
 	 * 
 	 * @return List<Questao>
 	 */
-	public List<Questao> listaPaginada(Integer primeiro, Integer numRegistros) {
+	public List<Questao> listaPaginada(Integer primeiro, Integer numRegistros, String filtro) {
 		Criteria criteria = this.session.createCriteria(Questao.class);
+		if(filtro != null && filtro != ""){
+			/*criteria.setFetchMode("tag", FetchMode.JOIN)  
+            .add(Example.create())  
+            .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)*/ 
+		}
 		criteria.setFirstResult(primeiro);
 		criteria.setMaxResults(numRegistros);
 		return criteria.list();
