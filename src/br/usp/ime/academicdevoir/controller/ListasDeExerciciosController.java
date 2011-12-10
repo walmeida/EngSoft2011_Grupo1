@@ -511,7 +511,7 @@ public class ListasDeExerciciosController {
 		primeiroReg = (proxPagina - 1)*Constantes.NUM_REGISTROS_PAGINA;
 		
 		listaDeQuestoesPaginadas = questaoDao.listaPaginada(primeiroReg, Constantes.NUM_REGISTROS_PAGINA, filtro);
-		ultimaPagina = questaoDao.tamanhoTotal() / Constantes.NUM_REGISTROS_PAGINA;
+		ultimaPagina = questaoDao.tamanhoDaLista(filtro) / Constantes.NUM_REGISTROS_PAGINA;
 		if(listaDeQuestoesPaginadas.size() % Constantes.NUM_REGISTROS_PAGINA != 0) ultimaPagina++;
 		
 		result.include("idDaListaDeExercicios", id);
