@@ -56,6 +56,7 @@ public class ProfessoresController {
 	 * Método associado à home page do professor.
 	 */	
 	public void home() {
+		result.redirectTo(ProfessoresController.class).listaTurmas(usuarioSession.getUsuario().getId());
 	}
 
 	/**

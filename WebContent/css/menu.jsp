@@ -35,6 +35,12 @@
 		<a href="<c:url value='/disciplinas/lista'/>">Listar disciplinas</a><br/><br/>
 		<a href="<c:url value='/disciplinas/cadastro'/>">Cadastrar disciplina</a><br/><br/>
 		<a href="<c:url value='/questoes/cadastro'/>">Cadastrar quest&atilde;o</a><br/><br/>
+		<br/><br/>
+		Links temporarios:<br/><br/>
+		<a href="<c:url value='/listasDeExercicios/cadastro'/>">Cadastrar Lista</a><br/><br/>
+		<a href="<c:url value='/turmas/cadastro'/>">Cadastrar Turma</a><br/><br/>
+		<br/><br/>		
+
 		<a href="<c:url value='/login'/>">Sair</a>
 	</c:if>
 	<c:if test ="${usuarioSession.usuario.privilegio == 'ALUNO' || usuarioSession.usuario.privilegio == 'MONITOR'}">

@@ -2,36 +2,40 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
-<head><title>Academic Devoir</title></head>
+
 <head>
 <style type="text/css">
-<%@ include file="../css/formatacao.css" %>
+<%@ include file="/css/form2.css" %>
 </style>
 <title>Academic Devoir</title>
 </head>
 
 <body>
-    <h1>Academic Devoir</h1>
-    <h2>Grupo 1 - Engenharia de Software</h2>
-    <h4>Lista de Turmas</h4>
-    <table>
+	<div id="wrapper"> 
+	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
+	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
+	<div id="right">
+	<div id="menu">Lista de Turmas</div>
+	<table>
         <c:forEach items="${professor.turmas}" var="turma">
             <tr>
                 <td>
                     <a href="<c:url value="/turmas/home/${turma.id}"/>">
                         ${turma.disciplina.nome} - ${turma.nome} </a>
                 </td>
-                <td><a href="../turmas/alteracao?id=${turma.id}">  Alterar</a> <a href="../turmas/remove?id=${turma.id}">  Excluir</a></td>
+                <td>
+			<div id="link"><a href="../turmas/alteracao?id=${turma.id}">  Alterar</a></div> 
+			<div id="link"><a href="../turmas/remove?id=${turma.id}">  Excluir</a></div>
+		</td>
             </tr>
         </c:forEach>
-    </table>
-    <form action='../turmas/cadastro'>
+	</table>
+	<form action='../turmas/cadastro'>
             <!-- input type="submit" value="Cadastrar nova turma"/-->
             <a href="<c:url value='../turmas/cadastro'/>">Cadastrar nova turma</a><br/>
 	</form>
     
-    <a href="<c:url value='/login'/>">Sair</a>
-    <a href="<c:url value='/professores/home'/>">Página Principal</a><br/>
-    
+    </div>
+    </div>
 </body>
 </html>
