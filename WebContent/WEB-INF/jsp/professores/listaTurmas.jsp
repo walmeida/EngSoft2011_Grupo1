@@ -15,7 +15,7 @@
 	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
 	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
 	<div id="right">
-	<div id="menu">Lista de Turmas</div>
+	<div id="menu">Meus Cursos</div>
 	<table>
         <c:forEach items="${professor.turmas}" var="turma">
             <tr>
