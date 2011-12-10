@@ -184,7 +184,7 @@ public class QuestoesController {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
-		Questao questao = dao.carrega(id).copia();
+		Questao questao = dao.carrega(id).copia(tagDao);		
 
 		switch (questao.getTipo()) {
 		case CODIGO:

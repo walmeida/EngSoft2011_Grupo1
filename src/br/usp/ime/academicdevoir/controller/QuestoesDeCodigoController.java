@@ -164,7 +164,7 @@ public class QuestoesDeCodigoController {
     }
 
 	public void copia(QuestaoDeCodigo questao) {
-		dao.salva(questao);		
+		dao.salva(questao);
 		result.redirectTo(this).alteracao(questao.getId());
 	}
 }

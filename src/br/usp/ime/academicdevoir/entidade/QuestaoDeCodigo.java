@@ -3,6 +3,7 @@ package br.usp.ime.academicdevoir.entidade;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import br.usp.ime.academicdevoir.dao.TagDao;
 import br.usp.ime.academicdevoir.infra.Constantes;
 import br.usp.ime.academicdevoir.infra.TestadorDeCodigoJava;
 import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
@@ -118,12 +119,13 @@ public class QuestaoDeCodigo extends Questao {
         return null;
     }
     
-	public QuestaoDeCodigo copia() {
+	public QuestaoDeCodigo copia(TagDao dao) {
 		QuestaoDeCodigo questao = new QuestaoDeCodigo();
 		questao.enunciado = this.enunciado;
-		questao.tags = this.tags;
 		questao.codigoDeTeste = this.codigoDeTeste;
 		questao.linguagem = this.linguagem;
+		
+		questao.setTags(this.getTagsEmString(), dao);
 
 		return questao;
 	}
