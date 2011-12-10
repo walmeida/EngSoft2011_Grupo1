@@ -56,6 +56,7 @@ public class ProfessoresController {
 	 * Método associado à home page do professor.
 	 */	
 	public void home() {
+		result.redirectTo(ProfessoresController.class).listaTurmas(usuarioSession.getUsuario().getId());
 	}
 
 	/**
@@ -131,13 +132,6 @@ public class ProfessoresController {
 		if (!novaSenha.equals("") || !StringUtils.isBlank(novaSenha)) p.setSenha(new Criptografia().geraMd5(novaSenha));
 		professorDao.atualizaProfessor(p);
 		result.redirectTo(ProfessoresController.class).home();
-	}
-
-	/**
-	 * Método associado ao .jsp com formulário para remoção de cadastro de
-	 * professor.
-	 */
-	public void remocao() {
 	}
 
 	/**

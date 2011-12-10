@@ -59,4 +59,12 @@ public class QuestaoDeSubmissaoDeArquivo extends Questao {
 	public Boolean respostaDoAlunoEhCorreta(Resposta respostaAluno) {
 		return null;
 	}
+	
+	public QuestaoDeSubmissaoDeArquivo copia() {
+		QuestaoDeSubmissaoDeArquivo questao = new QuestaoDeSubmissaoDeArquivo();    	
+    	questao.enunciado = this.enunciado;
+		questao.tags = this.tags;
+    	
+    	return questao;
+	}
 }

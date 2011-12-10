@@ -6,6 +6,58 @@ import="java.sql.*" errorPage="" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="<c:url value="/css/jquery.ui.core.css"/>"/>
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="<c:url value="/css/jquery.ui.theme.css"/>"/>
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="<c:url value="/css/jquery.ui.resizable.css"/>"/>
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="<c:url value="/css/jquery.ui.dialog.css"/>"/>
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-1.7.1.min.js"/>"></script>
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.core.min.js"/>"></script>
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.position.min.js"/>"></script>
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.widget.min.js"/>"></script>
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.mouse.min.js"/>"></script>
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.draggable.min.js"/>"></script>
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.resizable.min.js"/>"></script>
+<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.dialog.min.js"/>"></script>
+
+<script type="text/javascript" charset="utf-8">
+	
+	$(document).ready(function() {
+		
+		$('.alterarQuestao').click(function() {
+			var valor = $(this).attr('id');
+			var idDaQuestao = valor.match(/\d+/g);
+			var listas = 0;
+			var paginaAlteracao = '<c:url value="/questoes/codigo/"/>' + idDaQuestao;
+			
+			$.getJSON('<c:url value="/questoes/buscaListas/"/>' + idDaQuestao, function(json) {
+				$('#confirmacao').empty();
+				$('<span>Modificar esta questão causará modificação nas seguintes listas: <span><br/><br/>').appendTo('#confirmacao');
+				$.each(json, function() {
+					$('<span>' + this.nome + '</span><br/>').appendTo('#confirmacao');
+					listas++;
+				});
+			})
+			.success(function() {
+				if (listas == 0) window.location.href =  paginaAlteracao;
+				else {
+					$( '#confirmacao' ).dialog({
+						resizable: true,
+						height:400,
+						modal: true,
+						buttons: {
+							'Criar uma nova questão': function() {
+								window.location.href = '<c:url value="/questoes/copia/"/>' + idDaQuestao;
+							},
+							'Alterar esta questão': function() {
+								window.location.href =  paginaAlteracao;
+							}
+						}
+					});
+				}
+			});
+		});
+	});
+</script>
 <style type="text/css">
 body
 {
@@ -60,7 +112,7 @@ font-family:"Times New Roman";
 						<td>${questao.id }</td>
 						<td>${questao.enunciado }</td>
 						<td>${questao.codigoDeTeste }</td>
-						<td><a href="<c:url value="/questoes/codigo/${questao.id }"/>">Alterar</a></td>
+						<td><button id="alterarQuestao${questao.id }" class="alterarQuestao">Alterar</button></td>
 						<td>
 							<form action="<c:url value="/questoes/codigo/${questao.id }"/>" method="post">
 								<fieldset class="fieldsetSemFormatacao">
@@ -79,8 +131,13 @@ font-family:"Times New Roman";
 			<a href="<c:url value='/questoes/cadastro'/>">Cadastrar nova questão</a><br/>
 		</fieldset>
 	</form>
-	<a href="<c:url value='/login'/>">Sair</a>
-	<!--  a href="<c:url value='/questoes'/>">Voltar</a><br/ -->
-    <a href="<c:url value='/professores/home'/>">Página Principal</a><br/>	
+	
+	<div>
+		<a href="<c:url value='/login'/>">Sair</a>
+    	<a href="<c:url value='/professores/home'/>">Página Principal</a><br/>
+	</div>
+		
+	<div id="confirmacao">
+	</div>
 </body>
 </html>

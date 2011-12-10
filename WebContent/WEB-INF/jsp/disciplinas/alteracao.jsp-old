@@ -11,14 +11,14 @@
 <body>
 	<h1>Academic Devoir</h1>
 	<h2>Grupo 1 - Engenharia de Software</h2>
-	<form action='remove'>
-	<fieldset><legend>Remo&ccedil;&atilde;o de Disciplina:</legend>
-	    <br/>Para remover uma disciplina, digite abaixo a ID correspondente e confirme. <br/><br/>
-		ID: <br/><input type="text" name="id"/><br/><br/>
-		<input type="submit" value="Remover"/>
+	<form action='../altera'>
+	<fieldset><legend>Altera&ccedil;&atilde;o de Disciplina:</legend><br/>
+		<input type="hidden" name="id" value="${disciplina.id}"/> <br />
+		Novo nome: <br/><input type="text" size="30" name="novoNome" value="${disciplina.nome}"/><br/><br/>
+	<input type="submit" value="Alterar"/>
 	</fieldset>
 	</form>
 	<a href="<c:url value='/login'/>">Sair</a>
-	<a href="<c:url value='/disciplinas/home'/>">Voltar</a>
+	<a href="<c:url value='/disciplinas/lista'/>">Voltar</a>
 </body>
 </html>

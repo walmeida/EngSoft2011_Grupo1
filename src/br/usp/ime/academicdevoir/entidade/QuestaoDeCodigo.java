@@ -1,20 +1,21 @@
 package br.usp.ime.academicdevoir.entidade;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import br.usp.ime.academicdevoir.infra.Constantes;
 import br.usp.ime.academicdevoir.infra.TestadorDeCodigoJava;
 import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 
 @Entity
 public class QuestaoDeCodigo extends Questao {
-
     /**
      * @uml.property name="resposta"
      */
+    @Column(length = Constantes.MAX_TAM_CAMPO)
     private String codigoDeTeste;
     private String linguagem;
-    private String caminhoParaDiretorioDeTeste;
-    
+
     public QuestaoDeCodigo() {
    
         linguagem = "java";
@@ -52,10 +53,6 @@ public class QuestaoDeCodigo extends Questao {
         this.linguagem = linguagem;
     }
    
-    public void setCaminhoParaDiretorioDeTeste(String caminhoParaDiretorioDeTeste) {
-        this.caminhoParaDiretorioDeTeste = caminhoParaDiretorioDeTeste;
-    }
-    
     public TipoDeQuestao getTipo() {
         return TipoDeQuestao.CODIGO;
     }
@@ -100,11 +97,13 @@ public class QuestaoDeCodigo extends Questao {
         return htmlResult;
     }
     
+    
     public Boolean respostaDoAlunoEhCorreta(Resposta respostaAluno)  {
        String resultado;
-        if (linguagem.equals("java")) {
+       String caminho = respostaAluno.getCaminhoParaDiretorioDeTeste();
+       if (linguagem.equals("java")) {
             TestadorDeCodigoJava testador = new TestadorDeCodigoJava(
-                    caminhoParaDiretorioDeTeste);
+                    caminho);
             try {
                 resultado = 
                     testador.testaCodigoJava(respostaAluno.getValor(), 
@@ -118,4 +117,14 @@ public class QuestaoDeCodigo extends Questao {
         }
         return null;
     }
+    
+	public QuestaoDeCodigo copia() {
+		QuestaoDeCodigo questao = new QuestaoDeCodigo();
+		questao.enunciado = this.enunciado;
+		questao.tags = this.tags;
+		questao.codigoDeTeste = this.codigoDeTeste;
+		questao.linguagem = this.linguagem;
+
+		return questao;
+	}
 }

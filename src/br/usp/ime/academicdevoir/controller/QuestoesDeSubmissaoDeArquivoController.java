@@ -157,4 +157,9 @@ public class QuestoesDeSubmissaoDeArquivoController {
 		
 		result.include("lista", dao.listaTudo());
 	}
+	
+	public void copia(QuestaoDeSubmissaoDeArquivo questao) {
+		dao.salva(questao);
+		result.redirectTo(this).alteracao(questao.getId());
+	}
 }

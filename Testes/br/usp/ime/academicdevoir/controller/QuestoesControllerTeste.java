@@ -15,6 +15,7 @@ import static org.mockito.Mockito.spy;
 import static org.junit.Assert.*;
 
 import br.com.caelum.vraptor.util.test.MockResult;
+import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.TagDao;
 import br.usp.ime.academicdevoir.entidade.Professor;
@@ -70,6 +71,8 @@ public class QuestoesControllerTeste {
 	private UsuarioSession usuarioSession;
 	
 	private TagDao tagDao;
+	
+	private ListaDeExerciciosDao listaDeExerciciosDao;
 
 	@Before
 	public void SetUp() {		
@@ -82,7 +85,7 @@ public class QuestoesControllerTeste {
 		result = spy(new MockResult());
 		dao = mock(QuestaoDao.class);
 		
-		questoesController = new QuestoesController(dao, tagDao, result, usuarioSession);
+		questoesController = new QuestoesController(dao, tagDao, listaDeExerciciosDao, result, usuarioSession);
 		questaoDeMultiplaEscolha = new QuestaoDeMultiplaEscolha();
 		questaoDeSubmissaoDeArquivo = new QuestaoDeSubmissaoDeArquivo();
 		questaoDeTexto = new QuestaoDeTexto();

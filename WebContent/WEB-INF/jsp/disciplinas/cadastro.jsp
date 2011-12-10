@@ -3,21 +3,26 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
 <style type="text/css">
-<%@ include file="../css/formatacao.css" %>
+<%@ include file="/css/form2.css" %>
 </style>
 <title>Academic Devoir</title>
 </head>
 
 <body>
-	<h1>Academic Devoir</h1>
-	<h2>Grupo 1 - Engenharia de Software</h2>
+	<div id="wrapper"> 
+	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
+	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
+	<div id="right">
+	<div id="menu">Cadastro de Disciplina</div>
+	<br/><br/>
 	<form action='cadastra'>
-	<fieldset><legend>Cadastro de Disciplina:</legend><br/>
-		Nome: <br/><input type="text" size="30" name="nova.nome"/><br/><br/>
-	<input type="submit" value="Enviar"/>
+	<fieldset>
+		<p><label>Nome: </label><input type="text" size="30" name="nova.nome"/></p><br/><br/>
+	<p class="submit"><input type="submit" value="Enviar"/></p>
 	</fieldset>
 	</form>
-	<a href="<c:url value='/login'/>">Sair</a>
-	<a href="<c:url value='/professores/home'/>">Voltar</a><br/>
+	</div>
+	</div>
+	
 </body>
 </html>

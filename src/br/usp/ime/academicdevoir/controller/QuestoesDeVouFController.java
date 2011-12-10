@@ -161,4 +161,9 @@ public class QuestoesDeVouFController {
 
 		result.include("lista", dao.listaTudo());
 	}
+	
+	public void copia(QuestaoDeVouF questao) {
+		dao.salva(questao);
+		result.redirectTo(this).alteracao(questao.getId());
+	}
 }

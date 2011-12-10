@@ -1,7 +1,9 @@
 package br.usp.ime.academicdevoir.entidade;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import br.usp.ime.academicdevoir.infra.Constantes;
 import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 
 @Entity
@@ -10,6 +12,7 @@ public class QuestaoDeTexto extends Questao {
 	/**
 	 * @uml.property name="resposta"
 	 */
+    @Column(length = Constantes.MAX_TAM_CAMPO)
 	private String resposta;
 
 	/**
@@ -74,5 +77,14 @@ public class QuestaoDeTexto extends Questao {
 	
 	public Boolean respostaDoAlunoEhCorreta(Resposta respostaAluno) {
 		return respostaAluno.getValor().equals(this.resposta.toString());
+	}
+	
+	public QuestaoDeTexto copia() {
+		QuestaoDeTexto questao = new QuestaoDeTexto();    	
+    	questao.enunciado = this.enunciado;
+		questao.tags = this.tags;
+    	questao.resposta = this.resposta;
+    	
+    	return questao;
 	}
 }

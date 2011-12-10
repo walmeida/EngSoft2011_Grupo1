@@ -3,18 +3,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
 <style type="text/css">
-<%@ include file="../css/formatacao.css" %>
+<%@ include file="/css/form2.css" %>
 </style>
 <title>Academic Devoir</title>
 </head>
 
 <body>
-	<h1>Academic Devoir</h1>
-	<h2>Grupo 1 - Engenharia de Software</h2>
-	<h4>Lista de Disciplinas</h4>
-	<a href="<c:url value='/turmas/cadastro'/>">Cadastrar nova turma</a>  
-    <a href="<c:url value='/disciplinas/cadastro'/>">Cadastrar nova disciplina</a>
-
+	<div id="wrapper"> 
+	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
+	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
+	<div id="right">
+	<div id="menu">Lista de Disciplinas</div>
+	<br/><br/>
 	<table>
     <thead>
         <tr>
@@ -25,20 +25,20 @@
     <tbody>
         <c:forEach items="${lista }" var="disciplina">
             <tr>
-                <td>${disciplina.id}</td>
-                <td>${disciplina.nome}</td>
+                <td>
+                	<a href="<c:url value="/disciplinas/home/${disciplina.id}"/>">
+                	${disciplina.nome}</a>
+                </td>
                 <td><a href="<c:url value='/disciplinas/alteracao/${disciplina.id}'/>"> Alterar</a> <a href="./remove?id=${disciplina.id}">  Excluir</a></td>
             </tr>
         </c:forEach>             
     </tbody>
 	</table>
+	<br/><br/>
+	<a href="<c:url value='/turmas/cadastro'/>">Cadastrar nova turma</a>  
+    <a href="<c:url value='/disciplinas/cadastro'/>">Cadastrar nova disciplina</a>
 	
-	<a href="<c:url value='/login'/>">Sair</a>
-	    <c:if test ="${usuarioSession.usuario.privilegio == 'ALUNO' || usuarioSession.usuario.privilegio == 'MONITOR'}">
-    	<a href="<c:url value='/alunos/home'/>">Página Principal</a><br/>
- 	</c:if>
-    <c:if test ="${usuarioSession.usuario.privilegio == 'PROFESSOR' || usuarioSession.usuario.privilegio == 'ADMINISTRADOR'}">
-    	<a href="<c:url value='/professores/home'/>">Página Principal</a><br/>    		         
- 	</c:if>
+	</div>
+	</div>
 </body>
 </html>

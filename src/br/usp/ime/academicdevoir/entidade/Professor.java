@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
@@ -13,7 +14,7 @@ public class Professor extends Usuario {
 	 * @uml.property  name="turmas"
 	 * @uml.associationEnd  multiplicity="(0 -1)" inverse="professor:br.usp.ime.academicdevoir.entidade.Turma"
 	 */
-	@OneToMany(mappedBy = "professor")
+	@OneToMany(mappedBy = "professor", fetch=FetchType.EAGER)
 	@OrderBy("disciplina")
 	private Collection<Turma> turmas = new ArrayList<Turma>();
 

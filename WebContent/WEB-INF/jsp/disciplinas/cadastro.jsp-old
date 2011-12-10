@@ -11,12 +11,13 @@
 <body>
 	<h1>Academic Devoir</h1>
 	<h2>Grupo 1 - Engenharia de Software</h2>
-	<form action='remove'>
-	<fieldset><legend>Remo&ccedil;&atilde;o de professor:</legend>
-	    <br/>Para remover um professor, digite abaixo a ID correspondente e confirme. <br/><br/>
-		ID: <br/><input type="text" size="30" name="id"/><br/><br/>
-		<input type="submit" value="Remover"/>
-	</fieldset>	
+	<form action='cadastra'>
+	<fieldset><legend>Cadastro de Disciplina:</legend><br/>
+		Nome: <br/><input type="text" size="30" name="nova.nome"/><br/><br/>
+	<input type="submit" value="Enviar"/>
+	</fieldset>
 	</form>
+	<a href="<c:url value='/login'/>">Sair</a>
+	<a href="<c:url value='/professores/home'/>">Voltar</a><br/>
 </body>
 </html>

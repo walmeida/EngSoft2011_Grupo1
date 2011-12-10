@@ -3,16 +3,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
     <style type="text/css">
-    <%@ include file="../css/formatacao.css" %>
+    <%@ include file="/css/form2.css" %>
     </style>
     <title>Academic Devoir</title>
 </head>
 
 <body>
-    <h1>Academic Devoir</h1>
-    <h2>Grupo 1 - Engenharia de Software</h2>
-    <p>Lista de Alunos</p>
-    <table>
+    <div id="wrapper"> 
+	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
+	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
+	<div id="right">
+    <div id="menu">Lista de Alunos</div>
+    <br/><br/><br/>
+    <table border="0">
     <thead>
         <tr>
         <th>Nome</th>
@@ -31,7 +34,7 @@
                     <form action='removeMatricula'>
                         <input type="hidden" name="idAluno" value="${aluno.id}">
                         <input type="hidden" name="idTurma" value="${turma.id}">
-                        <input type="submit" value="Excluir aluno da turma"/>
+                        <p class="submit"><input type="submit" value="Excluir aluno da turma"/></p>
                     </form>
                 </td>
             </tr>
@@ -39,13 +42,7 @@
     </tbody>
 </table> 
     
-<a href="<c:url value='/login'/>">Sair</a>
-    <c:if test ="${usuarioSession.usuario.privilegio == 'ALUNO' || usuarioSession.usuario.privilegio == 'MONITOR'}">
-    	<a href="<c:url value='/alunos/home'/>">Página Principal</a><br/>
- 	</c:if>
-    <c:if test ="${usuarioSession.usuario.privilegio == 'PROFESSOR' || usuarioSession.usuario.privilegio == 'ADMINISTRADOR'}">
-    	<a href="<c:url value='/professores/home'/>">Página Principal</a><br/>    		         
- 	</c:if>
-
+</div>
+</div>
 </body>
 </html>
