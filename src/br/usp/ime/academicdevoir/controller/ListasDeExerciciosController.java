@@ -491,5 +491,23 @@ public class ListasDeExerciciosController {
 		
 	}
 	
+	@Get
+	@Path("/listasDeExercicios/{id}/inclusaoQuestoes")
+	/** 
+	 * Devolve a lista de questões que poderão ser inseridas na lista com o id fornecido.
+	 * 
+	 * @param id
+	 * */
+	public void inclusaoQuestoes(Long id) {
+		Usuario u = usuarioSession.getUsuario();
+		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
+			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
+		
+		result.include("idDaListaDeExercicios", id);
+		result.include("listaDeQuestoes", questaoDao.listaTudo());
+	}
+	
 	
 }
