@@ -135,13 +135,6 @@ public class ProfessoresController {
 	}
 
 	/**
-	 * Método associado ao .jsp com formulário para remoção de cadastro de
-	 * professor.
-	 */
-	public void remocao() {
-	}
-
-	/**
 	 * Remove um professor do banco de dados com o id fornecido.
 	 * 
 	 * @param id
