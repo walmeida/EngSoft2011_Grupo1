@@ -180,6 +180,7 @@ public class ListasDeExerciciosController {
 			propriedades.setNumeroDeEnvios(0);
 
 			listaDeRespostas = new ListaDeRespostas();
+			listaDeRespostas.setPropriedades(propriedades);
 			listaDeRespostas.setListaDeExercicios(listaDeExercicios);
 			listaDeRespostas.setAluno(aluno);
 		}

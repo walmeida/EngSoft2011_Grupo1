@@ -31,7 +31,7 @@ import="java.sql.*" errorPage="" %>
 			
 			$.getJSON('<c:url value="/questoes/buscaListas/"/>' + idDaQuestao, function(json) {
 				$('#confirmacao').empty();
-				$('<span>Modificar esta questão causará modificação nas seguintes listas: <span><br/><br/>').appendTo('#confirmacao');
+				$('<p>Modificar esta questão causará modificação nas seguintes listas: <p><br/><br/>').appendTo('#confirmacao');
 				$.each(json, function() {
 					$('<span>' + this.nome + '</span><br/>').appendTo('#confirmacao');
 					listas++;
