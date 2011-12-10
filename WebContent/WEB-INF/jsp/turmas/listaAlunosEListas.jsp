@@ -14,34 +14,32 @@
 	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
 	<div id="right">
     <div id="menu">Lista de Alunos</div>
-    <br/><br/><br/>
-    <table border="0">
+    <table border="1">
     <thead>
         <tr>
         <th>Nome</th>
-        <th>Login</th>
-        <th>Email</th>
-        <th></th>
+        <c:forEach items="${turma.listas}" var="lista">
+            <th>${lista.propriedades.nome}</th>
+        </c:forEach>
         </tr>
     </thead>
     <tbody>
         <c:forEach items="${turma.alunos}" var="aluno">
             <tr>
                 <td>${aluno.nome}</td>
-                <td>${aluno.login}</td>
-                <td>${aluno.email}</td>
-                <td>
-                    <form action='removeMatricula'>
-                        <input type="hidden" name="idAluno" value="${aluno.id}">
-                        <input type="hidden" name="idTurma" value="${turma.id}">
-                        <p class="submit"><input type="submit" value="Excluir aluno da turma"/></p>
-                    </form>
-                </td>
+                <c:forEach items="${turma.listas}" var="lista">
+                    <td>
+                    <c:forEach items="${lista.respostas}" var="resposta">    
+                        <c:if test ="${resposta.aluno.id == aluno.id}">
+                            ${lista.propriedades.nome}
+                        </c:if>
+                    </c:forEach>
+                    </td>
+                </c:forEach>
             </tr>
         </c:forEach>
     </tbody>
 </table> 
-    
 </div>
 </div>
 </body>

@@ -13,7 +13,7 @@
 	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
 	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
 	<div id="right">
-	<div id="menu">Altera&ccedil;&atilde;o de Disciplinas</div>
+	<div id="menu">Altera&ccedil;&atilde;o da Disciplina</div>
 	<br/><br/>
 	<form action='../altera'>
 	<fieldset>

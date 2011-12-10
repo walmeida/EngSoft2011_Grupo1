@@ -17,14 +17,14 @@
 	<div id="right">
 	<div id="menu">Home da Disciplinas</div>
 	<br/><br/>
-		
+		Listar Turmas aqui<br/><br/><br/>
 		<!-- <form action="/academic-devoir/turmas/cadastro"> -->
 		<a href="<c:url value='/turmas/cadastro'/>">Cadastrar nova turma</a><br/><br/>
 		<!-- </form> -->
 		<!-- <form action="/academic-devoir/disciplinas/alteracao"> -->
 		<a href="<c:url value='/disciplinas/alteracao/${disciplina.id}'/>">Alterar dados desta disciplina</a><br/><br/>
 		<!-- </form> -->
-		<a href="<c:url value='/disciplinas/remove?id=${disciplina.id}'/>">Remover esta disciplina</a><br/>
+		<a href="<c:url value='/disciplinas/remove?id=${disciplina.id}'/>">Excluir disciplina</a><br/>
 		
 		<br/><br/>
 		<a href="<c:url value='/disciplinas/lista'/>">Listar disciplinas</a><br/>
