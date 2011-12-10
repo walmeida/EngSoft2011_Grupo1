@@ -70,26 +70,29 @@ font-family:"Times New Roman";
 			</tbody>
 		</table>
 		<div>
+			<span>Páginas: </span>
+			
 			<c:if test ="${pagina > 1}">
-				<a href="<c:url value="${listaDeExercicios.id }/inclusaoQuestoes?proxPagina=${pagina - 1}"/>">&nbsp;&nbsp;&lt;&lt; Anterior</a>
+				<span>&nbsp;&nbsp;</span><a href="<c:url value="inclusaoQuestoes?proxPagina=${pagina - 1}"/>">&lt;&lt;</a>
 			</c:if>
 			
-			<c:forEach items="${listaDePaginasAnteriores }" var="numeroPagina">
+			<!--<c:forEach items="${listaDePaginasAnteriores }" var="numeroPagina">
 				<a href="<c:url value="${listaDeExercicios.id }/inclusaoQuestoes?proxPagina=${numeroPagina}"/>">&nbsp;&nbsp;${numeroPagina}</a>
-			</c:forEach>
+			</c:forEach>-->
 			
 			<span>&nbsp;&nbsp;${pagina}</span>
 			
-			<c:forEach items="${listaDePaginasPosteriores }" var="numeroPagina">
+			<!--<c:forEach items="${listaDePaginasPosteriores }" var="numeroPagina">
 				<a href="<c:url value="${listaDeExercicios.id }/inclusaoQuestoes?proxPagina=${numeroPagina}"/>">&nbsp;&nbsp;${numeroPagina}</a>
-			</c:forEach>
+			</c:forEach>-->
 						
 			<c:if test ="${pagina < ultimaPagina}">
-				<a href="<c:url value="${listaDeExercicios.id }/inclusaoQuestoes?proxPagina=${pagina + 1}"/>">&nbsp;&nbsp;&gt;&gt; Próxima</a>
+				<span>&nbsp;&nbsp;</span><a href="<c:url value="inclusaoQuestoes?proxPagina=${pagina + 1}"/>">&gt;&gt;</a>
 			</c:if>
 			
 		</div>
 	</div>
+	<br/>
 	<form id="cadastrarQuestao" action="/academic-devoir/questoes/cadastro">
 		<fieldset class="fieldsetSemFormatacao">
 			<!--input type="submit" value="Cadastrar nova questão"></input-->

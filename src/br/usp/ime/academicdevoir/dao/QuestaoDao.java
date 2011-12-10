@@ -2,6 +2,7 @@ package br.usp.ime.academicdevoir.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -32,11 +33,25 @@ public class QuestaoDao {
 		return this.session.createCriteria(Questao.class).list();
 	}
 	
-	public List<Questao> listaTudo(int first, int max) {
-		Criteria criteria = this.session.createCriteria(Produto.class);
-		criteria.addOrder(Order.asc("nome"));
-		criteria.setFirstResult(first);
-		criteria.setMaxResults(max);
+	/**
+	 * Devolve o tamanho da lista com todas as questões cadastradas no banco de dados.
+	 * 
+	 * @return List<Questao>
+	 */
+	public Integer tamanhoTotal() {
+		return listaTudo().size();
+	}	
+	
+	@SuppressWarnings("unchecked")
+	/**
+	 * Devolve uma lista com todas as questões cadastradas de acordo com a página.
+	 * 
+	 * @return List<Questao>
+	 */
+	public List<Questao> listaPaginada(Integer primeiro, Integer numRegistros) {
+		Criteria criteria = this.session.createCriteria(Questao.class);
+		criteria.setFirstResult(primeiro);
+		criteria.setMaxResults(numRegistros);
 		return criteria.list();
 	}
 

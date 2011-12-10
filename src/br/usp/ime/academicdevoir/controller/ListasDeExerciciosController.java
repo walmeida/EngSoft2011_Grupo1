@@ -29,6 +29,7 @@ import br.usp.ime.academicdevoir.entidade.QuestaoDaLista;
 import br.usp.ime.academicdevoir.entidade.Resposta;
 import br.usp.ime.academicdevoir.entidade.Turma;
 import br.usp.ime.academicdevoir.entidade.Usuario;
+import br.usp.ime.academicdevoir.infra.Constantes;
 import br.usp.ime.academicdevoir.infra.Privilegio;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
@@ -499,16 +500,22 @@ public class ListasDeExerciciosController {
 	 * @param id
 	 * */
 	public void inclusaoQuestoes(Long id, Integer proxPagina) {
+		List<Questao> listaDeQuestoesPaginadas;
+		Integer ultimaPagina;
 		Usuario u = usuarioSession.getUsuario();
 		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
 		
+		listaDeQuestoesPaginadas = questaoDao.listaPaginada(proxPagina, Constantes.NUM_REGISTROS_PAGINA);
+		ultimaPagina = questaoDao.tamanhoTotal() / Constantes.NUM_REGISTROS_PAGINA;
+		if(listaDeQuestoesPaginadas.size() % Constantes.NUM_REGISTROS_PAGINA != 0) ultimaPagina++;
+		
 		result.include("idDaListaDeExercicios", id);
-		result.include("listaDeQuestoes", questaoDao.listaTudo());
+		result.include("listaDeQuestoes", listaDeQuestoesPaginadas);
 		result.include("pagina", proxPagina);
-		//result.include("ultimaPagina", ultimaPagina);
+		result.include("ultimaPagina", ultimaPagina);
 		
 	}
 	
