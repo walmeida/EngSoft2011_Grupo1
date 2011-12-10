@@ -514,7 +514,7 @@ public class ListasDeExerciciosController {
 	 * 
 	 * @param id
 	 * */
-	public void inclusaoQuestoes(Long id) {
+	public void inclusaoQuestoes(Long id, Integer proxPagina) {
 		Usuario u = usuarioSession.getUsuario();
 		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
@@ -523,6 +523,9 @@ public class ListasDeExerciciosController {
 		
 		result.include("idDaListaDeExercicios", id);
 		result.include("listaDeQuestoes", questaoDao.listaTudo());
+		result.include("pagina", proxPagina);
+		//result.include("ultimaPagina", ultimaPagina);
+		
 	}
 	
 	

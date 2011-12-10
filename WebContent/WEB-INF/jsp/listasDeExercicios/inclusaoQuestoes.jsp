@@ -69,6 +69,26 @@ font-family:"Times New Roman";
 				</c:forEach>
 			</tbody>
 		</table>
+		<div>
+			<c:if test ="${pagina > 1}">
+				<a href="<c:url value="${listaDeExercicios.id }/inclusaoQuestoes?proxPagina=${pagina - 1}"/>">&nbsp;&nbsp;&lt;&lt; Anterior</a>
+			</c:if>
+			
+			<c:forEach items="${listaDePaginasAnteriores }" var="numeroPagina">
+				<a href="<c:url value="${listaDeExercicios.id }/inclusaoQuestoes?proxPagina=${numeroPagina}"/>">&nbsp;&nbsp;${numeroPagina}</a>
+			</c:forEach>
+			
+			<span>&nbsp;&nbsp;${pagina}</span>
+			
+			<c:forEach items="${listaDePaginasPosteriores }" var="numeroPagina">
+				<a href="<c:url value="${listaDeExercicios.id }/inclusaoQuestoes?proxPagina=${numeroPagina}"/>">&nbsp;&nbsp;${numeroPagina}</a>
+			</c:forEach>
+						
+			<c:if test ="${pagina < ultimaPagina}">
+				<a href="<c:url value="${listaDeExercicios.id }/inclusaoQuestoes?proxPagina=${pagina + 1}"/>">&nbsp;&nbsp;&gt;&gt; Próxima</a>
+			</c:if>
+			
+		</div>
 	</div>
 	<form id="cadastrarQuestao" action="/academic-devoir/questoes/cadastro">
 		<fieldset class="fieldsetSemFormatacao">

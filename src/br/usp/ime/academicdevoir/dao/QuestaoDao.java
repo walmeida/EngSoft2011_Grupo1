@@ -31,6 +31,14 @@ public class QuestaoDao {
 	public List<Questao> listaTudo() {
 		return this.session.createCriteria(Questao.class).list();
 	}
+	
+	public List<Questao> listaTudo(int first, int max) {
+		Criteria criteria = this.session.createCriteria(Produto.class);
+		criteria.addOrder(Order.asc("nome"));
+		criteria.setFirstResult(first);
+		criteria.setMaxResults(max);
+		return criteria.list();
+	}
 
 	/**
 	 * Devolve uma questão com o id fornecido.
