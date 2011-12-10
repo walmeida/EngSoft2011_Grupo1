@@ -33,11 +33,11 @@ public abstract class Questao {
 	 * @uml.property  name="enunciado"
 	 */
 	@Column(length = 1024)
-	private String enunciado;
+	protected String enunciado;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "tags_questoes", joinColumns = { @JoinColumn(name = "id_questao") }, inverseJoinColumns = { @JoinColumn(name = "id_tag") })
-	private List<Tag> tags = new ArrayList<Tag>();
+	protected List<Tag> tags = new ArrayList<Tag>();
 
 	/**
 	 * @return
@@ -89,6 +89,8 @@ public abstract class Questao {
 	}
 	
 	public void setTags(String stringTags, TagDao dao) {
+		if (stringTags == null) return;
+		
 		List<String> tags = Arrays.asList( stringTags.split(",[ ]*") );
 		for (String nome : tags) {
 			Tag tag = dao.buscaPeloNome(nome);
@@ -99,7 +101,7 @@ public abstract class Questao {
 			this.tags.add(tag);
 		}		
 	}
-
+	
 	public abstract TipoDeQuestao getTipo();
 	
 	public abstract String getRenderizacao();
@@ -107,4 +109,6 @@ public abstract class Questao {
 	public abstract String getRenderAlteracao(Resposta resposta);
 	
 	public abstract Boolean respostaDoAlunoEhCorreta(Resposta respostaAluno);
+	
+	public abstract Questao copia();
 }

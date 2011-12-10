@@ -75,4 +75,14 @@ public class QuestaoDeTexto extends Questao {
 	public Boolean respostaDoAlunoEhCorreta(Resposta respostaAluno) {
 		return respostaAluno.getValor().equals(this.resposta.toString());
 	}
+	
+	public QuestaoDeTexto copia() {
+		QuestaoDeTexto questao = new QuestaoDeTexto();
+    	
+    	questao.enunciado = this.enunciado;
+    	questao.tags = this.tags;
+    	questao.resposta = this.resposta;
+    	
+    	return questao;
+	}
 }

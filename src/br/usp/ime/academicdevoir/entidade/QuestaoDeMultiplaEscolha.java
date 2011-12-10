@@ -151,5 +151,15 @@ public class QuestaoDeMultiplaEscolha extends Questao {
 		return respostaAluno.getValor().equals(this.resposta.toString());
 	}
 	
-	
+	public QuestaoDeMultiplaEscolha copia() {
+		QuestaoDeMultiplaEscolha questao = new QuestaoDeMultiplaEscolha();
+    	
+    	questao.enunciado = this.enunciado;
+    	questao.tags = this.tags;
+    	questao.alternativas = this.alternativas;
+    	questao.respostaUnica = this.respostaUnica;
+    	questao.resposta = this.resposta;
+    	
+    	return questao;
+	}
 }

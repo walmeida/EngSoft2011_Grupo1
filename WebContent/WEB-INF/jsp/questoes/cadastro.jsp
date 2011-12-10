@@ -11,7 +11,6 @@ import="java.sql.*" errorPage="" %>
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.position.min.js"/>"></script>
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.widget.min.js"/>"></script>
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.autocomplete.min.js"/>"></script>
-<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/tag-autocomplete.js"/>"></script>
 <script type="text/javascript" charset="utf-8">	
 	function liberaAlternativas(respostaUnica, numeroDeAlternativas) {
 		var i = 0;
@@ -320,12 +319,15 @@ display: inline;
 					<input id="respostaVouFVerdadeiro" class="respostaVouF" type="radio" name="questao.resposta" value="true" disabled="disabled"/><p>Verdadeiro</p>
 					<input id="respostaVouFFalso" class="respostaVouF" type="radio" name="questao.resposta" value="false" disabled="disabled"/><p>Falso</p>
 				</div>
+				
 				<br/><br/>
 				<button type="submit">Enviar</button>
 			</fieldset>
 		</form>
 		<br/>
 	</div>
+	
+	
 	<a href="<c:url value='/login'/>">Sair</a>
 	<!-- a href="<c:url value='/questoes'/>">Voltar</a><br/ -->
     <a href="<c:url value='/professores/home'/>">Página Principal</a><br/>

@@ -161,4 +161,11 @@ public class QuestoesDeCodigoController {
 
         result.include("lista", dao.listaTudo());
     }
+
+    @Get
+    @Path("/questoes/codigo/copia/{id}")
+	public void copia(QuestaoDeCodigo questao) {
+		dao.salva(questao);
+		result.redirectTo(this).alteracao(questao.getId());
+	}
 }

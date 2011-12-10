@@ -3,7 +3,6 @@ package br.usp.ime.academicdevoir.controller;
 import java.text.SimpleDateFormat;
 import java.util.Collection; 
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import org.apache.commons.lang.StringUtils;
 

@@ -15,7 +15,6 @@ import br.usp.ime.academicdevoir.arquivos.Arquivos;
 import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
 import br.usp.ime.academicdevoir.dao.ListaDeRespostasDao;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
-import br.usp.ime.academicdevoir.dao.QuestaoDaListaDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Aluno;

@@ -157,4 +157,11 @@ public class QuestoesDeSubmissaoDeArquivoController {
 		
 		result.include("lista", dao.listaTudo());
 	}
+	
+	@Get
+	@Path("/questoes/submissao/copia/{id}")
+	public void copia(QuestaoDeSubmissaoDeArquivo questao) {
+		dao.salva(questao);
+		result.redirectTo(this).alteracao(questao.getId());
+	}
 }

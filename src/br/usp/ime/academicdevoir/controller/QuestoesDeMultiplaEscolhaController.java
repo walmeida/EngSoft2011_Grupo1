@@ -176,4 +176,11 @@ public class QuestoesDeMultiplaEscolhaController {
 		result.include("tipoDaQuestao", TipoDeQuestao.MULTIPLAESCOLHA);
 		result.include("lista", dao.listaTudo());
 	}
+
+	@Get
+	@Path("/questoes/mult/copia/{id}")
+	public void copia(QuestaoDeMultiplaEscolha questao) {
+		dao.salva(questao);
+		result.redirectTo(this).alteracao(questao.getId());	
+	}
 }

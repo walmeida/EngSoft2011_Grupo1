@@ -1,5 +1,6 @@
 package br.usp.ime.academicdevoir.dao;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -14,8 +15,8 @@ import br.usp.ime.academicdevoir.entidade.Turma;
 public class ListaDeExerciciosDao {
 
 	/**
-	 * @uml.property  name="session"
-	 * @uml.associationEnd  multiplicity="(1 1)"
+	 * @uml.property name="session"
+	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private final Session session;
 
@@ -33,7 +34,7 @@ public class ListaDeExerciciosDao {
 	public List<ListaDeExercicios> listaTudo() {
 		return this.session.createCriteria(ListaDeExercicios.class).list();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	/**
 	 * Devolve uma lista com todas as listas de exercícios de uma determinada turma.
@@ -41,12 +42,12 @@ public class ListaDeExerciciosDao {
 	 * @return List<ListaDeExercicios>
 	 */
 	public List<ListaDeExercicios> listasDeTurma(Turma turma) {
-		List<ListaDeExercicios> listaDeExercicios = this.session.createCriteria(ListaDeExercicios.class)
-        .add(Restrictions.eq("turma", turma))
-        .list();
+		List<ListaDeExercicios> listaDeExercicios = this.session
+				.createCriteria(ListaDeExercicios.class)
+				.add(Restrictions.eq("turma", turma)).list();
 		return listaDeExercicios;
 	}
-	
+
 	/**
 	 * Cadastra a lista fornecida no banco de dados.
 	 * 
@@ -93,5 +94,11 @@ public class ListaDeExerciciosDao {
 
 	public void recarrega(ListaDeExercicios lista) {
 		session.refresh(lista);
+	}
+
+	public List<BigInteger> buscaListasQueContemQuestao(Long idDaQuestao) {
+		return session.createSQLQuery(
+				"select listadeexercicios_id from questoesdalista where questao_id="
+						+ idDaQuestao).list();
 	}
 }

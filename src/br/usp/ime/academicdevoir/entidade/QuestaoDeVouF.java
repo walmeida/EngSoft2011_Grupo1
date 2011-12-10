@@ -80,4 +80,14 @@ public class QuestaoDeVouF extends Questao {
 	public Boolean respostaDoAlunoEhCorreta(Resposta respostaAluno) {
 	   return respostaAluno.getValor().equals(resposta.toString());
 	}
+	
+	public QuestaoDeVouF copia() {
+		QuestaoDeVouF questao = new QuestaoDeVouF();
+    	
+    	questao.enunciado = this.enunciado;
+    	questao.tags = this.tags;
+		questao.resposta = this.resposta;
+		
+		return questao;
+	}
 }
