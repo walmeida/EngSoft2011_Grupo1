@@ -21,7 +21,7 @@ import="java.sql.*" errorPage="" %>
 	<br/><br/>
 		Listar Turmas aqui<br/><br/><br/>
 		<!-- <form action="/academic-devoir/turmas/cadastro"> -->
-		<a href="<c:url value='/turmas/cadastro'/>">Cadastrar nova turma</a><br/><br/>
+		<a href="<c:url value='/turmas/cadastro?idDisciplina=${disciplina.id}'/>">Cadastrar nova turma</a><br/><br/>
 		<!-- </form> -->
 		<!-- <form action="/academic-devoir/disciplinas/alteracao"> -->
 		<a href="<c:url value='/disciplinas/alteracao/${disciplina.id}'/>">Alterar dados desta disciplina</a><br/><br/>
