@@ -64,8 +64,8 @@ public class AlunosController {
 	 * @param usuarioSession
 	 *            para controle de permissões
 	 */
-	public AlunosController(Result result, Validator validator, AlunoDao alunoDao,
-			DisciplinaDao disciplinaDao, TurmaDao turmaDao,
+	public AlunosController(Result result, Validator validator,
+			AlunoDao alunoDao, DisciplinaDao disciplinaDao, TurmaDao turmaDao,
 			UsuarioSession usuarioSession) {
 		this.result = result;
 		this.validator = validator;
@@ -119,8 +119,8 @@ public class AlunosController {
 	@Public
 	public void cadastra(final Aluno novo) {
 		validator.validate(novo);
-		validator.onErrorUsePageOf(AlunosController.class).cadastro();		
-		
+		validator.onErrorUsePageOf(AlunosController.class).cadastro();
+
 		novo.setSenha(new Criptografia().geraMd5(novo.getSenha()));
 		alunoDao.salvaAluno(novo);
 		result.redirectTo(AlunosController.class).lista();
@@ -135,8 +135,7 @@ public class AlunosController {
 	 */
 	public void alteracao(Long id) {
 		Usuario u = usuarioSession.getUsuario();
-		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR
-				|| u.getPrivilegio() == Privilegio.PROFESSOR || u.getId()
+		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId()
 				.longValue() == id)) {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
@@ -164,14 +163,14 @@ public class AlunosController {
 
 		a = alunoDao.carrega(id);
 		a.setNome(novoNome);
-		a.setEmail(novoEmail);		
+		a.setEmail(novoEmail);
 		a.setSenha(novaSenha);
-		
+
 		validator.validate(a);
 		validator.onErrorUsePageOf(AlunosController.class).alteracao(id);
-		
+
 		a.setSenha(new Criptografia().geraMd5(novaSenha));
-		
+
 		alunoDao.atualizaAluno(a);
 		result.redirectTo(AlunosController.class).home();
 	}

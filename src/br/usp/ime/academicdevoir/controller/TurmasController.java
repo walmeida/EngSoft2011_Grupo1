@@ -15,6 +15,7 @@ import br.usp.ime.academicdevoir.entidade.Disciplina;
 import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.Turma;
 import br.usp.ime.academicdevoir.entidade.Usuario;
+import br.usp.ime.academicdevoir.infra.Permission;
 import br.usp.ime.academicdevoir.infra.Privilegio;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
@@ -117,17 +118,12 @@ public class TurmasController {
         result.include("turma", turmaDao.carrega(idTurma));
     }
 
+    @Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
     /**
      * Método está associado ao .jsp do formulário de cadastro de uma turma no
      * sistema.
      */
-    public void cadastro() {
-    	Usuario u = usuarioSession.getUsuario();
-    	if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
-			result.redirectTo(LoginController.class).acessoNegado();
-			return;
-    	}
-    	
+    public void cadastro() {    	
 		List<Disciplina> listaDeDisciplinas = disciplinaDao.listaTudo();
 		if(listaDeDisciplinas.isEmpty()) {
 			result.redirectTo(DisciplinasController.class).cadastro();
@@ -142,18 +138,13 @@ public class TurmasController {
         result.include("anoAtual", dataDeHoje.get(Calendar.YEAR));
     }
 
+    @Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
     /**
      * Cadastra uma turma nova no sistema.
      * 
      * @param nova
      */
-    public void cadastra(Turma nova, final List<Integer> prazoDeMatricula) {
-    	Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
-			result.redirectTo(LoginController.class).acessoNegado();
-			return;
-		}
-		
+    public void cadastra(Turma nova, final List<Integer> prazoDeMatricula) {		
 		if(nova.getDisciplina() == null) {
 			result.redirectTo(DisciplinasController.class).cadastro();
 			return;
@@ -164,6 +155,7 @@ public class TurmasController {
                 nova.getProfessor().getId());
     }
 
+    @Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
     /**
      * Método associado ao .jsp com formulário para alteração de cadastro de
      * turma.
@@ -171,7 +163,7 @@ public class TurmasController {
     public void alteracao(Long id) {
         Turma turma = turmaDao.carrega(id);
         Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId() == turma.getProfessor().getId())) {
+		if(u.getPrivilegio() == Privilegio.PROFESSOR && u.getId() != turma.getProfessor().getId()) {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
@@ -179,6 +171,7 @@ public class TurmasController {
         result.include("turma", turma);
     }
 
+    @Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
     /**
      * Altera uma turma no banco de dados com o id fornecido e set o nome da
      * turma para novoNome.
@@ -188,7 +181,7 @@ public class TurmasController {
     public void altera(Long id, String novoNome) {
         Turma turma = turmaDao.carrega(id);
         Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId() == turma.getProfessor().getId())) {
+		if(u.getPrivilegio() == Privilegio.PROFESSOR && u.getId() != turma.getProfessor().getId()) {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
@@ -199,16 +192,15 @@ public class TurmasController {
         result.redirectTo(TurmasController.class).home(turma.getId());
     }
 
+    @Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
     /**
      * Método associado ao .jsp com formulário para remoção de cadastro de
      * turma.
      */
     public void remocao() {
-    	Usuario u = usuarioSession.getUsuario();
-    	if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
-			result.redirectTo(LoginController.class).acessoNegado();
     }
 
+    @Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
     /**
      * Remove uma turma do banco de dados com o id fornecido.
      * 
@@ -217,7 +209,7 @@ public class TurmasController {
     public void remove(final Long id) {
         Turma turma = turmaDao.carrega(id);
         Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId() == turma.getProfessor().getId())) {
+		if(u.getPrivilegio() == Privilegio.PROFESSOR && u.getId() != turma.getProfessor().getId()) {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
@@ -243,7 +235,7 @@ public class TurmasController {
         Aluno aluno = alunoDao.carrega(idAluno);
         Turma turma = turmaDao.carrega(idTurma);
         Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId() == turma.getProfessor().getId() || u.getId() == aluno.getId())) {
+		if(u.getPrivilegio() != Privilegio.ADMINISTRADOR && !(u.getId() == turma.getProfessor().getId() || u.getId() == aluno.getId())) {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}

@@ -4,6 +4,7 @@ import br.usp.ime.academicdevoir.dao.QuestaoDeCodigoDao;
 import br.usp.ime.academicdevoir.dao.TagDao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeCodigo;
 import br.usp.ime.academicdevoir.entidade.Usuario;
+import br.usp.ime.academicdevoir.infra.Permission;
 import br.usp.ime.academicdevoir.infra.Privilegio;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 import br.com.caelum.vraptor.Delete;
@@ -15,6 +16,7 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 
+@Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
 @Resource
 /**
  * Controlador de questões de texto.
@@ -69,12 +71,6 @@ public class QuestoesDeCodigoController {
      * @param questao
      */
     public void cadastra(final QuestaoDeCodigo questao, String tags) {
-        Usuario u = usuarioSession.getUsuario();
-        if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
-                .getPrivilegio() == Privilegio.PROFESSOR)) {
-            result.redirectTo(LoginController.class).acessoNegado();
-            return;
-        }
 
         questao.setTags(tags, tagDao);
 
@@ -92,13 +88,6 @@ public class QuestoesDeCodigoController {
      * @param id
      */
     public void alteracao(Long id) {
-        Usuario u = usuarioSession.getUsuario();
-        if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
-                .getPrivilegio() == Privilegio.PROFESSOR)) {
-            result.redirectTo(LoginController.class).acessoNegado();
-            return;
-        }
-
         QuestaoDeCodigo questao = dao.carrega(id);
         result.include("questao", questao);
         result.include("tags", questao.getTagsEmString());
@@ -111,12 +100,6 @@ public class QuestoesDeCodigoController {
      * @param id
      */
     public void altera(QuestaoDeCodigo questao, String tags) {
-        Usuario u = usuarioSession.getUsuario();
-        if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
-                .getPrivilegio() == Privilegio.PROFESSOR)) {
-            result.redirectTo(LoginController.class).acessoNegado();
-            return;
-        }
 
         questao.setTags(tags, tagDao);
 
@@ -135,12 +118,6 @@ public class QuestoesDeCodigoController {
      * @param id
      */
     public void remove(Long id) {
-        Usuario u = usuarioSession.getUsuario();
-        if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
-                .getPrivilegio() == Privilegio.PROFESSOR)) {
-            result.redirectTo(LoginController.class).acessoNegado();
-            return;
-        }
 
         QuestaoDeCodigo questao = dao.carrega(id);
         dao.remove(questao);
@@ -149,16 +126,11 @@ public class QuestoesDeCodigoController {
 
     @Get
     @Path("/questoes/codigo")
+    @Permission(Privilegio.ADMINISTRADOR)
     /**
      * Devolve uma lista com todas as questões de texto cadastradas no banco de dados.
      */
     public void lista() {
-        Usuario u = usuarioSession.getUsuario();
-        if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
-                .getPrivilegio() == Privilegio.PROFESSOR)) {
-            result.redirectTo(LoginController.class).acessoNegado();
-            return;
-        }
 
         result.include("lista", dao.listaTudo());
     }
