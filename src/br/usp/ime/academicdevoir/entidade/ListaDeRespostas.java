@@ -115,8 +115,6 @@ public class ListaDeRespostas {
 	public int adiciona(Resposta novaResposta) {
 		Long id = novaResposta.getQuestao().getId();
 		int i = -1;
-	    if (novaResposta.getValor() == null || 
-	            novaResposta.getValor().isEmpty() ) return -1;
 
 		for (Resposta resposta : respostas) {
 			if (resposta.getQuestao().getId() == id) {
@@ -124,7 +122,12 @@ public class ListaDeRespostas {
 				break;
 			}
 		}
-		if (i < 0) respostas.add(novaResposta);
+		// FIXME
+		if (i < 0) {
+		    if (novaResposta.getValor() != null && 
+                    !novaResposta.getValor().isEmpty())
+		    respostas.add(novaResposta);
+		}
 		else respostas.set(i, novaResposta);
 		return i;
 	}
