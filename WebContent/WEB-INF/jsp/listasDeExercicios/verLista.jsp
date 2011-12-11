@@ -35,7 +35,7 @@ import="java.sql.*" errorPage="" %>
 		var ordemIni2;
 		var numeroDeQuestoes = ${numeroDeQuestoes };
 		
-		//$('#aux').hide();
+		$('#aux').hide();
 				
 		$('.sobe').click(function() {
 			aux = $(this).parent().parent().attr('id');
