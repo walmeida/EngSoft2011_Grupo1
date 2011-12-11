@@ -72,6 +72,7 @@ public class TurmasControllerTeste {
 	private ListaDeExerciciosDao listaDeExerciciosDao;
 	private Professor admin;
 	private Aluno aluno;
+	private Disciplina disciplina;
 	
 	@Before
 	public void SetUp() {
@@ -96,9 +97,14 @@ public class TurmasControllerTeste {
 		turma.setProfessor(new Professor());
 		turma.setDisciplina(new Disciplina());
 		turma.setListas(new ArrayList<ListaDeExercicios>());
-		turmas = new ArrayList<Turma>();		
+		turmas = new ArrayList<Turma>();
+		disciplina = new Disciplina();
+		disciplina.setId(0L);
+		disciplina.setNome("Disciplina");
 		disciplinas = new ArrayList<Disciplina>();
-		disciplinas.add(new Disciplina());
+		disciplinas.add(disciplina);
+		
+		
 		
 		when(turmaDao.carrega(turma.getId())).thenReturn(turma);
 		when(turmaDao.listaTudo()).thenReturn(turmas);
@@ -130,9 +136,9 @@ public class TurmasControllerTeste {
 	
 	@Test
 	public void testCadastro() {
-		turmasController.cadastro();
-		List<Disciplina> disciplinas = result.included("listaDeDisciplinas");		
-		assertNotNull(disciplinas);
+		turmasController.cadastro(disciplina.getId());
+		Long idDisciplina = result.included("idDisciplina");		
+		assertNotNull(idDisciplina);
 	}
 	
 //	@Test
