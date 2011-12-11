@@ -154,9 +154,9 @@ public class Turma {
 		return prazoDeMatricula;
 	}
 	
-	public void setPrazoDeEntrega(List<Integer> prazoDeEntrega) {
+	public void setPrazoDeMatricula(List<Integer> prazoDeMatricula) {
 		Calendar data = Calendar.getInstance();
-		data.set(prazoDeEntrega.get(2).intValue(), prazoDeEntrega.get(1).intValue() - 1, prazoDeEntrega.get(0).intValue());
+		data.set(prazoDeMatricula.get(2).intValue(), prazoDeMatricula.get(1).intValue() - 1, prazoDeMatricula.get(0).intValue());
 		this.prazoDeMatricula = new Date(data.getTimeInMillis());
 	}
 
