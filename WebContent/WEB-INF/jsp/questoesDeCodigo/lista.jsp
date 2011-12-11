@@ -59,42 +59,19 @@ import="java.sql.*" errorPage="" %>
 	});
 </script>
 <style type="text/css">
-body
-{
-background-color:#f0ecc6;
-}
-h1 
-{
-color: black;
-text-align: center;
-font-size: 40px;
-font-family:"Times New Roman";
-font-style: italic;
-font-variant: small-caps;
-}
-h2
-{
-color: black;
-text-align: center;
-font-size: 20px;
-font-family:"Times New Roman";
-}
-.fieldsetSemFormatacao{
-	border:none;
-	padding: 0px;
-}
+<%@ include file="/css/form2.css" %>
 </style>
 </head>
 
 <body>
-	<h1>Academic Devoir</h1>
-	<h2>Grupo 1 - Engenharia de Software</h2>
-	<div id="menu">
+<div id="wrapper">
+    <div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
+    <div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
+    <div id="right">
+    <div id="menu">Lista de Questões de Código</div><br/>
+	<div>
 		<%@ include file="../questoes/menu.jsp" %><br/>
 	</div>
-	
-	<h3>Questões de Texto</h3>
-		
 	<div>
 		<table>
 			<thead>
@@ -102,8 +79,6 @@ font-family:"Times New Roman";
 					<th>ID</th>
 					<th>Enunciado</th>
 					<th>Código de teste</th>
-					<th>Alterar</th>
-					<th>Remover</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -115,9 +90,7 @@ font-family:"Times New Roman";
 						<td><button id="alterarQuestao${questao.id }" class="alterarQuestao">Alterar</button></td>
 						<td>
 							<form action="<c:url value="/questoes/codigo/${questao.id }"/>" method="post">
-								<fieldset class="fieldsetSemFormatacao">
 									<button name="_method" value="delete">Remover</button>
-								</fieldset>
 							</form>
 						</td>
 					</tr>
@@ -126,18 +99,13 @@ font-family:"Times New Roman";
 		</table>
 		</div>
 	<form action="<c:url value="/questoes/cadastro"/>">
-		<fieldset class="fieldsetSemFormatacao">
 			<!--input type="submit" value="Cadastrar nova questão"></input-->
 			<a href="<c:url value='/questoes/cadastro'/>">Cadastrar nova questão</a><br/>
-		</fieldset>
 	</form>
-	
-	<div>
-		<a href="<c:url value='/login'/>">Sair</a>
-    	<a href="<c:url value='/professores/home'/>">Página Principal</a><br/>
-	</div>
 		
 	<div id="confirmacao">
+	</div>
+	</div>
 	</div>
 </body>
 </html>

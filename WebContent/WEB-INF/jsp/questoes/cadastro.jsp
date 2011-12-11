@@ -214,7 +214,6 @@ import="java.sql.*" errorPage="" %>
     <div>
         <br/>
         <form action="<c:url value="/questoes/codigo"/>" method="post" accept-charset="us-ascii">
-            <fieldset>
                 <br/>
                 <label for="enunciado">Enunciado:</label><br/>
                     <textarea id="enunciado" rows= "5" cols="80" name="questao.enunciado">${questao.enunciado }</textarea>
@@ -295,7 +294,6 @@ import="java.sql.*" errorPage="" %>
                
                 <br/><br/>
                 <button type="submit">Enviar</button>
-            </fieldset>
         </form>
         <br/>
     </div>
