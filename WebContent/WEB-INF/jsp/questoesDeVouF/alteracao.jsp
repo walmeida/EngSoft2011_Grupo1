@@ -80,15 +80,14 @@ import="java.sql.*" errorPage="" %>
 	
 	<div>
 		<br/>
-		<form action="<c:url value="/questoes/vouf/${questao.id }" />" method="post" accept-charset="utf-8">
-			<fieldset>
+		<form style="width: 700px" action="<c:url value="/questoes/vouf/${questao.id }" />" method="post" accept-charset="utf-8">
 				<br/>
 				<label for="enunciado">Enunciado:</label><br/>
 					<textarea id="enunciado" rows= "5" cols="80" name="questao.enunciado">${questao.enunciado }</textarea>
-				<br/>
+				<br/><br/>
 				<label for="tags">Tags: </label>
 					<input id="tags" type="text" name="tags" value="${tags }"></input>
-				<br/>
+				<br/><br/>
 				<label for="resposta">Resposta:</label>
 					<c:if test="${questao.resposta }">
 						<input id="verdadeiro" type="radio" checked="checked" name="questao.resposta" value="true"/><p>Verdadeiro</p>
@@ -100,7 +99,6 @@ import="java.sql.*" errorPage="" %>
 					</c:if>
 				<br/><br/>
 				<button type="submit" name="_method" value="put">Salvar Alterações</button>
-			</fieldset>					
 		</form>
 		<br/>
 	</div>
