@@ -96,6 +96,7 @@ public class ListaDeExerciciosDao {
 		session.refresh(lista);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<BigInteger> buscaListasQueContemQuestao(Long idDaQuestao) {
 		return session.createSQLQuery(
 				"select ListaDeExercicios_id from questoesDaLista where questao_id="
