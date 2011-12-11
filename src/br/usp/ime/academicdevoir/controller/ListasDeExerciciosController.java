@@ -186,9 +186,11 @@ public class ListasDeExerciciosController {
 			if (!VerificadorDePrazos.estaNoPrazo(listaDeExercicios.
                     getPropriedades().getPrazoDeEntrega())) {
                 listaDeRespostas.getPropriedades().
-                    setEstado(EstadoDaListaDeRespostas.FINALIZADA);
-                listaDeRespostasDao.atualiza(listaDeRespostas);
+                setEstado(EstadoDaListaDeRespostas.FINALIZADA);
+                listaDeRespostas.setRespostas(new ArrayList<Resposta>());
+                listaDeRespostasDao.salva(listaDeRespostas);
                 result.redirectTo(this).verCorrecao(listaDeRespostas);
+                return;
             }
 		}
 
@@ -199,8 +201,8 @@ public class ListasDeExerciciosController {
 		}
 
 		listaDeRespostas.setRespostas(new ArrayList<Resposta>());
-		listaDeRespostasDao.salva(listaDeRespostas);
-
+        listaDeRespostasDao.salva(listaDeRespostas);
+		
 		result.include("prazo", listaDeExercicios.getPropriedades()
 				.getPrazoDeEntregaFormatado());
 		result.include("listaDeExercicios", listaDeExercicios);
