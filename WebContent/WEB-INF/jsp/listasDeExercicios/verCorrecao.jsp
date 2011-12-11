@@ -6,44 +6,6 @@ import="java.sql.*" errorPage="" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-1.7.1.min.js"/>"></script>
-<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery.form.js"/>"></script>
-
-<script type="text/javascript" charset="utf-8"> 
-    function redireciona() {        
-        // URL Provisoria
-        window.location.href =  '<c:url value="/alunos/home"/>';
-    }
-    
-    $(document).ready(function () {
-        var restantes = ${numeroDeQuestoes };       
-        
-        
-        $('.upload').hide();
-        
-        $('.liberaUpload').click(function() {
-            var idDaQuestao = parseInt($(this).attr("id").replace(/\D/g, ''), 10);
-            $(this).hide();
-            $('#resposta' + idDaQuestao).removeAttr("disabled").show();
-        });
-        
-        <c:forEach items="${listaDeExercicios.questoes}" varStatus="iteracao">
-            $('#questao' + ${iteracao.index}).ajaxForm({
-                success: function() {
-                    <c:choose>
-                        <c:when test="${iteracao.index eq numeroDeQuestoes - 1}">redireciona();</c:when>
-                        <c:otherwise>$('#questao' + ${iteracao.index + 1}).submit();</c:otherwise>
-                    </c:choose> 
-                }
-            });     
-        </c:forEach>
-        
-        $('#enviaRespostas').click(function() {
-            $(this).attr("disabled", "disabled").empty().append("Enviando");
-            $('#questao0').submit();
-        });
-    });
-</script>
 
 <style type="text/css">
 body
@@ -94,7 +56,6 @@ font-family:"Times New Roman";
                         ${renderizacao[iteracao.index]}
                 </fieldset>
         </c:forEach>
-        <button id="enviaRespostas" type="button">Salvar</button>
     </div>
     
     <a href="<c:url value='/login'/>">Sair</a>

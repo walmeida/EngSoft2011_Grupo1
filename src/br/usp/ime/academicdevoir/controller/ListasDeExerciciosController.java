@@ -270,7 +270,6 @@ public class ListasDeExerciciosController {
 	                break;
 	            }
 	        }
-	        System.out.println("************** BAGULHo *****************");
 
 	        if (achouResposta) continue;
 	        renders.add(questaoDaLista.getQuestao().
@@ -485,6 +484,37 @@ public class ListasDeExerciciosController {
 	}
 	
 	@Get
+    @Path("/respostas/autocorrecao/{id}")
+    /** 
+     * Corrige todas as respostas da lista de exercícios com o id fornecido.
+     * 
+     * @param id
+     * */
+    public void autoCorrecaoRespostas(Long id) {
+        //Carrega a lista de exercícios com esse id
+        ListaDeRespostas listaDeRespostas = listaDeRespostasDao.carrega(id);
+        
+        AutoCorrecao autoCorrecao = listaDeRespostas.getListaDeExercicios().
+            getPropriedades().getAutoCorrecao();
+        
+        //Não corrige se autocorreção estiver desativada para esse lista
+        if (autoCorrecao == AutoCorrecao.DESATIVADA || 
+                autoCorrecao == AutoCorrecao.PROFESSOR) {
+            result.redirectTo(this).listasTurma(listaDeRespostas.
+                    getListaDeExercicios().getTurma().getId());
+            return;
+        }
+        
+        listaDeRespostas.autocorrecao();
+        
+        listaDeRespostasDao.atualiza(listaDeRespostas);
+        
+        //Redireciona para o menu de listas
+        result.redirectTo(this).verCorrecao(listaDeRespostas);
+        
+    }
+	
+	@Get
 	@Path("/listasDeExercicios/autocorrecao/{id}")
 	/** 
 	 * Corrige todas as respostas da lista de exercícios com o id fornecido.
@@ -510,6 +540,9 @@ public class ListasDeExerciciosController {
 		//Para cada Lista de Resposta (Aluno)
 		for (ListaDeRespostas listaDeRespostas : listasDeRespostas) {
 		    listaDeRespostas.autocorrecao();
+		    listaDeRespostas.getPropriedades().
+		        setEstado(EstadoDaListaDeRespostas.CORRIGIDA);
+
 			listaDeRespostasDao.atualiza(listaDeRespostas);
 		}
 		

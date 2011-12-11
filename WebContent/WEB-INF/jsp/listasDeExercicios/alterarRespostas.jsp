@@ -12,7 +12,9 @@ import="java.sql.*" errorPage="" %>
 <script type="text/javascript" charset="utf-8">	
 	function redireciona() {		
 		// URL Provisoria
-		window.location.href =  '<c:url value="/alunos/home"/>';
+		
+	 window.location.href = '<c:url value="/respostas/autocorrecao/${listaDeRespostas.id}"/>';
+  
 	}
 	
 	$(document).ready(function () {

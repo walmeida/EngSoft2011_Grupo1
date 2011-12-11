@@ -125,8 +125,8 @@ public class ListaDeRespostas {
 		}
 		// FIXME
 		if (i < 0) {
-		   // if (novaResposta.getValor() != null && 
-             //       !novaResposta.getValor().isEmpty())
+		    if (novaResposta.getValor() != null && 
+                    !novaResposta.getValor().isEmpty())
 		    respostas.add(novaResposta);
 		}
 		else respostas.set(i, novaResposta);
@@ -158,16 +158,16 @@ public class ListaDeRespostas {
             //Resultado da Comparação da Resposta (Correção): True se correta, False se errada e NULL se aberta. 
             Boolean resultado = questao.respostaDoAlunoEhCorreta(resposta);
         
+            if (resultado != null)
             //Verificando se a resposta está certa ou não.
-            if(resultado == true) resposta.setNota(100.0);
+                if(resultado == true) resposta.setNota(100.0);
             //#TODO Questões abertas?? Como faz??
             //else if (resultado == false) resposta.setNota(0.0);  Abaixo seria o NULL
-            else resposta.setNota(0.0);
+                else resposta.setNota(0.0);
 	    }
     
 	    //Atribuindo a nota final à lista
 	    setNotaFinal(pesosDasQuestoes);
-	    propriedades.setEstado(EstadoDaListaDeRespostas.CORRIGIDA);
 	
 	}
 }
