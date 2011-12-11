@@ -26,13 +26,13 @@
           <option value="${disciplina.id }">${disciplina.nome }</option> 
     </c:forEach>
     </select></p>
-		<label for="prazoDeMatricula">Prazo de matricula:</label>
+		<label for="prazoDeMatricula">Prazo de matrícula:</label><br/>
 					<br/>
-					<label for="dia">Dia:</label>
-						<input id="dia" type="text" size="2" maxlength="2" name="prazoDeMatricula[0]" />
-					<label for="mes">Mês:</label>
-						<input id="mes" type="text" size="2" maxlength="2" name="prazoDeMatricula[1]" />
-					<label for="ano">Ano:</label>
+					<label for="dia">Dia:<br/></label>
+						<input id="dia" type="text" size="2" maxlength="2" name="prazoDeMatricula[0]" /><br/><br/>
+					<label for="mes">Mês:<br/></label>
+						<input id="mes" type="text" size="2" maxlength="2" name="prazoDeMatricula[1]" /><br/><br/>
+					<label for="ano">Ano:<br/></label>
 						<input id="ano" type="text" size="2" maxlength="4" name="prazoDeMatricula[2]" />
 						<br/>
 
