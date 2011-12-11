@@ -123,14 +123,15 @@ public class TurmasController {
      * Método está associado ao .jsp do formulário de cadastro de uma turma no
      * sistema.
      */
-    public void cadastro() {    	
+    public void cadastro(long idDisciplina) {    	
 		List<Disciplina> listaDeDisciplinas = disciplinaDao.listaTudo();
 		if(listaDeDisciplinas.isEmpty()) {
 			result.redirectTo(DisciplinasController.class).cadastro();
 			return;
 		}
 		
-        result.include("listaDeDisciplinas", listaDeDisciplinas);
+        //result.include("listaDeDisciplinas", listaDeDisciplinas);
+		result.include("idDisciplina", idDisciplina);
         
         Calendar dataDeHoje = Calendar.getInstance();
         result.include("diaAtual", dataDeHoje.get(Calendar.DAY_OF_MONTH));

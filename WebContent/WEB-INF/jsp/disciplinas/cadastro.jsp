@@ -19,7 +19,7 @@ import="java.sql.*" errorPage="" %>
 	<div id="right">
 	<div id="menu">Cadastro de Disciplina</div>
 	<br/><br/>
-	<form action='cadastra' accept-charset="utf-8">
+	<form action='cadastra' method="post" accept-charset="utf-8">
 	<fieldset>
 		<p><label>Nome: </label><input type="text" size="30" name="nova.nome"/></p>
 	<p class="submit"><input type="submit" value="Enviar"/></p>

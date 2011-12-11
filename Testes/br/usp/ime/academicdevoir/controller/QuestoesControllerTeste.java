@@ -1,5 +1,12 @@
 package br.usp.ime.academicdevoir.controller;
 
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,16 +14,6 @@ import java.util.Random;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import sun.rmi.transport.LiveRef;
-
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.any;
-
-import static org.junit.Assert.*;
 
 import br.com.caelum.vraptor.util.test.MockResult;
 import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;

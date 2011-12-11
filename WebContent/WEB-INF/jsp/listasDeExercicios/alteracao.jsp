@@ -4,53 +4,25 @@
 import="java.sql.*" errorPage="" %>
 
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <style type="text/css">
-body
-{
-background-color:#f0ecc6;
-}
-h1 
-{
-color: black;
-text-align: center;
-font-size: 40px;
-font-family:"Times New Roman";
-font-style: italic;
-font-variant: small-caps;
-}
-h2
-{
-color: black;
-text-align: center;
-font-size: 20px;
-font-family:"Times New Roman";
-}
-form {
-margin: 3em auto;
-width: 62%;
-}
-p{
-display: inline;
-}
-.fieldsetSemFormatacao{
-	border:none;
-	padding: 0px;
-}
+<%@ include file="/css/form2.css" %>
 </style>
+<title>Academic Devoir</title>
 </head>
 
 <body>
-	<h1>Academic Devoir</h1>
-	<h2>Grupo 1 - Engenharia de Software</h2>
-	<div>
-		<%@ include file="../questoes/menu.jsp" %>
-	</div>
+	<div id="wrapper"> 
+	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
+	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
+	<div id="right">
+	<div id="menu">Altera&ccedil;&atilde;o da lista de exerc&iacute;cios</div>
+	<br/><br/>
 	
 	<div>
 		<br/>
-		<form action="<c:url value="/listasDeExercicios/${listaDeExercicios.id }"/>" method="post" accept-charset="utf-8">
+		<form style="width: 25em;" action="<c:url value="/listasDeExercicios/${listaDeExercicios.id }"/>" method="post" accept-charset="utf-8">
 			<fieldset>
 				<legend>Alterar lista de exercícios</legend>
 				<label for="nome">Nome:</label>
@@ -80,9 +52,9 @@ display: inline;
 					<input id="mes" type="text" size="2" maxlength="2" name="prazoDeEntrega[1]" value="${prazo[1] + 1}"/>
 				<label for="ano">Ano:</label>
 					<input id="ano" type="text" size="2" maxlength="4" name="prazoDeEntrega[2]" value="${prazo[2] }"/>
+					<br/>
 				<label for="hora">Hora:</label>
-					<input id="hora" type="text" size="2" maxlength="2" name="prazoDeEntrega[3]" value="${prazo[3] }"/>
-					<p>:</p>
+					<input id="hora" type="text" size="2" maxlength="2" name="prazoDeEntrega[3]" value="${prazo[3] }"/>:
 					<input id="minuto" type="text" size="2" maxlength="2" name="prazoDeEntrega[4]" value="${prazo[4] }"/>
 					<br/>
 				<label for="numeroMaximoDeEnvios">Número Máximo de Envios:</label>
@@ -114,7 +86,7 @@ display: inline;
 		</form>
 		<br/>
 	</div>
-	<a href="<c:url value='/login'/>">Sair</a>
-    <a href="<c:url value='/professores/home'/>">Página Principal</a><br/>
+	</div>
+	</div>
 </body>
 </html>

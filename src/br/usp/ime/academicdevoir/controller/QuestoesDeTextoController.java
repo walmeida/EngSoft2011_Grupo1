@@ -1,12 +1,5 @@
 package br.usp.ime.academicdevoir.controller;
 
-import br.usp.ime.academicdevoir.dao.QuestaoDeTextoDao;
-import br.usp.ime.academicdevoir.dao.TagDao;
-import br.usp.ime.academicdevoir.entidade.QuestaoDeTexto;
-import br.usp.ime.academicdevoir.entidade.Usuario;
-import br.usp.ime.academicdevoir.infra.Permission;
-import br.usp.ime.academicdevoir.infra.Privilegio;
-import br.usp.ime.academicdevoir.infra.UsuarioSession;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -15,6 +8,12 @@ import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
+import br.usp.ime.academicdevoir.dao.QuestaoDeTextoDao;
+import br.usp.ime.academicdevoir.dao.TagDao;
+import br.usp.ime.academicdevoir.entidade.QuestaoDeTexto;
+import br.usp.ime.academicdevoir.infra.Permission;
+import br.usp.ime.academicdevoir.infra.Privilegio;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 @Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
 @Resource
@@ -38,11 +37,6 @@ public class QuestoesDeTextoController {
 	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private Validator validator;
-	/**
-	 * @uml.property name="usuarioSession"
-	 * @uml.associationEnd multiplicity="(1 1)"
-	 */
-	private final UsuarioSession usuarioSession;
 	private TagDao tagDao;
 
 	/**
@@ -60,7 +54,6 @@ public class QuestoesDeTextoController {
 		this.tagDao = tagDao;
 		this.result = result;
 		this.validator = validator;
-		this.usuarioSession = usuarioSession;
 	}
 
 	@Post

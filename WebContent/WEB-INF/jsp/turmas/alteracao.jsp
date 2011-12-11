@@ -19,7 +19,7 @@ import="java.sql.*" errorPage="" %>
 	<div id="right">
 	<div id="menu">Altera&ccedil;&atilde;o da Turma</div>
 	<br/><br/>
-	<form action='altera' accept-charset="utf-8">	
+	<form action='altera' method="post" accept-charset="utf-8">	
 	<fieldset>	
 		<input type="hidden" size="30" name="id" value="${turma.id }"/> <br />
 		<p><label>Nome: </label><input type="text" size="30" name="novoNome" value="${turma.nome }"/></p>

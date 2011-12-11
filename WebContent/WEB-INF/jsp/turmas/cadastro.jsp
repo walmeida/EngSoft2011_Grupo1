@@ -20,18 +20,19 @@ import="java.sql.*" errorPage="" %>
 	<div id="right">
 	<div id="menu">Cadastro de Turma</div>
 	<br/><br/>
-	<form action='cadastra' accept-charset="utf-8">
+	<form action='cadastra' method="post" accept-charset="utf-8">
 	<fieldset>
 		<input type="hidden" name="nova.professor.id" value="${usuarioSession.usuario.id }"/>
+		<input type="hidden" name="nova.disciplina.id" value="${idDisciplina }"/>
 		<p><label>Nome: </label><input type="text" size="30" name="nova.nome"/></p>
-		<p><label>Disciplina:</label>
+		<!-- <p><label>Disciplina:</label>
 		    <select name="nova.disciplina.id">
     		<c:forEach items="${listaDeDisciplinas}" var="disciplina">
           		<option value="${disciplina.id}" >${disciplina.nome}</option>
           	</c:forEach>
     	</select>
-    	</p>
-		<p><label for="prazoDeMatricula">Prazo de matrícula:</label></p><br/>
+    	</p> -->
+		<p><label for="prazoDeMatricula">Prazo de matr&iacute;cula:</label></p><br/>
 
 					<p><label for="dia">Dia:<br/></label>
 						<select name="prazoDeMatricula[0]">
@@ -46,7 +47,11 @@ import="java.sql.*" errorPage="" %>
 						</select> 
 					</p>
 					
-					<p><label for="mes">M�s:<br/></label>
+<<<<<<< HEAD
+					<p><label for="mes">Mês:<br/></label>
+=======
+					<p><label for="mes">M&ecirc;s:<br/></label>
+>>>>>>> a05776a22c55c59946f1e04e6f8dc91dea06eca8
 						<select name="prazoDeMatricula[1]">
 						<c:forEach var="i" begin="1" end="12" step="1" varStatus="status">
 							<c:if test="${ mesAtual == i}">
@@ -73,4 +78,5 @@ import="java.sql.*" errorPage="" %>
 	</form>
 	</div>
 	</div>
+</body>
 </html>

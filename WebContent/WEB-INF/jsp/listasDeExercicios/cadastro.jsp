@@ -4,62 +4,31 @@
 import="java.sql.*" errorPage="" %>
 
 <html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <style type="text/css">
-body
-{
-background-color:#f0ecc6;
-}
-h1 
-{
-color: black;
-text-align: center;
-font-size: 40px;
-font-family:"Times New Roman";
-font-style: italic;
-font-variant: small-caps;
-}
-h2
-{
-color: black;
-text-align: center;
-font-size: 20px;
-font-family:"Times New Roman";
-}
-form {
-margin: 3em auto;
-width: 62%;
-}
-p{
-display: inline;
-}
-.fieldsetSemFormatacao{
-	border:none;
-	padding: 0px;
-}
+<%@ include file="/css/form2.css" %>
 </style>
+<title>Academic Devoir</title>
 </head>
 
 <body>
-	<h1>Academic Devoir</h1>
-	<h2>Grupo 1 - Engenharia de Software</h2>
-	<div>
-		<%@ include file="../questoes/menu.jsp" %>
-	</div>
-	
-	<div>
-		<br/>
-		<form action="<c:url value="/listasDeExercicios" />" method="post" accept-charset="utf-8">
+	<div id="wrapper"> 
+	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
+	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
+	<div id="right">
+	<div id="menu">Cadastro de lista de exerc&iacute;cio</div>
+	<br/><br/>
+		<form style="width: 25em;" action="<c:url value="/listasDeExercicios" />" method="post" accept-charset="utf-8">
 			<fieldset>
-				<legend>Cadastrar lista de exercícios</legend>				
+				<legend>Cadastrar lista de exerc&iacute;cios</legend>				
 				<label for="nome">Nome:</label>
 					<input id="nome" type="text" name="propriedades.nome" />
 					<br/>
 				<label for="enunciado">Enunciado:</label>
 					<input id="enunciado" type="text" name="propriedades.enunciado" />
 					<br/>
-				<label for="visivel">Visível:</label>
+				<label for="visivel">Vis&iacute;vel:</label>
 					<input id="visivel" type="checkbox" name="propriedades.visivel" value="true" />
 					<br/>
 				<label for="Peso">Peso:</label>
@@ -73,15 +42,15 @@ display: inline;
 					<input id="mes" type="text" size="2" maxlength="2" name="prazoDeEntrega[1]" />
 				<label for="ano">Ano:</label>
 					<input id="ano" type="text" size="2" maxlength="4" name="prazoDeEntrega[2]" />
+				<br/>
 				<label for="hora">Hora:</label>
-					<input id="hora" type="text" size="2" maxlength="2" name="prazoDeEntrega[3]" />
-					<p>:</p>
+					<input id="hora" type="text" size="2" maxlength="2" name="prazoDeEntrega[3]" />:
 					<input id="minuto" type="text" size="2" maxlength="2" name="prazoDeEntrega[4]" />
 					<br/>
-				<label for="numeroMaximoDeEnvios">Número Máximo de Envios:</label>
+				<label for="numeroMaximoDeEnvios">N&uacute;mero M&aacute;ximo de Envios:</label>
 					<input id="numeroMaximoDeEnvios" type="text" size="2" maxlength="2" name="propriedades.numeroMaximoDeEnvios" />
 					<br/>
-				<label for="autoCorrecao">Auto Correção:</label>
+				<label for="autoCorrecao">Auto Corre&ccedil;&atilde;o:</label>
 					<select id="autoCorrecao" name="propriedades.autoCorrecao">
 						<option value="0">Desativada</option>
 						<option value="1">Professor</option>
@@ -102,7 +71,7 @@ display: inline;
 				<br />
 				<c:forEach items="${turmasDoProfessor }" var="turma">
 					<input type="radio" name="idDaTurma" value="${turma.id }" />
-					<p> ${turma.disciplina.nome } - ${turma.nome }</p>
+					 ${turma.disciplina.nome } - ${turma.nome }
 					<br />
 				</c:forEach>
 								
@@ -111,11 +80,6 @@ display: inline;
 			</fieldset>
 		</form>
 		<br/>
-	</div>
-	<div>
-		<a href="<c:url value='/login'/>">Sair</a>
-		<a href="<c:url value='/listasDeExercicios'/>">Voltar</a>
-		<a href="<c:url value='/professores/home'/>">Pagina principal</a><br/>
 	</div>
 </body>
 </html>
