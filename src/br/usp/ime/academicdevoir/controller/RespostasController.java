@@ -19,6 +19,7 @@ import br.usp.ime.academicdevoir.entidade.Questao;
 import br.usp.ime.academicdevoir.entidade.Resposta;
 import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
+import br.usp.ime.academicdevoir.infra.VerificadorDePrazos;
 
 @Resource
 public class RespostasController {
@@ -61,6 +62,20 @@ public class RespostasController {
 		
 	    dao.recarrega(listaDeRespostas);
 	    
+	    
+        if (listaDeRespostas.getPropriedades().getEstado() == 
+                EstadoDaListaDeRespostas.SALVA && 
+                !VerificadorDePrazos.estaNoPrazo(listaDeRespostas.
+                getListaDeExercicios().getPropriedades().getPrazoDeEntrega())) {
+            listaDeRespostas.getPropriedades().
+                setEstado(EstadoDaListaDeRespostas.FINALIZADA);
+            dao.atualiza(listaDeRespostas);
+            result.redirectTo(ListasDeExerciciosController.class).
+            listasTurma(listaDeRespostas.getListaDeExercicios().
+                    getTurma().getId());
+            return;
+        }
+	    
 		Questao questao = questaoDao.carrega(idDaQuestao);		
 			
 		if (questao.getTipo() == TipoDeQuestao.SUBMISSAODEARQUIVO && arquivo != null) {
@@ -73,7 +88,7 @@ public class RespostasController {
 		}
 		
         resposta.setQuestao(questao);
-		
+        
 		if (listaDeRespostas.getListaDeExercicios().getPropriedades().
 		        getNumeroMaximoDeEnvios() != null) {
 	        nmaxenvios =  listaDeRespostas.getListaDeExercicios().getPropriedades().
@@ -93,8 +108,9 @@ public class RespostasController {
 		
 		dao.atualiza(listaDeRespostas);
        
-	
-	    result.redirectTo(ListasDeExerciciosController.class).lista();
+	    result.redirectTo(ListasDeExerciciosController.class).
+	            listasTurma(listaDeRespostas.getListaDeExercicios().
+	                    getTurma().getId());
 	}
 	
 	/**

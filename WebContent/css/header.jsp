@@ -8,16 +8,21 @@ import="java.sql.*" errorPage="" %>
 <style>
 #fonte1
 {
+font-family: "Times New Roman";
 font-size: 35px;
 }
 #fonte2
 {
+font-family: "Times New Roman";
 font-size: 25px;
 }
 #dir
 {
-font-size: 15px;
+font-family: "Times New Roman";
+font-size: 14px;
 text-align: right;
+margin-right: 3px;
+>>>>>>> 31cd85c8f577ceb5bb07611f2085e8b5e8e35947
 }
 </style>
 </head>

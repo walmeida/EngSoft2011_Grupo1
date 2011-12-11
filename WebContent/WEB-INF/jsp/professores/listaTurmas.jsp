@@ -18,6 +18,7 @@ import="java.sql.*" errorPage="" %>
 	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
 	<div id="right">
 	<div id="menu">Meus Cursos</div>
+	<br/><br/>
 	<table>
         <c:forEach items="${professor.turmas}" var="turma">
             <tr>
@@ -26,15 +27,16 @@ import="java.sql.*" errorPage="" %>
                         ${turma.disciplina.nome} - ${turma.nome} </a>
                 </td>
                 <td>
-			<div id="link"><a href="../turmas/alteracao?id=${turma.id}">  Alterar</a></div> 
-			<div id="link"><a href="../turmas/remove?id=${turma.id}">  Excluir</a></div>
+			<a style="margin-left: 4.5em;" href="../turmas/alteracao?id=${turma.id}">    Alterar</a> 
+			<a href="../turmas/remove?id=${turma.id}">    Excluir</a>
 		</td>
             </tr>
         </c:forEach>
 	</table>
+	<br/><br/>
 	<form action='../turmas/cadastro'>
             <!-- input type="submit" value="Cadastrar nova turma"/-->
-            <a href="<c:url value='../turmas/cadastro'/>">Cadastrar nova turma</a><br/>
+            <a href="<c:url value='../disciplinas/lista'/>">Cadastrar nova turma</a>
 	</form>
     
     </div>

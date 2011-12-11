@@ -72,40 +72,19 @@ import="java.sql.*" errorPage="" %>
 </script>
 
 <style type="text/css">
-body
-{
-background-color:#f0ecc6;
-}
-h1 
-{
-color: black;
-text-align: center;
-font-size: 40px;
-font-family:"Times New Roman";
-font-style: italic;
-font-variant: small-caps;
-}
-h2
-{
-color: black;
-text-align: center;
-font-size: 20px;
-font-family:"Times New Roman";
-}
-.fieldsetSemFormatacao{
-	border:none;
-	padding: 0px;
-}
+<%@ include file="/css/form2.css" %>
 </style>
+<title>Academic Devoir</title>
 </head>
+
 <body>
-	<h1>Academic Devoir</h1>
-	<h2>Grupo 1 - Engenharia de Software</h2>
-	<div id="menu">
-		<%@ include file="../questoes/menu.jsp" %><br/>
-	</div>
-	
-	<h3>Propriedades da Lista</h3>
+	<div id="wrapper"> 
+	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
+	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
+	<div id="right">
+	<div id="menu">Propriedades da Lista</div>
+	<br/><br/>
+		
 	<table>
 		<tr>
 			<td>Nome:</td>
@@ -204,24 +183,7 @@ font-family:"Times New Roman";
 		</table>
 		<a href="<c:url value='${listaDeExercicios.id }/inclusaoQuestoes?proxPagina=1&filtro='/>">Incluir nova Questão</a>
 	</div>
-	
-	<div>
-		<a href="<c:url value='/login'/>">Sair</a>
 	</div>
-    <c:if test ="${usuarioSession.usuario.privilegio == 'ALUNO' || usuarioSession.usuario.privilegio == 'MONITOR'}">
-    	<a href="<c:url value='/alunos/home'/>">Página Principal</a><br/>
- 	</c:if>
-    <c:if test ="${usuarioSession.usuario.privilegio == 'PROFESSOR' || usuarioSession.usuario.privilegio == 'ADMINISTRADOR'}">
-    	<a href="<c:url value='/professores/home'/>">Página Principal</a><br/>    		         
- 	</c:if>
- 	
- 	<div id="aux">
- 		<form id="trocaOrdem" action="<c:url value="/listasDeExercicios/trocaOrdem/${listaDeExercicios.id }"/>">
- 			<c:forEach items="${listaDeExercicios.questoes }" var="questao" varStatus="status">
- 				<input id="ordem${status.index }" name="novaOrdem[${status.index }]" readonly="readonly" value="${status.index }"/> 				
- 			</c:forEach>
- 		</form>
- 	</div>
- 	
+	</div>
 </body>
 </html>

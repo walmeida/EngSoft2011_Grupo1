@@ -78,8 +78,8 @@ $().ready(function() {
 		Preencha o formul&aacute;rio abaixo e clique no bot&atilde;o "Enviar".<br/><br/>
 		Nome: <br/><input type="text" size="50" name="novo.nome"/><br/>
 		Login : <br/><input type="text" size="30" name="novo.login"/><br/>
-		Senha : <br/><input id="senha" type="password" size="32" name="novo.senha"/><br/>
-		Confirmar senha : <br/><input type="password" size="32" name="confirmaSenha"/><br/>		
+		Senha : <br/><input id="senha" type="password" size="30" name="novo.senha"/><br/>
+		Confirmar senha : <br/><input type="password" size="30" name="confirmaSenha"/><br/>		
 		E-mail : <br/><input type="text" size="30" name="novo.email"/><br/><br/>
 		<input type="hidden" name="novo.privilegio" value="2"/>
 	<input type="submit" value="OK"/>

@@ -17,15 +17,12 @@ import="java.sql.*" errorPage="" %>
 	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
 	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
 	<div id="right">
-	<div id="menu">Altera&ccedil;&atilde;o da Disciplina</div>
+	<div id="menu">Altera&ccedil;&atilde;o da lista de exerc&iacute;cios</div>
 	<br/><br/>
-	<div>
-		<%@ include file="../questoes/menu.jsp" %>
-	</div>
 	
 	<div>
 		<br/>
-		<form action="<c:url value="/listasDeExercicios/${listaDeExercicios.id }"/>" method="post" accept-charset="utf-8">
+		<form style="width: 25em;" action="<c:url value="/listasDeExercicios/${listaDeExercicios.id }"/>" method="post" accept-charset="utf-8">
 			<fieldset>
 				<legend>Alterar lista de exercícios</legend>
 				<label for="nome">Nome:</label>
@@ -55,9 +52,9 @@ import="java.sql.*" errorPage="" %>
 					<input id="mes" type="text" size="2" maxlength="2" name="prazoDeEntrega[1]" value="${prazo[1] + 1}"/>
 				<label for="ano">Ano:</label>
 					<input id="ano" type="text" size="2" maxlength="4" name="prazoDeEntrega[2]" value="${prazo[2] }"/>
+					<br/>
 				<label for="hora">Hora:</label>
-					<input id="hora" type="text" size="2" maxlength="2" name="prazoDeEntrega[3]" value="${prazo[3] }"/>
-					<p>:</p>
+					<input id="hora" type="text" size="2" maxlength="2" name="prazoDeEntrega[3]" value="${prazo[3] }"/>:
 					<input id="minuto" type="text" size="2" maxlength="2" name="prazoDeEntrega[4]" value="${prazo[4] }"/>
 					<br/>
 				<label for="numeroMaximoDeEnvios">Número Máximo de Envios:</label>

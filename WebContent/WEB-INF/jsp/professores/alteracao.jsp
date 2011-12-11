@@ -71,10 +71,10 @@ $().ready(function() {
 	<fieldset>
 		Digite os novos dados cadastrais
 		<input type="hidden" size="30" name="id" value="${professor.id}"/> <br />
-		<p><label>Nome: </label><input type="text" size="50" name="novoNome" value="${professor.nome}"/></p>
+		<p><label>Nome: </label><input type="text" size="30" name="novoNome" value="${professor.nome}"/></p>
 		<p><label>E-mail : </label><input type="text" size="30" name="novoEmail" value="${professor.email}"/></p>
-		<p><label>Senha : </label><input id="senha" type="password" size="32" name="novaSenha"/></p>
-		<p><label>Confirmar senha : </label><input type="password" size="32" name="confirmaSenha"/></p>
+		<p><label>Senha : </label><input id="senha" type="password" size="30" name="novaSenha"/></p>
+		<p><label>Confirmar senha : </label><input type="password" size="30" name="confirmaSenha"/></p>
 	<p class="submit"><input type="submit" value="Enviar"/></p>
 	</fieldset>
 	</form>

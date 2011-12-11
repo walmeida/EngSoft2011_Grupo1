@@ -213,8 +213,7 @@ import="java.sql.*" errorPage="" %>
     </div>
     <div>
         <br/>
-        <form action="<c:url value="/questoes/codigo"/>" method="post" accept-charset="us-ascii">
-            <fieldset>
+        <form style="width: 700px" action="<c:url value="/questoes/codigo"/>" method="post" accept-charset="us-ascii">
                 <br/>
                 <label for="enunciado">Enunciado:</label><br/>
                     <textarea id="enunciado" rows= "5" cols="80" name="questao.enunciado">${questao.enunciado }</textarea>
@@ -229,7 +228,7 @@ import="java.sql.*" errorPage="" %>
                     <option value="submissao">Submissão de Arquivo</option>
                 </select>
                
-                <br/>
+                <br/><br/>
                 <label for="tags">Tags:</label><input id="tags" type="text" name="tags"/>
                
                 <div id="questaoDeMultiplaEscolhaContainer">
@@ -295,7 +294,6 @@ import="java.sql.*" errorPage="" %>
                
                 <br/><br/>
                 <button type="submit">Enviar</button>
-            </fieldset>
         </form>
         <br/>
     </div>
