@@ -1,12 +1,10 @@
 package br.usp.ime.academicdevoir.controller;
 
-import org.apache.commons.lang.StringUtils;
-
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.Validator;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
 import br.usp.ime.academicdevoir.entidade.Professor;
-import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Criptografia;
 import br.usp.ime.academicdevoir.infra.Permission;
 import br.usp.ime.academicdevoir.infra.Privilegio;
@@ -33,14 +31,16 @@ public class ProfessoresController {
 	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
 	private UsuarioSession usuarioSession;
+	private Validator validator;
 
 	/**
 	 * @param result para interação com o jsp do professor.
 	 * @param professorDao para interação com o banco de dados
 	 * @param usuarioSession para controle de permissões
 	 */
-	public ProfessoresController(Result result, ProfessorDao professorDao, UsuarioSession usuarioSession) {
+	public ProfessoresController(Result result, Validator validator, ProfessorDao professorDao, UsuarioSession usuarioSession) {
 		this.result = result;
+		this.validator = validator;
 		this.professorDao = professorDao;
 		this.usuarioSession = usuarioSession;
 	}
@@ -74,26 +74,30 @@ public class ProfessoresController {
 	    result.include("professor", professorDao.carrega(idProfessor));   
 	}
 
+	@Permission(Privilegio.ADMINISTRADOR)
 	/**
      * Método está associado ao .jsp do formulário de cadastro de um professor no sistema.
      */
 	public void cadastro() {
-		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR))
-			result.redirectTo(LoginController.class).acessoNegado();
 	}
 
+
+	@Permission(Privilegio.ADMINISTRADOR)
 	/**
 	 * Cadastra novo professor no sitema
 	 * 
 	 * @param novo 
 	 */
 	public void cadastra(final Professor novo) {
+		validator.validate(novo);
+		validator.onErrorUsePageOf(ProfessoresController.class).cadastro();
+		
 		novo.setSenha(new Criptografia().geraMd5(novo.getSenha()));
 		professorDao.salvaProfessor(novo);
 		result.redirectTo(ProfessoresController.class).lista();
 	}
 
+	@Permission(Privilegio.ADMINISTRADOR)
 	/**
      * Método associado ao .jsp com formulário para alteração de cadastro de
      * professor.
@@ -101,14 +105,10 @@ public class ProfessoresController {
      * @param id   identificador do professor
      */
     public void alteracao(Long id) {
-    	Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId().longValue() == id)) {
-			result.redirectTo(LoginController.class).acessoNegado();
-			return;
-		}
         result.include("professor", professorDao.carrega(id));
     }
-    
+
+	@Permission(Privilegio.ADMINISTRADOR)
 	/**
 	 * Altera um professor no banco de dados com o id fornecido e set o nome
 	 * do professor para novoNome, o email para novoEmail e a senha para novaSenha.
@@ -120,20 +120,21 @@ public class ProfessoresController {
 	 */
 	public void altera(Long id, String novoNome, String novoEmail, String novaSenha) {
 		Professor p;
-		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId().longValue() == id)) {
-			result.redirectTo(LoginController.class).acessoNegado();
-			return;
-		}
 		
 		p = professorDao.carrega(id);
-		if (!novoNome.equals("") || !StringUtils.isBlank(novoNome)) p.setNome(novoNome);
-		if (!novoEmail.equals("") || !StringUtils.isBlank(novoEmail)) p.setEmail(novoEmail);
-		if (!novaSenha.equals("") || !StringUtils.isBlank(novaSenha)) p.setSenha(new Criptografia().geraMd5(novaSenha));
+		p.setNome(novoNome);
+		p.setEmail(novoEmail);
+		p.setSenha(novaSenha);
+		
+		validator.validate(p);
+		validator.onErrorUsePageOf(ProfessoresController.class).alteracao(id);
+		
+		p.setSenha(new Criptografia().geraMd5(novaSenha));		
 		professorDao.atualizaProfessor(p);
 		result.redirectTo(ProfessoresController.class).home();
 	}
 
+	@Permission(Privilegio.ADMINISTRADOR)
 	/**
 	 * Remove um professor do banco de dados com o id fornecido.
 	 * 
@@ -141,23 +142,14 @@ public class ProfessoresController {
 	 */
 	public void remove(final Long id) {
 		Professor professor;
-		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getId().longValue() == id)) {
-			result.redirectTo(LoginController.class).acessoNegado();
-			return;
-		}
 		
 		professor = professorDao.carrega(id);
 		professorDao.removeProfessor(professor);
 		result.redirectTo(ProfessoresController.class).lista();
 	}
 	
+	@Permission(Privilegio.ADMINISTRADOR)
 	public void mudarTipo(Long id) {
-		Usuario u = usuarioSession.getUsuario();
-		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR)) {
-			result.redirectTo(LoginController.class).acessoNegado();
-			return;
-		}
 		
 		professorDao.alteraTipo(id);
 		result.redirectTo(ProfessoresController.class).lista();

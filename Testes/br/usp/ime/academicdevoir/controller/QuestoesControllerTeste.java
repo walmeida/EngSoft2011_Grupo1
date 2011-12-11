@@ -1,5 +1,6 @@
 package br.usp.ime.academicdevoir.controller;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -13,6 +14,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.any;
 
 import static org.junit.Assert.*;
 
@@ -76,7 +78,7 @@ public class QuestoesControllerTeste {
 	private TagDao tagDao;
 	
 	private ListaDeExerciciosDao listaDeExerciciosDao;
-
+	
 	private ListaDeRespostasDao listaDeRespostasDao;
 	
 	@Before
@@ -89,9 +91,11 @@ public class QuestoesControllerTeste {
 
 		result = spy(new MockResult());
 		dao = mock(QuestaoDao.class);
-		
+		listaDeExerciciosDao = mock(ListaDeExerciciosDao.class);
+
 		questoesController = new QuestoesController(dao, tagDao, 
 		        listaDeExerciciosDao, listaDeRespostasDao, result, usuarioSession);
+
 		questaoDeMultiplaEscolha = new QuestaoDeMultiplaEscolha();
 		questaoDeSubmissaoDeArquivo = new QuestaoDeSubmissaoDeArquivo();
 		questaoDeTexto = new QuestaoDeTexto();
@@ -104,10 +108,12 @@ public class QuestoesControllerTeste {
 
 		when(dao.listaTudo()).thenReturn(new ArrayList<Questao>());
 		
-		when(dao.carrega(questaoDeMultiplaEscolha.getId())).thenReturn(questaoDeMultiplaEscolha);
-		when(dao.carrega(questaoDeSubmissaoDeArquivo.getId())).thenReturn(questaoDeSubmissaoDeArquivo);
-		when(dao.carrega(questaoDeTexto.getId())).thenReturn(questaoDeTexto);
-		when(dao.carrega(questaoDeVouF.getId())).thenReturn(questaoDeVouF);		
+		when(dao.carrega(questaoDeMultiplaEscolha.getId().longValue())).thenReturn(questaoDeMultiplaEscolha);
+		when(dao.carrega(questaoDeSubmissaoDeArquivo.getId().longValue())).thenReturn(questaoDeSubmissaoDeArquivo);
+		when(dao.carrega(questaoDeTexto.getId().longValue())).thenReturn(questaoDeTexto);
+		when(dao.carrega(questaoDeVouF.getId().longValue())).thenReturn(questaoDeVouF);
+		
+		when(listaDeExerciciosDao.buscaListasQueContemQuestao(any(Long.class))).thenReturn(new ArrayList<BigInteger>());
 	}
 
 	@Test

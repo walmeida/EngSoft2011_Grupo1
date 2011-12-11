@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 import br.com.caelum.vraptor.ioc.Component;
@@ -42,7 +43,7 @@ public class QuestaoDao {
 	private Criteria listaFiltrada(String filtro) {
 		Criteria criteria = this.session.createCriteria(Questao.class);
 		if (filtro != null && filtro != "")
-			criteria.createCriteria("tags").add(Restrictions.eq("nome", filtro));		
+			criteria.createCriteria("tags").add(Restrictions.ilike("nome", filtro, MatchMode.ANYWHERE));		
 		return criteria;
 	}
 

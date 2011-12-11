@@ -22,7 +22,7 @@ import="java.sql.*" errorPage="" %>
 	<fieldset>
 		Digite os novos dados cadastrais
 		<input type="hidden" size="30" name="id" value="${aluno.id}"/>
-		<p><label>Nome: </label><input type="text" size="30" name="novoNome" value="${aluno.nome}"/></p>
+		<p><label>Nome: </label><input type="text" size="50" name="novoNome" value="${aluno.nome}"/></p>
 		<p><label>E-mail : </label><input type="text" size="30" name="novoEmail" value="${aluno.email}"/></p>
 		<p><label>Senha : </label><input type="password" size="30" name="novaSenha"/></p>
 	<p class="submit"><input type="submit" value="Enviar"/><br/></p>
