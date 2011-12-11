@@ -27,16 +27,18 @@ width: 20em;
 				<form id="form_login" action="autenticar" method="post">   
 		                <fieldset> 
 				<legend>Fa&ccedil;a o login:</legend><br/>
-	                    <div> 
-	                    <p><label for="usuario.login">Login:<br/></label> 
-					<input type="text" size="30" name="usuario.login" value="${usuario.login}" /></p>
-		                </div>
-	        	        <div>    
-	                        <p><label for="usuario.senha">Senha:<br/></label> 
-							<input type="password" size="30" name="usuario.senha" value="${usuario.senha}" /></p>
-						</div>
+						<table cellspacing="5" cellpadding="2">
+						<tr>
+		                    <td><label for="usuario.login">Login:</label></td> 
+							<td><input type="text" size="30" name="usuario.login" value="${usuario.login}" /></td>
+		                </tr>
+	        	        <tr>    
+	                        <td><label for="usuario.senha">Senha:</label></td> 
+							<td><input type="password" size="30" name="usuario.senha" value="${usuario.senha}" /></td>
+						</tr>
+						</table>
 		                <div>
-		                    <p class="submit"><input type="submit" value="Entrar"></p>
+		                    <p class="submit"><input type="submit" value="Entrar"/></p>
 		                </div>
 		                <div>    
 	                        <div id="link"><a href="alunos/cadastro">Criar Conta</a></div>
