@@ -34,7 +34,6 @@ import br.usp.ime.academicdevoir.infra.Permission;
 import br.usp.ime.academicdevoir.infra.Privilegio;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
-@Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
 @Resource
 /**
  * Controlador de listas de exercicios.
