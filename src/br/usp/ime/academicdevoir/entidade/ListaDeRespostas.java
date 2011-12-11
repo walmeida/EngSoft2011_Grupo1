@@ -124,8 +124,8 @@ public class ListaDeRespostas {
 		}
 		// FIXME
 		if (i < 0) {
-		    if (novaResposta.getValor() != null && 
-                    !novaResposta.getValor().isEmpty())
+		   // if (novaResposta.getValor() != null && 
+             //       !novaResposta.getValor().isEmpty())
 		    respostas.add(novaResposta);
 		}
 		else respostas.set(i, novaResposta);

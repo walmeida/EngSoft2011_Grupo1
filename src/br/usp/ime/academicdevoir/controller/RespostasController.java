@@ -56,7 +56,7 @@ public class RespostasController {
 	@Path("/respostas/{listaDeRespostas.id}/cadastra")
 	public void salvaResposta(ListaDeRespostas listaDeRespostas, Resposta resposta, Long idDaQuestao, UploadedFile arquivo) {
 	    String caminho;
-	    int nenvios;
+	    int nenvios, nmaxenvios;
 	    if (resposta == null) resposta = new Resposta();
 		
 	    dao.recarrega(listaDeRespostas);
@@ -73,21 +73,25 @@ public class RespostasController {
 		}
 		
         resposta.setQuestao(questao);
-        nenvios = listaDeRespostas.getPropriedades().getNumeroDeEnvios();
-		if (listaDeRespostas.getRespostas().isEmpty())
-            listaDeRespostas.getPropriedades().setNumeroDeEnvios(nenvios + 1);
+		
+		if (listaDeRespostas.getListaDeExercicios().getPropriedades().
+		        getNumeroMaximoDeEnvios() != null) {
+	        nmaxenvios =  listaDeRespostas.getListaDeExercicios().getPropriedades().
+	        getNumeroMaximoDeEnvios();
+		    nenvios = listaDeRespostas.getPropriedades().getNumeroDeEnvios();
+		    if (listaDeRespostas.getRespostas().isEmpty())
+		        listaDeRespostas.getPropriedades().setNumeroDeEnvios(nenvios + 1);
         
-		if (listaDeRespostas.adiciona(resposta) == 0)
-            listaDeRespostas.getPropriedades().setNumeroDeEnvios(nenvios + 1);
-		
-		if (listaDeRespostas.getPropriedades().getNumeroDeEnvios() >= 
-		    listaDeRespostas.getListaDeExercicios().getPropriedades().
-		    getNumeroMaximoDeEnvios())
-		    listaDeRespostas.getPropriedades().setEstado
+		    if (listaDeRespostas.adiciona(resposta) == 0)
+		        listaDeRespostas.getPropriedades().setNumeroDeEnvios(nenvios + 1);
+		    if (listaDeRespostas.getPropriedades().getNumeroDeEnvios() >= nmaxenvios)
+		        listaDeRespostas.getPropriedades().setEstado
 		            (EstadoDaListaDeRespostas.FINALIZADA);
-
-		dao.atualiza(listaDeRespostas);
+		}
+		else
+		    listaDeRespostas.adiciona(resposta);
 		
+		dao.atualiza(listaDeRespostas);
 		result.redirectTo(ListasDeExerciciosController.class).lista();
 	}
 	
