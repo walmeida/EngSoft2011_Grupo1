@@ -29,16 +29,16 @@ import="java.sql.*" errorPage="" %>
 			$('#resposta' + idDaQuestao).removeAttr("disabled").show();
 		});
 		
-		<c:forEach items="${listaDeExercicios.questoes}" varStatus="iteracao">
-			$('#questao' + ${iteracao.index}).ajaxForm({
-				success: function() {
-					<c:choose>
-						<c:when test="${iteracao.index eq numeroDeQuestoes - 1}">redireciona();</c:when>
-						<c:otherwise>$('#questao' + ${iteracao.index + 1}).submit();</c:otherwise>
-					</c:choose>	
-		        }
-			});		
-		</c:forEach>
+        <c:forEach items="${listaDeExercicios.questoes}" varStatus="iteracao">
+        $('#questao' + ${iteracao.index}).ajaxForm({
+            success: function() {
+                <c:choose>
+                    <c:when test="${iteracao.index eq numeroDeQuestoes - 1}">redireciona();</c:when>
+                    <c:otherwise>$('#questao' + ${iteracao.index + 1}).submit();</c:otherwise>
+                </c:choose> 
+            }
+        });     
+       </c:forEach>
 		
 		$('#enviaRespostas').click(function() {
 			$(this).attr("disabled", "disabled").empty().append("Enviando");
