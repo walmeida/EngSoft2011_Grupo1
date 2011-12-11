@@ -41,11 +41,8 @@ public class QuestaoDao {
 	 */
 	private Criteria listaFiltrada(String filtro) {
 		Criteria criteria = this.session.createCriteria(Questao.class);
-		if (filtro != null && filtro != "") {
-			criteria.add(Restrictions
-					.sqlRestriction("this_.id IN (SELECT tq.id_questao FROM tags_questoes tq, tag t WHERE tq.id_tag = t.id AND t.nome LIKE '%"
-							+ filtro + "%')"));
-		}
+		if (filtro != null && filtro != "")
+			criteria.createCriteria("tags").add(Restrictions.eq("nome", filtro));		
 		return criteria;
 	}
 

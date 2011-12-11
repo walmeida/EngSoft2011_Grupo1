@@ -117,6 +117,7 @@ public class ListaDeRespostas {
 		
 		for (Resposta resposta : respostas) {
 			if (resposta.getQuestao().getId() == id) {
+				if (novaResposta.getValor() == null || novaResposta.getValor().isEmpty() ) return;
 				respostas.remove(resposta);
 				break;
 			}

@@ -215,15 +215,30 @@ public class ListasDeExerciciosController {
 		ListaDeExercicios listaDeExercicios = listaDeRespostas
 				.getListaDeExercicios();
 		List<String> renders = new ArrayList<String>();
+		
+		List<QuestaoDaLista> questoes = listaDeExercicios.getQuestoes();
 		List<Resposta> respostas = listaDeRespostas.getRespostas();
-		for (Resposta resposta : respostas) {
-			renders.add(resposta.getQuestao().getRenderAlteracao(resposta));
+		boolean achouResposta;
+		
+		for (QuestaoDaLista questaoDaLista : questoes) {
+			
+			achouResposta = false;
+			for (Resposta resposta : respostas) {
+				if (resposta.getQuestao().getId() == questaoDaLista.getQuestao().getId()) {
+					renders.add(resposta.getQuestao().getRenderAlteracao(resposta));
+					respostas.remove(resposta);
+					achouResposta = true;
+					break;
+				}
+			}
+			if (achouResposta) continue;
+			renders.add(questaoDaLista.getQuestao().getRenderizacao());
 		}
 
 		result.include("renderizacao", renders);
 		result.include("listaDeRespostas", listaDeRespostas);
 		result.include("listaDeExercicios", listaDeExercicios);
-		result.include("numeroDeQuestoes", listaDeExercicios.getQuestoes()
+		result.include("numeroDeQuestoes", questoes
 				.size());
 	}
 
@@ -547,8 +562,7 @@ public class ListasDeExerciciosController {
 		result.include("listaDeQuestoes", listaDeQuestoesPaginadas);
 		result.include("pagina", proxPagina);
 		result.include("ultimaPagina", ultimaPagina);
-		result.include("filtroAtual", filtro);
-		
+		result.include("filtroAtual", filtro);		
 	}
 	
 	
