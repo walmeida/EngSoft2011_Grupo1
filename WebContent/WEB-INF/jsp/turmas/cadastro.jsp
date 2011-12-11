@@ -58,13 +58,9 @@
 					
 					<p><label for="ano">Ano:<br/></label>
 						<select name="prazoDeMatricula[2]">
-						<c:forEach var="i" begin="${anoAtual}" end="${anoAtual + 5}" step="1" varStatus="status">
-							<c:if test="${ anoAtual == i}">
-								<option value="${i}" selected>${i}</option>
-							</c:if>
-							<c:if test="${ anoAtual != i}">
-								<option value="${i}">${i}</option>
-							</c:if>
+							<option value="${anoAtual}" selected>${anoAtual}</option>
+						<c:forEach var="i" begin="${anoAtual + 1}" end="${anoAtual + 5}" step="1" varStatus="status">
+							<option value="${i}">${i}</option>
 						</c:forEach>
 						</select> 
 					</p>	
