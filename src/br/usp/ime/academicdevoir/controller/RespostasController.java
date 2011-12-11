@@ -68,8 +68,9 @@ public class RespostasController {
 		if (questao.getTipo() == TipoDeQuestao.CODIGO) {
 		    caminho = arquivos.getPastaDaQuestao(questao.getId()).getAbsolutePath();
 		    resposta.setCaminhoParaDiretorioDeTeste(caminho);
-		    resposta.setQuestao(questao);
 		}
+		
+        resposta.setQuestao(questao);
 		listaDeRespostas.adiciona(resposta);
 				
 		dao.atualiza(listaDeRespostas);

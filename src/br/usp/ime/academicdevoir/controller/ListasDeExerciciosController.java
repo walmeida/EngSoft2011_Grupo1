@@ -206,8 +206,12 @@ public class ListasDeExerciciosController {
 	@Get
 	@Path("/respostas/alterar/{listaDeRespostas.id}")
 	public void alterarRespostas(ListaDeRespostas listaDeRespostas) {
-		listaDeRespostas = listaDeRespostasDao
+	    listaDeRespostas = listaDeRespostasDao
 				.carrega(listaDeRespostas.getId());
+	    if (listaDeRespostas.getPropriedades().getEstado() == 
+	        EstadoDaListaDeRespostas.CORRIGIDA)
+	        result.redirectTo(ListasDeExerciciosController.class).
+	               verCorrecao(listaDeRespostas);
 		ListaDeExercicios listaDeExercicios = listaDeRespostas
 				.getListaDeExercicios();
 		List<String> renders = new ArrayList<String>();
@@ -232,6 +236,7 @@ public class ListasDeExerciciosController {
                 .getListaDeExercicios();
         List<String> renders = new ArrayList<String>();
         List<Resposta> respostas = listaDeRespostas.getRespostas();
+        
         for (Resposta resposta : respostas) {
             renders.add(resposta.getQuestao().getRenderCorrecao(resposta));
         }
@@ -242,7 +247,6 @@ public class ListasDeExerciciosController {
         result.include("numeroDeQuestoes", listaDeExercicios.getQuestoes()
                 .size());
     }
-
 	
 	@Get
 	@Path("/listasDeExercicios/altera/{id}")
@@ -498,7 +502,7 @@ public class ListasDeExerciciosController {
 				Boolean resultado = questao.respostaDoAlunoEhCorreta(resposta);
 				
 				//Verificando se a resposta está certa ou não.
-				if(resultado == true) resposta.setNota(1.0);
+				if(resultado == true) resposta.setNota(100.0);
 				//#TODO Questões abertas?? Como faz??
 				//else if (resultado == false) resposta.setNota(0.0);  Abaixo seria o NULL
 				else resposta.setNota(0.0);
@@ -509,7 +513,6 @@ public class ListasDeExerciciosController {
 			listaDeRespostas.setNotaFinal(pesosDasQuestoes);
 			listaDeRespostas.getPropriedades().setEstado(
 			                EstadoDaListaDeRespostas.CORRIGIDA);
-			System.out.println(listaDeRespostas.getPropriedades().getEstado());
 			listaDeRespostasDao.atualiza(listaDeRespostas);
 		}
 		
