@@ -38,6 +38,22 @@ font-family:"Times New Roman";
 	<h2>Grupo 1 - Engenharia de Software</h2>
 		
 	<h3>Incluir Questões na Lista</h3>
+	
+	<div>
+		
+		<form id="formIncluirQuestao" action="<c:url value="/listasDeExercicios/${idDaListaDeExercicios }/inclusaoQuestoes"/>" method="get">
+			<!--  <fieldset>
+				<legend>Filtrar por Tags</legend> -->
+				<span>Filtra por Tags: </span>
+				<input type="hidden" id="proxPag" name="proxPagina" value="1" />
+				<input type="text" id="filtro" name="filtro" />
+				<input type="submit" value="Filtrar"  />
+			<!--  </fieldset> -->
+		</form>
+		
+	</div>
+	
+	<br/>
 		
 	<div>
 		<table>
@@ -73,7 +89,7 @@ font-family:"Times New Roman";
 			<span>Páginas: </span>
 			
 			<c:if test ="${pagina > 1}">
-				<span>&nbsp;&nbsp;</span><a href="<c:url value="inclusaoQuestoes?proxPagina=${pagina - 1}"/>">&lt;&lt;</a>
+				<span>&nbsp;&nbsp;</span><a href="<c:url value="inclusaoQuestoes?proxPagina=${pagina - 1}&filtro=${filtroAtual}"/>">&lt;&lt;</a>
 			</c:if>
 			
 			<!--<c:forEach items="${listaDePaginasAnteriores }" var="numeroPagina">
@@ -87,7 +103,7 @@ font-family:"Times New Roman";
 			</c:forEach>-->
 						
 			<c:if test ="${pagina < ultimaPagina}">
-				<span>&nbsp;&nbsp;</span><a href="<c:url value="inclusaoQuestoes?proxPagina=${pagina + 1}"/>">&gt;&gt;</a>
+				<span>&nbsp;&nbsp;</span><a href="<c:url value="inclusaoQuestoes?proxPagina=${pagina + 1}&filtro=${filtroAtual}"/>">&gt;&gt;</a>
 			</c:if>
 			
 		</div>
@@ -96,7 +112,7 @@ font-family:"Times New Roman";
 	<form id="cadastrarQuestao" action="/academic-devoir/questoes/cadastro">
 		<fieldset class="fieldsetSemFormatacao">
 			<!--input type="submit" value="Cadastrar nova questão"></input-->
-			<a href="<c:url value='questoes/cadastro'/>">Cadastrar nova questão</a>
+			<a href="<c:url value='/questoes/cadastro'/>">Cadastrar nova questão</a>
 		</fieldset>
 	</form>
 	<a href="<c:url value='/login'/>">Sair</a>

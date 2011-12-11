@@ -9,6 +9,7 @@ import java.util.List;
 import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.TagDao;
+import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.PropriedadesDaListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.Questao;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeCodigo;
@@ -164,10 +165,17 @@ public class QuestoesController {
 		List<BigInteger> idsDasListas = listaDeExerciciosDao
 				.buscaListasQueContemQuestao(idDaQuestao);
 		List<PropriedadesDaListaDeExercicios> listas = new ArrayList<PropriedadesDaListaDeExercicios>();
+		
+		PropriedadesDaListaDeExercicios propriedades;
+		ListaDeExercicios lista;
+		
 		for (BigInteger id : idsDasListas) {
-			listas.add(listaDeExerciciosDao.carrega(id.longValue())
-					.getPropriedades());
+			lista = listaDeExerciciosDao.carrega(id.longValue());
+			propriedades = lista.getPropriedades();
+			propriedades.setNome( new String( lista.getTurma().getNome() + " - " + propriedades.getNome()) );
+			listas.add(propriedades);
 		}
+		
 		result.use(json())
 				.withoutRoot()
 				.from(listas)
@@ -184,7 +192,7 @@ public class QuestoesController {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
-		Questao questao = dao.carrega(id).copia();
+		Questao questao = dao.carrega(id).copia(tagDao);		
 
 		switch (questao.getTipo()) {
 		case CODIGO:

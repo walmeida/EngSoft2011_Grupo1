@@ -166,7 +166,7 @@ font-family:"Times New Roman";
 				</table>
 		</c:forEach>
 		
-		<a href="<c:url value='${listaDeExercicios.id }/inclusaoQuestoes?proxPagina=1'/>">Incluir nova Questão</a>
+		<a href="<c:url value='${listaDeExercicios.id }/inclusaoQuestoes?proxPagina=1&filtro='/>">Incluir nova Questão</a>
 		
 	</div>
 	<div>

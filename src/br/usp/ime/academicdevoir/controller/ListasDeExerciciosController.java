@@ -180,6 +180,7 @@ public class ListasDeExerciciosController {
 			propriedades.setNumeroDeEnvios(0);
 
 			listaDeRespostas = new ListaDeRespostas();
+			listaDeRespostas.setPropriedades(propriedades);
 			listaDeRespostas.setListaDeExercicios(listaDeExercicios);
 			listaDeRespostas.setAluno(aluno);
 			listaDeRespostas.setPropriedades(propriedades);
@@ -524,16 +525,18 @@ public class ListasDeExerciciosController {
 	 * 
 	 * @param id
 	 * */
-	public void inclusaoQuestoes(Long id, Integer proxPagina) {
+	public void inclusaoQuestoes(Long id, Integer proxPagina, String filtro) {
 		List<Questao> listaDeQuestoesPaginadas;
-		Integer ultimaPagina;
+		Integer primeiroReg, ultimaPagina;
 		Usuario u = usuarioSession.getUsuario();
 		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
 		
-		listaDeQuestoesPaginadas = questaoDao.listaPaginada(proxPagina, Constantes.NUM_REGISTROS_PAGINA);
+		primeiroReg = (proxPagina - 1)*Constantes.NUM_REGISTROS_PAGINA;
+		
+		listaDeQuestoesPaginadas = questaoDao.listaPaginada(primeiroReg, Constantes.NUM_REGISTROS_PAGINA, filtro);
 		ultimaPagina = questaoDao.tamanhoTotal() / Constantes.NUM_REGISTROS_PAGINA;
 		if(listaDeQuestoesPaginadas.size() % Constantes.NUM_REGISTROS_PAGINA != 0) ultimaPagina++;
 		
@@ -541,6 +544,7 @@ public class ListasDeExerciciosController {
 		result.include("listaDeQuestoes", listaDeQuestoesPaginadas);
 		result.include("pagina", proxPagina);
 		result.include("ultimaPagina", ultimaPagina);
+		result.include("filtroAtual", filtro);
 		
 	}
 	

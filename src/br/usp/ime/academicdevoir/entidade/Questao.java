@@ -133,5 +133,5 @@ public abstract class Questao {
     }
 	public abstract Boolean respostaDoAlunoEhCorreta(Resposta respostaAluno);
 	
-	public abstract Questao copia();
+	public abstract Questao copia(TagDao tagDao);
 }

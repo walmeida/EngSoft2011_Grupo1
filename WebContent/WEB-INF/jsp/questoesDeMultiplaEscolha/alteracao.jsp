@@ -14,7 +14,6 @@ import="java.sql.*" errorPage="" %>
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.position.min.js"/>"></script>
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.widget.min.js"/>"></script>
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-ui/jquery.ui.autocomplete.min.js"/>"></script>
-<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/tag-autocomplete.js"/>"></script>
 <script type="text/javascript" charset="utf-8">
 	function liberaAlternativas(respostaUnica, numeroDeAlternativas) {
 		var i = 0;

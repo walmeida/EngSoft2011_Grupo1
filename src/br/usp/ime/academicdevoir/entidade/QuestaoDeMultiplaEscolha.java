@@ -1,5 +1,6 @@
 package br.usp.ime.academicdevoir.entidade;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CollectionTable;
@@ -8,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.validation.constraints.NotNull;
 
+import br.usp.ime.academicdevoir.dao.TagDao;
 import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 
 @Entity
@@ -184,13 +186,18 @@ public class QuestaoDeMultiplaEscolha extends Questao {
 		return respostaAluno.getValor().equals(this.resposta.toString());
 	}
 	
-	public QuestaoDeMultiplaEscolha copia() {
+	public QuestaoDeMultiplaEscolha copia(TagDao dao) {
 		QuestaoDeMultiplaEscolha questao = new QuestaoDeMultiplaEscolha();    	
     	questao.enunciado = this.enunciado;
-		questao.tags = this.tags;
-    	questao.alternativas = this.alternativas;
     	questao.respostaUnica = this.respostaUnica;
     	questao.resposta = this.resposta;
+    	questao.alternativas = new ArrayList<String>();
+    	
+    	for (String alternativa : this.alternativas) {
+    		questao.alternativas.add(alternativa);
+    	}
+    			
+    	questao.setTags(this.getTagsEmString(), dao);
     	
     	return questao;
 	}
