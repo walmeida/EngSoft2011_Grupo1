@@ -7,16 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
+import br.usp.ime.academicdevoir.dao.ListaDeRespostasDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.TagDao;
 import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
+import br.usp.ime.academicdevoir.entidade.ListaDeRespostas;
 import br.usp.ime.academicdevoir.entidade.PropriedadesDaListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.Questao;
+import br.usp.ime.academicdevoir.entidade.QuestaoDaLista;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeCodigo;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeTexto;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeVouF;
+import br.usp.ime.academicdevoir.entidade.Resposta;
 import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Privilegio;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
@@ -49,6 +53,7 @@ public class QuestoesController {
 	private final UsuarioSession usuarioSession;
 	private TagDao tagDao;
 	private ListaDeExerciciosDao listaDeExerciciosDao;
+	private ListaDeRespostasDao listaDeRespostasDao;;
 
 	/**
 	 * @param turmaDao
@@ -58,12 +63,12 @@ public class QuestoesController {
 	 * @param usuarioSession
 	 *            para controle de permissões
 	 */
-	public QuestoesController(QuestaoDao dao, TagDao tagDao,
-			ListaDeExerciciosDao listaDeExerciciosDao, Result result,
+	public QuestoesController(QuestaoDao dao, TagDao tagDao, ListaDeExerciciosDao listaDeExerciciosDao, ListaDeRespostasDao listaDeRespostasDao, Result result,
 			UsuarioSession usuarioSession) {
 		this.dao = dao;
 		this.tagDao = tagDao;
 		this.listaDeExerciciosDao = listaDeExerciciosDao;
+		this.listaDeRespostasDao = listaDeRespostasDao;
 		this.result = result;
 		this.usuarioSession = usuarioSession;
 	}
@@ -119,6 +124,45 @@ public class QuestoesController {
 			return;
 		}
 
+		List<BigInteger> idsDasListas = listaDeExerciciosDao.buscaListasQueContemQuestao(id);
+		ListaDeExercicios lista;
+		List<QuestaoDaLista> questoes;
+		List<ListaDeRespostas> listaDeListaDeRespostas;
+		List<Resposta> respostas;
+		
+		
+		// Remove a questão na lista de exercícios e nas listas de respostas
+		for (BigInteger idDaLista : idsDasListas) {
+			lista = listaDeExerciciosDao.carrega(idDaLista.longValue());
+			questoes = lista.getQuestoes();
+			
+			for (QuestaoDaLista questao : questoes) {
+				if (questao.getQuestao().getId() == id) {
+					questoes.remove(questao);
+					break;
+				}
+			}
+			
+			lista.setQuestoes(questoes);
+			listaDeExerciciosDao.atualiza(lista);
+			
+			listaDeListaDeRespostas = lista.getRespostas();
+			
+			for (ListaDeRespostas listaDeRespostas : listaDeListaDeRespostas) {
+				respostas = listaDeRespostas.getRespostas();
+				
+				for(Resposta resposta : respostas) {
+					if (resposta.getQuestao().getId() == id) {
+						respostas.remove(resposta);
+						break;
+					}
+				}
+				
+				listaDeRespostas.setRespostas(respostas);
+				listaDeRespostasDao.atualiza(listaDeRespostas);
+			}			
+		}
+		
 		Questao questao = dao.carrega(id);
 		dao.remove(questao);
 		result.redirectTo(this).lista();

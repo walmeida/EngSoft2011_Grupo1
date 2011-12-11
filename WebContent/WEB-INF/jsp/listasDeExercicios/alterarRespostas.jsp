@@ -91,7 +91,7 @@ font-family:"Times New Roman";
 		<c:forEach items="${listaDeExercicios.questoes}" var="questaoDaLista" varStatus="iteracao">
 			<form id="questao${iteracao.index }" class="respostaForm" action="<c:url value="/respostas/${listaDeRespostas.id }/cadastra"/>" method="post" accept-charset="us-ascii" enctype="multipart/form-data">
 				<fieldset>
-						<p>${questaoDaLista.ordem} )
+						<p>${iteracao.index + 1} )
 								${questaoDaLista.questao.enunciado}</p>
 						${renderizacao[iteracao.index]}
 				</fieldset>
