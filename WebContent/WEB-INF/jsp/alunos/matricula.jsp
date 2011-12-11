@@ -13,9 +13,9 @@
 	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
 	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
 	<div id="right">
+	<div id="menu">Matricular-se em uma turma:</div>
 	<form action='inscreve'>
 	<input type="hidden" name="idAluno" value="${usuarioSession.usuario.id}">
-	<fieldset><legend>Inscri&ccedil;&atilde;o:</legend><br/>
 	 Olá, ${usuarioSession.usuario.nome}, selecione a turma na qual você quer se matricular.<br/><br/>
 	<select name="idTurma">
     <c:forEach items="${listaDeDisciplinas}" var="disciplina">
@@ -26,7 +26,6 @@
     </select>
         <br /><br />        
     <input type="submit" value="Ok"/>
-	</fieldset>
 	</form>
 	</div>
 	</div>
