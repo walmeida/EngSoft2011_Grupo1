@@ -155,6 +155,7 @@ public class ListasDeExerciciosController {
 		result.include("prazo", listaDeExercicios.getPropriedades()
 				.getPrazoDeEntregaFormatado());
 		result.include("turmasDoProfessor", professor.getTurmas());
+		result.include("numeroDeQuestoes", listaDeExercicios.getQuestoes().size());
 	}
 
 	@Get
@@ -582,5 +583,32 @@ public class ListasDeExerciciosController {
 		result.include("filtroAtual", filtro);		
 	}
 	
+	@Get
+	@Path("/listasDeExercicios/trocaOrdem/{id}")
+	public void trocaOrdem(Long id, List<Integer> novaOrdem) {
+		
+		System.out.print("\n\n\n******************\n");
+		
+		for (Integer ordem : novaOrdem) {
+			System.out.print(ordem);
+		}
+		
+		System.out.print("\n******************\n\n\n");
+		ListaDeExercicios lista = dao.carrega(id);
+		List<QuestaoDaLista> questoes = lista.getQuestoes();		
+		Integer ordem;
+		QuestaoDaLista questao;
+		
+		for (int i = 0; i < questoes.size(); i++) {
+			ordem = novaOrdem.get(i);
+			questao = questoes.get(i);
+			questao.setOrdem(ordem);
+			questoes.set(i, questao);
+		}
+		
+		lista.setQuestoes(questoes);
+		dao.atualiza(lista);		
+		result.redirectTo(ListasDeExerciciosController.class).verLista(id);
+	}
 	
 }
