@@ -17,7 +17,7 @@ font-size: 25px;
 #dir
 {
 font-size: 15px;
-text-align: right; 
+text-align: right;
 }
 </style>
 </head>

@@ -8,23 +8,66 @@ import="java.sql.*" errorPage="" %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-1.7.1.min.js"/>"></script>
 
-<script type="text/javascript" charset="utf-8">	
-	$(document).ready(function() {		
-		$('#formIncluirTurma').hide();
-		$('#formIncluirQuestao').hide();
-		$('[id^=formAlterarQuestao]').hide();
+<script type="text/javascript" charset="utf-8">
+
+	function trocaOrdem(numero1, numero2, ordemIni1, ordemIni2) {
+		var container1;
+		var container2;
 		
-		$('#ativaIncluirTurma').click(function() {
-			$('#formIncluirTurma').show();
-			$(this).hide();
-	  	});
+		container1 = $('#questaoContainer' + numero1).children().detach();
+		container2 = $('#questaoContainer' + numero2).children().detach();		
 		
-		$('.ativaAlterarQuestao').click(function() {
-			var idBotaoClicado = $(this).attr('id');
-			var numero = parseInt(idBotaoClicado.replace(/\D/g, ''), 10);
-			$('#formAlterarQuestao'+numero).show();
-			$(this).hide();
+		var ordem1 = $('#ordem' + ordemIni1).val();
+		var ordem2 = $('#ordem' + ordemIni2).val();
+		
+		container1.appendTo('#questaoContainer' + numero2);
+		container2.appendTo('#questaoContainer' + numero1);
+		
+		$('#ordem' + ordemIni1).val(ordem2);
+		$('#ordem' + ordemIni2).val(ordem1);
+	}
+	
+	$(document).ready(function() {
+		var aux;
+		var numero1;
+		var numero2;
+		var ordemIni1;
+		var ordemIni2;
+		var numeroDeQuestoes = ${numeroDeQuestoes };
+		
+		//$('#aux').hide();
+				
+		$('.sobe').click(function() {
+			aux = $(this).parent().parent().attr('id');
+			numero1 = parseInt( aux.match(/\d+/g) );
+			numero2 = numero1 - 1;			
+			
+			aux = $(this).parent().attr('id');
+			ordemIni1 = parseInt( aux.match(/\d+/g) );
+			aux = $('#questaoContainer' + numero2 + ' td').last().attr('id');
+			ordemIni2 = parseInt( aux.match(/\d+/g) );
+			
+			if (numero1 != 0 && numeroDeQuestoes > 1)
+				trocaOrdem(numero1, numero2, ordemIni1, ordemIni2);
 		});
+		
+		$('.desce').click(function() {
+			aux = $(this).parent().parent().attr('id');
+			numero1 = parseInt( aux.match(/\d+/g) );
+			numero2 = numero1 + 1;			
+			
+			aux = $(this).parent().attr('id');
+			ordemIni1 = parseInt( aux.match(/\d+/g) );
+			aux = $('#questaoContainer' + numero2 + ' td').last().attr('id'); 
+			ordemIni2 = parseInt( aux.match(/\d+/g) );
+			
+			if (numero1 != numeroDeQuestoes - 1)
+				trocaOrdem(numero1, numero2, ordemIni1, ordemIni2);
+		});
+		
+		$('#salvar').click(function() {
+			$('#trocaOrdem').submit();
+		});		
 	});
 </script>
 
@@ -140,35 +183,28 @@ font-family:"Times New Roman";
 	<h3>Questões</h3>
 	
 	<div>
-		<c:forEach items="${listaDeExercicios.questoes }" var="questaoDaLista" varStatus="status">
-				<table>
-					<tr>
-						<td>${status.index+1 }. ${questaoDaLista.questao.enunciado }</td>
-						<td>
-							<button id="ativaAlterarQuestao${status.index }" class="ativaAlterarQuestao" type="button">Alterar Questão</button>
-							<form id="formAlterarQuestao${status.index }" action="<c:url value="/listasDeExercicios/${listaDeExercicios.id }/questoes/${status.index }"/>" method="post" accept-charset="utf-8">							
-								<fieldset class="fieldsetSemFormatacao">
-									<label for="idDaNovaQuestao">ID da nova Questão:</label>
-									<input type="text" value="${questaoDaLista.questao.id}" size="6" maxlength="6" name="idDaNovaQuestao" />
-									<input type="text" value="${questaoDaLista.ordem}" size="6" maxlength="6" name="ordemDaQuestao" />
-									<button type="submit" name="_method" value="put">alterar</button>
-								</fieldset>
-							</form>
-						</td>
-						<td>
-							<form action="<c:url value="/listasDeExercicios/${listaDeExercicios.id }/questoes/${status.index }"/>" method="post" accept-charset="utf-8">
-								<fieldset class="fieldsetSemFormatacao">
-									<button type="submit" name="_method" value="delete">Remover</button>
-								</fieldset>
-							</form>
-						</td>							
-					</tr>						
-				</table>
-		</c:forEach>
-		
+		<table>
+			<c:forEach items="${listaDeExercicios.questoes }" var="questaoDaLista" varStatus="status">							
+				<tr id="questaoContainer${status.index }">
+					<td>${status.index }. ${questaoDaLista.questao.enunciado }</td>
+					<td>
+						<form action="<c:url value="/listasDeExercicios/${listaDeExercicios.id }/questoes/${status.index }"/>" method="post">
+							<fieldset class="fieldsetSemFormatacao">
+								<button type="submit" name="_method" value="delete">Remover</button>
+							</fieldset>
+						</form>
+					</td>
+					<td id="questao${status.index }">
+						<button class="sobe">sobe</button><br/>
+						<button class="desce">desce</button>						
+					</td>
+				</tr>
+			</c:forEach>
+				<tr><td><button id="salvar" type="button">Salvar Alterações</button></td></tr>
+		</table>
 		<a href="<c:url value='${listaDeExercicios.id }/inclusaoQuestoes?proxPagina=1&filtro='/>">Incluir nova Questão</a>
-		
 	</div>
+	
 	<div>
 		<a href="<c:url value='/login'/>">Sair</a>
 	</div>
@@ -178,5 +214,14 @@ font-family:"Times New Roman";
     <c:if test ="${usuarioSession.usuario.privilegio == 'PROFESSOR' || usuarioSession.usuario.privilegio == 'ADMINISTRADOR'}">
     	<a href="<c:url value='/professores/home'/>">Página Principal</a><br/>    		         
  	</c:if>
+ 	
+ 	<div id="aux">
+ 		<form id="trocaOrdem" action="<c:url value="/listasDeExercicios/trocaOrdem/${listaDeExercicios.id }"/>">
+ 			<c:forEach items="${listaDeExercicios.questoes }" var="questao" varStatus="status">
+ 				<input id="ordem${status.index }" name="novaOrdem[${status.index }]" readonly="readonly" value="${status.index }"/> 				
+ 			</c:forEach>
+ 		</form>
+ 	</div>
+ 	
 </body>
 </html>
