@@ -13,7 +13,6 @@ import br.usp.ime.academicdevoir.dao.DisciplinaDao;
 import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
 import br.usp.ime.academicdevoir.dao.ListaDeRespostasDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
-import br.usp.ime.academicdevoir.entidade.AutoCorrecao;
 import br.usp.ime.academicdevoir.entidade.EstadoDaListaDeRespostas;
 import br.usp.ime.academicdevoir.entidade.ListaDeRespostas;
 import br.usp.ime.academicdevoir.entidade.Questao;

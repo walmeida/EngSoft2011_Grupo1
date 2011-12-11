@@ -11,7 +11,6 @@ import br.usp.ime.academicdevoir.dao.DisciplinaDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Disciplina;
 import br.usp.ime.academicdevoir.entidade.Turma;
-import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Permission;
 import br.usp.ime.academicdevoir.infra.Privilegio;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
@@ -38,8 +37,6 @@ public class DisciplinasController {
 	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private TurmaDao turmaDao;
-	private UsuarioSession usuarioSession;
-
 	/**
 	 * @param result
 	 *            para interação com o jsp da disciplina.
@@ -54,7 +51,6 @@ public class DisciplinasController {
 		this.result = result;
 		this.disciplinaDao = disciplinaDao;
 		this.turmaDao = turmaDao;
-		this.usuarioSession = usuarioSession;
 	}
 
 	// FIXME Arrumar home da disciplina

@@ -47,11 +47,6 @@ public class QuestoesController {
 	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private final Result result;
-	/**
-	 * @uml.property name="usuarioSession"
-	 * @uml.associationEnd multiplicity="(1 1)"
-	 */
-	private final UsuarioSession usuarioSession;
 	private TagDao tagDao;
 	private ListaDeExerciciosDao listaDeExerciciosDao;
 	private ListaDeRespostasDao listaDeRespostasDao;;
@@ -71,7 +66,6 @@ public class QuestoesController {
 		this.listaDeExerciciosDao = listaDeExerciciosDao;
 		this.listaDeRespostasDao = listaDeRespostasDao;
 		this.result = result;
-		this.usuarioSession = usuarioSession;
 	}
 
 	@Get
