@@ -1,9 +1,8 @@
 package br.usp.ime.academicdevoir.controller;
 
-import org.apache.commons.lang.StringUtils;
-
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.Validator;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
 import br.usp.ime.academicdevoir.entidade.Professor;
 import br.usp.ime.academicdevoir.entidade.Usuario;
@@ -33,14 +32,16 @@ public class ProfessoresController {
 	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
 	private UsuarioSession usuarioSession;
+	private Validator validator;
 
 	/**
 	 * @param result para interação com o jsp do professor.
 	 * @param professorDao para interação com o banco de dados
 	 * @param usuarioSession para controle de permissões
 	 */
-	public ProfessoresController(Result result, ProfessorDao professorDao, UsuarioSession usuarioSession) {
+	public ProfessoresController(Result result, Validator validator, ProfessorDao professorDao, UsuarioSession usuarioSession) {
 		this.result = result;
+		this.validator = validator;
 		this.professorDao = professorDao;
 		this.usuarioSession = usuarioSession;
 	}
@@ -89,6 +90,9 @@ public class ProfessoresController {
 	 * @param novo 
 	 */
 	public void cadastra(final Professor novo) {
+		validator.validate(novo);
+		validator.onErrorUsePageOf(ProfessoresController.class).cadastro();
+		
 		novo.setSenha(new Criptografia().geraMd5(novo.getSenha()));
 		professorDao.salvaProfessor(novo);
 		result.redirectTo(ProfessoresController.class).lista();
@@ -127,9 +131,14 @@ public class ProfessoresController {
 		}
 		
 		p = professorDao.carrega(id);
-		if (!novoNome.equals("") || !StringUtils.isBlank(novoNome)) p.setNome(novoNome);
-		if (!novoEmail.equals("") || !StringUtils.isBlank(novoEmail)) p.setEmail(novoEmail);
-		if (!novaSenha.equals("") || !StringUtils.isBlank(novaSenha)) p.setSenha(new Criptografia().geraMd5(novaSenha));
+		p.setNome(novoNome);
+		p.setEmail(novoEmail);
+		p.setSenha(novaSenha);
+		
+		validator.validate(p);
+		validator.onErrorUsePageOf(ProfessoresController.class).alteracao(id);
+		
+		p.setSenha(new Criptografia().geraMd5(novaSenha));		
 		professorDao.atualizaProfessor(p);
 		result.redirectTo(ProfessoresController.class).home();
 	}

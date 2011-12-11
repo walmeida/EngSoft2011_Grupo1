@@ -5,6 +5,8 @@ import javax.persistence.Embeddable;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -18,6 +20,8 @@ public class Resposta {
     @Column(length = Constantes.MAX_TAM_CAMPO)
 	private String valor;
 	
+    @Min(0)
+    @Max(100)
 	private Double nota;
 	
     @Column(length = Constantes.MAX_TAM_CAMPO)
