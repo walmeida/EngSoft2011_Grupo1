@@ -4,44 +4,24 @@
 import="java.sql.*" errorPage="" %>
 
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <style type="text/css">
-body
-{
-background-color:#f0ecc6;
-}
-h1 
-{
-color: black;
-text-align: center;
-font-size: 40px;
-font-family:"Times New Roman";
-font-style: italic;
-font-variant: small-caps;
-}
-h2
-{
-color: black;
-text-align: center;
-font-size: 20px;
-font-family:"Times New Roman";
-}
-.fieldsetSemFormatacao{
-	border:none;
-	padding: 0px;
-}
+<%@ include file="/css/form2.css" %>
 </style>
+<title>Academic Devoir</title>
 </head>
+
 <body>
-	<h1>Academic Devoir</h1>
-	<h2>Grupo 1 - Engenharia de Software</h2>
-		
-	<h3>Incluir Questões na Lista</h3>
+	<div id="wrapper"> 
+	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
+	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
+	<div id="right">
+	<div id="menu">Incluir Questões na Lista</div>
+	<br/><br/>
 	
-	<div>
 		
-		<form id="formIncluirQuestao" action="<c:url value="/listasDeExercicios/${idDaListaDeExercicios }/inclusaoQuestoes"/>" method="get">
+		<form style="width: 25em;" id="formIncluirQuestao" action="<c:url value="/listasDeExercicios/${idDaListaDeExercicios }/inclusaoQuestoes"/>" method="get">
 			<!--  <fieldset>
 				<legend>Filtrar por Tags</legend> -->
 				<span>Filtra por Tags: </span>
@@ -51,11 +31,10 @@ font-family:"Times New Roman";
 			<!--  </fieldset> -->
 		</form>
 		
-	</div>
 	
 	<br/>
 		
-	<div>
+	
 		<table>
 			<thead>
 				<tr>
@@ -70,7 +49,7 @@ font-family:"Times New Roman";
 						<td>${questao.id }</td>
 						<td>${questao.enunciado }</td>
 						<td>
-							<form id="formIncluirQuestao" action="<c:url value="/listasDeExercicios/${idDaListaDeExercicios }/questoes/inclui"/>" method="post">
+							<form style="width: 25em;" id="formIncluirQuestao" action="<c:url value="/listasDeExercicios/${idDaListaDeExercicios }/questoes/inclui"/>" method="post">
 								<fieldset class="fieldsetSemFormatacao">
 									<input id="idDaQuestao" type="hidden" name="idDaQuestao" value="${questao.id }" />
 									<label id="labelPesoDaQuestao" for="pesoDaQuestao">Peso:</label>
@@ -85,7 +64,7 @@ font-family:"Times New Roman";
 				</c:forEach>
 			</tbody>
 		</table>
-		<div>
+
 			<span>Páginas: </span>
 			
 			<c:if test ="${pagina > 1}">
@@ -105,9 +84,7 @@ font-family:"Times New Roman";
 			<c:if test ="${pagina < ultimaPagina}">
 				<span>&nbsp;&nbsp;</span><a href="<c:url value="inclusaoQuestoes?proxPagina=${pagina + 1}&filtro=${filtroAtual}"/>">&gt;&gt;</a>
 			</c:if>
-			
-		</div>
-	</div>
+
 	<br/>
 	<form id="cadastrarQuestao" action="/academic-devoir/questoes/cadastro">
 		<fieldset class="fieldsetSemFormatacao">
@@ -115,7 +92,7 @@ font-family:"Times New Roman";
 			<a href="<c:url value='/questoes/cadastro'/>">Cadastrar nova questão</a>
 		</fieldset>
 	</form>
-	<a href="<c:url value='/login'/>">Sair</a>
-    <a href="<c:url value='/professores/home'/>">Página Principal</a><br/>
+	</div>
+	</div>
 </body>
 </html>

@@ -8,35 +8,18 @@ import="java.sql.*" errorPage="" %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 <style type="text/css">
-body
-{
-background-color:#f0ecc6;
-}
-h1 
-{
-color: black;
-text-align: center;
-font-size: 40px;
-font-family:"Times New Roman";
-font-style: italic;
-font-variant: small-caps;
-}
-h2
-{
-color: black;
-text-align: center;
-font-size: 20px;
-font-family:"Times New Roman";
-}
-.fieldsetSemFormatacao{
-    border:none;
-    padding: 0px;
-}
+<%@ include file="/css/form2.css" %>
 </style>
+<title>Academic Devoir</title>
 </head>
+
 <body>
-    <h1>Academic Devoir</h1>
-    <h2>Grupo 1 - Engenharia de Software</h2>
+	<div id="wrapper"> 
+	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
+	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
+	<div id="right">
+	<div id="menu">Ver corre&ccedil;&atilde;o</div>
+	<br/><br/>
     
     <table>
         <tr>
@@ -57,8 +40,7 @@ font-family:"Times New Roman";
                 </fieldset>
         </c:forEach>
     </div>
-    
-    <a href="<c:url value='/login'/>">Sair</a>
-    <!-- TODO a href="<c:url value='/alunos/home'/>">Página Principal</a><br/ -->   
+    </div>
+    </div>   
 </body>
 </html>

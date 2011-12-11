@@ -28,9 +28,6 @@ import="java.sql.*" errorPage="" %>
 		<!-- </form> -->
 		<a href="<c:url value='/disciplinas/remove?id=${disciplina.id}'/>">Excluir disciplina</a><br/>
 		
-		<br/><br/>
-		<a href="<c:url value='/disciplinas/lista'/>">Listar disciplinas</a><br/>
-		<a href="<c:url value='/disciplinas/cadastro'/>">Cadastrar nova disciplina</a><br/>
 	</div>
 	</div>
 </body>

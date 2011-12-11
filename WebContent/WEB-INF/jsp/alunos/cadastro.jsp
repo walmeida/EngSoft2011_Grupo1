@@ -74,10 +74,9 @@ $().ready(function() {
 <body>
 	<div id="wrapper">
 	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
-	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
 	<div id="right">
-	<form class="cmxform" action='cadastra' id="cadastro" method="post" accept-charset="utf-8">
-	<fieldset style="width:350px;">
+	<form style="width:800px;" class="cmxform" action='cadastra' id="cadastro" method="post" accept-charset="utf-8">
+	<fieldset style="width:600px;">
 	<legend>N&atilde;o &eacute; um aluno cadastrado? </legend><br/>
 		Preencha o formul&aacute;rio abaixo e clique no bot&atilde;o "Enviar".<br/><br/>
 		<p> 
@@ -90,12 +89,13 @@ $().ready(function() {
 		</p>
 		<p>
 		    <label style="display:block;float:left;width:100px;text-align:right;margin:0px 5px 0px 0px;" for="novo.senha">Senha:</label>
-		    <input id="senha" name="novo.senha" type="password" size="32" value="${novo.senha }" />
+		    <input id="senha" name="novo.senha" type="password" size="30" value="${novo.senha }" />
 		</p>
 		<p>
 		    <label style="display:block;float:left;width:100px;text-align:right;margin:0px 5px 0px 0px;" for="confirmaSenha">Confirmar senha:</label>
-		    <input name="confirmaSenha" type="password" size="32" value="${novo.senha }" />
+		    <input name="confirmaSenha" type="password" size="30" value="${novo.senha }" />
 		</p>
+		<br/>
 		<p>
 		    <label style="display:block;float:left;width:100px;text-align:right;margin:0px 5px 0px 0px;" for="novo.email">E-mail:</label>
 		    <input name="novo.email" type="text"     size="30" value="${novo.email }" />
@@ -104,7 +104,7 @@ $().ready(function() {
 	<p class="submit"><input type="submit" value="Enviar"/></p>
 	</fieldset>
 	</form>
-	<div id="link"><a href="<c:url value='/login'/>">Sair</a></div>
+	<div id="link"><a href="<c:url value='/login'/>">Voltar</a></div>
 	
 	<c:if test ="${usuarioSession.usuario.id != null}">
         <div id="link"><a href="<c:url value='/alunos/lista'/>">Voltar</a><br/></div>              

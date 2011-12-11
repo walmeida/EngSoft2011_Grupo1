@@ -79,15 +79,15 @@ import="java.sql.*" errorPage="" %>
 	</div>
 	<div>
 		<br/>
-		<form action="<c:url value="/questoes/codigo/${questao.id }" />" method="post" accept-charset="utf-8">
+		<form style="width: 700px" "action="<c:url value="/questoes/codigo/${questao.id }" />" method="post" accept-charset="utf-8">
 			
 				<br/>
 				<label for="enunciado">Enunciado:</label><br/>
 					<textarea id="enunciado" rows= "5" cols="80" name="questao.enunciado">${questao.enunciado }</textarea>
-				<br/>
+				<br/><br/>
 				<label for="tags">Tags: </label>
 					<input id="tags" type="text" name="tags" value="${tags }"></input>
-				<br/>
+				<br/><br/>
 				<label for="codigoDeTeste">Código de teste:</label><br/>
 					<textarea id="codigoDeTeste" rows= "5" cols="80" name="questao.codigoDeTeste">${questao.codigoDeTeste }</textarea>
 				<br/><br/>

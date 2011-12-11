@@ -20,12 +20,6 @@ import="java.sql.*" errorPage="" %>
 	<div id="menu">Lista de Disciplinas</div>
 	<br/><br/>
 	<table>
-    <thead>
-        <tr>
-        <th>id</th>
-        <th>Nome</th>
-        </tr>
-    </thead>
     <tbody>
         <c:forEach items="${lista }" var="disciplina">
             <tr>
@@ -33,7 +27,10 @@ import="java.sql.*" errorPage="" %>
                 	<a href="<c:url value="/disciplinas/home/${disciplina.id}"/>">
                 	${disciplina.nome}</a>
                 </td>
-                <td><a href="<c:url value='/disciplinas/alteracao/${disciplina.id}'/>"> Alterar</a> <a href="./remove?id=${disciplina.id}">  Excluir</a></td>
+                <td>
+                <a style="margin-left: 4.5em;" href="<c:url value='/disciplinas/alteracao/${disciplina.id}'/>"> Alterar</a> 
+                <a href="./remove?id=${disciplina.id}">  Excluir</a>
+                </td>
             </tr>
         </c:forEach>             
     </tbody>
