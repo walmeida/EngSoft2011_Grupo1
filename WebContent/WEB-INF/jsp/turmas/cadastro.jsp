@@ -20,7 +20,7 @@ import="java.sql.*" errorPage="" %>
 	<div id="right">
 	<div id="menu">Cadastro de Turma</div>
 	<br/><br/>
-	<form action='cadastra' accept-charset="utf-8">
+	<form action='cadastra' method="post" accept-charset="utf-8">
 	<fieldset>
 		<input type="hidden" name="nova.professor.id" value="${usuarioSession.usuario.id }"/>
 		<input type="hidden" name="nova.disciplina.id" value="${idDisciplina }"/>
