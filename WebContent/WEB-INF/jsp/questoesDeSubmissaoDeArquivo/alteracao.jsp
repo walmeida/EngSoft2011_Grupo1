@@ -80,10 +80,10 @@ import="java.sql.*" errorPage="" %>
 	</div>
 	<div>
 		<br/>
-		<form id="musicForm" action="<c:url value="/questoes/submissao/${questao.id }"/>" method="post" accept-charset="utf-8">
+		<form style="width: 700px" id="musicForm" action="<c:url value="/questoes/submissao/${questao.id }"/>" method="post" accept-charset="utf-8">
 				<label for="enunciado">Enunciado:</label><br/>
 					<textarea id="enunciado" rows= "5" cols="80" name="questao.enunciado">${questao.enunciado }</textarea>
-				<br/>
+				<br/><br/>
 				<label for="tags">Tags: </label><br/>
 					<input id="tags" type="text" name="tags" value="${tags }"></input>
 				<br/><br/>

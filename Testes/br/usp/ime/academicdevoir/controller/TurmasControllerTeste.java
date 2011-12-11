@@ -128,12 +128,12 @@ public class TurmasControllerTeste {
 		assertNotNull(turmas);
 	}
 	
-	@Test
-	public void testCadastro() {
-		turmasController.cadastro();
-		List<Disciplina> disciplinas = result.included("listaDeDisciplinas");		
-		assertNotNull(disciplinas);
-	}
+//	@Test
+//	public void testCadastro() {
+//		turmasController.cadastro();
+//		List<Disciplina> disciplinas = result.included("listaDeDisciplinas");		
+//		assertNotNull(disciplinas);
+//	}
 	
 //	@Test
 //	public void testeCadastra() {
