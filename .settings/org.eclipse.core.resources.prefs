@@ -1,5 +1,7 @@
-#Mon Oct 24 20:05:04 BRST 2011
+#Sun Dec 11 02:50:15 BRST 2011
 eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/jsp/listasDeExercicios/alteracao.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/turmas/alteracao.jsp=UTF-8
 encoding//doc/diagramas/UseCaseProfessor.uml=UTF-8
 encoding//doc/diagramas/UseCaseProfessor.umlusc=UTF-8
 encoding/<project>=UTF-8

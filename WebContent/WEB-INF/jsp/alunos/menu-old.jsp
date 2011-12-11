@@ -1,9 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" 
-    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-  
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" language="java"
+import="java.sql.*" errorPage="" %>
+
 <html>
 <head>
 <style type="text/css">
@@ -23,10 +22,10 @@
     value="Remover aluno" /></form>
     <a href="<c:url value='/login'/>">Sair</a><br/>
         <c:if test ="${usuarioSession.usuario.privilegio == 'ALUNO' || usuarioSession.usuario.privilegio == 'MONITOR'}">
-    	<a href="<c:url value='/alunos/home'/>">Página Principal</a><br/>
+    	<a href="<c:url value='/alunos/home'/>">PÃ¡gina Principal</a><br/>
  	</c:if>
     <c:if test ="${usuarioSession.usuario.privilegio == 'PROFESSOR' || usuarioSession.usuario.privilegio == 'ADMINISTRADOR'}">
-    	<a href="<c:url value='/professores/home'/>">Página Principal</a><br/>    		         
+    	<a href="<c:url value='/professores/home'/>">PÃ¡gina Principal</a><br/>    		         
  	</c:if>
 </body>
 </html>

@@ -1,6 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" language="java"
+import="java.sql.*" errorPage="" %>
+
 <html>
 <head><title>Academic Devoir</title></head>
 <style type="text/css">
@@ -45,7 +47,7 @@
     <form action='../alteracao' method="get">
         <input type="hidden" value="${turma.id}" name="id"/>
         <c:if test ="${usuarioSession.usuario.privilegio != 'ALUNO' && usuarioSession.usuario.privilegio != 'MONITOR'}">
-        	<a href="<c:url value='../alteracao?id=${turma.id}'/>">Alterar informações da turma</a>         
+        	<a href="<c:url value='../alteracao?id=${turma.id}'/>">Alterar informaÃ§Ãµes da turma</a>         
  		</c:if>
     </form>
     <form action='../remove' method="get">

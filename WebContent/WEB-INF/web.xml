@@ -11,4 +11,8 @@
     <dispatcher>FORWARD</dispatcher>
     <dispatcher>REQUEST</dispatcher>
   </filter-mapping>
+  <context-param>    
+      <param-name>br.com.caelum.vraptor.encoding</param-name>    
+      <param-value>UTF-8</param-value>    
+  </context-param>
 </web-app>
