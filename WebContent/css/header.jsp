@@ -16,8 +16,8 @@ font-size: 25px;
 }
 #dir
 {
-text-align: right;
-vertical-align: bottom; 
+font-size: 15px;
+text-align: right; 
 }
 </style>
 </head>
@@ -40,6 +40,7 @@ vertical-align: bottom;
 </c:when>
 <c:otherwise>
 <div id="dir"> 
+<br/>
 Voc&ecirc; acessou como ${usuarioSession.usuario.nome } (<a href="<c:url value='/login'/>">Sair</a>) 
 </div>
 </c:otherwise>
