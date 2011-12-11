@@ -27,18 +27,47 @@ import="java.sql.*" errorPage="" %>
 		<p><label>Disciplina:</label>
 		    <select name="nova.disciplina.id">
     		<c:forEach items="${listaDeDisciplinas}" var="disciplina">
-          		<option value="${disciplina.id }">${disciplina.nome }</option> 
-    		</c:forEach>
-    	</select></p>
+          		<option value="${disciplina.id}" >${disciplina.nome}</option>
+          	</c:forEach>
+    	</select>
+    	</p>
 		<p><label for="prazoDeMatricula">Prazo de matrícula:</label></p><br/>
 
-					<p><label for="dia">Dia: </label>
-						<input id="dia" type="text" size="2" maxlength="2" name="prazoDeMatricula[0]" value="${diaAtual}"/></p>
-					<p><label for="mes">Mês: </label>
-						<input id="mes" type="text" size="2" maxlength="2" name="prazoDeMatricula[1]" value="${mesAtual}"/></p>
+					<p><label for="dia">Dia:<br/></label>
+						<select name="prazoDeMatricula[0]">
+						<c:forEach var="i" begin="1" end="31" step="1" varStatus="status">
+							<c:if test="${ diaAtual == i}">
+								<option value="${i}" selected>${i}</option>
+							</c:if>
+							<c:if test="${ diaAtual != i}">
+								<option value="${i}">${i}</option>
+							</c:if>
+						</c:forEach>
+						</select> 
+					</p>
+					
+					<p><label for="mes">M�s:<br/></label>
+						<select name="prazoDeMatricula[1]">
+						<c:forEach var="i" begin="1" end="12" step="1" varStatus="status">
+							<c:if test="${ mesAtual == i}">
+								<option value="${i}" selected>${i}</option>
+							</c:if>
+							<c:if test="${ mesAtual != i}">
+								<option value="${i}">${i}</option>
+							</c:if>
+						</c:forEach>
+						</select> 
+					</p>
+					
 					<p><label for="ano">Ano:<br/></label>
-						<input id="ano" type="text" size="2" maxlength="4" name="prazoDeMatricula[2]" value="${anoAtual}"/></p>
-
+						<select name="prazoDeMatricula[2]">
+							<option value="${anoAtual}" selected>${anoAtual}</option>
+						<c:forEach var="i" begin="${anoAtual + 1}" end="${anoAtual + 5}" step="1" varStatus="status">
+							<option value="${i}">${i}</option>
+						</c:forEach>
+						</select> 
+					</p>	
+					
 	<p class="submit"><input type="submit" value="Enviar"/></p>
 	</fieldset>
 	</form>

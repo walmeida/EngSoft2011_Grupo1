@@ -112,16 +112,23 @@ public class ListaDeRespostas {
 		this.notaFinal = notaFinal;
 	}
 
-	public void adiciona(Resposta novaResposta) {
+	public int adiciona(Resposta novaResposta) {
 		Long id = novaResposta.getQuestao().getId();
-		
+		int i = -1;
+
 		for (Resposta resposta : respostas) {
 			if (resposta.getQuestao().getId() == id) {
-				if (novaResposta.getValor() == null || novaResposta.getValor().isEmpty() ) return;
-				respostas.remove(resposta);
+				i = respostas.indexOf(resposta);
 				break;
 			}
 		}
-		respostas.add(novaResposta);
+		// FIXME
+		if (i < 0) {
+		    if (novaResposta.getValor() != null && 
+                    !novaResposta.getValor().isEmpty())
+		    respostas.add(novaResposta);
+		}
+		else respostas.set(i, novaResposta);
+		return i;
 	}
 }

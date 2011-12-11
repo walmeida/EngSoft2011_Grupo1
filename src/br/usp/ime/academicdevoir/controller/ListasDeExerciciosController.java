@@ -209,7 +209,9 @@ public class ListasDeExerciciosController {
 	    listaDeRespostas = listaDeRespostasDao
 				.carrega(listaDeRespostas.getId());
 	    if (listaDeRespostas.getPropriedades().getEstado() == 
-	        EstadoDaListaDeRespostas.CORRIGIDA)
+	        EstadoDaListaDeRespostas.CORRIGIDA ||
+	        listaDeRespostas.getPropriedades().getEstado() == 
+	            EstadoDaListaDeRespostas.FINALIZADA)
 	        result.redirectTo(ListasDeExerciciosController.class).
 	               verCorrecao(listaDeRespostas);
 		ListaDeExercicios listaDeExercicios = listaDeRespostas

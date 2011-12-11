@@ -13,6 +13,7 @@ import br.usp.ime.academicdevoir.dao.DisciplinaDao;
 import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
 import br.usp.ime.academicdevoir.dao.ListaDeRespostasDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
+import br.usp.ime.academicdevoir.entidade.EstadoDaListaDeRespostas;
 import br.usp.ime.academicdevoir.entidade.ListaDeRespostas;
 import br.usp.ime.academicdevoir.entidade.Questao;
 import br.usp.ime.academicdevoir.entidade.Resposta;
@@ -55,10 +56,11 @@ public class RespostasController {
 	@Path("/respostas/{listaDeRespostas.id}/cadastra")
 	public void salvaResposta(ListaDeRespostas listaDeRespostas, Resposta resposta, Long idDaQuestao, UploadedFile arquivo) {
 	    String caminho;
+	    int nenvios;
 	    if (resposta == null) resposta = new Resposta();
 		
-		dao.recarrega(listaDeRespostas);
-		
+	    dao.recarrega(listaDeRespostas);
+	    
 		Questao questao = questaoDao.carrega(idDaQuestao);		
 			
 		if (questao.getTipo() == TipoDeQuestao.SUBMISSAODEARQUIVO && arquivo != null) {
@@ -71,9 +73,21 @@ public class RespostasController {
 		}
 		
         resposta.setQuestao(questao);
-		listaDeRespostas.adiciona(resposta);
-				
+        nenvios = listaDeRespostas.getPropriedades().getNumeroDeEnvios();
+		if (listaDeRespostas.getRespostas().isEmpty())
+            listaDeRespostas.getPropriedades().setNumeroDeEnvios(nenvios + 1);
+        
+		if (listaDeRespostas.adiciona(resposta) == 0)
+            listaDeRespostas.getPropriedades().setNumeroDeEnvios(nenvios + 1);
+		
+		if (listaDeRespostas.getPropriedades().getNumeroDeEnvios() >= 
+		    listaDeRespostas.getListaDeExercicios().getPropriedades().
+		    getNumeroMaximoDeEnvios())
+		    listaDeRespostas.getPropriedades().setEstado
+		            (EstadoDaListaDeRespostas.FINALIZADA);
+
 		dao.atualiza(listaDeRespostas);
+		
 		result.redirectTo(ListasDeExerciciosController.class).lista();
 	}
 	
