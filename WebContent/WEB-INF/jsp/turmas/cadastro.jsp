@@ -46,12 +46,7 @@ import="java.sql.*" errorPage="" %>
 						</c:forEach>
 						</select> 
 					</p>
-					
-<<<<<<< HEAD
 					<p><label for="mes">Mês:<br/></label>
-=======
-					<p><label for="mes">M&ecirc;s:<br/></label>
->>>>>>> a05776a22c55c59946f1e04e6f8dc91dea06eca8
 						<select name="prazoDeMatricula[1]">
 						<c:forEach var="i" begin="1" end="12" step="1" varStatus="status">
 							<c:if test="${ mesAtual == i}">
