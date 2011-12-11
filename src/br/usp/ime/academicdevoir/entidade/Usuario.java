@@ -6,6 +6,10 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import br.usp.ime.academicdevoir.infra.Privilegio;
 
 @Entity
@@ -20,18 +24,26 @@ public class Usuario {
 	/**
 	 * @uml.property  name="nome"
 	 */
+	@NotEmpty
+	@Length(min = 5)
 	private String nome;
 	/**
 	 * @uml.property  name="login"
 	 */
+	@NotEmpty
+	@Length(min = 4)
 	private String login;
 	/**
 	 * @uml.property  name="senha"
-	 */
+	 */	
+	@NotEmpty
+	@Length(min = 5)
 	private String senha;
 	/**
 	 * @uml.property  name="email"
 	 */
+	@NotEmpty
+	@Email
 	private String email;
 	/**
 	 * @uml.property  name="privilegio"

@@ -4,10 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 
-import org.apache.commons.lang.StringUtils;
-
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.Validator;
 import br.usp.ime.academicdevoir.dao.AlunoDao;
 import br.usp.ime.academicdevoir.dao.DisciplinaDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
@@ -51,6 +50,7 @@ public class AlunosController {
 	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private UsuarioSession usuarioSession;
+	private Validator validator;
 
 	/**
 	 * @param result
@@ -64,10 +64,11 @@ public class AlunosController {
 	 * @param usuarioSession
 	 *            para controle de permissões
 	 */
-	public AlunosController(Result result, AlunoDao alunoDao,
+	public AlunosController(Result result, Validator validator, AlunoDao alunoDao,
 			DisciplinaDao disciplinaDao, TurmaDao turmaDao,
 			UsuarioSession usuarioSession) {
 		this.result = result;
+		this.validator = validator;
 		this.alunoDao = alunoDao;
 		this.disciplinaDao = disciplinaDao;
 		this.turmaDao = turmaDao;
@@ -117,6 +118,9 @@ public class AlunosController {
 	 */
 	@Public
 	public void cadastra(final Aluno novo) {
+		validator.validate(novo);
+		validator.onErrorUsePageOf(AlunosController.class).cadastro();		
+		
 		novo.setSenha(new Criptografia().geraMd5(novo.getSenha()));
 		alunoDao.salvaAluno(novo);
 		result.redirectTo(AlunosController.class).lista();
@@ -159,12 +163,15 @@ public class AlunosController {
 		}
 
 		a = alunoDao.carrega(id);
-		if (!novoNome.equals("") || !StringUtils.isBlank(novoNome))
-			a.setNome(novoNome);
-		if (!novoEmail.equals("") || !StringUtils.isBlank(novoEmail))
-			a.setEmail(novoEmail);
-		if (!novaSenha.equals("") || !StringUtils.isBlank(novaSenha))
-			a.setSenha(new Criptografia().geraMd5(novaSenha));
+		a.setNome(novoNome);
+		a.setEmail(novoEmail);		
+		a.setSenha(novaSenha);
+		
+		validator.validate(a);
+		validator.onErrorUsePageOf(AlunosController.class).alteracao(id);
+		
+		a.setSenha(new Criptografia().geraMd5(novaSenha));
+		
 		alunoDao.atualizaAluno(a);
 		result.redirectTo(AlunosController.class).home();
 	}
