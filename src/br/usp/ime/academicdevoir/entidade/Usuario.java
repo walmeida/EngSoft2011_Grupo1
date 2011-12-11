@@ -25,19 +25,19 @@ public class Usuario {
 	 * @uml.property  name="nome"
 	 */
 	@NotEmpty
-	@Length(min = 5)
+	@Length(min = 5, max = 50)
 	private String nome;
 	/**
 	 * @uml.property  name="login"
 	 */
 	@NotEmpty
-	@Length(min = 4)
+	@Length(min = 2, max = 30)
 	private String login;
 	/**
 	 * @uml.property  name="senha"
 	 */	
 	@NotEmpty
-	@Length(min = 5)
+	@Length(min = 5, max = 32)
 	private String senha;
 	/**
 	 * @uml.property  name="email"

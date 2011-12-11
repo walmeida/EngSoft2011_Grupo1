@@ -68,7 +68,7 @@ $().ready(function() {
 		Preencha o formul&aacute;rio abaixo e clique no bot&atilde;o "Enviar".<br/><br/>
 		<p> 
 		    <label style="display:block;float:left;width:100px;text-align:right;margin:0px 5px 0px 0px;" for="novo.nome">Nome:</label>
-		    <input    name="novo.nome"  type="text"     size="30" />
+		    <input    name="novo.nome"  type="text"     size="50" />
 		</p>
 		<p> 
 		    <label style="display:block;float:left;width:100px;text-align:right;margin:0px 5px 0px 0px;" for="novo.login">Login:</label>

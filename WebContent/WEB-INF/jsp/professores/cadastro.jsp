@@ -18,7 +18,7 @@ import="java.sql.*" errorPage="" %>
 	<fieldset>
 	<legend>N&atilde;o &eacute; um professor cadastrado? </legend><br/>
 		Preencha o formul&aacute;rio abaixo e clique no bot&atilde;o "Enviar".<br/><br/>
-		Nome: <br/><input type="text" size="30" name="novo.nome"/><br/>
+		Nome: <br/><input type="text" size="50" name="novo.nome"/><br/>
 		Login : <br/><input type="text" size="30" name="novo.login"/><br/>
 		Senha : <br/><input type="password" size="32" name="novo.senha"/><br/>
 		E-mail : <br/><input type="text" size="30" name="novo.email"/><br/><br/>
