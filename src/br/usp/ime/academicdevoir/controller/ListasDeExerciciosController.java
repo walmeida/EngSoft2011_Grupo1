@@ -182,6 +182,7 @@ public class ListasDeExerciciosController {
 			listaDeRespostas = new ListaDeRespostas();
 			listaDeRespostas.setListaDeExercicios(listaDeExercicios);
 			listaDeRespostas.setAluno(aluno);
+			listaDeRespostas.setPropriedades(propriedades);
 		}
 
 		else if (listaDeRespostas.getRespostas() != null
@@ -221,6 +222,27 @@ public class ListasDeExerciciosController {
 				.size());
 	}
 
+	@Get
+    @Path("/respostas/verCorrecao/{listaDeRespostas.id}")
+    public void verCorrecao(ListaDeRespostas listaDeRespostas) {
+        listaDeRespostas = listaDeRespostasDao
+                .carrega(listaDeRespostas.getId());
+        ListaDeExercicios listaDeExercicios = listaDeRespostas
+                .getListaDeExercicios();
+        List<String> renders = new ArrayList<String>();
+        List<Resposta> respostas = listaDeRespostas.getRespostas();
+        for (Resposta resposta : respostas) {
+            renders.add(resposta.getQuestao().getRenderCorrecao(resposta));
+        }
+
+        result.include("renderizacao", renders);
+        result.include("listaDeRespostas", listaDeRespostas);
+        result.include("listaDeExercicios", listaDeExercicios);
+        result.include("numeroDeQuestoes", listaDeExercicios.getQuestoes()
+                .size());
+    }
+
+	
 	@Get
 	@Path("/listasDeExercicios/altera/{id}")
 	/** 
@@ -479,12 +501,15 @@ public class ListasDeExerciciosController {
 				//#TODO Questões abertas?? Como faz??
 				//else if (resultado == false) resposta.setNota(0.0);  Abaixo seria o NULL
 				else resposta.setNota(0.0);
-								
+							
 			}
 			
 			//Atribuindo a nota final à lista
 			listaDeRespostas.setNotaFinal(pesosDasQuestoes);
-			listaDeRespostasDao.salva(listaDeRespostas);
+			listaDeRespostas.getPropriedades().setEstado(
+			                EstadoDaListaDeRespostas.CORRIGIDA);
+			System.out.println(listaDeRespostas.getPropriedades().getEstado());
+			listaDeRespostasDao.atualiza(listaDeRespostas);
 		}
 		
 		//Redireciona para o menu de listas

@@ -106,6 +106,31 @@ public abstract class Questao {
 	
 	public abstract String getRenderAlteracao(Resposta resposta);
 	
+	public String getRenderCorrecao (Resposta resposta) {
+        if (resposta == null)
+            resposta = new Resposta();
+        
+        String htmlResult = "";
+        StringBuffer buffer = new StringBuffer();
+
+        buffer.append("<p>");
+        if (resposta.getValor() != null)
+            buffer.append(resposta.getValor());
+        buffer.append("</p>");
+        buffer.append("<p> Comentários: ");
+        if (resposta.getComentario() != null)
+            buffer.append(resposta.getComentario());
+        buffer.append("</p>");
+        buffer.append("<p> Nota: ");
+        if (resposta.getNota() != null)
+            buffer.append(resposta.getNota());
+        buffer.append("</p>");
+
+        htmlResult = buffer.toString();
+
+        return htmlResult;
+        
+    }
 	public abstract Boolean respostaDoAlunoEhCorreta(Resposta respostaAluno);
 	
 	public abstract Questao copia();

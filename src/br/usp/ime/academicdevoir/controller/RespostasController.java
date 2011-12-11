@@ -65,9 +65,11 @@ public class RespostasController {
 			arquivos.salva(arquivo, idDaQuestao);
 			resposta.setValor(arquivo.getFileName());
 		}
-		caminho = arquivos.getPastaDaQuestao(questao.getId()).getAbsolutePath();
-		resposta.setCaminhoParaDiretorioDeTeste(caminho);
-		resposta.setQuestao(questao);
+		if (questao.getTipo() == TipoDeQuestao.CODIGO) {
+		    caminho = arquivos.getPastaDaQuestao(questao.getId()).getAbsolutePath();
+		    resposta.setCaminhoParaDiretorioDeTeste(caminho);
+		    resposta.setQuestao(questao);
+		}
 		listaDeRespostas.adiciona(resposta);
 				
 		dao.atualiza(listaDeRespostas);

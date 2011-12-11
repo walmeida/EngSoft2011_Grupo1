@@ -48,7 +48,7 @@ text-align: center;
 font-size: 40px;
 font-family:"Times New Roman";
 font-style: italic;
-font-variant: small-caps;
+font-variant: small-capsull;
 }
 h2
 {
