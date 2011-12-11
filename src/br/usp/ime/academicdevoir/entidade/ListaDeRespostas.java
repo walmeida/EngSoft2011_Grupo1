@@ -1,5 +1,6 @@
 package br.usp.ime.academicdevoir.entidade;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -112,15 +113,61 @@ public class ListaDeRespostas {
 		this.notaFinal = notaFinal;
 	}
 
-	public void adiciona(Resposta novaResposta) {
+	public int adiciona(Resposta novaResposta) {
 		Long id = novaResposta.getQuestao().getId();
-		
+		int i = -1;
+
 		for (Resposta resposta : respostas) {
 			if (resposta.getQuestao().getId() == id) {
-				respostas.remove(resposta);
+				i = respostas.indexOf(resposta);
 				break;
 			}
 		}
-		respostas.add(novaResposta);
+		// FIXME
+		if (i < 0) {
+		    if (novaResposta.getValor() != null && 
+                    !novaResposta.getValor().isEmpty())
+		    respostas.add(novaResposta);
+		}
+		else respostas.set(i, novaResposta);
+		return i;
+	}
+	
+	public void autocorrecao() {
+	    //List para os pesos das questões usados na nota final
+	    List<Integer> pesosDasQuestoes = new ArrayList<Integer>();
+	    QuestaoDaLista questaoDaLista = null;
+	    
+	    //Para cada resposta dessa lista
+	    for (Resposta resposta : respostas) {
+        
+            //Pegando a questao a qual a resposta se refere
+            Questao questao = resposta.getQuestao();
+        
+            //Obtendo a Questao relacionada com a lista para obter as propriedades
+            //QuestaoDaLista questaoDaLista = questaoDaListaDao.getQuestaoDaListaPorIds(id, questao.getId());
+        
+            for (QuestaoDaLista i : listaDeExercicios.getQuestoes())
+                if (i.getQuestao().equals(questao)) {
+                questaoDaLista = i;
+                break;
+            }
+            //Montando o vetor de pesos para o cálculo da nota final
+            pesosDasQuestoes.add(questaoDaLista.getPeso());
+        
+            //Resultado da Comparação da Resposta (Correção): True se correta, False se errada e NULL se aberta. 
+            Boolean resultado = questao.respostaDoAlunoEhCorreta(resposta);
+        
+            if (resultado != null)
+            //Verificando se a resposta está certa ou não.
+                if(resultado == true) resposta.setNota(100.0);
+            //#TODO Questões abertas?? Como faz??
+            //else if (resultado == false) resposta.setNota(0.0);  Abaixo seria o NULL
+                else resposta.setNota(0.0);
+	    }
+    
+	    //Atribuindo a nota final à lista
+	    setNotaFinal(pesosDasQuestoes);
+	
 	}
 }

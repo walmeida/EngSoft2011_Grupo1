@@ -113,4 +113,5 @@ public class ListaDeExercicios {
 			pesos.add(questao.getPeso());
 		}
 	}
+	
 }

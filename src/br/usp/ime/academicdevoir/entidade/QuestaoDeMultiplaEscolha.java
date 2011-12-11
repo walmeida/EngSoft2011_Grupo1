@@ -129,6 +129,39 @@ public class QuestaoDeMultiplaEscolha extends Questao {
 		return htmlResult;
 	}
 	
+	public String getRenderCorrecao (Resposta resposta) {
+	    int i, valorResposta;
+	    if (resposta == null)
+            resposta = new Resposta();
+        
+        String htmlResult = "";
+        StringBuffer buffer = new StringBuffer();
+        buffer.append("<p>");
+        if (resposta.getValor() != null) {
+            for (i = 0, valorResposta = 1; i < alternativas.size(); i++,
+                 valorResposta *= 2) 
+                if (Integer.parseInt(resposta.getValor()) == valorResposta)
+                    break;
+            if (i < alternativas.size())
+                buffer.append(alternativas.get(i));
+
+        }
+        buffer.append("</p>");
+        buffer.append("<p> Comentários: ");
+        if (resposta.getComentario() != null)
+            buffer.append(resposta.getComentario());
+        buffer.append("</p>");
+        buffer.append("<p> Nota: ");
+        if (resposta.getNota() != null)
+            buffer.append(resposta.getNota());
+        buffer.append("</p>");
+
+        htmlResult = buffer.toString();
+
+        return htmlResult;
+        
+    }
+	
 	public String getAlternativasCorretas() {
 		int valor, resposta = this.resposta;
 		Boolean primeira = true;

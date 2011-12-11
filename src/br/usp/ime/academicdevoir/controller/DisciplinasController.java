@@ -11,10 +11,11 @@ import br.usp.ime.academicdevoir.dao.DisciplinaDao;
 import br.usp.ime.academicdevoir.dao.TurmaDao;
 import br.usp.ime.academicdevoir.entidade.Disciplina;
 import br.usp.ime.academicdevoir.entidade.Turma;
-import br.usp.ime.academicdevoir.entidade.Usuario;
+import br.usp.ime.academicdevoir.infra.Permission;
 import br.usp.ime.academicdevoir.infra.Privilegio;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
+@Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
 @Resource
 /**
  * Controlador de disciplinas.
@@ -36,8 +37,6 @@ public class DisciplinasController {
 	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private TurmaDao turmaDao;
-	private UsuarioSession usuarioSession;
-
 	/**
 	 * @param result
 	 *            para interação com o jsp da disciplina.
@@ -52,7 +51,6 @@ public class DisciplinasController {
 		this.result = result;
 		this.disciplinaDao = disciplinaDao;
 		this.turmaDao = turmaDao;
-		this.usuarioSession = usuarioSession;
 	}
 
 	// FIXME Arrumar home da disciplina
@@ -78,10 +76,6 @@ public class DisciplinasController {
 	 * no sistema.
 	 */
 	public void cadastro() {
-		Usuario u = usuarioSession.getUsuario();
-		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
-				.getPrivilegio() == Privilegio.PROFESSOR))
-			result.redirectTo(LoginController.class).acessoNegado();
 	}
 
 	/**
@@ -90,13 +84,6 @@ public class DisciplinasController {
 	 * @param nova
 	 */
 	public void cadastra(final Disciplina nova) {
-		Usuario u = usuarioSession.getUsuario();
-		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
-				.getPrivilegio() == Privilegio.PROFESSOR)) {
-			result.redirectTo(LoginController.class).acessoNegado();
-			return;
-		}
-
 		disciplinaDao.salvaDisciplina(nova);
 		result.redirectTo(DisciplinasController.class).lista();
 	}
@@ -109,13 +96,6 @@ public class DisciplinasController {
 	 * @param id
 	 */
 	public void alteracao(Long id) {
-		Usuario u = usuarioSession.getUsuario();
-		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
-				.getPrivilegio() == Privilegio.PROFESSOR)) {
-			result.redirectTo(LoginController.class).acessoNegado();
-			return;
-		}
-
 		result.include("disciplina", disciplinaDao.carrega(id));
 	}
 
@@ -127,12 +107,6 @@ public class DisciplinasController {
 	 */
 	public void altera(Long id, String novoNome) {
 		Disciplina d;
-		Usuario u = usuarioSession.getUsuario();
-		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
-				.getPrivilegio() == Privilegio.PROFESSOR)) {
-			result.redirectTo(LoginController.class).acessoNegado();
-			return;
-		}
 
 		d = disciplinaDao.carrega(id);
 		if (!novoNome.equals(""))
@@ -146,10 +120,6 @@ public class DisciplinasController {
 	 * disciplina.
 	 */
 	public void remocao() {
-		Usuario u = usuarioSession.getUsuario();
-		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
-				.getPrivilegio() == Privilegio.PROFESSOR))
-			result.redirectTo(LoginController.class).acessoNegado();
 	}
 
 	/**
@@ -159,12 +129,6 @@ public class DisciplinasController {
 	 */
 	public void remove(final Long id) {
 		Disciplina disciplina;
-		Usuario u = usuarioSession.getUsuario();
-		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
-				.getPrivilegio() == Privilegio.PROFESSOR)) {
-			result.redirectTo(LoginController.class).acessoNegado();
-			return;
-		}
 
 		disciplina = disciplinaDao.carrega(id);
 		

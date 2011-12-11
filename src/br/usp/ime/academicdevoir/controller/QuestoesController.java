@@ -7,17 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
+import br.usp.ime.academicdevoir.dao.ListaDeRespostasDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.TagDao;
 import br.usp.ime.academicdevoir.entidade.ListaDeExercicios;
+import br.usp.ime.academicdevoir.entidade.ListaDeRespostas;
 import br.usp.ime.academicdevoir.entidade.PropriedadesDaListaDeExercicios;
 import br.usp.ime.academicdevoir.entidade.Questao;
+import br.usp.ime.academicdevoir.entidade.QuestaoDaLista;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeCodigo;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeSubmissaoDeArquivo;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeTexto;
 import br.usp.ime.academicdevoir.entidade.QuestaoDeVouF;
-import br.usp.ime.academicdevoir.entidade.Usuario;
+import br.usp.ime.academicdevoir.entidade.Resposta;
+import br.usp.ime.academicdevoir.infra.Permission;
 import br.usp.ime.academicdevoir.infra.Privilegio;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 import br.com.caelum.vraptor.Delete;
@@ -26,6 +30,7 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 
+@Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
 @Resource
 /**
  * Controlador de questões.
@@ -42,13 +47,9 @@ public class QuestoesController {
 	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private final Result result;
-	/**
-	 * @uml.property name="usuarioSession"
-	 * @uml.associationEnd multiplicity="(1 1)"
-	 */
-	private final UsuarioSession usuarioSession;
 	private TagDao tagDao;
 	private ListaDeExerciciosDao listaDeExerciciosDao;
+	private ListaDeRespostasDao listaDeRespostasDao;;
 
 	/**
 	 * @param turmaDao
@@ -58,14 +59,13 @@ public class QuestoesController {
 	 * @param usuarioSession
 	 *            para controle de permissões
 	 */
-	public QuestoesController(QuestaoDao dao, TagDao tagDao,
-			ListaDeExerciciosDao listaDeExerciciosDao, Result result,
+	public QuestoesController(QuestaoDao dao, TagDao tagDao, ListaDeExerciciosDao listaDeExerciciosDao, ListaDeRespostasDao listaDeRespostasDao, Result result,
 			UsuarioSession usuarioSession) {
 		this.dao = dao;
 		this.tagDao = tagDao;
 		this.listaDeExerciciosDao = listaDeExerciciosDao;
+		this.listaDeRespostasDao = listaDeRespostasDao;
 		this.result = result;
-		this.usuarioSession = usuarioSession;
 	}
 
 	@Get
@@ -74,13 +74,8 @@ public class QuestoesController {
 	 * Devolve uma questão de múltipla escolha com o id fornecido.
 	 * @param id
 	 * */
+	
 	public void alteracao(Long id) {
-		Usuario u = usuarioSession.getUsuario();
-		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
-				.getPrivilegio() == Privilegio.PROFESSOR)) {
-			result.redirectTo(LoginController.class).acessoNegado();
-			return;
-		}
 		switch (dao.carrega(id).getTipo()) {
 		case CODIGO:
 			result.redirectTo(QuestoesDeCodigoController.class).alteracao(id);
@@ -107,18 +102,51 @@ public class QuestoesController {
 
 	@Delete
 	@Path("/questoes/{id}")
+	@Permission(Privilegio.ADMINISTRADOR)
 	/**
 	 * Remove uma questão do banco de dados com o id fornecido.
 	 * @param id
 	 */
 	public void remove(Long id) {
-		Usuario u = usuarioSession.getUsuario();
-		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
-				.getPrivilegio() == Privilegio.PROFESSOR)) {
-			result.redirectTo(LoginController.class).acessoNegado();
-			return;
+		List<BigInteger> idsDasListas = listaDeExerciciosDao.buscaListasQueContemQuestao(id);
+		ListaDeExercicios lista;
+		List<QuestaoDaLista> questoes;
+		List<ListaDeRespostas> listaDeListaDeRespostas;
+		List<Resposta> respostas;
+		
+		
+		// Remove a questão na lista de exercícios e nas listas de respostas
+		for (BigInteger idDaLista : idsDasListas) {
+			lista = listaDeExerciciosDao.carrega(idDaLista.longValue());
+			questoes = lista.getQuestoes();
+			
+			for (QuestaoDaLista questao : questoes) {
+				if (questao.getQuestao().getId() == id) {
+					questoes.remove(questao);
+					break;
+				}
+			}
+			
+			lista.setQuestoes(questoes);
+			listaDeExerciciosDao.atualiza(lista);
+			
+			listaDeListaDeRespostas = lista.getRespostas();
+			
+			for (ListaDeRespostas listaDeRespostas : listaDeListaDeRespostas) {
+				respostas = listaDeRespostas.getRespostas();
+				
+				for(Resposta resposta : respostas) {
+					if (resposta.getQuestao().getId() == id) {
+						respostas.remove(resposta);
+						break;
+					}
+				}
+				
+				listaDeRespostas.setRespostas(respostas);
+				listaDeRespostasDao.atualiza(listaDeRespostas);
+			}			
 		}
-
+		
 		Questao questao = dao.carrega(id);
 		dao.remove(questao);
 		result.redirectTo(this).lista();
@@ -130,10 +158,6 @@ public class QuestoesController {
 	 * Permite acesso à página com formulário para cadastro de uma nova questão.
 	 */
 	public void cadastro() {
-		Usuario u = usuarioSession.getUsuario();
-		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
-				.getPrivilegio() == Privilegio.PROFESSOR))
-			result.redirectTo(LoginController.class).acessoNegado();
 	}
 
 	@Get
@@ -142,13 +166,6 @@ public class QuestoesController {
 	 * Devolve uma lista com todas as questões cadastradas no banco de dados.
 	 */
 	public void lista() {
-		Usuario u = usuarioSession.getUsuario();
-		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
-				.getPrivilegio() == Privilegio.PROFESSOR)) {
-			result.redirectTo(LoginController.class).acessoNegado();
-			return;
-		}
-
 		result.include("lista", dao.listaTudo());
 	}
 
@@ -186,12 +203,6 @@ public class QuestoesController {
 	@Get
 	@Path("/questoes/copia/{id}")
 	public void copia(Long id) {
-		Usuario u = usuarioSession.getUsuario();
-		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
-				.getPrivilegio() == Privilegio.PROFESSOR)) {
-			result.redirectTo(LoginController.class).acessoNegado();
-			return;
-		}
 		Questao questao = dao.carrega(id).copia(tagDao);		
 
 		switch (questao.getTipo()) {

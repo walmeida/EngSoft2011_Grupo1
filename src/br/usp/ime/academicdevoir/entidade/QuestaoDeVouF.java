@@ -78,6 +78,38 @@ public class QuestaoDeVouF extends Questao {
 		return htmlResult;
 	}
 	
+	public String getRenderCorrecao (Resposta resposta) {
+        if (resposta == null)
+            resposta = new Resposta();
+        
+        String htmlResult = "";
+        StringBuffer buffer = new StringBuffer();
+
+        buffer.append("<p>");
+        
+        if (resposta.getValor() != null) {
+            if (resposta.getValor().equals("true"))
+                buffer.append("Verdadeiro");
+            else if (resposta.getValor().equals("false"))
+                buffer.append("Falso");
+        }
+        
+        buffer.append("</p>");
+        buffer.append("<p> Comentários: ");
+        if (resposta.getComentario() != null)
+            buffer.append(resposta.getComentario());
+        buffer.append("</p>");
+        buffer.append("<p> Nota: ");
+        if (resposta.getNota() != null)
+            buffer.append(resposta.getNota());
+        buffer.append("</p>");
+
+        htmlResult = buffer.toString();
+
+        return htmlResult;
+        
+    }
+	
 	public Boolean respostaDoAlunoEhCorreta(Resposta respostaAluno) {
 	   return respostaAluno.getValor().equals(resposta.toString());
 	}

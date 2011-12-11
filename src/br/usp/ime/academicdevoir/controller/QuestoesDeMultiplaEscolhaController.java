@@ -2,13 +2,6 @@ package br.usp.ime.academicdevoir.controller;
 
 import java.util.List;
 
-import br.usp.ime.academicdevoir.dao.QuestaoDeMultiplaEscolhaDao;
-import br.usp.ime.academicdevoir.dao.TagDao;
-import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
-import br.usp.ime.academicdevoir.entidade.Usuario;
-import br.usp.ime.academicdevoir.infra.Privilegio;
-import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
-import br.usp.ime.academicdevoir.infra.UsuarioSession;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -17,7 +10,15 @@ import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
+import br.usp.ime.academicdevoir.dao.QuestaoDeMultiplaEscolhaDao;
+import br.usp.ime.academicdevoir.dao.TagDao;
+import br.usp.ime.academicdevoir.entidade.QuestaoDeMultiplaEscolha;
+import br.usp.ime.academicdevoir.infra.Permission;
+import br.usp.ime.academicdevoir.infra.Privilegio;
+import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
+import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
+@Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
 @Resource
 /**
  * Controlador de questões de múltipla escolha.
@@ -39,11 +40,6 @@ public class QuestoesDeMultiplaEscolhaController {
 	 * @uml.associationEnd multiplicity="(1 1)"
 	 */
 	private Validator validator;
-	/**
-	 * @uml.property name="usuarioSession"
-	 * @uml.associationEnd multiplicity="(1 1)"
-	 */
-	private final UsuarioSession usuarioSession;
 	private TagDao tagDao;
 
 	/**
@@ -62,11 +58,10 @@ public class QuestoesDeMultiplaEscolhaController {
 		this.tagDao = tagDao;
 		this.result = result;
 		this.validator = validator;
-		this.usuarioSession = usuarioSession;
 	}
 
 	@Post
-	@Path("/questoes/mult")
+	@Path("/questoes/mult")	
 	/**
 	 * Verifica se a questão de múltipla escolha fornecida é válida e adiciona 
 	 * no banco de dados.
@@ -74,12 +69,6 @@ public class QuestoesDeMultiplaEscolhaController {
 	 */
 	public void cadastra(final QuestaoDeMultiplaEscolha questao,
 			List<Integer> resposta, String tags) {
-		Usuario u = usuarioSession.getUsuario();
-		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
-				.getPrivilegio() == Privilegio.PROFESSOR)) {
-			result.redirectTo(LoginController.class).acessoNegado();
-			return;
-		}
 
 		questao.setTags(tags, tagDao);
 		questao.setResposta(resposta);
@@ -99,13 +88,6 @@ public class QuestoesDeMultiplaEscolhaController {
 	 * @param id
 	 */
 	public void alteracao(Long id) {
-		Usuario u = usuarioSession.getUsuario();
-		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
-				.getPrivilegio() == Privilegio.PROFESSOR)) {
-			result.redirectTo(LoginController.class).acessoNegado();
-			return;
-		}
-
 		QuestaoDeMultiplaEscolha questao = dao.carrega(id);
 		result.include("questao", questao);
 		result.include("tags", questao.getTagsEmString());
@@ -121,12 +103,6 @@ public class QuestoesDeMultiplaEscolhaController {
 	 */
 	public void altera(QuestaoDeMultiplaEscolha questao,
 			List<Integer> resposta, String tags) {
-		Usuario u = usuarioSession.getUsuario();
-		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
-				.getPrivilegio() == Privilegio.PROFESSOR)) {
-			result.redirectTo(LoginController.class).acessoNegado();
-			return;
-		}
 
 		questao.setTags(tags, tagDao);
 		questao.setResposta(resposta);
@@ -147,13 +123,6 @@ public class QuestoesDeMultiplaEscolhaController {
 	 * @param id
 	 */
 	public void remove(Long id) {
-		Usuario u = usuarioSession.getUsuario();
-		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
-				.getPrivilegio() == Privilegio.PROFESSOR)) {
-			result.redirectTo(LoginController.class).acessoNegado();
-			return;
-		}
-
 		QuestaoDeMultiplaEscolha questao = dao.carrega(id);
 		dao.remove(questao);
 		result.redirectTo(this).lista();
@@ -166,13 +135,6 @@ public class QuestoesDeMultiplaEscolhaController {
 	 * no banco de dados.
 	 */
 	public void lista() {
-		Usuario u = usuarioSession.getUsuario();
-		if (!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u
-				.getPrivilegio() == Privilegio.PROFESSOR)) {
-			result.redirectTo(LoginController.class).acessoNegado();
-			return;
-		}
-
 		result.include("tipoDaQuestao", TipoDeQuestao.MULTIPLAESCOLHA);
 		result.include("lista", dao.listaTudo());
 	}

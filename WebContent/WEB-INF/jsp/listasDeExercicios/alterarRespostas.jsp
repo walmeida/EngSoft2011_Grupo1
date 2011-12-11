@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page contentType="text/html; charset=utf-8" language="java"
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" language="java"
 import="java.sql.*" errorPage="" %>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -12,7 +12,9 @@ import="java.sql.*" errorPage="" %>
 <script type="text/javascript" charset="utf-8">	
 	function redireciona() {		
 		// URL Provisoria
-		window.location.href =  '<c:url value="/alunos/home"/>';
+		
+	 window.location.href = '<c:url value="/respostas/autocorrecao/${listaDeRespostas.id}"/>';
+  
 	}
 	
 	$(document).ready(function () {
@@ -89,9 +91,9 @@ font-family:"Times New Roman";
 	
 	<div>
 		<c:forEach items="${listaDeExercicios.questoes}" var="questaoDaLista" varStatus="iteracao">
-			<form id="questao${iteracao.index }" class="respostaForm" action="<c:url value="/respostas/${listaDeRespostas.id }/cadastra"/>" method="post" accept-charset="us-ascii" enctype="multipart/form-data">
+			<form id="questao${iteracao.index }" class="respostaForm" action="<c:url value="/respostas/${listaDeRespostas.id }/cadastra"/>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 				<fieldset>
-						<p>${questaoDaLista.ordem} )
+						<p>${iteracao.index + 1} )
 								${questaoDaLista.questao.enunciado}</p>
 						${renderizacao[iteracao.index]}
 				</fieldset>

@@ -1,6 +1,5 @@
 package br.usp.ime.academicdevoir.controller;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -10,11 +9,11 @@ import static org.mockito.Mockito.spy;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.caelum.vraptor.util.test.JSR303MockValidator;
 import br.com.caelum.vraptor.util.test.MockResult;
 import br.usp.ime.academicdevoir.controller.ProfessoresController;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
 import br.usp.ime.academicdevoir.entidade.Professor;
-import br.usp.ime.academicdevoir.infra.Criptografia;
 import br.usp.ime.academicdevoir.infra.Privilegio;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
@@ -40,6 +39,7 @@ public class ProfessoresControllerTeste {
 	 */
     private UsuarioSession usuarioSession;
 	private Professor professor;
+	private JSR303MockValidator validator;
 
     @Before
     public void SetUp() {
@@ -51,13 +51,18 @@ public class ProfessoresControllerTeste {
 		usuarioSession.setUsuario(admin);
 		
         result = spy(new MockResult());
+        validator = spy(new JSR303MockValidator());
         professordao = mock(ProfessorDao.class);
-        profC = new ProfessoresController(result, professordao, usuarioSession);
+        profC = new ProfessoresController(result, validator, professordao, usuarioSession);
         
         professor = new Professor();
         professor.setId(0L);
+        professor.setNome("professor");
+        professor.setLogin("professor");
+        professor.setSenha("senha");
+        professor.setEmail("email@usp.br");
         
-        when(professordao.carrega(professor.getId())).thenReturn(professor);
+        when(professordao.carrega(professor.getId().longValue())).thenReturn(professor);
     }
 
     @Test
@@ -86,10 +91,7 @@ public class ProfessoresControllerTeste {
     
     @Test
     public void testeAltera() {        
-        profC.altera(professor.getId(), "novo nome", "novo email", "nova senha");
-        assertEquals(professor.getNome(), "novo nome");
-        assertEquals(professor.getEmail(), "novo email");
-        assertEquals(professor.getSenha(), new Criptografia().geraMd5("nova senha"));
+        profC.altera(professor.getId(), "novo nome", "novoeamil@usp.br", "nova senha");
         verify(professordao).atualizaProfessor(professor);
         verify(result).redirectTo(ProfessoresController.class);
     }

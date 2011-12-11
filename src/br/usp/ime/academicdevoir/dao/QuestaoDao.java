@@ -3,21 +3,21 @@ package br.usp.ime.academicdevoir.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Example;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
-import br.usp.ime.academicdevoir.entidade.Questao;
 import br.com.caelum.vraptor.ioc.Component;
+import br.usp.ime.academicdevoir.entidade.Questao;
 
 @Component
 public class QuestaoDao {
 
 	/**
-	 * @uml.property  name="session"
-	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="br.usp.ime.academicdevoir.entidade.Questao"
+	 * @uml.property name="session"
+	 * @uml.associationEnd multiplicity="(0 -1)"
+	 *                     elementType="br.usp.ime.academicdevoir.entidade.Questao"
 	 */
 	private final Session session;
 
@@ -36,27 +36,36 @@ public class QuestaoDao {
 	}
 	
 	/**
-	 * Devolve o tamanho da lista com todas as questões cadastradas no banco de dados.
+	 * Devolve uma lista com todas as questões cadastradas de acordo com a página.
 	 * 
 	 * @return List<Questao>
 	 */
-	public Integer tamanhoTotal() {
-		return listaTudo().size();
-	}	
-	
+	private Criteria listaFiltrada(String filtro) {
+		Criteria criteria = this.session.createCriteria(Questao.class);
+		if (filtro != null && filtro != "")
+			criteria.createCriteria("tags").add(Restrictions.ilike("nome", filtro, MatchMode.ANYWHERE));		
+		return criteria;
+	}
+
+	/**
+	 * Devolve o tamanho da lista com todas as questões cadastradas no banco de
+	 * dados.
+	 * 
+	 * @return List<Questao>
+	 */
+	public Integer tamanhoDaLista(String filtro) {
+		return listaFiltrada(filtro).list().size();
+	}
+
 	@SuppressWarnings("unchecked")
 	/**
 	 * Devolve uma lista com todas as questões cadastradas de acordo com a página.
 	 * 
 	 * @return List<Questao>
 	 */
-	public List<Questao> listaPaginada(Integer primeiro, Integer numRegistros, String filtro) {
-		Criteria criteria = this.session.createCriteria(Questao.class);
-		if(filtro != null && filtro != ""){
-			/*criteria.setFetchMode("tag", FetchMode.JOIN)  
-            .add(Example.create())  
-            .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)*/ 
-		}
+	public List<Questao> listaPaginada(Integer primeiro, Integer numRegistros,
+			String filtro) {
+		Criteria criteria = listaFiltrada(filtro);
 		criteria.setFirstResult(primeiro);
 		criteria.setMaxResults(numRegistros);
 		return criteria.list();

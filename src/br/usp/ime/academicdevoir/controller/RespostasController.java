@@ -13,6 +13,7 @@ import br.usp.ime.academicdevoir.dao.DisciplinaDao;
 import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
 import br.usp.ime.academicdevoir.dao.ListaDeRespostasDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
+import br.usp.ime.academicdevoir.entidade.EstadoDaListaDeRespostas;
 import br.usp.ime.academicdevoir.entidade.ListaDeRespostas;
 import br.usp.ime.academicdevoir.entidade.Questao;
 import br.usp.ime.academicdevoir.entidade.Resposta;
@@ -55,23 +56,45 @@ public class RespostasController {
 	@Path("/respostas/{listaDeRespostas.id}/cadastra")
 	public void salvaResposta(ListaDeRespostas listaDeRespostas, Resposta resposta, Long idDaQuestao, UploadedFile arquivo) {
 	    String caminho;
+	    int nenvios, nmaxenvios;
 	    if (resposta == null) resposta = new Resposta();
 		
-		dao.recarrega(listaDeRespostas);
-		
+	    dao.recarrega(listaDeRespostas);
+	    
 		Questao questao = questaoDao.carrega(idDaQuestao);		
 			
 		if (questao.getTipo() == TipoDeQuestao.SUBMISSAODEARQUIVO && arquivo != null) {
 			arquivos.salva(arquivo, idDaQuestao);
 			resposta.setValor(arquivo.getFileName());
 		}
-		caminho = arquivos.getPastaDaQuestao(questao.getId()).getAbsolutePath();
-		resposta.setCaminhoParaDiretorioDeTeste(caminho);
-		resposta.setQuestao(questao);
-		listaDeRespostas.adiciona(resposta);
-				
+		if (questao.getTipo() == TipoDeQuestao.CODIGO) {
+		    caminho = arquivos.getPastaDaQuestao(questao.getId()).getAbsolutePath();
+		    resposta.setCaminhoParaDiretorioDeTeste(caminho);
+		}
+		
+        resposta.setQuestao(questao);
+		
+		if (listaDeRespostas.getListaDeExercicios().getPropriedades().
+		        getNumeroMaximoDeEnvios() != null) {
+	        nmaxenvios =  listaDeRespostas.getListaDeExercicios().getPropriedades().
+	        getNumeroMaximoDeEnvios();
+		    nenvios = listaDeRespostas.getPropriedades().getNumeroDeEnvios();
+		    if (listaDeRespostas.getRespostas().isEmpty())
+		        listaDeRespostas.getPropriedades().setNumeroDeEnvios(nenvios + 1);
+        
+		    if (listaDeRespostas.adiciona(resposta) == 0)
+		        listaDeRespostas.getPropriedades().setNumeroDeEnvios(nenvios + 1);
+		    if (listaDeRespostas.getPropriedades().getNumeroDeEnvios() >= nmaxenvios)
+		        listaDeRespostas.getPropriedades().setEstado
+		            (EstadoDaListaDeRespostas.FINALIZADA);
+		}
+		else
+		    listaDeRespostas.adiciona(resposta);
+		
 		dao.atualiza(listaDeRespostas);
-		result.redirectTo(ListasDeExerciciosController.class).lista();
+       
+	
+	    result.redirectTo(ListasDeExerciciosController.class).lista();
 	}
 	
 	/**

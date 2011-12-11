@@ -7,6 +7,8 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.interceptor.download.FileDownload;
 import br.com.caelum.vraptor.interceptor.multipart.UploadedFile;
 import br.usp.ime.academicdevoir.arquivos.Arquivos;
+import br.usp.ime.academicdevoir.infra.Permission;
+import br.usp.ime.academicdevoir.infra.Privilegio;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
 @Resource
@@ -44,6 +46,7 @@ public class ArquivosController {
 	
 	@Get
 	@Path("/arquivos/{loginDoaluno}/{idDaQuestao}")
+	@Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
 	/**
 	 * Baixa o arquivo enviado pelo aluno de login fornecido enviado como resposta da questão de id fornecido.
 	 * @param loginDoAluno

@@ -1,6 +1,5 @@
 package br.usp.ime.academicdevoir.controller;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
@@ -8,11 +7,14 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.caelum.vraptor.Validator;
+import br.com.caelum.vraptor.util.test.JSR303MockValidator;
 import br.com.caelum.vraptor.util.test.MockResult;
 import br.usp.ime.academicdevoir.dao.AlunoDao;
 import br.usp.ime.academicdevoir.dao.DisciplinaDao;
@@ -21,7 +23,6 @@ import br.usp.ime.academicdevoir.entidade.Aluno;
 import br.usp.ime.academicdevoir.entidade.Disciplina;
 import br.usp.ime.academicdevoir.entidade.Professor;
 import br.usp.ime.academicdevoir.entidade.Turma;
-import br.usp.ime.academicdevoir.infra.Criptografia;
 import br.usp.ime.academicdevoir.infra.Privilegio;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
 
@@ -58,6 +59,7 @@ public class AlunosControllerTeste {
     private UsuarioSession usuarioSession;
 	private Aluno aluno;
 	private Turma turma;
+	private Validator validator;
     
     @Before
     public void SetUp() {		
@@ -68,13 +70,19 @@ public class AlunosControllerTeste {
 		usuarioSession.setUsuario(professor);
 
     	result = spy(new MockResult());
+    	validator = spy(new JSR303MockValidator());;
         alunoDao = mock(AlunoDao.class);
         disciplinaDao = mock(DisciplinaDao.class);
         turmaDao = mock(TurmaDao.class);
-        alunoC = new AlunosController(result, alunoDao, disciplinaDao, turmaDao, usuarioSession);
+        alunoC = new AlunosController(result, validator, alunoDao, disciplinaDao, turmaDao, usuarioSession);
         
         aluno = new Aluno();
         aluno.setId(0L);
+        aluno.setId(0L);
+        aluno.setNome("aluno");
+        aluno.setLogin("aluno");
+        aluno.setEmail("aluno@usp.br");
+        aluno.setSenha("senha");
         
         turma = new Turma();
         turma.setId(0L);
@@ -100,12 +108,9 @@ public class AlunosControllerTeste {
     }
     
     @Test
-    public void testeCadastra() {
-        Aluno novo = new Aluno();
-        novo.setId(0L);
-        novo.setSenha("senha");
-        alunoC.cadastra(novo);
-        verify(alunoDao).salvaAluno(novo);
+    public void testeCadastra() {        
+        alunoC.cadastra(aluno);
+        verify(alunoDao).salvaAluno(aluno);
         verify(result).redirectTo(AlunosController.class);
     }
 
@@ -118,10 +123,7 @@ public class AlunosControllerTeste {
     
     @Test
     public void testeAtualiza() {
-        alunoC.altera(0L, "novo nome", "novo email", "nova senha");
-        assertEquals(aluno.getNome(), "novo nome");
-        assertEquals(aluno.getEmail(), "novo email");
-        assertEquals(aluno.getSenha(), new Criptografia().geraMd5("nova senha"));
+        alunoC.altera(aluno.getId(), "novo nome", "novoemail@usp.br", "nova senha");
         verify(alunoDao).atualizaAluno(aluno);
         verify(result).redirectTo(AlunosController.class);
     }
@@ -142,6 +144,16 @@ public class AlunosControllerTeste {
     
     @Test
     public void testeInscreve() {
+    	Calendar data = Calendar.getInstance();
+    	data.setTimeInMillis(System.currentTimeMillis());
+    	
+    	List<Integer> prazo = new ArrayList<Integer>();
+    	prazo.add(data.get(Calendar.DAY_OF_MONTH + 1));
+    	prazo.add(data.get(Calendar.MONTH) + 1);
+    	prazo.add(data.get(Calendar.YEAR));
+    	
+    	turma.setPrazoDeMatricula(prazo);
+    	
     	alunoC.inscreve(aluno.getId(), turma.getId());
     	verify(alunoDao).inscreve(aluno, turma);
     	verify(result).redirectTo(AlunosController.class);

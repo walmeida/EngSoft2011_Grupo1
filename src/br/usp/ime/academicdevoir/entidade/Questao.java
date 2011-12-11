@@ -15,12 +15,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import br.usp.ime.academicdevoir.dao.TagDao;
 import br.usp.ime.academicdevoir.infra.Constantes;
 import br.usp.ime.academicdevoir.infra.TipoDeQuestao;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@OnDelete(action = OnDeleteAction.CASCADE)
 public abstract class Questao {
 
 	/**
@@ -106,6 +110,31 @@ public abstract class Questao {
 	
 	public abstract String getRenderAlteracao(Resposta resposta);
 	
+	public String getRenderCorrecao (Resposta resposta) {
+        if (resposta == null)
+            resposta = new Resposta();
+        
+        String htmlResult = "";
+        StringBuffer buffer = new StringBuffer();
+
+        buffer.append("<p>");
+        if (resposta.getValor() != null)
+            buffer.append(resposta.getValor());
+        buffer.append("</p>");
+        buffer.append("<p> Comentários: ");
+        if (resposta.getComentario() != null)
+            buffer.append(resposta.getComentario());
+        buffer.append("</p>");
+        buffer.append("<p> Nota: ");
+        if (resposta.getNota() != null)
+            buffer.append(resposta.getNota());
+        buffer.append("</p>");
+
+        htmlResult = buffer.toString();
+
+        return htmlResult;
+        
+    }
 	public abstract Boolean respostaDoAlunoEhCorreta(Resposta respostaAluno);
 	
 	public abstract Questao copia(TagDao tagDao);
