@@ -581,14 +581,6 @@ public class ListasDeExerciciosController {
 	@Get
 	@Path("/listasDeExercicios/trocaOrdem/{id}")
 	public void trocaOrdem(Long id, List<Integer> novaOrdem) {
-		
-		System.out.print("\n\n\n******************\n");
-		
-		for (Integer ordem : novaOrdem) {
-			System.out.print(ordem);
-		}
-		
-		System.out.print("\n******************\n\n\n");
 		ListaDeExercicios lista = dao.carrega(id);
 		List<QuestaoDaLista> questoes = lista.getQuestoes();		
 		Integer ordem;
