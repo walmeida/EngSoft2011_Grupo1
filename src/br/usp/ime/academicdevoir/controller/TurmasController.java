@@ -1,5 +1,6 @@
 package br.usp.ime.academicdevoir.controller;
 
+import java.util.Calendar;
 import java.util.List;
 
 import br.com.caelum.vraptor.Path;
@@ -134,6 +135,11 @@ public class TurmasController {
 		}
 		
         result.include("listaDeDisciplinas", listaDeDisciplinas);
+        
+        Calendar dataDeHoje = Calendar.getInstance();
+        result.include("diaAtual", dataDeHoje.get(Calendar.DAY_OF_MONTH));
+        result.include("mesAtual", dataDeHoje.get(Calendar.MONTH) + 1);
+        result.include("anoAtual", dataDeHoje.get(Calendar.YEAR));
     }
 
     /**

@@ -183,6 +183,7 @@ public class ListasDeExerciciosController {
 			listaDeRespostas.setPropriedades(propriedades);
 			listaDeRespostas.setListaDeExercicios(listaDeExercicios);
 			listaDeRespostas.setAluno(aluno);
+			listaDeRespostas.setPropriedades(propriedades);
 		}
 
 		else if (listaDeRespostas.getRespostas() != null
@@ -205,8 +206,12 @@ public class ListasDeExerciciosController {
 	@Get
 	@Path("/respostas/alterar/{listaDeRespostas.id}")
 	public void alterarRespostas(ListaDeRespostas listaDeRespostas) {
-		listaDeRespostas = listaDeRespostasDao
+	    listaDeRespostas = listaDeRespostasDao
 				.carrega(listaDeRespostas.getId());
+	    if (listaDeRespostas.getPropriedades().getEstado() == 
+	        EstadoDaListaDeRespostas.CORRIGIDA)
+	        result.redirectTo(ListasDeExerciciosController.class).
+	               verCorrecao(listaDeRespostas);
 		ListaDeExercicios listaDeExercicios = listaDeRespostas
 				.getListaDeExercicios();
 		List<String> renders = new ArrayList<String>();
@@ -237,6 +242,27 @@ public class ListasDeExerciciosController {
 				.size());
 	}
 
+	@Get
+    @Path("/respostas/verCorrecao/{listaDeRespostas.id}")
+    public void verCorrecao(ListaDeRespostas listaDeRespostas) {
+        listaDeRespostas = listaDeRespostasDao
+                .carrega(listaDeRespostas.getId());
+        ListaDeExercicios listaDeExercicios = listaDeRespostas
+                .getListaDeExercicios();
+        List<String> renders = new ArrayList<String>();
+        List<Resposta> respostas = listaDeRespostas.getRespostas();
+        
+        for (Resposta resposta : respostas) {
+            renders.add(resposta.getQuestao().getRenderCorrecao(resposta));
+        }
+
+        result.include("renderizacao", renders);
+        result.include("listaDeRespostas", listaDeRespostas);
+        result.include("listaDeExercicios", listaDeExercicios);
+        result.include("numeroDeQuestoes", listaDeExercicios.getQuestoes()
+                .size());
+    }
+	
 	@Get
 	@Path("/listasDeExercicios/altera/{id}")
 	/** 
@@ -491,16 +517,18 @@ public class ListasDeExerciciosController {
 				Boolean resultado = questao.respostaDoAlunoEhCorreta(resposta);
 				
 				//Verificando se a resposta está certa ou não.
-				if(resultado == true) resposta.setNota(1.0);
+				if(resultado == true) resposta.setNota(100.0);
 				//#TODO Questões abertas?? Como faz??
 				//else if (resultado == false) resposta.setNota(0.0);  Abaixo seria o NULL
 				else resposta.setNota(0.0);
-								
+							
 			}
 			
 			//Atribuindo a nota final à lista
 			listaDeRespostas.setNotaFinal(pesosDasQuestoes);
-			listaDeRespostasDao.salva(listaDeRespostas);
+			listaDeRespostas.getPropriedades().setEstado(
+			                EstadoDaListaDeRespostas.CORRIGIDA);
+			listaDeRespostasDao.atualiza(listaDeRespostas);
 		}
 		
 		//Redireciona para o menu de listas

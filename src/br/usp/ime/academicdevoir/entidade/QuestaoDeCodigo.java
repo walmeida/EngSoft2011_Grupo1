@@ -98,7 +98,6 @@ public class QuestaoDeCodigo extends Questao {
         return htmlResult;
     }
     
-    
     public Boolean respostaDoAlunoEhCorreta(Resposta respostaAluno)  {
        String resultado;
        String caminho = respostaAluno.getCaminhoParaDiretorioDeTeste();

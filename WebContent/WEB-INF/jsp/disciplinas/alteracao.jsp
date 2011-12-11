@@ -18,7 +18,6 @@
 	<form action='../altera'>
 	<fieldset>
 		<input type="hidden" name="id" value="${disciplina.id}"/> <br />
-		Digite o nome nome da disciplina e clique em "alterar".<br/>
 		Novo nome: <br/><input type="text" size="30" name="novoNome" value="${disciplina.nome}"/><br/><br/>
 		<p class="submit"><input type="submit" value="Alterar"/></p>
 	</fieldset>

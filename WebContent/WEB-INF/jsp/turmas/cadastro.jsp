@@ -29,11 +29,11 @@
 		<p><label for="prazoDeMatricula">Prazo de matrícula:</label></p><br/>
 
 					<p><label for="dia">Dia: </label>
-						<input id="dia" type="text" size="2" maxlength="2" name="prazoDeMatricula[0]" /></p>
+						<input id="dia" type="text" size="2" maxlength="2" name="prazoDeMatricula[0]" value="${diaAtual}"/></p>
 					<p><label for="mes">Mês: </label>
-						<input id="mes" type="text" size="2" maxlength="2" name="prazoDeMatricula[1]" /></p>
+						<input id="mes" type="text" size="2" maxlength="2" name="prazoDeMatricula[1]" value="${mesAtual}"/></p>
 					<p><label for="ano">Ano:<br/></label>
-						<input id="ano" type="text" size="2" maxlength="4" name="prazoDeMatricula[2]" /></p>
+						<input id="ano" type="text" size="2" maxlength="4" name="prazoDeMatricula[2]" value="${anoAtual}"/></p>
 
 	<p class="submit"><input type="submit" value="Enviar"/></p>
 	</fieldset>
