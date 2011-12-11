@@ -189,7 +189,7 @@ public class ListasDeExerciciosController {
                 setEstado(EstadoDaListaDeRespostas.FINALIZADA);
                 listaDeRespostas.setRespostas(new ArrayList<Resposta>());
                 listaDeRespostasDao.salva(listaDeRespostas);
-                result.redirectTo(this).verCorrecao(listaDeRespostas);
+                result.redirectTo(this).autoCorrecaoRespostas(listaDeRespostas.getId());
                 return;
             }
 		}
@@ -226,16 +226,21 @@ public class ListasDeExerciciosController {
                 !VerificadorDePrazos.estaNoPrazo(listaDeRespostas.
                 getListaDeExercicios().getPropriedades().getPrazoDeEntrega())) {
             listaDeRespostas.getPropriedades().
-                setEstado(EstadoDaListaDeRespostas.FINALIZADA);
+            setEstado(EstadoDaListaDeRespostas.FINALIZADA);
             listaDeRespostasDao.atualiza(listaDeRespostas);
+            result.redirectTo(ListasDeExerciciosController.class).
+                                autoCorrecaoRespostas(listaDeRespostas.getId());
+            return;
         }
             
 	    if (listaDeRespostas.getPropriedades().getEstado() == 
 	        EstadoDaListaDeRespostas.CORRIGIDA ||
 	        listaDeRespostas.getPropriedades().getEstado() == 
-	            EstadoDaListaDeRespostas.FINALIZADA)
+	            EstadoDaListaDeRespostas.FINALIZADA) {
 	        result.redirectTo(ListasDeExerciciosController.class).
 	               verCorrecao(listaDeRespostas);
+	        return;
+	    }
 
 		List<String> renders = new ArrayList<String>();
 		
