@@ -45,6 +45,7 @@
 	</c:if>
 	<c:if test ="${usuarioSession.usuario.privilegio == 'ALUNO' || usuarioSession.usuario.privilegio == 'MONITOR'}">
 		<a href="<c:url value='/alunos/alteracao?id=${usuarioSession.usuario.id}'/>">Alterar meus dados</a><br/><br/>
+		<a href="<c:url value='/alunos/listaTurmas?idAluno=${usuarioSession.usuario.id}'/>">Meus cursos</a><br/><br/>
 		<a href="<c:url value='/alunos/matricula'/>">Matrícula</a><br/><br/>
 		<a href="<c:url value='/login'/>">Sair</a>
 	</c:if>        

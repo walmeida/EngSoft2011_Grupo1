@@ -141,7 +141,7 @@ public class TurmasController {
      * 
      * @param nova
      */
-    public void cadastra(Turma nova, final List<Integer> prazoDeEntrega) {
+    public void cadastra(Turma nova, final List<Integer> prazoDeMatricula) {
     	Usuario u = usuarioSession.getUsuario();
 		if(!(u.getPrivilegio() == Privilegio.ADMINISTRADOR || u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
@@ -152,7 +152,7 @@ public class TurmasController {
 			result.redirectTo(DisciplinasController.class).cadastro();
 			return;
 		}
-		nova.setPrazoDeEntrega(prazoDeEntrega);
+		nova.setPrazoDeMatricula(prazoDeMatricula);
         turmaDao.salvaTurma(nova);
         result.redirectTo(ProfessoresController.class).listaTurmas(
                 nova.getProfessor().getId());

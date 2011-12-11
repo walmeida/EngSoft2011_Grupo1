@@ -3,15 +3,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
 <style type="text/css">
-<%@ include file="../css/formatacao.css" %>
+<%@ include file="/css/form.css" %>
 </style>
 <title>Academic Devoir</title>
 </head>
 
 <body>
-	<h1>Academic Devoir</h1>
-	<h2>Grupo 1 - Engenharia de Software</h2>
-	<p>Lista de Alunos</p>
+	<div id="wrapper">
+	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
+	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
+	<div id="right">
+	<div id="menu">Lista de Alunos</div>
 	
         <form action='cadastro'>
         	<!-- input type="submit" value="Inserir"/-->
@@ -52,12 +54,9 @@
         </c:forEach>
     </tbody>
 </table>
-<a href="<c:url value='/login'/>">Sair</a>
-    <c:if test ="${usuarioSession.usuario.privilegio == 'ALUNO' || usuarioSession.usuario.privilegio == 'MONITOR'}">
-    	<a href="<c:url value='/alunos/home'/>">Página Principal</a><br/>
- 	</c:if>
-    <c:if test ="${usuarioSession.usuario.privilegio == 'PROFESSOR' || usuarioSession.usuario.privilegio == 'ADMINISTRADOR'}">
-    	<a href="<c:url value='/professores/home'/>">Página Principal</a><br/>    		         
- 	</c:if>
+<div id="link"><a href="<c:url value='/login'/>">Sair</a></div>
+<div id="link"><a href="<c:url value='/professores/home'/>">Voltar</a></div><br/>
+</div>
+</div>
 </body>
 </html>
