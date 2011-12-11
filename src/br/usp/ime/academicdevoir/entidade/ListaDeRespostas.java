@@ -115,6 +115,9 @@ public class ListaDeRespostas {
 	public int adiciona(Resposta novaResposta) {
 		Long id = novaResposta.getQuestao().getId();
 		int i = -1;
+	    if (novaResposta.getValor() == null || 
+	            novaResposta.getValor().isEmpty() ) return -1;
+
 		for (Resposta resposta : respostas) {
 			if (resposta.getQuestao().getId() == id) {
 				i = respostas.indexOf(resposta);
