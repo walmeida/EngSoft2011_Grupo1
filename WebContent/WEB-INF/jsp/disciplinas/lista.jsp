@@ -34,8 +34,7 @@
         </c:forEach>             
     </tbody>
 	</table>
-	<br/><br/>
-	<a href="<c:url value='/turmas/cadastro'/>">Cadastrar nova turma</a>  
+	<br/><br/>  
     <a href="<c:url value='/disciplinas/cadastro'/>">Cadastrar nova disciplina</a>
 	
 	</div>
