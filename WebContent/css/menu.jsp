@@ -12,7 +12,7 @@ import="java.sql.*" errorPage="" %>
 </head>
 
 <body>
-	<div id="menu">Meus Cursos</div>
+	<div id="menu"> Meus Cursos </div>
 	<br/>
 	<table>
         <c:forEach items="${usuarioSession.usuario.turmas}" var="t">
@@ -37,7 +37,6 @@ import="java.sql.*" errorPage="" %>
 		<br/><br/>
 		Links temporarios:<br/><br/>
 		<a href="<c:url value='/listasDeExercicios/cadastro'/>">Cadastrar Lista</a><br/><br/>
-		<a href="<c:url value='/turmas/cadastro'/>">Cadastrar Turma</a><br/><br/>
 		<br/><br/>		
 
 		<a href="<c:url value='/login'/>">Sair</a>
