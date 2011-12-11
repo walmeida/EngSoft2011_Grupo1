@@ -134,21 +134,13 @@ public class TurmasControllerTeste {
 		assertNotNull(turmas);
 	}
 	
-<<<<<<< HEAD
-//	@Test
-//	public void testCadastro() {
-//		turmasController.cadastro();
-//		List<Disciplina> disciplinas = result.included("listaDeDisciplinas");		
-//		assertNotNull(disciplinas);
-//	}
-=======
+
 	@Test
 	public void testCadastro() {
 		turmasController.cadastro(disciplina.getId());
 		Long idDisciplina = result.included("idDisciplina");		
 		assertNotNull(idDisciplina);
 	}
->>>>>>> 00cd21433f4b98bba73513367032082f7d7ceb50
 	
 //	@Test
 //	public void testeCadastra() {
