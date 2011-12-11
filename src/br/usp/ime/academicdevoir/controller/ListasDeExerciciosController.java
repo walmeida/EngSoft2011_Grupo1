@@ -380,16 +380,17 @@ public class ListasDeExerciciosController {
 	 * @param idDaQuestao
 	 */
 	public void incluiQuestao(ListaDeExercicios listaDeExercicios,
-			Long idDaQuestao, Integer pesoDaQuestao, Integer ordemDaQuestao) {
+			Long idDaQuestao, Integer pesoDaQuestao) {
 		
 		QuestaoDaLista novaQuestao = new QuestaoDaLista();
 		novaQuestao.setPeso(pesoDaQuestao);
-		novaQuestao.setOrdem(ordemDaQuestao);
 		Questao questao = (Questao) questaoDao.carrega(idDaQuestao);
 		novaQuestao.setQuestao(questao);
 
 		dao.recarrega(listaDeExercicios);
 		List<QuestaoDaLista> questoes = listaDeExercicios.getQuestoes();
+		
+		novaQuestao.setOrdem(questoes.size());
 		questoes.add(novaQuestao);
 		listaDeExercicios.setQuestoes(questoes);
 
@@ -397,35 +398,35 @@ public class ListasDeExerciciosController {
 		result.redirectTo(this).verLista(listaDeExercicios.getId());
 	}
 
-	@Put
-	@Path("/listasDeExercicios/{id}/questoes/{indice}")
-	@Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
-	/**
-	 * Altera a questão com o indice fornecido (na lista de exercícios com o id fornecido)
-	 * para a questão com id fornecido.
-	 * 
-	 * @param id
-	 * @param indice
-	 * @param idDaNovaQuestao
-	 * @param ordemDaQuestao
-	 */
-	public void trocaQuestao(Long id, Integer indice, Long idDaNovaQuestao,
-			Integer ordemDaQuestao) {
-		
-		ListaDeExercicios listaDeExercicios = dao.carrega(id);
-		List<QuestaoDaLista> questoesDaLista = listaDeExercicios.getQuestoes();
-		QuestaoDaLista questaoDaLista = listaDeExercicios.getQuestoes().get(
-				indice.intValue());
-		Questao questao = (Questao) questaoDao.carrega(idDaNovaQuestao);
-
-		questaoDaLista.setQuestao(questao);
-		questaoDaLista.setOrdem(ordemDaQuestao);
-		questoesDaLista.set(indice.intValue(), questaoDaLista);
-		listaDeExercicios.setQuestoes(questoesDaLista);
-
-		dao.atualiza(listaDeExercicios);
-		result.redirectTo(this).verLista(listaDeExercicios.getId());
-	}
+//	@Put
+//	@Path("/listasDeExercicios/{id}/questoes/{indice}")
+//	@Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
+//	/**
+//	 * Altera a questão com o indice fornecido (na lista de exercícios com o id fornecido)
+//	 * para a questão com id fornecido.
+//	 * 
+//	 * @param id
+//	 * @param indice
+//	 * @param idDaNovaQuestao
+//	 * @param ordemDaQuestao
+//	 */
+//	public void trocaQuestao(Long id, Integer indice, Long idDaNovaQuestao,
+//			Integer ordemDaQuestao) {
+//		
+//		ListaDeExercicios listaDeExercicios = dao.carrega(id);
+//		List<QuestaoDaLista> questoesDaLista = listaDeExercicios.getQuestoes();
+//		QuestaoDaLista questaoDaLista = listaDeExercicios.getQuestoes().get(
+//				indice.intValue());
+//		Questao questao = (Questao) questaoDao.carrega(idDaNovaQuestao);
+//
+//		questaoDaLista.setQuestao(questao);
+//		questaoDaLista.setOrdem(ordemDaQuestao);
+//		questoesDaLista.set(indice.intValue(), questaoDaLista);
+//		listaDeExercicios.setQuestoes(questoesDaLista);
+//
+//		dao.atualiza(listaDeExercicios);
+//		result.redirectTo(this).verLista(listaDeExercicios.getId());
+//	}
 
 	@Delete
 	@Path("/listasDeExercicios/{id}/questoes/{indice}")
