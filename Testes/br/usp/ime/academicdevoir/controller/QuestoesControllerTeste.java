@@ -7,6 +7,8 @@ import java.util.Random;
 import org.junit.Before;
 import org.junit.Test;
 
+import sun.rmi.transport.LiveRef;
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -16,6 +18,7 @@ import static org.junit.Assert.*;
 
 import br.com.caelum.vraptor.util.test.MockResult;
 import br.usp.ime.academicdevoir.dao.ListaDeExerciciosDao;
+import br.usp.ime.academicdevoir.dao.ListaDeRespostasDao;
 import br.usp.ime.academicdevoir.dao.QuestaoDao;
 import br.usp.ime.academicdevoir.dao.TagDao;
 import br.usp.ime.academicdevoir.entidade.Professor;
@@ -74,6 +77,8 @@ public class QuestoesControllerTeste {
 	
 	private ListaDeExerciciosDao listaDeExerciciosDao;
 
+	private ListaDeRespostasDao listaDeRespostasDao;
+	
 	@Before
 	public void SetUp() {		
 		Professor professor = new Professor();
@@ -85,7 +90,8 @@ public class QuestoesControllerTeste {
 		result = spy(new MockResult());
 		dao = mock(QuestaoDao.class);
 		
-		questoesController = new QuestoesController(dao, tagDao, listaDeExerciciosDao, result, usuarioSession);
+		questoesController = new QuestoesController(dao, tagDao, 
+		        listaDeExerciciosDao, listaDeRespostasDao, result, usuarioSession);
 		questaoDeMultiplaEscolha = new QuestaoDeMultiplaEscolha();
 		questaoDeSubmissaoDeArquivo = new QuestaoDeSubmissaoDeArquivo();
 		questaoDeTexto = new QuestaoDeTexto();

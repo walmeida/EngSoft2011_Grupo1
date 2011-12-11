@@ -90,7 +90,7 @@ public class QuestaoDeVouF extends Questao {
         if (resposta.getValor() != null) {
             if (resposta.getValor().equals("true"))
                 buffer.append("Verdadeiro");
-            else if (resposta.getValor().equals("true"))
+            else if (resposta.getValor().equals("false"))
                 buffer.append("Falso");
         }
         

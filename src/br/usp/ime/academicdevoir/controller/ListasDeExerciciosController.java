@@ -247,21 +247,40 @@ public class ListasDeExerciciosController {
 	@Get
     @Path("/respostas/verCorrecao/{listaDeRespostas.id}")
     public void verCorrecao(ListaDeRespostas listaDeRespostas) {
-        listaDeRespostas = listaDeRespostasDao
-                .carrega(listaDeRespostas.getId());
-        ListaDeExercicios listaDeExercicios = listaDeRespostas
-                .getListaDeExercicios();
-        List<String> renders = new ArrayList<String>();
-        List<Resposta> respostas = listaDeRespostas.getRespostas();
+	    listaDeRespostas = listaDeRespostasDao
+            .carrega(listaDeRespostas.getId());
+	   
+	    ListaDeExercicios listaDeExercicios = listaDeRespostas
+            .getListaDeExercicios();
+	    List<String> renders = new ArrayList<String>();
+    
+	    List<QuestaoDaLista> questoes = listaDeExercicios.getQuestoes();
+	    List<Resposta> respostas = listaDeRespostas.getRespostas();
+	    boolean achouResposta;
+    
+	    for (QuestaoDaLista questaoDaLista : questoes) {
         
-        for (Resposta resposta : respostas) {
-            renders.add(resposta.getQuestao().getRenderCorrecao(resposta));
-        }
+	        achouResposta = false;
+	        for (Resposta resposta : respostas) {
+	            if (resposta.getQuestao().getId() == questaoDaLista.getQuestao().
+	                    getId()) {
+	                renders.add(resposta.getQuestao().getRenderCorrecao(resposta));
+	                respostas.remove(resposta);
+	                achouResposta = true;
+	                break;
+	            }
+	        }
+	        System.out.println("************** BAGULHo *****************");
 
+	        if (achouResposta) continue;
+	        renders.add(questaoDaLista.getQuestao().
+	                getRenderCorrecao(new Resposta()));
+	    }
+    
         result.include("renderizacao", renders);
         result.include("listaDeRespostas", listaDeRespostas);
         result.include("listaDeExercicios", listaDeExercicios);
-        result.include("numeroDeQuestoes", listaDeExercicios.getQuestoes()
+        result.include("numeroDeQuestoes", questoes
                 .size());
     }
 	
@@ -475,7 +494,6 @@ public class ListasDeExerciciosController {
 	public void autoCorrecaoLista(Long id) {
 		//Carrega a lista de exercícios com esse id
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
-		QuestaoDaLista questaoDaLista = null;
 		
 		//Carrega as propriedades da lista de exercícios
 		PropriedadesDaListaDeExercicios propriedades = listaDeExercicios.getPropriedades();
@@ -491,45 +509,7 @@ public class ListasDeExerciciosController {
 		
 		//Para cada Lista de Resposta (Aluno)
 		for (ListaDeRespostas listaDeRespostas : listasDeRespostas) {
-			
-			//Atribuindo a lista de respostas a variável
-			List<Resposta> respostas = listaDeRespostas.getRespostas();
-			
-			//List para os pesos das questões usados na nota final
-			List<Integer> pesosDasQuestoes = new ArrayList<Integer>();
-			
-			//Para cada resposta dessa lista
-			for (Resposta resposta : respostas) {
-				
-				//Pegando a questao a qual a resposta se refere
-				Questao questao = resposta.getQuestao();
-				
-				//Obtendo a Questao relacionada com a lista para obter as propriedades
-				//QuestaoDaLista questaoDaLista = questaoDaListaDao.getQuestaoDaListaPorIds(id, questao.getId());
-				
-				for (QuestaoDaLista i : listaDeExercicios.getQuestoes())
-				    if (i.getQuestao().equals(questao)) {
-				        questaoDaLista = i;
-				        break;
-				    }
-				//Montando o vetor de pesos para o cálculo da nota final
-				pesosDasQuestoes.add(questaoDaLista.getPeso());
-				
-				//Resultado da Comparação da Resposta (Correção): True se correta, False se errada e NULL se aberta. 
-				Boolean resultado = questao.respostaDoAlunoEhCorreta(resposta);
-				
-				//Verificando se a resposta está certa ou não.
-				if(resultado == true) resposta.setNota(100.0);
-				//#TODO Questões abertas?? Como faz??
-				//else if (resultado == false) resposta.setNota(0.0);  Abaixo seria o NULL
-				else resposta.setNota(0.0);
-							
-			}
-			
-			//Atribuindo a nota final à lista
-			listaDeRespostas.setNotaFinal(pesosDasQuestoes);
-			listaDeRespostas.getPropriedades().setEstado(
-			                EstadoDaListaDeRespostas.CORRIGIDA);
+		    listaDeRespostas.autocorrecao();
 			listaDeRespostasDao.atualiza(listaDeRespostas);
 		}
 		
