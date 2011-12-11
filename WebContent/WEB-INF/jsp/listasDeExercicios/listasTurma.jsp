@@ -4,41 +4,21 @@
 import="java.sql.*" errorPage="" %>
 
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <style type="text/css">
-body
-{
-background-color:#f0ecc6;
-}
-h1 
-{
-color: black;
-text-align: center;
-font-size: 40px;
-font-family:"Times New Roman";
-font-style: italic;
-font-variant: small-caps;
-}
-h2
-{
-color: black;
-text-align: center;
-font-size: 20px;
-font-family:"Times New Roman";
-}
-.fieldsetSemFormatacao{
-	border:none;
-	padding: 0px;
-}
+<%@ include file="/css/form2.css" %>
 </style>
+<title>Academic Devoir</title>
 </head>
 
 <body>
-	<h1>Academic Devoir</h1>
-	<h2>Grupo 1 - Engenharia de Software</h2>
-		
-	<h3>Listas de Exerc&iacute;cios da Turma</h3>
+	<div id="wrapper"> 
+	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
+	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
+	<div id="right">
+	<div id="menu">Listas de exerc&iacute;cios da Turma</div>
+	<br/><br/>
 	
 	<div>
 		<ul>
@@ -92,14 +72,9 @@ font-family:"Times New Roman";
 			<!--input type="submit" value="Cadastrar nova lista"></input-->
 			<a href="<c:url value='/listasDeExercicios/cadastro'/>">Cadastrar nova lista</a><br/>	
 		</fieldset>
-		</form>
-		<a href="<c:url value='/login'/>">Sair</a>
-    	<a href="<c:url value='/professores/home'/>">P&aacute;gina Principal</a><br/>              
+		</form>              
     </c:if>
-    <c:if test ="${usuarioSession.usuario.privilegio == 'ALUNO' || usuarioSession.usuario.privilegio == 'MONITOR'}">
-    	<a href="<c:url value='/login'/>">Sair</a>
-    	<a href="<c:url value='/alunos/home'/>">P&aacute;gina Principal</a><br/>              
- 	</c:if>
- 	
+ 	</div>
+ 	</div>
 </body>
 </html>
