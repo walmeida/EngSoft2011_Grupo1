@@ -30,11 +30,11 @@ width: 20em;
 						<table cellspacing="5" cellpadding="2">
 						<tr>
 		                    <td><label for="usuario.login">Login:</label></td> 
-							<td><input type="text" size="30" name="usuario.login" value="${usuario.login}" /></td>
+							<td><input type="text" size="20" name="usuario.login" value="${usuario.login}" /></td>
 		                </tr>
 	        	        <tr>    
 	                        <td><label for="usuario.senha">Senha:</label></td> 
-							<td><input type="password" size="30" name="usuario.senha" value="${usuario.senha}" /></td>
+							<td><input type="password" size="20" name="usuario.senha" value="${usuario.senha}" /></td>
 						</tr>
 						</table>
 		                <div>
