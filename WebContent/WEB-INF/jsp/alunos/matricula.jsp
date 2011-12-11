@@ -3,21 +3,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
 <style type="text/css">
-<%@ include file="../css/formatacao.css" %>
+<%@ include file="/css/form2.css" %>
 </style>
-<title>Academic Devoir</title>
+<title>Matricula</title>
 </head>
 
 <body>
-	<h1>Academic Devoir</h1>
-	<h2>Grupo 1 - Engenharia de Software</h2>
-	
+	<div id="wrapper">
+	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
+	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
+	<div id="right">
+	<div id="menu">Matricular-se em uma turma:</div>
 	<form action='inscreve'>
 	<input type="hidden" name="idAluno" value="${usuarioSession.usuario.id}">
-	<fieldset><legend>Inscri&ccedil;&atilde;o:</legend><br/>
 	 Olá, ${usuarioSession.usuario.nome}, selecione a turma na qual você quer se matricular.<br/><br/>
 	<select name="idTurma">
-	<option value="-1">selecione</option>
     <c:forEach items="${listaDeDisciplinas}" var="disciplina">
           <c:forEach items="${disciplina.turmas}" var="turma">
           <option value="${turma.id }">${disciplina.nome } - ${turma.nome }</option> 
@@ -26,14 +26,8 @@
     </select>
         <br /><br />        
     <input type="submit" value="Ok"/>
-	</fieldset>
 	</form>
-	<a href="<c:url value='/login'/>">Sair</a>
-	    <c:if test ="${usuarioSession.usuario.privilegio == 'ALUNO' || usuarioSession.usuario.privilegio == 'MONITOR'}">
-    	<a href="<c:url value='/alunos/home'/>">Página Principal</a><br/>
- 	</c:if>
-    <c:if test ="${usuarioSession.usuario.privilegio == 'PROFESSOR' || usuarioSession.usuario.privilegio == 'ADMINISTRADOR'}">
-    	<a href="<c:url value='/professores/home'/>">Página Principal</a><br/>    		         
- 	</c:if>
+	</div>
+	</div>
 	</body>
 </html>

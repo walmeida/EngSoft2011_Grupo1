@@ -21,12 +21,20 @@
 		<input type="hidden" name="nova.professor.id" value="${usuarioSession.usuario.id }"/>
 		<p><label>Nome: </label><input type="text" size="30" name="nova.nome"/></p>
 		<p><label>Disciplina:</label>
-    <select name="nova.disciplina.id">
-    <c:forEach items="${listaDeDisciplinas}" var="disciplina">
-          <option value="${disciplina.id }">${disciplina.nome }</option> 
-    </c:forEach>
-    </select>
-        </p>	
+		    <select name="nova.disciplina.id">
+    		<c:forEach items="${listaDeDisciplinas}" var="disciplina">
+          		<option value="${disciplina.id }">${disciplina.nome }</option> 
+    		</c:forEach>
+    	</select></p>
+		<p><label for="prazoDeMatricula">Prazo de matrícula:</label></p><br/>
+
+					<p><label for="dia">Dia: </label>
+						<input id="dia" type="text" size="2" maxlength="2" name="prazoDeMatricula[0]" /></p>
+					<p><label for="mes">Mês: </label>
+						<input id="mes" type="text" size="2" maxlength="2" name="prazoDeMatricula[1]" /></p>
+					<p><label for="ano">Ano:<br/></label>
+						<input id="ano" type="text" size="2" maxlength="4" name="prazoDeMatricula[2]" /></p>
+
 	<p class="submit"><input type="submit" value="Enviar"/></p>
 	</fieldset>
 	</form>

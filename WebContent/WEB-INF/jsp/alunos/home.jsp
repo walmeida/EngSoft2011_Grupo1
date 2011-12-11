@@ -6,14 +6,10 @@
   
 <html>
 <head>
-<style type="text/css">
-<%@ include file="../css/formatacao.css" %>
-</style>
-<title>Academic Devoir</title>
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="<c:url value="/css/form2.css"/>"/>
 </head>
 <body>
-	<h1>Academic Devoir</h1>
-	<h2>Grupo 1 - Engenharia de Software</h2>
+	<div id="menu">Menu</div>
 	
 	<form action='alteracao' method="get">
         <input type="hidden" value="${usuarioSession.usuario.id}" name="id"/>

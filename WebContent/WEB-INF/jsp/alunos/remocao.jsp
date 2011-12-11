@@ -3,27 +3,24 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
 <style type="text/css">
-<%@ include file="../css/formatacao.css" %>
+<%@ include file="/css/form2.css" %>
 </style>
 <title>Academic Devoir</title>
 </head>
 
 <body>
-	<h1>Academic Devoir</h1>
-	<h2>Grupo 1 - Engenharia de Software</h2>
+	<div id="wrapper">
+	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
+	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
+	<div id="right">
 	<form action='remove'>
 	<fieldset><legend>Remo&ccedil;&atilde;o:</legend><br/>
-		Para remover um aluno, digite abaixo a ID correspondente e confirme. <br/><br/>
-		ID: <br/><input type="text" size="30" name="id"/><br/><br/>
-		<input type="submit" value="Remover"/>
+		Para remover um aluno, digite abaixo a ID correspondente e confirme. 
+		<p><label>ID: </label><input type="text" size="30" name="id"/></p>
+		<p class="submit"><input type="submit" value="Remover"/></p>
 	</fieldset>
 	</form>
-	<a href="<c:url value='/login'/>">Sair</a><br/>
-	    <c:if test ="${usuarioSession.usuario.privilegio == 'ALUNO' || usuarioSession.usuario.privilegio == 'MONITOR'}">
-    	<a href="<c:url value='/alunos/home'/>">Página Principal</a><br/>
- 	</c:if>
-    <c:if test ="${usuarioSession.usuario.privilegio == 'PROFESSOR' || usuarioSession.usuario.privilegio == 'ADMINISTRADOR'}">
-    	<a href="<c:url value='/professores/home'/>">Página Principal</a><br/>    		         
- 	</c:if>
+	</div>
+	</div>
 </body>
 </html>

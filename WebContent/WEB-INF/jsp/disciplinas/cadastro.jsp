@@ -17,7 +17,7 @@
 	<br/><br/>
 	<form action='cadastra'>
 	<fieldset>
-		<p><label>Nome: </label><input type="text" size="30" name="nova.nome"/></p><br/><br/>
+		<p><label>Nome: </label><input type="text" size="30" name="nova.nome"/></p>
 	<p class="submit"><input type="submit" value="Enviar"/></p>
 	</fieldset>
 	</form>
