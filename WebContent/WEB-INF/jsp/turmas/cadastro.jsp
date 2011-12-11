@@ -1,4 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" language="java"
+import="java.sql.*" errorPage="" %>
+
 <html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
@@ -16,7 +20,7 @@
 	<div id="right">
 	<div id="menu">Cadastro de Turma</div>
 	<br/><br/>
-	<form action='cadastra'>
+	<form action='cadastra' accept-charset="utf-8">
 	<fieldset>
 		<input type="hidden" name="nova.professor.id" value="${usuarioSession.usuario.id }"/>
 		<p><label>Nome: </label><input type="text" size="30" name="nova.nome"/></p>
@@ -27,8 +31,7 @@
           	</c:forEach>
     	</select>
     	</p>
-		<p><label for="prazoDeMatricula">Prazo de matrícula:</label></p><br/>
-
+		<p><label for="prazoDeMatricula">Prazo de matrÃ­cula:</label></p><br/>
 
 					<p><label for="dia">Dia:<br/></label>
 						<select name="prazoDeMatricula[0]">
@@ -43,7 +46,7 @@
 						</select> 
 					</p>
 					
-					<p><label for="mes">Mês:<br/></label>
+					<p><label for="mes">Mï¿½s:<br/></label>
 						<select name="prazoDeMatricula[1]">
 						<c:forEach var="i" begin="1" end="12" step="1" varStatus="status">
 							<c:if test="${ mesAtual == i}">

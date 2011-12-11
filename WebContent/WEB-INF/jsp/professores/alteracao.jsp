@@ -1,4 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" language="java"
+import="java.sql.*" errorPage="" %>
+
 <html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
@@ -14,7 +18,7 @@
 	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
 	<div id="right">
 	<div id="menu">Alterando dados cadastrais do professor:</div>
-	<form action='altera'>	
+	<form action='altera' accept-charset="utf-8">	
 	<fieldset>
 		Digite os novos dados cadastrais
 		<input type="hidden" size="30" name="id" value="${professor.id}"/> <br />

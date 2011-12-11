@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page contentType="text/html; charset=utf-8" language="java"
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" language="java"
 import="java.sql.*" errorPage="" %>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -50,7 +50,7 @@ display: inline;
 	
 	<div>
 		<br/>
-		<form action="<c:url value="/listasDeExercicios/${listaDeExercicios.id }"/>" method="post" accept-charset="us-ascii">
+		<form action="<c:url value="/listasDeExercicios/${listaDeExercicios.id }"/>" method="post" accept-charset="utf-8">
 			<fieldset>
 				<legend>Alterar lista de exercícios</legend>
 				<label for="nome">Nome:</label>

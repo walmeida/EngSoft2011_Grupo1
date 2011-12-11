@@ -9,6 +9,8 @@
 		<property name="hibernate.connection.url">jdbc:mysql://localhost/nome_da_base_de_dados</property>
 		<property name="hibernate.connection.username">user</property>
 		<property name="hibernate.connection.password">senha</property>
+		<property name="hibernate.connection.CharSet">utf8</property>  
+		<property name="hibernate.connection.characterEncoding">utf8</property>
 		<property name="show_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>		
         <property name="hibernate.hbm2ddl.auto">update</property>

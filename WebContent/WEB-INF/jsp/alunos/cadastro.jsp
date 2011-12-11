@@ -1,6 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" language="java"
+import="java.sql.*" errorPage="" %>
+
 <html>
 <head>
 
@@ -36,13 +38,13 @@ $().ready(function() {
         	"novo.nome": "Por favor, digite um nome.",
         	"novo.login": {
                 required: "Por favor, digite um login",
-                minlength: "Seu login deve ter no mÌnimo 2 caracteres."
+                minlength: "Seu login deve ter no m√≠nimo 2 caracteres."
             },
             "novo.senha": {
                 required: "Por favor, digite uma senha",
-                minlength: "Sua senha deve ter no mÌnimo 5 caracteres"
+                minlength: "Sua senha deve ter no m√≠nimo 5 caracteres"
             },
-            "novo.email": "Entre com um e-mail v·lido."
+            "novo.email": "Entre com um e-mail v√°lido."
         }
     });
 });
@@ -60,7 +62,7 @@ $().ready(function() {
 	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
 	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
 	<div id="right">
-	<form class="cmxform" action='cadastra' id="cadastro">
+	<form class="cmxform" action='cadastra' id="cadastro" accept-charset="utf-8">
 	<fieldset style="width:350px;">
 	<legend>N&atilde;o &eacute; um aluno cadastrado? </legend><br/>
 		Preencha o formul&aacute;rio abaixo e clique no bot&atilde;o "Enviar".<br/><br/>
