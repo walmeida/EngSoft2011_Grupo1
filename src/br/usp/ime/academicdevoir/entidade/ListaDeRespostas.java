@@ -112,15 +112,17 @@ public class ListaDeRespostas {
 		this.notaFinal = notaFinal;
 	}
 
-	public void adiciona(Resposta novaResposta) {
+	public int adiciona(Resposta novaResposta) {
 		Long id = novaResposta.getQuestao().getId();
-		
+		int i = -1;
 		for (Resposta resposta : respostas) {
 			if (resposta.getQuestao().getId() == id) {
-				respostas.remove(resposta);
+				i = respostas.indexOf(resposta);
 				break;
 			}
 		}
-		respostas.add(novaResposta);
+		if (i < 0) respostas.add(novaResposta);
+		else respostas.set(i, novaResposta);
+		return i;
 	}
 }
