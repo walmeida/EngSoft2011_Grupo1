@@ -33,8 +33,8 @@ import br.usp.ime.academicdevoir.infra.Constantes;
 import br.usp.ime.academicdevoir.infra.Permission;
 import br.usp.ime.academicdevoir.infra.Privilegio;
 import br.usp.ime.academicdevoir.infra.UsuarioSession;
+import br.usp.ime.academicdevoir.infra.VerificadorDePrazos;
 
-@Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
 @Resource
 /**
  * Controlador de listas de exercicios.
@@ -167,13 +167,14 @@ public class ListasDeExerciciosController {
 	 * */
 	public void resolverLista(Long id) {
 		ListaDeExercicios listaDeExercicios = dao.carrega(id);
-
+		
 		Aluno aluno = (Aluno) usuarioSession.getUsuario();
 		ListaDeRespostas listaDeRespostas = listaDeRespostasDao
 				.getRespostasDoAluno(id, aluno);
 
 		if (listaDeRespostas == null) {
 			PropriedadesDaListaDeRespostas propriedades = new PropriedadesDaListaDeRespostas();
+			 
 			propriedades.setEstado(EstadoDaListaDeRespostas.SALVA);
 			propriedades.setNumeroDeEnvios(0);
 
@@ -182,6 +183,13 @@ public class ListasDeExerciciosController {
 			listaDeRespostas.setListaDeExercicios(listaDeExercicios);
 			listaDeRespostas.setAluno(aluno);
 			listaDeRespostas.setPropriedades(propriedades);
+			if (!VerificadorDePrazos.estaNoPrazo(listaDeExercicios.
+                    getPropriedades().getPrazoDeEntrega())) {
+                listaDeRespostas.getPropriedades().
+                    setEstado(EstadoDaListaDeRespostas.FINALIZADA);
+                listaDeRespostasDao.atualiza(listaDeRespostas);
+                result.redirectTo(this).verCorrecao(listaDeRespostas);
+            }
 		}
 
 		else if (listaDeRespostas.getRespostas() != null
@@ -207,14 +215,26 @@ public class ListasDeExerciciosController {
 	public void alterarRespostas(ListaDeRespostas listaDeRespostas) {
 	    listaDeRespostas = listaDeRespostasDao
 				.carrega(listaDeRespostas.getId());
+	    
+        ListaDeExercicios listaDeExercicios = listaDeRespostas
+                                                   .getListaDeExercicios();
+        
+        if (listaDeRespostas.getPropriedades().getEstado() == 
+                EstadoDaListaDeRespostas.SALVA && 
+                !VerificadorDePrazos.estaNoPrazo(listaDeRespostas.
+                getListaDeExercicios().getPropriedades().getPrazoDeEntrega())) {
+            listaDeRespostas.getPropriedades().
+                setEstado(EstadoDaListaDeRespostas.FINALIZADA);
+            listaDeRespostasDao.atualiza(listaDeRespostas);
+        }
+            
 	    if (listaDeRespostas.getPropriedades().getEstado() == 
 	        EstadoDaListaDeRespostas.CORRIGIDA ||
 	        listaDeRespostas.getPropriedades().getEstado() == 
 	            EstadoDaListaDeRespostas.FINALIZADA)
 	        result.redirectTo(ListasDeExerciciosController.class).
 	               verCorrecao(listaDeRespostas);
-		ListaDeExercicios listaDeExercicios = listaDeRespostas
-				.getListaDeExercicios();
+
 		List<String> renders = new ArrayList<String>();
 		
 		List<QuestaoDaLista> questoes = listaDeExercicios.getQuestoes();
@@ -241,6 +261,8 @@ public class ListasDeExerciciosController {
 		result.include("listaDeExercicios", listaDeExercicios);
 		result.include("numeroDeQuestoes", questoes
 				.size());
+	    result.include("VerificadorDePrazos", VerificadorDePrazos.class);
+
 	}
 
 	@Get
@@ -312,7 +334,7 @@ public class ListasDeExerciciosController {
 	public void altera(ListaDeExercicios listaDeExercicios,
 			PropriedadesDaListaDeExercicios propriedades,
 			List<Integer> prazoDeEntrega) {
-		
+
 		ListaDeExercicios listaDoBD = dao.carrega(listaDeExercicios.getId());
 
 		propriedades.setPrazoDeEntrega(prazoDeEntrega);
@@ -463,21 +485,27 @@ public class ListasDeExerciciosController {
         AutoCorrecao autoCorrecao = listaDeRespostas.getListaDeExercicios().
             getPropriedades().getAutoCorrecao();
         
+        if (listaDeRespostas.getPropriedades().getEstado() == 
+                EstadoDaListaDeRespostas.SALVA && 
+                !VerificadorDePrazos.estaNoPrazo(listaDeRespostas.
+                getListaDeExercicios().getPropriedades().getPrazoDeEntrega())) {
+            listaDeRespostas.getPropriedades().
+                setEstado(EstadoDaListaDeRespostas.FINALIZADA);
+            listaDeRespostasDao.atualiza(listaDeRespostas);
+        }
+            
         //Não corrige se autocorreção estiver desativada para esse lista
-        if (autoCorrecao == AutoCorrecao.DESATIVADA || 
-                autoCorrecao == AutoCorrecao.PROFESSOR) {
-            result.redirectTo(this).listasTurma(listaDeRespostas.
-                    getListaDeExercicios().getTurma().getId());
-            return;
+        if (autoCorrecao == AutoCorrecao.AMBOS) {
+        
+            listaDeRespostas.autocorrecao();
+            listaDeRespostasDao.atualiza(listaDeRespostas);
+            //Redireciona para o menu de listas
+            result.redirectTo(this).verCorrecao(listaDeRespostas);
         }
         
-        listaDeRespostas.autocorrecao();
-        
-        listaDeRespostasDao.atualiza(listaDeRespostas);
-        
-        //Redireciona para o menu de listas
-        result.redirectTo(this).verCorrecao(listaDeRespostas);
-        
+        else
+            result.redirectTo(this).listasTurma(listaDeRespostas.
+                    getListaDeExercicios().getTurma().getId());
     }
 	
 	@Get
