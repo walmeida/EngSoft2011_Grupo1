@@ -3,25 +3,28 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
 <style type="text/css">
-<%@ include file="../css/formatacao.css" %>
+<%@ include file="/css/form2.css" %>
 </style>
 <title>Academic Devoir</title>
 </head>
 
 <body>
-	<h1>Academic Devoir</h1>
-	<h2>Grupo 1 - Engenharia de Software</h2>
+	<div id="wrapper">
+	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
+	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
+	<div id="right">
 	<form action='altera'>	
 	<fieldset>
 	<legend>Alterando dados cadastrais do aluno:</legend><br/>
+		<p>Coloque os novos dados cadastrais</p>
 		<input type="hidden" size="30" name="id" value="${aluno.id}"/>
-		Novo Nome: <br/><input type="text" size="30" name="novoNome" value="${aluno.nome}"/><br/>
-		Novo E-mail : <br/><input type="text" size="30" name="novoEmail" value="${aluno.email}"/><br/>
-		Nova Senha : <br/><input type="password" size="30" name="novaSenha"/><br/><br/>
-	<input type="submit" value="Enviar"/><br/>
+		<p><label>Nome: </label><input type="text" size="30" name="novoNome" value="${aluno.nome}"/></p>
+		<p><label>E-mail : </label><input type="text" size="30" name="novoEmail" value="${aluno.email}"/></p>
+		<p><label>Senha : </label><input type="password" size="30" name="novaSenha"/></p>
+	<p class="submit"><input type="submit" value="Enviar"/><br/></p>
 	</fieldset>
 	</form>
-	<a href="<c:url value='/login'/>">Sair</a>
-	<a href="<c:url value='/alunos/home'/>">Página Principal</a><br/>
+	</div>
+	</div>
 </body>
 </html>

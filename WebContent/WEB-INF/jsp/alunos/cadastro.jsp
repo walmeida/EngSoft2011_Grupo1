@@ -4,7 +4,7 @@
 <html>
 <head>
 
-<script type="text/javascript" charset="utf-8" src="<c:url value="/javascript/jquery-1.7.1.min.js"/>"></script>
+<script src="../javascript/jquery-1.6.4.js" type="text/javascript"></script>
 <script src="../javascript/jquery.validate.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -50,15 +50,16 @@ $().ready(function() {
 </script>
 
 <style type="text/css">
-<%@ include file="../css/formatacao.css" %>
+<%@ include file="/css/form2.css" %>
 </style>
-<title>Academic Devoir</title>
+<title>Cadastro de Aluno</title>
 </head>
 
 <body>
-	<h1>Academic Devoir</h1>
-	<h2>Grupo 1 - Engenharia de Software</h2>
-	<h4>Cadastro de Aluno</h4>
+	<div id="wrapper">
+	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
+	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
+	<div id="right">
 	<form class="cmxform" action='cadastra' id="cadastro">
 	<fieldset style="width:350px;">
 	<legend>N&atilde;o &eacute; um aluno cadastrado? </legend><br/>
@@ -80,13 +81,15 @@ $().ready(function() {
 		    <input name="novo.email" type="text"     size="30" />
 		</p> <br/>
 		<input type="hidden" name="novo.privilegio" value="0"/>
-	<input type="submit" value="Enviar"/>
+	<p class="submit"><input type="submit" value="Enviar"/></p>
 	</fieldset>
 	</form>
-	<a href="<c:url value='/login'/>">Sair</a>
+	<div id="link"><a href="<c:url value='/login'/>">Sair</a></div>
 	
 	<c:if test ="${usuarioSession.usuario.id != null}">
-        <a href="<c:url value='/alunos/lista'/>">Voltar</a><br/>              
+        <div id="link"><a href="<c:url value='/alunos/lista'/>">Voltar</a><br/></div>              
     </c:if>
+    </div>
+    </div>
 </body>
 </html>

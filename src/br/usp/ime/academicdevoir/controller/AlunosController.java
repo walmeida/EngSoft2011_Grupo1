@@ -73,6 +73,7 @@ public class AlunosController {
 	 */
 
 	public void home() {
+		result.redirectTo(AlunosController.class).listaTurmas(usuarioSession.getUsuario().getId());	
 	}
 
 	/**
