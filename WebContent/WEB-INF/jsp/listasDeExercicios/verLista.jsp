@@ -174,8 +174,8 @@ import="java.sql.*" errorPage="" %>
 						</form>
 					</td>
 					<td id="questao${status.index }">
-						<button class="sobe">sobe</button><br/>
-						<button class="desce">desce</button>						
+						<button class="sobe" ></button><br/>
+						<button class="desce" ></button>						
 					</td>
 				</tr>
 			</c:forEach>
