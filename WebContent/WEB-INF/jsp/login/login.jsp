@@ -47,7 +47,6 @@ width: 20em;
 	                	</fieldset>
 		                <c:out value="${error}"></c:out>
 				</form> 
-				<div id="grupo">Academic Devoir</div>
 			</c:when>
 
 			<c:otherwise>
