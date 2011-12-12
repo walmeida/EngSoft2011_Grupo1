@@ -4,10 +4,11 @@
 import="java.sql.*" errorPage="" %>
 
 <html>
-<head><title>Academic Devoir</title></head>
+<head><title>Academic Devoir</title>
 <style type="text/css">
 <%@ include file="/css/form2.css" %>
 </style> 
+</head>
 
 <body>
     <div id="wrapper"> 
@@ -16,7 +17,17 @@ import="java.sql.*" errorPage="" %>
 	<div id="right">
     <div id="menu">${turma.disciplina.nome} - ${turma.nome}</div>
     <br/><br/>
-    Listar listas aqui
+    
+    <table>
+        <c:forEach items="${listaDeListas}" var="lista">
+            <tr>
+                <td>
+                    <a href="<c:url value="/listasDeExercicios/${lista.id}"/>">${lista.propriedades.nome} </a>
+                </td>
+            </tr>
+        </c:forEach>
+	</table>
+    
     
     <form action='../../listasDeExercicios/cadastro' method="get">
         <c:if test ="${usuarioSession.usuario.privilegio != 'ALUNO' && usuarioSession.usuario.privilegio != 'MONITOR'}">

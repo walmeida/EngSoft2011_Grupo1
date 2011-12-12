@@ -81,6 +81,7 @@ public class TurmasController {
     public void home(Long id) {
         Turma turma = turmaDao.carrega(id);
         result.include("turma", turma);
+        result.include("listaDeListas", turma.getListas());
     }
 
     /**
