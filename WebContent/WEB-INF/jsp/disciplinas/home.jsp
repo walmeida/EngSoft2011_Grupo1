@@ -17,9 +17,18 @@ import="java.sql.*" errorPage="" %>
 	<div id="header"> <%@ include file="/css/header.jsp" %></div> <br/>
 	<div id="left"><fieldset><%@ include file="/css/menu.jsp" %></fieldset></div>
 	<div id="right">
-	<div id="menu">Home da Disciplinas</div>
+	<div id="menu">Home da Disciplina</div>
 	<br/><br/>
-		Listar Turmas aqui<br/><br/><br/>
+	<table>
+        <c:forEach items="${listaDeTurmas}" var="turma">
+            <tr>
+                <td>
+                    <a href="<c:url value="/turmas/home/${turma.id}"/>">${turma.nome} </a>
+                </td>
+            </tr>
+        </c:forEach>
+	</table>
+	<br/><br/>
 		<!-- <form action="/academic-devoir/turmas/cadastro"> -->
 		<a href="<c:url value='/turmas/cadastro?idDisciplina=${disciplina.id}'/>">Cadastrar nova turma</a><br/><br/>
 		<!-- </form> -->

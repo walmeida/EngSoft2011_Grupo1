@@ -34,7 +34,7 @@ import="java.sql.*" errorPage="" %>
     <div>
         <c:forEach items="${listaDeExercicios.questoes}" var="questaoDaLista" varStatus="iteracao">
                 <fieldset>
-                        <p>${questaoDaLista.ordem} )
+                        <p>${iteracao.index + 1} )
                                 ${questaoDaLista.questao.enunciado}</p>
                         ${renderizacao[iteracao.index]}
                 </fieldset>

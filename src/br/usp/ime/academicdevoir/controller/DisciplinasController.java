@@ -61,7 +61,10 @@ public class DisciplinasController {
 	 * @param id identificador da disciplina
 	 */
 	public void home(Long id) {
-		result.include("disciplina", disciplinaDao.carrega(id));
+		Disciplina d = disciplinaDao.carrega(id);
+		result.include("disciplina", d);
+		result.include("listaDeTurmas", d.getTurmas());
+
 	}
 
 	/**
@@ -140,5 +143,4 @@ public class DisciplinasController {
 		disciplinaDao.removeDisciplina(disciplina);
 		result.redirectTo(DisciplinasController.class).lista();
 	}
-
 }

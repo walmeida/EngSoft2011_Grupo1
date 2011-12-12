@@ -25,6 +25,9 @@ import="java.sql.*" errorPage="" %>
 		<input type="hidden" name="nova.professor.id" value="${usuarioSession.usuario.id }"/>
 		<input type="hidden" name="nova.disciplina.id" value="${idDisciplina }"/>
 		<p><label>Nome: </label><input type="text" size="30" name="nova.nome"/></p>
+		<p><label>Bloquear novas matriculas após data limite?</label>
+			<input type="radio" name="nova.temPrazo" value="sim" checked/>Sim
+			<input type="radio" name="nova.temPrazo" value="nao"/>N&atilde;o</p>
 		<!-- <p><label>Disciplina:</label>
 		    <select name="nova.disciplina.id">
     		<c:forEach items="${listaDeDisciplinas}" var="disciplina">
@@ -33,7 +36,7 @@ import="java.sql.*" errorPage="" %>
     	</select>
     	</p> -->
 		<p><label for="prazoDeMatricula">Prazo de matr&iacute;cula:</label></p><br/>
-
+		
 					<p><label for="dia">Dia:<br/></label>
 						<select name="prazoDeMatricula[0]">
 						<c:forEach var="i" begin="1" end="31" step="1" varStatus="status">
