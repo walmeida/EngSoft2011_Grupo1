@@ -8,7 +8,6 @@ import javax.persistence.InheritanceType;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import br.usp.ime.academicdevoir.infra.Privilegio;
 
@@ -24,25 +23,21 @@ public class Usuario {
 	/**
 	 * @uml.property  name="nome"
 	 */
-	@NotEmpty
 	@Length(min = 5, max = 50)
 	private String nome;
 	/**
 	 * @uml.property  name="login"
 	 */
-	@NotEmpty
 	@Length(min = 2, max = 30)
 	private String login;
 	/**
 	 * @uml.property  name="senha"
-	 */	
-	@NotEmpty
+	 */
 	@Length(min = 5, max = 32)
 	private String senha;
 	/**
 	 * @uml.property  name="email"
 	 */
-	@NotEmpty
 	@Email
 	private String email;
 	/**

@@ -211,6 +211,7 @@ public class ListasDeExerciciosControllerTeste {
 		Date prazoDeEntrega = prazoFuturo();
 		propriedadesDaListaDeExercicios.setPrazoDeEntrega(prazoDeEntrega);
 		listaDeExercicios.setPropriedades(propriedadesDaListaDeExercicios);
+		listaDeExercicios.setQuestoes(new ArrayList<QuestaoDaLista>());
 		listasDeExerciciosController.verLista(listaDeExercicios.getId());
 		
 		ListaDeExercicios lista = result.included("listaDeExercicios");

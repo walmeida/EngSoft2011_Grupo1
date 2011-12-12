@@ -66,8 +66,17 @@ public class Turma {
 //	@Future
 	@Temporal(TemporalType.DATE)
 	private Date prazoDeMatricula;
-		
 	
+	private String temPrazo;
+		
+	public String getTemPrazo() {
+		return temPrazo;
+	}
+
+	public void setTemPrazo(String temPrazo) {
+		this.temPrazo = temPrazo;
+	}
+
 	/**
 	 * @return
 	 * @uml.property  name="disciplina"

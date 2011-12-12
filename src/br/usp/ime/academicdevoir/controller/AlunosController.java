@@ -237,15 +237,20 @@ public class AlunosController {
 		}
 		aluno = alunoDao.carrega(idAluno);
 		turma = turmaDao.carrega(idTurma);
-		if (turma.getPrazoDeMatricula().before(atual)) {
-			result.redirectTo(AlunosController.class).listaTurmas(idAluno);
-			return;
-		} else {
+
+		if (turma.getTemPrazo().equalsIgnoreCase("nao")
+				|| turma.getPrazoDeMatricula().after(atual)) {
 			Collection<Turma> listaDeTurmas = aluno.getTurmas();
 			if (!listaDeTurmas.contains(turma))
 				alunoDao.inscreve(aluno, turma);
 			result.redirectTo(AlunosController.class).listaTurmas(idAluno);
+			return;
 		}
+
+		else {
+			result.redirectTo(AlunosController.class).listaTurmas(idAluno);
+			return;
+		} 
 	}
 
 	/**

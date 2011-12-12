@@ -23,8 +23,13 @@ import="java.sql.*" errorPage="" %>
         	<a href="<c:url value='../../listasDeExercicios/cadastro'/>">Criar lista de exerc&iacute;cios</a><br/>	         
  		</c:if>
     </form>
+     <form action='../../listasDeExercicios/listasTurma/${turma.id}' method="get">
+        <c:if test ="${usuarioSession.usuario.privilegio != 'ALUNO' && usuarioSession.usuario.privilegio != 'MONITOR'}">
+            <a href="<c:url value='../../listasDeExercicios/listasTurma/${turma.id}'/>">Listas de exerc&iacute;cios</a><br/>           
+        </c:if>
+    </form>
     <form action='../listaAlunosEListas' method="get">
-        <input type="hidden" value="${turma.id}" name="idTurma">
+        <input type="hidden" value="${turma.id}" name="idTurma"/>
         <c:if test ="${usuarioSession.usuario.privilegio != 'ALUNO' && usuarioSession.usuario.privilegio != 'MONITOR'}">
         	<a href="<c:url value='../listaAlunosEListas?idTurma=${turma.id}'/>">Listas entregues (por aluno)</a><br/>	         
  		</c:if>
