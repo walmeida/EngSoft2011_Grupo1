@@ -147,8 +147,7 @@ import="java.sql.*" errorPage="" %>
 	</table>
 	<form action="<c:url value="/listasDeExercicios/altera/${listaDeExercicios.id }"/>">
 		<fieldset class="fieldsetSemFormatacao">
-			<button type="submit">Alterar</button>
-			<a href="<c:url value='/listasDeExercicios/resolver/${listaDeExercicios.id }'/>">Resolver Lista</a>
+			<button type="submit">Alterar</button><br/>
 			<a href="<c:url value='/listasDeExercicios/autocorrecao/${listaDeExercicios.id }'/>">Correção Automática</a>
 		</fieldset>
 	</form>
@@ -174,8 +173,8 @@ import="java.sql.*" errorPage="" %>
 						</form>
 					</td>
 					<td id="questao${status.index }">
-						<button class="sobe">sobe</button><br/>
-						<button class="desce">desce</button>						
+						<button class="sobe" ></button><br/>
+						<button class="desce" ></button>						
 					</td>
 				</tr>
 			</c:forEach>

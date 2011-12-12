@@ -91,3 +91,17 @@ body
 font-family: Helvetica, Arial, Sans-serif;
 font-size: 12px;
 }
+.sobe{
+background: #D6FFC1 url('../css/up.png') no-repeat center;
+background-size:75% 75%;
+width: 24px;
+height: 24px;
+color: #000;
+}
+.desce{
+background: #D6FFC1 url('../css/down.png') no-repeat center;
+background-size:75% 75%;
+width: 24px;
+height: 24px;
+color: #000;
+}
