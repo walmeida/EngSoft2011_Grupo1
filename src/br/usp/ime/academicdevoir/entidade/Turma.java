@@ -63,7 +63,6 @@ public class Turma {
 	 * @uml.property  name="dataLimite"
 	 * @uml.associationEnd  
 	 */
-//	@Future
 	@Temporal(TemporalType.DATE)
 	private Date prazoDeMatricula;
 	

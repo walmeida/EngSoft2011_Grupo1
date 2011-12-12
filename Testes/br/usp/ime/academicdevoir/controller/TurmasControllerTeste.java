@@ -8,6 +8,7 @@ import static org.mockito.Mockito.spy;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.mapping.Array;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -93,7 +94,12 @@ public class TurmasControllerTeste {
 		
 		turmasController = new TurmasController(result, turmaDao, disciplinaDao, alunoDao, listaDeExerciciosDao, usuarioSession);
 		turma = new Turma();
+		List<Integer> data = new ArrayList<Integer>();
+		data.add(2);
+		data.add(12);
+		data.add(2012);
 		turma.setId(0L);
+		turma.setPrazoDeMatricula(data);
 		turma.setProfessor(new Professor());
 		turma.setDisciplina(new Disciplina());
 		turma.setListas(new ArrayList<ListaDeExercicios>());
@@ -158,7 +164,7 @@ public class TurmasControllerTeste {
 	
 	@Test
 	public void testeAltera() {
-		turmasController.altera(turma.getId(), "xpto");
+		turmasController.altera(turma.getId(), "xpto", "sim", );
 		
 		verify(turmaDao).atualizaTurma(turma);
 		verify(result).redirectTo(TurmasController.class);

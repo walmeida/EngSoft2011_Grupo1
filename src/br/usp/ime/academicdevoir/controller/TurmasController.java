@@ -152,8 +152,7 @@ public class TurmasController {
 		}
 		nova.setPrazoDeMatricula(prazoDeMatricula);
         turmaDao.salvaTurma(nova);
-        result.redirectTo(ProfessoresController.class).listaTurmas(
-                nova.getProfessor().getId());
+        result.redirectTo(ProfessoresController.class).listaTurmas(nova.getProfessor().getId());
     }
 
     @Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
@@ -170,6 +169,13 @@ public class TurmasController {
 		}
 		
         result.include("turma", turma);
+        
+        Calendar dataDeHoje = Calendar.getInstance();
+        result.include("diaAtual", dataDeHoje.get(Calendar.DAY_OF_MONTH));
+        result.include("mesAtual", dataDeHoje.get(Calendar.MONTH) + 1);
+        result.include("anoAtual", dataDeHoje.get(Calendar.YEAR));
+        
+        
     }
 
     @Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
@@ -179,7 +185,7 @@ public class TurmasController {
      * 
      * @param id
      */
-    public void altera(Long id, String novoNome) {
+    public void altera(Long id, String novoNome, String novoTemPrazo, List<Integer> prazoDeMatricula) {
         Turma turma = turmaDao.carrega(id);
         Usuario u = usuarioSession.getUsuario();
 		if(u.getPrivilegio() == Privilegio.PROFESSOR && u.getId() != turma.getProfessor().getId()) {
@@ -189,6 +195,8 @@ public class TurmasController {
 		
         if (!novoNome.equals(""))
             turma.setNome(novoNome);
+        turma.setTemPrazo(novoTemPrazo);
+        turma.setPrazoDeMatricula(prazoDeMatricula);
         turmaDao.atualizaTurma(turma);
         result.redirectTo(TurmasController.class).home(turma.getId());
     }
