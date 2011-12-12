@@ -190,7 +190,7 @@ public class ListasDeExerciciosController {
                 setEstado(EstadoDaListaDeRespostas.FINALIZADA);
                 listaDeRespostas.setRespostas(new ArrayList<Resposta>());
                 listaDeRespostasDao.salva(listaDeRespostas);
-                result.redirectTo(this).verCorrecao(listaDeRespostas);
+                result.redirectTo(this).autoCorrecaoRespostas(listaDeRespostas.getId());
                 return;
             }
 		}
@@ -227,16 +227,21 @@ public class ListasDeExerciciosController {
                 !VerificadorDePrazos.estaNoPrazo(listaDeRespostas.
                 getListaDeExercicios().getPropriedades().getPrazoDeEntrega())) {
             listaDeRespostas.getPropriedades().
-                setEstado(EstadoDaListaDeRespostas.FINALIZADA);
+            setEstado(EstadoDaListaDeRespostas.FINALIZADA);
             listaDeRespostasDao.atualiza(listaDeRespostas);
+            result.redirectTo(ListasDeExerciciosController.class).
+                                autoCorrecaoRespostas(listaDeRespostas.getId());
+            return;
         }
             
 	    if (listaDeRespostas.getPropriedades().getEstado() == 
 	        EstadoDaListaDeRespostas.CORRIGIDA ||
 	        listaDeRespostas.getPropriedades().getEstado() == 
-	            EstadoDaListaDeRespostas.FINALIZADA)
+	            EstadoDaListaDeRespostas.FINALIZADA) {
 	        result.redirectTo(ListasDeExerciciosController.class).
 	               verCorrecao(listaDeRespostas);
+	        return;
+	    }
 
 		List<String> renders = new ArrayList<String>();
 		
@@ -375,16 +380,17 @@ public class ListasDeExerciciosController {
 	 * @param idDaQuestao
 	 */
 	public void incluiQuestao(ListaDeExercicios listaDeExercicios,
-			Long idDaQuestao, Integer pesoDaQuestao, Integer ordemDaQuestao) {
+			Long idDaQuestao, Integer pesoDaQuestao) {
 		
 		QuestaoDaLista novaQuestao = new QuestaoDaLista();
 		novaQuestao.setPeso(pesoDaQuestao);
-		novaQuestao.setOrdem(ordemDaQuestao);
 		Questao questao = (Questao) questaoDao.carrega(idDaQuestao);
 		novaQuestao.setQuestao(questao);
 
 		dao.recarrega(listaDeExercicios);
 		List<QuestaoDaLista> questoes = listaDeExercicios.getQuestoes();
+		
+		novaQuestao.setOrdem(questoes.size());
 		questoes.add(novaQuestao);
 		listaDeExercicios.setQuestoes(questoes);
 
@@ -392,35 +398,35 @@ public class ListasDeExerciciosController {
 		result.redirectTo(this).verLista(listaDeExercicios.getId());
 	}
 
-	@Put
-	@Path("/listasDeExercicios/{id}/questoes/{indice}")
-	@Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
-	/**
-	 * Altera a questão com o indice fornecido (na lista de exercícios com o id fornecido)
-	 * para a questão com id fornecido.
-	 * 
-	 * @param id
-	 * @param indice
-	 * @param idDaNovaQuestao
-	 * @param ordemDaQuestao
-	 */
-	public void trocaQuestao(Long id, Integer indice, Long idDaNovaQuestao,
-			Integer ordemDaQuestao) {
-		
-		ListaDeExercicios listaDeExercicios = dao.carrega(id);
-		List<QuestaoDaLista> questoesDaLista = listaDeExercicios.getQuestoes();
-		QuestaoDaLista questaoDaLista = listaDeExercicios.getQuestoes().get(
-				indice.intValue());
-		Questao questao = (Questao) questaoDao.carrega(idDaNovaQuestao);
-
-		questaoDaLista.setQuestao(questao);
-		questaoDaLista.setOrdem(ordemDaQuestao);
-		questoesDaLista.set(indice.intValue(), questaoDaLista);
-		listaDeExercicios.setQuestoes(questoesDaLista);
-
-		dao.atualiza(listaDeExercicios);
-		result.redirectTo(this).verLista(listaDeExercicios.getId());
-	}
+//	@Put
+//	@Path("/listasDeExercicios/{id}/questoes/{indice}")
+//	@Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
+//	/**
+//	 * Altera a questão com o indice fornecido (na lista de exercícios com o id fornecido)
+//	 * para a questão com id fornecido.
+//	 * 
+//	 * @param id
+//	 * @param indice
+//	 * @param idDaNovaQuestao
+//	 * @param ordemDaQuestao
+//	 */
+//	public void trocaQuestao(Long id, Integer indice, Long idDaNovaQuestao,
+//			Integer ordemDaQuestao) {
+//		
+//		ListaDeExercicios listaDeExercicios = dao.carrega(id);
+//		List<QuestaoDaLista> questoesDaLista = listaDeExercicios.getQuestoes();
+//		QuestaoDaLista questaoDaLista = listaDeExercicios.getQuestoes().get(
+//				indice.intValue());
+//		Questao questao = (Questao) questaoDao.carrega(idDaNovaQuestao);
+//
+//		questaoDaLista.setQuestao(questao);
+//		questaoDaLista.setOrdem(ordemDaQuestao);
+//		questoesDaLista.set(indice.intValue(), questaoDaLista);
+//		listaDeExercicios.setQuestoes(questoesDaLista);
+//
+//		dao.atualiza(listaDeExercicios);
+//		result.redirectTo(this).verLista(listaDeExercicios.getId());
+//	}
 
 	@Delete
 	@Path("/listasDeExercicios/{id}/questoes/{indice}")
@@ -581,14 +587,6 @@ public class ListasDeExerciciosController {
 	@Get
 	@Path("/listasDeExercicios/trocaOrdem/{id}")
 	public void trocaOrdem(Long id, List<Integer> novaOrdem) {
-		
-		System.out.print("\n\n\n******************\n");
-		
-		for (Integer ordem : novaOrdem) {
-			System.out.print(ordem);
-		}
-		
-		System.out.print("\n******************\n\n\n");
 		ListaDeExercicios lista = dao.carrega(id);
 		List<QuestaoDaLista> questoes = lista.getQuestoes();		
 		Integer ordem;
