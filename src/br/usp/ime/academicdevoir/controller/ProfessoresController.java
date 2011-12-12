@@ -107,7 +107,7 @@ public class ProfessoresController {
      */
     public void alteracao(Long id) {
 		Usuario u = usuarioSession.getUsuario();
-		if (!(u.getId().longValue() == id)) {
+		if ((u.getId().longValue() != id) && (u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
@@ -126,7 +126,7 @@ public class ProfessoresController {
 	 */
 	public void altera(Long id, String novoNome, String novoEmail, String novaSenha) {
 		Usuario u = usuarioSession.getUsuario();
-		if (!(u.getId().longValue() == id)) {
+		if ((u.getId().longValue() != id) && (u.getPrivilegio() == Privilegio.PROFESSOR)) {
 			result.redirectTo(LoginController.class).acessoNegado();
 			return;
 		}
