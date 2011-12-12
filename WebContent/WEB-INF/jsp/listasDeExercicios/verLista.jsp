@@ -147,8 +147,7 @@ import="java.sql.*" errorPage="" %>
 	</table>
 	<form action="<c:url value="/listasDeExercicios/altera/${listaDeExercicios.id }"/>">
 		<fieldset class="fieldsetSemFormatacao">
-			<button type="submit">Alterar</button>
-			<a href="<c:url value='/listasDeExercicios/resolver/${listaDeExercicios.id }'/>">Resolver Lista</a>
+			<button type="submit">Alterar</button><br/>
 			<a href="<c:url value='/listasDeExercicios/autocorrecao/${listaDeExercicios.id }'/>">Correção Automática</a>
 		</fieldset>
 	</form>
