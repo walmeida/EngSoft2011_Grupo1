@@ -5,6 +5,7 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.usp.ime.academicdevoir.dao.ProfessorDao;
 import br.usp.ime.academicdevoir.entidade.Professor;
+import br.usp.ime.academicdevoir.entidade.Usuario;
 import br.usp.ime.academicdevoir.infra.Criptografia;
 import br.usp.ime.academicdevoir.infra.Permission;
 import br.usp.ime.academicdevoir.infra.Privilegio;
@@ -97,7 +98,7 @@ public class ProfessoresController {
 		result.redirectTo(ProfessoresController.class).lista();
 	}
 
-	@Permission(Privilegio.ADMINISTRADOR)
+	@Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
 	/**
      * Método associado ao .jsp com formulário para alteração de cadastro de
      * professor.
@@ -105,10 +106,15 @@ public class ProfessoresController {
      * @param id   identificador do professor
      */
     public void alteracao(Long id) {
+		Usuario u = usuarioSession.getUsuario();
+		if ((u.getId().longValue() != id) && (u.getPrivilegio() == Privilegio.PROFESSOR)) {
+			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
         result.include("professor", professorDao.carrega(id));
     }
 
-	@Permission(Privilegio.ADMINISTRADOR)
+	@Permission({ Privilegio.ADMINISTRADOR, Privilegio.PROFESSOR })
 	/**
 	 * Altera um professor no banco de dados com o id fornecido e set o nome
 	 * do professor para novoNome, o email para novoEmail e a senha para novaSenha.
@@ -119,6 +125,12 @@ public class ProfessoresController {
 	 * @param novaSenha
 	 */
 	public void altera(Long id, String novoNome, String novoEmail, String novaSenha) {
+		Usuario u = usuarioSession.getUsuario();
+		if ((u.getId().longValue() != id) && (u.getPrivilegio() == Privilegio.PROFESSOR)) {
+			result.redirectTo(LoginController.class).acessoNegado();
+			return;
+		}
+		
 		Professor p;
 		
 		p = professorDao.carrega(id);
